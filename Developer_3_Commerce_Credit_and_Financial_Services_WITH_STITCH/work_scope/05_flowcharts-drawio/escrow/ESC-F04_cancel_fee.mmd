@@ -1,0 +1,18 @@
+flowchart TD
+  a(["Party requests cancellation"])
+  b{"Funded?"}
+  c["Cancel; no fee"]
+  d{"Both agree?"}
+  e["Apply mutual-cancel fee option chosen at setup"]
+  f["Unilateral cancel: apply option chosen at setup"]
+  g["Refund buyer less applicable fees; minimum charge per rule"]
+  h(["Closed"])
+  a --> b
+  b -->|no| c
+  b -->|yes| d
+  d -->|yes| e
+  d -->|no| f
+  e --> g
+  f --> g
+  c --> h
+  g --> h

@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-surface" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Loan Amount &amp; Tenor | YourApp</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary-fixed-variant": "#8c170e",
+            "on-primary-container": "#ffa0ba",
+            "on-surface-variant": "#564146",
+            "surface-container": "#f5eced",
+            "inverse-primary": "#ffb1c5",
+            "surface-container-low": "#fbf1f2",
+            "on-error-container": "#93000a",
+            "on-error": "#ffffff",
+            "surface": "#fff8f8",
+            "on-secondary": "#ffffff",
+            "on-secondary-fixed": "#410000",
+            "on-primary": "#ffffff",
+            "outline-variant": "#dcbfc5",
+            "on-primary-fixed-variant": "#881646",
+            "surface-container-lowest": "#ffffff",
+            "on-tertiary-container": "#c6b7bd",
+            "primary-fixed": "#ffd9e1",
+            "secondary": "#ae3123",
+            "tertiary-fixed": "#eedee4",
+            "error-container": "#ffdad6",
+            "background": "#fff8f8",
+            "surface-container-high": "#efe6e7",
+            "secondary-fixed": "#ffdad4",
+            "tertiary-container": "#53484d",
+            "on-primary-fixed": "#3f001b",
+            "inverse-on-surface": "#f8eeef",
+            "on-background": "#1f1b1c",
+            "tertiary": "#3b3236",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "primary": "#6d0033",
+            "surface-container-highest": "#e9e0e1",
+            "error": "#ba1a1a",
+            "outline": "#897176",
+            "inverse-surface": "#342f30",
+            "surface-tint": "#a8315d",
+            "on-tertiary-fixed": "#21191e",
+            "secondary-fixed-dim": "#ffb4a8",
+            "surface-dim": "#e1d8d9",
+            "on-secondary-container": "#690000",
+            "surface-variant": "#e9e0e1",
+            "primary-fixed-dim": "#ffb1c5",
+            "surface-bright": "#fff8f8",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "on-surface": "#1f1b1c",
+            "secondary-container": "#fc6955",
+            "on-tertiary": "#ffffff",
+            "primary-container": "#8e1b4a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "1rem",
+            "space-md": "0.75rem",
+            "space-2xl": "2rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1rem",
+            "space-xl": "1.5rem",
+            "space-3xl": "3rem",
+            "space-sm": "0.5rem",
+            "margin": "1rem"
+          },
+          "fontFamily": {
+            "label": ["Inter"],
+            "body-medium": ["Inter"],
+            "body": ["Inter"],
+            "subtitle": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "display": ["Inter"],
+            "caption": ["Inter"],
+            "amount-lg": ["Inter"],
+            "title": ["Inter"]
+          },
+          "fontSize": {
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 20px;
+      line-height: 1;
+      display: inline-block;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+      -webkit-font-smoothing: antialiased;
+    }
+    input[type=range] {
+      -webkit-appearance: none;
+      background: transparent;
+    }
+    input[type=range]:focus {
+      outline: none;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      height: 24px;
+      width: 24px;
+      border-radius: 50%;
+      background: #8e1b4a;
+      cursor: pointer;
+      border: 3px solid #ffffff;
+      box-shadow: 0 2px 6px rgba(30, 26, 27, 0.25);
+      margin-top: -8px;
+      transition: transform 0.15s ease;
+    }
+    input[type=range]::-webkit-slider-thumb:active {
+      transform: scale(1.15);
+    }
+    input[type=range]::-webkit-slider-runnable-track {
+      width: 100%;
+      height: 8px;
+      cursor: pointer;
+      background: #f1edeb;
+      border-radius: 9999px;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .custom-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex justify-center">
+<!-- Mobile Viewport Canvas Container (390px x 844px target) -->
+<div class="w-full max-w-[430px] min-h-screen bg-surface flex flex-col justify-between relative shadow-[0_16px_36px_-6px_rgba(30,26,27,0.1)]">
+<!-- Top Step Bar & Navigation -->
+<header class="w-full bg-surface-container-lowest px-margin pt-space-md pb-space-sm sticky top-0 z-30 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)]">
+<div class="flex items-center justify-between min-h-[48px]">
+<button aria-label="Go back" class="w-12 h-12 -ml-2 rounded-full flex items-center justify-center text-on-surface hover:bg-surface-container transition-colors duration-150 active:scale-95" type="button">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="flex flex-col items-center flex-1 mx-2">
+<h1 class="font-subtitle text-subtitle text-on-surface tracking-tight text-center leading-tight">
+            Loan Amount &amp; Tenor
+          </h1>
+<span class="font-caption text-caption text-on-surface-variant font-medium mt-0.5">
+            Step 1 of 3
+          </span>
+</div>
+<button aria-label="Loan Help and info" class="w-12 h-12 -mr-2 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container transition-colors duration-150" type="button">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+</div>
+<!-- Stepper Indicator -->
+<div class="w-full grid grid-cols-3 gap-space-xs mt-space-sm">
+<div class="h-1.5 rounded-full bg-primary-container"></div>
+<div class="h-1.5 rounded-full bg-surface-container-highest"></div>
+<div class="h-1.5 rounded-full bg-surface-container-highest"></div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 px-margin py-space-lg space-y-space-xl overflow-y-auto pb-space-3xl">
+<!-- Amount Selection Section -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] space-y-space-lg">
+<div class="flex items-center justify-between">
+<label class="font-caption text-caption text-on-surface-variant font-medium flex items-center gap-space-xs" for="loan-slider">
+<span class="material-symbols-outlined text-primary-container text-[16px]" data-icon="payments">payments</span>
+            How much do you want to borrow?
+          </label>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-surface-container text-on-surface-variant font-caption text-caption text-[11px] font-semibold">
+<span class="material-symbols-outlined text-[12px] text-primary-container" data-icon="verified_user">verified_user</span>
+            Pre-approved
+          </span>
+</div>
+<!-- Big Amount Display -->
+<div class="text-center py-space-xs">
+<div class="font-amount-lg-mobile text-amount-lg-mobile font-bold text-on-surface tracking-tight font-mono" id="amount-display">
+            ₦80,000.00
+          </div>
+<p class="font-caption text-caption text-on-surface-variant mt-1">
+            Standard instant credit limit: <span class="font-semibold text-on-surface">₦150,000.00</span>
+</p>
+</div>
+<!-- Slider with Track Fill Overlay -->
+<div class="space-y-space-xs pt-space-xs">
+<div class="relative flex items-center">
+<input aria-label="Loan Amount Slider" class="w-full z-10" id="loan-slider" max="150000" min="10000" step="5000" type="range" value="80000"/>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant font-caption text-caption font-medium pt-1">
+<span>₦10,000</span>
+<span class="text-primary-container font-semibold">₦150,000 Max</span>
+</div>
+</div>
+<!-- Quick Amount Selector Chips -->
+<div class="space-y-space-xs">
+<p class="font-caption text-caption text-on-surface-variant font-medium">Quick select</p>
+<div class="flex gap-space-sm overflow-x-auto pb-1 custom-scrollbar">
+<button class="chip-btn px-3 py-2 rounded-lg border border-outline-variant/60 bg-surface text-on-surface font-label text-[13px] whitespace-nowrap active:scale-95 transition-all hover:border-primary-container" onclick="setLoanAmount(25000)" type="button">
+              ₦25,000
+            </button>
+<button class="chip-btn px-3 py-2 rounded-lg border border-outline-variant/60 bg-surface text-on-surface font-label text-[13px] whitespace-nowrap active:scale-95 transition-all hover:border-primary-container" onclick="setLoanAmount(50000)" type="button">
+              ₦50,000
+            </button>
+<button class="chip-btn active-chip px-3 py-2 rounded-lg border-2 border-primary-container bg-surface-container-low text-primary-container font-label text-[13px] font-semibold whitespace-nowrap active:scale-95 transition-all" onclick="setLoanAmount(80000)" type="button">
+              ₦80,000
+            </button>
+<button class="chip-btn px-3 py-2 rounded-lg border border-outline-variant/60 bg-surface text-on-surface font-label text-[13px] whitespace-nowrap active:scale-95 transition-all hover:border-primary-container" onclick="setLoanAmount(120000)" type="button">
+              ₦120,000
+            </button>
+<button class="chip-btn px-3 py-2 rounded-lg border border-outline-variant/60 bg-surface text-on-surface font-label text-[13px] whitespace-nowrap active:scale-95 transition-all hover:border-primary-container" onclick="setLoanAmount(150000)" type="button">
+              ₦150,000 Max
+            </button>
+</div>
+</div>
+</section>
+<!-- Tenor Selection Block -->
+<section class="space-y-space-md">
+<div class="flex items-center justify-between px-1">
+<h2 class="font-label text-label text-on-surface font-semibold flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[18px]" data-icon="calendar_month">calendar_month</span>
+            Repayment Period
+          </h2>
+<span class="font-caption text-caption text-on-surface-variant">Flexible tenure</span>
+</div>
+<div aria-label="Repayment Tenor Options" class="space-y-space-sm" role="radiogroup">
+<!-- 30 Days Card -->
+<label class="tenor-option block cursor-pointer">
+<input class="sr-only peer" name="tenor" onchange="updateTenor(30, 82800, 'Single bullet payment')" type="radio" value="30"/>
+<div class="p-space-md rounded-xl border border-outline-variant/50 bg-surface-container-lowest transition-all peer-checked:border-2 peer-checked:border-primary-container peer-checked:bg-surface-container-low/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.04)]">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center peer-checked:border-primary-container peer-checked:bg-primary-container" id="radio-indicator-30">
+<span class="w-2 h-2 rounded-full bg-white opacity-0" id="dot-30"></span>
+</div>
+<div>
+<span class="font-body-medium text-body-medium font-semibold text-on-surface block">30 Days</span>
+<span class="font-caption text-caption text-on-surface-variant">Single bullet repayment</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-body-medium text-body-medium font-bold text-on-surface block font-mono" id="tenor-total-30">₦82,800.00</span>
+<span class="font-caption text-caption text-on-surface-variant">total payoff</span>
+</div>
+</div>
+</div>
+</label>
+<!-- 60 Days Card -->
+<label class="tenor-option block cursor-pointer">
+<input class="sr-only peer" name="tenor" onchange="updateTenor(60, 43200, '2 bi-weekly or monthly instalments')" type="radio" value="60"/>
+<div class="p-space-md rounded-xl border border-outline-variant/50 bg-surface-container-lowest transition-all peer-checked:border-2 peer-checked:border-primary-container peer-checked:bg-surface-container-low/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.04)]">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center" id="radio-indicator-60">
+<span class="w-2 h-2 rounded-full bg-white opacity-0" id="dot-60"></span>
+</div>
+<div>
+<span class="font-body-medium text-body-medium font-semibold text-on-surface block">60 Days</span>
+<span class="font-caption text-caption text-on-surface-variant">2 monthly instalments</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-body-medium text-body-medium font-bold text-on-surface block font-mono" id="tenor-total-60">₦43,200.00</span>
+<span class="font-caption text-caption text-on-surface-variant">/ month</span>
+</div>
+</div>
+</div>
+</label>
+<!-- 90 Days Card (Recommended) -->
+<label class="tenor-option block cursor-pointer">
+<input checked="" class="sr-only peer" name="tenor" onchange="updateTenor(90, 29600, '3 monthly instalments')" type="radio" value="90"/>
+<div class="relative p-space-md rounded-xl border-2 border-primary-container bg-surface-container-low/50 transition-all shadow-[0_2px_8px_-2px_rgba(30,26,27,0.06)]" id="card-90">
+<div class="absolute -top-3 right-4 px-2.5 py-0.5 rounded-full bg-primary-container text-white font-caption text-caption text-[11px] font-semibold flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[13px]" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+                Recommended
+              </div>
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-5 h-5 rounded-full border-2 border-primary-container bg-primary-container flex items-center justify-center" id="radio-indicator-90">
+<span class="w-2 h-2 rounded-full bg-white opacity-100" id="dot-90"></span>
+</div>
+<div>
+<span class="font-body-medium text-body-medium font-semibold text-on-surface block">90 Days</span>
+<span class="font-caption text-caption text-on-surface-variant">3 monthly instalments</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-body-medium text-body-medium font-bold text-primary-container block font-mono" id="tenor-total-90">₦29,600.00</span>
+<span class="font-caption text-caption text-on-surface-variant">/ month</span>
+</div>
+</div>
+</div>
+</label>
+</div>
+</section>
+<!-- Live Cost & Breakdown Card -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] space-y-space-md">
+<div class="flex items-center justify-between pb-space-sm border-b border-outline-variant/30">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[18px]" data-icon="receipt_long">receipt_long</span>
+<h3 class="font-label text-label text-on-surface font-semibold">Transparent Pricing</h3>
+</div>
+<span class="inline-flex items-center gap-1 font-caption text-caption text-on-surface-variant bg-surface-container px-2 py-0.5 rounded-md">
+<span class="material-symbols-outlined text-[13px] text-outline" data-icon="lock">lock</span>
+            No hidden charges
+          </span>
+</div>
+<div class="space-y-space-sm text-[14px]">
+<div class="flex justify-between items-center">
+<span class="font-body text-body text-on-surface-variant text-[14px]">Principal Amount</span>
+<span class="font-body-medium text-body-medium font-semibold text-on-surface font-mono" id="summary-principal">₦80,000.00</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-1">
+<span class="font-body text-body text-on-surface-variant text-[14px]">Interest rate (3.5% flat/mo)</span>
+<span class="material-symbols-outlined text-[15px] text-outline cursor-pointer" data-icon="info" title="3.5% per month flat rate">info</span>
+</div>
+<span class="font-body-medium text-body-medium font-semibold text-on-surface font-mono" id="summary-interest">₦8,400.00</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-1">
+<span class="font-body text-body text-on-surface-variant text-[14px]">Management &amp; Insurance Fee</span>
+<span class="font-caption text-caption text-[11px] text-on-surface-variant">(1% one-off)</span>
+</div>
+<div class="text-right">
+<span class="font-body-medium text-body-medium font-semibold text-on-surface font-mono" id="summary-fee">₦800.00</span>
+<span class="block font-caption text-[11px] text-on-surface-variant">Deducted at disbursement</span>
+</div>
+</div>
+<div class="flex justify-between items-center pt-space-xs border-t border-dashed border-outline-variant/50">
+<span class="font-body text-body text-on-surface-variant text-[14px]">Net Disbursed to Account</span>
+<span class="font-body-medium text-body-medium font-semibold text-on-surface font-mono" id="summary-disbursed">₦80,000.00</span>
+</div>
+<div class="flex justify-between items-center pt-space-xs">
+<div>
+<span class="font-label text-label font-bold text-on-surface block">Total Repayment</span>
+<span class="font-caption text-caption text-on-surface-variant">Principal + Interest</span>
+</div>
+<span class="font-title text-title text-primary-container font-bold font-mono" id="summary-total">₦89,200.00</span>
+</div>
+</div>
+<!-- First Due Date Banner -->
+<div class="mt-space-md p-space-sm bg-surface-container rounded-lg flex items-center justify-between border border-outline-variant/30">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[18px]" data-icon="event_upcoming">event_upcoming</span>
+<span class="font-caption text-caption text-on-surface-variant font-medium">First Due Date:</span>
+</div>
+<span class="font-label text-label text-on-surface font-semibold" id="due-date-display">24 November 2024</span>
+</div>
+</section>
+<!-- Trust & Security Micro-Banner -->
+<div class="flex items-center justify-center gap-space-xs text-on-surface-variant font-caption text-caption">
+<span class="material-symbols-outlined text-primary-container text-[16px]" data-icon="shield">shield</span>
+<span>Licensed by the Central Bank of Nigeria (CBN). Insured by NDIC.</span>
+</div>
+</main>
+<!-- Sticky Bottom Primary Action Container -->
+<footer class="w-full bg-surface-container-lowest border-t border-outline-variant/30 p-margin sticky bottom-0 z-40 shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)]">
+<div class="space-y-space-xs max-w-[430px] mx-auto">
+<button class="w-full h-[52px] rounded-xl bg-primary-container text-white font-label text-label font-semibold flex items-center justify-center gap-space-xs transition-all duration-150 hover:bg-[#731540] active:scale-[0.98] shadow-md shadow-primary-container/20" id="continue-button" type="button">
+<span>Continue to Affordability Check</span>
+<span class="material-symbols-outlined text-[20px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<p class="text-center font-caption text-[11px] text-on-surface-variant">
+          Selecting continue will initiate an automated live verification.
+        </p>
+</div>
+</footer>
+</div>
+<!-- Interactive State Management Script -->
+<script>
+    let currentAmount = 80000;
+    let currentTenorDays = 90;
+
+    const slider = document.getElementById('loan-slider');
+    const amountDisplay = document.getElementById('amount-display');
+    const summaryPrincipal = document.getElementById('summary-principal');
+    const summaryInterest = document.getElementById('summary-interest');
+    const summaryFee = document.getElementById('summary-fee');
+    const summaryDisbursed = document.getElementById('summary-disbursed');
+    const summaryTotal = document.getElementById('summary-total');
+
+    const tenorTotal30 = document.getElementById('tenor-total-30');
+    const tenorTotal60 = document.getElementById('tenor-total-60');
+    const tenorTotal90 = document.getElementById('tenor-total-90');
+    const dueDateDisplay = document.getElementById('due-date-display');
+
+    function formatNaira(num) {
+      return '₦' + num.toLocaleString('en-NG', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function calculateValues() {
+      const principal = currentAmount;
+      const fee = Math.round(principal * 0.01);
+      
+      // Interest is 3.5% flat per month
+      // 30 days = 1 month (3.5%)
+      // 60 days = 2 months (7.0%)
+      // 90 days = 3 months (10.5%)
+      const monthlyRate = 0.035;
+      const months = currentTenorDays / 30;
+      const totalInterest = Math.round(principal * monthlyRate * months);
+      const totalRepayment = principal + totalInterest;
+
+      // Update text displays
+      amountDisplay.textContent = formatNaira(principal);
+      summaryPrincipal.textContent = formatNaira(principal);
+      summaryInterest.textContent = formatNaira(totalInterest);
+      summaryFee.textContent = formatNaira(fee);
+      summaryDisbursed.textContent = formatNaira(principal);
+      summaryTotal.textContent = formatNaira(totalRepayment);
+
+      // Repayment schedule card updates
+      const total30 = principal + Math.round(principal * monthlyRate * 1);
+      const total60 = (principal + Math.round(principal * monthlyRate * 2)) / 2;
+      const total90 = (principal + Math.round(principal * monthlyRate * 3)) / 3;
+
+      tenorTotal30.textContent = formatNaira(total30);
+      tenorTotal60.textContent = formatNaira(Math.round(total60));
+      tenorTotal90.textContent = formatNaira(Math.round(total90));
+
+      // Compute sample due date
+      const d = new Date();
+      d.setDate(d.getDate() + 30);
+      const options = { day: 'numeric', month: 'long', year: 'numeric' };
+      dueDateDisplay.textContent = d.toLocaleDateString('en-GB', options);
+    }
+
+    function highlightActiveChip(val) {
+      const chipButtons = document.querySelectorAll('.chip-btn');
+      chipButtons.forEach(btn => {
+        const textVal = parseInt(btn.textContent.replace(/[^0-9]/g, ''), 10);
+        if (textVal === val) {
+          btn.className = "chip-btn px-3 py-2 rounded-lg border-2 border-primary-container bg-surface-container-low text-primary-container font-label text-[13px] font-semibold whitespace-nowrap active:scale-95 transition-all";
+        } else {
+          btn.className = "chip-btn px-3 py-2 rounded-lg border border-outline-variant/60 bg-surface text-on-surface font-label text-[13px] whitespace-nowrap active:scale-95 transition-all hover:border-primary-container";
+        }
+      });
+    }
+
+    function setLoanAmount(val) {
+      currentAmount = val;
+      slider.value = val;
+      highlightActiveChip(val);
+      calculateValues();
+    }
+
+    slider.addEventListener('input', (e) => {
+      currentAmount = parseInt(e.target.value, 10);
+      highlightActiveChip(currentAmount);
+      calculateValues();
+    });
+
+    function updateTenor(days, amountSample, description) {
+      currentTenorDays = days;
+      [30, 60, 90].forEach(d => {
+        const dot = document.getElementById('dot-' + d);
+        const radio = document.getElementById('radio-indicator-' + d);
+        if (d === days) {
+          dot.classList.remove('opacity-0');
+          dot.classList.add('opacity-100');
+          radio.classList.add('border-primary-container', 'bg-primary-container');
+          radio.classList.remove('border-outline-variant');
+        } else {
+          dot.classList.remove('opacity-100');
+          dot.classList.add('opacity-0');
+          radio.classList.remove('border-primary-container', 'bg-primary-container');
+          radio.classList.add('border-outline-variant');
+        }
+      });
+      calculateValues();
+    }
+
+    // Initialize initial state on load
+    calculateValues();
+  </script>
+</body></html>

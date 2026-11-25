@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YourApp - Pay Am Small Plan Summary</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "outline": "#a28b91",
+            "on-tertiary-fixed-variant": "#06429a",
+            "on-primary-fixed-variant": "#7f234b",
+            "on-surface": "#e7e1e2",
+            "primary-fixed-dim": "#ffb0ca",
+            "on-primary": "#620735",
+            "inverse-primary": "#9e3b63",
+            "background": "#151314",
+            "on-error": "#690005",
+            "primary-container": "#e0709a",
+            "on-primary-fixed": "#3e001f",
+            "tertiary-container": "#6a92ee",
+            "on-tertiary-container": "#002a69",
+            "surface-container-low": "#1d1b1c",
+            "on-surface-variant": "#dac0c6",
+            "secondary": "#ffb4a8",
+            "on-secondary-container": "#ff9f90",
+            "surface-container": "#211f20",
+            "inverse-on-surface": "#323031",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "surface-bright": "#3b3839",
+            "on-background": "#e7e1e2",
+            "on-tertiary": "#002d6f",
+            "tertiary-fixed": "#d9e2ff",
+            "on-secondary-fixed-variant": "#7f291e",
+            "surface-container-highest": "#373435",
+            "on-tertiary-fixed": "#001945",
+            "surface-tint": "#ffb0ca",
+            "inverse-surface": "#e7e1e2",
+            "primary": "#ffb0ca",
+            "surface": "#151314",
+            "error": "#ffb4ab",
+            "on-secondary": "#61130a",
+            "surface-container-high": "#2c292a",
+            "tertiary": "#b0c6ff",
+            "secondary-container": "#822c20",
+            "secondary-fixed-dim": "#ffb4a8",
+            "error-container": "#93000a",
+            "on-primary-container": "#5d0331",
+            "outline-variant": "#544247",
+            "primary-fixed": "#ffd9e3",
+            "on-error-container": "#ffdad6",
+            "surface-dim": "#151314",
+            "surface-variant": "#373435",
+            "secondary-fixed": "#ffdad4",
+            "on-secondary-fixed": "#410000",
+            "surface-container-lowest": "#100e0f"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "1rem",
+            "space-md": "1rem",
+            "space-sm": "0.5rem",
+            "space-xl": "2rem",
+            "margin-mobile": "1rem",
+            "gutter-mobile": "0.75rem",
+            "space-xs": "0.25rem",
+            "margin": "1rem",
+            "space-lg": "1.5rem"
+          },
+          "fontFamily": {
+            "label-lg": ["Inter"],
+            "label-sm": ["Inter"],
+            "headline-md": ["Inter"],
+            "body-lg": ["Inter"],
+            "headline-sm": ["Inter"],
+            "display-currency": ["Inter"],
+            "label-md": ["Inter"],
+            "title-currency": ["Inter"],
+            "headline-lg": ["Inter"],
+            "body-md": ["Inter"]
+          },
+          "fontSize": {
+            "label-lg": ["15px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "title-currency": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-lowest text-on-surface antialiased font-body-md flex justify-center selection:bg-primary-container selection:text-on-primary-fixed">
+<!-- Mobile Viewport Frame (390 x 844 target standard) -->
+<main class="w-full max-w-[390px] min-h-screen bg-surface-container-lowest flex flex-col relative pb-safe">
+<!-- Top Bar Navigation (Task-focused: Suppresses main Global BottomNavBar as per semantic shell mandate) -->
+<header class="sticky top-0 z-40 bg-surface-container-lowest/95 backdrop-blur-md px-margin-mobile py-space-sm flex items-center justify-between min-h-[56px]">
+<button aria-label="Go Back" class="w-10 h-10 -ml-2 rounded-xl flex items-center justify-center text-on-surface hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<div class="flex flex-col items-center justify-center flex-1 mx-2">
+<span class="font-label-sm text-label-sm text-primary tracking-wider uppercase font-semibold">Pay Am Small</span>
+<h1 class="font-label-lg text-label-lg text-on-surface font-semibold truncate">Step 2 of 2: Review &amp; Authorize</h1>
+</div>
+<div class="w-10 flex items-center justify-end">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container inline-block" title="Lock active"></span>
+</div>
+</header>
+<!-- Scrollable Content Canvas -->
+<section class="flex-1 px-margin-mobile pt-space-xs pb-[120px] flex flex-col gap-space-md">
+<!-- Stepper Badge & Headliner -->
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[18px]">verified_user</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Price-Lock Vault Contract</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-primary font-label-sm text-label-sm border border-outline-variant/30">S-PAS-004</span>
+</div>
+<!-- Hero Key Facts Card (Bento Level 1: #1C1819 with crisp border) -->
+<article class="bg-surface-container-low rounded-xl border border-outline-variant/30 p-space-md flex flex-col gap-space-md shadow-sm">
+<!-- Target Product Summary -->
+<div class="flex gap-space-md items-start pb-space-md border-b border-outline-variant/20">
+<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center flex-shrink-0 text-primary border border-outline-variant/30">
+<span class="material-symbols-outlined text-[26px]">solar_power</span>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<span class="font-label-sm text-label-sm text-primary font-medium uppercase tracking-wider">Bundle Target</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-semibold leading-snug truncate">Luminous 1.5kVA Inverter</h2>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="font-body-md text-label-sm text-on-surface-variant truncate">Alaba GreenTech Solutions</span>
+<span class="inline-flex items-center text-primary-container" title="Verified Merchant">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+</span>
+</div>
+</div>
+</div>
+<!-- Metric Grid / Key Facts Breakdown -->
+<div class="grid grid-cols-2 gap-space-sm">
+<!-- Total Price Locked -->
+<div class="col-span-2 bg-surface-container p-3 rounded-lg border border-outline-variant/20 flex justify-between items-center">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Locked Vendor Price</p>
+<p class="font-title-currency text-title-currency text-on-surface tabular-nums font-bold">₦420,000.00</p>
+</div>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-primary-container/15 text-primary text-label-sm font-semibold border border-primary-container/30">
+<span class="material-symbols-outlined text-[13px]">lock</span>
+              Protected
+            </span>
+</div>
+<!-- Monthly Contribution -->
+<div class="bg-surface-container p-3 rounded-lg border border-outline-variant/20">
+<p class="font-label-sm text-label-sm text-on-surface-variant">Monthly Plan</p>
+<p class="font-label-lg text-label-lg text-on-surface tabular-nums font-semibold mt-0.5">₦70,000.00</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant/80">6 total debits</p>
+</div>
+<!-- Deadline -->
+<div class="bg-surface-container p-3 rounded-lg border border-outline-variant/20">
+<p class="font-label-sm text-label-sm text-on-surface-variant">Target Date</p>
+<p class="font-label-lg text-label-lg text-on-surface font-semibold mt-0.5 truncate">15 Dec 2026</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant/80">6 Months term</p>
+</div>
+</div>
+<!-- Terms Spec Table -->
+<div class="flex flex-col gap-2 pt-1 font-label-md text-label-md">
+<div class="flex justify-between items-center text-on-surface-variant">
+<span>First Deposit (Due Today)</span>
+<span class="text-primary font-semibold tabular-nums">₦70,000.00</span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant">
+<span>Vendor Status</span>
+<span class="text-on-surface font-medium flex items-center gap-1">
+              Verified Partner
+            </span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant">
+<span>Refund Covenant</span>
+<span class="text-secondary font-medium">2.5% fee on voluntary exit</span>
+</div>
+</div>
+</article>
+<!-- Protocol Security Notice Card (Level 2: #262122) -->
+<aside class="bg-surface-container rounded-xl border border-outline-variant/30 p-space-md flex gap-space-sm items-start">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center flex-shrink-0 text-primary-fixed-dim">
+<span class="material-symbols-outlined text-[20px]">pin</span>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="font-label-lg text-label-lg text-on-surface font-semibold">Fulfilment Protocol</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            Once vault reaches 100%, you will receive a secure 6-digit Delivery Code. Present it to the vendor or courier upon inspection to authorize fund release.
+          </p>
+</div>
+</aside>
+<!-- First Deposit Source Card -->
+<section class="bg-surface-container-low rounded-xl border border-outline-variant/30 p-space-md flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-xl bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">account_balance_wallet</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Funding Account</span>
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">Tier 2 Savings Vault</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant/80 tabular-nums">₦350,000.00 available</span>
+</div>
+</div>
+<button class="text-primary hover:text-primary-fixed font-label-md text-label-md font-semibold underline underline-offset-4 active:scale-95 transition-all" type="button">
+          Change
+        </button>
+</section>
+<!-- Mandatory Legal Covenant Checkbox -->
+<label class="flex items-start gap-3 p-3.5 rounded-xl bg-surface-container/60 border border-outline-variant/30 cursor-pointer select-none group">
+<input checked="" class="mt-1 w-5 h-5 rounded-md border-outline-variant/60 bg-surface-container text-primary-container focus:ring-primary-container focus:ring-offset-0 focus:ring-1" id="legalConsent" name="legal_consent" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface group-hover:text-white transition-colors leading-snug">
+          I agree to the <span class="text-primary underline">Pay Am Small Price-Lock Vault terms</span> and authorize recurring payday debits.
+        </span>
+</label>
+</section>
+<!-- Sticky Bottom Authorization Dock (Height 52px CTA + paddings) -->
+<div class="fixed bottom-0 left-0 right-0 z-50 bg-surface-container-low/95 backdrop-blur-lg border-t border-outline-variant/30 max-w-[390px] mx-auto px-margin-mobile py-3.5 pb-safe">
+<div class="flex flex-col gap-2">
+<button class="w-full h-[52px] rounded-xl bg-primary-container text-on-primary-fixed font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 shadow-lg shadow-primary-container/20 active:bg-[#c4557f] active:scale-[0.99] transition-all" id="authorizeBtn" type="button">
+<span>Authorize Plan &amp; Deposit (₦70,000.00)</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+<p class="text-center font-label-sm text-label-sm text-on-surface-variant/70 flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-[14px] text-primary">enhanced_encryption</span>
+          Protected by 256-bit bank-grade escrow protocol
+        </p>
+</div>
+</div>
+</main>
+<script>
+    // Micro-interaction for authorization flow confirmation
+    document.getElementById('authorizeBtn')?.addEventListener('click', function() {
+      const checkbox = document.getElementById('legalConsent');
+      if (checkbox && !checkbox.checked) {
+        alert('Please accept the legal terms and debit authorization before proceeding.');
+        checkbox.focus();
+        return;
+      }
+      this.classList.add('opacity-90');
+      this.innerHTML = `
+        <span class="inline-block animate-spin mr-2">
+          <span class="material-symbols-outlined text-[20px]">progress_activity</span>
+        </span>
+        <span>Securing Price-Lock...</span>
+      `;
+      setTimeout(() => {
+        alert('Transaction PIN Prompt: Enter your 4-digit security PIN to finalize plan lock.');
+        this.innerHTML = `
+          <span>Authorize Plan & Deposit (₦70,000.00)</span>
+          <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+        `;
+        this.classList.remove('opacity-90');
+      }, 700);
+    });
+  </script>
+</body></html>

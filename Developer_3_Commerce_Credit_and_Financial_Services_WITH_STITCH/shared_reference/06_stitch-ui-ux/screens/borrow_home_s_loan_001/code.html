@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YourApp - Instant Loans</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary-fixed-variant": "#8c170e",
+            "on-primary-container": "#ffa0ba",
+            "on-surface-variant": "#564146",
+            "surface-container": "#f5eced",
+            "inverse-primary": "#ffb1c5",
+            "surface-container-low": "#fbf1f2",
+            "on-error-container": "#93000a",
+            "on-error": "#ffffff",
+            "surface": "#fff8f8",
+            "on-secondary": "#ffffff",
+            "on-secondary-fixed": "#410000",
+            "on-primary": "#ffffff",
+            "outline-variant": "#dcbfc5",
+            "on-primary-fixed-variant": "#881646",
+            "surface-container-lowest": "#ffffff",
+            "on-tertiary-container": "#c6b7bd",
+            "primary-fixed": "#ffd9e1",
+            "secondary": "#ae3123",
+            "tertiary-fixed": "#eedee4",
+            "error-container": "#ffdad6",
+            "background": "#fff8f8",
+            "surface-container-high": "#efe6e7",
+            "secondary-fixed": "#ffdad4",
+            "tertiary-container": "#53484d",
+            "on-primary-fixed": "#3f001b",
+            "inverse-on-surface": "#f8eeef",
+            "on-background": "#1f1b1c",
+            "tertiary": "#3b3236",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "primary": "#6d0033",
+            "surface-container-highest": "#e9e0e1",
+            "error": "#ba1a1a",
+            "outline": "#897176",
+            "inverse-surface": "#342f30",
+            "surface-tint": "#a8315d",
+            "on-tertiary-fixed": "#21191e",
+            "secondary-fixed-dim": "#ffb4a8",
+            "surface-dim": "#e1d8d9",
+            "on-secondary-container": "#690000",
+            "surface-variant": "#e9e0e1",
+            "primary-fixed-dim": "#ffb1c5",
+            "surface-bright": "#fff8f8",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "on-surface": "#1f1b1c",
+            "secondary-container": "#fc6955",
+            "on-tertiary": "#ffffff",
+            "primary-container": "#8e1b4a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "1rem",
+            "space-md": "0.75rem",
+            "space-2xl": "2rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1rem",
+            "space-xl": "1.5rem",
+            "space-3xl": "3rem",
+            "space-sm": "0.5rem",
+            "margin": "1rem"
+          },
+          "fontFamily": {
+            "label": ["Inter"],
+            "body-medium": ["Inter"],
+            "body": ["Inter"],
+            "subtitle": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "display": ["Inter"],
+            "caption": ["Inter"],
+            "amount-lg": ["Inter"],
+            "title": ["Inter"]
+          },
+          "fontSize": {
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }]
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased flex justify-center min-h-screen selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Mobile Screen Container (390px x auto) -->
+<div class="w-full max-w-[560px] min-h-screen bg-surface flex flex-col relative pb-24 shadow-sm">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-40 bg-surface/90 backdrop-blur-md px-margin py-space-sm flex items-center justify-between min-h-[56px] border-b border-outline-variant/40">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Go back" class="w-12 h-12 -ml-2 rounded-full flex items-center justify-center text-on-surface hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<div>
+<span class="font-title text-title font-bold text-primary tracking-tight">YourApp</span>
+<span class="mx-1.5 text-outline-variant font-light">|</span>
+<span class="font-subtitle text-subtitle text-on-surface font-semibold">Instant Loans</span>
+</div>
+</div>
+<button aria-label="Help &amp; Information" class="w-12 h-12 -mr-2 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[24px]">help_outline</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-margin pt-space-md space-y-space-xl">
+<!-- Trust & CBN Compliance Ribbon -->
+<section aria-label="Regulatory Trust Banner">
+<div class="bg-surface-container-low border border-outline-variant/60 rounded-xl p-space-sm flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 text-primary">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+</div>
+<div class="flex flex-col">
+<p class="font-caption text-caption text-on-surface font-medium leading-tight">
+              Licensed Credit Provider
+            </p>
+<p class="font-caption text-caption text-on-surface-variant leading-tight">
+              Regulated by the Central Bank of Nigeria (CBN)
+            </p>
+</div>
+</div>
+</section>
+<!-- Pre-approved Hero Offer Card -->
+<section aria-label="Pre-approved Offer">
+<div class="relative bg-surface-container-lowest rounded-2xl border border-outline-variant/50 p-space-lg shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0rgba(30,26,27,0.03)] overflow-hidden">
+<!-- Subtle decorative warm background accent -->
+<div class="absolute -top-12 -right-12 w-36 h-36 bg-primary-fixed/30 rounded-full blur-2xl pointer-events-none"></div>
+<!-- Top Row: Badge & Fast Tag -->
+<div class="flex items-center justify-between mb-space-sm">
+<div class="inline-flex items-center gap-1.5 bg-primary/5 text-primary px-2.5 py-1 rounded-lg">
+<span class="material-symbols-outlined text-[16px]">stars</span>
+<span class="font-label text-label font-semibold">Pre-approved Loan Offer</span>
+</div>
+<div class="inline-flex items-center gap-1 bg-surface-container text-on-surface-variant px-2 py-0.5 rounded-lg">
+<span class="material-symbols-outlined text-[15px]">bolt</span>
+<span class="font-caption text-caption font-medium">Instant Payout</span>
+</div>
+</div>
+<!-- Headline Amount -->
+<div class="mt-space-xs mb-space-md">
+<p class="font-caption text-caption text-on-surface-variant">Available borrowing limit</p>
+<div class="flex items-baseline gap-1 mt-0.5">
+<span class="font-amount-lg-mobile text-amount-lg-mobile font-bold text-on-surface tabular-nums tracking-tight">₦150,000.00</span>
+</div>
+</div>
+<!-- Terms Matrix Grid -->
+<div class="grid grid-cols-2 gap-space-sm py-space-md my-space-sm border-t border-b border-surface-container-high">
+<div class="space-y-0.5">
+<span class="font-caption text-caption text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px]">percent</span> Monthly Interest
+              </span>
+<p class="font-body-medium text-body-medium font-semibold text-on-surface tabular-nums">From 2.5% monthly</p>
+</div>
+<div class="space-y-0.5">
+<span class="font-caption text-caption text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px]">calendar_today</span> Flexible Tenor
+              </span>
+<p class="font-body-medium text-body-medium font-semibold text-on-surface tabular-nums">15 to 90 days</p>
+</div>
+</div>
+<!-- Action CTA -->
+<div class="mt-space-md pt-space-xs">
+<button class="w-full h-[52px] bg-primary-container text-on-primary rounded-xl font-label text-label font-semibold flex items-center justify-center gap-2 hover:bg-[#731540] active:scale-[0.98] transition-all shadow-sm" type="button">
+<span>Apply for Loan</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+<p class="font-caption text-caption text-center text-on-surface-variant mt-2.5">
+              Zero prepayment penalties • Disbursed directly to your balance
+            </p>
+</div>
+</div>
+</section>
+<!-- Trust Highlights / Bento Grid -->
+<section aria-label="Product Guarantees" class="space-y-space-sm">
+<h2 class="font-subtitle text-subtitle text-on-surface font-semibold px-0.5">Why borrow with YourApp?</h2>
+<div class="grid grid-cols-1 gap-space-sm">
+<!-- Highlight 1: Privacy Promise (Primary emphasized card) -->
+<div class="bg-surface-container-lowest rounded-2xl border border-outline-variant/50 p-space-md flex gap-space-md items-start shadow-[0_2px_8px_-2px_rgba(30,26,27,0.03)]">
+<div class="w-10 h-10 rounded-xl bg-surface-container-high text-primary flex items-center justify-center flex-shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[22px]">privacy_tip</span>
+</div>
+<div class="space-y-0.5">
+<h3 class="font-body-medium text-body-medium font-semibold text-on-surface">Strict Privacy Promise</h3>
+<p class="font-caption text-caption text-on-surface-variant leading-relaxed">
+                We respect your personal boundary. We <strong class="text-on-surface font-medium">never</strong> request access to your contacts, personal gallery, or social networks.
+              </p>
+</div>
+</div>
+<!-- Highlight 2 & 3 Dual Row -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
+<!-- Highlight 2: Paperless -->
+<div class="bg-surface-container-lowest rounded-2xl border border-outline-variant/50 p-space-md flex flex-col justify-between space-y-space-sm">
+<div class="w-10 h-10 rounded-xl bg-surface-container-high text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">description</span>
+</div>
+<div>
+<h3 class="font-body-medium text-body-medium font-semibold text-on-surface">100% Digital Process</h3>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">
+                  No paperwork or collateral. Verification completed in moments via secure BVN &amp; NIN linkage.
+                </p>
+</div>
+</div>
+<!-- Highlight 3: Transparent Fees -->
+<div class="bg-surface-container-lowest rounded-2xl border border-outline-variant/50 p-space-md flex flex-col justify-between space-y-space-sm">
+<div class="w-10 h-10 rounded-xl bg-surface-container-high text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">account_balance_wallet</span>
+</div>
+<div>
+<h3 class="font-body-medium text-body-medium font-semibold text-on-surface">No Hidden Charges</h3>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">
+                  No unexpected rollover fees or hidden deductions. Complete breakdown presented before confirmation.
+                </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Active or Recent Loan Status -->
+<section aria-label="Loan Status" class="space-y-space-sm">
+<div class="flex items-center justify-between px-0.5">
+<h2 class="font-subtitle text-subtitle text-on-surface font-semibold">Active Loan Status</h2>
+<span class="font-caption text-caption text-on-surface-variant">Tier 1 Borrower</span>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl border border-outline-variant/40 p-space-lg flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center flex-shrink-0 text-on-surface-variant">
+<span class="material-symbols-outlined text-[24px]">check_circle</span>
+</div>
+<div class="space-y-1">
+<div class="inline-flex items-center gap-1 text-on-surface-variant font-caption text-caption font-medium bg-surface-container px-2 py-0.5 rounded-full">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+<span>No active loan</span>
+</div>
+<p class="font-body text-body text-on-surface leading-snug">
+              Your credit profile is clear and fully eligible for up to <strong class="text-on-surface tabular-nums">₦150,000.00</strong> in instant disbursements.
+            </p>
+</div>
+</div>
+</section>
+<!-- How Instant Loan Works Timeline -->
+<section aria-label="How it works" class="space-y-space-md">
+<h2 class="font-subtitle text-subtitle text-on-surface font-semibold px-0.5">How Instant Loan Works</h2>
+<div class="bg-surface-container-lowest rounded-2xl border border-outline-variant/50 p-space-lg">
+<ol class="space-y-space-lg relative before:absolute before:left-4 before:top-2 before:bottom-2 before:w-[1.5px] before:bg-surface-container-highest">
+<!-- Step 1 -->
+<li class="relative flex items-start gap-space-md">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary font-label text-label flex items-center justify-center z-10 flex-shrink-0 shadow-sm">
+                1
+              </div>
+<div class="pt-0.5">
+<h4 class="font-body-medium text-body-medium font-semibold text-on-surface">Select Loan Amount</h4>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">
+                  Pick any amount within your pre-approved ₦150,000 limit with real-time affordability validation.
+                </p>
+</div>
+</li>
+<!-- Step 2 -->
+<li class="relative flex items-start gap-space-md">
+<div class="w-8 h-8 rounded-full bg-surface-container text-primary font-label text-label flex items-center justify-center z-10 flex-shrink-0 border border-outline-variant/60">
+                2
+              </div>
+<div class="pt-0.5">
+<h4 class="font-body-medium text-body-medium font-semibold text-on-surface">Choose Tenor &amp; Repayment</h4>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">
+                  Select between 15 to 90 days. Preview your exact repayment schedule with zero ambiguous math.
+                </p>
+</div>
+</li>
+<!-- Step 3 -->
+<li class="relative flex items-start gap-space-md">
+<div class="w-8 h-8 rounded-full bg-surface-container text-primary font-label text-label flex items-center justify-center z-10 flex-shrink-0 border border-outline-variant/60">
+                3
+              </div>
+<div class="pt-0.5">
+<h4 class="font-body-medium text-body-medium font-semibold text-on-surface">Receive Funds in 60s</h4>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">
+                  Confirm with your transaction PIN. Funds are automatically credited to your YourApp account balance.
+                </p>
+</div>
+</li>
+</ol>
+</div>
+</section>
+<!-- Trust Footer Guarantee Note -->
+<section class="text-center pt-space-xs pb-space-lg">
+<p class="font-caption text-caption text-on-surface-variant flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary">lock</span>
+          256-bit bank-grade encryption protects your financial data.
+        </p>
+</section>
+</main>
+<!-- Bottom Navigation Bar (5 Items, Save & Borrow is Active) -->
+<nav aria-label="Main Navigation" class="fixed bottom-0 left-0 right-0 w-full z-50 bg-surface-container-lowest flex justify-around items-center px-margin h-16 max-w-[560px] mx-auto border-t border-outline-variant/40 shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)]">
+<!-- Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary active:scale-95 transition-all" href="#home">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="font-caption text-caption font-medium">Home</span>
+</a>
+<!-- Payments -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary active:scale-95 transition-all" href="#payments">
+<span class="material-symbols-outlined text-[24px]">send</span>
+<span class="font-caption text-caption font-medium">Payments</span>
+</a>
+<!-- Cards -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary active:scale-95 transition-all" href="#cards">
+<span class="material-symbols-outlined text-[24px]">credit_card</span>
+<span class="font-caption text-caption font-medium">Cards</span>
+</a>
+<!-- Save & Borrow (ACTIVE) -->
+<a aria-current="page" class="flex flex-col items-center justify-center text-primary font-semibold min-w-[48px] py-space-xs gap-space-xs active:scale-95 transition-all" href="#save-borrow">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">savings</span>
+<span class="font-caption text-caption font-medium">Save &amp; Borrow</span>
+</a>
+<!-- More -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary active:scale-95 transition-all" href="#more">
+<span class="material-symbols-outlined text-[24px]">more_horiz</span>
+<span class="font-caption text-caption font-medium">More</span>
+</a>
+</nav>
+</div>
+</body></html>

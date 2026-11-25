@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YourApp Credit Ops - B2B Invoices &amp; Accounts Receivable Management</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Inter Google Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration verbatim from theme -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary-fixed-dim": "#ffb4a8",
+            "error": "#ba1a1a",
+            "surface-container-low": "#fbf1f2",
+            "tertiary-container": "#53484d",
+            "inverse-surface": "#342f30",
+            "on-error": "#ffffff",
+            "surface-tint": "#a8315d",
+            "inverse-on-surface": "#f8eeef",
+            "inverse-primary": "#ffb1c5",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "error-container": "#ffdad6",
+            "primary": "#6d0033",
+            "on-surface": "#1f1b1c",
+            "on-tertiary-fixed": "#21191e",
+            "on-error-container": "#93000a",
+            "surface-bright": "#fff8f8",
+            "on-background": "#1f1b1c",
+            "surface-container-lowest": "#ffffff",
+            "on-secondary-fixed-variant": "#8c170e",
+            "on-tertiary-container": "#c6b7bd",
+            "secondary-container": "#fc6955",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "on-primary": "#ffffff",
+            "surface-variant": "#e9e0e1",
+            "tertiary-fixed": "#eedee4",
+            "surface-container": "#f5eced",
+            "background": "#fff8f8",
+            "secondary": "#ae3123",
+            "outline-variant": "#dcbfc5",
+            "on-tertiary": "#ffffff",
+            "tertiary": "#3b3236",
+            "on-primary-fixed-variant": "#881646",
+            "primary-fixed": "#ffd9e1",
+            "on-secondary": "#ffffff",
+            "secondary-fixed": "#ffdad4",
+            "surface": "#fff8f8",
+            "primary-container": "#8e1b4a",
+            "on-secondary-fixed": "#410000",
+            "on-primary-container": "#ffa0ba",
+            "on-primary-fixed": "#3f001b",
+            "on-surface-variant": "#564146",
+            "primary-fixed-dim": "#ffb1c5",
+            "outline": "#897176",
+            "on-secondary-container": "#690000",
+            "surface-dim": "#e1d8d9",
+            "surface-container-highest": "#e9e0e1",
+            "surface-container-high": "#efe6e7"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xl": "1.5rem",
+            "space-sm": "0.5rem",
+            "space-md": "0.75rem",
+            "space-lg": "1rem",
+            "margin": "1rem",
+            "space-2xl": "2rem",
+            "space-3xl": "3rem",
+            "space-xs": "0.25rem",
+            "gutter": "1rem"
+          },
+          "fontFamily": {
+            "display": [
+              "Inter"
+            ],
+            "title": [
+              "Inter"
+            ],
+            "body-medium": [
+              "Inter"
+            ],
+            "body": [
+              "Inter"
+            ],
+            "label": [
+              "Inter"
+            ],
+            "subtitle": [
+              "Inter"
+            ],
+            "amount-lg-mobile": [
+              "Inter"
+            ],
+            "amount-lg": [
+              "Inter"
+            ],
+            "caption": [
+              "Inter"
+            ]
+          },
+          "fontSize": {
+            "display": [
+              "32px",
+              {
+                "lineHeight": "40px",
+                "letterSpacing": "-0.02em",
+                "fontWeight": "700"
+              }
+            ],
+            "title": [
+              "24px",
+              {
+                "lineHeight": "32px",
+                "letterSpacing": "-0.015em",
+                "fontWeight": "700"
+              }
+            ],
+            "body-medium": [
+              "16px",
+              {
+                "lineHeight": "24px",
+                "letterSpacing": "0em",
+                "fontWeight": "500"
+              }
+            ],
+            "body": [
+              "16px",
+              {
+                "lineHeight": "24px",
+                "letterSpacing": "0em",
+                "fontWeight": "400"
+              }
+            ],
+            "label": [
+              "14px",
+              {
+                "lineHeight": "20px",
+                "letterSpacing": "0.01em",
+                "fontWeight": "600"
+              }
+            ],
+            "subtitle": [
+              "20px",
+              {
+                "lineHeight": "28px",
+                "letterSpacing": "-0.01em",
+                "fontWeight": "600"
+              }
+            ],
+            "amount-lg-mobile": [
+              "32px",
+              {
+                "lineHeight": "40px",
+                "letterSpacing": "-0.02em",
+                "fontWeight": "700"
+              }
+            ],
+            "amount-lg": [
+              "36px",
+              {
+                "lineHeight": "44px",
+                "letterSpacing": "-0.03em",
+                "fontWeight": "700"
+              }
+            ],
+            "caption": [
+              "13px",
+              {
+                "lineHeight": "18px",
+                "letterSpacing": "0.01em",
+                "fontWeight": "400"
+              }
+            ]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-outlined[data-weight="fill"] {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    /* Ambient design system shadows */
+    .elevation-card {
+      box-shadow: 0 2px 8px -2px rgba(30, 26, 27, 0.05), 0 1px 3px 0 rgba(30, 26, 27, 0.03);
+    }
+    .elevation-drawer {
+      box-shadow: 0 8px 24px -4px rgba(30, 26, 27, 0.08), 0 4px 12px -2px rgba(30, 26, 27, 0.04);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body antialiased min-h-screen flex flex-row overflow-x-hidden selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Left Sidebar (SideNavBar Anchor: w-72, 288px fixed shell) -->
+<aside class="fixed left-0 top-0 h-screen w-72 flex flex-col justify-between py-space-xl px-space-lg overflow-y-auto bg-surface-container-lowest border-r border-surface-variant z-30 shadow-sm">
+<div class="flex flex-col gap-space-xl">
+<!-- Brand & Header -->
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="h-10 w-10 rounded-xl bg-primary-container text-on-primary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-2xl" data-icon="account_balance">account_balance</span>
+</div>
+<div>
+<h1 class="text-subtitle font-subtitle text-primary tracking-tight">YourApp Credit Ops</h1>
+<p class="text-caption font-caption text-on-surface-variant">Enterprise Portal</p>
+</div>
+</div>
+<!-- Business Tenant Switcher -->
+<div class="mt-space-xs p-space-md rounded-xl bg-surface-container border border-surface-variant flex items-center justify-between">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-8 h-8 rounded-lg bg-surface-container-lowest border border-outline-variant flex items-center justify-center text-primary font-label text-label shrink-0">
+              AD
+            </div>
+<div class="min-w-0">
+<p class="text-label font-label text-on-surface truncate">Alhaji Danladi Textiles &amp; Logistics Ltd</p>
+<p class="text-caption font-caption text-on-surface-variant truncate">RC-1194820 • Merchant Tier 3</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer" data-icon="unfold_more">unfold_more</span>
+</div>
+</div>
+<!-- Navigation Section -->
+<nav aria-label="Main Navigation" class="flex flex-col gap-space-xs">
+<!-- Dashboard -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<!-- Invoices (Active) -->
+<a class="flex items-center justify-between px-space-lg py-space-md rounded-lg bg-surface-container-low text-primary font-label text-label transition-all duration-150" href="#">
+<div class="flex items-center gap-space-md">
+<span class="material-symbols-outlined text-primary" data-icon="receipt_long">receipt_long</span>
+<span class="font-label text-label">Invoices</span>
+</div>
+<span class="px-space-xs py-0.5 rounded-full bg-secondary-container text-on-secondary font-caption text-caption">4 Unpaid</span>
+</a>
+<!-- Applications Queue -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="pending_actions">pending_actions</span>
+<span>Applications Queue</span>
+</a>
+<!-- Credit Portfolio & Collections -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span>Credit Portfolio &amp; Collections</span>
+</a>
+<!-- Product Configuration -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="tune">tune</span>
+<span>Product Configuration</span>
+</a>
+<!-- Partner Settlement -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="handshake">handshake</span>
+<span>Partner Settlement</span>
+</a>
+<!-- Audit Log -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span>Audit Log</span>
+</a>
+</nav>
+</div>
+<!-- Sidebar Footer -->
+<div class="pt-space-lg border-t border-surface-variant flex flex-col gap-space-xs">
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="admin_panel_settings">admin_panel_settings</span>
+<span>Security &amp; Settings</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span>Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- Primary Application Wrapper (Docked right of sidebar, width calc) -->
+<div class="ml-72 flex-1 flex flex-col min-h-screen min-w-0 bg-background">
+<!-- TopNavBar Anchor Component -->
+<header class="sticky top-0 h-16 flex items-center justify-between px-space-xl bg-surface-container-lowest border-b border-surface-variant z-20">
+<!-- Search on Left -->
+<div class="flex items-center gap-space-md w-96">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="search">search</span>
+<input class="w-full h-10 pl-10 pr-4 rounded-xl bg-surface-container border border-surface-variant text-body font-body text-on-surface placeholder:text-on-surface-variant focus:outline-none focus:border-primary-container transition-colors text-sm" placeholder="Search by invoice #, customer name, TIN, phone..." type="text"/>
+</div>
+</div>
+<!-- Top Right Actions & Status Badges -->
+<div class="flex items-center gap-space-lg">
+<!-- Settlement Node Status -->
+<div class="hidden xl:flex items-center gap-space-xs px-space-md py-1.5 rounded-lg bg-surface-container border border-surface-variant">
+<span class="h-2 w-2 rounded-full bg-primary-container"></span>
+<span class="text-caption font-caption text-on-surface-variant">Settlement Node:</span>
+<span class="text-label font-label text-on-surface">Zenith Bank Consolidated #2019482711</span>
+</div>
+<!-- Dual Authorization / Engine Indicator -->
+<div class="flex items-center gap-space-xs px-space-md py-1.5 rounded-lg bg-surface-container-low text-primary border border-outline-variant">
+<span class="material-symbols-outlined text-primary text-base" data-icon="shield">shield</span>
+<span class="text-label font-label text-primary">Auto-Reminder Engine Armed</span>
+</div>
+<!-- Trailing Actions -->
+<button class="w-10 h-10 rounded-xl flex items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-colors duration-150 relative" type="button">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-secondary"></span>
+</button>
+<button class="w-10 h-10 rounded-xl flex items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-colors duration-150" type="button">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+<!-- Officer / Merchant Profile -->
+<div class="flex items-center gap-space-md pl-space-md border-l border-surface-variant">
+<div class="w-10 h-10 rounded-full bg-primary-fixed text-primary flex items-center justify-center font-label text-label overflow-hidden border border-outline-variant">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</div>
+<div class="text-left hidden md:block">
+<p class="text-label font-label text-on-surface leading-tight">Alhaji Danladi Bello</p>
+<p class="text-caption font-caption text-on-surface-variant leading-tight">Managing Director / Primary Signer</p>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Workspace Content Canvas -->
+<main class="flex-1 p-space-xl flex flex-col gap-space-xl">
+<!-- Page Header -->
+<section class="flex flex-col md:flex-row md:items-center md:justify-between gap-space-lg">
+<div>
+<div class="flex items-center gap-space-sm">
+<h1 class="text-title font-title text-on-surface tracking-tight">B2B Invoices &amp; Accounts Receivable Management (W-MER-002)</h1>
+<span class="px-space-xs py-0.5 rounded-lg bg-surface-container-high text-on-surface-variant font-caption text-caption">Lagos Island Main (012)</span>
+</div>
+<p class="text-body font-body text-on-surface-variant mt-1 max-w-3xl">
+            Issue certified tax invoices, track payment milestones, send automated WhatsApp reminders, and reconcile bank transfers.
+          </p>
+</div>
+<div class="flex items-center gap-space-md shrink-0">
+<!-- Outline Button -->
+<button class="h-[52px] px-space-lg rounded-xl bg-transparent border-[1.5px] border-surface-variant text-on-surface font-label text-label hover:bg-surface-container-low transition-colors flex items-center gap-space-sm" type="button">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+<span>Export Invoices Blotter (CSV)</span>
+</button>
+<!-- Primary Berry Button (52px Standard) -->
+<button class="h-[52px] px-space-xl rounded-xl bg-primary-container text-on-primary font-label text-label hover:bg-primary transition-colors flex items-center gap-space-sm shadow-sm" type="button">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+<span>+ Create New Invoice</span>
+</button>
+</div>
+</section>
+<!-- KPI Cards (4 Column Bento Grid) -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-lg">
+<!-- KPI 1: Total Invoiced -->
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl border border-surface-variant elevation-card flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-on-surface-variant">Total Invoiced (This Month)</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-lg" data-icon="receipt">receipt</span>
+</div>
+</div>
+<div class="mt-space-md">
+<p class="text-title font-title text-on-surface">₦38,900,000.00</p>
+<p class="text-caption font-caption text-on-surface-variant mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-primary" data-icon="folder_open">folder_open</span>
+              28 total invoices issued
+            </p>
+</div>
+</div>
+<!-- KPI 2: Paid & Reconciled -->
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl border border-surface-variant elevation-card flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-on-surface-variant">Paid &amp; Reconciled</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-lg" data-icon="check_circle">check_circle</span>
+</div>
+</div>
+<div class="mt-space-md">
+<p class="text-title font-title text-on-surface">₦32,450,000.00</p>
+<p class="text-caption font-caption text-on-surface-variant mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-primary-container" data-icon="trending_up">trending_up</span>
+              83.4% recovery rate • avg cycle 4.2d
+            </p>
+</div>
+</div>
+<!-- KPI 3: Overdue Invoices -->
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl border border-surface-variant elevation-card flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-on-surface-variant">Overdue Invoices</span>
+<div class="w-8 h-8 rounded-lg bg-error-container flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-lg" data-icon="warning">warning</span>
+</div>
+</div>
+<div class="mt-space-md">
+<p class="text-title font-title text-error">₦2,450,000.00</p>
+<p class="text-caption font-caption text-error mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs" data-icon="schedule">schedule</span>
+              2 invoices past statutory 14-day net terms
+            </p>
+</div>
+</div>
+<!-- KPI 4: Pending Due (<7 Days) -->
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl border border-surface-variant elevation-card flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-on-surface-variant">Pending Due (&lt;7 Days)</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-lg" data-icon="hourglass_top">hourglass_top</span>
+</div>
+</div>
+<div class="mt-space-md">
+<p class="text-title font-title text-on-surface">₦4,000,000.00</p>
+<p class="text-caption font-caption text-on-surface-variant mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-secondary" data-icon="notifications_active">notifications_active</span>
+              3 invoices with reminder scheduled
+            </p>
+</div>
+</div>
+</section>
+<!-- Main Content Split View (2/3 Left Blotter, 1/3 Right Dossier) -->
+<section class="flex flex-col xl:flex-row gap-space-xl items-start">
+<!-- Left Column: Invoices Table (w-2/3) -->
+<div class="w-full xl:w-2/3 bg-surface-container-lowest rounded-2xl border border-surface-variant elevation-card overflow-hidden flex flex-col">
+<!-- Filter Tabs Header -->
+<div class="p-space-lg border-b border-surface-variant flex flex-col gap-space-md">
+<div class="flex flex-wrap items-center gap-space-xs">
+<button class="px-space-md py-2 rounded-lg bg-primary-container text-on-primary font-label text-label transition-colors" type="button">
+                All Invoices (28)
+              </button>
+<button class="px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container font-label text-label transition-colors" type="button">
+                Unpaid &amp; Pending (5)
+              </button>
+<button class="px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container font-label text-label transition-colors" type="button">
+                Paid (21)
+              </button>
+<button class="px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container font-label text-label transition-colors" type="button">
+                Overdue (2)
+              </button>
+<button class="px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container font-label text-label transition-colors" type="button">
+                Drafts (1)
+              </button>
+</div>
+<!-- Table Filter & Search Sub-bar -->
+<div class="flex flex-wrap items-center justify-between gap-space-md pt-space-xs">
+<div class="flex items-center gap-space-sm flex-1 min-w-[240px]">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg" data-icon="filter_list">filter_list</span>
+<input class="w-full h-10 pl-9 pr-3 rounded-lg bg-surface border border-surface-variant text-caption font-caption text-on-surface focus:outline-none focus:border-primary-container" placeholder="Filter by customer, category or tag..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-space-sm">
+<!-- Date Filter -->
+<button class="h-10 px-space-md rounded-lg bg-surface border border-surface-variant text-caption font-caption text-on-surface flex items-center gap-1 hover:bg-surface-container-high transition-colors" type="button">
+<span class="material-symbols-outlined text-sm" data-icon="calendar_today">calendar_today</span>
+<span>Date Range: Feb 2027</span>
+</button>
+<!-- Amount Filter -->
+<button class="h-10 px-space-md rounded-lg bg-surface border border-surface-variant text-caption font-caption text-on-surface flex items-center gap-1 hover:bg-surface-container-high transition-colors" type="button">
+<span class="material-symbols-outlined text-sm" data-icon="payments">payments</span>
+<span>Amount: Any</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Table Container -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container border-b border-surface-variant text-caption font-caption text-on-surface-variant uppercase tracking-wider">
+<th class="py-space-md px-space-lg">Invoice # &amp; Date</th>
+<th class="py-space-md px-space-lg">Customer / Entity</th>
+<th class="py-space-md px-space-lg">Item Summary</th>
+<th class="py-space-md px-space-lg">Due Date</th>
+<th class="py-space-md px-space-lg text-right">Total Amount (₦)</th>
+<th class="py-space-md px-space-lg text-center">Status</th>
+<th class="py-space-md px-space-lg text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-variant text-body font-body">
+<!-- Row 1: Selected / Due Soon -->
+<tr class="bg-surface-container-low border-l-4 border-l-primary-container transition-colors cursor-pointer">
+<td class="py-space-lg px-space-lg">
+<p class="font-label text-label text-primary">#INV-2027-089</p>
+<p class="text-caption font-caption text-on-surface-variant">25 Feb 2027</p>
+</td>
+<td class="py-space-lg px-space-lg">
+<p class="font-label text-label text-on-surface">Eko Royal Apparels Ltd</p>
+<p class="text-caption font-caption text-on-surface-variant">CAC RC-319084</p>
+</td>
+<td class="py-space-lg px-space-lg text-caption font-caption text-on-surface-variant">
+                    120 Bolts Damask &amp; Lace
+                  </td>
+<td class="py-space-lg px-space-lg">
+<span class="text-label font-label text-secondary">Due: Tomorrow</span>
+<p class="text-caption font-caption text-on-surface-variant">Net 7 Days</p>
+</td>
+<td class="py-space-lg px-space-lg text-right font-label text-label text-on-surface">
+                    ₦2,800,000.00
+                  </td>
+<td class="py-space-lg px-space-lg text-center">
+<span class="inline-flex items-center gap-1 px-space-sm py-1 rounded-lg bg-surface-container text-secondary text-caption font-caption border border-outline-variant">
+<span class="material-symbols-outlined text-xs" data-icon="schedule">schedule</span>
+                      Due Soon
+                    </span>
+</td>
+<td class="py-space-lg px-space-lg text-right">
+<button class="text-primary hover:text-primary-container p-1 rounded-lg" type="button">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Row 2: Overdue -->
+<tr class="hover:bg-surface transition-colors cursor-pointer">
+<td class="py-space-lg px-space-lg">
+<p class="font-label text-label text-on-surface">#INV-2027-088</p>
+<p class="text-caption font-caption text-on-surface-variant">10 Feb 2027</p>
+</td>
+<td class="py-space-lg px-space-lg">
+<p class="font-label text-label text-on-surface">Kano Wholesale Cooperatives</p>
+<p class="text-caption font-caption text-on-surface-variant">CAC RC-847291</p>
+</td>
+<td class="py-space-lg px-space-lg text-caption font-caption text-on-surface-variant">
+                    200 Bundles Brocade
+                  </td>
+<td class="py-space-lg px-space-lg">
+<span class="text-label font-label text-error">Due: 24 Feb (3d ago)</span>
+<p class="text-caption font-caption text-error">14 Days Statutory</p>
+</td>
+<td class="py-space-lg px-space-lg text-right font-label text-label text-on-surface">
+                    ₦1,650,000.00
+                  </td>
+<td class="py-space-lg px-space-lg text-center">
+<span class="inline-flex items-center gap-1 px-space-sm py-1 rounded-lg bg-error-container text-error text-caption font-caption">
+<span class="material-symbols-outlined text-xs" data-icon="error">error</span>
+                      Overdue
+                    </span>
+</td>
+<td class="py-space-lg px-space-lg text-right">
+<button class="text-on-surface-variant hover:text-primary p-1 rounded-lg" type="button">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Row 3: Overdue -->
+<tr class="hover:bg-surface transition-colors cursor-pointer">
+<td class="py-space-lg px-space-lg">
+<p class="font-label text-label text-on-surface">#INV-2027-087</p>
+<p class="text-caption font-caption text-on-surface-variant">04 Feb 2027</p>
+</td>
+<td class="py-space-lg px-space-lg">
+<p class="font-label text-label text-on-surface">Abuja Fashion Guild</p>
+<p class="text-caption font-caption text-on-surface-variant">CAC RC-991042</p>
+</td>
+<td class="py-space-lg px-space-lg text-caption font-caption text-on-surface-variant">
+                    Exhibition Material
+                  </td>
+<td class="py-space-lg px-space-lg">
+<span class="text-label font-label text-error">Due: 18 Feb</span>
+<p class="text-caption font-caption text-error">Past Net Terms</p>
+</td>
+<td class="py-space-lg px-space-lg text-right font-label text-label text-on-surface">
+                    ₦800,000.00
+                  </td>
+<td class="py-space-lg px-space-lg text-center">
+<span class="inline-flex items-center gap-1 px-space-sm py-1 rounded-lg bg-error-container text-error text-caption font-caption">
+<span class="material-symbols-outlined text-xs" data-icon="error">error</span>
+                      Overdue
+                    </span>
+</td>
+<td class="py-space-lg px-space-lg text-right">
+<button class="text-on-surface-variant hover:text-primary p-1 rounded-lg" type="button">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Row 4: Paid -->
+<tr class="hover:bg-surface transition-colors cursor-pointer">
+<td class="py-space-lg px-space-lg">
+<p class="font-label text-label text-on-surface">#INV-2027-086</p>
+<p class="text-caption font-caption text-on-surface-variant">14 Feb 2027</p>
+</td>
+<td class="py-space-lg px-space-lg">
+<p class="font-label text-label text-on-surface">Golden Thread Boutiques</p>
+<p class="text-caption font-caption text-on-surface-variant">CAC RC-409182</p>
+</td>
+<td class="py-space-lg px-space-lg text-caption font-caption text-on-surface-variant">
+                    40 Silk Rolls
+                  </td>
+<td class="py-space-lg px-space-lg">
+<span class="text-label font-label text-on-surface-variant">Paid on 20 Feb</span>
+<p class="text-caption font-caption text-on-surface-variant">Zenith Instant Wire</p>
+</td>
+<td class="py-space-lg px-space-lg text-right font-label text-label text-on-surface">
+                    ₦3,400,000.00
+                  </td>
+<td class="py-space-lg px-space-lg text-center">
+<span class="inline-flex items-center gap-1 px-space-sm py-1 rounded-lg bg-surface-container text-primary text-caption font-caption border border-outline-variant">
+<span class="material-symbols-outlined text-xs" data-icon="check_circle">check_circle</span>
+                      Paid ✓
+                    </span>
+</td>
+<td class="py-space-lg px-space-lg text-right">
+<button class="text-on-surface-variant hover:text-primary p-1 rounded-lg" type="button">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Row 5: Paid -->
+<tr class="hover:bg-surface transition-colors cursor-pointer">
+<td class="py-space-lg px-space-lg">
+<p class="font-label text-label text-on-surface">#INV-2027-085</p>
+<p class="text-caption font-caption text-on-surface-variant">12 Feb 2027</p>
+</td>
+<td class="py-space-lg px-space-lg">
+<p class="font-label text-label text-on-surface">Lagos Island Tailoring Union</p>
+<p class="text-caption font-caption text-on-surface-variant">CAC RC-223401</p>
+</td>
+<td class="py-space-lg px-space-lg text-caption font-caption text-on-surface-variant">
+                    Bulk Thread &amp; Zippers
+                  </td>
+<td class="py-space-lg px-space-lg">
+<span class="text-label font-label text-on-surface-variant">Paid on 18 Feb</span>
+<p class="text-caption font-caption text-on-surface-variant">NIP Direct Settled</p>
+</td>
+<td class="py-space-lg px-space-lg text-right font-label text-label text-on-surface">
+                    ₦1,250,000.00
+                  </td>
+<td class="py-space-lg px-space-lg text-center">
+<span class="inline-flex items-center gap-1 px-space-sm py-1 rounded-lg bg-surface-container text-primary text-caption font-caption border border-outline-variant">
+<span class="material-symbols-outlined text-xs" data-icon="check_circle">check_circle</span>
+                      Paid ✓
+                    </span>
+</td>
+<td class="py-space-lg px-space-lg text-right">
+<button class="text-on-surface-variant hover:text-primary p-1 rounded-lg" type="button">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Blotter Pagination Footer -->
+<div class="p-space-lg bg-surface-container-low border-t border-surface-variant flex items-center justify-between text-caption font-caption text-on-surface-variant">
+<span>Showing 1 to 5 of 28 records</span>
+<div class="flex items-center gap-space-xs">
+<button class="h-8 px-space-md rounded bg-surface-container-lowest border border-surface-variant text-on-surface hover:bg-surface disabled:opacity-50" disabled="" type="button">Previous</button>
+<button class="h-8 w-8 rounded bg-primary-container text-on-primary font-label text-label flex items-center justify-center" type="button">1</button>
+<button class="h-8 w-8 rounded bg-surface-container-lowest border border-surface-variant text-on-surface hover:bg-surface flex items-center justify-center" type="button">2</button>
+<button class="h-8 w-8 rounded bg-surface-container-lowest border border-surface-variant text-on-surface hover:bg-surface flex items-center justify-center" type="button">3</button>
+<button class="h-8 px-space-md rounded bg-surface-container-lowest border border-surface-variant text-on-surface hover:bg-surface" type="button">Next</button>
+</div>
+</div>
+</div>
+<!-- Right Column: Focused Invoice Dossier (w-1/3) -->
+<div class="w-full xl:w-1/3 bg-surface-container-lowest rounded-2xl border border-surface-variant elevation-drawer flex flex-col">
+<!-- Dossier Top Header -->
+<div class="p-space-lg border-b border-surface-variant flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary" data-icon="description">description</span>
+<div>
+<h2 class="text-subtitle font-subtitle text-on-surface leading-tight">Invoice Detail: #INV-2027-089</h2>
+<span class="text-caption font-caption text-secondary flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-xs" data-icon="schedule">schedule</span>
+                  Payment Due Tomorrow
+                </span>
+</div>
+</div>
+<!-- Quick Action Icons -->
+<div class="flex items-center gap-space-xs">
+<button class="h-9 w-9 rounded-lg bg-surface-container border border-surface-variant flex items-center justify-center text-on-surface hover:bg-surface-container-high transition-colors" title="Print / PDF" type="button">
+<span class="material-symbols-outlined text-sm" data-icon="print">print</span>
+</button>
+<button class="h-9 w-9 rounded-lg bg-surface-container border border-surface-variant flex items-center justify-center text-on-surface hover:bg-surface-container-high transition-colors" title="Share Link" type="button">
+<span class="material-symbols-outlined text-sm" data-icon="share">share</span>
+</button>
+</div>
+</div>
+<div class="p-space-lg flex flex-col gap-space-xl">
+<!-- Customer Information Card -->
+<div class="p-space-md rounded-xl bg-surface border border-surface-variant">
+<span class="text-caption font-caption text-on-surface-variant uppercase tracking-wider block">Billed To Entity</span>
+<div class="mt-space-xs">
+<p class="text-body-medium font-body-medium text-on-surface">Eko Royal Apparels Ltd</p>
+<p class="text-caption font-caption text-on-surface-variant">Attn: Chief Mrs. Shade Balogun (Managing Director)</p>
+<div class="mt-space-xs flex flex-col gap-0.5 text-caption font-caption text-on-surface">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-primary" data-icon="call">call</span>
+                    +234 803 441 9901
+                  </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-primary" data-icon="mail">mail</span>
+                    accounts@ekoroyal.ng
+                  </span>
+</div>
+</div>
+</div>
+<!-- Invoice Item Breakdown Table -->
+<div class="flex flex-col gap-space-xs">
+<span class="text-caption font-caption text-on-surface-variant uppercase tracking-wider">Itemized Breakdown</span>
+<div class="border border-surface-variant rounded-xl overflow-hidden">
+<table class="w-full text-left border-collapse text-caption font-caption">
+<thead class="bg-surface-container border-b border-surface-variant text-on-surface-variant">
+<tr>
+<th class="p-2.5">Item &amp; Qty</th>
+<th class="p-2.5 text-right">Unit (₦)</th>
+<th class="p-2.5 text-right">Total (₦)</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-variant">
+<tr>
+<td class="p-2.5">
+<p class="font-label text-on-surface">Swiss Voile Lace</p>
+<p class="text-on-surface-variant text-xs">80 Bolts (Standard 5yd)</p>
+</td>
+<td class="p-2.5 text-right text-on-surface">25,000.00</td>
+<td class="p-2.5 text-right font-label text-on-surface">2,000,000.00</td>
+</tr>
+<tr>
+<td class="p-2.5">
+<p class="font-label text-on-surface">Gold Jacquard Brocade</p>
+<p class="text-on-surface-variant text-xs">40 Bolts (Premium Lustre)</p>
+</td>
+<td class="p-2.5 text-right text-on-surface">20,000.00</td>
+<td class="p-2.5 text-right font-label text-on-surface">800,000.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Financial Summary Table -->
+<div class="bg-surface-container-low p-space-md rounded-xl border border-surface-variant flex flex-col gap-1.5 text-caption font-caption">
+<div class="flex justify-between text-on-surface-variant">
+<span>Subtotal</span>
+<span class="text-on-surface font-label">₦2,800,000.00</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span>VAT (7.5%)</span>
+<span class="text-on-surface font-label">Exempt (Export/Wholesale)</span>
+</div>
+<div class="pt-2 border-t border-outline-variant flex justify-between items-center text-body-medium font-body-medium text-primary">
+<span>Total Due</span>
+<span class="text-title font-title text-primary">₦2,800,000.00</span>
+</div>
+</div>
+</div>
+<!-- Dedicated Payment Account Box -->
+<div class="p-space-md rounded-xl bg-surface border border-dashed border-outline-variant flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-on-surface-variant">Reconciliation Target</span>
+<span class="px-2 py-0.5 rounded bg-error-container text-error text-xs font-caption">Expires in 48h</span>
+</div>
+<p class="text-label font-label text-on-surface">Zenith Bank Dedicated Virtual Acct: #9901847101</p>
+<p class="text-caption font-caption text-on-surface-variant">Real-time credit settlement routing directly to Consolidated Ops pool.</p>
+</div>
+<!-- Automated Reminders Status -->
+<div class="flex flex-col gap-space-xs">
+<span class="text-caption font-caption text-on-surface-variant uppercase tracking-wider">Automated AR Schedule</span>
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-sm text-caption font-caption text-on-surface">
+<span class="material-symbols-outlined text-primary text-base" data-icon="check_circle">check_circle</span>
+<span>1st Notice Sent via SMS/Email (3 days ago)</span>
+</div>
+<div class="flex items-center gap-space-sm text-caption font-caption text-secondary">
+<span class="material-symbols-outlined text-base" data-icon="alarm">alarm</span>
+<span>WhatsApp Reminder scheduled for tomorrow 09:00 WAT</span>
+</div>
+</div>
+</div>
+<!-- Contextual Dossier Action Buttons -->
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<!-- Primary Berry Button (52px Standard) -->
+<button class="w-full h-[52px] rounded-xl bg-primary-container text-on-primary font-label text-label hover:bg-primary transition-colors flex items-center justify-center gap-space-sm shadow-sm" type="button">
+<span class="material-symbols-outlined" data-icon="chat">chat</span>
+<span>Send WhatsApp Instant Reminder</span>
+</button>
+<!-- Secondary Button (52px Standard) -->
+<button class="w-full h-[52px] rounded-xl bg-surface-container-low text-primary font-label text-label hover:bg-surface-container transition-colors flex items-center justify-center gap-space-sm border border-outline-variant" type="button">
+<span class="material-symbols-outlined" data-icon="receipt">receipt</span>
+<span>Record Manual Bank Wire / Cheque</span>
+</button>
+<!-- Outline Button (52px Standard) -->
+<button class="w-full h-[52px] rounded-xl bg-transparent border-[1.5px] border-surface-variant text-on-surface font-label text-label hover:bg-surface-container-low transition-colors flex items-center justify-center gap-space-sm" type="button">
+<span class="material-symbols-outlined text-error" data-icon="block">block</span>
+<span>Cancel / Void Invoice</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Bottom Compliance & Certification Banner -->
+<footer class="mt-space-md p-space-md rounded-xl bg-surface-container border border-surface-variant flex items-center justify-between text-caption font-caption text-on-surface-variant">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary" data-icon="verified_user">verified_user</span>
+<span>All issued invoices carry cryptographic QR codes verifiable by FIRS / LIRS e-invoicing standards.</span>
+</div>
+<div class="flex items-center gap-space-lg text-xs">
+<span>Cryptographic Hash: <code class="text-on-surface">SHA256:8b4e...01c9</code></span>
+<span>Security Protocol v4.8</span>
+</div>
+</footer>
+</main>
+</div>
+</body></html>

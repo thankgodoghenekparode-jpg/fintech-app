@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Deal Summary &amp; Accept | YourApp Escrow</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary-fixed": "#3f001b",
+            "primary": "#6d0033",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-highest": "#e9e0e1",
+            "secondary-fixed": "#ffdad4",
+            "secondary-fixed-dim": "#ffb4a8",
+            "tertiary-fixed": "#eedee4",
+            "inverse-primary": "#ffb1c5",
+            "on-primary-container": "#ffa0ba",
+            "on-surface-variant": "#564146",
+            "on-secondary-container": "#690000",
+            "outline-variant": "#dcbfc5",
+            "outline": "#897176",
+            "on-tertiary-container": "#c6b7bd",
+            "primary-fixed-dim": "#ffb1c5",
+            "on-tertiary-fixed": "#21191e",
+            "inverse-surface": "#342f30",
+            "surface-bright": "#fff8f8",
+            "on-secondary-fixed": "#410000",
+            "on-primary-fixed-variant": "#881646",
+            "tertiary-container": "#53484d",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "on-error": "#ffffff",
+            "on-secondary": "#ffffff",
+            "surface-container-low": "#fbf1f2",
+            "surface-tint": "#a8315d",
+            "primary-fixed": "#ffd9e1",
+            "error": "#ba1a1a",
+            "background": "#fff8f8",
+            "on-error-container": "#93000a",
+            "surface": "#fff8f8",
+            "tertiary": "#3b3236",
+            "surface-variant": "#e9e0e1",
+            "primary-container": "#8e1b4a",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "surface-dim": "#e1d8d9",
+            "secondary": "#ae3123",
+            "surface-container-high": "#efe6e7",
+            "inverse-on-surface": "#f8eeef",
+            "on-surface": "#1f1b1c",
+            "surface-container": "#f5eced",
+            "secondary-container": "#fc6955",
+            "on-tertiary": "#ffffff",
+            "error-container": "#ffdad6",
+            "on-secondary-fixed-variant": "#8c170e",
+            "on-background": "#1f1b1c",
+            "on-primary": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "1rem",
+            "space-xl": "1.5rem",
+            "space-3xl": "3rem",
+            "space-sm": "0.5rem",
+            "space-xs": "0.25rem",
+            "space-2xl": "2rem",
+            "space-md": "0.75rem",
+            "gutter": "1rem",
+            "space-lg": "1rem"
+          },
+          "fontFamily": {
+            "display": ["Inter"],
+            "body-medium": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "subtitle": ["Inter"],
+            "caption": ["Inter"],
+            "title": ["Inter"],
+            "amount-lg": ["Inter"],
+            "label": ["Inter"],
+            "body": ["Inter"]
+          },
+          "fontSize": {
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .tnum { font-feature-settings: "tnum" 1, "cv05" 1; }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex flex-col items-center justify-start p-0 selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Mobile Viewport Shell (390px base centered up to 560px) -->
+<main class="w-full max-w-[560px] min-h-screen flex flex-col bg-surface shadow-[0_4px_30px_rgba(30,26,27,0.06)] relative pb-12">
+<!-- Top App Bar (Task-Focused / Transactional: Back Action, suppressed global nav per semantic shell logic) -->
+<header class="sticky top-0 z-40 bg-surface/95 backdrop-blur-md px-margin py-space-sm border-b border-outline-variant/30 flex items-center justify-between min-h-[56px]">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Go Back" class="w-10 h-10 -ml-1 rounded-xl flex items-center justify-center text-on-surface hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<div>
+<div class="flex items-center gap-space-xs">
+<h1 class="font-subtitle text-[17px] leading-tight font-bold text-on-surface tracking-tight">Deal Summary &amp; Agreement</h1>
+</div>
+<p class="font-caption text-caption text-on-surface-variant">Review &amp; Lock Terms • S-ESC-005</p>
+</div>
+</div>
+<div class="flex items-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-primary-fixed/60 text-primary border border-outline-variant/40 font-label text-[11px] font-bold tracking-wider">
+<span class="material-symbols-outlined text-[14px]">shield_locked</span>
+          ESCROW
+        </span>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<div class="px-margin pt-space-md space-y-space-lg flex-1">
+<!-- Stepper: Step 4 of 4 -->
+<section aria-label="Progress Stepper" class="bg-surface-container-lowest rounded-xl p-space-md border border-outline-variant/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.04)]">
+<div class="flex items-center justify-between text-on-surface-variant font-caption text-[12px] mb-2 font-medium">
+<span>Step 4 of 4: Review &amp; Lock</span>
+<span class="text-primary font-semibold">Final Authorization</span>
+</div>
+<!-- Step Indicators -->
+<div class="grid grid-cols-4 gap-1.5 items-center">
+<!-- Step 1 -->
+<div class="flex flex-col gap-1">
+<div class="h-1.5 rounded-full bg-primary-container"></div>
+<span class="text-[10px] font-caption text-on-surface-variant/80 truncate">1. Details</span>
+</div>
+<!-- Step 2 -->
+<div class="flex flex-col gap-1">
+<div class="h-1.5 rounded-full bg-primary-container"></div>
+<span class="text-[10px] font-caption text-on-surface-variant/80 truncate">2. Terms</span>
+</div>
+<!-- Step 3 -->
+<div class="flex flex-col gap-1">
+<div class="h-1.5 rounded-full bg-primary-container"></div>
+<span class="text-[10px] font-caption text-on-surface-variant/80 truncate">3. Counterparty</span>
+</div>
+<!-- Step 4 (Active) -->
+<div class="flex flex-col gap-1">
+<div class="h-1.5 rounded-full bg-primary-container ring-2 ring-primary-fixed"></div>
+<span class="text-[10px] font-caption font-semibold text-primary truncate">4. Lock</span>
+</div>
+</div>
+</section>
+<!-- Deal Status Header Card: Counterparties -->
+<section class="bg-surface-container-lowest rounded-2xl p-space-lg border border-outline-variant/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)]">
+<div class="flex items-center gap-space-sm pb-space-md border-b border-outline-variant/30">
+<div class="w-8 h-8 rounded-full bg-emerald-50 text-emerald-700 flex items-center justify-center border border-emerald-200">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+</div>
+<div>
+<h2 class="font-label text-label font-bold text-on-surface">Terms Agreed by Both Parties</h2>
+<p class="font-caption text-caption text-on-surface-variant">Dual digital signatures ready for funding lock</p>
+</div>
+</div>
+<div class="pt-space-md space-y-space-md">
+<!-- Buyer Row -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary font-semibold text-sm border border-outline-variant/30">
+                CA
+              </div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-label text-[14px] text-on-surface font-semibold">Chioma Adeleke</span>
+<span class="text-[10px] font-medium bg-surface-container px-1.5 py-0.5 rounded text-on-surface-variant">Tier 2</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant">Buyer • @chioma_a</p>
+</div>
+</div>
+<div class="inline-flex items-center gap-1 text-emerald-800 bg-emerald-50 px-2 py-1 rounded-lg border border-emerald-200 text-[12px] font-label font-medium">
+<span class="material-symbols-outlined text-[14px] text-emerald-700" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+              Accepted
+            </div>
+</div>
+<!-- Seller Row -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary font-semibold text-sm border border-outline-variant/30">
+                AG
+              </div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-label text-[14px] text-on-surface font-semibold">Adebayo Gadgets</span>
+<span class="text-[10px] font-medium bg-surface-container px-1.5 py-0.5 rounded text-on-surface-variant">Tier 3</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant">Seller • @ade_laptops</p>
+</div>
+</div>
+<div class="inline-flex items-center gap-1 text-emerald-800 bg-emerald-50 px-2 py-1 rounded-lg border border-emerald-200 text-[12px] font-label font-medium">
+<span class="material-symbols-outlined text-[14px] text-emerald-700" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+              Accepted
+            </div>
+</div>
+</div>
+</section>
+<!-- Full Deal Term Sheet Card -->
+<section class="bg-surface-container-lowest rounded-2xl p-space-lg border border-outline-variant/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] space-y-space-md">
+<!-- Deal Item Title -->
+<div class="bg-surface-container-low p-space-md rounded-xl border border-outline-variant/30 flex items-start gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-lowest flex-shrink-0 flex items-center justify-center text-primary border border-outline-variant/30">
+<span class="material-symbols-outlined text-[22px]">laptop_mac</span>
+</div>
+<div>
+<span class="text-[11px] font-label uppercase tracking-wider text-on-surface-variant font-semibold">Underlying Asset</span>
+<h3 class="font-body-medium text-[15px] font-bold text-on-surface leading-tight mt-0.5">
+              2019 MacBook Pro 16-inch
+            </h3>
+<p class="font-caption text-[12px] text-on-surface-variant mt-0.5">Space Grey, 32GB RAM, 1TB SSD • Condition: Pre-owned Pristine</p>
+</div>
+</div>
+<!-- Financial Breakdown (Tabular Numerals) -->
+<div class="space-y-space-sm divide-y divide-outline-variant/20 pt-1">
+<div class="flex justify-between items-center pt-2">
+<span class="font-caption text-caption text-on-surface-variant">Escrow Value</span>
+<span class="font-body-medium text-[15px] font-semibold text-on-surface tnum">₦850,000.00</span>
+</div>
+<div class="flex justify-between items-center pt-2">
+<div class="flex items-center gap-1">
+<span class="font-caption text-caption text-on-surface-variant">Escrow Holding Fee</span>
+<span class="text-[11px] font-caption text-on-surface-variant bg-surface-container px-1 rounded">1.5%</span>
+</div>
+<span class="font-body text-body text-on-surface-variant tnum">₦12,750.00</span>
+</div>
+<div class="flex justify-between items-center pt-2">
+<span class="font-caption text-caption text-on-surface-variant">Buyer Fee Share (50%)</span>
+<span class="font-body text-body text-on-surface-variant tnum">+₦6,375.00</span>
+</div>
+<div class="flex justify-between items-center pt-3 bg-surface-container-low -mx-space-lg px-space-lg py-2.5 rounded-lg border-y border-outline-variant/30">
+<div>
+<span class="font-label text-label font-bold text-primary">Total Buyer Deposit Required</span>
+<p class="font-caption text-[11px] text-on-surface-variant">Locked in YourApp trust vault until release</p>
+</div>
+<span class="font-amount-lg-mobile text-[22px] font-bold text-primary tnum">₦856,375.00</span>
+</div>
+<div class="flex justify-between items-center pt-2 text-on-surface-variant">
+<span class="font-caption text-caption">Net Seller Payout Upon Release</span>
+<span class="font-caption text-caption font-medium tnum">₦843,625.00</span>
+</div>
+</div>
+<!-- Release Condition & Inspection Parameters -->
+<div class="grid grid-cols-2 gap-space-sm pt-space-xs">
+<div class="p-space-sm bg-surface rounded-xl border border-outline-variant/30">
+<div class="flex items-center gap-1 text-on-surface-variant mb-1">
+<span class="material-symbols-outlined text-[16px] text-primary">timer</span>
+<span class="font-caption text-[11px] font-medium uppercase tracking-wider">Inspection Window</span>
+</div>
+<p class="font-label text-label font-bold text-on-surface">48 Hours</p>
+<p class="font-caption text-[11px] text-on-surface-variant">From physical handover</p>
+</div>
+<div class="p-space-sm bg-surface rounded-xl border border-outline-variant/30">
+<div class="flex items-center gap-1 text-on-surface-variant mb-1">
+<span class="material-symbols-outlined text-[16px] text-primary">lock_open</span>
+<span class="font-caption text-[11px] font-medium uppercase tracking-wider">Release Condition</span>
+</div>
+<p class="font-label text-label font-bold text-on-surface">Buyer Approval</p>
+<p class="font-caption text-[11px] text-on-surface-variant">Or window auto-expiry</p>
+</div>
+</div>
+</section>
+<!-- Statutory Escrow Protection Policies Accordion -->
+<section class="bg-surface-container-lowest rounded-2xl p-space-lg border border-outline-variant/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)]">
+<div class="flex items-center justify-between pb-space-sm mb-space-sm border-b border-outline-variant/30">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[20px] text-primary-container">gavel</span>
+<h3 class="font-label text-label font-bold text-on-surface">SafeEscrow Statutory Guarantees</h3>
+</div>
+<span class="font-caption text-[11px] font-medium bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded border border-emerald-200">Enforceable</span>
+</div>
+<div class="space-y-space-md">
+<!-- Policy 1 -->
+<div class="flex items-start gap-space-sm">
+<div class="w-6 h-6 rounded-full bg-surface-container-high flex-shrink-0 flex items-center justify-center text-primary mt-0.5">
+<span class="material-symbols-outlined text-[15px]">account_balance</span>
+</div>
+<div>
+<p class="font-label text-[13px] font-bold text-on-surface">CBN-Licensed Escrow Custody</p>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">
+                Funds locked in segregated, bankruptcy-remote bank trust vault. Your money cannot be touched by neither party until handover confirmation.
+              </p>
+</div>
+</div>
+<!-- Policy 2 -->
+<div class="flex items-start gap-space-sm">
+<div class="w-6 h-6 rounded-full bg-surface-container-high flex-shrink-0 flex items-center justify-center text-primary mt-0.5">
+<span class="material-symbols-outlined text-[15px]">assignment_return</span>
+</div>
+<div>
+<p class="font-label text-[13px] font-bold text-on-surface">Cancellation &amp; Non-Delivery Guarantee</p>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">
+                100% full principal refund issued automatically if the seller fails to track-ship or physically hand over within 5 calendar days.
+              </p>
+</div>
+</div>
+<!-- Policy 3 -->
+<div class="flex items-start gap-space-sm">
+<div class="w-6 h-6 rounded-full bg-surface-container-high flex-shrink-0 flex items-center justify-center text-primary mt-0.5">
+<span class="material-symbols-outlined text-[15px]">support_agent</span>
+</div>
+<div>
+<p class="font-label text-[13px] font-bold text-on-surface">Independent Dispute Arbitration</p>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">
+                Dedicated YourApp neutral arbitrator assigned with guaranteed 48h SLA if the delivered device diverges from described condition.
+              </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Acceptance & Legal Authorization Checkbox Block -->
+<section class="bg-surface-container-low rounded-xl p-space-md border border-outline-variant/40">
+<label class="flex items-start gap-space-md cursor-pointer select-none">
+<div class="min-w-[24px] h-6 flex items-center justify-center pt-0.5">
+<input checked="" class="w-5 h-5 rounded text-primary-container focus:ring-primary border-outline text-[#8E1B4A] accent-[#8E1B4A] cursor-pointer transition" id="agreement-checkbox" type="checkbox"/>
+</div>
+<div class="font-caption text-caption text-on-surface leading-snug">
+<span class="font-medium text-on-surface">I legally accept the SafeEscrow Master Agreement</span> and authorize direct funding of <span class="font-semibold text-primary tnum">₦856,375.00</span> into the protected trust account under my CBN-verified BVN credentials.
+          </div>
+</label>
+</section>
+<!-- Sticky Trigger Area (Standard 52px Button & Assurance) -->
+<div class="pt-space-sm pb-space-lg space-y-space-sm">
+<button class="w-full h-[52px] rounded-xl bg-primary-container text-on-primary font-label text-label font-bold flex items-center justify-center gap-space-sm shadow-[0_8px_24px_-4px_rgba(30,26,27,0.12)] active:scale-[0.98] transition-all hover:bg-primary" id="fund-btn" type="button">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">lock</span>
+<span>Proceed to Fund Deal (₦856,375.00)</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<div class="flex items-center justify-center gap-1.5 text-center text-on-surface-variant font-caption text-[12px]">
+<span class="material-symbols-outlined text-[15px] text-emerald-700">verified_user</span>
+<span>Zero risk: Seller cannot withdraw until you verify item.</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Interactive State Script -->
+<script>
+    const checkbox = document.getElementById('agreement-checkbox');
+    const fundBtn = document.getElementById('fund-btn');
+
+    checkbox.addEventListener('change', () => {
+      if (!checkbox.checked) {
+        fundBtn.disabled = true;
+        fundBtn.classList.add('opacity-50', 'cursor-not-allowed', 'pointer-events-none');
+      } else {
+        fundBtn.disabled = false;
+        fundBtn.classList.remove('opacity-50', 'cursor-not-allowed', 'pointer-events-none');
+      }
+    });
+
+    fundBtn.addEventListener('click', () => {
+      fundBtn.innerHTML = `
+        <span class="material-symbols-outlined animate-spin text-[20px]">progress_activity</span>
+        <span>Securing Escrow Vault...</span>
+      `;
+      setTimeout(() => {
+        alert('SafeEscrow Vault Lock Initialized for ₦856,375.00. Authenticating biometrics...');
+        fundBtn.innerHTML = `
+          <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">lock</span>
+          <span>Proceed to Fund Deal (₦856,375.00)</span>
+          <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+        `;
+      }, 1200);
+    });
+  </script>
+</body></html>

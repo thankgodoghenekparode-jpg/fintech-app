@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Loan Disbursed - YourApp</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-surface-variant": "#564146",
+            "on-background": "#1f1b1c",
+            "surface-container-lowest": "#ffffff",
+            "on-secondary-container": "#690000",
+            "surface-dim": "#e1d8d9",
+            "on-primary": "#ffffff",
+            "background": "#fff8f8",
+            "secondary": "#ae3123",
+            "tertiary": "#3b3236",
+            "primary-fixed-dim": "#ffb1c5",
+            "surface-container-low": "#fbf1f2",
+            "primary-container": "#8e1b4a",
+            "on-primary-fixed-variant": "#881646",
+            "outline": "#897176",
+            "secondary-container": "#fc6955",
+            "surface": "#fff8f8",
+            "on-primary-fixed": "#3f001b",
+            "surface-container-high": "#efe6e7",
+            "surface-tint": "#a8315d",
+            "inverse-surface": "#342f30",
+            "inverse-primary": "#ffb1c5",
+            "primary-fixed": "#ffd9e1",
+            "tertiary-fixed": "#eedee4",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "on-secondary-fixed-variant": "#8c170e",
+            "primary": "#6d0033",
+            "on-error": "#ffffff",
+            "secondary-fixed": "#ffdad4",
+            "on-tertiary-fixed": "#21191e",
+            "on-tertiary": "#ffffff",
+            "surface-variant": "#e9e0e1",
+            "tertiary-container": "#53484d",
+            "inverse-on-surface": "#f8eeef",
+            "surface-container": "#f5eced",
+            "surface-container-highest": "#e9e0e1",
+            "on-primary-container": "#ffa0ba",
+            "on-error-container": "#93000a",
+            "outline-variant": "#dcbfc5",
+            "on-secondary-fixed": "#410000",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "on-secondary": "#ffffff",
+            "on-tertiary-container": "#c6b7bd",
+            "surface-bright": "#fff8f8",
+            "error": "#ba1a1a",
+            "on-surface": "#1f1b1c",
+            "error-container": "#ffdad6",
+            "secondary-fixed-dim": "#ffb4a8"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-md": "0.75rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1rem",
+            "gutter": "1rem",
+            "space-sm": "0.5rem",
+            "space-2xl": "2rem",
+            "space-xl": "1.5rem",
+            "space-3xl": "3rem",
+            "margin": "1rem"
+          },
+          "fontFamily": {
+            "display": ["Inter"],
+            "amount-lg": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "label": ["Inter"],
+            "subtitle": ["Inter"],
+            "caption": ["Inter"],
+            "body": ["Inter"],
+            "body-medium": ["Inter"],
+            "title": ["Inter"]
+          },
+          "fontSize": {
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-outlined.fill {
+      font-variation-settings: 'FILL' 1;
+    }
+    @keyframes burst-pulse {
+      0% { transform: scale(0.92); opacity: 0.8; }
+      50% { transform: scale(1.04); opacity: 1; }
+      100% { transform: scale(0.92); opacity: 0.8; }
+    }
+    .animate-pulse-subtle {
+      animation: burst-pulse 3s infinite ease-in-out;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased flex justify-center min-h-screen">
+<!-- Mobile Viewport Container: 390px x 844px target standard, centered on larger displays -->
+<main class="w-full max-w-[560px] bg-background min-h-screen flex flex-col justify-between relative shadow-sm pb-space-2xl">
+<!-- Top Bar (Minimalist task header, dismiss action) -->
+<header class="w-full px-margin py-space-sm min-h-[56px] flex items-center justify-between border-b border-outline-variant/40 bg-surface">
+<div class="w-12 h-12 flex items-center justify-start">
+<button aria-label="Close" class="w-12 h-12 flex items-center justify-center rounded-full hover:bg-surface-container active:scale-95 transition-all text-on-surface" type="button">
+<span class="material-symbols-outlined text-[24px]">close</span>
+</button>
+</div>
+<h1 class="font-subtitle text-subtitle text-on-surface text-center font-bold tracking-tight">Loan Disbursed</h1>
+<div class="w-12 h-12 flex items-center justify-end">
+<button aria-label="Support or Help" class="w-12 h-12 flex items-center justify-center rounded-full hover:bg-surface-container active:scale-95 transition-all text-on-surface-variant" type="button">
+<span class="material-symbols-outlined text-[22px]">help_outline</span>
+</button>
+</div>
+</header>
+<!-- Scrollable Content Stack -->
+<div class="px-margin flex-1 flex flex-col pt-space-xl gap-space-xl">
+<!-- Celebration Hero Section -->
+<section class="flex flex-col items-center text-center">
+<!-- Vibrant Animated Check Badge -->
+<div class="relative flex items-center justify-center mb-space-lg">
+<div class="absolute w-24 h-24 rounded-full bg-surface-container-high/60 animate-pulse-subtle"></div>
+<div class="relative w-16 h-16 rounded-full bg-primary-container text-surface-container-lowest flex items-center justify-center shadow-[0_8px_24px_-4px_rgba(30,26,27,0.12)]">
+<span class="material-symbols-outlined text-[36px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<!-- Headline & Currency Display -->
+<div class="space-y-space-xs max-w-sm">
+<h2 class="font-amount-lg-mobile text-amount-lg-mobile font-display text-on-background tracking-tight">
+            ₦80,000.00 Disbursed!
+          </h2>
+<p class="font-body text-body text-on-surface-variant">
+            Funds have been credited directly to your YourApp main account balance.
+          </p>
+</div>
+<!-- Semantic Status Badge -->
+<div class="mt-space-md inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-xl bg-surface-container border border-outline-variant/60">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container"></span>
+<span class="material-symbols-outlined text-[16px] text-primary-container" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-label text-label text-primary font-semibold">Successful</span>
+</div>
+</section>
+<!-- Transaction / Disbursement Detail Card -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant/50 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)]">
+<div class="flex items-center justify-between pb-space-md border-b border-surface-container">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">account_balance_wallet</span>
+<span class="font-subtitle text-subtitle text-on-surface font-semibold">Payout Summary</span>
+</div>
+<span class="font-caption text-caption text-on-surface-variant bg-surface-container px-2 py-0.5 rounded">INST-88204</span>
+</div>
+<div class="divide-y divide-surface-container-low pt-space-xs">
+<!-- Disbursed Amount -->
+<div class="py-space-md flex justify-between items-center">
+<span class="font-caption text-caption text-on-surface-variant">Disbursed Amount</span>
+<span class="font-body-medium text-body-medium font-semibold text-on-surface tabular-nums">₦80,000.00</span>
+</div>
+<!-- Destination Account -->
+<div class="py-space-md flex justify-between items-start">
+<span class="font-caption text-caption text-on-surface-variant">Destination</span>
+<div class="text-right">
+<p class="font-body-medium text-body-medium text-on-surface">YourApp Tier 2 Savings</p>
+<p class="font-caption text-caption text-on-surface-variant tabular-nums font-mono">0124892019</p>
+</div>
+</div>
+<!-- Transaction Reference -->
+<div class="py-space-md flex justify-between items-center">
+<span class="font-caption text-caption text-on-surface-variant">Transaction Ref</span>
+<div class="flex items-center gap-space-xs">
+<span class="font-caption text-caption font-mono text-on-surface font-medium">LN-2026-98412</span>
+<button aria-label="Copy reference" class="w-8 h-8 flex items-center justify-center text-primary hover:bg-surface-container rounded transition-colors active:scale-90" type="button">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+</div>
+</div>
+<!-- Date & Time -->
+<div class="py-space-md flex justify-between items-center">
+<span class="font-caption text-caption text-on-surface-variant">Date &amp; Time</span>
+<span class="font-caption text-caption text-on-surface font-medium tabular-nums">24 Oct 2024, 14:48 WAT</span>
+</div>
+<!-- Loan ID -->
+<div class="pt-space-md flex justify-between items-center">
+<span class="font-caption text-caption text-on-surface-variant">Product ID</span>
+<span class="font-caption text-caption text-on-surface font-mono">S-LOAN-006</span>
+</div>
+</div>
+</section>
+<!-- Repayment Plan Preview Card -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant/50 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)]">
+<div class="flex items-center justify-between pb-space-sm border-b border-surface-container">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">calendar_month</span>
+<span class="font-subtitle text-subtitle text-on-surface font-semibold">Repayment Plan</span>
+</div>
+<span class="font-caption text-caption text-primary font-medium">1 of 3</span>
+</div>
+<div class="mt-space-md bg-surface-container-low rounded-xl p-space-md border border-outline-variant/30 flex justify-between items-center">
+<div>
+<p class="font-caption text-caption text-on-surface-variant">First Instalment</p>
+<p class="font-amount-lg-mobile text-amount-lg-mobile text-primary font-bold tabular-nums">₦29,467.00</p>
+</div>
+<div class="text-right">
+<span class="inline-block px-2 py-0.5 rounded bg-surface-container-highest text-on-surface font-caption text-caption font-semibold">
+              In 30 days
+            </span>
+<p class="font-caption text-caption text-on-surface-variant mt-1 tabular-nums">Due 22 Nov 2026</p>
+</div>
+</div>
+<!-- Auto-repay status & reminders -->
+<div class="mt-space-md space-y-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[18px] text-primary" style="font-variation-settings: 'FILL' 1;">task_alt</span>
+<div class="flex-1">
+<span class="font-caption text-caption text-on-surface-variant">Auto-repay status: </span>
+<span class="font-label text-label text-on-surface font-semibold">Active (NIBSS e-Mandate enabled)</span>
+</div>
+</div>
+<div class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant mt-0.5">notifications_active</span>
+<p class="font-caption text-caption text-on-surface-variant flex-1">
+              We will send gentle SMS &amp; push notifications 3 days before your due date.
+            </p>
+</div>
+</div>
+</section>
+<!-- Reassurance Banner -->
+<section class="bg-surface-container-high/60 rounded-xl p-space-md flex items-start gap-space-md border border-outline-variant/40">
+<span class="material-symbols-outlined text-primary-container text-[22px] flex-shrink-0 mt-0.5">verified_user</span>
+<div class="space-y-0.5">
+<h3 class="font-label text-label text-on-surface font-bold">Zero Prepayment Penalty</h3>
+<p class="font-caption text-caption text-on-surface-variant">
+            Repay early at any time with no extra fees and save on total accrued interest.
+          </p>
+</div>
+</section>
+<!-- Interactive Action Buttons -->
+<section class="flex flex-col gap-space-sm pt-space-xs">
+<!-- Primary Action -->
+<button class="w-full h-[52px] bg-primary-container hover:bg-primary active:bg-on-primary-fixed-variant text-on-primary font-label text-label rounded-xl flex items-center justify-center gap-space-xs shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08)] transition-all active:scale-[0.99] cursor-pointer" type="button">
+<span>View Loan Dashboard</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<!-- Secondary Outline Action -->
+<button class="w-full h-[52px] bg-transparent border-[1.5px] border-outline-variant hover:bg-surface-container text-on-surface font-label text-label rounded-xl flex items-center justify-center gap-space-xs transition-all active:scale-[0.99] cursor-pointer" type="button">
+<span class="material-symbols-outlined text-[18px]">share</span>
+<span>Share Payout Receipt</span>
+</button>
+</section>
+<!-- Regulatory & Security Trust Footer -->
+<footer class="pt-space-md pb-space-lg text-center space-y-space-xs">
+<div class="flex items-center justify-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+<p class="font-caption text-caption text-[11px] uppercase tracking-wider text-on-surface-variant font-medium">
+            CBN Licensed Credit Provider • 256-bit bank grade encryption
+          </p>
+</div>
+<p class="font-caption text-caption text-on-surface-variant/70 text-[11px]">
+          YourApp Microfinance Bank Ltd. Deposit Insured by NDIC
+        </p>
+</footer>
+</div>
+</main>
+<script>
+    // Copy reference feedback interaction
+    document.querySelectorAll('button[aria-label="Copy reference"]').forEach(button => {
+      button.addEventListener('click', () => {
+        const icon = button.querySelector('.material-symbols-outlined');
+        if (icon) {
+          icon.textContent = 'check';
+          setTimeout(() => {
+            icon.textContent = 'content_copy';
+          }, 2000);
+        }
+      });
+    });
+  </script>
+</body></html>

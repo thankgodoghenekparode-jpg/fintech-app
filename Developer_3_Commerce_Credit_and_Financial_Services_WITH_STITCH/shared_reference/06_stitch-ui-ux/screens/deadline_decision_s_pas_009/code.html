@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Vault Deadline Reached - Pay Am Small</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary": "#3b3236",
+            "surface": "#fff8f8",
+            "surface-container": "#f5eced",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "surface-variant": "#e9e0e1",
+            "surface-container-high": "#efe6e7",
+            "error": "#ba1a1a",
+            "on-tertiary": "#ffffff",
+            "surface-container-low": "#fbf1f2",
+            "primary-container": "#8e1b4a",
+            "on-secondary-fixed": "#410000",
+            "on-tertiary-container": "#c6b7bd",
+            "surface-tint": "#a8315d",
+            "tertiary-fixed": "#eedee4",
+            "on-secondary-container": "#690000",
+            "on-surface-variant": "#564146",
+            "inverse-on-surface": "#f8eeef",
+            "surface-bright": "#fff8f8",
+            "secondary-fixed": "#ffdad4",
+            "inverse-surface": "#342f30",
+            "secondary-container": "#fc6955",
+            "outline": "#897176",
+            "surface-container-highest": "#e9e0e1",
+            "primary-fixed-dim": "#ffb1c5",
+            "on-error-container": "#93000a",
+            "on-background": "#1f1b1c",
+            "on-primary-fixed": "#3f001b",
+            "on-surface": "#1f1b1c",
+            "primary": "#6d0033",
+            "on-primary": "#ffffff",
+            "surface-dim": "#e1d8d9",
+            "secondary": "#ae3123",
+            "outline-variant": "#dcbfc5",
+            "on-tertiary-fixed": "#21191e",
+            "secondary-fixed-dim": "#ffb4a8",
+            "on-primary-container": "#ffa0ba",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "background": "#fff8f8",
+            "primary-fixed": "#ffd9e1",
+            "on-secondary": "#ffffff",
+            "on-secondary-fixed-variant": "#8c170e",
+            "on-primary-fixed-variant": "#881646",
+            "tertiary-container": "#53484d",
+            "error-container": "#ffdad6",
+            "inverse-primary": "#ffb1c5",
+            "on-error": "#ffffff",
+            "surface-container-lowest": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xl": "1.5rem",
+            "space-2xl": "2rem",
+            "space-sm": "0.5rem",
+            "margin": "1rem",
+            "space-lg": "1rem",
+            "space-3xl": "3rem",
+            "gutter": "1rem",
+            "space-xs": "0.25rem",
+            "space-md": "0.75rem"
+          },
+          "fontFamily": {
+            "caption": ["Inter"],
+            "display": ["Inter"],
+            "body-medium": ["Inter"],
+            "amount-lg": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "subtitle": ["Inter"],
+            "body": ["Inter"],
+            "label": ["Inter"],
+            "title": ["Inter"]
+          },
+          "fontSize": {
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+    .custom-shadow-card {
+      box-shadow: 0 2px 8px -2px rgba(30, 26, 27, 0.05), 0 1px 3px 0 rgba(30, 26, 27, 0.03);
+    }
+    .custom-shadow-elevated {
+      box-shadow: 0 8px 24px -4px rgba(30, 26, 27, 0.08), 0 4px 12px -2px rgba(30, 26, 27, 0.04);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased font-body min-h-screen flex justify-center selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Mobile Canvas Frame: 390px up to 560px -->
+<main class="w-full max-w-[560px] bg-surface min-h-screen flex flex-col relative pb-32">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-40 bg-surface/95 backdrop-blur-md px-margin py-space-sm flex justify-between items-center min-h-[56px] shadow-sm">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Go Back" class="w-10 h-10 -ml-2 rounded-xl flex items-center justify-center text-on-surface hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<h1 class="font-subtitle text-subtitle text-on-surface leading-tight font-bold tracking-tight">Vault Deadline Reached</h1>
+<span class="font-caption text-caption text-on-surface-variant">S-PAS-009 • Pay Am Small</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="font-caption text-caption text-primary font-bold px-2 py-0.5 rounded-full bg-primary-fixed">YourApp</span>
+</div>
+</header>
+<!-- Main Content Flow -->
+<div class="px-margin flex flex-col gap-space-xl pt-space-md">
+<!-- Vault Status Summary Banner -->
+<section aria-label="Vault Notice" class="bg-surface-container-lowest rounded-xl border border-outline-variant/60 p-space-lg custom-shadow-card flex flex-col gap-space-md">
+<!-- Header Tag & Urgency -->
+<div class="flex items-center justify-between">
+<div class="inline-flex items-center gap-1.5 px-2 py-1 rounded-lg bg-secondary-fixed/50 border border-secondary-fixed text-on-secondary-fixed-variant">
+<span class="material-symbols-outlined text-[16px] text-secondary">schedule</span>
+<span class="font-caption text-caption font-semibold">Maturity Reached</span>
+</div>
+<span class="font-caption text-caption text-on-surface-variant font-medium">90-Day Term Expired</span>
+</div>
+<div>
+<h2 class="font-label text-label text-on-surface font-semibold text-[15px]">Your 90-Day Price-Lock Window Has Expired</h2>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">Item: <strong class="text-on-surface font-medium">Haier Thermocool 200L Chest Freezer</strong></p>
+</div>
+<!-- Progress Metrics Bento Grid -->
+<div class="bg-surface-container-low rounded-xl p-space-md flex flex-col gap-space-sm border border-outline-variant/30">
+<div class="flex justify-between items-baseline">
+<span class="font-caption text-caption text-on-surface-variant">Accumulated Balance</span>
+<span class="font-body-medium text-body-medium text-on-surface font-semibold tabular-nums">₦220,000.00</span>
+</div>
+<!-- Progress Bar -->
+<div class="w-full bg-surface-variant h-2.5 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full rounded-full transition-all duration-500" style="width: 77.2%;"></div>
+</div>
+<div class="flex justify-between items-center pt-0.5 font-caption text-caption">
+<span class="text-on-surface-variant font-medium">77% funded</span>
+<span class="text-secondary font-semibold tabular-nums">Shortfall: ₦65,000.00</span>
+</div>
+</div>
+<!-- Price Protection Insight -->
+<div class="grid grid-cols-2 gap-space-sm pt-space-xs border-t border-outline-variant/40">
+<div class="flex flex-col">
+<span class="font-caption text-caption text-on-surface-variant">Locked Price</span>
+<span class="font-body-medium text-body-medium text-on-surface font-semibold tabular-nums">₦285,000.00</span>
+</div>
+<div class="flex flex-col text-right">
+<span class="font-caption text-caption text-on-surface-variant">Current Retail</span>
+<div class="flex items-center justify-end gap-1">
+<span class="font-body-medium text-body-medium text-on-surface-variant/80 line-through tabular-nums">₦325,000.00</span>
+<span class="font-caption text-caption text-primary font-bold">(Save ₦40,000)</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Decision Options Form Section -->
+<section aria-label="Decision Options" class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<h3 class="font-label text-label text-on-surface font-semibold">Choose Vault Action</h3>
+<span class="font-caption text-caption text-on-surface-variant">Action required</span>
+</div>
+<!-- OPTION 1: EXTEND (Recommended) -->
+<label class="relative block cursor-pointer rounded-xl border-2 border-primary-container bg-surface-container-lowest p-space-lg custom-shadow-card transition-all duration-200 hover:border-primary" id="label-opt-1">
+<input checked="" class="peer sr-only" name="deadline_decision" onchange="handleSelectionChange('extend')" type="radio" value="extend"/>
+<!-- Top Badge & Header -->
+<div class="flex items-start justify-between gap-space-sm mb-space-sm">
+<div class="flex items-center gap-space-sm">
+<!-- Custom Radio Circle -->
+<div class="w-5 h-5 rounded-full border-2 border-primary-container flex items-center justify-center p-0.5 peer-checked:border-primary-container bg-surface-container-lowest">
+<div class="w-2.5 h-2.5 rounded-full bg-primary-container" id="radio-dot-1"></div>
+</div>
+<div>
+<span class="font-label text-label text-on-surface font-bold flex items-center gap-1.5">
+                  Extend Price-Lock Plan by 30 Days
+                </span>
+<span class="inline-block mt-0.5 font-caption text-caption font-semibold px-2 py-0.5 rounded-full bg-primary-fixed text-primary text-[11px]">
+                  Recommended
+                </span>
+</div>
+</div>
+<!-- Benefit Pill -->
+<div class="flex items-center gap-1 bg-surface-container-low px-2 py-1 rounded-lg border border-outline-variant/40">
+<span class="material-symbols-outlined text-[15px] text-primary" data-weight="fill">verified</span>
+<span class="font-caption text-caption text-primary font-bold text-[11px] whitespace-nowrap">Save Your ₦40k Discount</span>
+</div>
+</div>
+<!-- Description & Breakdown -->
+<div class="pl-7 flex flex-col gap-space-xs text-on-surface-variant font-caption text-caption">
+<div class="flex items-center gap-1.5 text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-primary">lock_clock</span>
+<span>Keep your locked price of <strong class="tabular-nums font-semibold">₦285,000.00</strong></span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">percent</span>
+<span>Extension fee: <strong>1.0% (₦2,850.00)</strong> added to final installment</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">event</span>
+<span>New completion deadline: <strong class="text-on-surface">15 April 2027</strong></span>
+</div>
+<div class="mt-1 p-2 rounded-lg bg-surface-container-low border border-outline-variant/30 flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-primary-container shrink-0 mt-0.5">autorenew</span>
+<span class="text-on-surface text-[12px] leading-snug">
+                Schedules final automated debit of <strong class="tabular-nums font-semibold">₦67,850.00</strong> from Tier 2 Savings on <strong>5 April 2027</strong>.
+              </span>
+</div>
+</div>
+</label>
+<!-- OPTION 2: REFUND -->
+<label class="relative block cursor-pointer rounded-xl border border-outline-variant/60 bg-surface-container-lowest p-space-lg custom-shadow-card transition-all duration-200 hover:border-outline" id="label-opt-2">
+<input class="peer sr-only" name="deadline_decision" onchange="handleSelectionChange('refund')" type="radio" value="refund"/>
+<!-- Header -->
+<div class="flex items-start justify-between gap-space-sm mb-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-5 h-5 rounded-full border-2 border-outline flex items-center justify-center p-0.5 bg-surface-container-lowest" id="radio-box-2">
+<div class="w-2.5 h-2.5 rounded-full bg-transparent" id="radio-dot-2"></div>
+</div>
+<div>
+<span class="font-label text-label text-on-surface font-bold">
+                  Close Vault &amp; Refund Accumulated Savings
+                </span>
+<span class="block font-caption text-caption text-error text-[11px] font-medium">
+                  Forfeits locked discount
+                </span>
+</div>
+</div>
+</div>
+<!-- Description & Breakdown -->
+<div class="pl-7 flex flex-col gap-space-xs text-on-surface-variant font-caption text-caption">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">cancel</span>
+<span>Cancels item reservation guarantee with MegaPlaza</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">receipt_long</span>
+<span>Gross ₦220,000.00 minus 2.5% admin fee (<strong class="tabular-nums">₦5,500.00</strong>)</span>
+</div>
+<div class="mt-1 p-2 rounded-lg bg-surface-container-high/40 border border-outline-variant/30 flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-secondary">account_balance_wallet</span>
+<span class="text-on-surface font-medium text-[12px]">Net instant payout to Tier 2 Savings:</span>
+</div>
+<span class="font-label text-label text-on-surface font-bold tabular-nums">₦214,500.00</span>
+</div>
+</div>
+</label>
+</section>
+<!-- Selected Option Impact Dynamic Summary Box -->
+<section aria-label="Commitment Summary" class="bg-surface-container-low rounded-xl p-space-lg border border-outline-variant/40 flex flex-col gap-space-sm">
+<div class="flex items-center justify-between border-b border-outline-variant/40 pb-space-xs">
+<span class="font-caption text-caption font-semibold text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary" id="impact-icon">info</span>
+<span id="impact-title">Extension Financial Impact</span>
+</span>
+<span class="font-caption text-caption text-primary font-medium" id="impact-badge">Option 1 Active</span>
+</div>
+<div class="flex flex-col gap-2 pt-1 font-caption text-caption text-on-surface-variant" id="impact-content">
+<div class="flex justify-between items-center">
+<span>Remaining Shortfall:</span>
+<span class="text-on-surface font-semibold tabular-nums">₦65,000.00</span>
+</div>
+<div class="flex justify-between items-center">
+<span>Extension Service Fee (1.0%):</span>
+<span class="text-on-surface font-semibold tabular-nums">+ ₦2,850.00</span>
+</div>
+<div class="flex justify-between items-center pt-1 border-t border-outline-variant/30 text-on-surface font-medium">
+<span>Total Final Debit Amount:</span>
+<span class="font-label text-label text-primary font-bold tabular-nums">₦67,850.00</span>
+</div>
+<div class="flex items-center gap-1 text-[11px] text-on-surface-variant/80 pt-0.5">
+<span class="material-symbols-outlined text-[14px] text-primary">check_circle</span>
+<span>Locks current market discount worth ₦40,000.00 until April 15.</span>
+</div>
+</div>
+</section>
+<!-- Merchant Legal & Agreement Footnote -->
+<footer class="flex items-start gap-2 px-1">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant shrink-0 mt-0.5">shield</span>
+<p class="font-caption text-caption text-on-surface-variant leading-relaxed text-[12px]">
+          Extension is allowed once per Pay Am Small vault as specified under the MegaPlaza Merchant Retail Agreement. All debits are processed via registered Tier 2 verified bank mandates.
+        </p>
+</footer>
+<!-- CTA Action Button Container -->
+<div class="pt-space-xs">
+<button class="w-full h-[52px] bg-primary-container text-on-primary rounded-xl font-label text-label font-semibold flex items-center justify-center gap-2 shadow-sm active:bg-primary active:scale-[0.99] transition-all" id="primary-cta-button" type="button">
+<span id="cta-button-text">Confirm 30-Day Extension (₦2,850 Fee)</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- BottomNavBar (Shared Component Specification) -->
+<!-- Destination count: 5; Active Tab: Save & Borrow -->
+<nav aria-label="Bottom Navigation" class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-margin h-16 max-w-[560px] mx-auto pb-safe bg-surface-container-lowest shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)]">
+<!-- Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#home">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="font-caption text-caption font-medium">Home</span>
+</a>
+<!-- Payments -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#payments">
+<span class="material-symbols-outlined text-[24px]">send</span>
+<span class="font-caption text-caption font-medium">Payments</span>
+</a>
+<!-- Cards -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#cards">
+<span class="material-symbols-outlined text-[24px]">credit_card</span>
+<span class="font-caption text-caption font-medium">Cards</span>
+</a>
+<!-- Save & Borrow (ACTIVE) -->
+<a aria-current="page" class="flex flex-col items-center justify-center text-primary font-semibold min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#save-borrow">
+<span class="material-symbols-outlined text-[24px]" data-weight="fill" style="font-variation-settings: 'FILL' 1;">savings</span>
+<span class="font-caption text-caption font-medium">Save &amp; Borrow</span>
+</a>
+<!-- More -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#more">
+<span class="material-symbols-outlined text-[24px]">more_horiz</span>
+<span class="font-caption text-caption font-medium">More</span>
+</a>
+</nav>
+</main>
+<!-- Interactive State Logic Handler -->
+<script>
+    function handleSelectionChange(option) {
+      const card1 = document.getElementById('label-opt-1');
+      const card2 = document.getElementById('label-opt-2');
+      const dot1 = document.getElementById('radio-dot-1');
+      const dot2 = document.getElementById('radio-dot-2');
+      const box2 = document.getElementById('radio-box-2');
+      const ctaBtnText = document.getElementById('cta-button-text');
+      const primaryBtn = document.getElementById('primary-cta-button');
+      
+      const impactTitle = document.getElementById('impact-title');
+      const impactBadge = document.getElementById('impact-badge');
+      const impactContent = document.getElementById('impact-content');
+
+      if (option === 'extend') {
+        // Option 1 Active UI
+        card1.className = 'relative block cursor-pointer rounded-xl border-2 border-primary-container bg-surface-container-lowest p-space-lg custom-shadow-card transition-all duration-200 hover:border-primary';
+        card2.className = 'relative block cursor-pointer rounded-xl border border-outline-variant/60 bg-surface-container-lowest p-space-lg custom-shadow-card transition-all duration-200 hover:border-outline';
+        
+        dot1.className = 'w-2.5 h-2.5 rounded-full bg-primary-container';
+        box2.className = 'w-5 h-5 rounded-full border-2 border-outline flex items-center justify-center p-0.5 bg-surface-container-lowest';
+        dot2.className = 'w-2.5 h-2.5 rounded-full bg-transparent';
+
+        impactTitle.innerText = 'Extension Financial Impact';
+        impactBadge.innerText = 'Option 1 Active';
+        impactBadge.className = 'font-caption text-caption text-primary font-medium';
+
+        impactContent.innerHTML = `
+          <div class="flex justify-between items-center">
+            <span>Remaining Shortfall:</span>
+            <span class="text-on-surface font-semibold tabular-nums">₦65,000.00</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span>Extension Service Fee (1.0%):</span>
+            <span class="text-on-surface font-semibold tabular-nums">+ ₦2,850.00</span>
+          </div>
+          <div class="flex justify-between items-center pt-1 border-t border-outline-variant/30 text-on-surface font-medium">
+            <span>Total Final Debit Amount:</span>
+            <span class="font-label text-label text-primary font-bold tabular-nums">₦67,850.00</span>
+          </div>
+          <div class="flex items-center gap-1 text-[11px] text-on-surface-variant/80 pt-0.5">
+            <span class="material-symbols-outlined text-[14px] text-primary">check_circle</span>
+            <span>Locks current market discount worth ₦40,000.00 until April 15.</span>
+          </div>
+        `;
+
+        ctaBtnText.innerText = 'Confirm 30-Day Extension (₦2,850 Fee)';
+        primaryBtn.className = 'w-full h-[52px] bg-primary-container text-on-primary rounded-xl font-label text-label font-semibold flex items-center justify-center gap-2 shadow-sm active:bg-primary active:scale-[0.99] transition-all';
+      } else {
+        // Option 2 Active UI
+        card1.className = 'relative block cursor-pointer rounded-xl border border-outline-variant/60 bg-surface-container-lowest p-space-lg custom-shadow-card transition-all duration-200 hover:border-outline';
+        card2.className = 'relative block cursor-pointer rounded-xl border-2 border-primary-container bg-surface-container-lowest p-space-lg custom-shadow-card transition-all duration-200 hover:border-primary';
+
+        dot1.className = 'w-2.5 h-2.5 rounded-full bg-transparent';
+        box2.className = 'w-5 h-5 rounded-full border-2 border-primary-container flex items-center justify-center p-0.5 bg-surface-container-lowest';
+        dot2.className = 'w-2.5 h-2.5 rounded-full bg-primary-container';
+
+        impactTitle.innerText = 'Refund Settlement Impact';
+        impactBadge.innerText = 'Option 2 Active';
+        impactBadge.className = 'font-caption text-caption text-secondary font-medium';
+
+        impactContent.innerHTML = `
+          <div class="flex justify-between items-center">
+            <span>Current Vault Balance:</span>
+            <span class="text-on-surface font-semibold tabular-nums">₦220,000.00</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span>Administrative Restocking Fee (2.5%):</span>
+            <span class="text-error font-semibold tabular-nums">- ₦5,500.00</span>
+          </div>
+          <div class="flex justify-between items-center pt-1 border-t border-outline-variant/30 text-on-surface font-medium">
+            <span>Net Instant Credit to Tier 2:</span>
+            <span class="font-label text-label text-secondary font-bold tabular-nums">₦214,500.00</span>
+          </div>
+          <div class="flex items-center gap-1 text-[11px] text-error pt-0.5">
+            <span class="material-symbols-outlined text-[14px]">warning</span>
+            <span>MegaPlaza reservation will be immediately released to open catalog.</span>
+          </div>
+        `;
+
+        ctaBtnText.innerText = 'Confirm Vault Close & Refund (₦214,500.00)';
+        primaryBtn.className = 'w-full h-[52px] bg-secondary text-on-secondary rounded-xl font-label text-label font-semibold flex items-center justify-center gap-2 shadow-sm active:scale-[0.99] transition-all';
+      }
+    }
+  </script>
+</body></html>

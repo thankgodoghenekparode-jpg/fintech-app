@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pay Am Small — Products &amp; Prices | YourApp Merchant Ops</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-bright": "#fff8f8",
+            "primary": "#6d0033",
+            "inverse-primary": "#ffb1c5",
+            "on-surface-variant": "#564146",
+            "error-container": "#ffdad6",
+            "outline-variant": "#dcbfc5",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "primary-container": "#8e1b4a",
+            "surface": "#fff8f8",
+            "on-primary": "#ffffff",
+            "secondary": "#ae3123",
+            "primary-fixed-dim": "#ffb1c5",
+            "on-secondary-container": "#690000",
+            "surface-container-low": "#fbf1f2",
+            "surface-container": "#f5eced",
+            "outline": "#897176",
+            "primary-fixed": "#ffd9e1",
+            "tertiary-container": "#53484d",
+            "on-primary-fixed": "#3f001b",
+            "surface-tint": "#a8315d",
+            "tertiary-fixed": "#eedee4",
+            "on-primary-fixed-variant": "#881646",
+            "on-secondary-fixed": "#410000",
+            "on-tertiary": "#ffffff",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "inverse-on-surface": "#f8eeef",
+            "surface-container-highest": "#e9e0e1",
+            "on-error": "#ffffff",
+            "secondary-fixed-dim": "#ffb4a8",
+            "on-secondary-fixed-variant": "#8c170e",
+            "surface-dim": "#e1d8d9",
+            "inverse-surface": "#342f30",
+            "surface-variant": "#e9e0e1",
+            "tertiary": "#3b3236",
+            "on-tertiary-container": "#c6b7bd",
+            "on-error-container": "#93000a",
+            "error": "#ba1a1a",
+            "secondary-fixed": "#ffdad4",
+            "on-secondary": "#ffffff",
+            "on-primary-container": "#ffa0ba",
+            "on-background": "#1f1b1c",
+            "on-tertiary-fixed": "#21191e",
+            "on-surface": "#1f1b1c",
+            "secondary-container": "#fc6955",
+            "background": "#fff8f8",
+            "surface-container-high": "#efe6e7",
+            "surface-container-lowest": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "margin": "1rem",
+            "space-3xl": "3rem",
+            "space-lg": "1rem",
+            "space-md": "0.75rem",
+            "gutter": "1rem",
+            "space-2xl": "2rem",
+            "space-xl": "1.5rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "body": ["Inter"],
+            "label": ["Inter"],
+            "caption": ["Inter"],
+            "subtitle": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "body-medium": ["Inter"],
+            "title": ["Inter"],
+            "display": ["Inter"],
+            "amount-lg": ["Inter"]
+          },
+          "fontSize": {
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .tabular-nums { font-variant-numeric: tabular-nums; }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body antialiased flex min-h-screen overflow-x-hidden selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Left Sidebar Navigation -->
+<aside class="w-72 bg-surface-container-lowest border-r border-surface-variant flex flex-col justify-between py-space-xl px-space-lg fixed left-0 top-0 h-screen z-30">
+<div class="flex flex-col gap-space-xl">
+<!-- Brand & Store Crest -->
+<div class="flex flex-col gap-space-xs pb-space-md border-b border-surface-container-high">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-xl bg-primary-container flex items-center justify-center text-on-primary shadow-sm">
+<span class="material-symbols-outlined text-title" data-icon="lock_clock">lock_clock</span>
+</div>
+<div class="flex flex-col">
+<span class="text-subtitle font-subtitle text-primary tracking-tight leading-tight">YourApp Merchant Ops</span>
+<span class="text-caption font-caption text-on-surface-variant">Pay Am Small Vault Portal</span>
+</div>
+</div>
+<!-- Active Store Tag -->
+<div class="mt-space-sm bg-surface-container-low border border-outline-variant/60 rounded-lg p-space-sm flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5" data-icon="storefront">storefront</span>
+<div class="flex flex-col">
+<span class="text-label font-label text-on-surface leading-tight">Slot Systems Nigeria</span>
+<span class="text-caption font-caption text-on-surface-variant">Ikeja Flagship (#VEN-SLOT-041)</span>
+</div>
+</div>
+</div>
+<!-- Main Navigation Links -->
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<!-- Active Item: Products & Prices -->
+<a class="flex items-center justify-between px-space-lg py-space-md rounded-lg bg-surface-container-low text-primary font-label text-label shadow-sm" href="#">
+<div class="flex items-center gap-space-md">
+<span class="material-symbols-outlined text-primary" data-icon="tune" style="font-variation-settings: 'FILL' 1;">tune</span>
+<span>Products &amp; Prices</span>
+</div>
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="local_shipping">local_shipping</span>
+<span>Orders &amp; Fulfilment</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span>Plans &amp; Customers</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="percent">percent</span>
+<span>Credit Offers</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span>Payouts &amp; Wallet</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="verified_user">verified_user</span>
+<span>Team &amp; Verification</span>
+</a>
+</nav>
+</div>
+<!-- Sidebar Footer -->
+<div class="flex flex-col gap-1 pt-space-md border-t border-surface-container-high">
+<a class="flex items-center gap-space-md px-space-lg py-space-sm rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-sm rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="help_outline">help_outline</span>
+<span>Help &amp; Support</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-sm rounded-lg text-secondary font-label text-label hover:bg-error-container/40 transition-colors mt-1" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="logout">logout</span>
+<span>Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Wrapper with 72 (18rem) offset -->
+<div class="flex-1 ml-72 flex flex-col min-h-screen bg-background">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 right-0 h-16 flex items-center justify-between px-space-xl bg-surface-container-lowest border-b border-surface-variant z-20">
+<!-- Search Input -->
+<div class="relative w-96">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-[20px]" data-icon="search">search</span>
+<input class="w-full h-10 pl-10 pr-4 bg-background border border-surface-variant rounded-xl text-body text-on-surface placeholder:text-outline focus:outline-none focus:border-primary-container text-[14px]" placeholder="Search SKU, barcode, device name..." type="text"/>
+</div>
+<!-- Right Group: Store Badge & Trailing Actions -->
+<div class="flex items-center gap-space-lg">
+<!-- Store Synced Status Badge -->
+<div class="flex items-center gap-space-xs bg-surface-container-low border border-outline-variant px-space-md py-1.5 rounded-full">
+<span class="w-2 h-2 rounded-full bg-secondary-container animate-pulse"></span>
+<span class="text-caption font-label text-primary">Catalogue Synced (142 Products Live)</span>
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="cloud_done">cloud_done</span>
+</div>
+<div class="h-6 w-px bg-surface-variant"></div>
+<!-- Trailing Action Icons -->
+<button class="relative p-2 rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-secondary rounded-full"></span>
+</button>
+<button class="p-2 rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+<!-- User Profile Pill -->
+<div class="flex items-center gap-space-sm pl-space-xs">
+<div class="w-9 h-9 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed font-label text-label border border-primary-container/20">
+            NE
+          </div>
+<div class="flex flex-col text-left">
+<span class="text-label font-label text-on-surface leading-tight">Nnamdi Eze</span>
+<span class="text-caption font-caption text-on-surface-variant text-[11px]">Head of Inventory &amp; Pricing</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Workspace -->
+<main class="p-space-xl flex flex-col gap-space-xl max-w-[1600px] w-full mx-auto">
+<!-- Header & Top Action Bar -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div>
+<div class="flex items-center gap-space-sm">
+<h1 class="text-title font-title text-on-surface">Catalogue Management &amp; Price-Lock Commitments</h1>
+<span class="bg-surface-container border border-surface-variant text-on-surface-variant px-2 py-0.5 rounded text-caption font-mono">W-PAS-002</span>
+</div>
+<p class="text-caption font-caption text-on-surface-variant mt-1">Configure retail pricing, enable Price-Lock and Vendor Credit plans, and manage ring-fenced inventory pools.</p>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center gap-space-md">
+<button class="h-[52px] px-space-lg rounded-xl border-[1.5px] border-surface-variant bg-surface-container-lowest text-on-surface font-label text-label hover:bg-surface-container transition-colors flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[20px]" data-icon="download">download</span>
+<span>Export Catalogue (CSV)</span>
+</button>
+<button class="h-[52px] px-space-xl rounded-xl bg-primary-container text-on-primary font-label text-label hover:bg-primary transition-all shadow-sm flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[20px]" data-icon="add">add</span>
+<span>+ Add New Product SKU</span>
+</button>
+</div>
+</div>
+<!-- Metric Cards Strip (4 KPI Tiles) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- Tile 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg border border-surface-variant shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-caption font-label text-on-surface-variant">Active Listed SKUs</span>
+<span class="w-8 h-8 rounded-lg bg-surface-container-low text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]" data-icon="inventory_2">inventory_2</span>
+</span>
+</div>
+<div class="mt-space-md">
+<span class="text-title font-title text-on-surface">142 Active</span>
+<div class="text-caption font-caption text-on-surface-variant mt-1 flex items-center gap-1.5 flex-wrap">
+<span>48 Tech</span> • <span>34 Laptops</span> • <span>60 Home</span>
+</div>
+</div>
+</div>
+<!-- Tile 2 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg border border-surface-variant shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-caption font-label text-on-surface-variant">Total Price-Locked Value</span>
+<span class="w-8 h-8 rounded-lg bg-surface-container-low text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]" data-icon="lock">lock</span>
+</span>
+</div>
+<div class="mt-space-md">
+<span class="text-title font-title text-primary tabular-nums">₦38,400,000.00</span>
+<div class="text-caption font-caption text-on-surface-variant mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary-container text-[14px]" data-icon="verified">verified</span>
+<span>Protected by binding price freeze</span>
+</div>
+</div>
+</div>
+<!-- Tile 3 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg border border-surface-variant shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-caption font-label text-on-surface-variant">Ring-Fenced Inventory</span>
+<span class="w-8 h-8 rounded-lg bg-surface-container-low text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]" data-icon="shield">shield</span>
+</span>
+</div>
+<div class="mt-space-md">
+<span class="text-title font-title text-on-surface">86 Units</span>
+<div class="text-caption font-caption text-on-surface-variant mt-1">
+              Reserved in warehouse for saving buyers
+            </div>
+</div>
+</div>
+<!-- Tile 4 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg border border-surface-variant shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-caption font-label text-on-surface-variant">Average Plan Duration</span>
+<span class="w-8 h-8 rounded-lg bg-surface-container-low text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]" data-icon="hourglass_top">hourglass_top</span>
+</span>
+</div>
+<div class="mt-space-md">
+<span class="text-title font-title text-on-surface">42 Days</span>
+<div class="text-caption font-caption text-on-surface-variant mt-1">
+              From initiation to full vault payoff
+            </div>
+</div>
+</div>
+</div>
+<!-- Statutory Price-Lock Commitment Notice Banner -->
+<div class="bg-surface-container-low border border-outline-variant/80 rounded-xl p-space-lg flex items-start gap-space-md shadow-sm">
+<div class="w-9 h-9 rounded-xl bg-primary text-on-primary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[20px]" data-icon="gavel">gavel</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-label text-label text-primary uppercase tracking-wide text-[12px]">Statutory Merchant Covenant</span>
+<span class="text-outline-variant">•</span>
+<span class="text-caption font-caption text-on-surface-variant">Central Bank of Nigeria Regulatory Safeguard</span>
+</div>
+<p class="text-body font-body text-on-surface mt-1 text-[14px] leading-relaxed">
+<strong class="font-label text-on-surface">Binding Price Freeze Covenant:</strong> Once a buyer initiates a Price-Lock savings plan, the product retail price is legally locked against inflation or FX price hikes for up to 90 calendar days. Ring-fenced stock cannot be liquidated or reassigned without buyer cancellation or default.
+          </p>
+</div>
+</div>
+<!-- Filter Toolbar -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md border border-surface-variant flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex flex-wrap items-center gap-space-md">
+<!-- Category Selector -->
+<div class="flex items-center gap-space-xs">
+<span class="text-caption font-label text-on-surface-variant">Category:</span>
+<select class="h-10 px-3 bg-surface-container border border-surface-variant rounded-lg text-label font-label text-on-surface focus:outline-none focus:border-primary-container text-[13px]">
+<option>All Categories</option>
+<option>Smartphones</option>
+<option>Laptops</option>
+<option>Audio</option>
+<option>Gaming</option>
+</select>
+</div>
+<!-- Plan Support Filter -->
+<div class="flex items-center gap-space-xs">
+<span class="text-caption font-label text-on-surface-variant">Plan Support:</span>
+<select class="h-10 px-3 bg-surface-container border border-surface-variant rounded-lg text-label font-label text-on-surface focus:outline-none focus:border-primary-container text-[13px]">
+<option>All Plans</option>
+<option>Price-Lock Enabled</option>
+<option>Vendor Credit Enabled</option>
+</select>
+</div>
+<!-- Stock Status -->
+<div class="flex items-center gap-space-xs">
+<span class="text-caption font-label text-on-surface-variant">Stock Status:</span>
+<select class="h-10 px-3 bg-surface-container border border-surface-variant rounded-lg text-label font-label text-on-surface focus:outline-none focus:border-primary-container text-[13px]">
+<option>All Stock</option>
+<option>In Stock</option>
+<option>Low Stock</option>
+<option>Ring-Fenced</option>
+</select>
+</div>
+</div>
+<div class="flex items-center gap-space-sm text-caption font-caption text-on-surface-variant">
+<span>Showing <strong class="font-label text-on-surface">5 of 142</strong> items</span>
+<button class="p-1 hover:bg-surface-container rounded text-outline hover:text-on-surface">
+<span class="material-symbols-outlined text-[20px]" data-icon="refresh">refresh</span>
+</button>
+</div>
+</div>
+<!-- Main Split View Layout: Left Table (2/3) + Right Editor (1/3) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-start">
+<!-- Left Table: Products Catalogue (8 cols of 12) -->
+<div class="lg:col-span-8 bg-surface-container-lowest rounded-xl border border-surface-variant shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container/70 border-b border-surface-variant text-caption font-label text-on-surface-variant uppercase text-[12px] tracking-wider">
+<th class="py-space-md px-space-lg">Product &amp; SKU</th>
+<th class="py-space-md px-space-md">Category</th>
+<th class="py-space-md px-space-md">Retail Price</th>
+<th class="py-space-md px-space-md">Price-Lock</th>
+<th class="py-space-md px-space-md">Stock Status</th>
+<th class="py-space-md px-space-md">Plan Badges</th>
+<th class="py-space-md px-space-lg text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-variant text-[14px]">
+<!-- Row 1: Apple iPhone 15 Pro (Selected) -->
+<tr class="bg-surface-container-low/50 hover:bg-surface-container-low transition-colors cursor-pointer border-l-4 border-l-primary-container">
+<td class="py-space-md px-space-lg">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center shrink-0 border border-surface-variant text-primary">
+<span class="material-symbols-outlined text-[20px]" data-icon="smartphone">smartphone</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label text-label text-on-surface">Apple iPhone 15 Pro 128GB</span>
+<span class="text-caption font-caption text-on-surface-variant font-mono text-[11px]">SKU-IP15P-128</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md text-on-surface font-body">Smartphones</td>
+<td class="py-space-md px-space-md font-label text-label text-on-surface tabular-nums">₦1,250,000.00</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[16px]" data-icon="lock_clock">lock_clock</span>
+<span class="font-label text-caption">60 Days</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col text-caption">
+<span class="font-label text-on-surface">6 Ring-Fenced</span>
+<span class="text-on-surface-variant">4 Available</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-wrap gap-1">
+<span class="inline-flex items-center gap-1 bg-surface-container text-primary px-2 py-0.5 rounded text-[11px] font-label">
+<span class="material-symbols-outlined text-[12px]" data-icon="check_circle">check_circle</span> Price-Lock
+                      </span>
+<span class="inline-flex items-center gap-1 bg-surface-container text-on-surface-variant px-2 py-0.5 rounded text-[11px] font-label">
+<span class="material-symbols-outlined text-[12px]" data-icon="credit_card">credit_card</span> BNPL
+                      </span>
+</div>
+</td>
+<td class="py-space-md px-space-lg text-right">
+<button class="px-3 py-1.5 rounded-lg bg-primary-container text-on-primary font-label text-caption hover:bg-primary transition-colors">
+                      Edit SKU
+                    </button>
+</td>
+</tr>
+<!-- Row 2: Samsung Galaxy S24 Ultra -->
+<tr class="hover:bg-surface-container-low/40 transition-colors cursor-pointer">
+<td class="py-space-md px-space-lg">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center shrink-0 border border-surface-variant text-primary">
+<span class="material-symbols-outlined text-[20px]" data-icon="phone_android">phone_android</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label text-label text-on-surface">Samsung Galaxy S24 Ultra 256GB</span>
+<span class="text-caption font-caption text-on-surface-variant font-mono text-[11px]">SKU-S24U-256</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md text-on-surface font-body">Smartphones</td>
+<td class="py-space-md px-space-md font-label text-label text-on-surface tabular-nums">₦1,450,000.00</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[16px]" data-icon="lock_clock">lock_clock</span>
+<span class="font-label text-caption">90 Days</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col text-caption">
+<span class="font-label text-on-surface">8 Ring-Fenced</span>
+<span class="text-on-surface-variant">12 Available</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-wrap gap-1">
+<span class="inline-flex items-center gap-1 bg-surface-container text-primary px-2 py-0.5 rounded text-[11px] font-label">
+<span class="material-symbols-outlined text-[12px]" data-icon="check_circle">check_circle</span> Price-Lock
+                      </span>
+<span class="inline-flex items-center gap-1 bg-surface-container text-on-surface-variant px-2 py-0.5 rounded text-[11px] font-label">
+<span class="material-symbols-outlined text-[12px]" data-icon="credit_card">credit_card</span> BNPL
+                      </span>
+</div>
+</td>
+<td class="py-space-md px-space-lg text-right">
+<button class="px-3 py-1.5 rounded-lg border border-surface-variant text-on-surface font-label text-caption hover:bg-surface-container transition-colors">
+                      Edit SKU
+                    </button>
+</td>
+</tr>
+<!-- Row 3: Apple MacBook Air M2 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors cursor-pointer">
+<td class="py-space-md px-space-lg">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center shrink-0 border border-surface-variant text-primary">
+<span class="material-symbols-outlined text-[20px]" data-icon="laptop_mac">laptop_mac</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label text-label text-on-surface">Apple MacBook Air M2 16GB 512GB</span>
+<span class="text-caption font-caption text-on-surface-variant font-mono text-[11px]">SKU-MBA-M2</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md text-on-surface font-body">Computing</td>
+<td class="py-space-md px-space-md font-label text-label text-on-surface tabular-nums">₦1,600,000.00</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[16px]" data-icon="lock_clock">lock_clock</span>
+<span class="font-label text-caption">60 Days</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col text-caption">
+<span class="font-label text-on-surface">5 Ring-Fenced</span>
+<span class="text-secondary font-label flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]" data-icon="warning">warning</span> 2 Avail. (Low!)
+                      </span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1 bg-surface-container text-primary px-2 py-0.5 rounded text-[11px] font-label">
+<span class="material-symbols-outlined text-[12px]" data-icon="check_circle">check_circle</span> Price-Lock
+                    </span>
+</td>
+<td class="py-space-md px-space-lg text-right">
+<button class="px-3 py-1.5 rounded-lg border border-surface-variant text-on-surface font-label text-caption hover:bg-surface-container transition-colors">
+                      Edit SKU
+                    </button>
+</td>
+</tr>
+<!-- Row 4: Sony PlayStation 5 Slim Digital -->
+<tr class="hover:bg-surface-container-low/40 transition-colors cursor-pointer">
+<td class="py-space-md px-space-lg">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center shrink-0 border border-surface-variant text-primary">
+<span class="material-symbols-outlined text-[20px]" data-icon="sports_esports">sports_esports</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label text-label text-on-surface">Sony PlayStation 5 Slim Digital</span>
+<span class="text-caption font-caption text-on-surface-variant font-mono text-[11px]">SKU-PS5-SLM</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md text-on-surface font-body">Gaming</td>
+<td class="py-space-md px-space-md font-label text-label text-on-surface tabular-nums">₦680,000.00</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[16px]" data-icon="lock_clock">lock_clock</span>
+<span class="font-label text-caption">45 Days</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col text-caption">
+<span class="font-label text-on-surface">12 Ring-Fenced</span>
+<span class="text-on-surface-variant">18 Available</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-wrap gap-1">
+<span class="inline-flex items-center gap-1 bg-surface-container text-primary px-2 py-0.5 rounded text-[11px] font-label">
+<span class="material-symbols-outlined text-[12px]" data-icon="check_circle">check_circle</span> Price-Lock
+                      </span>
+<span class="inline-flex items-center gap-1 bg-surface-container text-on-surface-variant px-2 py-0.5 rounded text-[11px] font-label">
+<span class="material-symbols-outlined text-[12px]" data-icon="credit_card">credit_card</span> BNPL
+                      </span>
+</div>
+</td>
+<td class="py-space-md px-space-lg text-right">
+<button class="px-3 py-1.5 rounded-lg border border-surface-variant text-on-surface font-label text-caption hover:bg-surface-container transition-colors">
+                      Edit SKU
+                    </button>
+</td>
+</tr>
+<!-- Row 5: LG 55-inch C3 OLED TV -->
+<tr class="hover:bg-surface-container-low/40 transition-colors cursor-pointer">
+<td class="py-space-md px-space-lg">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center shrink-0 border border-surface-variant text-primary">
+<span class="material-symbols-outlined text-[20px]" data-icon="tv">tv</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label text-label text-on-surface">LG 55-inch C3 OLED 4K Smart TV</span>
+<span class="text-caption font-caption text-on-surface-variant font-mono text-[11px]">SKU-LG-55C3</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md text-on-surface font-body">Home Appliances</td>
+<td class="py-space-md px-space-md font-label text-label text-on-surface tabular-nums">₦1,100,000.00</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[16px]" data-icon="lock_clock">lock_clock</span>
+<span class="font-label text-caption">60 Days</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col text-caption">
+<span class="font-label text-on-surface">4 Ring-Fenced</span>
+<span class="text-on-surface-variant">9 Available</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1 bg-surface-container text-primary px-2 py-0.5 rounded text-[11px] font-label">
+<span class="material-symbols-outlined text-[12px]" data-icon="check_circle">check_circle</span> Price-Lock
+                    </span>
+</td>
+<td class="py-space-md px-space-lg text-right">
+<button class="px-3 py-1.5 rounded-lg border border-surface-variant text-on-surface font-label text-caption hover:bg-surface-container transition-colors">
+                      Edit SKU
+                    </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Pagination Footer -->
+<div class="p-space-md bg-surface-container-lowest border-t border-surface-variant flex items-center justify-between">
+<span class="text-caption font-caption text-on-surface-variant">Page 1 of 29</span>
+<div class="flex items-center gap-space-xs">
+<button class="p-2 border border-surface-variant rounded-lg text-on-surface-variant disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-[18px]" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="p-2 border border-surface-variant rounded-lg text-on-surface hover:bg-surface-container">
+<span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Right Panel: Editor Drawer for Selected SKU (4 cols of 12) -->
+<div class="lg:col-span-4 bg-surface-container-lowest rounded-xl border border-surface-variant shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08)] p-space-xl flex flex-col gap-space-lg sticky top-20">
+<!-- Drawer Header -->
+<div class="flex items-center justify-between pb-space-sm border-b border-surface-variant">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary" data-icon="edit_note">edit_note</span>
+<h2 class="text-subtitle font-subtitle text-on-surface">Product Details Editor</h2>
+</div>
+<span class="px-2 py-1 rounded bg-surface-container text-caption font-mono text-[11px] text-on-surface-variant">ACTIVE EDIT</span>
+</div>
+<!-- Product Name & Basic Identifiers -->
+<div class="flex flex-col gap-space-xs">
+<label class="text-caption font-label text-on-surface-variant">Product Name</label>
+<input class="h-[52px] px-space-md bg-surface-container-lowest border border-surface-variant rounded-xl text-body font-body text-on-surface focus:outline-none focus:border-primary-container" type="text" value="Apple iPhone 15 Pro 128GB Titanium"/>
+</div>
+<!-- Retail Cash Price (Tabular Numbers) -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<label class="text-caption font-label text-on-surface-variant">Retail Cash Price (₦)</label>
+<span class="text-caption font-caption text-primary text-[11px]">Binding baseline</span>
+</div>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 font-label text-on-surface-variant">₦</span>
+<input class="w-full h-[52px] pl-9 pr-space-md bg-surface-container-lowest border border-surface-variant rounded-xl text-body font-label tabular-nums text-on-surface focus:outline-none focus:border-primary-container" type="text" value="1,250,000.00"/>
+</div>
+</div>
+<!-- Price-Lock Horizon & Safety Buffer Grid -->
+<div class="grid grid-cols-2 gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<label class="text-caption font-label text-on-surface-variant">Max Price-Lock Horizon</label>
+<select class="h-[52px] px-space-md bg-surface-container-lowest border border-surface-variant rounded-xl text-body font-body text-on-surface focus:outline-none focus:border-primary-container text-[14px]">
+<option>30 Days</option>
+<option>45 Days</option>
+<option selected="">60 Days</option>
+<option>90 Days</option>
+</select>
+</div>
+<div class="flex flex-col gap-space-xs">
+<label class="text-caption font-label text-on-surface-variant">Ring-Fenced Buffer</label>
+<div class="h-[52px] px-space-md bg-surface-container border border-surface-variant rounded-xl flex items-center justify-between text-body font-label text-on-surface">
+<span>20% Stock</span>
+<span class="text-caption font-caption text-on-surface-variant">(6 Units)</span>
+</div>
+</div>
+</div>
+<!-- Vendor BNPL Credit Terms Box -->
+<div class="bg-surface-container-low border border-outline-variant/60 rounded-xl p-space-md flex flex-col gap-space-xs">
+<span class="font-label text-label text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="account_balance">account_balance</span> Vendor BNPL Credit Terms
+            </span>
+<div class="text-caption font-caption text-on-surface-variant flex flex-col gap-1 mt-1">
+<div class="flex justify-between">
+<span>Min Down Payment (30%):</span>
+<strong class="font-label text-on-surface tabular-nums">₦375,000.00</strong>
+</div>
+<div class="flex justify-between">
+<span>Max Tenor:</span>
+<strong class="font-label text-on-surface">4 Months</strong>
+</div>
+<div class="flex justify-between">
+<span>Merchant Markup:</span>
+<strong class="font-label text-on-surface">3.5% Flat</strong>
+</div>
+</div>
+</div>
+<!-- Delivery SLA Commitment -->
+<div class="flex items-start gap-space-xs bg-surface-container rounded-lg p-space-sm border border-surface-variant">
+<span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5" data-icon="local_shipping">local_shipping</span>
+<span class="text-caption font-caption text-on-surface">
+<strong class="font-label">Delivery SLA:</strong> Ships within 24 hours of 100% vault funding or first credit clearance.
+            </span>
+</div>
+<!-- Locked-Price Commitment Notice -->
+<div class="bg-error-container/40 border border-secondary/30 rounded-xl p-space-md flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[20px] shrink-0 mt-0.5" data-icon="lock">lock</span>
+<p class="text-caption font-caption text-on-secondary-container leading-tight">
+<strong>Price edit is locked</strong> for 6 active buyer vaults at ₦1,250,000.00. Updating retail cash price will only apply to new incoming vaults.
+            </p>
+</div>
+<!-- Action Buttons Stack -->
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<button class="w-full h-[52px] rounded-xl bg-primary-container text-on-primary font-label text-label hover:bg-primary transition-all shadow-sm flex items-center justify-center gap-space-xs">
+<span class="material-symbols-outlined text-[20px]" data-icon="save">save</span>
+<span>Save SKU Changes</span>
+</button>
+<div class="grid grid-cols-2 gap-space-sm">
+<button class="h-10 rounded-xl border border-surface-variant bg-surface-container-lowest text-on-surface font-label text-caption hover:bg-surface-container transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="content_copy">content_copy</span>
+<span>Duplicate SKU</span>
+</button>
+<button class="h-10 rounded-xl border border-secondary/30 bg-surface-container-lowest text-secondary font-label text-caption hover:bg-error-container/30 transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="block">block</span>
+<span>Deactivate</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

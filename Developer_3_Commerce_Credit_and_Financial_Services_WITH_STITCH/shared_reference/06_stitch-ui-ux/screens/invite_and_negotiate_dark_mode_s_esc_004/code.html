@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Invite and Negotiate - Escrow - YourApp</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-variant": "#373435",
+            "background": "#151314",
+            "on-primary-fixed": "#3e001f",
+            "secondary-fixed-dim": "#ffb4a8",
+            "tertiary-fixed": "#d9e2ff",
+            "surface": "#151314",
+            "on-tertiary": "#002d6f",
+            "surface-bright": "#3b3839",
+            "on-tertiary-fixed-variant": "#06429a",
+            "error": "#ffb4ab",
+            "tertiary": "#b0c6ff",
+            "on-error-container": "#ffdad6",
+            "outline": "#a28b91",
+            "tertiary-container": "#6a92ee",
+            "on-secondary-container": "#ff9f90",
+            "secondary-container": "#822c20",
+            "outline-variant": "#544247",
+            "surface-tint": "#ffb0ca",
+            "inverse-primary": "#9e3b63",
+            "surface-dim": "#151314",
+            "error-container": "#93000a",
+            "surface-container-low": "#1d1b1c",
+            "on-surface": "#e7e1e2",
+            "secondary-fixed": "#ffdad4",
+            "on-error": "#690005",
+            "on-surface-variant": "#dac0c6",
+            "inverse-surface": "#e7e1e2",
+            "on-primary-fixed-variant": "#7f234b",
+            "surface-container": "#211f20",
+            "on-tertiary-container": "#002a69",
+            "on-tertiary-fixed": "#001945",
+            "on-background": "#e7e1e2",
+            "surface-container-highest": "#373435",
+            "primary": "#ffb0ca",
+            "surface-container-high": "#2c292a",
+            "primary-container": "#e0709a",
+            "on-secondary-fixed": "#410000",
+            "on-primary-container": "#5d0331",
+            "primary-fixed": "#ffd9e3",
+            "surface-container-lowest": "#100e0f",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "on-secondary-fixed-variant": "#7f291e",
+            "inverse-on-surface": "#323031",
+            "on-primary": "#620735",
+            "on-secondary": "#61130a",
+            "secondary": "#ffb4a8",
+            "primary-fixed-dim": "#ffb0ca"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xl": "2rem",
+            "gutter": "1rem",
+            "margin": "1rem",
+            "space-lg": "1.5rem",
+            "margin-mobile": "1rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "gutter-mobile": "0.75rem",
+            "space-xs": "0.25rem"
+          },
+          "fontFamily": {
+            "label-lg": ["Inter"],
+            "body-lg": ["Inter"],
+            "headline-lg": ["Inter"],
+            "display-currency": ["Inter"],
+            "label-md": ["Inter"],
+            "headline-sm": ["Inter"],
+            "headline-md": ["Inter"],
+            "title-currency": ["Inter"],
+            "body-md": ["Inter"],
+            "label-sm": ["Inter"]
+          },
+          "fontSize": {
+            "label-lg": ["15px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "title-currency": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+    .safe-pb {
+      padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-[#121011] text-on-surface antialiased font-body-md text-body-md flex justify-center min-h-screen selection:bg-primary-container selection:text-on-primary-container">
+<!-- Mobile Viewport Frame (390px base standard) -->
+<div class="w-full max-w-[390px] min-h-screen bg-[#121011] flex flex-col relative pb-8">
+<!-- TopAppBar (Sub-page linear flow: back action, headline, trailing share) -->
+<header class="sticky top-0 z-40 bg-[#121011]/90 backdrop-blur-md px-margin py-3 flex items-center justify-between min-h-[56px] border-b border-outline-variant/30">
+<button aria-label="Go back" class="w-10 h-10 -ml-1.5 flex items-center justify-center rounded-full text-on-surface hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<div class="flex-1 text-center px-2">
+<h1 class="font-headline-sm text-headline-sm font-bold text-on-surface tracking-tight">Invite &amp; Negotiate</h1>
+<p class="font-label-sm text-label-sm text-outline tracking-wider font-mono">Deal #ESC-8921-FX3</p>
+</div>
+<button aria-label="Share deal" class="w-10 h-10 -mr-1.5 flex items-center justify-center rounded-full text-primary hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[22px]">share</span>
+</button>
+</header>
+<!-- Main Scrollable Canvas -->
+<main class="flex-1 px-margin pt-4 space-y-4">
+<!-- Counterparty Invite Card (Level 1 Surface) -->
+<section class="bg-[#1C1819] rounded-xl border border-outline-variant/40 p-4 space-y-3.5 shadow-sm">
+<div class="flex items-start justify-between gap-2">
+<div class="space-y-1">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">Counterparty Party</span>
+<div class="font-label-lg text-label-lg font-semibold text-on-surface flex items-center gap-1.5 flex-wrap">
+<span>+234 803 ••• 4419</span>
+<span class="text-outline text-xs">•</span>
+<span class="text-primary font-medium text-xs">Emeka Alaba Electronics</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-[#4CC38A] text-[20px] shrink-0 mt-0.5" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<!-- Verification Status Badge -->
+<div class="inline-flex items-center gap-1.5 py-1 px-2.5 rounded-full bg-[#4CC38A]/10 border border-[#4CC38A]/25 text-[#4CC38A] font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[15px]">verified_user</span>
+<span class="font-medium">BVN/NIN Verified Tier 2 Seller</span>
+</div>
+<!-- Protected Deal Link Bar -->
+<div class="space-y-2 pt-1">
+<label class="block font-label-sm text-label-sm text-on-surface-variant font-medium">Shareable Protected Deal Link</label>
+<div class="flex items-center gap-2 bg-[#262122] rounded-xl border border-outline-variant/50 p-1.5 pl-3">
+<span class="font-label-sm text-label-sm text-outline truncate flex-1 font-mono">yourapp.ng/escrow/v/8921-fx3-key</span>
+<button class="shrink-0 h-[38px] px-3 bg-surface-container-high hover:bg-surface-variant active:scale-95 text-primary text-xs font-semibold rounded-lg flex items-center gap-1 transition-all" type="button">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+<span>Copy</span>
+</button>
+</div>
+</div>
+<!-- Direct Instant Actions (Min 44-52px height) -->
+<div class="grid grid-cols-2 gap-2.5 pt-1">
+<button class="h-[46px] rounded-xl bg-[#262122] border border-outline-variant/40 hover:border-primary/40 active:scale-95 flex items-center justify-center gap-2 px-3 text-on-surface transition-all" type="button">
+<span class="material-symbols-outlined text-[18px] text-[#4CC38A]">chat</span>
+<span class="font-label-md text-label-md font-semibold">Share via WhatsApp</span>
+</button>
+<button class="h-[46px] rounded-xl bg-[#262122] border border-outline-variant/40 hover:border-primary/40 active:scale-95 flex items-center justify-center gap-2 px-3 text-on-surface transition-all" type="button">
+<span class="material-symbols-outlined text-[18px] text-tertiary">sms</span>
+<span class="font-label-md text-label-md font-semibold">Send SMS</span>
+</button>
+</div>
+</section>
+<!-- Deal Terms Snapshot (Locked Baseline) -->
+<section class="bg-[#1C1819] rounded-xl border border-outline-variant/40 p-4 space-y-3">
+<div class="flex items-center justify-between border-b border-outline-variant/30 pb-2.5">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]">lock_outline</span>
+<h2 class="font-label-md text-label-md font-bold uppercase tracking-wider text-on-surface">Deal Terms Baseline</h2>
+</div>
+<span class="font-label-sm text-label-sm text-outline font-medium">Locked</span>
+</div>
+<!-- Metric Grid -->
+<div class="grid grid-cols-2 gap-3 pt-1">
+<div class="bg-[#262122] p-2.5 rounded-lg border border-outline-variant/30">
+<p class="font-label-sm text-label-sm text-outline">Principal Amount</p>
+<p class="font-title-currency text-title-currency font-bold text-on-surface tabular-nums mt-0.5">₦1,200,000.00</p>
+</div>
+<div class="bg-[#262122] p-2.5 rounded-lg border border-outline-variant/30">
+<p class="font-label-sm text-label-sm text-outline">Escrow Fee Split</p>
+<p class="font-label-md text-label-md font-semibold text-on-surface tabular-nums mt-0.5">50/50 <span class="text-xs text-outline font-normal">(₦9,000 each)</span></p>
+</div>
+<div class="bg-[#262122] p-2.5 rounded-lg border border-outline-variant/30">
+<p class="font-label-sm text-label-sm text-outline">Inspection Window</p>
+<p class="font-label-md text-label-md font-semibold text-secondary-fixed mt-0.5">48 Hours</p>
+</div>
+<div class="bg-[#262122] p-2.5 rounded-lg border border-outline-variant/30">
+<p class="font-label-sm text-label-sm text-outline">Courier Transit</p>
+<p class="font-label-md text-label-md font-semibold text-on-surface mt-0.5">GIG Logistics</p>
+</div>
+</div>
+</section>
+<!-- Negotiation & Counter-Offer Activity Thread -->
+<section class="space-y-3">
+<div class="flex items-center justify-between px-1">
+<h2 class="font-label-md text-label-md font-bold text-on-surface uppercase tracking-wider">Negotiation Timeline</h2>
+<span class="flex items-center gap-1.5 font-label-sm text-label-sm text-[#E3B341]">
+<span class="w-2 h-2 rounded-full bg-[#E3B341] animate-pulse"></span>
+            Pending Action
+          </span>
+</div>
+<div class="space-y-3">
+<!-- Bubble 1: You (Buyer) -->
+<div class="flex flex-col items-end pl-8">
+<div class="bg-[#262122] border border-outline-variant/50 rounded-2xl rounded-tr-xs p-3.5 space-y-1.5 shadow-sm text-right">
+<div class="flex items-center justify-end gap-1.5">
+<span class="font-label-sm text-label-sm font-semibold text-primary">You (Initiator)</span>
+<span class="material-symbols-outlined text-[14px] text-outline">account_circle</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface text-left">
+                Created deal terms with 48h inspection upon arrival at Lekki Phase 1.
+              </p>
+<div class="flex items-center justify-end gap-1 pt-0.5 text-outline font-label-sm text-label-sm">
+<span>Yesterday, 14:20</span>
+<span class="material-symbols-outlined text-[13px] text-[#4CC38A]">done_all</span>
+</div>
+</div>
+</div>
+<!-- Bubble 2: Seller Counter-Offer -->
+<div class="flex flex-col items-start pr-6">
+<div class="bg-[#1C1819] border border-secondary/40 rounded-2xl rounded-tl-xs p-3.5 space-y-2 shadow-sm w-full">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-6 h-6 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold text-[11px]">EA</span>
+<span class="font-label-sm text-label-sm font-bold text-secondary-fixed">Emeka (Seller)</span>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#E3B341]/15 text-[#E3B341] text-[10px] font-semibold border border-[#E3B341]/25">
+                  Counter-Offer
+                </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-snug">
+                "Proposed change: Please increase inspection window to 72h so technician can test the lens sensor, and seller pays full delivery waybill."
+              </p>
+<div class="pt-0.5 text-outline font-label-sm text-label-sm">
+<span>Today, 09:15</span>
+</div>
+</div>
+</div>
+<!-- Highlighted Terms Diff Card (Pending Acceptance) -->
+<div class="bg-[#262122] rounded-xl border border-secondary/50 p-3.5 space-y-2.5">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-bold text-secondary-fixed uppercase tracking-wider flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-secondary">tune</span>
+                Proposed Term Delta
+              </span>
+<span class="font-label-sm text-label-sm text-[#E3B341] bg-[#E3B341]/10 px-2 py-0.5 rounded-md font-medium">Pending Acceptance</span>
+</div>
+<div class="bg-[#1C1819] rounded-lg p-2.5 border border-outline-variant/30 flex items-center justify-between text-body-md">
+<div class="flex items-center gap-2">
+<span class="text-outline line-through tabular-nums font-medium">48h Inspection</span>
+<span class="material-symbols-outlined text-secondary text-[16px]">arrow_forward</span>
+<span class="text-primary font-bold tabular-nums">72h Inspection</span>
+</div>
+<span class="text-xs font-semibold px-2 py-0.5 rounded bg-primary-container/20 text-primary">+24 hrs</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px] text-primary">info</span>
+              Accepting will update the locked escrow contract before release of funds.
+            </p>
+</div>
+</div>
+</section>
+<!-- Action Options & Decision Stack -->
+<section class="pt-2 space-y-3">
+<!-- Primary 52px Berry Button (#E0709A) -->
+<button class="w-full h-[52px] rounded-xl bg-primary-container text-on-primary-container font-label-lg text-label-lg font-bold flex items-center justify-center gap-2 hover:bg-[#C4557F] active:scale-[0.98] transition-all shadow-md" type="button">
+<span>Accept Counter-Offer &amp; Proceed</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+<!-- Secondary Outline Button -->
+<button class="w-full h-[52px] rounded-xl bg-[#262122] border border-outline-variant text-on-surface font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 hover:bg-[#3A3335] active:scale-[0.98] transition-all" type="button">
+<span class="material-symbols-outlined text-[18px] text-outline">replay</span>
+<span>Propose Revision / Decline</span>
+</button>
+</section>
+<!-- Safe Channel Compliance Notice -->
+<footer class="pt-2 pb-6">
+<div class="bg-[#1C1819] rounded-xl border border-outline-variant/40 p-3.5 flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[#4CC38A] text-[20px] shrink-0 mt-0.5">security</span>
+<div class="space-y-0.5">
+<p class="font-label-sm text-label-sm font-bold text-on-surface">Escrow Guarantee Protected</p>
+<p class="font-label-sm text-label-sm text-outline leading-tight">
+              Keep all communication and payments within YourApp. Off-platform agreements forfeit escrow protection and dispute mediation.
+            </p>
+</div>
+</div>
+</footer>
+</main>
+</div>
+</body></html>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>YourApp - Withdraw from Goal</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-surface": "#e7e1e2",
+            "secondary-fixed": "#ffdad4",
+            "primary-fixed": "#ffd9e3",
+            "on-surface": "#e7e1e2",
+            "error": "#ffb4ab",
+            "surface-tint": "#ffb0ca",
+            "surface-container": "#211f20",
+            "on-tertiary-fixed": "#001945",
+            "secondary-fixed-dim": "#ffb4a8",
+            "on-primary-container": "#5d0331",
+            "surface-variant": "#373435",
+            "surface-dim": "#151314",
+            "on-primary-fixed": "#3e001f",
+            "error-container": "#93000a",
+            "surface-bright": "#3b3839",
+            "inverse-on-surface": "#323031",
+            "outline-variant": "#544247",
+            "surface-container-high": "#2c292a",
+            "on-error-container": "#ffdad6",
+            "on-secondary": "#61130a",
+            "tertiary": "#b0c6ff",
+            "primary": "#ffb0ca",
+            "on-background": "#e7e1e2",
+            "inverse-primary": "#9e3b63",
+            "on-primary-fixed-variant": "#7f234b",
+            "primary-fixed-dim": "#ffb0ca",
+            "on-error": "#690005",
+            "on-tertiary-fixed-variant": "#06429a",
+            "on-secondary-container": "#ff9f90",
+            "surface-container-lowest": "#100e0f",
+            "surface-container-low": "#1d1b1c",
+            "secondary-container": "#822c20",
+            "on-tertiary-container": "#002a69",
+            "on-primary": "#620735",
+            "surface-container-highest": "#373435",
+            "tertiary-fixed": "#d9e2ff",
+            "on-secondary-fixed-variant": "#7f291e",
+            "background": "#151314",
+            "on-surface-variant": "#dac0c6",
+            "on-secondary-fixed": "#410000",
+            "on-tertiary": "#002d6f",
+            "secondary": "#ffb4a8",
+            "surface": "#151314",
+            "outline": "#a28b91",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "primary-container": "#e0709a",
+            "tertiary-container": "#6a92ee"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "1rem",
+            "space-md": "1rem",
+            "gutter-mobile": "0.75rem",
+            "gutter": "1rem",
+            "space-sm": "0.5rem",
+            "space-lg": "1.5rem",
+            "margin-mobile": "1rem",
+            "space-xs": "0.25rem",
+            "space-xl": "2rem"
+          },
+          "fontFamily": {
+            "body-lg": ["Inter"],
+            "title-currency": ["Inter"],
+            "label-md": ["Inter"],
+            "body-md": ["Inter"],
+            "headline-lg": ["Inter"],
+            "label-lg": ["Inter"],
+            "headline-md": ["Inter"],
+            "headline-sm": ["Inter"],
+            "label-sm": ["Inter"],
+            "display-currency": ["Inter"]
+          },
+          "fontSize": {
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "title-currency": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "label-lg": ["15px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 24px;
+      line-height: 1;
+      display: inline-block;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+      -webkit-font-smoothing: antialiased;
+    }
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-lowest text-on-surface antialiased flex justify-center selection:bg-primary-container selection:text-on-primary-container min-h-screen">
+<!-- Mobile Viewport Wrapper (390px x 844px context) -->
+<div class="w-full max-w-[390px] min-h-[844px] bg-surface-container-lowest flex flex-col relative shadow-2xl overflow-x-hidden">
+<!-- Top App Bar Navigation Header -->
+<header class="sticky top-0 z-40 bg-surface-container-lowest/90 backdrop-blur-md px-margin py-space-sm flex items-center justify-between min-h-[56px]">
+<button aria-label="Back" class="w-10 h-10 rounded-xl flex items-center justify-center text-on-surface bg-surface-container active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined text-[20px]">arrow_back</span>
+</button>
+<div class="flex flex-col items-center">
+<span class="font-headline-sm text-headline-sm text-on-surface tracking-tight">Withdraw from Goal</span>
+<span class="font-label-sm text-label-sm text-outline">Target Savings • S-TGT-006</span>
+</div>
+<button aria-label="Close" class="w-10 h-10 rounded-xl flex items-center justify-center text-on-surface-variant bg-surface-container active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</header>
+<!-- Scrollable Canvas Area (minimum 88px bottom clearance for Docked Nav) -->
+<main class="flex-1 px-margin pt-space-xs pb-[96px] flex flex-col gap-space-md">
+<!-- 1. Goal State Pill Banner -->
+<div class="flex items-center justify-center">
+<div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container border border-outline-variant/30 text-secondary-fixed">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-label-sm text-label-sm tracking-wide">Locked Goal Mode • Matures 15 Dec 2026 (in 42 days)</span>
+</div>
+</div>
+<!-- 2. Calm "Keep your goal" Anti-abandonment Card -->
+<section class="bg-surface-container-low border border-outline-variant/40 rounded-xl p-4 flex gap-3 relative overflow-hidden">
+<div class="w-10 h-10 rounded-xl bg-primary-container/20 flex items-center justify-center text-primary shrink-0 mt-0.5">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">stars</span>
+</div>
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">MacBook Pro M3 Max</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-primary-container/20 text-primary font-medium">70% Reached</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            You're already 70% toward your MacBook Pro M3 Max! Pausing or waiting 42 more days saves you from any early exit fees and protects your milestone.
+          </p>
+<!-- Milestone Micro Progress Bar -->
+<div class="w-full bg-surface-container-highest h-1.5 rounded-full mt-2 overflow-hidden">
+<div class="bg-primary-container h-full rounded-full" style="width: 70%;"></div>
+</div>
+</div>
+</section>
+<!-- 3. Withdrawal Amount Selector -->
+<section class="bg-surface-container-low border border-outline-variant/40 rounded-xl p-4 flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<label class="font-label-md text-label-md text-on-surface-variant" for="withdraw-amount">Withdrawal Amount</label>
+<span class="font-label-sm text-label-sm text-outline">Available: ₦350,000.00</span>
+</div>
+<!-- Currency Input Display -->
+<div class="flex items-center justify-between bg-surface-container-lowest border border-outline-variant/60 rounded-xl px-4 py-3 h-[52px]">
+<div class="flex items-baseline gap-1">
+<span class="font-title-currency text-title-currency text-primary">₦</span>
+<input class="bg-transparent border-0 p-0 font-headline-md text-headline-md text-on-surface font-semibold tabular-nums focus:ring-0 w-48 tracking-tight" id="withdraw-amount" readonly="" type="text" value="350,000.00"/>
+</div>
+<span class="font-label-sm text-label-sm text-outline px-2 py-1 rounded bg-surface-container">Full Balance</span>
+</div>
+<!-- Mode Chips Horizontal Cluster -->
+<div class="flex items-center gap-2 pt-1 overflow-x-auto no-scrollbar">
+<button class="h-9 px-3 rounded-lg bg-surface-container border border-outline-variant/40 font-label-md text-label-md text-on-surface hover:text-primary active:scale-95 transition-all whitespace-nowrap" type="button">
+            Keep Saving (Cancel)
+          </button>
+<button class="h-9 px-3 rounded-lg bg-surface-container border border-outline-variant/40 font-label-md text-label-md text-on-surface-variant hover:text-on-surface active:scale-95 transition-all whitespace-nowrap" type="button">
+            Custom Amount
+          </button>
+<button class="h-9 px-3 rounded-lg bg-primary-container/20 border border-primary-container/50 font-label-md text-label-md text-primary font-semibold active:scale-95 transition-all whitespace-nowrap" type="button">
+            Withdraw Full (₦350k)
+          </button>
+</div>
+</section>
+<!-- 4. Transparent Financial Settlement Breakdown -->
+<section class="bg-surface-container-low border border-outline-variant/40 rounded-xl p-4 flex flex-col gap-3">
+<div class="flex items-center justify-between pb-1 border-b border-outline-variant/20">
+<span class="font-label-md text-label-md text-outline">Settlement Calculation</span>
+<span class="font-label-sm text-label-sm text-outline">Statutory Rule #4B</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-body-md text-body-md text-on-surface-variant">Gross Saved</span>
+<span class="font-body-md text-body-md text-on-surface tabular-nums">₦350,000.00</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="font-body-md text-body-md text-secondary">Early Withdrawal Statutory Fee</span>
+<span class="font-label-sm text-label-sm text-secondary bg-secondary-container/30 px-1.5 py-0.2 rounded font-medium">2.5%</span>
+</div>
+<span class="font-body-md text-body-md text-secondary font-semibold tabular-nums">-₦8,750.00</span>
+</div>
+<div class="pt-2 border-t border-outline-variant/30 flex items-baseline justify-between">
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">Net Disbursed to Main Wallet</span>
+<span class="font-label-sm text-label-sm text-outline">Available for immediate transfer</span>
+</div>
+<span class="font-headline-md text-headline-md text-on-surface font-bold tabular-nums tracking-tight">₦341,250.00</span>
+</div>
+</section>
+<!-- 5. Payout Destination Card -->
+<section class="bg-surface-container-low border border-outline-variant/40 rounded-xl p-3.5 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-primary-fixed">
+<span class="material-symbols-outlined text-[22px]">account_balance_wallet</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">YourApp Main Wallet (•••• 2019)</span>
+<div class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+<span class="font-label-sm text-label-sm text-outline">Instant settlement in under 60 seconds</span>
+</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px]">verified_user</span>
+</section>
+<!-- 6. Mandatory Confirmation Checklist -->
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded-xl p-3.5 flex items-start gap-3">
+<input checked="" class="mt-1 w-5 h-5 rounded border-outline-variant bg-surface-container text-primary-container focus:ring-0 focus:ring-offset-0 cursor-pointer" id="confirm-penalty" type="checkbox"/>
+<label class="font-body-md text-body-md text-on-surface-variant cursor-pointer select-none leading-snug" for="confirm-penalty">
+          I understand that early withdrawal closes this locked goal and incurs the statutory 2.5% penalty of <span class="text-on-surface font-semibold tabular-nums">₦8,750.00</span>.
+        </label>
+</div>
+<!-- 7. Action Buttons -->
+<div class="flex flex-col gap-2.5 pt-1">
+<!-- Secondary Prominent Keep Goal Active Button -->
+<button class="w-full h-[52px] rounded-xl bg-surface-container border border-outline-variant/60 text-on-surface font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 active:bg-surface-container-highest transition-colors active:scale-95 duration-150" type="button">
+<span class="material-symbols-outlined text-primary text-[20px]">shield</span>
+<span>Keep Goal Active &amp; Return</span>
+</button>
+<!-- Primary Destructive Exit Button (52px ergonomic height) -->
+<button class="w-full h-[52px] rounded-xl bg-primary-container text-on-primary-container font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 shadow-lg active:scale-95 transition-transform duration-150" type="button">
+<span>Confirm Early Withdrawal (PIN)</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+</main>
+<!-- Docked 5-Tab Bottom Navigation Bar (Save & Borrow ACTIVE) -->
+<!-- Executing Shared Components JSON Blueprint verbatim -->
+<nav class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-margin h-16 max-w-[560px] mx-auto pb-safe bg-surface-container border-t border-outline-variant/20 shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)]">
+<!-- Tab 1: Home (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs active:scale-95 transition-transform duration-150 hover:text-primary dark:hover:text-inverse-primary" type="button">
+<span class="material-symbols-outlined text-[22px]">home</span>
+<span class="font-caption text-[11px] leading-[14px]">Home</span>
+</button>
+<!-- Tab 2: Payments (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs active:scale-95 transition-transform duration-150 hover:text-primary dark:hover:text-inverse-primary" type="button">
+<span class="material-symbols-outlined text-[22px]">send</span>
+<span class="font-caption text-[11px] leading-[14px]">Payments</span>
+</button>
+<!-- Tab 3: Cards (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs active:scale-95 transition-transform duration-150 hover:text-primary dark:hover:text-inverse-primary" type="button">
+<span class="material-symbols-outlined text-[22px]">credit_card</span>
+<span class="font-caption text-[11px] leading-[14px]">Cards</span>
+</button>
+<!-- Tab 4: Save & Borrow (ACTIVE Destination) -->
+<button class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed font-semibold min-w-[48px] py-space-xs gap-space-xs active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">savings</span>
+<span class="font-caption text-[11px] leading-[14px]">Save &amp; Borrow</span>
+</button>
+<!-- Tab 5: More (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs active:scale-95 transition-transform duration-150 hover:text-primary dark:hover:text-inverse-primary" type="button">
+<span class="material-symbols-outlined text-[22px]">more_horiz</span>
+<span class="font-caption text-[11px] leading-[14px]">More</span>
+</button>
+</nav>
+</div>
+</body></html>

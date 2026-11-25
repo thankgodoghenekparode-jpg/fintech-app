@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YourApp Credit Ops - Escrow Dispute Queue (W-ESC-002)</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary-fixed": "#eedee4",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "surface-container-high": "#efe6e7",
+            "secondary-fixed": "#ffdad4",
+            "surface": "#fff8f8",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "inverse-surface": "#342f30",
+            "on-surface": "#1f1b1c",
+            "surface-container-low": "#fbf1f2",
+            "on-background": "#1f1b1c",
+            "secondary-container": "#fc6955",
+            "surface-container": "#f5eced",
+            "on-secondary-fixed-variant": "#8c170e",
+            "surface-bright": "#fff8f8",
+            "on-secondary": "#ffffff",
+            "on-primary-fixed": "#3f001b",
+            "surface-tint": "#a8315d",
+            "on-primary-container": "#ffa0ba",
+            "on-secondary-container": "#690000",
+            "on-primary-fixed-variant": "#881646",
+            "tertiary": "#3b3236",
+            "on-tertiary": "#ffffff",
+            "on-error": "#ffffff",
+            "tertiary-container": "#53484d",
+            "surface-container-lowest": "#ffffff",
+            "secondary": "#ae3123",
+            "surface-variant": "#e9e0e1",
+            "inverse-primary": "#ffb1c5",
+            "surface-container-highest": "#e9e0e1",
+            "primary-fixed": "#ffd9e1",
+            "primary-container": "#8e1b4a",
+            "on-surface-variant": "#564146",
+            "on-error-container": "#93000a",
+            "outline": "#897176",
+            "inverse-on-surface": "#f8eeef",
+            "background": "#fff8f8",
+            "on-secondary-fixed": "#410000",
+            "on-tertiary-container": "#c6b7bd",
+            "surface-dim": "#e1d8d9",
+            "outline-variant": "#dcbfc5",
+            "primary": "#6d0033",
+            "error-container": "#ffdad6",
+            "on-tertiary-fixed": "#21191e",
+            "primary-fixed-dim": "#ffb1c5",
+            "secondary-fixed-dim": "#ffb4a8",
+            "error": "#ba1a1a",
+            "on-primary": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "margin": "1rem",
+            "space-md": "0.75rem",
+            "space-lg": "1rem",
+            "space-3xl": "3rem",
+            "space-sm": "0.5rem",
+            "space-xl": "1.5rem",
+            "gutter": "1rem",
+            "space-2xl": "2rem"
+          },
+          "fontFamily": {
+            "label": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "caption": ["Inter"],
+            "subtitle": ["Inter"],
+            "amount-lg": ["Inter"],
+            "body-medium": ["Inter"],
+            "display": ["Inter"],
+            "title": ["Inter"],
+            "body": ["Inter"]
+          },
+          "fontSize": {
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      line-height: 1;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: #fbf1f2;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #dcbfc5;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body min-h-screen flex antialiased">
+<!-- SideNavBar Component -->
+<aside class="fixed left-0 top-0 h-full w-72 flex flex-col justify-between py-space-xl px-space-lg overflow-y-auto bg-surface-container-lowest border-r border-surface-variant z-30 shadow-sm">
+<div class="flex flex-col gap-space-xl">
+<!-- Institutional Crest & Identity -->
+<div class="flex items-center gap-space-md pb-space-md border-b border-surface-variant">
+<div class="w-11 h-11 rounded-xl bg-primary-container text-on-primary flex items-center justify-center font-title text-title shadow-sm">
+<span class="material-symbols-outlined" data-icon="account_balance">account_balance</span>
+</div>
+<div class="flex flex-col">
+<span class="text-subtitle font-subtitle text-primary tracking-tight leading-tight">YourApp Credit Ops</span>
+<span class="text-caption font-caption text-on-surface-variant">Enterprise Portal</span>
+</div>
+</div>
+<!-- Tenant Division Switcher -->
+<div class="bg-surface-container-low rounded-xl p-space-md border border-surface-variant">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-on-surface-variant font-medium">Arbitration Jurisdiction</span>
+<span class="inline-flex items-center gap-1 text-[11px] font-semibold text-primary bg-primary-fixed px-2 py-0.5 rounded-full">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+            ACTIVE CONSOLE
+          </span>
+</div>
+<p class="text-label font-label text-on-surface mt-1 truncate">YourApp Legal &amp; Arbitration Division</p>
+<p class="text-caption font-caption text-on-surface-variant text-xs">Lagos HQ • Admiralty Way</p>
+</div>
+<!-- Navigation Tabs Cluster -->
+<nav class="flex flex-col gap-1">
+<a class="flex items-center justify-between px-space-lg py-space-md rounded-lg bg-surface-container-low text-primary font-label text-label transition-colors duration-150" href="#queue">
+<div class="flex items-center gap-space-md">
+<span class="material-symbols-outlined text-primary" data-icon="pending_actions">pending_actions</span>
+<span>Applications Queue</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-primary-container text-on-primary text-xs font-bold">7 Active</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#dashboard">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#portfolio">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span>Credit Portfolio &amp; Collections</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#products">
+<span class="material-symbols-outlined" data-icon="tune">tune</span>
+<span>Product Configuration</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#partners">
+<span class="material-symbols-outlined" data-icon="handshake">handshake</span>
+<span>Partner Settlement</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#audit">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span>Audit Log</span>
+</a>
+</nav>
+</div>
+<!-- Sidebar Footer -->
+<div class="pt-space-lg border-t border-surface-variant flex flex-col gap-1">
+<div class="px-space-md py-2 mb-2 bg-surface-container-high/60 rounded-lg flex items-center gap-3">
+<span class="material-symbols-outlined text-outline" data-icon="shield">shield</span>
+<div class="flex flex-col">
+<span class="text-caption font-caption text-xs font-semibold text-on-surface">Escrow Dual-Key Active</span>
+<span class="text-[11px] text-on-surface-variant">CBN Circular BSD/DIR/GEN</span>
+</div>
+</div>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#settings">
+<span class="material-symbols-outlined" data-icon="admin_panel_settings">admin_panel_settings</span>
+<span>Security &amp; Settings</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-secondary font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#signout">
+<span class="material-symbols-outlined text-secondary" data-icon="logout">logout</span>
+<span>Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- Main Canvas Area with Docked TopNavBar Offset -->
+<div class="ml-72 flex-1 flex flex-col min-w-0 bg-background">
+<!-- TopNavBar Component -->
+<header class="sticky top-0 right-0 h-16 flex items-center justify-between px-space-xl bg-surface-container-lowest border-b border-surface-variant z-20">
+<!-- Search & Branch Location -->
+<div class="flex items-center gap-space-lg flex-1 max-w-2xl">
+<div class="flex items-center gap-2 pr-4 border-r border-surface-variant text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="apartment">apartment</span>
+<span class="text-label font-label text-on-surface whitespace-nowrap">Lagos Island Main Branch (012)</span>
+</div>
+<div class="relative flex-1">
+<span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-outline">
+<span class="material-symbols-outlined text-xl" data-icon="search">search</span>
+</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border border-surface-variant rounded-xl text-body font-body text-sm focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all" placeholder="Search dispute ticket, case ID, escrow ref, claimant..." type="text"/>
+</div>
+</div>
+<!-- Trailing Controls & User Identity -->
+<div class="flex items-center gap-space-md">
+<!-- Live SLA Pill -->
+<div class="hidden xl:flex items-center gap-2 bg-surface-container-high px-3 py-1.5 rounded-full border border-surface-variant">
+<span class="w-2 h-2 rounded-full bg-secondary-container animate-ping"></span>
+<span class="text-caption font-caption text-xs font-semibold text-on-surface">SLA Adherence: 99.1% (Avg: 34h)</span>
+</div>
+<!-- Quorum Badge -->
+<div class="hidden lg:flex items-center gap-1.5 bg-surface-container px-3 py-1.5 rounded-full text-xs font-semibold text-on-surface">
+<span class="material-symbols-outlined text-sm text-primary" data-icon="gavel">gavel</span>
+<span>2 Arbitrators on Duty</span>
+</div>
+<!-- Trailing Primary Action -->
+<button class="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-secondary text-on-secondary font-label text-xs hover:bg-secondary-container transition-colors shadow-sm">
+<span class="material-symbols-outlined text-sm" data-icon="verified_user">verified_user</span>
+<span>Dual Authorization</span>
+</button>
+<div class="h-6 w-px bg-surface-variant mx-1"></div>
+<!-- Trailing Icon Actions -->
+<button class="relative p-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded-lg transition-colors" title="Notifications">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-secondary"></span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded-lg transition-colors" title="Help &amp; Guides">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+<!-- Officer Profile Stack -->
+<div class="flex items-center gap-3 pl-2">
+<div class="w-10 h-10 rounded-full border-2 border-primary-container p-0.5 overflow-hidden bg-primary-fixed flex items-center justify-center text-primary font-bold text-sm">
+            FS
+          </div>
+<div class="hidden 2xl:flex flex-col text-left">
+<span class="text-label font-label text-sm text-on-surface leading-tight">Barrister Fatima Sanusi</span>
+<span class="text-caption font-caption text-xs text-on-surface-variant">Senior Escrow Arbitrator</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Page Body Content Area -->
+<main class="p-space-xl flex-1 flex flex-col gap-space-xl overflow-y-auto custom-scroll">
+<!-- Header Banner & Quick Actions -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+<div>
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-0.5 rounded-full text-xs font-bold tracking-wide uppercase bg-secondary-fixed text-on-secondary-fixed">Live Tribunal Ledger</span>
+<span class="text-caption font-caption text-xs text-outline">SEC &amp; CBN Regulated Escrow Desk</span>
+</div>
+<h1 class="text-title font-title text-primary tracking-tight mt-1">
+            Commercial Escrow Disputes &amp; Arbitration Queue (W-ESC-002)
+          </h1>
+<p class="text-body font-body text-sm text-on-surface-variant mt-1 max-w-4xl">
+            Review frozen escrow deals, monitor statutory arbitration SLA timers, inspect contested milestones, and triage cases for legal determination.
+          </p>
+</div>
+<div class="flex items-center gap-3 flex-shrink-0">
+<button class="h-[52px] px-5 rounded-xl border border-outline-variant bg-surface-container-lowest text-on-surface font-label text-label hover:bg-surface-container-low transition-all flex items-center gap-2 shadow-sm">
+<span class="material-symbols-outlined text-outline" data-icon="download">download</span>
+<span>Export Dispute Dossier (CSV)</span>
+</button>
+<button class="h-[52px] px-6 rounded-xl bg-primary-container text-on-primary font-label text-label hover:bg-primary transition-all flex items-center gap-2 shadow-md">
+<span class="material-symbols-outlined" data-icon="lock_clock">lock_clock</span>
+<span>+ Log Emergency Freeze</span>
+</button>
+</div>
+</div>
+<!-- Regulatory Mandate Warning Banner -->
+<div class="rounded-2xl p-4 bg-surface-container-low border border-primary-fixed flex items-start gap-4 shadow-sm">
+<div class="p-2.5 rounded-xl bg-primary text-on-primary mt-0.5">
+<span class="material-symbols-outlined text-xl" data-icon="policy">policy</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2">
+<span class="text-label font-label text-primary font-bold">CBN Consumer Protection &amp; Arbitration Protocol</span>
+<span class="text-caption font-caption text-[11px] font-semibold bg-surface px-2 py-0.5 rounded border border-outline-variant text-on-surface">Circular BCP/04/2026</span>
+</div>
+<p class="text-caption font-caption text-on-surface-variant mt-0.5 leading-relaxed">
+            Contested funds are strictly frozen in designated CBN partner escrow. Arbitrators must issue preliminary determination within 48 hours of evidence submission deadline. Unresolved claims automatically escalate to the Lagos Multi-Door Courthouse.
+          </p>
+</div>
+<div class="text-right hidden md:block">
+<span class="text-caption font-caption text-xs text-outline block">Statutory Compliance</span>
+<span class="text-label font-label text-primary">100% On-Track</span>
+</div>
+</div>
+<!-- KPI Tiles Row (4 Bento Metrics Cards) -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-space-lg">
+<!-- Metric 1: Active Contested Cases -->
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest border border-surface-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="text-caption font-caption text-on-surface-variant font-medium">Active Contested Cases</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="text-amount-lg font-amount-lg text-primary tracking-tight">7</span>
+<span class="text-caption font-caption text-on-surface-variant">Disputes</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-xl bg-tertiary-fixed text-primary flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="lock_reset">lock_reset</span>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-surface-variant/60 flex items-center justify-between text-caption font-caption">
+<span class="text-on-surface-variant">Locked Funds</span>
+<span class="font-bold text-on-surface">₦38,400,000.00</span>
+</div>
+</div>
+<!-- Metric 2: Critical SLA (<12h) -->
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest border border-surface-variant shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="absolute -right-4 -bottom-4 w-24 h-24 bg-secondary-fixed/20 rounded-full blur-xl pointer-events-none"></div>
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="text-caption font-caption text-secondary font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="warning">warning</span>
+                Critical SLA (&lt;12h)
+              </span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="text-amount-lg font-amount-lg text-secondary tracking-tight">2</span>
+<span class="text-caption font-caption text-secondary font-semibold">Cases Urgent</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-xl bg-secondary-fixed text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="timer">timer</span>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-surface-variant/60 flex items-center justify-between text-caption font-caption">
+<span class="text-on-surface-variant">Statutory Threshold</span>
+<span class="font-bold text-secondary">Decision Imminent</span>
+</div>
+</div>
+<!-- Metric 3: Average Resolution Time -->
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest border border-surface-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="text-caption font-caption text-on-surface-variant font-medium">Average Resolution Time</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="text-amount-lg font-amount-lg text-on-surface tracking-tight">34.2</span>
+<span class="text-caption font-caption text-on-surface-variant">Hours</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-xl bg-surface-container text-outline flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="speed">speed</span>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-surface-variant/60 flex items-center justify-between text-caption font-caption">
+<span class="text-on-surface-variant">CBN Benchmark: 72h max</span>
+<span class="font-bold text-primary">52% Faster</span>
+</div>
+</div>
+<!-- Metric 4: Mutual Settlement Rate -->
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest border border-surface-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="text-caption font-caption text-on-surface-variant font-medium">Amicable Settlement Rate</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="text-amount-lg font-amount-lg text-primary-container tracking-tight">84.6%</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-xl bg-primary-fixed text-primary flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="handshake">handshake</span>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-surface-variant/60 flex items-center justify-between text-caption font-caption">
+<span class="text-on-surface-variant">Escalation Avoided</span>
+<span class="font-bold text-on-surface">58 of 68 cases</span>
+</div>
+</div>
+</div>
+<!-- Main Split View: Queue Table (65%) + Fast Triage Drawer (35%) -->
+<div class="flex flex-col xl:flex-row gap-space-lg items-start">
+<!-- Left Section: Multi-criteria Filters + Queue Table (65%) -->
+<section class="w-full xl:w-[65%] flex flex-col gap-space-lg">
+<!-- Filter & Control Toolbar -->
+<div class="bg-surface-container-lowest p-space-md rounded-2xl border border-surface-variant shadow-sm flex flex-wrap items-center justify-between gap-3">
+<div class="flex flex-wrap items-center gap-2">
+<!-- Category Filter Chip -->
+<div class="relative">
+<select class="h-10 pl-3 pr-8 bg-surface-container-low text-xs font-label text-on-surface border border-surface-variant rounded-xl focus:outline-none focus:border-primary-container appearance-none cursor-pointer">
+<option>Category: All Contested Sectors</option>
+<option>Goods Non-Delivery</option>
+<option selected="">Service Quality Defect</option>
+<option>Property Title Dispute</option>
+<option>Vehicle Condition</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-2.5 text-base text-outline pointer-events-none" data-icon="expand_more">expand_more</span>
+</div>
+<!-- Value Range Filter -->
+<div class="relative">
+<select class="h-10 pl-3 pr-8 bg-surface-container-low text-xs font-label text-on-surface border border-surface-variant rounded-xl focus:outline-none focus:border-primary-container appearance-none cursor-pointer">
+<option>Escrow Value: Any</option>
+<option>Under ₦10M</option>
+<option selected="">₦10M - ₦50M</option>
+<option>₦50M+</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-2.5 text-base text-outline pointer-events-none" data-icon="expand_more">expand_more</span>
+</div>
+<!-- SLA Urgency Filter -->
+<div class="relative">
+<select class="h-10 pl-3 pr-8 bg-surface-container-low text-xs font-label text-on-surface border border-surface-variant rounded-xl focus:outline-none focus:border-primary-container appearance-none cursor-pointer">
+<option>SLA: All Timers</option>
+<option selected="">Urgent (&lt;12h remaining)</option>
+<option>Standard (12-48h)</option>
+<option>In Appeal</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-2.5 text-base text-outline pointer-events-none" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<!-- Table Mode Indicators -->
+<div class="flex items-center gap-2">
+<span class="text-caption font-caption text-xs text-on-surface-variant">Showing 4 of 7 Active Cases</span>
+<button class="p-2 text-outline hover:text-on-surface rounded-lg hover:bg-surface-container-low" title="Refresh Feed">
+<span class="material-symbols-outlined text-lg" data-icon="refresh">refresh</span>
+</button>
+</div>
+</div>
+<!-- Queue Table Card -->
+<div class="bg-surface-container-lowest rounded-2xl border border-surface-variant shadow-sm overflow-hidden">
+<div class="overflow-x-auto custom-scroll">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/70 border-b border-surface-variant text-[12px] font-semibold text-on-surface-variant uppercase tracking-wider">
+<th class="py-3 px-4">Case ID &amp; Priority</th>
+<th class="py-3 px-4">Linked Deal &amp; Escrow Value</th>
+<th class="py-3 px-4">Disputing Parties</th>
+<th class="py-3 px-4">Dispute Category</th>
+<th class="py-3 px-4">Evidence Status</th>
+<th class="py-3 px-4">SLA Countdown</th>
+<th class="py-3 px-4 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-variant text-sm">
+<!-- Row 1: Active Selected (#DSP-2027-019) -->
+<tr class="bg-surface-container-low/40 hover:bg-surface-container-low transition-colors cursor-pointer border-l-4 border-l-primary-container">
+<td class="py-3.5 px-4">
+<div class="flex flex-col">
+<span class="font-bold text-primary flex items-center gap-1.5">
+                          #DSP-2027-019
+                          <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+</span>
+<span class="inline-flex items-center gap-1 text-[11px] font-bold text-secondary mt-0.5">
+<span class="material-symbols-outlined text-xs" data-icon="priority_high">priority_high</span>
+                          URGENT • 5h left
+                        </span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface text-xs leading-snug">500 MT Industrial Sorghum</span>
+<span class="font-bold text-primary mt-0.5">₦18,000,000.00</span>
+<span class="text-[11px] text-outline">Milestone 2 of 3</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-col text-xs leading-relaxed">
+<span class="font-medium text-on-surface truncate max-w-[160px]">Flour Mills Nig (Claimant)</span>
+<span class="text-outline">vs</span>
+<span class="font-medium text-on-surface-variant truncate max-w-[160px]">Kano Agro Exporters (Resp.)</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-col">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-semibold bg-tertiary-fixed text-tertiary w-fit">
+                          Quality Variance
+                        </span>
+<span class="text-[11px] text-on-surface-variant mt-1 max-w-[150px] truncate" title="Moisture content exceeds 14% threshold">
+                          Moisture exceeds 14%
+                        </span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5 text-xs text-primary font-medium">
+<span class="material-symbols-outlined text-base" data-icon="check_circle">check_circle</span>
+<span>Both Submitted</span>
+</div>
+<span class="text-[11px] text-outline block">3/3 Exhibits Lodged</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-col">
+<span class="font-bold text-secondary font-mono text-xs">04h : 42m remaining</span>
+<div class="w-24 h-1.5 bg-surface-container rounded-full overflow-hidden mt-1">
+<div class="h-full bg-secondary rounded-full" style="width: 88%;"></div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right">
+<button class="px-3 py-1.5 rounded-lg bg-primary-container text-on-primary font-label text-xs hover:bg-primary transition-colors shadow-sm">
+                        Open Dossier
+                      </button>
+</td>
+</tr>
+<!-- Row 2: #DSP-2027-017 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3.5 px-4">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">#DSP-2027-017</span>
+<span class="text-[11px] font-medium text-outline mt-0.5">Standard • 21h left</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface text-xs leading-snug">Custom Core API Integration</span>
+<span class="font-bold text-on-surface mt-0.5">₦6,200,000.00</span>
+<span class="text-[11px] text-outline">Final Handover</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-col text-xs leading-relaxed">
+<span class="font-medium text-on-surface truncate max-w-[160px]">Sterling Pay (Buyer)</span>
+<span class="text-outline">vs</span>
+<span class="font-medium text-on-surface-variant truncate max-w-[160px]">CodeMatrix Ltd (Dev)</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-col">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-semibold bg-surface-container text-on-surface w-fit">
+                          Service Scope Defect
+                        </span>
+<span class="text-[11px] text-on-surface-variant mt-1 max-w-[150px] truncate">
+                          Scope Creep &amp; Bug Count
+                        </span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5 text-xs text-secondary font-medium">
+<span class="material-symbols-outlined text-base" data-icon="pending">pending</span>
+<span>Buyer Incomplete</span>
+</div>
+<span class="text-[11px] text-outline block">1/2 Exhibits Uploaded</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface font-mono text-xs">21h : 15m remaining</span>
+<div class="w-24 h-1.5 bg-surface-container rounded-full overflow-hidden mt-1">
+<div class="h-full bg-outline rounded-full" style="width: 44%;"></div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right">
+<button class="px-3 py-1.5 rounded-lg border border-outline-variant text-on-surface font-label text-xs hover:bg-surface-container-low transition-colors">
+                        Review Evidence
+                      </button>
+</td>
+</tr>
+<!-- Row 3: #DSP-2027-014 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3.5 px-4">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">#DSP-2027-014</span>
+<span class="text-[11px] font-medium text-outline mt-0.5">Standard • 36h left</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface text-xs leading-snug">2023 Toyota Hilux Fleet Sale</span>
+<span class="font-bold text-on-surface mt-0.5">₦42,000,000.00</span>
+<span class="text-[11px] text-outline">Lot 4 (6 Vehicles)</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-col text-xs leading-relaxed">
+<span class="font-medium text-on-surface truncate max-w-[160px]">GIG Logistics (Buyer)</span>
+<span class="text-outline">vs</span>
+<span class="font-medium text-on-surface-variant truncate max-w-[160px]">AutoHub Abuja (Vendor)</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-col">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-semibold bg-surface-container text-on-surface w-fit">
+                          Vehicle Condition
+                        </span>
+<span class="text-[11px] text-on-surface-variant mt-1 max-w-[150px] truncate">
+                          Engine &amp; Title Defect
+                        </span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5 text-xs text-outline font-medium">
+<span class="material-symbols-outlined text-base" data-icon="schedule">schedule</span>
+<span>Resp. Due (14h)</span>
+</div>
+<span class="text-[11px] text-outline block">Awaiting Custom Clearance</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface font-mono text-xs">36h : 00m remaining</span>
+<div class="w-24 h-1.5 bg-surface-container rounded-full overflow-hidden mt-1">
+<div class="h-full bg-outline rounded-full" style="width: 25%;"></div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right">
+<button class="px-3 py-1.5 rounded-lg border border-outline-variant text-on-surface font-label text-xs hover:bg-surface-container-low transition-colors">
+                        Manage Timers
+                      </button>
+</td>
+</tr>
+<!-- Row 4: #DSP-2027-011 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3.5 px-4">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">#DSP-2027-011</span>
+<span class="text-[11px] font-semibold text-primary mt-0.5">In Appeal • 48h</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface text-xs leading-snug">Ikoyi Apartment Commercial Lease</span>
+<span class="font-bold text-on-surface mt-0.5">₦28,000,000.00</span>
+<span class="text-[11px] text-outline">Security Deposit</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-col text-xs leading-relaxed">
+<span class="font-medium text-on-surface truncate max-w-[160px]">Primrose Capital (Tenant)</span>
+<span class="text-outline">vs</span>
+<span class="font-medium text-on-surface-variant truncate max-w-[160px]">Osborne Realty (Landlord)</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-col">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-semibold bg-surface-container text-on-surface w-fit">
+                          Property Handover Delay
+                        </span>
+<span class="text-[11px] text-on-surface-variant mt-1 max-w-[150px] truncate">
+                          Withholding Deposit
+                        </span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5 text-xs text-primary font-medium">
+<span class="material-symbols-outlined text-base" data-icon="gavel">gavel</span>
+<span>Appellate Review</span>
+</div>
+<span class="text-[11px] text-outline block">Tribunal Dossier Bound</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface font-mono text-xs">47h : 30m remaining</span>
+<div class="w-24 h-1.5 bg-surface-container rounded-full overflow-hidden mt-1">
+<div class="h-full bg-primary-fixed-dim rounded-full" style="width: 15%;"></div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right">
+<button class="px-3 py-1.5 rounded-lg border border-outline-variant text-on-surface font-label text-xs hover:bg-surface-container-low transition-colors">
+                        Tribunal Review
+                      </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Pagination & Footer Summary -->
+<div class="p-3 bg-surface-container-low/50 border-t border-surface-variant flex items-center justify-between text-xs text-on-surface-variant">
+<span>Arbitration Session: Queue sync active with Zenith Escrow Bridge (Live Webhook)</span>
+<div class="flex items-center gap-2">
+<button class="px-2.5 py-1 border border-surface-variant rounded-md hover:bg-surface-container">Prev</button>
+<span class="font-bold text-on-surface">Page 1 of 2</span>
+<button class="px-2.5 py-1 border border-surface-variant rounded-md hover:bg-surface-container">Next</button>
+</div>
+</div>
+</div>
+<!-- Bottom Assurance Note -->
+<div class="p-4 rounded-xl bg-surface-container-low border border-surface-variant flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline" data-icon="verified">verified</span>
+<span class="text-caption font-caption text-xs text-on-surface-variant">
+                Every escrow release command requires cryptographic approval from at least 1 Senior Arbitrator and 1 Escrow Controller Officer.
+              </span>
+</div>
+<span class="text-[11px] font-mono text-outline">SEC/ESC-REG-0994</span>
+</div>
+</section>
+<!-- Right Section: Fast Triage & Case Summary Drawer (35%) -->
+<aside class="w-full xl:w-[35%] flex flex-col gap-space-lg">
+<div class="bg-surface-container-lowest rounded-2xl border border-surface-variant shadow-md p-space-lg flex flex-col gap-space-md relative">
+<!-- Focus Card Header with Countdown Timer Ring Pill -->
+<div class="flex items-start justify-between pb-space-md border-b border-surface-variant">
+<div>
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded text-[11px] font-bold bg-secondary text-on-secondary">CRITICAL TRIAGE</span>
+<span class="text-caption font-caption text-xs font-mono text-outline">Vault: #ESC-VLT-9921</span>
+</div>
+<h2 class="text-subtitle font-subtitle text-primary mt-1">#DSP-2027-019</h2>
+<p class="text-caption font-caption text-on-surface-variant text-xs">500 MT Industrial Sorghum Purchase Order</p>
+</div>
+<!-- Statutory Timer Indicator -->
+<div class="bg-surface-container-low border border-secondary-fixed rounded-xl p-2.5 text-center flex flex-col items-center">
+<span class="text-[10px] uppercase font-bold text-secondary tracking-wider">Statutory SLA</span>
+<div class="flex items-center gap-1 text-secondary font-mono font-bold text-sm mt-0.5">
+<span class="material-symbols-outlined text-base animate-pulse" data-icon="alarm">alarm</span>
+<span>04:42:19</span>
+</div>
+<span class="text-[10px] text-outline">To Ruling</span>
+</div>
+</div>
+<!-- Frozen Escrow Collateral Box -->
+<div class="bg-surface-container-low rounded-xl p-space-md border border-surface-variant flex items-center justify-between">
+<div>
+<span class="text-caption font-caption text-xs text-on-surface-variant block">Frozen Funds Under Dual-Key</span>
+<span class="text-title font-title text-primary tracking-tight">₦18,000,000.00</span>
+<span class="text-[11px] text-outline block mt-0.5">Zenith Bank Dedicated Escrow Pool</span>
+</div>
+<div class="w-12 h-12 rounded-xl bg-primary text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-2xl" data-icon="lock">lock</span>
+</div>
+</div>
+<!-- Contested Summary Narrative -->
+<div>
+<div class="flex items-center justify-between mb-1.5">
+<h3 class="text-label font-label text-on-surface text-sm">Conflict Summary &amp; Allegation</h3>
+<span class="text-[11px] font-semibold text-secondary">Milestone 2 Release Blocked</span>
+</div>
+<div class="p-3 bg-surface-container-low/70 rounded-xl border border-surface-variant text-xs text-on-surface-variant leading-relaxed">
+<p class="mb-1.5">
+<strong class="text-on-surface">Claimant (Flour Mills Nig):</strong> Submits SGS Laboratory Assay indicating <span class="font-bold text-secondary">15.2% moisture content</span>, exceeding agreed 14.0% tolerance. Asserts grain cannot be milled without spoilage.
+                </p>
+<p>
+<strong class="text-on-surface">Respondent (Kano Agro):</strong> Submits Kano Depot exit certificates showing grain certified at <span class="font-bold text-primary">12.8%</span> upon truck loading. Claims transit rain intrusion is buyer logistics liability.
+                </p>
+</div>
+</div>
+<!-- Evidence Docket Status Checklist -->
+<div>
+<div class="flex items-center justify-between mb-2">
+<h3 class="text-label font-label text-on-surface text-sm">Evidence Docket (Verified Artifacts)</h3>
+<span class="text-caption font-caption text-xs text-primary font-bold">3 of 3 Verified</span>
+</div>
+<div class="space-y-2">
+<!-- Docket Item 1 -->
+<div class="flex items-center justify-between p-2.5 bg-surface rounded-xl border border-surface-variant hover:border-primary-fixed transition-colors">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="verified_user">verified_user</span>
+<div class="flex flex-col">
+<span class="text-xs font-semibold text-on-surface">SGS Lab Assay (#LAB-8812)</span>
+<span class="text-[11px] text-outline">Uploaded by Buyer • Signed Cert</span>
+</div>
+</div>
+<button class="p-1.5 text-outline hover:text-primary rounded" title="View Document">
+<span class="material-symbols-outlined text-base" data-icon="visibility">visibility</span>
+</button>
+</div>
+<!-- Docket Item 2 -->
+<div class="flex items-center justify-between p-2.5 bg-surface rounded-xl border border-surface-variant hover:border-primary-fixed transition-colors">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="receipt_long">receipt_long</span>
+<div class="flex flex-col">
+<span class="text-xs font-semibold text-on-surface">Kano Depot Weighbridge Receipt</span>
+<span class="text-[11px] text-outline">Uploaded by Seller • Stamped</span>
+</div>
+</div>
+<button class="p-1.5 text-outline hover:text-primary rounded" title="View Document">
+<span class="material-symbols-outlined text-base" data-icon="visibility">visibility</span>
+</button>
+</div>
+<!-- Docket Item 3 -->
+<div class="flex items-center justify-between p-2.5 bg-surface rounded-xl border border-surface-variant hover:border-primary-fixed transition-colors">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="local_shipping">local_shipping</span>
+<div class="flex flex-col">
+<span class="text-xs font-semibold text-on-surface">Transporter Handover Waybill</span>
+<span class="text-[11px] text-outline">Uploaded by Logistics Carrier</span>
+</div>
+</div>
+<button class="p-1.5 text-outline hover:text-primary rounded" title="View Document">
+<span class="material-symbols-outlined text-base" data-icon="visibility">visibility</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Arbitrator Fast Triage Decision Panel -->
+<div class="pt-space-md border-t border-surface-variant flex flex-col gap-2.5">
+<span class="text-caption font-caption text-xs font-semibold text-on-surface-variant uppercase tracking-wider">Arbitrator Determination Actions</span>
+<!-- Primary Action: 52px Height -->
+<button class="h-[52px] w-full rounded-xl bg-primary-container text-on-primary font-label text-label hover:bg-primary transition-all flex items-center justify-center gap-2 shadow-md">
+<span class="material-symbols-outlined" data-icon="balance">balance</span>
+<span>Open Full Adjudication Case (W-ESC-003)</span>
+</button>
+<!-- Secondary Action: 52px Height -->
+<button class="h-[52px] w-full rounded-xl bg-tertiary-fixed text-primary font-label text-label hover:bg-tertiary-fixed-dim transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" data-icon="more_time">more_time</span>
+<span>Grant 24h Evidence Extension (Mutual)</span>
+</button>
+<!-- Tertiary Settlement Offer: 52px Height -->
+<button class="h-[52px] w-full rounded-xl border border-outline-variant bg-surface-container-lowest text-on-surface font-label text-label hover:bg-surface-container-low transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-outline" data-icon="price_change">price_change</span>
+<span>Propose 15% Settlement Discount &amp; Release</span>
+</button>
+</div>
+<!-- Audit Trail Signature -->
+<div class="p-2.5 bg-surface-container rounded-lg text-[11px] text-outline flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="fingerprint">fingerprint</span>
+<span>Logged by Officer ID: BTR-FATIMA-092 • IP: 102.89.44.18 (Lagos HQ)</span>
+</div>
+</div>
+</aside>
+</div>
+<!-- Legal Footnote & Statutory Framework -->
+<footer class="pt-space-lg pb-space-xl border-t border-surface-variant flex flex-col sm:flex-row items-center justify-between text-xs text-on-surface-variant gap-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-primary" data-icon="shield">shield</span>
+<span>Encrypted Arbitration Portal • Lagos Multi-Door Courthouse &amp; CBN Framework • NDIC Insured Escrow</span>
+</div>
+<div class="flex items-center gap-4 text-caption font-caption text-[12px]">
+<a class="hover:text-primary" href="#compliance">Compliance Manual (Rev 4.2)</a>
+<span>•</span>
+<a class="hover:text-primary" href="#arbitration-code">Lagos Arbitration Law 2009</a>
+<span>•</span>
+<a class="hover:text-primary" href="#support">Legal Ops Desk (Ext: 4410)</a>
+</div>
+</footer>
+</main>
+</div>
+</body></html>

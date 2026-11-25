@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Referral Review Queue (W-INS-003) - YourApp Credit &amp; Loyalty Ops</title>
+<!-- Typography: Inter font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "error-container": "#ffdad6",
+            "on-primary-fixed-variant": "#881646",
+            "surface-tint": "#a8315d",
+            "surface": "#fff8f8",
+            "on-error": "#ffffff",
+            "tertiary-fixed": "#eedee4",
+            "on-secondary-fixed-variant": "#8c170e",
+            "surface-variant": "#e9e0e1",
+            "on-background": "#1f1b1c",
+            "on-tertiary": "#ffffff",
+            "on-primary-container": "#ffa0ba",
+            "outline": "#897176",
+            "on-tertiary-fixed": "#21191e",
+            "secondary": "#ae3123",
+            "surface-container-high": "#efe6e7",
+            "outline-variant": "#dcbfc5",
+            "on-error-container": "#93000a",
+            "primary-container": "#8e1b4a",
+            "on-primary": "#ffffff",
+            "secondary-fixed-dim": "#ffb4a8",
+            "on-surface": "#1f1b1c",
+            "tertiary-container": "#53484d",
+            "background": "#FAF8F7",
+            "tertiary": "#3b3236",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "inverse-on-surface": "#f8eeef",
+            "primary-fixed-dim": "#ffb1c5",
+            "surface-container": "#f5eced",
+            "surface-bright": "#fff8f8",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "surface-container-low": "#fbf1f2",
+            "error": "#ba1a1a",
+            "on-secondary": "#ffffff",
+            "surface-dim": "#e1d8d9",
+            "on-secondary-fixed": "#410000",
+            "inverse-surface": "#342f30",
+            "surface-container-highest": "#e9e0e1",
+            "on-secondary-container": "#690000",
+            "secondary-fixed": "#ffdad4",
+            "secondary-container": "#fc6955",
+            "surface-container-lowest": "#ffffff",
+            "on-tertiary-container": "#c6b7bd",
+            "primary-fixed": "#ffd9e1",
+            "on-primary-fixed": "#3f001b",
+            "inverse-primary": "#ffb1c5",
+            "primary": "#6d0033",
+            "on-surface-variant": "#564146"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "space-3xl": "3rem",
+            "space-md": "0.75rem",
+            "space-xl": "1.5rem",
+            "space-lg": "1rem",
+            "space-2xl": "2rem",
+            "space-xs": "0.25rem",
+            "margin": "1rem",
+            "gutter": "1rem"
+          },
+          "fontFamily": {
+            "amount-lg": ["Inter", "sans-serif"],
+            "title": ["Inter", "sans-serif"],
+            "label": ["Inter", "sans-serif"],
+            "subtitle": ["Inter", "sans-serif"],
+            "body-medium": ["Inter", "sans-serif"],
+            "amount-lg-mobile": ["Inter", "sans-serif"],
+            "body": ["Inter", "sans-serif"],
+            "display": ["Inter", "sans-serif"],
+            "caption": ["Inter", "sans-serif"]
+          },
+          "fontSize": {
+            "amount-lg": [
+              "36px",
+              {
+                "lineHeight": "44px",
+                "letterSpacing": "-0.03em",
+                "fontWeight": "700"
+              }
+            ],
+            "title": [
+              "24px",
+              {
+                "lineHeight": "32px",
+                "letterSpacing": "-0.015em",
+                "fontWeight": "700"
+              }
+            ],
+            "label": [
+              "14px",
+              {
+                "lineHeight": "20px",
+                "letterSpacing": "0.01em",
+                "fontWeight": "600"
+              }
+            ],
+            "subtitle": [
+              "20px",
+              {
+                "lineHeight": "28px",
+                "letterSpacing": "-0.01em",
+                "fontWeight": "600"
+              }
+            ],
+            "body-medium": [
+              "16px",
+              {
+                "lineHeight": "24px",
+                "letterSpacing": "0em",
+                "fontWeight": "500"
+              }
+            ],
+            "amount-lg-mobile": [
+              "32px",
+              {
+                "lineHeight": "40px",
+                "letterSpacing": "-0.02em",
+                "fontWeight": "700"
+              }
+            ],
+            "body": [
+              "16px",
+              {
+                "lineHeight": "24px",
+                "letterSpacing": "0em",
+                "fontWeight": "400"
+              }
+            ],
+            "display": [
+              "32px",
+              {
+                "lineHeight": "40px",
+                "letterSpacing": "-0.02em",
+                "fontWeight": "700"
+              }
+            ],
+            "caption": [
+              "13px",
+              {
+                "lineHeight": "18px",
+                "letterSpacing": "0.01em",
+                "fontWeight": "400"
+              }
+            ]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #FAF8F7;
+      color: #1f1b1c;
+      -webkit-font-smoothing: antialiased;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      font-size: 20px;
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      vertical-align: middle;
+    }
+    .font-tabular {
+      font-variant-numeric: tabular-nums;
+    }
+    /* Custom subtle elevation styles from design system */
+    .elevation-card {
+      box-shadow: 0 2px 8px -2px rgba(30, 26, 27, 0.05), 0 1px 3px 0 rgba(30, 26, 27, 0.03);
+    }
+    .elevation-interactive {
+      box-shadow: 0 8px 24px -4px rgba(30, 26, 27, 0.08), 0 4px 12px -2px rgba(30, 26, 27, 0.04);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex flex-row selection:bg-primary-fixed selection:text-primary">
+<!-- ========================================================================= -->
+<!-- 1. LEFT DOCKED NAVIGATION (SideNavBar: w-72, 288px fixed)                -->
+<!-- ========================================================================= -->
+<aside class="fixed left-0 top-0 h-full w-72 flex flex-col justify-between py-space-xl px-space-lg overflow-y-auto bg-surface-container-lowest border-r border-surface-variant z-30 shadow-sm">
+<div class="flex flex-col gap-space-lg">
+<!-- Portal Brand Header -->
+<div class="flex items-center gap-space-md px-space-sm pb-space-sm border-b border-surface-variant">
+<div class="w-10 h-10 rounded-xl bg-primary-container text-on-primary flex items-center justify-center font-subtitle text-subtitle shadow-sm">
+<span class="material-symbols-outlined text-[24px]">corporate_fare</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-subtitle font-subtitle text-primary tracking-tight">YourApp Credit Ops</h1>
+<span class="text-caption font-caption text-on-surface-variant">Enterprise Portal</span>
+</div>
+</div>
+<!-- Tenant Indicator Card -->
+<div class="bg-surface-container-low border border-outline-variant/60 rounded-xl p-space-md flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-on-surface-variant">Tenant Context</span>
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-surface-container-lowest border border-outline-variant text-[11px] font-label text-on-surface font-semibold">
+<span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+            ACTIVE
+          </span>
+</div>
+<div class="text-label font-label text-on-surface text-[13px] leading-tight">
+          Retail Bank Rewards &amp; Loyalty #LOY-001
+        </div>
+</div>
+<!-- Navigation Menu Tabs -->
+<nav aria-label="Main Navigation" class="flex flex-col gap-1.5">
+<!-- Dashboard -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#dashboard">
+<span class="material-symbols-outlined text-outline">dashboard</span>
+<span>Dashboard</span>
+</a>
+<!-- Campaigns & Rules (W-INS-001) -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#campaigns">
+<span class="material-symbols-outlined text-outline">tune</span>
+<span>Product Configuration</span>
+</a>
+<!-- Reward Budget & Cost (W-INS-002) -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#budget">
+<span class="material-symbols-outlined text-outline">account_balance_wallet</span>
+<span>Credit Portfolio &amp; Collections</span>
+</a>
+<!-- Referral Review Queue (ACTIVE - W-INS-003) -->
+<a aria-current="page" class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg bg-surface-container-low text-primary font-label text-label border border-outline-variant/40" href="#referrals">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">pending_actions</span>
+<span class="font-bold flex-1">Applications Queue</span>
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded-full text-caption font-label bg-primary text-on-primary text-[11px]">24</span>
+</a>
+<!-- Merchant Partners -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#partners">
+<span class="material-symbols-outlined text-outline">handshake</span>
+<span>Partner Settlement</span>
+</a>
+<!-- Audit Log -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#audit">
+<span class="material-symbols-outlined text-outline">history</span>
+<span>Audit Log</span>
+</a>
+</nav>
+</div>
+<!-- Navigation Footer -->
+<div class="flex flex-col gap-2 pt-space-lg border-t border-surface-variant">
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#settings">
+<span class="material-symbols-outlined text-outline">admin_panel_settings</span>
+<span>Security &amp; Settings</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-secondary font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#signout">
+<span class="material-symbols-outlined text-secondary">logout</span>
+<span>Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- ========================================================================= -->
+<!-- 2. MAIN APPLICATION CONTENT WRAPPER (Shifted for fixed nav: ml-72)        -->
+<!-- ========================================================================= -->
+<div class="flex-1 ml-72 min-w-0 flex flex-col">
+<!-- Top Sticky Header Bar (TopNavBar component mapped) -->
+<header class="sticky top-0 h-16 bg-surface-container-lowest border-b border-surface-variant z-20 flex items-center justify-between px-space-xl gap-space-lg">
+<!-- Search input container -->
+<div class="flex items-center flex-1 max-w-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline pointer-events-none">search</span>
+<input class="w-full h-11 pl-11 pr-4 rounded-xl bg-surface-container-low border border-surface-variant focus:border-primary-container focus:ring-1 focus:ring-primary-container text-body font-body text-on-surface placeholder:text-on-surface-variant/70 text-sm transition-all" placeholder="Search referrals by referrer name, referee phone, referral code, or IP..." type="text"/>
+</div>
+</div>
+<!-- Header actions & indicators -->
+<div class="flex items-center gap-space-md">
+<!-- Filter chips in header -->
+<div class="hidden xl:flex items-center gap-2">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-caption font-label bg-surface-container-high text-on-surface-variant border border-outline-variant/60">
+<span class="material-symbols-outlined text-[16px] text-primary">schedule</span>
+<span>Pending Review: <strong>24 Cases</strong></span>
+</span>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-caption font-label bg-error-container text-on-error-container border border-outline-variant/50">
+<span class="material-symbols-outlined text-[16px] text-error">warning</span>
+<span>Fraud Flagged: <strong>6 Rings</strong></span>
+</span>
+</div>
+<!-- Dual Authorization badge -->
+<div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container border border-surface-variant text-caption font-label text-primary">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+<span class="font-semibold text-xs tracking-wide">Dual Authorization</span>
+</div>
+<button class="p-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors" title="Notifications" type="button">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<!-- Batch Action button -->
+<button class="h-11 px-4 rounded-xl bg-primary text-on-primary font-label text-label hover:bg-primary-container active:scale-[0.98] transition-all flex items-center gap-2 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+<span class="text-sm font-semibold">Batch Approve Clean Payouts (18)</span>
+</button>
+<!-- Profile avatar & details -->
+<div class="flex items-center gap-3 pl-space-md border-l border-surface-variant">
+<img class="w-10 h-10 rounded-full object-cover border-2 border-primary-container" data-alt="A dignified executive business portrait of Mrs. Ifeoma Okonkwo wearing formal Nigerian professional attire with warm ambient studio lighting, conveying authority, financial leadership, and institutional banking compliance excellence in a modern minimalist boardroom environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlIGPYjSnTHOWBK314MeGkSRb4jSG_1fPTGA2nDxvpXjWZGJqhVCk2zdY6h8-76SdJtYyU8ZSG65gdSf5qyEGZXXpCH9soxBAlrGIvhMz4z0e_kp6rInkYhgjKK99___orwvgXH-6fPbjC11HQKEjI79oXPsT7tlhZFFk7PSX7BjMABcTIX_S4sOUwFNPplWpPLd0ugZkEhNbTKPIbtSaTrS1v85EY0kRWyCCaqSjT"/>
+<div class="hidden 2xl:flex flex-col text-left">
+<span class="text-label font-label text-on-surface text-sm leading-tight">Mrs. Ifeoma Okonkwo</span>
+<span class="text-caption font-caption text-on-surface-variant text-xs">Head of Growth &amp; Retention</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Scrollable Dashboard Viewport -->
+<main class="flex-1 p-space-xl flex flex-col gap-space-xl max-w-[1600px] w-full mx-auto">
+<!-- Viewport Header -->
+<section class="flex flex-col md:flex-row md:items-center justify-between gap-space-lg bg-surface-container-lowest border border-surface-variant p-space-xl rounded-xl elevation-card">
+<div class="flex flex-col gap-space-xs max-w-3xl">
+<div class="flex items-center gap-space-sm flex-wrap">
+<h2 class="text-title font-title text-on-background tracking-tight">Referral Integrity Queue, Syndicate Surveillance &amp; Payout Clearance</h2>
+<span class="px-2.5 py-0.5 rounded-md bg-primary-fixed text-on-primary-fixed font-label text-caption font-semibold tracking-wider">W-INS-003</span>
+</div>
+<p class="text-body font-body text-on-surface-variant text-sm leading-relaxed">
+            Real-time compliance monitoring incorporating automated device fingerprinting (IMEI/MAC hash), transaction milestone qualification, anti-syndicate heuristics, and multi-tier referral fee disbursement for Lagos Island and regional branches.
+          </p>
+</div>
+<div class="flex items-center gap-space-md shrink-0">
+<button class="h-[52px] px-4 rounded-xl border border-outline-variant bg-surface-container-lowest text-on-surface font-label text-label hover:bg-surface-container transition-all flex items-center gap-2" type="button">
+<span class="material-symbols-outlined text-outline">download</span>
+<span>Export Suspicious Cases (CSV)</span>
+</button>
+<button class="h-[52px] px-4 rounded-xl border border-outline-variant bg-surface-container-lowest text-on-surface font-label text-label hover:bg-surface-container transition-all flex items-center gap-2" type="button">
+<span class="material-symbols-outlined text-primary">security_update_good</span>
+<span>Update Risk Heuristics</span>
+</button>
+</div>
+</section>
+<!-- KPI Strip (4 Bento Tiles) -->
+<section aria-label="Key Performance Indicators" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-space-lg">
+<!-- Tile 1 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl border border-surface-variant elevation-card flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="text-caption font-caption uppercase tracking-wider font-semibold">Total Referrals Submitted (MTD)</span>
+<span class="p-2 rounded-lg bg-surface-container-low text-primary">
+<span class="material-symbols-outlined">group_add</span>
+</span>
+</div>
+<div class="my-space-sm">
+<div class="text-amount-lg font-amount-lg text-on-background font-tabular">8,420</div>
+<div class="text-caption font-caption text-on-surface-variant mt-1">Claims across Lagos, Abuja &amp; Port Harcourt</div>
+</div>
+<div class="flex items-center gap-1.5 text-caption font-label text-emerald-800 pt-2 border-t border-surface-variant/40">
+<span class="material-symbols-outlined text-[16px] text-emerald-700">trending_up</span>
+<span class="font-semibold">+14.2%</span> vs prior 30 days
+          </div>
+</div>
+<!-- Tile 2 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl border border-surface-variant elevation-card flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="text-caption font-caption uppercase tracking-wider font-semibold">Auto-Approved Clean Claims</span>
+<span class="p-2 rounded-lg bg-emerald-50 text-emerald-800">
+<span class="material-symbols-outlined">verified</span>
+</span>
+</div>
+<div class="my-space-sm">
+<div class="text-amount-lg font-amount-lg text-on-background font-tabular">7,850</div>
+<div class="text-caption font-caption text-emerald-800 font-semibold mt-1">93.2% automated qualification rate</div>
+</div>
+<div class="flex items-center gap-1.5 text-caption font-label text-on-surface-variant pt-2 border-t border-surface-variant/40">
+<span class="material-symbols-outlined text-[16px] text-emerald-700">check_circle</span>
+            Direct NIP settlement executed
+          </div>
+</div>
+<!-- Tile 3 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl border border-surface-variant elevation-card flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="text-caption font-caption uppercase tracking-wider font-semibold">Flagged in Review Queue</span>
+<span class="p-2 rounded-lg bg-surface-container text-secondary">
+<span class="material-symbols-outlined">notification_important</span>
+</span>
+</div>
+<div class="my-space-sm">
+<div class="text-amount-lg font-amount-lg text-secondary font-tabular">570</div>
+<div class="text-caption font-caption text-on-surface-variant mt-1">6.8% under review / syndicate audit</div>
+</div>
+<div class="flex items-center gap-1.5 text-caption font-label text-secondary pt-2 border-t border-surface-variant/40">
+<span class="material-symbols-outlined text-[16px] text-secondary">hourglass_bottom</span>
+            Avg resolution SLA: 4.2 hours
+          </div>
+</div>
+<!-- Tile 4 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl border border-surface-variant elevation-card flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="text-caption font-caption uppercase tracking-wider font-semibold">Blocked Fraud Savings</span>
+<span class="p-2 rounded-lg bg-primary-fixed text-primary">
+<span class="material-symbols-outlined">savings</span>
+</span>
+</div>
+<div class="my-space-sm">
+<div class="text-amount-lg font-amount-lg text-primary font-tabular">₦4,250,000.00</div>
+<div class="text-caption font-caption text-on-surface-variant mt-1">Averted fake signups &amp; wash cycles</div>
+</div>
+<div class="flex items-center gap-1.5 text-caption font-label text-primary pt-2 border-t border-surface-variant/40">
+<span class="material-symbols-outlined text-[16px] text-primary">shield</span>
+            Zero false chargeback incidents
+          </div>
+</div>
+</section>
+<!-- Heuristic Protection Banner -->
+<section class="bg-gradient-to-r from-surface-container-low via-surface-container to-surface-container-lowest border-l-4 border-l-primary-container border-y border-r border-surface-variant p-space-lg rounded-xl flex items-center justify-between gap-space-lg elevation-card">
+<div class="flex items-start gap-space-md">
+<div class="p-2.5 rounded-xl bg-primary text-on-primary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[24px]">gavel</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<h3 class="text-subtitle font-subtitle text-on-surface text-base">Strict Referral Milestone Enforcement</h3>
+<span class="px-2 py-0.5 rounded text-caption font-label bg-primary-container text-on-primary text-xs">CBN Rule 14.8</span>
+</div>
+<p class="text-body font-body text-on-surface-variant text-sm">
+              Referrer reward (<strong>₦1,000</strong>) only unlocks after referee completes BVN/NIN verification AND conducts a genuine inbound transfer of <strong>≥₦2,000</strong>. Devices sharing IMEI, MAC address, or IP subnet are quarantined automatically.
+            </p>
+</div>
+</div>
+<div class="hidden lg:flex items-center gap-3 shrink-0">
+<div class="text-right">
+<span class="text-caption font-caption text-on-surface-variant block">Rule Engine Version</span>
+<span class="text-label font-label text-on-surface font-semibold text-xs">v4.9.2 (Enforced)</span>
+</div>
+<span class="material-symbols-outlined text-outline">verified</span>
+</div>
+</section>
+<!-- Two-Column Operations Layout: 7/12 (Queue) vs 5/12 (Case Dossier) -->
+<section class="grid grid-cols-12 gap-space-xl items-start">
+<!-- ================================================================= -->
+<!-- LEFT COLUMN: Referral Review Queue Table (7 cols)                 -->
+<!-- ================================================================= -->
+<div class="col-span-12 xl:col-span-7 flex flex-col gap-space-lg">
+<div class="bg-surface-container-lowest border border-surface-variant rounded-xl elevation-card overflow-hidden">
+<!-- Sub-nav Tabs -->
+<div class="flex items-center justify-between border-b border-surface-variant px-space-lg pt-space-sm bg-surface-bright">
+<div class="flex items-center gap-2">
+<button class="py-3 px-4 border-b-2 border-primary-container text-primary font-label text-label flex items-center gap-2 font-bold text-sm" type="button">
+<span>Under Review</span>
+<span class="px-2 py-0.5 rounded-full bg-primary-container text-on-primary text-xs font-semibold">24</span>
+</button>
+<button class="py-3 px-4 border-b-2 border-transparent text-on-surface-variant hover:text-on-surface font-label text-label flex items-center gap-2 text-sm transition-colors" type="button">
+<span>Flagged Syndicate</span>
+<span class="px-2 py-0.5 rounded-full bg-error-container text-on-error-container text-xs font-semibold">6</span>
+</button>
+<button class="py-3 px-4 border-b-2 border-transparent text-on-surface-variant hover:text-on-surface font-label text-label flex items-center gap-2 text-sm transition-colors" type="button">
+<span>Approved Today</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant text-xs font-semibold">142</span>
+</button>
+<button class="py-3 px-4 border-b-2 border-transparent text-on-surface-variant hover:text-on-surface font-label text-label flex items-center gap-2 text-sm transition-colors" type="button">
+<span>Rejected</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant text-xs font-semibold">18</span>
+</button>
+</div>
+<!-- Quick action in tab strip -->
+<button class="text-caption font-label text-primary hover:underline flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">filter_list</span>
+<span>Filter</span>
+</button>
+</div>
+<!-- Main Table Wrapper -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant border-b border-surface-variant text-caption font-label uppercase tracking-wider text-xs">
+<th class="py-3.5 px-4 font-semibold">Ref &amp; Time</th>
+<th class="py-3.5 px-4 font-semibold">Referrer Details</th>
+<th class="py-3.5 px-4 font-semibold">Referee Details</th>
+<th class="py-3.5 px-4 font-semibold">Milestone Met</th>
+<th class="py-3.5 px-4 font-semibold text-center">Risk Score</th>
+<th class="py-3.5 px-4 font-semibold text-right">Status / Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-variant text-body font-body text-sm">
+<!-- ROW 1 (SELECTED STATE / ACTIVE DOSSIER FOCUS) -->
+<tr class="bg-primary-fixed/20 border-l-4 border-l-primary hover:bg-primary-fixed/30 transition-colors cursor-pointer">
+<td class="py-4 px-4 align-top">
+<div class="font-semibold text-primary font-tabular">REF-2027-9021</div>
+<div class="text-caption font-caption text-on-surface-variant">10 mins ago</div>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="font-medium text-on-surface">Chinedu Adeleke</div>
+<div class="text-caption font-caption text-on-surface-variant font-tabular">#USR-8821 • <span class="text-amber-800 font-semibold">Gold Tier</span></div>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="font-medium text-on-surface">Tunde Bakare</div>
+<div class="text-caption font-caption text-on-surface-variant font-tabular">#USR-9412</div>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="flex flex-col gap-1">
+<span class="inline-flex items-center gap-1 text-emerald-800 text-xs font-semibold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> BVN Verified
+                        </span>
+<span class="text-xs text-on-surface font-tabular font-medium">+ ₦5,000 Inbound</span>
+</div>
+</td>
+<td class="py-4 px-4 align-top text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-900 text-xs font-bold font-tabular">
+<span class="material-symbols-outlined text-[14px]">verified</span> 12/100
+                      </span>
+</td>
+<td class="py-4 px-4 align-top text-right">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-primary-container text-on-primary text-xs font-semibold">
+<span class="material-symbols-outlined text-[14px]">visibility</span> Reviewing
+                      </span>
+</td>
+</tr>
+<!-- ROW 2 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="py-4 px-4 align-top">
+<div class="font-semibold text-on-surface font-tabular">REF-2027-9020</div>
+<div class="text-caption font-caption text-on-surface-variant">24 mins ago</div>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="font-medium text-on-surface">Ahmed Musa</div>
+<div class="text-caption font-caption text-on-surface-variant font-tabular">#USR-4102 • Tier 2</div>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="font-medium text-on-surface">Fatima Bello</div>
+<div class="text-caption font-caption text-on-surface-variant font-tabular">#USR-9410</div>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="flex flex-col gap-1">
+<span class="inline-flex items-center gap-1 text-emerald-800 text-xs font-semibold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> BVN Verified
+                        </span>
+<span class="text-xs text-on-surface font-tabular font-medium">+ ₦2,500 Airtime</span>
+</div>
+</td>
+<td class="py-4 px-4 align-top text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-900 text-xs font-bold font-tabular">
+<span class="material-symbols-outlined text-[14px]">verified</span> 18/100
+                      </span>
+</td>
+<td class="py-4 px-4 align-top text-right">
+<button class="px-2.5 py-1 rounded-md border border-outline-variant hover:bg-surface-container-high text-xs font-label text-on-surface font-semibold" type="button">
+                        Ready to Approve
+                      </button>
+</td>
+</tr>
+<!-- ROW 3 (SYNDICATE FLAGGED) -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer bg-error-container/20">
+<td class="py-4 px-4 align-top">
+<div class="font-semibold text-secondary font-tabular">REF-2027-9019</div>
+<div class="text-caption font-caption text-on-surface-variant">32 mins ago</div>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="font-medium text-on-surface">Kemi Olawale</div>
+<div class="text-caption font-caption text-secondary font-tabular">#USR-7731 • New User</div>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="font-medium text-secondary">Multiple (5 new)</div>
+<div class="text-caption font-caption text-secondary">5 accounts in 10 mins</div>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="flex flex-col gap-1">
+<span class="inline-flex items-center gap-1 text-error text-xs font-semibold">
+<span class="material-symbols-outlined text-[14px]">error</span> Circular Wash
+                        </span>
+<span class="text-xs text-on-surface-variant">Inbound from same card</span>
+</div>
+</td>
+<td class="py-4 px-4 align-top text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-error-container text-on-error-container text-xs font-bold font-tabular">
+<span class="material-symbols-outlined text-[14px]">warning</span> 89/100
+                      </span>
+</td>
+<td class="py-4 px-4 align-top text-right">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-secondary text-on-secondary text-xs font-semibold">
+<span class="material-symbols-outlined text-[14px]">block</span> Syndicate Flag
+                      </span>
+</td>
+</tr>
+<!-- ROW 4 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="py-4 px-4 align-top">
+<div class="font-semibold text-on-surface font-tabular">REF-2027-9018</div>
+<div class="text-caption font-caption text-on-surface-variant">45 mins ago</div>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="font-medium text-on-surface">Emeka Eze</div>
+<div class="text-caption font-caption text-on-surface-variant font-tabular">#USR-3309 • Tier 3</div>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="font-medium text-on-surface">Chukwuma Eze</div>
+<div class="text-caption font-caption text-on-surface-variant font-tabular">#USR-9399</div>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="flex flex-col gap-1">
+<span class="inline-flex items-center gap-1 text-emerald-800 text-xs font-semibold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> BVN Verified
+                        </span>
+<span class="text-xs text-on-surface font-tabular font-medium">+ ₦10,000 Transfer</span>
+</div>
+</td>
+<td class="py-4 px-4 align-top text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-900 text-xs font-bold font-tabular">
+<span class="material-symbols-outlined text-[14px]">verified</span> 24/100
+                      </span>
+</td>
+<td class="py-4 px-4 align-top text-right">
+<button class="px-2.5 py-1 rounded-md border border-outline-variant hover:bg-surface-container-high text-xs font-label text-on-surface font-semibold" type="button">
+                        Ready to Approve
+                      </button>
+</td>
+</tr>
+<!-- ROW 5 (SEVERE RISK QUARANTINED) -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer bg-error-container/15">
+<td class="py-4 px-4 align-top">
+<div class="font-semibold text-secondary font-tabular">REF-2027-9017</div>
+<div class="text-caption font-caption text-on-surface-variant">1 hour ago</div>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="font-medium text-on-surface">David Adeleke</div>
+<div class="text-caption font-caption text-on-surface-variant font-tabular">#USR-1994</div>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="font-medium text-on-surface">Simi Oladipo</div>
+<div class="text-caption font-caption text-on-surface-variant font-tabular">#USR-9388</div>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="flex flex-col gap-1">
+<span class="inline-flex items-center gap-1 text-error text-xs font-semibold">
+<span class="material-symbols-outlined text-[14px]">phonelink_lock</span> IMEI Match
+                        </span>
+<span class="text-xs text-secondary font-medium">Same Physical Device</span>
+</div>
+</td>
+<td class="py-4 px-4 align-top text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-error text-on-error text-xs font-bold font-tabular">
+<span class="material-symbols-outlined text-[14px]">security</span> 94/100
+                      </span>
+</td>
+<td class="py-4 px-4 align-top text-right">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-on-error-container text-on-error text-xs font-semibold">
+<span class="material-symbols-outlined text-[14px]">lock</span> Quarantined
+                      </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Pagination Bar -->
+<div class="flex items-center justify-between px-space-lg py-3.5 border-t border-surface-variant bg-surface-container-low">
+<span class="text-caption font-caption text-on-surface-variant text-xs">
+                Showing <strong>1 to 5</strong> of <strong>24</strong> flagged cases
+              </span>
+<div class="flex items-center gap-1">
+<button class="p-1.5 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface-variant disabled:opacity-50" disabled="" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-primary-container text-on-primary font-label text-caption font-bold flex items-center justify-center" type="button">1</button>
+<button class="w-8 h-8 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface font-label text-caption hover:bg-surface-container flex items-center justify-center" type="button">2</button>
+<button class="w-8 h-8 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface font-label text-caption hover:bg-surface-container flex items-center justify-center" type="button">3</button>
+<button class="p-1.5 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- ================================================================= -->
+<!-- RIGHT COLUMN: Case Dossier & Fraud Forensic Inspector (5 cols)    -->
+<!-- ================================================================= -->
+<div class="col-span-12 xl:col-span-5 flex flex-col gap-space-lg">
+<div class="bg-surface-container-lowest border border-surface-variant rounded-xl elevation-interactive p-space-xl flex flex-col gap-space-xl">
+<!-- Dossier Header -->
+<div class="flex items-center justify-between pb-space-md border-b border-surface-variant">
+<div>
+<span class="text-caption font-caption text-on-surface-variant uppercase tracking-wider font-semibold">Active Review Target</span>
+<h3 class="text-subtitle font-subtitle text-on-surface font-bold">Case Dossier #REF-2027-9021</h3>
+</div>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 border border-emerald-300 text-emerald-900 font-label text-caption font-bold">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+<span>Risk: Low (12/100) • Clean Match</span>
+</span>
+</div>
+<!-- Counterparty Profiles Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<!-- Referrer Profile Card -->
+<div class="bg-surface-container-low border border-outline-variant/60 rounded-xl p-space-md flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-on-surface-variant font-semibold uppercase text-[11px]">Referrer (Host)</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest border border-outline-variant text-[11px] font-label text-primary font-bold">Gold Tier</span>
+</div>
+<div class="font-subtitle text-base font-bold text-on-surface">Chinedu Adeleke</div>
+<div class="text-caption font-caption text-on-surface-variant flex flex-col gap-1 text-xs">
+<div>Account Age: <strong class="text-on-surface">14 months</strong></div>
+<div>Historical Referrals: <strong class="text-emerald-800">18 (100% genuine)</strong></div>
+<div>Referral Code: <code class="px-1.5 py-0.5 bg-surface-container rounded font-bold text-primary">CHINEDU-VIP</code></div>
+</div>
+</div>
+<!-- Referee Profile Card -->
+<div class="bg-surface-container-low border border-outline-variant/60 rounded-xl p-space-md flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-on-surface-variant font-semibold uppercase text-[11px]">Referee (Invited)</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest border border-outline-variant text-[11px] font-label text-emerald-800 font-bold">KYC Tier 1</span>
+</div>
+<div class="font-subtitle text-base font-bold text-on-surface">Tunde Bakare</div>
+<div class="text-caption font-caption text-on-surface-variant flex flex-col gap-1 text-xs">
+<div>Account Age: <strong class="text-on-surface">2 days</strong></div>
+<div>BVN Match: <strong class="text-emerald-800">Verified (First Bank NUBAN)</strong></div>
+<div>Inbound Credit: <strong class="text-on-surface font-tabular">₦5,000.00 (Corporate NIP)</strong></div>
+</div>
+</div>
+</div>
+<!-- Forensic Telemetry Check list -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<h4 class="text-label font-label text-on-surface font-bold text-xs uppercase tracking-wider">Forensic Telemetry &amp; Syndicate Checks</h4>
+<span class="text-caption font-caption text-emerald-800 font-semibold text-xs">Passed 3 of 3 Gates</span>
+</div>
+<div class="flex flex-col gap-2">
+<!-- Check 1: Hardware -->
+<div class="flex items-start gap-3 p-3 rounded-lg bg-surface-container-lowest border border-surface-variant">
+<div class="p-1 rounded-full bg-emerald-100 text-emerald-800 shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+<div class="flex-1 text-xs">
+<div class="font-label font-semibold text-on-surface">Device Fingerprint Telemetry</div>
+<div class="text-on-surface-variant">
+                      Unique hardware hashes detected. Referrer: <span class="font-mono text-[11px]">Samsung SM-S918B</span>, Referee: <span class="font-mono text-[11px]">iPhone 15,3</span>. Zero IMEI/MAC overlap.
+                    </div>
+</div>
+</div>
+<!-- Check 2: Geo/IP -->
+<div class="flex items-start gap-3 p-3 rounded-lg bg-surface-container-lowest border border-surface-variant">
+<div class="p-1 rounded-full bg-emerald-100 text-emerald-800 shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+<div class="flex-1 text-xs">
+<div class="font-label font-semibold text-on-surface">IP Subnet &amp; Geolocation Plausibility</div>
+<div class="text-on-surface-variant">
+                      Referrer IP: Ikeja, Lagos (MTN NG Broadband); Referee IP: Victoria Island, Lagos (Airtel NG). Distinct subnets indicate authentic autonomous users.
+                    </div>
+</div>
+</div>
+<!-- Check 3: Funding Circularity -->
+<div class="flex items-start gap-3 p-3 rounded-lg bg-surface-container-lowest border border-surface-variant">
+<div class="p-1 rounded-full bg-emerald-100 text-emerald-800 shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+<div class="flex-1 text-xs">
+<div class="font-label font-semibold text-on-surface">Funding Circularity Check</div>
+<div class="text-on-surface-variant">
+                      Referee funds originated from external corporate payroll account via NIP, completely decoupled from referrer's wallet. Zero self-funding wash detected.
+                    </div>
+</div>
+</div>
+</div>
+</div>
+<!-- Reward Disbursement Summary -->
+<div class="bg-surface-container-low border border-outline-variant/80 rounded-xl p-space-md flex flex-col gap-2">
+<span class="text-caption font-caption text-on-surface-variant uppercase tracking-wider font-semibold text-xs">Scheduled Reward Disbursement</span>
+<div class="flex items-center justify-between py-1 border-b border-surface-variant text-sm">
+<span class="text-on-surface-variant">Referrer Cash Reward (Chinedu)</span>
+<span class="font-bold text-on-surface font-tabular">₦1,000.00</span>
+</div>
+<div class="flex items-center justify-between py-1 border-b border-surface-variant text-sm">
+<span class="text-on-surface-variant">Referee Welcome Bonus (Tunde)</span>
+<span class="font-bold text-on-surface font-tabular">₦500.00</span>
+</div>
+<div class="flex items-center justify-between pt-1 text-sm font-semibold">
+<span class="text-primary">Total Disbursable Payout</span>
+<span class="text-base text-primary font-bold font-tabular">₦1,500.00</span>
+</div>
+</div>
+<!-- Action Triggers (52px Standard Height) -->
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<!-- Primary Action Button: 52px height, #8E1B4A Berry -->
+<button class="w-full h-[52px] rounded-xl bg-primary-container text-on-primary font-label text-label hover:bg-primary transition-all flex items-center justify-center gap-2 shadow-sm font-bold text-base active:scale-[0.99]" type="button">
+<span class="material-symbols-outlined text-[22px]">verified</span>
+<span>Approve &amp; Disburse Reward (₦1,500.00)</span>
+</button>
+<!-- Secondary Button: 52px height, light berry tone -->
+<button class="w-full h-[52px] rounded-xl bg-[#F8E8EE] text-primary-container font-label text-label hover:bg-[#F3D7E2] transition-all flex items-center justify-center gap-2 font-semibold" type="button">
+<span class="material-symbols-outlined text-[20px]">contact_support</span>
+<span>Request Additional Identity Verification</span>
+</button>
+<!-- Destructive Action: 52px height, outline/danger -->
+<button class="w-full h-[52px] rounded-xl border border-secondary text-secondary hover:bg-error-container/30 transition-all font-label text-label flex items-center justify-center gap-2 font-semibold" type="button">
+<span class="material-symbols-outlined text-[20px]">person_off</span>
+<span>Decline &amp; Ban Referrer from Reward Program</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Institutional Footer Compliance Strip -->
+<footer class="mt-space-lg pt-space-lg border-t border-surface-variant flex flex-col md:flex-row items-center justify-between gap-space-md text-caption font-caption text-on-surface-variant">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="inline-flex items-center gap-1 font-semibold text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-emerald-700">shield</span>
+            Anti-Money Laundering (AML) / CFT Compliance Enforced
+          </span>
+<span>•</span>
+<span>Central Bank of Nigeria (CBN) Electronic Promotions Framework 2026</span>
+<span>•</span>
+<span>Cryptographic Audit ID: #TX-LOG-88194-NIG</span>
+</div>
+<div class="text-right">
+<span>Session encrypted via TLS 1.3 • Lagos Island Main Branch (012)</span>
+</div>
+</footer>
+</main>
+</div>
+</body></html>

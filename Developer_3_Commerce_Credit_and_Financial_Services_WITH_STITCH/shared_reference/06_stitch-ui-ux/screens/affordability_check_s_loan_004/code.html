@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Affordability Check - YourApp Instant Loan</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Inter Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config Verbatim -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary-fixed-variant": "#8c170e",
+            "on-primary-container": "#ffa0ba",
+            "on-surface-variant": "#564146",
+            "surface-container": "#f5eced",
+            "inverse-primary": "#ffb1c5",
+            "surface-container-low": "#fbf1f2",
+            "on-error-container": "#93000a",
+            "on-error": "#ffffff",
+            "surface": "#fff8f8",
+            "on-secondary": "#ffffff",
+            "on-secondary-fixed": "#410000",
+            "on-primary": "#ffffff",
+            "outline-variant": "#dcbfc5",
+            "on-primary-fixed-variant": "#881646",
+            "surface-container-lowest": "#ffffff",
+            "on-tertiary-container": "#c6b7bd",
+            "primary-fixed": "#ffd9e1",
+            "secondary": "#ae3123",
+            "tertiary-fixed": "#eedee4",
+            "error-container": "#ffdad6",
+            "background": "#fff8f8",
+            "surface-container-high": "#efe6e7",
+            "secondary-fixed": "#ffdad4",
+            "tertiary-container": "#53484d",
+            "on-primary-fixed": "#3f001b",
+            "inverse-on-surface": "#f8eeef",
+            "on-background": "#1f1b1c",
+            "tertiary": "#3b3236",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "primary": "#6d0033",
+            "surface-container-highest": "#e9e0e1",
+            "error": "#ba1a1a",
+            "outline": "#897176",
+            "inverse-surface": "#342f30",
+            "surface-tint": "#a8315d",
+            "on-tertiary-fixed": "#21191e",
+            "secondary-fixed-dim": "#ffb4a8",
+            "surface-dim": "#e1d8d9",
+            "on-secondary-container": "#690000",
+            "surface-variant": "#e9e0e1",
+            "primary-fixed-dim": "#ffb1c5",
+            "surface-bright": "#fff8f8",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "on-surface": "#1f1b1c",
+            "secondary-container": "#fc6955",
+            "on-tertiary": "#ffffff",
+            "primary-container": "#8e1b4a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "1rem",
+            "space-md": "0.75rem",
+            "space-2xl": "2rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1rem",
+            "space-xl": "1.5rem",
+            "space-3xl": "3rem",
+            "space-sm": "0.5rem",
+            "margin": "1rem"
+          },
+          "fontFamily": {
+            "label": ["Inter"],
+            "body-medium": ["Inter"],
+            "body": ["Inter"],
+            "subtitle": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "display": ["Inter"],
+            "caption": ["Inter"],
+            "amount-lg": ["Inter"],
+            "title": ["Inter"]
+          },
+          "fontSize": {
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased font-body min-h-screen flex flex-col justify-between selection:bg-primary-fixed selection:text-primary">
+<!-- Mobile Screen Container (390 x 844 target ratio) -->
+<div class="w-full max-w-[560px] mx-auto min-h-screen flex flex-col justify-between bg-surface shadow-sm relative">
+<!-- Top Navigation Header (Linear Task-Focused: BottomNavBar suppressed per Semantic Shell rules) -->
+<header class="w-full bg-surface px-margin pt-3 pb-3 flex items-center justify-between sticky top-0 z-30">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Go back" class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<div>
+<h1 class="font-subtitle text-subtitle text-on-surface leading-tight">Affordability Check</h1>
+<p class="font-caption text-caption text-outline">S-LOAN-004</p>
+</div>
+</div>
+<!-- Stepper Pill -->
+<div class="bg-surface-container px-3 py-1 rounded-full flex items-center gap-1.5 border border-outline-variant/30">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span class="font-label text-[12px] text-primary-container font-semibold tracking-wide">Step 2 of 3</span>
+</div>
+</header>
+<!-- Linear Step Progress Bar -->
+<div class="w-full bg-surface-container h-1 px-margin">
+<div class="bg-primary-container h-1 rounded-full w-2/3 transition-all duration-300"></div>
+</div>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-margin pt-space-lg pb-space-2xl space-y-space-lg">
+<!-- Status Header & CBN Regulatory Notice -->
+<section class="space-y-space-sm">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span class="font-caption text-caption text-primary-container uppercase tracking-wider font-semibold">Responsible Lending Protocol</span>
+</div>
+<h2 class="font-title text-title text-on-surface leading-tight">Cashflow &amp; Affordability Assessment</h2>
+<!-- CBN Compliance Shield Card -->
+<div class="bg-surface-container-low rounded-xl p-space-md border border-outline-variant/40 flex items-start gap-3">
+<span class="material-symbols-outlined text-[22px] text-primary-container flex-shrink-0 mt-0.5" data-icon="verified_user">verified_user</span>
+<p class="font-caption text-caption text-on-surface-variant leading-relaxed">
+            To protect you from unmanageable debt, Central Bank of Nigeria directives require us to verify that monthly repayments do not exceed 33% of your verifiable income.
+          </p>
+</div>
+</section>
+<!-- Income & Cashflow Snapshot (Bento Card Pattern) -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant/50 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] space-y-space-md">
+<div class="flex items-center justify-between pb-space-xs border-b border-outline-variant/30">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-primary" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-label text-label text-on-surface">Income &amp; Cashflow Snapshot</span>
+</div>
+<span class="font-caption text-caption text-outline">Automated Check</span>
+</div>
+<!-- Metric Grid -->
+<div class="grid grid-cols-2 gap-space-md pt-space-xs">
+<!-- Monthly Inflow -->
+<div class="bg-surface-container-low/70 p-3 rounded-lg border border-outline-variant/20">
+<p class="font-caption text-caption text-on-surface-variant mb-1">Verified Monthly Income</p>
+<p class="font-subtitle text-subtitle text-on-surface tabular-nums">₦320,000.00</p>
+<span class="font-caption text-[11px] text-outline mt-1 inline-flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-primary" data-icon="sync_alt">sync_alt</span>
+              Verified inflows
+            </span>
+</div>
+<!-- Proposed Repayment -->
+<div class="bg-surface-container-low/70 p-3 rounded-lg border border-outline-variant/20">
+<p class="font-caption text-caption text-on-surface-variant mb-1">Proposed Repayment</p>
+<p class="font-subtitle text-subtitle text-primary-container tabular-nums">₦29,600.00</p>
+<span class="font-caption text-[11px] text-outline mt-1 inline-flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-outline" data-icon="event_repeat">event_repeat</span>
+              Monthly instalment
+            </span>
+</div>
+</div>
+<!-- Debt-to-Income Indicator Card -->
+<div class="bg-surface-container-low rounded-lg p-space-md border border-outline-variant/30 flex items-center justify-between">
+<div class="space-y-0.5">
+<p class="font-caption text-caption text-on-surface-variant">Debt-to-Income Ratio (DTI)</p>
+<div class="flex items-baseline gap-2">
+<span class="font-title text-title text-on-surface tabular-nums">9.25%</span>
+<span class="font-caption text-[12px] text-outline">of 33% max threshold</span>
+</div>
+</div>
+<!-- Strict Semantic Status Indicator (Icon + Label) -->
+<div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-lowest border border-outline-variant/40 shadow-sm">
+<span class="material-symbols-outlined text-[18px] text-emerald-700" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div class="text-left">
+<p class="font-label text-[12px] leading-tight text-emerald-800 font-semibold">Safe &amp; Approved</p>
+<p class="font-caption text-[10px] text-outline leading-tight">Well within limits</p>
+</div>
+</div>
+</div>
+<!-- DTI Visual Bar Scale -->
+<div class="space-y-1 pt-1">
+<div class="flex justify-between items-center text-[11px] font-caption text-outline">
+<span>0%</span>
+<span class="text-emerald-700 font-medium">Customer: 9.25%</span>
+<span>CBN Limit: 33%</span>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden relative">
+<div class="bg-emerald-600 h-full rounded-full transition-all duration-500" style="width: 28%;"></div>
+<div class="absolute top-0 bottom-0 left-[33%] w-0.5 bg-secondary" title="CBN Max Limit"></div>
+</div>
+</div>
+</section>
+<!-- Repayment Source Confirmation -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant/50 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] space-y-space-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-primary" data-icon="account_balance">account_balance</span>
+<h3 class="font-label text-label text-on-surface">Repayment Source Confirmation</h3>
+</div>
+<!-- Account Row -->
+<div class="bg-surface-container-low/60 p-3 rounded-lg border border-outline-variant/30 flex items-start justify-between">
+<div class="flex items-start gap-3">
+<div class="w-9 h-9 rounded-full bg-surface-container-highest flex items-center justify-center text-primary-container mt-0.5">
+<span class="material-symbols-outlined text-[20px]" data-icon="credit_card">credit_card</span>
+</div>
+<div>
+<p class="font-body-medium text-body-medium text-on-surface">YourApp Tier 2 Savings</p>
+<p class="font-caption text-caption text-outline tabular-nums">0124892019</p>
+<p class="font-caption text-[12px] text-primary-container font-medium mt-1 tabular-nums">Available: ₦142,850.00</p>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded text-[11px] font-label bg-surface-container-highest text-on-surface-variant">Primary</span>
+</div>
+<!-- Direct Debit Mandate (NIBSS) Notice -->
+<div class="flex items-start gap-2.5 px-1">
+<span class="material-symbols-outlined text-[18px] text-outline flex-shrink-0 mt-0.5" data-icon="lock_clock">lock_clock</span>
+<p class="font-caption text-caption text-on-surface-variant leading-relaxed">
+<strong class="font-body-medium text-on-surface">NIBSS e-Mandate:</strong> Automatic deduction will occur on the scheduled monthly due date. No hidden transaction service surcharges.
+          </p>
+</div>
+</section>
+<!-- Emergency Hardship Assurance (Warm Dignity Banner) -->
+<section class="bg-surface-container-low rounded-xl p-space-md border border-outline-variant/60 flex items-start gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center flex-shrink-0 text-on-primary-fixed mt-0.5">
+<span class="material-symbols-outlined text-[18px]" data-icon="sentiment_satisfied">sentiment_satisfied</span>
+</div>
+<div class="space-y-1">
+<h4 class="font-label text-label text-on-surface">Peace of mind guaranteed</h4>
+<p class="font-caption text-caption text-on-surface-variant leading-relaxed">
+            If life happens, request a flexible grace period or tenure extension through the app without predatory harassment or hidden penalties.
+          </p>
+</div>
+</section>
+<!-- Confirmation Checkbox Tap Area -->
+<section class="pt-space-xs">
+<label class="group flex items-start gap-3 p-3 rounded-xl border border-transparent hover:border-outline-variant/40 hover:bg-surface-container-low/40 cursor-pointer transition-all">
+<div class="relative flex items-center justify-center min-w-[24px] min-h-[24px] mt-0.5">
+<input checked="" class="w-5 h-5 rounded text-primary-container focus:ring-primary-container border-outline-variant bg-surface-container-lowest checked:bg-primary-container cursor-pointer transition-colors" id="confirmCheck" type="checkbox"/>
+</div>
+<span class="font-caption text-caption text-on-surface-variant leading-snug select-none">
+            I confirm my income details are accurate and I understand the scheduled repayment terms.
+          </span>
+</label>
+</section>
+</main>
+<!-- Sticky Bottom Action Footer (Level 2 Elevation, 52px Primary Button) -->
+<footer class="sticky bottom-0 bg-surface-container-lowest border-t border-outline-variant/30 px-margin py-3 shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)] z-20">
+<div class="w-full space-y-2">
+<button class="w-full h-[52px] rounded-xl bg-primary-container text-on-primary font-label text-label flex items-center justify-center gap-2 active:bg-primary active:scale-[0.99] transition-all shadow-sm hover:brightness-105" id="actionBtn" type="button">
+<span>Review Loan Agreement</span>
+<span class="material-symbols-outlined text-[20px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<p class="text-center font-caption text-[11px] text-outline flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-[13px] text-outline" data-icon="security">security</span>
+          Licensed by the Central Bank of Nigeria • NDIC Insured
+        </p>
+</div>
+</footer>
+</div>
+<!-- Inline Interaction Logic -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const checkbox = document.getElementById('confirmCheck');
+      const actionBtn = document.getElementById('actionBtn');
+
+      if (checkbox && actionBtn) {
+        checkbox.addEventListener('change', (e) => {
+          if (!e.target.checked) {
+            actionBtn.disabled = true;
+            actionBtn.classList.add('opacity-50', 'cursor-not-allowed');
+            actionBtn.classList.remove('active:scale-[0.99]', 'hover:brightness-105');
+          } else {
+            actionBtn.disabled = false;
+            actionBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+            actionBtn.classList.add('active:scale-[0.99]', 'hover:brightness-105');
+          }
+        });
+      }
+    });
+  </script>
+</body></html>

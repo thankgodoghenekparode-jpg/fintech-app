@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Payment Links &amp; Storefront QR Codes | YourApp Merchant Tools</title>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config Verbatim -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary-fixed-dim": "#ffb4a8",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "on-primary-fixed-variant": "#881646",
+            "error": "#ba1a1a",
+            "surface-variant": "#e9e0e1",
+            "on-secondary-fixed-variant": "#8c170e",
+            "surface-dim": "#e1d8d9",
+            "on-background": "#1f1b1c",
+            "on-tertiary-container": "#c6b7bd",
+            "on-error": "#ffffff",
+            "primary-fixed-dim": "#ffb1c5",
+            "on-tertiary-fixed": "#21191e",
+            "surface-bright": "#fff8f8",
+            "inverse-primary": "#ffb1c5",
+            "tertiary-fixed": "#eedee4",
+            "surface": "#fff8f8",
+            "on-tertiary": "#ffffff",
+            "surface-container-high": "#efe6e7",
+            "primary-fixed": "#ffd9e1",
+            "secondary": "#ae3123",
+            "outline": "#897176",
+            "inverse-on-surface": "#f8eeef",
+            "background": "#fff8f8",
+            "tertiary-container": "#53484d",
+            "surface-container-lowest": "#ffffff",
+            "secondary-container": "#fc6955",
+            "on-secondary-fixed": "#410000",
+            "surface-container-low": "#fbf1f2",
+            "primary": "#6d0033",
+            "inverse-surface": "#342f30",
+            "on-primary-container": "#ffa0ba",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "surface-container-highest": "#e9e0e1",
+            "primary-container": "#8e1b4a",
+            "on-surface-variant": "#564146",
+            "on-primary-fixed": "#3f001b",
+            "on-secondary": "#ffffff",
+            "outline-variant": "#dcbfc5",
+            "on-surface": "#1f1b1c",
+            "on-primary": "#ffffff",
+            "surface-tint": "#a8315d",
+            "on-secondary-container": "#690000",
+            "tertiary": "#3b3236",
+            "error-container": "#ffdad6",
+            "on-error-container": "#93000a",
+            "secondary-fixed": "#ffdad4",
+            "surface-container": "#f5eced"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "1rem",
+            "space-3xl": "3rem",
+            "space-xs": "0.25rem",
+            "space-2xl": "2rem",
+            "space-md": "0.75rem",
+            "margin": "1rem",
+            "space-lg": "1rem",
+            "space-sm": "0.5rem",
+            "space-xl": "1.5rem"
+          },
+          "fontFamily": {
+            "caption": ["Inter"],
+            "amount-lg": ["Inter"],
+            "body-medium": ["Inter"],
+            "display": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "body": ["Inter"],
+            "label": ["Inter"],
+            "subtitle": ["Inter"],
+            "title": ["Inter"]
+          },
+          "fontSize": {
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #dcbfc5;
+      border-radius: 9999px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: #fbf1f2;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex selection:bg-primary-fixed selection:text-primary">
+<!-- SIDEBAR NAVIGATION (Anchored from Shared Components JSON) -->
+<aside class="fixed left-0 top-0 h-full w-72 flex flex-col justify-between py-space-xl px-space-lg overflow-y-auto bg-surface-container-lowest border-r border-surface-variant z-30 shadow-sm">
+<!-- Brand Crest & Header -->
+<div class="flex flex-col gap-space-xl">
+<div class="flex items-center gap-space-md pb-space-lg border-b border-surface-variant">
+<div class="w-10 h-10 rounded-xl bg-primary-container text-on-primary flex items-center justify-center font-title text-title shadow-sm">
+<span class="material-symbols-outlined" data-icon="account_balance">account_balance</span>
+</div>
+<div class="flex flex-col">
+<span class="font-subtitle text-subtitle text-primary tracking-tight">YourApp Credit Ops</span>
+<span class="font-caption text-caption text-on-surface-variant">Enterprise Portal</span>
+</div>
+</div>
+<!-- Merchant Context Pill -->
+<div class="p-space-md rounded-xl bg-surface-container-low border border-surface-variant flex items-center gap-space-md">
+<div class="w-9 h-9 rounded-lg bg-surface-container-highest flex items-center justify-center text-primary-container font-label text-label">
+          KA
+        </div>
+<div class="flex flex-col overflow-hidden">
+<span class="font-label text-label text-on-surface truncate">Kemi Adebayo Haute Couture</span>
+<span class="font-caption text-caption text-on-surface-variant truncate">ID: #MER-LAG-0491</span>
+</div>
+</div>
+<!-- Nav Items from JSON Specification -->
+<nav aria-label="Main Navigation" class="flex flex-col gap-1.5">
+<!-- 1. Dashboard -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-outline" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<!-- 2. Applications Queue -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-outline" data-icon="pending_actions">pending_actions</span>
+<span>Applications Queue</span>
+</a>
+<!-- 3. Credit Portfolio & Collections (Active mapped for Storefront / Receivables) -->
+<a aria-current="page" class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg bg-surface-container-low text-primary font-label text-label border border-outline-variant shadow-sm" href="#">
+<span class="material-symbols-outlined text-primary-container" data-icon="account_balance_wallet" data-weight="fill" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+<span>Payment Links &amp; QR</span>
+</a>
+<!-- 4. Product Configuration -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-outline" data-icon="tune">tune</span>
+<span>Product Configuration</span>
+</a>
+<!-- 5. Partner Settlement -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-outline" data-icon="handshake">handshake</span>
+<span>Partner Settlement</span>
+</a>
+<!-- 6. Audit Log -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-outline" data-icon="history">history</span>
+<span>Audit Log</span>
+</a>
+</nav>
+</div>
+<!-- Footer Cluster from JSON -->
+<div class="flex flex-col gap-space-sm pt-space-lg border-t border-surface-variant">
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-outline" data-icon="admin_panel_settings">admin_panel_settings</span>
+<span>Security &amp; Settings</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-error transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-outline" data-icon="logout">logout</span>
+<span>Sign Out</span>
+</a>
+<!-- Direct Settlement Account Card -->
+<div class="mt-space-sm p-3 rounded-lg bg-surface-container border border-surface-variant flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-caption text-caption text-on-surface-variant">Settlement Target</span>
+<span class="font-label text-label text-on-surface">Zenith Bank ••• 9402</span>
+</div>
+<span class="flex h-2.5 w-2.5 rounded-full bg-emerald-600 ring-2 ring-emerald-200" title="Settlement Account Verified"></span>
+</div>
+</div>
+</aside>
+<!-- MAIN WRAPPER (Offset for Sidebar w-72) -->
+<div class="ml-72 flex-1 flex flex-col min-w-0">
+<!-- TOP NAV BAR (Anchored from Shared Components JSON) -->
+<header class="sticky top-0 right-0 h-16 flex items-center justify-between px-space-xl bg-surface-container-lowest border-b border-surface-variant z-20">
+<!-- Search Input Area -->
+<div class="flex items-center gap-space-md w-96">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-xl" data-icon="search">search</span>
+<input class="w-full h-10 pl-11 pr-4 rounded-xl border border-surface-variant bg-surface-container-low font-body text-caption text-on-surface placeholder:text-on-surface-variant focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-colors" placeholder="Search links by title, slug, product..." type="text"/>
+</div>
+</div>
+<!-- Center Context: Branch & Security Status -->
+<div class="hidden xl:flex items-center gap-space-md">
+<div class="flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200">
+<span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+<span class="font-caption text-caption text-emerald-900 font-medium">Live QR Gateway Armed</span>
+</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-base" data-icon="apartment">apartment</span>
+<span class="font-caption text-caption font-medium">Lagos Island Main Branch (012)</span>
+</div>
+</div>
+<!-- Trailing Action Cluster & User Profile -->
+<div class="flex items-center gap-space-md">
+<button aria-label="Notifications" class="relative w-10 h-10 rounded-xl flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-secondary-container rounded-full"></span>
+</button>
+<button aria-label="Help &amp; Knowledge Base" class="w-10 h-10 rounded-xl flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+<div class="h-6 w-px bg-surface-variant"></div>
+<button class="px-space-md h-9 rounded-lg bg-surface-container text-primary border border-outline-variant font-label text-label flex items-center gap-1.5 hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="verified_user">verified_user</span>
+<span>Dual Authorization</span>
+</button>
+<div class="flex items-center gap-3 pl-2">
+<div class="w-9 h-9 rounded-full bg-primary-fixed border border-outline-variant flex items-center justify-center text-primary font-label text-caption font-bold">
+            SO
+          </div>
+<div class="hidden 2xl:flex flex-col">
+<span class="font-label text-label text-on-surface leading-tight">Folashade Adele</span>
+<span class="font-caption text-caption text-on-surface-variant leading-tight">Head of Boutique Retail</span>
+</div>
+</div>
+</div>
+</header>
+<!-- MAIN DESKTOP CANVAS (1440x900 viewport target, light mode) -->
+<main class="flex-1 p-space-xl bg-background flex flex-col gap-space-xl max-w-[1360px] w-full mx-auto">
+<!-- PAGE HEADER & PRIMARY TRIGGERS -->
+<section class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<h1 class="font-title text-title text-on-background tracking-tight">Omnichannel Payment Links &amp; Storefront QR Codes</h1>
+<span class="px-2 py-0.5 rounded-md bg-surface-container-high text-on-surface-variant font-caption text-caption font-mono">W-MER-003</span>
+</div>
+<p class="font-body text-body text-on-surface-variant mt-1">
+            Configure reusable single-item payment links, dynamic customer checkout slugs, social media links, and downloadable counter QR displays.
+          </p>
+</div>
+<div class="flex items-center gap-space-md shrink-0">
+<button class="h-[52px] px-space-lg rounded-xl border border-outline-variant bg-surface-container-lowest text-on-surface font-label text-label flex items-center gap-2 hover:bg-surface-container transition-colors shadow-sm">
+<span class="material-symbols-outlined text-primary-container" data-icon="download">download</span>
+<span>Download All QR Counter Cards (PDF)</span>
+</button>
+<button class="h-[52px] px-space-xl rounded-xl bg-primary-container text-on-primary font-label text-label flex items-center gap-2 hover:bg-primary transition-colors shadow-sm">
+<span class="material-symbols-outlined" data-icon="add_link">add_link</span>
+<span>+ Generate New Payment Link</span>
+</button>
+</div>
+</section>
+<!-- FOUR KPI TILES -->
+<section aria-label="Payment Link Metrics" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-lg">
+<!-- Tile 1: Active Links -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-surface-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label text-label text-on-surface-variant">Active Payment Links</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-lg" data-icon="link">link</span>
+</div>
+</div>
+<div class="flex flex-col">
+<div class="font-display text-display text-on-surface tracking-tight">14 Links Live</div>
+<div class="flex items-center gap-1.5 mt-1">
+<span class="material-symbols-outlined text-emerald-600 text-sm" data-icon="check_circle">check_circle</span>
+<span class="font-caption text-caption text-on-surface-variant">8 Reusable, 6 Single-Use</span>
+</div>
+</div>
+</div>
+<!-- Tile 2: Total Volume (MTD) -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-surface-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label text-label text-on-surface-variant">Total Volume via Links (MTD)</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-lg" data-icon="payments">payments</span>
+</div>
+</div>
+<div class="flex flex-col">
+<div class="font-display text-display text-on-surface tracking-tight">₦14,820,000.00</div>
+<div class="flex items-center gap-1.5 mt-1">
+<span class="material-symbols-outlined text-emerald-600 text-sm" data-icon="trending_up">trending_up</span>
+<span class="font-caption text-caption text-on-surface-variant">Across 182 buyer checkouts</span>
+</div>
+</div>
+</div>
+<!-- Tile 3: Conversion Rate -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-surface-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label text-label text-on-surface-variant">Link Conversion Rate</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-lg" data-icon="ads_click">ads_click</span>
+</div>
+</div>
+<div class="flex flex-col">
+<div class="font-display text-display text-on-surface tracking-tight">68.4%</div>
+<div class="flex items-center gap-1.5 mt-1">
+<span class="material-symbols-outlined text-primary-container text-sm" data-icon="touch_app">touch_app</span>
+<span class="font-caption text-caption text-on-surface-variant">From link visit to paid checkout</span>
+</div>
+</div>
+</div>
+<!-- Tile 4: Settlement Speed -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-surface-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label text-label text-on-surface-variant">Instant Settlement Speed</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-lg" data-icon="speed">speed</span>
+</div>
+</div>
+<div class="flex flex-col">
+<div class="font-display text-display text-on-surface tracking-tight">3.8 Seconds</div>
+<div class="flex items-center gap-1.5 mt-1">
+<span class="material-symbols-outlined text-emerald-600 text-sm" data-icon="account_balance">account_balance</span>
+<span class="font-caption text-caption text-on-surface-variant">Direct to Zenith Bank ledger</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SOCIAL SELLING & CHECKOUT COVENANT BANNER -->
+<section class="p-space-md rounded-xl bg-surface-container-low border border-outline-variant flex items-center justify-between gap-space-md shadow-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-xl bg-primary text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined" data-icon="security">security</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-label text-label text-primary font-bold">Protected Consumer Checkout:</span>
+<span class="font-body text-body text-on-surface">All payment links provide buyers with instant bank transfer, debit card, and USSD options with automated buyer SMS receipting and merchant fraud protection.</span>
+</div>
+<span class="font-caption text-caption text-on-surface-variant mt-0.5">Compliant with Central Bank of Nigeria (CBN) Retail Payment Directives 2026.</span>
+</div>
+</div>
+<div class="hidden md:flex items-center gap-space-sm shrink-0">
+<span class="px-2.5 py-1 rounded-md bg-surface-container-lowest border border-surface-variant text-on-surface-variant font-caption text-caption">NIBSS Instant</span>
+<span class="px-2.5 py-1 rounded-md bg-surface-container-lowest border border-surface-variant text-on-surface-variant font-caption text-caption">Interswitch Card</span>
+<span class="px-2.5 py-1 rounded-md bg-surface-container-lowest border border-surface-variant text-on-surface-variant font-caption text-caption">*966# USSD</span>
+</div>
+</section>
+<!-- SPLIT LAYOUT: ROSTER TABLE (62%) & FOCUSED LINK CONFIGURATOR (38%) -->
+<div class="flex flex-col lg:flex-row gap-space-xl items-start">
+<!-- LEFT COLUMN (62%): LINKS & QR ROSTER TABLE -->
+<section class="w-full lg:w-[62%] flex flex-col gap-space-md">
+<!-- Roster Controls & Tabs Header -->
+<div class="bg-surface-container-lowest rounded-xl border border-surface-variant p-space-md shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-space-md">
+<!-- Filter Tabs -->
+<div class="flex items-center gap-1 overflow-x-auto pb-1 sm:pb-0" role="tablist">
+<button aria-selected="true" class="px-space-md py-1.5 rounded-lg bg-surface-container text-primary font-label text-label border border-outline-variant transition-colors" role="tab">
+                All Links (14)
+              </button>
+<button aria-selected="false" class="px-space-md py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low font-label text-label transition-colors" role="tab">
+                Reusable Multi-Pay (8)
+              </button>
+<button aria-selected="false" class="px-space-md py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low font-label text-label transition-colors" role="tab">
+                Single Customer (6)
+              </button>
+<button aria-selected="false" class="px-space-md py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low font-label text-label transition-colors" role="tab">
+                QR Stands (3)
+              </button>
+</div>
+<!-- Table Actions: Export & Filter -->
+<div class="flex items-center gap-2 shrink-0">
+<button class="h-9 px-3 rounded-lg border border-surface-variant bg-surface-container-lowest text-on-surface-variant font-label text-caption flex items-center gap-1.5 hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="filter_list">filter_list</span>
+<span>Filter</span>
+</button>
+<button class="h-9 px-3 rounded-lg border border-surface-variant bg-surface-container-lowest text-on-surface-variant font-label text-caption flex items-center gap-1.5 hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="file_download">file_download</span>
+<span>Export CSV</span>
+</button>
+</div>
+</div>
+<!-- Roster Table Card -->
+<div class="bg-surface-container-lowest rounded-xl border border-surface-variant shadow-sm overflow-hidden">
+<div class="overflow-x-auto custom-scroll">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-surface-variant">
+<th class="py-space-md px-space-lg font-label text-caption text-on-surface-variant uppercase tracking-wider">Link Name &amp; Slug</th>
+<th class="py-space-md px-space-md font-label text-caption text-on-surface-variant uppercase tracking-wider">Type</th>
+<th class="py-space-md px-space-md font-label text-caption text-on-surface-variant uppercase tracking-wider">Price / Target</th>
+<th class="py-space-md px-space-md font-label text-caption text-on-surface-variant uppercase tracking-wider">Visits / Paid</th>
+<th class="py-space-md px-space-md font-label text-caption text-on-surface-variant uppercase tracking-wider">Revenue</th>
+<th class="py-space-md px-space-md font-label text-caption text-on-surface-variant uppercase tracking-wider">Status</th>
+<th class="py-space-md px-space-lg text-right font-label text-caption text-on-surface-variant uppercase tracking-wider">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-variant">
+<!-- Row 1: Bespoke Consultation Deposit (Currently Focused) -->
+<tr class="bg-surface-container-low/60 hover:bg-surface-container-low transition-colors cursor-pointer border-l-4 border-l-primary-container">
+<td class="py-space-md px-space-lg">
+<div class="flex flex-col">
+<span class="font-body-medium text-body-medium text-on-surface font-semibold">Bespoke Consultation Deposit</span>
+<span class="font-caption text-caption text-primary font-mono flex items-center gap-1">
+                          /pay/couture-consult
+                          <span class="material-symbols-outlined text-xs text-primary-container cursor-pointer" data-icon="content_copy">content_copy</span>
+</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="px-2 py-0.5 rounded-md bg-primary-fixed text-on-primary-fixed-variant font-caption text-caption font-medium">
+                        Reusable
+                      </span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="font-label text-label text-on-surface">Fixed: ₦50,000.00</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="font-body text-caption text-on-surface">142 Visits / <span class="font-semibold text-primary">84 Paid</span></div>
+<div class="w-20 bg-surface-container-high rounded-full h-1.5 mt-1">
+<div class="bg-primary-container h-1.5 rounded-full" style="width: 59%"></div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="font-label text-label text-on-surface font-semibold">₦4,200,000.00</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 font-caption text-caption font-medium">
+<span class="material-symbols-outlined text-xs text-emerald-600" data-icon="check_circle">check_circle</span>
+                        Active
+                      </div>
+</td>
+<td class="py-space-md px-space-lg text-right">
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container transition-colors inline-flex" title="More Actions">
+<span class="material-symbols-outlined text-lg" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 2: RTW Silk Kaftan Spring Collection -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="py-space-md px-space-lg">
+<div class="flex flex-col">
+<span class="font-body-medium text-body-medium text-on-surface font-semibold">RTW Silk Kaftan Spring Collection</span>
+<span class="font-caption text-caption text-on-surface-variant font-mono flex items-center gap-1">
+                          /pay/rtw-kaftan-2027
+                          <span class="material-symbols-outlined text-xs text-outline cursor-pointer" data-icon="content_copy">content_copy</span>
+</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="px-2 py-0.5 rounded-md bg-primary-fixed text-on-primary-fixed-variant font-caption text-caption font-medium">
+                        Reusable
+                      </span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="font-label text-label text-on-surface">Fixed: ₦120,000.00</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="font-body text-caption text-on-surface">88 Visits / <span class="font-semibold text-primary">41 Paid</span></div>
+<div class="w-20 bg-surface-container-high rounded-full h-1.5 mt-1">
+<div class="bg-primary-container h-1.5 rounded-full" style="width: 46%"></div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="font-label text-label text-on-surface font-semibold">₦4,920,000.00</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 font-caption text-caption font-medium">
+<span class="material-symbols-outlined text-xs text-emerald-600" data-icon="check_circle">check_circle</span>
+                        Active
+                      </div>
+</td>
+<td class="py-space-md px-space-lg text-right">
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container transition-colors inline-flex" title="More Actions">
+<span class="material-symbols-outlined text-lg" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 3: Chief Adeleke Private Fitting -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="py-space-md px-space-lg">
+<div class="flex flex-col">
+<span class="font-body-medium text-body-medium text-on-surface font-semibold">Chief Adeleke Private Fitting</span>
+<span class="font-caption text-caption text-on-surface-variant font-mono flex items-center gap-1">
+                          /pay/priv-adeleke-09
+                          <span class="material-symbols-outlined text-xs text-outline cursor-pointer" data-icon="content_copy">content_copy</span>
+</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="px-2 py-0.5 rounded-md bg-surface-container text-on-surface font-caption text-caption font-medium">
+                        Single-Use
+                      </span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="font-label text-label text-on-surface">Custom: ₦850,000.00</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="font-body text-caption text-on-surface">1 Visit / <span class="font-semibold text-primary">1 Paid</span></div>
+<div class="w-20 bg-surface-container-high rounded-full h-1.5 mt-1">
+<div class="bg-emerald-600 h-1.5 rounded-full" style="width: 100%"></div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="font-label text-label text-on-surface font-semibold">₦850,000.00</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant border border-surface-variant font-caption text-caption font-medium">
+<span class="material-symbols-outlined text-xs text-outline" data-icon="task_alt">task_alt</span>
+                        Completed
+                      </div>
+</td>
+<td class="py-space-md px-space-lg text-right">
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container transition-colors inline-flex" title="More Actions">
+<span class="material-symbols-outlined text-lg" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 4: Wedding Party Group Order #42 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="py-space-md px-space-lg">
+<div class="flex flex-col">
+<span class="font-body-medium text-body-medium text-on-surface font-semibold">Wedding Party Group Order #42</span>
+<span class="font-caption text-caption text-on-surface-variant font-mono flex items-center gap-1">
+                          /pay/wedding-group-42
+                          <span class="material-symbols-outlined text-xs text-outline cursor-pointer" data-icon="content_copy">content_copy</span>
+</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="px-2 py-0.5 rounded-md bg-primary-fixed text-on-primary-fixed-variant font-caption text-caption font-medium">
+                        Reusable
+                      </span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="font-label text-label text-on-surface">Open Amount</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="font-body text-caption text-on-surface">34 Visits / <span class="font-semibold text-primary">12 Paid</span></div>
+<div class="w-20 bg-surface-container-high rounded-full h-1.5 mt-1">
+<div class="bg-primary-container h-1.5 rounded-full" style="width: 35%"></div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="font-label text-label text-on-surface font-semibold">₦2,400,000.00</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 font-caption text-caption font-medium">
+<span class="material-symbols-outlined text-xs text-emerald-600" data-icon="check_circle">check_circle</span>
+                        Active
+                      </div>
+</td>
+<td class="py-space-md px-space-lg text-right">
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container transition-colors inline-flex" title="More Actions">
+<span class="material-symbols-outlined text-lg" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 5: Lekki Boutique Counter Stand QR -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="py-space-md px-space-lg">
+<div class="flex flex-col">
+<span class="font-body-medium text-body-medium text-on-surface font-semibold">Lekki Boutique Counter Stand QR</span>
+<span class="font-caption text-caption text-on-surface-variant font-mono flex items-center gap-1">
+                          /qr/lekki-pos-stand
+                          <span class="material-symbols-outlined text-xs text-outline cursor-pointer" data-icon="content_copy">content_copy</span>
+</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="px-2 py-0.5 rounded-md bg-secondary-fixed text-on-secondary-fixed-variant font-caption text-caption font-medium">
+                        Static QR
+                      </span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="font-label text-label text-on-surface">Any Amount</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="font-body text-caption text-on-surface">310 Scans / <span class="font-semibold text-primary">215 Paid</span></div>
+<div class="w-20 bg-surface-container-high rounded-full h-1.5 mt-1">
+<div class="bg-primary-container h-1.5 rounded-full" style="width: 69%"></div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="font-label text-label text-on-surface font-semibold">₦2,450,000.00</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 font-caption text-caption font-medium">
+<span class="material-symbols-outlined text-xs text-emerald-600" data-icon="check_circle">check_circle</span>
+                        Active
+                      </div>
+</td>
+<td class="py-space-md px-space-lg text-right">
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container transition-colors inline-flex" title="More Actions">
+<span class="material-symbols-outlined text-lg" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Pagination Bar -->
+<div class="p-space-md border-t border-surface-variant flex items-center justify-between bg-surface-container-lowest">
+<span class="font-caption text-caption text-on-surface-variant">Showing 1 to 5 of 14 omnichannel links</span>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1.5 rounded-lg border border-surface-variant text-on-surface-variant font-label text-caption disabled:opacity-50" disabled="">Previous</button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container text-primary font-label text-caption font-semibold">1</button>
+<button class="px-3 py-1.5 rounded-lg border border-surface-variant text-on-surface-variant font-label text-caption hover:bg-surface-container">2</button>
+<button class="px-3 py-1.5 rounded-lg border border-surface-variant text-on-surface-variant font-label text-caption hover:bg-surface-container">Next</button>
+</div>
+</div>
+</div>
+<!-- Bottom Micro Bento: Channel Performance -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-md">
+<div class="p-space-md rounded-xl bg-surface-container-lowest border border-surface-variant flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center">
+<span class="material-symbols-outlined text-xl" data-icon="chat">chat</span>
+</div>
+<div class="flex flex-col">
+<span class="font-caption text-caption text-on-surface-variant">WhatsApp Conversions</span>
+<span class="font-label text-label text-on-surface">54% of Volume</span>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest border border-surface-variant flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-pink-100 text-pink-800 flex items-center justify-center">
+<span class="material-symbols-outlined text-xl" data-icon="photo_camera">photo_camera</span>
+</div>
+<div class="flex flex-col">
+<span class="font-caption text-caption text-on-surface-variant">Instagram Bio Links</span>
+<span class="font-label text-label text-on-surface">28% of Volume</span>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest border border-surface-variant flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center">
+<span class="material-symbols-outlined text-xl" data-icon="qr_code_scanner">qr_code_scanner</span>
+</div>
+<div class="flex flex-col">
+<span class="font-caption text-caption text-on-surface-variant">Boutique Physical QR</span>
+<span class="font-label text-label text-on-surface">18% of Volume</span>
+</div>
+</div>
+</div>
+</section>
+<!-- RIGHT COLUMN (38%): FOCUSED LINK CONFIGURATOR & MOBILE PREVIEW -->
+<section class="w-full lg:w-[38%] flex flex-col gap-space-lg">
+<div class="bg-surface-container-lowest rounded-xl border border-surface-variant p-space-xl shadow-sm flex flex-col gap-space-lg">
+<!-- Focused Header -->
+<div class="flex items-start justify-between pb-space-md border-b border-surface-variant">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded-md bg-primary-fixed text-on-primary-fixed-variant font-caption text-caption font-semibold">Active Inspector</span>
+<span class="font-caption text-caption text-on-surface-variant">ID: LNK-2027-049</span>
+</div>
+<h2 class="font-title text-subtitle text-on-surface mt-1">Bespoke Consultation Deposit</h2>
+<span class="font-caption text-caption text-outline">Reusable checkout slug for bridal and luxury clients</span>
+</div>
+<div class="w-10 h-10 rounded-xl bg-surface-container-low flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-2xl" data-icon="tune">tune</span>
+</div>
+</div>
+<!-- Shareable URL Box with 1-click copy & social quick actions -->
+<div class="flex flex-col gap-space-xs">
+<label class="font-caption text-caption text-on-surface-variant font-medium">Public Checkout URL</label>
+<div class="flex items-center gap-2">
+<div class="flex-1 flex items-center px-3 h-11 rounded-lg bg-surface-container-low border border-surface-variant text-on-surface font-mono text-caption overflow-hidden text-ellipsis whitespace-nowrap">
+                  https://pay.yourapp.ng/couture-consult
+                </div>
+<button class="h-11 px-3.5 rounded-lg bg-surface-container text-primary font-label text-caption hover:bg-surface-container-high transition-colors flex items-center gap-1 shrink-0" title="Copy to clipboard">
+<span class="material-symbols-outlined text-sm" data-icon="content_copy">content_copy</span>
+<span>Copy</span>
+</button>
+</div>
+<!-- Social Quick Action Buttons -->
+<div class="grid grid-cols-2 gap-2 mt-1">
+<button class="h-9 px-3 rounded-lg border border-emerald-200 bg-emerald-50 text-emerald-900 font-label text-caption flex items-center justify-center gap-1.5 hover:bg-emerald-100 transition-colors">
+<span class="material-symbols-outlined text-sm text-emerald-700" data-icon="share">share</span>
+<span>Share to WhatsApp</span>
+</button>
+<button class="h-9 px-3 rounded-lg border border-pink-200 bg-pink-50 text-pink-900 font-label text-caption flex items-center justify-center gap-1.5 hover:bg-pink-100 transition-colors">
+<span class="material-symbols-outlined text-sm text-pink-700" data-icon="link">link</span>
+<span>Copy Instagram Bio</span>
+</button>
+</div>
+</div>
+<!-- Link Configuration Details Card -->
+<div class="flex flex-col gap-space-md p-space-md rounded-xl bg-surface-container-low border border-surface-variant">
+<span class="font-label text-label text-on-surface font-semibold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary-container text-base" data-icon="settings">settings</span>
+                Parameter Breakdown
+              </span>
+<div class="grid grid-cols-2 gap-space-sm text-caption">
+<div class="flex flex-col">
+<span class="text-on-surface-variant font-caption">Pricing Type</span>
+<span class="font-label text-on-surface font-semibold">Fixed Amount</span>
+</div>
+<div class="flex flex-col">
+<span class="text-on-surface-variant font-caption">Settlement Value</span>
+<span class="font-label text-primary font-bold">₦50,000.00</span>
+</div>
+<div class="flex flex-col col-span-2 pt-2 border-t border-surface-variant">
+<span class="text-on-surface-variant font-caption">Mandatory Customer Fields</span>
+<div class="flex flex-wrap gap-1.5 mt-1">
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest text-on-surface font-caption border border-surface-variant">Full Name</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest text-on-surface font-caption border border-surface-variant">Phone (+234)</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest text-on-surface font-caption border border-surface-variant">Email Address</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest text-on-surface font-caption border border-surface-variant">Fitting Date</span>
+</div>
+</div>
+<div class="flex flex-col col-span-2 pt-2 border-t border-surface-variant">
+<span class="text-on-surface-variant font-caption">Redirect Destination</span>
+<span class="font-mono text-xs text-on-surface truncate">https://kemiadebayocouture.com/thank-you</span>
+</div>
+<div class="flex flex-col col-span-2 pt-2 border-t border-surface-variant">
+<span class="text-on-surface-variant font-caption">Notification Triggers</span>
+<span class="text-on-surface font-medium">Instant SMS alert dispatched to boutique manager (+234 803 291 0021) upon settlement.</span>
+</div>
+</div>
+</div>
+<!-- Interactive Counter QR Display Card (Physical Merchandising) -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border-2 border-dashed border-outline-variant flex flex-col items-center text-center gap-space-md">
+<div class="flex items-center justify-between w-full">
+<span class="font-label text-caption uppercase tracking-wider text-on-surface-variant font-semibold">Printable Storefront Stand</span>
+<span class="px-2 py-0.5 rounded bg-primary-fixed text-primary font-caption text-caption font-bold">A5 Display Ready</span>
+</div>
+<!-- Stylized Physical Display Mockup -->
+<div class="w-48 p-4 rounded-xl bg-surface-container-lowest border border-surface-variant shadow-md flex flex-col items-center">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-sm" data-icon="lock">lock</span>
+</div>
+<span class="font-label text-xs text-on-surface font-bold">Kemi Adebayo Couture</span>
+<span class="font-caption text-[11px] text-on-surface-variant">Lekki Flagship Atelier</span>
+<!-- QR Simulation Matrix -->
+<div class="w-32 h-32 my-3 bg-surface-container-lowest p-2 border border-surface-variant rounded-lg flex items-center justify-center relative">
+<!-- Simulated Clean Vector QR -->
+<div class="w-full h-full grid grid-cols-6 grid-rows-6 gap-0.5 p-1 bg-surface-container-low rounded">
+<div class="bg-primary col-span-2 row-span-2 rounded-xs"></div>
+<div class="bg-primary col-start-5 col-span-2 row-span-2 rounded-xs"></div>
+<div class="bg-primary row-start-5 col-span-2 row-span-2 rounded-xs"></div>
+<div class="bg-primary-container col-start-3 row-start-2"></div>
+<div class="bg-primary-container col-start-4 row-start-2"></div>
+<div class="bg-primary-container col-start-3 row-start-3 col-span-2 row-span-2 rounded"></div>
+<div class="bg-primary col-start-5 row-start-4"></div>
+<div class="bg-primary col-start-6 row-start-5"></div>
+<div class="bg-primary col-start-3 row-start-5"></div>
+<div class="bg-primary col-start-4 row-start-6"></div>
+</div>
+<!-- Center Brand Seal -->
+<div class="absolute inset-0 m-auto w-6 h-6 rounded-full bg-primary-container text-on-primary flex items-center justify-center border-2 border-white shadow-sm">
+<span class="material-symbols-outlined text-[12px]" data-icon="verified">verified</span>
+</div>
+</div>
+<span class="font-caption text-[11px] text-on-surface font-semibold">Scan to Pay ₦50,000.00</span>
+<span class="font-caption text-[9px] text-on-surface-variant">Powered by YourApp Enterprise</span>
+</div>
+<button class="w-full h-10 rounded-lg border border-outline-variant bg-surface-container-lowest text-primary font-label text-caption hover:bg-surface-container flex items-center justify-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-base" data-icon="picture_as_pdf">picture_as_pdf</span>
+<span>Download Print-Ready Counter QR (A5/PDF)</span>
+</button>
+</div>
+<!-- Action Cluster -->
+<div class="flex flex-col gap-2 pt-space-xs">
+<!-- Primary Berry 52px Button -->
+<button class="h-[52px] w-full rounded-xl bg-primary-container text-on-primary font-label text-label flex items-center justify-center gap-2 hover:bg-primary transition-colors shadow-sm">
+<span class="material-symbols-outlined" data-icon="save">save</span>
+<span>Update Link Parameters</span>
+</button>
+<div class="grid grid-cols-2 gap-2">
+<button class="h-11 rounded-lg border border-surface-variant bg-surface-container-lowest text-on-surface font-label text-caption flex items-center justify-center gap-1.5 hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="content_copy">content_copy</span>
+<span>Duplicate Template</span>
+</button>
+<button class="h-11 rounded-lg border border-surface-variant bg-surface-container-lowest text-on-surface font-label text-caption flex items-center justify-center gap-1.5 hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="insights">insights</span>
+<span>View Analytics</span>
+</button>
+</div>
+<!-- Danger Button -->
+<button class="h-10 w-full rounded-lg text-error hover:bg-error-container/40 font-label text-caption flex items-center justify-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="block">block</span>
+<span>Deactivate Link Slug</span>
+</button>
+</div>
+</div>
+</section>
+</div>
+<!-- FOOTER COMPLIANCE & PROTOCOL BADGING -->
+<footer class="mt-space-lg pt-space-lg border-t border-surface-variant flex flex-col md:flex-row items-center justify-between gap-space-md text-on-surface-variant">
+<div class="flex items-center gap-space-md text-caption">
+<span class="flex items-center gap-1 text-emerald-800 font-medium">
+<span class="material-symbols-outlined text-sm text-emerald-600" data-icon="verified_user">verified_user</span>
+            CBN / NIBSS Certified Payment Switch
+          </span>
+<span class="text-surface-variant">|</span>
+<span>PCI-DSS Level 1 Encrypted</span>
+<span class="text-surface-variant">|</span>
+<span>NDPR Compliant Tenant Architecture</span>
+</div>
+<div class="flex items-center gap-space-lg text-caption">
+<span>Enterprise Portal Build v4.9.2</span>
+<span>Settlement SLA: T+0 Real-time</span>
+</div>
+</footer>
+</main>
+</div>
+</body></html>

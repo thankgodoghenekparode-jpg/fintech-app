@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>YourApp - Pay Am Small Vault Detail</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Inter Google Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-bright": "#3b3839",
+            "secondary-container": "#822c20",
+            "surface-container": "#211f20",
+            "tertiary-container": "#6a92ee",
+            "on-tertiary": "#002d6f",
+            "on-error-container": "#ffdad6",
+            "surface-container-low": "#1d1b1c",
+            "surface-tint": "#ffb0ca",
+            "on-error": "#690005",
+            "primary": "#ffb0ca",
+            "surface-container-lowest": "#100e0f",
+            "on-primary-fixed": "#3e001f",
+            "on-primary-container": "#5d0331",
+            "on-secondary-fixed": "#410000",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "surface": "#151314",
+            "primary-fixed": "#ffd9e3",
+            "on-surface": "#e7e1e2",
+            "surface-dim": "#151314",
+            "on-secondary-fixed-variant": "#7f291e",
+            "background": "#151314",
+            "on-surface-variant": "#dac0c6",
+            "primary-fixed-dim": "#ffb0ca",
+            "inverse-primary": "#9e3b63",
+            "secondary-fixed-dim": "#ffb4a8",
+            "surface-variant": "#373435",
+            "error": "#ffb4ab",
+            "secondary-fixed": "#ffdad4",
+            "primary-container": "#e0709a",
+            "error-container": "#93000a",
+            "on-tertiary-fixed-variant": "#06429a",
+            "on-tertiary-container": "#002a69",
+            "on-secondary": "#61130a",
+            "surface-container-high": "#2c292a",
+            "on-secondary-container": "#ff9f90",
+            "inverse-on-surface": "#323031",
+            "outline-variant": "#544247",
+            "outline": "#a28b91",
+            "on-background": "#e7e1e2",
+            "tertiary": "#b0c6ff",
+            "on-tertiary-fixed": "#001945",
+            "inverse-surface": "#e7e1e2",
+            "on-primary": "#620735",
+            "tertiary-fixed": "#d9e2ff",
+            "surface-container-highest": "#373435",
+            "secondary": "#ffb4a8",
+            "on-primary-fixed-variant": "#7f234b"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "space-lg": "1.5rem",
+            "gutter-mobile": "0.75rem",
+            "space-sm": "0.5rem",
+            "gutter": "1rem",
+            "space-md": "1rem",
+            "space-xl": "2rem",
+            "margin": "1rem",
+            "margin-mobile": "1rem"
+          },
+          "fontFamily": {
+            "headline-lg": ["Inter"],
+            "label-lg": ["Inter"],
+            "body-lg": ["Inter"],
+            "body-md": ["Inter"],
+            "label-sm": ["Inter"],
+            "display-currency": ["Inter"],
+            "headline-sm": ["Inter"],
+            "label-md": ["Inter"],
+            "title-currency": ["Inter"],
+            "headline-md": ["Inter"]
+          },
+          "fontSize": {
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "label-lg": ["15px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "title-currency": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      background-color: #121011;
+      color: #F5F1F0;
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+    .pb-safe {
+      padding-bottom: env(safe-area-inset-bottom, 16px);
+    }
+    .pt-safe {
+      padding-top: env(safe-area-inset-top, 0px);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-[#121011] text-[#F5F1F0] min-h-screen flex justify-center selection:bg-primary-container selection:text-on-primary-fixed">
+<!-- Mobile Viewport Container (390 x 844 target canvas) -->
+<div class="w-full max-w-[390px] min-h-screen bg-[#121011] flex flex-col relative pb-[92px]">
+<!-- TOP APP BAR -->
+<header class="sticky top-0 z-40 bg-[#121011]/90 backdrop-blur-md px-margin py-space-sm min-h-[56px] flex items-center justify-between border-b border-outline-variant/20 pt-safe">
+<button aria-label="Go Back" class="w-10 h-10 -ml-1 rounded-full flex items-center justify-center text-on-surface hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<div class="flex-1 text-center px-2">
+<h1 class="font-headline-sm text-headline-sm text-[#F5F1F0] truncate tracking-tight">
+          Luminous Inverter Vault
+        </h1>
+<div class="flex items-center justify-center gap-1 mt-0.5">
+<span class="w-1.5 h-1.5 rounded-full bg-[#4CC38A]"></span>
+<span class="font-label-sm text-label-sm text-[#C4BBBD]">Pay Am Small • S-PAS-006</span>
+</div>
+</div>
+<div class="flex items-center gap-1 -mr-1">
+<button aria-label="Share Contract" class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]">share</span>
+</button>
+<button aria-label="Vault Options" class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</header>
+<!-- MAIN SCROLLABLE BODY -->
+<main class="flex-1 px-margin pt-space-md space-y-space-md">
+<!-- VAULT HERO CARD -->
+<section class="bg-[#1C1819] border border-[#3A3335] rounded-2xl p-space-md shadow-sm relative overflow-hidden">
+<!-- Ambient radial glow behind progress -->
+<div class="absolute -right-16 -top-16 w-48 h-48 bg-[#E0709A]/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="flex flex-col items-center text-center">
+<!-- Circular Progress Meter -->
+<div class="relative w-44 h-44 my-space-xs flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 160 160">
+<!-- Background Ring -->
+<circle cx="80" cy="80" fill="transparent" r="66" stroke="#262122" stroke-width="11"></circle>
+<!-- Progress Arc 50% -->
+<circle cx="80" cy="80" fill="transparent" r="66" stroke="#E0709A" stroke-dasharray="414.69" stroke-dashoffset="207.34" stroke-linecap="round" stroke-width="11"></circle>
+</svg>
+<!-- Inner Meter Metrics -->
+<div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+<span class="font-headline-lg text-headline-lg text-[#F5F1F0] font-bold tracking-tight">50%</span>
+<span class="font-label-sm text-label-sm text-[#C4BBBD] mt-0.5">VAULT PROGRESS</span>
+<div class="mt-1 flex items-center gap-1 text-[#4CC38A]">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+<span class="font-label-sm text-label-sm font-semibold">Price Frozen</span>
+</div>
+</div>
+</div>
+<!-- Total Balance vs Target -->
+<div class="w-full mt-2">
+<div class="flex items-baseline justify-center gap-1 text-center">
+<span class="font-title-currency text-title-currency text-primary-container tabular-nums font-bold">₦210,000.00</span>
+<span class="font-body-md text-body-md text-[#C4BBBD]">saved of</span>
+<span class="font-body-md text-body-md text-[#F5F1F0] font-semibold tabular-nums">₦420,000.00</span>
+</div>
+<!-- Milestone Callout Banner -->
+<div class="mt-space-sm bg-[#262122] border border-[#3A3335] rounded-xl p-space-sm flex items-center gap-space-sm text-left">
+<div class="w-8 h-8 rounded-full bg-[#E0709A]/15 flex items-center justify-center shrink-0 text-[#E0709A]">
+<span class="material-symbols-outlined text-[18px]">key</span>
+</div>
+<p class="font-label-md text-label-md text-[#F5F1F0] leading-snug">
+<span class="font-semibold text-primary">₦210,000.00 remaining</span> until 6-digit Delivery Code unlocked
+              </p>
+</div>
+<!-- Schedule & Timeline Meta -->
+<div class="flex items-center justify-between mt-space-sm px-1 text-left border-t border-[#3A3335]/60 pt-space-sm">
+<div>
+<span class="font-label-sm text-label-sm text-[#C4BBBD] block">Target Completion</span>
+<span class="font-label-md text-label-md text-[#F5F1F0] font-medium">15 Dec 2026</span>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm text-[#C4BBBD] block">Remaining Time</span>
+<span class="font-label-md text-label-md text-[#FF8A78] font-semibold flex items-center justify-end gap-1">
+<span class="material-symbols-outlined text-[15px]">timer</span>
+                  44 days left
+                </span>
+</div>
+</div>
+</div>
+<!-- Inflation Shield Protected Badge -->
+<div class="mt-space-md w-full bg-[#262122]/90 border border-[#3A3335] rounded-xl p-3 flex items-start gap-2.5 text-left">
+<div class="w-7 h-7 rounded-lg bg-[rgba(76,195,138,0.15)] flex items-center justify-center text-[#4CC38A] shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">shield</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md font-semibold text-[#4CC38A]">Price Lock Guarantee</span>
+<span class="px-1.5 py-0.2 rounded-full text-[10px] font-bold bg-[#4CC38A]/20 text-[#4CC38A]">ACTIVE</span>
+</div>
+<p class="font-label-sm text-label-sm text-[#C4BBBD] mt-0.5 leading-relaxed">
+                Locked at <span class="text-[#F5F1F0] font-semibold tabular-nums">₦420,000</span> (Market today: <span class="line-through tabular-nums">₦495,000</span>). You saved <span class="text-[#4CC38A] font-semibold tabular-nums">₦75,000.00</span> against inflation.
+              </p>
+</div>
+</div>
+</div>
+</section>
+<!-- DUAL PRIMARY ACTION BUTTONS (52px Touch Targets) -->
+<section class="grid grid-cols-2 gap-space-sm">
+<button class="h-[52px] bg-[#E0709A] hover:bg-[#C4557F] active:scale-[0.98] text-[#121011] font-label-lg text-label-lg font-semibold rounded-xl flex items-center justify-center gap-2 transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+<span>Add Money</span>
+</button>
+<button class="h-[52px] bg-[#262122] hover:bg-[#3A3335] active:scale-[0.98] border border-[#3A3335] text-[#F5F1F0] font-label-lg text-label-lg font-medium rounded-xl flex items-center justify-center gap-2 transition-all" type="button">
+<span class="material-symbols-outlined text-[19px] text-[#C4BBBD]">logout</span>
+<span>Early Exit</span>
+</button>
+</section>
+<!-- AUTO-DEBIT STATUS CARD -->
+<section class="bg-[#1C1819] border border-[#3A3335] rounded-2xl p-space-md space-y-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-[#E0709A]/15 flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[18px]">sync</span>
+</div>
+<div>
+<h2 class="font-label-lg text-label-lg text-[#F5F1F0] font-semibold">Automated Monthly Deduction</h2>
+<p class="font-title-currency text-title-currency text-primary-container font-bold tabular-nums">₦70,000.00<span class="font-body-md text-body-md text-[#C4BBBD] font-normal">/mo</span></p>
+</div>
+</div>
+<!-- Active Protected Status Badge -->
+<div class="flex flex-col items-end gap-1">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-[rgba(76,195,138,0.12)] text-[#4CC38A]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#4CC38A]"></span>
+              Active &amp; Protected
+            </span>
+</div>
+</div>
+<div class="bg-[#262122] border border-[#3A3335] rounded-xl p-3 divide-y divide-[#3A3335]/60 text-left">
+<div class="flex items-center justify-between pb-2.5">
+<span class="font-body-md text-body-md text-[#C4BBBD]">Next Execution</span>
+<span class="font-label-md text-label-md text-[#F5F1F0] font-medium flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px] text-[#E3B341]">schedule</span>
+              1 Nov 2026, 04:00 AM WAT <span class="text-[#E3B341] font-semibold">(in 3 days)</span>
+</span>
+</div>
+<div class="flex items-center justify-between pt-2.5">
+<span class="font-body-md text-body-md text-[#C4BBBD]">Funding Source</span>
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-[#F5F1F0]">YourApp Tier 2 Savings</span>
+<span class="font-label-sm text-label-sm text-[#C4BBBD] px-1.5 py-0.5 bg-[#1C1819] rounded border border-[#3A3335] tabular-nums">•••• 2019</span>
+</div>
+</div>
+</div>
+<!-- Toggle Switch row -->
+<div class="flex items-center justify-between pt-1 px-1">
+<span class="font-label-sm text-label-sm text-[#C4BBBD]">Pause or modify scheduled transfers</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-[#3A3335] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#E0709A]"></div>
+</label>
+</div>
+</section>
+<!-- VAULT CONTENTS & MERCHANT INFO -->
+<section class="bg-[#1C1819] border border-[#3A3335] rounded-2xl p-space-md space-y-3">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-sm text-headline-sm text-[#F5F1F0] flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-primary-container">inventory_2</span>
+            Vault Asset &amp; Merchant
+          </h2>
+<span class="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-[#E0709A]/15 text-primary border border-[#E0709A]/30">Contract Bound</span>
+</div>
+<!-- Item Specifications -->
+<div class="bg-[#262122] border border-[#3A3335] rounded-xl p-3.5 space-y-2">
+<div class="flex items-start gap-3">
+<div class="w-10 h-10 rounded-lg bg-[#1C1819] border border-[#3A3335] flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[22px]">bolt</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-[#C4BBBD] uppercase tracking-wider">Asset Item</span>
+<p class="font-label-lg text-label-lg text-[#F5F1F0] font-semibold leading-snug">
+                Luminous 1.5kVA Pure Sine Wave Inverter + 220Ah Tubular Battery
+              </p>
+</div>
+</div>
+</div>
+<!-- Merchant Credentials -->
+<div class="bg-[#262122] border border-[#3A3335] rounded-xl p-3.5 space-y-2">
+<div class="flex items-start justify-between">
+<div class="flex items-start gap-3">
+<div class="w-10 h-10 rounded-lg bg-[#1C1819] border border-[#3A3335] flex items-center justify-center text-[#4CC38A] shrink-0">
+<span class="material-symbols-outlined text-[22px]">storefront</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-lg text-label-lg text-[#F5F1F0] font-semibold">Alaba GreenTech Solutions</span>
+<span class="material-symbols-outlined text-[16px] text-[#4CC38A]" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<span class="font-body-md text-body-md text-[#C4BBBD]">Verified Partner • Lagos Mainland</span>
+</div>
+</div>
+</div>
+<!-- Delivery Protocol -->
+<div class="mt-2 pt-2 border-t border-[#3A3335]/60 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-primary">local_shipping</span>
+<p class="font-label-sm text-label-sm text-[#C4BBBD]">
+<strong class="text-[#F5F1F0] font-medium">Protocol:</strong> Courier handover upon 6-digit delivery OTP verification.
+            </p>
+</div>
+</div>
+</section>
+<!-- RECENT VAULT CONTRIBUTIONS LEDGER -->
+<section class="bg-[#1C1819] border border-[#3A3335] rounded-2xl p-space-md space-y-space-sm">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-sm text-headline-sm text-[#F5F1F0] flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-primary-container">receipt_long</span>
+            Vault Contributions
+          </h2>
+<span class="font-label-md text-label-md text-primary font-medium hover:underline cursor-pointer">View Statement</span>
+</div>
+<div class="divide-y divide-[#3A3335]">
+<!-- Transaction Row 2: Top-up -->
+<div class="min-h-[64px] py-3 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-[#262122] flex items-center justify-center text-[#4CC38A] shrink-0 border border-[#3A3335]">
+<span class="material-symbols-outlined text-[20px]">south_west</span>
+</div>
+<div>
+<p class="font-label-lg text-label-lg text-[#F5F1F0] font-semibold">Manual Top-up</p>
+<div class="flex items-center gap-1.5 text-[#8A8184] font-label-sm text-label-sm mt-0.5">
+<span>22 Oct 2026</span>
+<span>•</span>
+<span class="inline-flex items-center text-[#4CC38A]">
+<span class="material-symbols-outlined text-[13px] mr-0.5" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                    Successful
+                  </span>
+</div>
+</div>
+</div>
+<div class="text-right">
+<span class="font-title-currency text-title-currency text-[#4CC38A] font-semibold tabular-nums">+₦140,000.00</span>
+<span class="block font-label-sm text-label-sm text-[#8A8184]">Direct Debit</span>
+</div>
+</div>
+<!-- Transaction Row 1: Initial deposit -->
+<div class="min-h-[64px] py-3 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-[#262122] flex items-center justify-center text-[#4CC38A] shrink-0 border border-[#3A3335]">
+<span class="material-symbols-outlined text-[20px]">savings</span>
+</div>
+<div>
+<p class="font-label-lg text-label-lg text-[#F5F1F0] font-semibold">Initial Vault Lock Deposit</p>
+<div class="flex items-center gap-1.5 text-[#8A8184] font-label-sm text-label-sm mt-0.5">
+<span>15 Oct 2026</span>
+<span>•</span>
+<span class="inline-flex items-center text-[#4CC38A]">
+<span class="material-symbols-outlined text-[13px] mr-0.5" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                    Successful
+                  </span>
+</div>
+</div>
+</div>
+<div class="text-right">
+<span class="font-title-currency text-title-currency text-[#4CC38A] font-semibold tabular-nums">+₦70,000.00</span>
+<span class="block font-label-sm text-label-sm text-[#8A8184]">Vault Opening</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Vault Security Guarantee Note -->
+<div class="text-center py-2 px-4">
+<p class="font-label-sm text-label-sm text-[#8A8184] leading-relaxed">
+          Secured by YourApp Escrow Protection &amp; Central Bank of Nigeria (CBN) NDIC insured deposit framework.
+        </p>
+</div>
+</main>
+<!-- DOCKED BOTTOM NAVIGATION (SHARED COMPONENT: Save & Borrow ACTIVE) -->
+<!-- Executing JSON specifications: destination_count 5, docked full-width, active styling on Save & Borrow -->
+<nav class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-margin h-16 max-w-[560px] mx-auto pb-safe bg-surface-container-lowest dark:bg-surface-container border-t border-outline-variant/20 shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)]">
+<!-- 1. Home (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#home">
+<span class="material-symbols-outlined text-[22px]">home</span>
+<span class="font-caption text-[11px] font-medium leading-none">Home</span>
+</a>
+<!-- 2. Payments (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#payments">
+<span class="material-symbols-outlined text-[22px]">send</span>
+<span class="font-caption text-[11px] font-medium leading-none">Payments</span>
+</a>
+<!-- 3. Cards (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#cards">
+<span class="material-symbols-outlined text-[22px]">credit_card</span>
+<span class="font-caption text-[11px] font-medium leading-none">Cards</span>
+</a>
+<!-- 4. Save & Borrow (ACTIVE based on Semantic Hierarchy for Vault detail) -->
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed font-semibold min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#save-borrow">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">savings</span>
+<span class="font-caption text-[11px] font-medium leading-none text-primary dark:text-primary-fixed">Save &amp; Borrow</span>
+</a>
+<!-- 5. More (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#more">
+<span class="material-symbols-outlined text-[22px]">more_horiz</span>
+<span class="font-caption text-[11px] font-medium leading-none">More</span>
+</a>
+</nav>
+</div>
+</body></html>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Instant Loans - YourApp</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Font Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-lowest": "#100e0f",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "inverse-on-surface": "#323031",
+            "surface-container-high": "#2c292a",
+            "secondary": "#ffb4a8",
+            "on-primary": "#620735",
+            "error-container": "#93000a",
+            "on-background": "#e7e1e2",
+            "on-primary-fixed-variant": "#7f234b",
+            "surface-container": "#211f20",
+            "primary-fixed-dim": "#ffb0ca",
+            "surface-tint": "#ffb0ca",
+            "primary-container": "#e0709a",
+            "on-primary-container": "#5d0331",
+            "on-secondary": "#61130a",
+            "secondary-container": "#822c20",
+            "on-tertiary-container": "#002a69",
+            "surface-container-low": "#1d1b1c",
+            "tertiary-container": "#6a92ee",
+            "on-error": "#690005",
+            "error": "#ffb4ab",
+            "outline": "#a28b91",
+            "on-error-container": "#ffdad6",
+            "on-surface": "#e7e1e2",
+            "primary": "#ffb0ca",
+            "surface-container-highest": "#373435",
+            "outline-variant": "#544247",
+            "tertiary-fixed": "#d9e2ff",
+            "surface-dim": "#151314",
+            "secondary-fixed-dim": "#ffb4a8",
+            "on-tertiary-fixed-variant": "#06429a",
+            "on-tertiary-fixed": "#001945",
+            "surface-bright": "#3b3839",
+            "inverse-primary": "#9e3b63",
+            "on-surface-variant": "#dac0c6",
+            "on-secondary-container": "#ff9f90",
+            "inverse-surface": "#e7e1e2",
+            "background": "#151314",
+            "on-secondary-fixed": "#410000",
+            "on-secondary-fixed-variant": "#7f291e",
+            "surface-variant": "#373435",
+            "secondary-fixed": "#ffdad4",
+            "primary-fixed": "#ffd9e3",
+            "on-tertiary": "#002d6f",
+            "tertiary": "#b0c6ff",
+            "surface": "#151314",
+            "on-primary-fixed": "#3e001f"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xl": "2rem",
+            "space-xs": "0.25rem",
+            "gutter": "1rem",
+            "margin": "1rem",
+            "space-sm": "0.5rem",
+            "margin-mobile": "1rem",
+            "space-lg": "1.5rem",
+            "gutter-mobile": "0.75rem",
+            "space-md": "1rem"
+          },
+          "fontFamily": {
+            "body-lg": ["Inter"],
+            "label-sm": ["Inter"],
+            "label-md": ["Inter"],
+            "headline-lg": ["Inter"],
+            "title-currency": ["Inter"],
+            "label-lg": ["Inter"],
+            "headline-sm": ["Inter"],
+            "headline-md": ["Inter"],
+            "display-currency": ["Inter"],
+            "body-md": ["Inter"]
+          },
+          "fontSize": {
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "title-currency": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-lg": ["15px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex flex-col items-center justify-start select-none">
+<!-- Mobile Viewport Wrapper (390px baseline, max 560px fluid) -->
+<div class="w-full max-w-[560px] min-h-screen bg-surface flex flex-col relative pb-[96px]">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-40 bg-surface/95 backdrop-blur-md px-margin py-space-sm flex items-center justify-between min-h-[56px] shadow-sm">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Back" class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface hover:bg-surface-container active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<h1 class="font-headline-sm text-headline-sm font-bold text-on-surface leading-tight tracking-tight">Instant Loans</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant font-normal">Fair &amp; Transparent Credit</p>
+</div>
+</div>
+<div class="flex items-center gap-1">
+<button aria-label="Loan Information" class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+<button aria-label="Notifications" class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="px-margin flex flex-col gap-space-md pt-space-xs">
+<!-- Hero Credit Limit Card -->
+<section class="bg-surface-container-low rounded-xl border border-outline-variant/40 p-5 relative overflow-hidden flex flex-col gap-4">
+<!-- Subtle Top Glow Accent -->
+<div class="absolute -top-10 -right-10 w-44 h-44 bg-primary-container/15 rounded-full blur-3xl pointer-events-none"></div>
+<div class="flex justify-between items-start">
+<div class="flex flex-col gap-1">
+<span class="font-label-md text-label-md text-on-surface-variant tracking-normal">Pre-Approved Borrowing Limit</span>
+<div class="flex items-baseline gap-1">
+<span class="font-display-currency text-display-currency text-primary-container tabular-nums">₦250,000.00</span>
+</div>
+</div>
+<!-- Credit Tier Badge -->
+<div class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-high border border-outline-variant/60">
+<span class="material-symbols-outlined text-primary-container text-[14px]" data-icon="verified_user">verified_user</span>
+<span class="font-label-sm text-label-sm text-on-surface font-medium">Tier 2 Verified</span>
+</div>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant flex items-center gap-1.5">
+<span class="inline-block w-2 h-2 rounded-full bg-tertiary-container"></span>
+          Available immediately · 0 hidden fees
+        </p>
+<!-- Primary CTA: 52px Touch Standard -->
+<button class="w-full h-[52px] rounded-xl bg-primary-container text-on-primary-container font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 active:scale-95 transition-transform duration-150 shadow-md" type="button">
+<span>Apply for Loan Now</span>
+<span class="material-symbols-outlined text-[20px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</section>
+<!-- Active Facility Snapshot / Clean Slate & Trust Score -->
+<section class="bg-surface-container-low rounded-xl border border-outline-variant/40 p-4 flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="check_circle">check_circle</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-medium">No Active Overdue Loans</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Account in excellent standing</span>
+</div>
+</div>
+<!-- Clean status pill -->
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container text-primary-fixed font-label-sm text-label-sm font-semibold">Active</span>
+</div>
+<!-- Divider -->
+<div class="h-px bg-outline-variant/30 w-full"></div>
+<!-- Credit Trust Score Meter -->
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-center">
+<span class="font-label-md text-label-md text-on-surface-variant">Credit Trust Score</span>
+<span class="font-label-md text-label-md text-primary font-bold tabular-nums">780 / 850 (Excellent)</span>
+</div>
+<!-- Progress bar -->
+<div class="w-full h-2 rounded-full bg-surface-container-highest overflow-hidden flex">
+<div class="h-full bg-primary-container rounded-full" style="width: 88%;"></div>
+</div>
+<div class="flex justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span>Poor (300)</span>
+<span>Fair (580)</span>
+<span>Prime (750+)</span>
+</div>
+</div>
+</section>
+<!-- Bento Key Loan Features Grid -->
+<section class="flex flex-col gap-2.5">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Loan Advantages</h2>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Backed by CBN Standards</span>
+</div>
+<div class="grid grid-cols-2 gap-2.5">
+<!-- Feature Tile 1 -->
+<div class="bg-surface-container-low rounded-xl border border-outline-variant/40 p-3.5 flex flex-col justify-between min-h-[116px] hover:bg-surface-container-high transition-colors">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-container text-[20px]" data-icon="bolt">bolt</span>
+</div>
+<div>
+<p class="font-label-md text-label-md font-semibold text-on-surface">Instant Disbursement</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-0.5 leading-snug">Funds to wallet in &lt;60 secs</p>
+</div>
+</div>
+<!-- Feature Tile 2 -->
+<div class="bg-surface-container-low rounded-xl border border-outline-variant/40 p-3.5 flex flex-col justify-between min-h-[116px] hover:bg-surface-container-high transition-colors">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-container text-[20px]" data-icon="lock_open">lock_open</span>
+</div>
+<div>
+<p class="font-label-md text-label-md font-semibold text-on-surface">Zero Penalties</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-0.5 leading-snug">CBN capped fair interest</p>
+</div>
+</div>
+<!-- Feature Tile 3 -->
+<div class="bg-surface-container-low rounded-xl border border-outline-variant/40 p-3.5 flex flex-col justify-between min-h-[116px] hover:bg-surface-container-high transition-colors">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-container text-[20px]" data-icon="calendar_month">calendar_month</span>
+</div>
+<div>
+<p class="font-label-md text-label-md font-semibold text-on-surface">Flexible Tenors</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-0.5 leading-snug">Choose 7, 14, 30 or 60 days</p>
+</div>
+</div>
+<!-- Feature Tile 4 -->
+<div class="bg-surface-container-low rounded-xl border border-outline-variant/40 p-3.5 flex flex-col justify-between min-h-[116px] hover:bg-surface-container-high transition-colors">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-container text-[20px]" data-icon="shield">shield</span>
+</div>
+<div>
+<p class="font-label-md text-label-md font-semibold text-on-surface">Zero Scraping</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-0.5 leading-snug">100% privacy guarantee</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Trust Commitments & Transparency Snippet -->
+<section class="bg-surface-container-low rounded-xl border border-outline-variant/40 p-4 flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<span class="font-label-lg text-label-lg font-semibold text-on-surface">Why Borrow With YourApp?</span>
+<span class="font-label-sm text-label-sm text-primary font-medium flex items-center gap-0.5 cursor-pointer">
+            Rates &amp; Fees <span class="material-symbols-outlined text-[16px]" data-icon="chevron_right">chevron_right</span>
+</span>
+</div>
+<div class="space-y-3 pt-1">
+<div class="flex items-start gap-3">
+<div class="w-7 h-7 rounded-full bg-surface-container flex items-center justify-center flex-shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-primary text-[16px]" data-icon="assured_workload">assured_workload</span>
+</div>
+<div>
+<p class="font-label-md text-label-md font-medium text-on-surface">Licensed Money Lender Partner</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">Underwritten by CreditSwitch MFB, fully regulated under Nigerian banking standards.</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<div class="w-7 h-7 rounded-full bg-surface-container flex items-center justify-center flex-shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-primary text-[16px]" data-icon="percent">percent</span>
+</div>
+<div>
+<p class="font-label-md text-label-md font-medium text-on-surface">Transparent Daily Interest</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">From only <span class="text-on-surface font-semibold tabular-nums">0.15%/day</span>. Only pay for the days you use with zero penalty for early repayment.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Consumer Protection Callout Banner -->
+<section class="rounded-xl border border-outline-variant/30 bg-surface-container/60 p-3.5 flex items-start gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center flex-shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-secondary text-[20px]" data-icon="gavel">gavel</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-secondary">FCCPC Consumer Safeguard Notice</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1 leading-relaxed">
+            We will <strong class="text-on-surface">NEVER</strong> call your phone contacts or harass your referees. Fully compliant with FCCPC Digital Lending Regulations 2023.
+          </p>
+</div>
+</section>
+</main>
+<!-- Docked BottomNavBar (Shared Component JSON Blueprint) -->
+<!-- Destination count: 5. Active index: 3 ("Save & Borrow") -->
+<nav class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-margin h-16 max-w-[560px] mx-auto pb-safe bg-surface-container shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)]">
+<!-- Tab 1: Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-caption text-caption font-medium">Home</span>
+</a>
+<!-- Tab 2: Payments -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="send">send</span>
+<span class="font-caption text-caption font-medium">Payments</span>
+</a>
+<!-- Tab 3: Cards -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="credit_card">credit_card</span>
+<span class="font-caption text-caption font-medium">Cards</span>
+</a>
+<!-- Tab 4: Save & Borrow (ACTIVE) -->
+<a class="flex flex-col items-center justify-center text-primary-fixed font-semibold min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="savings" style="font-variation-settings: 'FILL' 1;">savings</span>
+<span class="font-caption text-caption font-medium text-primary">Save &amp; Borrow</span>
+</a>
+<!-- Tab 5: More -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="more_horiz">more_horiz</span>
+<span class="font-caption text-caption font-medium">More</span>
+</a>
+</nav>
+</div>
+</body></html>

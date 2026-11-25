@@ -1,0 +1,17 @@
+flowchart TD
+  a(["Create invoice"])
+  b["Send by link/SMS/email"]
+  c["Customer views"]
+  d{"Paid?"}
+  e["Reminders until due date"]
+  f["Partial or full payment posted; status updated"]
+  g["Overdue; escalate reminders"]
+  h(["Paid or voided"])
+  a --> b
+  b --> c
+  c --> d
+  d -->|yes| f
+  d -->|no| e
+  e -->|due passed| g
+  g --> d
+  f --> h

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Receipt &amp; Rating - YourApp SafeEscrow</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Inter Google Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Theme Configuration Verbatim -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary-fixed": "#d9e2ff",
+            "on-secondary": "#61130a",
+            "secondary-container": "#822c20",
+            "surface-variant": "#373435",
+            "surface-container-low": "#1d1b1c",
+            "primary-fixed-dim": "#ffb0ca",
+            "background": "#151314",
+            "on-secondary-fixed": "#410000",
+            "on-primary-fixed": "#3e001f",
+            "on-secondary-container": "#ff9f90",
+            "surface-tint": "#ffb0ca",
+            "tertiary": "#b0c6ff",
+            "inverse-primary": "#9e3b63",
+            "primary-container": "#e0709a",
+            "secondary-fixed": "#ffdad4",
+            "surface-container-highest": "#373435",
+            "on-background": "#e7e1e2",
+            "inverse-on-surface": "#323031",
+            "on-error": "#690005",
+            "surface-container": "#211f20",
+            "on-primary-fixed-variant": "#7f234b",
+            "surface-container-high": "#2c292a",
+            "error-container": "#93000a",
+            "surface-dim": "#151314",
+            "secondary": "#ffb4a8",
+            "error": "#ffb4ab",
+            "tertiary-container": "#6a92ee",
+            "surface-bright": "#3b3839",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "secondary-fixed-dim": "#ffb4a8",
+            "on-tertiary": "#002d6f",
+            "on-secondary-fixed-variant": "#7f291e",
+            "on-tertiary-container": "#002a69",
+            "outline": "#a28b91",
+            "surface": "#151314",
+            "on-surface": "#e7e1e2",
+            "on-primary-container": "#5d0331",
+            "on-tertiary-fixed-variant": "#06429a",
+            "surface-container-lowest": "#100e0f",
+            "inverse-surface": "#e7e1e2",
+            "on-tertiary-fixed": "#001945",
+            "primary-fixed": "#ffd9e3",
+            "on-error-container": "#ffdad6",
+            "primary": "#ffb0ca",
+            "on-surface-variant": "#dac0c6",
+            "outline-variant": "#544247",
+            "on-primary": "#620735"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin-mobile": "1rem",
+            "space-xs": "0.25rem",
+            "space-xl": "2rem",
+            "gutter": "1rem",
+            "gutter-mobile": "0.75rem",
+            "space-sm": "0.5rem",
+            "margin": "1rem",
+            "space-lg": "1.5rem",
+            "space-md": "1rem"
+          },
+          "fontFamily": {
+            "body-md": ["Inter"],
+            "headline-md": ["Inter"],
+            "display-currency": ["Inter"],
+            "body-lg": ["Inter"],
+            "headline-lg": ["Inter"],
+            "label-md": ["Inter"],
+            "label-sm": ["Inter"],
+            "headline-sm": ["Inter"],
+            "label-lg": ["Inter"],
+            "title-currency": ["Inter"]
+          },
+          "fontSize": {
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "label-lg": ["15px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "title-currency": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+    /* Jagged or perforated receipt styling subtle effect */
+    .receipt-perforation {
+      background-image: radial-gradient(circle at 10px -5px, transparent 12px, #1c1819 13px);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex justify-center selection:bg-primary-container selection:text-on-primary">
+<!-- Mobile Viewport Container 390px base (iPhone reference standard) -->
+<div class="w-full max-w-[420px] bg-background min-h-screen flex flex-col relative shadow-2xl pb-[104px]">
+<!-- Top Bar Component -->
+<header class="sticky top-0 z-40 bg-surface/95 backdrop-blur-md px-margin py-space-sm flex items-center justify-between min-h-[56px] shadow-sm">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Go back" class="w-[44px] h-[44px] rounded-xl flex items-center justify-center text-on-surface-variant hover:bg-surface-container active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<h1 class="font-headline-sm text-headline-sm text-on-surface font-semibold tracking-tight">Deal Receipt &amp; Rating</h1>
+<span class="font-label-sm text-label-sm text-outline">Transaction Concluded</span>
+</div>
+</div>
+<button aria-label="Share receipt" class="w-[44px] h-[44px] rounded-xl flex items-center justify-center text-primary-container hover:bg-surface-container active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined text-[22px]">share</span>
+</button>
+</header>
+<!-- Main Scrollable Flow -->
+<main class="flex-1 px-margin pt-space-sm pb-space-lg flex flex-col gap-space-md">
+<!-- 2. Success Hero Indicator -->
+<section class="flex flex-col items-center text-center pt-space-xs pb-space-xs">
+<div class="w-16 h-16 rounded-full bg-[#132B1E] border-2 border-[#4CC38A] flex items-center justify-center mb-space-sm shadow-[0_0_24px_rgba(76,195,138,0.2)]">
+<span class="material-symbols-outlined text-[#4CC38A] text-[34px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold tracking-tight">
+          Escrow Deal Successfully Completed
+        </h2>
+<p class="font-body-md text-body-md text-outline mt-1 max-w-[320px]">
+          Concluded Today, 14:32 WAT • Funds Released to Seller
+        </p>
+</section>
+<!-- 3. Shareable Digital Escrow Settlement Receipt Card -->
+<section class="bg-surface-container-low border border-outline-variant/60 rounded-xl overflow-hidden shadow-lg transition-all duration-200">
+<!-- Top Certification Banner -->
+<div class="bg-surface-container-high px-space-md py-space-sm flex items-center justify-between border-b border-outline-variant/40">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[20px]" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold tracking-wide">
+              YourApp SafeEscrow Official Settlement Certificate
+            </span>
+</div>
+<span class="material-symbols-outlined text-outline text-[18px]">verified</span>
+</div>
+<div class="p-5 flex flex-col">
+<!-- Settlement Principal Headline -->
+<div class="flex flex-col items-center text-center pb-space-md border-b border-dashed border-outline-variant/60">
+<span class="font-label-md text-label-md text-outline uppercase tracking-wider mb-1">
+              Settlement Principal Disbursed
+            </span>
+<div class="font-display-currency text-display-currency text-on-surface tabular-nums">
+              ₦1,200,000.00
+            </div>
+<!-- Settlement Status Badge -->
+<div class="mt-space-sm inline-flex items-center gap-1.5 h-[26px] px-3 rounded-full bg-[#132B1E] text-[#4CC38A] border border-[#4CC38A]/30 font-label-sm text-label-sm font-semibold">
+<span class="w-2 h-2 rounded-full bg-[#4CC38A]"></span>
+<span>Settled &amp; Disbursed</span>
+</div>
+</div>
+<!-- Key Value Audit Details -->
+<div class="py-space-md flex flex-col gap-3 font-body-md text-body-md">
+<div class="flex justify-between items-start gap-4">
+<span class="text-outline shrink-0 font-label-md text-label-md">Deal Title</span>
+<span class="text-on-surface text-right font-medium">Brand New Sony FX3 Cinema Camera Bundle</span>
+</div>
+<div class="flex justify-between items-center gap-2">
+<span class="text-outline font-label-md text-label-md">Deal ID</span>
+<span class="text-on-surface font-mono text-[13px] bg-surface-container px-2 py-0.5 rounded border border-outline-variant/40 tabular-nums">#ESC-8921-FX3</span>
+</div>
+<div class="h-[1px] w-full border-t border-dashed border-outline-variant/30 my-0.5"></div>
+<div class="flex justify-between items-center gap-2">
+<span class="text-outline font-label-md text-label-md">Buyer</span>
+<div class="text-right flex items-center gap-1">
+<span class="text-on-surface font-medium">Chioma Adeleke</span>
+<span class="text-[11px] bg-surface-container px-1.5 py-0.2 rounded text-primary-fixed-dim">Tier 2</span>
+</div>
+</div>
+<div class="flex justify-between items-center gap-2">
+<span class="text-outline font-label-md text-label-md">Seller / Beneficiary</span>
+<div class="text-right flex items-center gap-1">
+<span class="text-on-surface font-medium">Emeka Alaba Electronics</span>
+<span class="material-symbols-outlined text-[15px] text-[#4CC38A]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<div class="flex justify-between items-center gap-2">
+<span class="text-outline font-label-md text-label-md">Settlement Destination</span>
+<span class="text-on-surface font-medium tabular-nums">Providus Bank ••••••4419</span>
+</div>
+<div class="h-[1px] w-full border-t border-dashed border-outline-variant/30 my-0.5"></div>
+<div class="flex justify-between items-start gap-2">
+<div class="flex flex-col">
+<span class="text-outline font-label-md text-label-md">Escrow Fee (50/50 Split)</span>
+<span class="text-[11px] text-outline">Total ₦18,000.00</span>
+</div>
+<span class="text-on-surface font-medium tabular-nums text-right">₦9,000.00 each</span>
+</div>
+<div class="flex justify-between items-center gap-2">
+<span class="text-outline font-label-md text-label-md">Inspection Window</span>
+<span class="text-[#4CC38A] font-medium flex items-center gap-1">
+<span>72 Hours (Passed &amp; Approved)</span>
+</span>
+</div>
+<div class="flex justify-between items-center gap-2">
+<span class="text-outline font-label-md text-label-md">Delivery Waybill</span>
+<span class="text-on-surface font-mono text-[12px] tabular-nums">GIG-LOS-992014-X</span>
+</div>
+<div class="h-[1px] w-full border-t border-dashed border-outline-variant/30 my-0.5"></div>
+<div class="flex justify-between items-center gap-2">
+<span class="text-outline font-label-md text-label-md">Vault Hash</span>
+<span class="text-outline font-mono text-[11px] truncate max-w-[200px]" title="#VAULT-ESC-8921-SHA256">#VAULT-ESC-8921-SHA256</span>
+</div>
+</div>
+<!-- Receipt Action Buttons -->
+<div class="grid grid-cols-2 gap-space-sm pt-space-sm border-t border-outline-variant/40">
+<button class="h-[52px] bg-surface-container hover:bg-surface-container-high border border-outline-variant/60 rounded-xl px-2 flex items-center justify-center gap-1.5 text-on-surface font-label-md text-label-md font-medium active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[20px] text-primary-container">share</span>
+<span>Share (PDF/IMG)</span>
+</button>
+<button class="h-[52px] bg-surface-container hover:bg-surface-container-high border border-outline-variant/60 rounded-xl px-2 flex items-center justify-center gap-1.5 text-on-surface font-label-md text-label-md font-medium active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[20px] text-primary-container">download</span>
+<span>Download Cert</span>
+</button>
+</div>
+</div>
+</section>
+<!-- 4. Counterparty Rating & Review Module -->
+<section class="bg-surface-container border border-outline-variant/60 rounded-xl p-5 flex flex-col gap-space-md shadow-md">
+<!-- Header & Counterparty Identity -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Rate Your Counterparty</h3>
+<span class="font-label-sm text-label-sm text-primary-container font-medium">SafeDeal Feedback</span>
+</div>
+<!-- Seller Profile Cardlet -->
+<div class="flex items-center gap-3 bg-surface-container-low p-3 rounded-lg border border-outline-variant/40 mt-1">
+<div class="w-11 h-11 rounded-full bg-secondary-container text-on-secondary-container font-headline-sm text-headline-sm font-bold flex items-center justify-center shrink-0 border border-outline-variant/30">
+              EA
+            </div>
+<div class="flex flex-col overflow-hidden">
+<div class="flex items-center gap-1">
+<span class="font-label-lg text-label-lg text-on-surface font-semibold truncate">Emeka Alaba Electronics</span>
+<span class="material-symbols-outlined text-[#4CC38A] text-[16px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">Verified Merchant Tier 2 • 99.4% Trust Score</span>
+</div>
+</div>
+</div>
+<!-- 5-Star Interactive Rating Selector -->
+<div class="flex flex-col items-center justify-center py-2 bg-surface-container-low rounded-xl border border-outline-variant/40">
+<div aria-label="Rate seller out of 5 stars" class="flex items-center gap-2 mb-1" id="star-rating-container" role="radiogroup">
+<button aria-label="1 star" class="p-1 text-[#E3B341] hover:scale-110 active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[34px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</button>
+<button aria-label="2 stars" class="p-1 text-[#E3B341] hover:scale-110 active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[34px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</button>
+<button aria-label="3 stars" class="p-1 text-[#E3B341] hover:scale-110 active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[34px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</button>
+<button aria-label="4 stars" class="p-1 text-[#E3B341] hover:scale-110 active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[34px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</button>
+<button aria-label="5 stars" class="p-1 text-[#E3B341] hover:scale-110 active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[34px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</button>
+</div>
+<span class="font-label-lg text-label-lg font-semibold text-[#E3B341]">Excellent Seller (5.0)</span>
+<span class="font-label-sm text-label-sm text-outline">Tap a star to adjust rating</span>
+</div>
+<!-- Quick Feedback Tag Chips -->
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-on-surface-variant font-medium">Transaction Experience Tags</label>
+<div class="flex flex-wrap gap-2">
+<!-- Selected tag 1 -->
+<button class="h-[36px] px-3.5 rounded-full bg-primary-container text-on-primary font-label-md text-label-md font-semibold flex items-center gap-1 active:scale-95 transition-transform shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">check</span>
+<span>Prompt Dispatch</span>
+</button>
+<!-- Selected tag 2 -->
+<button class="h-[36px] px-3.5 rounded-full bg-primary-container text-on-primary font-label-md text-label-md font-semibold flex items-center gap-1 active:scale-95 transition-transform shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">check</span>
+<span>Authentic Item</span>
+</button>
+<!-- Selected tag 3 -->
+<button class="h-[36px] px-3.5 rounded-full bg-primary-container text-on-primary font-label-md text-label-md font-semibold flex items-center gap-1 active:scale-95 transition-transform shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">check</span>
+<span>Great Communication</span>
+</button>
+<!-- Unselected tag 4 -->
+<button class="h-[36px] px-3.5 rounded-full bg-surface-container-high border border-outline-variant text-on-surface font-label-md text-label-md hover:bg-surface-variant active:scale-95 transition-transform" type="button">
+<span>Accurate Specs</span>
+</button>
+<!-- Unselected tag 5 -->
+<button class="h-[36px] px-3.5 rounded-full bg-surface-container-high border border-outline-variant text-on-surface font-label-md text-label-md hover:bg-surface-variant active:scale-95 transition-transform" type="button">
+<span>Safe Packaging</span>
+</button>
+</div>
+</div>
+<!-- Review Text Box -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface-variant font-medium" for="review-notes">Written Feedback for Marketplace Audit</label>
+<div class="relative">
+<textarea class="w-full bg-surface-container-low border border-outline-variant/60 rounded-xl p-3.5 text-on-surface font-body-md text-body-md focus:border-primary-container focus:ring-0 focus:outline-none resize-none placeholder:text-outline" id="review-notes" placeholder="Describe the transaction, inspection, and product condition..." rows="3">Camera arrived in pristine factory seal with genuine lens and batteries. Smooth inspection and verification process.</textarea>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-label-sm text-label-sm text-outline">Verified Escrow Buyer Badge will attach</span>
+<span class="font-label-sm text-label-sm text-outline tabular-nums">108/500</span>
+</div>
+</div>
+<!-- Anonymous Review Toggle -->
+<div class="flex items-center justify-between p-3 bg-surface-container-low rounded-xl border border-outline-variant/40">
+<div class="flex flex-col pr-2">
+<span class="font-label-md text-label-md text-on-surface font-medium">Public Trust Contribution</span>
+<span class="font-label-sm text-label-sm text-outline">Keep rating public on seller's trust score</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer shrink-0">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-6 bg-surface-container-high peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</section>
+<!-- 5. Regulatory & Consumer Protection Footer -->
+<footer class="mt-space-xs px-2 text-center flex flex-col items-center gap-1.5">
+<div class="flex items-center gap-1 text-outline">
+<span class="material-symbols-outlined text-[16px]">account_balance</span>
+<span class="font-label-sm text-label-sm font-semibold tracking-wide">CBN LICENSED &amp; REGULATED</span>
+</div>
+<p class="font-label-sm text-label-sm text-outline max-w-[340px] leading-relaxed">
+          Protected under Central Bank of Nigeria Consumer Protection &amp; Alternative Dispute Resolution (ADR) Framework. NDIC insured.
+        </p>
+</footer>
+<!-- 6. Sticky Bottom Action Controls -->
+<div class="flex flex-col gap-2 pt-space-sm pb-space-xs">
+<button class="h-[52px] w-full bg-primary-container hover:bg-[#C4557F] text-on-primary-container font-label-lg text-label-lg font-bold rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-primary-container/20 active:scale-[0.98] transition-all" type="button">
+<span>Submit Review &amp; Finish</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+<button class="h-[48px] w-full bg-transparent hover:bg-surface-container text-outline hover:text-on-surface font-label-md text-label-md font-medium rounded-xl flex items-center justify-center transition-colors" type="button">
+<span>Back to Escrow Deals</span>
+</button>
+</div>
+</main>
+<!-- 7. Docked Bottom Navigation Bar Component (Semantic Shell - 5 Dest: Home, Payments, Cards, Save & Borrow [Active], More) -->
+<nav aria-label="Bottom Navigation" class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-margin h-16 max-w-[420px] mx-auto bg-[#1C1819] border-t border-[#3A3335] shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)] backdrop-blur-lg">
+<!-- Tab 1: Home (Inactive) -->
+<a class="flex flex-col items-center justify-center text-outline hover:text-primary transition-colors duration-150 min-w-[48px] py-space-xs gap-space-xs active:scale-95" href="#">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="font-label-sm text-label-sm font-normal">Home</span>
+</a>
+<!-- Tab 2: Payments (Inactive) -->
+<a class="flex flex-col items-center justify-center text-outline hover:text-primary transition-colors duration-150 min-w-[48px] py-space-xs gap-space-xs active:scale-95" href="#">
+<span class="material-symbols-outlined text-[24px]">send</span>
+<span class="font-label-sm text-label-sm font-normal">Payments</span>
+</a>
+<!-- Tab 3: Cards (Inactive) -->
+<a class="flex flex-col items-center justify-center text-outline hover:text-primary transition-colors duration-150 min-w-[48px] py-space-xs gap-space-xs active:scale-95" href="#">
+<span class="material-symbols-outlined text-[24px]">credit_card</span>
+<span class="font-label-sm text-label-sm font-normal">Cards</span>
+</a>
+<!-- Tab 4: Save & Borrow (ACTIVE - Escrow Deal Vault Concluded) -->
+<a aria-current="page" class="flex flex-col items-center justify-center text-primary-container font-semibold min-w-[48px] py-space-xs gap-space-xs active:scale-95" href="#">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">savings</span>
+<span class="font-label-sm text-label-sm font-semibold">Save &amp; Borrow</span>
+</a>
+<!-- Tab 5: More (Inactive) -->
+<a class="flex flex-col items-center justify-center text-outline hover:text-primary transition-colors duration-150 min-w-[48px] py-space-xs gap-space-xs active:scale-95" href="#">
+<span class="material-symbols-outlined text-[24px]">more_horiz</span>
+<span class="font-label-sm text-label-sm font-normal">More</span>
+</a>
+</nav>
+</div>
+</body></html>

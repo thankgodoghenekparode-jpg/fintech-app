@@ -1,0 +1,28 @@
+flowchart TD
+  a(["Save & Borrow > Borrow"])
+  b["Show lender identity and eligibility/limit"]
+  c{"Eligible?"}
+  d["Explain reasons and how to improve"]
+  e[/"Choose amount and tenor"/]
+  f["Cost summary and affordability check"]
+  g["Decision engine"]
+  h{"Outcome"}
+  i["Referred: analyst review"]
+  j["Declined with reason code and message"]
+  k["Show agreement and key facts; accept with PIN"]
+  l["Disburse to main account; create schedule"]
+  m(["Loan active"])
+  a --> b
+  b --> c
+  c -->|no| d
+  c -->|yes| e
+  e --> f
+  f --> g
+  g --> h
+  h -->|approve| k
+  h -->|refer| i
+  h -->|decline| j
+  i -->|approved| k
+  i -->|declined| j
+  k --> l
+  l --> m

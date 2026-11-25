@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dispute Tracker - YourApp Escrow</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Inter Google Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary": "#ffb4a8",
+            "error": "#ffb4ab",
+            "on-tertiary-fixed": "#001945",
+            "inverse-on-surface": "#323031",
+            "on-primary": "#620735",
+            "outline": "#a28b91",
+            "tertiary": "#b0c6ff",
+            "on-primary-fixed-variant": "#7f234b",
+            "inverse-primary": "#9e3b63",
+            "on-secondary": "#61130a",
+            "on-secondary-fixed-variant": "#7f291e",
+            "primary-container": "#e0709a",
+            "tertiary-fixed": "#d9e2ff",
+            "on-tertiary-container": "#002a69",
+            "on-background": "#e7e1e2",
+            "surface-bright": "#3b3839",
+            "outline-variant": "#544247",
+            "on-surface": "#e7e1e2",
+            "secondary-fixed-dim": "#ffb4a8",
+            "inverse-surface": "#e7e1e2",
+            "on-error-container": "#ffdad6",
+            "primary-fixed-dim": "#ffb0ca",
+            "on-primary-container": "#5d0331",
+            "surface": "#151314",
+            "tertiary-container": "#6a92ee",
+            "background": "#151314",
+            "surface-container-highest": "#373435",
+            "surface-dim": "#151314",
+            "surface-variant": "#373435",
+            "on-tertiary": "#002d6f",
+            "on-tertiary-fixed-variant": "#06429a",
+            "on-surface-variant": "#dac0c6",
+            "secondary-fixed": "#ffdad4",
+            "error-container": "#93000a",
+            "primary": "#ffb0ca",
+            "on-secondary-container": "#ff9f90",
+            "surface-container": "#211f20",
+            "on-error": "#690005",
+            "surface-container-high": "#2c292a",
+            "on-primary-fixed": "#3e001f",
+            "secondary-container": "#822c20",
+            "primary-fixed": "#ffd9e3",
+            "surface-container-lowest": "#100e0f",
+            "surface-container-low": "#1d1b1c",
+            "on-secondary-fixed": "#410000",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "surface-tint": "#ffb0ca"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "margin-mobile": "1rem",
+            "space-lg": "1.5rem",
+            "space-xs": "0.25rem",
+            "margin": "1rem",
+            "gutter-mobile": "0.75rem",
+            "gutter": "1rem",
+            "space-xl": "2rem",
+            "space-md": "1rem"
+          },
+          "fontFamily": {
+            "display-currency": ["Inter"],
+            "label-lg": ["Inter"],
+            "headline-sm": ["Inter"],
+            "headline-md": ["Inter"],
+            "body-lg": ["Inter"],
+            "label-sm": ["Inter"],
+            "body-md": ["Inter"],
+            "headline-lg": ["Inter"],
+            "label-md": ["Inter"],
+            "title-currency": ["Inter"]
+          },
+          "fontSize": {
+            "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-lg": ["15px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "title-currency": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    /* Tabular currency numerals precision */
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+    /* Custom pulse for active status indicator */
+    @keyframes gentle-pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.15); }
+    }
+    .animate-gentle-pulse {
+      animation: gentle-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-lowest text-on-surface antialiased selection:bg-primary-container selection:text-surface min-h-screen flex justify-center">
+<!-- Mobile Canvas Frame: 390px base fluid max 440px -->
+<main class="w-full max-w-[440px] bg-[#121011] min-h-screen relative flex flex-col shadow-2xl border-x border-[#3A3335]/30">
+<!-- Sticky Top Navigation Bar -->
+<header class="sticky top-0 z-40 bg-[#1C1819] backdrop-blur-md px-margin py-space-sm flex items-center justify-between border-b border-[#3A3335] min-h-[56px]">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Go back" class="w-10 h-10 -ml-1 rounded-xl flex items-center justify-center text-on-surface hover:bg-surface-container-high transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined text-[22px]">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<h1 class="font-headline-sm text-headline-sm text-on-surface leading-tight">Dispute Case #DSP-9042</h1>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span>Escrow Ref:</span>
+<span class="font-mono text-primary font-medium tracking-tight">#ESC-8921-FX3</span>
+</p>
+</div>
+</div>
+<button aria-label="Share case dossier" class="w-10 h-10 rounded-xl flex items-center justify-center text-on-surface hover:bg-surface-container-high transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined text-[20px]">share</span>
+</button>
+</header>
+<!-- Scrollable Content Canvas (Padding safe for bottom bar) -->
+<div class="flex-1 px-margin pt-space-md pb-[104px] space-y-space-md overflow-y-auto">
+<!-- Case Status Hero Banner -->
+<section class="bg-[#1C1819] rounded-xl p-space-md border border-[#3A3335] relative overflow-hidden">
+<!-- Ambient Status Glow -->
+<div class="absolute -top-12 -right-12 w-32 h-32 bg-secondary-container/20 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex flex-wrap items-center justify-between gap-2 mb-space-sm">
+<!-- Status Badge -->
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-container/30 border border-secondary/30">
+<span class="w-2 h-2 rounded-full bg-secondary animate-gentle-pulse"></span>
+<span class="font-label-sm text-label-sm text-secondary font-medium tracking-tight">Case Under Arbitration • Stage 2 of 4 Active</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]">shield</span> Verified
+          </span>
+</div>
+<!-- Protected Capital Headline -->
+<div class="space-y-0.5 mb-space-md">
+<p class="font-label-sm text-label-sm text-outline uppercase tracking-wider font-semibold">Protected Capital in Dispute</p>
+<div class="flex items-baseline gap-1.5">
+<span class="font-display-currency text-display-currency text-on-surface tabular-nums">₦1,200,000<span class="text-on-surface-variant font-normal">.00</span></span>
+</div>
+<p class="font-label-sm text-label-sm text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px]">lock</span>
+<span>Frozen in Sovereign Custody (Secured Vault)</span>
+</p>
+</div>
+<!-- SLA Countdown Module -->
+<div class="bg-[#262122] rounded-lg p-2.5 border border-[#3A3335] flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[18px]">timer</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="font-label-sm text-label-sm text-outline">Officer Determination Due</p>
+<p class="font-label-md text-label-md text-on-surface truncate font-medium">
+              28 Feb 2026, 18:00 WAT <span class="text-secondary font-semibold">(26h remaining)</span>
+</p>
+</div>
+</div>
+</section>
+<!-- Multi-step Arbitration Timeline -->
+<section class="bg-[#1C1819] rounded-xl p-space-md border border-[#3A3335]">
+<div class="flex items-center justify-between pb-space-sm mb-space-sm border-b border-[#3A3335]/60">
+<h2 class="font-label-lg text-label-lg text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[18px]">account_tree</span>
+            Arbitration Process
+          </h2>
+<span class="font-label-sm text-label-sm text-outline">Legally Binding</span>
+</div>
+<div class="space-y-4 relative">
+<!-- Continuous Timeline Vertical Track -->
+<div class="absolute left-[13px] top-3 bottom-3 w-[2px] bg-[#3A3335] -z-0"></div>
+<!-- Step 1: Dispute Lodged (Completed) -->
+<div class="relative flex items-start gap-3 z-10">
+<div class="w-7 h-7 rounded-full bg-[#262122] border-2 border-secondary flex items-center justify-center shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[14px] text-secondary">check</span>
+</div>
+<div class="flex-1 pt-0.5">
+<div class="flex items-center justify-between">
+<p class="font-label-md text-label-md text-on-surface font-semibold">Dispute Lodged by Buyer</p>
+<span class="font-label-sm text-label-sm text-outline">25 Feb, 15:40</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5 leading-relaxed">
+                Completed ✓ • <span class="text-on-surface">Reason: Sensor hardware error E:61</span>
+</p>
+</div>
+</div>
+<!-- Step 2: Seller Rebuttal (Completed) -->
+<div class="relative flex items-start gap-3 z-10">
+<div class="w-7 h-7 rounded-full bg-[#262122] border-2 border-secondary flex items-center justify-center shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[14px] text-secondary">check</span>
+</div>
+<div class="flex-1 pt-0.5">
+<div class="flex items-center justify-between">
+<p class="font-label-md text-label-md text-on-surface font-semibold">Seller Rebuttal &amp; Evidence Due</p>
+<span class="font-label-sm text-label-sm text-outline">26 Feb, 11:20</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5 leading-relaxed">
+                Completed ✓ • <span class="text-on-surface">Seller uploaded dispatch test video</span>
+</p>
+</div>
+</div>
+<!-- Step 3: Independent Escrow Officer Review (Active Pulse) -->
+<div class="relative flex items-start gap-3 z-10">
+<div class="w-7 h-7 rounded-full bg-primary-container border-2 border-primary flex items-center justify-center shrink-0 shadow-md">
+<span class="w-2.5 h-2.5 rounded-full bg-on-primary animate-gentle-pulse"></span>
+</div>
+<div class="flex-1 pt-0.5 bg-[#262122]/60 p-2.5 rounded-lg border border-primary/30">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<p class="font-label-md text-label-md text-primary font-semibold">Independent Escrow Officer Review</p>
+</div>
+<span class="px-1.5 py-0.5 rounded bg-primary/20 text-primary font-label-sm text-[10px] font-bold uppercase">Active</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface mt-1 leading-snug">
+                Senior Dispute Arbitrator: <strong class="text-primary font-medium">Barr. N. Okonjo</strong> assigned to review sensor logs and transit timestamps.
+              </p>
+</div>
+</div>
+<!-- Step 4: Binding Determination (Upcoming) -->
+<div class="relative flex items-start gap-3 z-10 opacity-60">
+<div class="w-7 h-7 rounded-full bg-[#1C1819] border-2 border-[#3A3335] flex items-center justify-center shrink-0">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+</div>
+<div class="flex-1 pt-0.5">
+<p class="font-label-md text-label-md text-on-surface font-medium">Binding Determination &amp; Fund Disbursement</p>
+<p class="font-label-sm text-label-sm text-outline mt-0.5">Upcoming • Pending review verdict</p>
+</div>
+</div>
+<!-- Step 5: Appeal Window (Upcoming) -->
+<div class="relative flex items-start gap-3 z-10 opacity-50">
+<div class="w-7 h-7 rounded-full bg-[#1C1819] border-2 border-[#3A3335] flex items-center justify-center shrink-0">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+</div>
+<div class="flex-1 pt-0.5">
+<p class="font-label-md text-label-md text-on-surface font-medium">14-Day Statutory Appeal Window</p>
+<p class="font-label-sm text-label-sm text-outline mt-0.5">Upcoming • Initiates post-ruling</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Submissions & Evidence Drawer -->
+<section class="bg-[#1C1819] rounded-xl p-space-md border border-[#3A3335] space-y-3">
+<div class="flex items-center justify-between pb-1 border-b border-[#3A3335]/60">
+<h2 class="font-label-lg text-label-lg text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[18px]">folder_open</span>
+            Case Submissions &amp; Evidence
+          </h2>
+<span class="font-label-sm text-label-sm text-outline">Verified Audit Log</span>
+</div>
+<!-- Buyer Evidence Bento Row -->
+<div class="bg-[#262122] rounded-lg p-3 border border-[#3A3335] space-y-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-5 h-5 rounded-full bg-primary-container/20 text-primary flex items-center justify-center text-[10px] font-bold">B</span>
+<span class="font-label-md text-label-md text-on-surface font-medium">Buyer Claim Dossier</span>
+</div>
+<span class="inline-flex items-center gap-1 text-[11px] font-label-sm text-outline bg-[#1C1819] px-2 py-0.5 rounded border border-[#3A3335]">
+<span class="material-symbols-outlined text-[13px] text-primary">photo_library</span> 2 photos attached
+            </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant bg-[#1C1819]/60 p-2.5 rounded border border-[#3A3335]/40 leading-relaxed italic">
+            “Defective image sensor upon first power-on. Shutter failure accompanied by persistent error code E:61.”
+          </p>
+<div class="flex items-center gap-2 pt-0.5">
+<div class="flex items-center gap-1.5 px-2 py-1 bg-[#1C1819] rounded text-[11px] font-label-sm text-on-surface border border-[#3A3335]">
+<span class="material-symbols-outlined text-[13px] text-outline">image</span> IMG_9401_defect.heic
+            </div>
+<div class="flex items-center gap-1.5 px-2 py-1 bg-[#1C1819] rounded text-[11px] font-label-sm text-on-surface border border-[#3A3335]">
+<span class="material-symbols-outlined text-[13px] text-outline">image</span> IMG_9402_serial.jpg
+            </div>
+</div>
+</div>
+<!-- Seller Evidence Bento Row -->
+<div class="bg-[#262122] rounded-lg p-3 border border-[#3A3335] space-y-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-5 h-5 rounded-full bg-tertiary-container/20 text-tertiary flex items-center justify-center text-[10px] font-bold">S</span>
+<span class="font-label-md text-label-md text-on-surface font-medium">Seller Rebuttal Statement</span>
+</div>
+<span class="inline-flex items-center gap-1 text-[11px] font-label-sm text-outline bg-[#1C1819] px-2 py-0.5 rounded border border-[#3A3335]">
+<span class="material-symbols-outlined text-[13px] text-tertiary">videocam</span> 1 video file
+            </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant bg-[#1C1819]/60 p-2.5 rounded border border-[#3A3335]/40 leading-relaxed italic">
+            “Unit was fully bench-tested working prior to dispatch. Claiming courier transit mishandling or drops during final mile.”
+          </p>
+<div class="flex items-center gap-2 pt-0.5">
+<div class="flex items-center gap-1.5 px-2 py-1 bg-[#1C1819] rounded text-[11px] font-label-sm text-on-surface border border-[#3A3335]">
+<span class="material-symbols-outlined text-[13px] text-outline">movie</span> dispatch_benchtest_24s.mp4 (48 MB)
+            </div>
+</div>
+</div>
+</section>
+<!-- Settlement / Recommendation Preview Card -->
+<section class="bg-[#262122] rounded-xl p-space-md border border-[#3A3335] relative">
+<div class="flex items-start gap-2.5 mb-2">
+<div class="w-7 h-7 rounded-lg bg-secondary/10 text-secondary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[17px]">gavel</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="font-label-lg text-label-lg text-on-surface font-semibold">Preliminary Officer Recommendation</h3>
+</div>
+<p class="font-label-sm text-label-sm text-outline">Subject to final 24-hour review closure</p>
+</div>
+</div>
+<div class="bg-[#1C1819] p-3 rounded-lg border border-[#3A3335] mt-2">
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+            “Return unit to Seller with <strong class="text-primary font-semibold">100% Buyer Refund (₦1,200,000.00)</strong> automatically disbursed upon verified courier tracking delivery receipt.”
+          </p>
+<div class="mt-2.5 pt-2 border-t border-[#3A3335]/50 flex items-center justify-between font-label-sm text-label-sm text-outline">
+<span>Arbitrator: Barr. N. Okonjo</span>
+<span class="text-secondary font-medium">Confidence: High</span>
+</div>
+</div>
+</section>
+<!-- Action Panel & Mediation Triggers -->
+<section class="space-y-2.5 pt-1">
+<!-- Submit Additional Evidence (Ghost / Outline 52px) -->
+<button class="w-full h-[52px] rounded-xl bg-[#262122] border border-[#3A3335] text-on-surface font-label-lg text-label-lg flex items-center justify-center gap-2 active:bg-[#3A3335] active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined text-[20px] text-outline">upload_file</span>
+<span>Submit Additional Evidence</span>
+</button>
+<!-- Primary Mediation Chat Button (52px #E0709A) -->
+<button class="w-full h-[52px] rounded-xl bg-[#E0709A] hover:bg-[#C4557F] text-[#121011] font-label-lg text-label-lg flex items-center justify-center gap-2 active:scale-[0.98] transition-all shadow-md font-semibold">
+<span class="material-symbols-outlined text-[20px]">forum</span>
+<span>Dispute Mediation Chat (Monitored)</span>
+</button>
+<!-- Request Conciliation Link -->
+<div class="text-center pt-1">
+<button class="font-label-md text-label-md text-primary hover:text-primary-fixed underline underline-offset-4 decoration-primary/40 active:opacity-80 transition-opacity">
+            Request Settlement Conciliation
+          </button>
+</div>
+</section>
+<!-- Statutory Assurance Disclaimer -->
+<footer class="pt-2 pb-1 text-center">
+<div class="flex items-center justify-center gap-1.5 text-outline mb-1">
+<span class="material-symbols-outlined text-[15px]">verified_user</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold">Regulatory Governance</span>
+</div>
+<p class="font-label-sm text-label-sm text-outline leading-tight max-w-[340px] mx-auto">
+          Protected under Central Bank of Nigeria Consumer Protection &amp; Alternative Dispute Resolution (ADR) Framework.
+        </p>
+</footer>
+</div>
+<!-- Docked 5-Tab Bottom Navigation (Save & Borrow ACTIVE) -->
+<!-- Styled as per Shared Components JSON and Style Guidance: height 64px, background #1C1819 with border-t #3A3335, Save & Borrow active in #E0709A -->
+<nav aria-label="Main Navigation" class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-margin h-16 max-w-[440px] mx-auto pb-safe bg-[#1C1819] border-t border-[#3A3335] backdrop-blur-md">
+<!-- 1. Home (Inactive) -->
+<button aria-label="Home" class="flex flex-col items-center justify-center text-[#8A8184] hover:text-[#E0709A] font-normal min-w-[48px] py-space-xs gap-space-xs active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined text-[22px]">home</span>
+<span class="font-label-sm text-label-sm font-medium">Home</span>
+</button>
+<!-- 2. Payments (Inactive) -->
+<button aria-label="Payments" class="flex flex-col items-center justify-center text-[#8A8184] hover:text-[#E0709A] font-normal min-w-[48px] py-space-xs gap-space-xs active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined text-[22px]">send</span>
+<span class="font-label-sm text-label-sm font-medium">Payments</span>
+</button>
+<!-- 3. Cards (Inactive) -->
+<button aria-label="Cards" class="flex flex-col items-center justify-center text-[#8A8184] hover:text-[#E0709A] font-normal min-w-[48px] py-space-xs gap-space-xs active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined text-[22px]">credit_card</span>
+<span class="font-label-sm text-label-sm font-medium">Cards</span>
+</button>
+<!-- 4. Save & Borrow (ACTIVE per brief instructions) -->
+<button aria-current="page" aria-label="Save &amp; Borrow" class="flex flex-col items-center justify-center text-[#E0709A] font-semibold min-w-[48px] py-space-xs gap-space-xs active:scale-95 transition-transform duration-150 relative">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">savings</span>
+<span class="font-label-sm text-label-sm font-medium text-[#E0709A]">Save &amp; Borrow</span>
+<span class="absolute -top-1 w-1 h-1 rounded-full bg-[#E0709A]"></span>
+</button>
+<!-- 5. More (Inactive) -->
+<button aria-label="More" class="flex flex-col items-center justify-center text-[#8A8184] hover:text-[#E0709A] font-normal min-w-[48px] py-space-xs gap-space-xs active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined text-[22px]">more_horiz</span>
+<span class="font-label-sm text-label-sm font-medium">More</span>
+</button>
+</nav>
+</main>
+<script>
+    // Lightweight micro-interaction for evidence / mediation preview triggers
+    document.addEventListener('DOMContentLoaded', () => {
+      const interactiveButtons = document.querySelectorAll('button');
+      interactiveButtons.forEach(btn => {
+        btn.addEventListener('touchstart', () => {}, {passive: true});
+      });
+    });
+  </script>
+</body></html>

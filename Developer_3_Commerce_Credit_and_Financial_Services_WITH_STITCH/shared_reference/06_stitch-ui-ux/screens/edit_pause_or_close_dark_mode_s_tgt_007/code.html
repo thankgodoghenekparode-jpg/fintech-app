@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Manage Goal - Target Savings</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "inverse-surface": "#e7e1e2",
+            "secondary-fixed": "#ffdad4",
+            "primary-fixed": "#ffd9e3",
+            "on-surface": "#e7e1e2",
+            "error": "#ffb4ab",
+            "surface-tint": "#ffb0ca",
+            "surface-container": "#211f20",
+            "on-tertiary-fixed": "#001945",
+            "secondary-fixed-dim": "#ffb4a8",
+            "on-primary-container": "#5d0331",
+            "surface-variant": "#373435",
+            "surface-dim": "#151314",
+            "on-primary-fixed": "#3e001f",
+            "error-container": "#93000a",
+            "surface-bright": "#3b3839",
+            "inverse-on-surface": "#323031",
+            "outline-variant": "#544247",
+            "surface-container-high": "#2c292a",
+            "on-error-container": "#ffdad6",
+            "on-secondary": "#61130a",
+            "tertiary": "#b0c6ff",
+            "primary": "#ffb0ca",
+            "on-background": "#e7e1e2",
+            "inverse-primary": "#9e3b63",
+            "on-primary-fixed-variant": "#7f234b",
+            "primary-fixed-dim": "#ffb0ca",
+            "on-error": "#690005",
+            "on-tertiary-fixed-variant": "#06429a",
+            "on-secondary-container": "#ff9f90",
+            "surface-container-lowest": "#100e0f",
+            "surface-container-low": "#1d1b1c",
+            "secondary-container": "#822c20",
+            "on-tertiary-container": "#002a69",
+            "on-primary": "#620735",
+            "surface-container-highest": "#373435",
+            "tertiary-fixed": "#d9e2ff",
+            "on-secondary-fixed-variant": "#7f291e",
+            "background": "#151314",
+            "on-surface-variant": "#dac0c6",
+            "on-secondary-fixed": "#410000",
+            "on-tertiary": "#002d6f",
+            "secondary": "#ffb4a8",
+            "surface": "#151314",
+            "outline": "#a28b91",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "primary-container": "#e0709a",
+            "tertiary-container": "#6a92ee"
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          spacing: {
+            "margin": "1rem",
+            "space-md": "1rem",
+            "gutter-mobile": "0.75rem",
+            "gutter": "1rem",
+            "space-sm": "0.5rem",
+            "space-lg": "1.5rem",
+            "margin-mobile": "1rem",
+            "space-xs": "0.25rem",
+            "space-xl": "2rem"
+          },
+          fontFamily: {
+            "body-lg": ["Inter"],
+            "title-currency": ["Inter"],
+            "label-md": ["Inter"],
+            "body-md": ["Inter"],
+            "headline-lg": ["Inter"],
+            "label-lg": ["Inter"],
+            "headline-md": ["Inter"],
+            "headline-sm": ["Inter"],
+            "label-sm": ["Inter"],
+            "display-currency": ["Inter"]
+          },
+          fontSize: {
+            "body-lg": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+            "title-currency": ["20px", { lineHeight: "26px", letterSpacing: "-0.01em", fontWeight: "600" }],
+            "label-md": ["13px", { lineHeight: "18px", fontWeight: "500" }],
+            "body-md": ["14px", { lineHeight: "20px", fontWeight: "400" }],
+            "headline-lg": ["28px", { lineHeight: "34px", letterSpacing: "-0.01em", fontWeight: "700" }],
+            "label-lg": ["15px", { lineHeight: "20px", fontWeight: "600" }],
+            "headline-md": ["22px", { lineHeight: "28px", letterSpacing: "-0.01em", fontWeight: "600" }],
+            "headline-sm": ["18px", { lineHeight: "24px", fontWeight: "600" }],
+            "label-sm": ["11px", { lineHeight: "14px", letterSpacing: "0.02em", fontWeight: "500" }],
+            "display-currency": ["36px", { lineHeight: "44px", letterSpacing: "-0.02em", fontWeight: "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-lowest text-on-surface antialiased selection:bg-primary selection:text-on-primary min-h-screen flex justify-center">
+<!-- Mobile Frame Container (390px max viewport) -->
+<main class="w-full max-w-[390px] min-h-[844px] bg-surface-container-lowest flex flex-col relative pb-[104px]">
+<!-- Top Bar with Back Arrow, Title, and Info Icon -->
+<header class="sticky top-0 z-40 bg-surface-container-lowest/90 backdrop-blur-md px-margin-mobile py-space-sm flex items-center justify-between min-h-[56px]">
+<button aria-label="Go back" class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<div class="text-center">
+<span class="font-label-sm text-label-sm text-outline tracking-wider block font-medium">S-TGT-007</span>
+<h1 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Manage Goal</h1>
+</div>
+<button aria-label="Goal Information" class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[22px]">info</span>
+</button>
+</header>
+<!-- Main Content Flow -->
+<div class="px-margin-mobile flex flex-col gap-space-md mt-space-xs">
+<!-- Goal Summary Header Card -->
+<section class="bg-surface-container-low border border-outline-variant/40 rounded-xl p-space-md flex flex-col gap-space-sm">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-primary font-medium tracking-wide">Tech/Tools</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold tracking-tight mt-0.5">MacBook Pro M3 Max Goal</h2>
+</div>
+<span class="bg-surface-container-high border border-outline-variant/60 text-primary font-label-sm text-label-sm font-semibold px-2.5 py-0.5 rounded-full flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+            70% Reached
+          </span>
+</div>
+<div class="mt-space-xs">
+<div class="flex items-baseline justify-between tabular-nums">
+<span class="font-title-currency text-title-currency text-on-surface font-bold">₦350,000.00</span>
+<span class="font-body-md text-body-md text-outline">Target: ₦500,000.00</span>
+</div>
+<!-- Progress Bar Track -->
+<div class="w-full h-2 bg-surface-container-highest rounded-full mt-2.5 overflow-hidden">
+<div class="h-full bg-primary-container rounded-full" style="width: 70%"></div>
+</div>
+</div>
+<div class="flex items-center justify-between text-outline font-label-sm text-label-sm pt-1">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-outline">savings</span>
+            ₦150,000.00 remaining
+          </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-outline">event</span>
+            Matures Dec 2026
+          </span>
+</div>
+</section>
+<!-- Section 1: Edit Goal Details -->
+<section class="bg-surface-container-low border border-outline-variant/40 rounded-xl p-space-md flex flex-col gap-space-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">edit_note</span>
+<h3 class="font-label-lg text-label-lg text-on-surface font-semibold">Goal Details</h3>
+</div>
+<!-- Goal Name Input -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface-variant font-medium" for="goal-name">Goal Title</label>
+<div class="relative flex items-center">
+<input class="w-full h-[52px] bg-surface-container-lowest border border-outline-variant rounded-xl px-space-md font-body-md text-body-md text-on-surface focus:outline-none focus:border-primary-container transition-colors pr-10" id="goal-name" type="text" value="MacBook Pro M3 Max Goal"/>
+<span class="material-symbols-outlined absolute right-3 text-outline text-[20px] pointer-events-none">edit</span>
+</div>
+</div>
+<!-- Target Amount Input -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface-variant font-medium" for="target-amount">Target Amount (NGN)</label>
+<div class="relative flex items-center">
+<span class="absolute left-3.5 text-primary font-bold text-body-lg pointer-events-none">₦</span>
+<input class="w-full h-[52px] bg-surface-container-lowest border border-outline-variant rounded-xl pl-8 pr-11 font-body-md text-body-md tabular-nums text-on-surface focus:outline-none focus:border-primary-container transition-colors font-semibold" id="target-amount" type="text" value="500,000.00"/>
+<button aria-label="Edit Amount" class="absolute right-3 text-outline hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+</div>
+</div>
+<!-- Target Deadline Date Picker -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface-variant font-medium">Target Deadline</label>
+<button class="w-full h-[52px] bg-surface-container-lowest border border-outline-variant rounded-xl px-space-md flex items-center justify-between text-left focus:outline-none hover:border-primary-container active:scale-[0.99] transition-all" type="button">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-outline text-[20px]">calendar_today</span>
+<span class="font-body-md text-body-md text-on-surface font-medium tabular-nums">15 December 2026</span>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px]">expand_more</span>
+</button>
+</div>
+<!-- Rule Note Banner -->
+<div class="p-3 bg-surface-container rounded-lg border border-outline-variant/30 flex items-start gap-2.5">
+<span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5">verified_user</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant leading-relaxed">
+            Extending deadline keeps your locked status without penalty.
+          </p>
+</div>
+</section>
+<!-- Section 2: Auto-Save Schedule Management -->
+<section class="bg-surface-container-low border border-outline-variant/40 rounded-xl p-space-md flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">autorenew</span>
+<h3 class="font-label-lg text-label-lg text-on-surface font-semibold">Auto-Save Schedule</h3>
+</div>
+<!-- Green Active Chip -->
+<div class="h-[26px] px-2.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+<span class="font-label-sm text-label-sm text-emerald-400 font-semibold">Active</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-md rounded-xl border border-outline-variant/30 flex items-center justify-between">
+<div>
+<span class="font-label-sm text-label-sm text-outline block">Contribution cadence</span>
+<span class="font-body-md text-body-md text-on-surface font-semibold tabular-nums">₦25,000 / month</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container px-2.5 py-1 rounded-md border border-outline-variant/20">Monthly sweep</span>
+</div>
+<!-- Pause Auto-Save Toggle -->
+<div class="pt-1 flex items-start justify-between gap-3">
+<div class="flex flex-col gap-0.5 pr-2">
+<span class="font-body-md text-body-md text-on-surface font-semibold">Pause Automated Sweeps</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant leading-relaxed">
+              Temporary freeze for 1, 2, or 3 months without closing goal.
+            </span>
+</div>
+<!-- Touch-friendly Switch Toggle (52px ergonomic container) -->
+<label class="relative inline-flex items-center cursor-pointer shrink-0 min-h-[44px]">
+<input class="sr-only peer" id="pause-toggle" type="checkbox"/>
+<div class="w-12 h-7 bg-surface-container-high peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-5 peer-checked:after:border-primary-container peer-checked:bg-primary-container after:content-[''] after:absolute after:top-[10px] after:left-[2px] after:bg-on-surface after:rounded-full after:h-6 after:w-6 after:transition-all border border-outline-variant peer-checked:border-primary-container"></div>
+</label>
+</div>
+<!-- Schedule details indicator -->
+<div class="flex items-center justify-between text-outline font-label-md text-label-md border-t border-outline-variant/30 pt-3">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+            Next scheduled sweep
+          </span>
+<span class="text-on-surface font-medium tabular-nums">1 Nov 2026 • 04:00 AM</span>
+</div>
+</section>
+<!-- Section 3: Lock Mode & Penalty Covenant -->
+<section class="bg-surface-container-low border border-outline-variant/40 rounded-xl p-space-md flex flex-col gap-space-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">lock</span>
+<h3 class="font-label-lg text-label-lg text-on-surface font-semibold">Lock Mode &amp; Penalty Covenant</h3>
+</div>
+<div class="flex items-center justify-between bg-surface-container-lowest p-space-sm rounded-lg border border-outline-variant/20">
+<span class="font-body-md text-body-md text-on-surface font-medium">Discipline Level</span>
+<span class="font-label-sm text-label-sm text-primary font-semibold">Locked Target Mode</span>
+</div>
+<!-- Early Withdrawal Warning -->
+<div class="bg-secondary-container/20 border border-secondary/30 rounded-xl p-3 flex items-start gap-2.5">
+<span class="material-symbols-outlined text-secondary text-[20px] shrink-0 mt-0.5">warning</span>
+<div class="flex flex-col gap-0.5">
+<span class="font-label-md text-label-md text-secondary font-semibold">Early Withdrawal Covenant</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant leading-relaxed">
+              2.5% statutory administrative fee applies if closed before 15 Dec 2026.
+            </p>
+</div>
+</div>
+</section>
+<!-- Section 4: Goal Closure Action (Danger Zone) -->
+<section class="bg-error-container/10 border border-error/25 rounded-xl p-space-md flex flex-col gap-space-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-error text-[20px]">cancel</span>
+<h3 class="font-label-lg text-label-lg text-error font-semibold">Close Goal Permanently</h3>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant leading-relaxed">
+          Closing this goal returns <strong class="text-on-surface font-semibold tabular-nums">₦341,250.00</strong> (₦350,000 less ₦8,750 fee) immediately to your Main Wallet.
+        </p>
+<!-- Proceed to close goal button / link -->
+<button class="w-full min-h-[52px] mt-1 bg-error-container/20 border border-error/30 text-error rounded-xl font-label-lg text-label-lg flex items-center justify-center gap-2 hover:bg-error-container/30 active:scale-95 transition-all" type="button">
+<span>Proceed to Close Goal...</span>
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</section>
+<!-- Primary Action: Save Changes Button -->
+<div class="mt-space-sm flex flex-col gap-2">
+<button class="w-full h-[52px] bg-primary-container text-on-primary-container font-label-lg text-label-lg rounded-xl font-bold flex items-center justify-center gap-2 hover:opacity-95 active:scale-[0.98] transition-all shadow-[0_4px_16px_rgba(224,112,154,0.2)]" type="button">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+          Save Changes
+        </button>
+<span class="font-label-sm text-label-sm text-center text-outline">Updates apply instantly to your automated savings account.</span>
+</div>
+</div>
+<!-- Docked 5-Tab Bottom Navigation (Save & Borrow is Active) -->
+<nav class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-margin h-16 max-w-[560px] mx-auto pb-safe bg-surface-container-lowest border-t border-outline-variant/30 backdrop-blur-lg">
+<!-- Home Tab -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors" href="#home">
+<span class="material-symbols-outlined text-[22px]">home</span>
+<span class="font-caption text-caption font-medium">Home</span>
+</a>
+<!-- Payments Tab -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors" href="#payments">
+<span class="material-symbols-outlined text-[22px]">send</span>
+<span class="font-caption text-caption font-medium">Payments</span>
+</a>
+<!-- Cards Tab -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors" href="#cards">
+<span class="material-symbols-outlined text-[22px]">credit_card</span>
+<span class="font-caption text-caption font-medium">Cards</span>
+</a>
+<!-- Save & Borrow Tab (ACTIVE) -->
+<a class="flex flex-col items-center justify-center text-primary font-semibold min-w-[48px] py-space-xs gap-space-xs active:scale-95 transition-transform duration-150" href="#savings">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">savings</span>
+<span class="font-caption text-caption font-medium text-primary">Save &amp; Borrow</span>
+</a>
+<!-- More Tab -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors" href="#more">
+<span class="material-symbols-outlined text-[22px]">more_horiz</span>
+<span class="font-caption text-caption font-medium">More</span>
+</a>
+</nav>
+</main>
+<script>
+    // Lightweight micro-interaction for toggle feedback
+    const pauseToggle = document.getElementById('pause-toggle');
+    if (pauseToggle) {
+      pauseToggle.addEventListener('change', (e) => {
+        const isPaused = e.target.checked;
+        if (isPaused) {
+          console.log("Goal automated sweeps paused");
+        }
+      });
+    }
+  </script>
+</body></html>

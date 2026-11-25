@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Create deal (S-ESC-002)</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary-fixed-dim": "#d1c3c8",
+            "background": "#fff8f8",
+            "primary-fixed": "#ffd9e1",
+            "inverse-surface": "#342f30",
+            "tertiary": "#3b3236",
+            "on-surface": "#1f1b1c",
+            "surface-tint": "#a8315d",
+            "surface-variant": "#e9e0e1",
+            "tertiary-container": "#53484d",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#fbf1f2",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "on-primary-container": "#ffa0ba",
+            "secondary-container": "#fc6955",
+            "inverse-primary": "#ffb1c5",
+            "on-secondary-fixed-variant": "#8c170e",
+            "on-tertiary-fixed": "#21191e",
+            "primary-fixed-dim": "#ffb1c5",
+            "surface-container": "#f5eced",
+            "secondary": "#ae3123",
+            "error": "#ba1a1a",
+            "surface-container-highest": "#e9e0e1",
+            "tertiary-fixed": "#eedee4",
+            "on-secondary": "#ffffff",
+            "primary": "#6d0033",
+            "outline-variant": "#dcbfc5",
+            "on-primary": "#ffffff",
+            "surface-container-high": "#efe6e7",
+            "on-error-container": "#93000a",
+            "primary-container": "#8e1b4a",
+            "on-secondary-fixed": "#410000",
+            "inverse-on-surface": "#f8eeef",
+            "error-container": "#ffdad6",
+            "surface-dim": "#e1d8d9",
+            "secondary-fixed": "#ffdad4",
+            "on-primary-fixed-variant": "#881646",
+            "on-background": "#1f1b1c",
+            "on-tertiary": "#ffffff",
+            "on-error": "#ffffff",
+            "on-tertiary-container": "#c6b7bd",
+            "secondary-fixed-dim": "#ffb4a8",
+            "surface-bright": "#fff8f8",
+            "surface": "#fff8f8",
+            "on-secondary-container": "#690000",
+            "outline": "#897176",
+            "on-primary-fixed": "#3f001b",
+            "on-surface-variant": "#564146"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "space-md": "0.75rem",
+            "space-lg": "1rem",
+            "space-xl": "1.5rem",
+            "space-2xl": "2rem",
+            "space-3xl": "3rem",
+            "margin": "1rem",
+            "gutter": "1rem"
+          },
+          "fontFamily": {
+            "caption": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "subtitle": ["Inter"],
+            "title": ["Inter"],
+            "label": ["Inter"],
+            "amount-lg": ["Inter"],
+            "body": ["Inter"],
+            "display": ["Inter"],
+            "body-medium": ["Inter"]
+          },
+          "fontSize": {
+            "caption": ["13px", {"lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+            "amount-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "subtitle": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "title": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700"}],
+            "label": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+            "amount-lg": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700"}],
+            "body": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400"}],
+            "display": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "body-medium": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500"}]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased flex justify-center min-h-screen">
+<!-- Mobile Container (390px base, max-w-[560px] responsive safe layout) -->
+<div class="w-full max-w-[560px] min-h-screen bg-surface flex flex-col relative pb-safe">
+<!-- Header Section (Suppressed standard shell due to transactional modal flow with direct back CTA) -->
+<header class="sticky top-0 z-30 bg-surface/95 backdrop-blur-md px-margin py-space-sm flex items-center justify-between min-h-[56px] shadow-sm">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Go back" class="w-12 h-12 flex items-center justify-center rounded-full text-on-surface hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-primary text-[24px]">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<h1 class="font-subtitle text-subtitle text-primary leading-tight">New Escrow Deal</h1>
+<p class="font-caption text-caption text-on-surface-variant font-medium">Step 1 of 4: Deal Setup</p>
+</div>
+</div>
+<div class="flex items-center">
+<span class="font-caption text-caption font-semibold bg-primary-fixed text-on-primary-fixed px-2.5 py-1 rounded-full">
+          S-ESC-002
+        </span>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-margin pt-space-md pb-space-3xl flex flex-col gap-space-xl">
+<!-- Stepper Component -->
+<section aria-label="Progress Stepper" class="w-full bg-surface-container-lowest rounded-xl p-space-md border border-outline-variant/30 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)]">
+<div class="grid grid-cols-4 gap-space-xs text-center items-center">
+<!-- Step 1 (Active) -->
+<div class="flex flex-col items-center gap-1">
+<div class="w-7 h-7 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-label text-[12px] font-bold shadow-sm">
+              1
+            </div>
+<span class="font-caption text-caption text-primary font-semibold truncate w-full">Details</span>
+</div>
+<!-- Step 2 -->
+<div class="flex flex-col items-center gap-1 opacity-60">
+<div class="w-7 h-7 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center font-label text-[12px] font-medium">
+              2
+            </div>
+<span class="font-caption text-caption text-on-surface-variant truncate w-full">Terms &amp; Fees</span>
+</div>
+<!-- Step 3 -->
+<div class="flex flex-col items-center gap-1 opacity-60">
+<div class="w-7 h-7 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center font-label text-[12px] font-medium">
+              3
+            </div>
+<span class="font-caption text-caption text-on-surface-variant truncate w-full">Counterparty</span>
+</div>
+<!-- Step 4 -->
+<div class="flex flex-col items-center gap-1 opacity-60">
+<div class="w-7 h-7 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center font-label text-[12px] font-medium">
+              4
+            </div>
+<span class="font-caption text-caption text-on-surface-variant truncate w-full">Fund &amp; Lock</span>
+</div>
+</div>
+<!-- Progress track indicator -->
+<div class="w-full bg-surface-container-high h-1 rounded-full mt-3 overflow-hidden">
+<div class="bg-primary-container h-full w-1/4 rounded-full"></div>
+</div>
+</section>
+<!-- Select Deal Type -->
+<section class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<label class="font-label text-label text-on-surface font-semibold">Select Deal Type</label>
+<span class="font-caption text-caption text-on-surface-variant">Required</span>
+</div>
+<div class="flex flex-col gap-space-sm">
+<!-- Option 1: Physical Goods (Selected) -->
+<label class="relative flex items-start gap-space-md p-space-md rounded-xl bg-surface-container-lowest border-2 border-primary-container shadow-[0_2px_8px_-2px_rgba(142,27,74,0.12)] cursor-pointer transition-all">
+<input checked="" class="mt-1 w-5 h-5 text-primary-container border-outline-variant focus:ring-primary-container focus:ring-offset-0" name="deal_type" type="radio" value="physical"/>
+<div class="flex flex-col flex-1">
+<div class="flex items-center justify-between">
+<span class="font-label text-label text-on-surface font-bold">Physical Goods / Merchandise</span>
+<span class="material-symbols-outlined text-primary-container text-[20px]" style="font-variation-settings: 'FILL' 1;">local_shipping</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">Electronics, vehicles, goods with shipping inspection</p>
+</div>
+</label>
+<!-- Option 2: Services & Milestones -->
+<label class="relative flex items-start gap-space-md p-space-md rounded-xl bg-surface-container-lowest border border-outline-variant/40 hover:bg-surface-container-low transition-colors cursor-pointer">
+<input class="mt-1 w-5 h-5 text-primary-container border-outline-variant focus:ring-primary-container focus:ring-offset-0" name="deal_type" type="radio" value="services"/>
+<div class="flex flex-col flex-1">
+<div class="flex items-center justify-between">
+<span class="font-label text-label text-on-surface font-semibold">Services &amp; Milestones</span>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">engineering</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">Freelance, software, construction with phased payouts</p>
+</div>
+</label>
+<!-- Option 3: Property & Rent -->
+<label class="relative flex items-start gap-space-md p-space-md rounded-xl bg-surface-container-lowest border border-outline-variant/40 hover:bg-surface-container-low transition-colors cursor-pointer">
+<input class="mt-1 w-5 h-5 text-primary-container border-outline-variant focus:ring-primary-container focus:ring-offset-0" name="deal_type" type="radio" value="property"/>
+<div class="flex flex-col flex-1">
+<div class="flex items-center justify-between">
+<span class="font-label text-label text-on-surface font-semibold">Property &amp; Rent</span>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">apartment</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">Lease agreements, agency fees, inspection deposit</p>
+</div>
+</label>
+</div>
+</section>
+<!-- Your Role in Deal (Segmented Control) -->
+<section class="flex flex-col gap-space-sm">
+<label class="font-label text-label text-on-surface font-semibold">Your Role in Deal</label>
+<div class="grid grid-cols-2 p-1 bg-surface-container-high rounded-xl border border-outline-variant/30">
+<button class="h-11 rounded-lg bg-surface-container-lowest font-label text-label text-primary-container font-bold shadow-sm flex items-center justify-center gap-1.5 transition-all" type="button">
+<span class="material-symbols-outlined text-[18px]">shopping_bag</span>
+<span>I am Buyer / Payer</span>
+</button>
+<button class="h-11 rounded-lg text-on-surface-variant hover:text-on-surface font-label text-label font-medium flex items-center justify-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">storefront</span>
+<span>I am Seller / Provider</span>
+</button>
+</div>
+</section>
+<!-- Deal Title Input -->
+<section class="flex flex-col gap-1.5">
+<label class="font-caption text-caption text-on-surface-variant font-medium" for="deal_title">Deal Title</label>
+<div class="relative">
+<input class="w-full h-[52px] px-space-md rounded-xl bg-surface-container-lowest border border-outline-variant text-on-surface font-body text-body focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all outline-none" id="deal_title" type="text" value="2019 MacBook Pro 16-inch (Space Grey, 1TB SSD)"/>
+</div>
+</section>
+<!-- Deal Category & Description -->
+<section class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<label class="font-caption text-caption text-on-surface-variant font-medium" for="deal_desc">Deal Category &amp; Description</label>
+<span class="font-caption text-caption text-outline">Electronics</span>
+</div>
+<textarea class="w-full p-space-md rounded-xl bg-surface-container-lowest border border-outline-variant text-on-surface font-body text-body focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all outline-none resize-none leading-relaxed" id="deal_desc" rows="3">Clean Nigerian-used MacBook Pro 16-inch, 32GB RAM, original 96W charger included. Battery cycle under 250.</textarea>
+</section>
+<!-- Total Deal Amount -->
+<section class="flex flex-col gap-space-sm p-space-lg rounded-xl bg-surface-container-lowest border border-outline-variant/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.04)]">
+<div class="flex items-center justify-between">
+<label class="font-caption text-caption text-on-surface-variant font-medium" for="deal_amount">Escrow Value (₦)</label>
+<span class="inline-flex items-center gap-1 font-caption text-caption text-primary bg-primary-fixed px-2 py-0.5 rounded-full font-semibold">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+            Secure Custody
+          </span>
+</div>
+<!-- Large tabular amount input -->
+<div class="relative flex items-center border-b-2 border-primary-container/80 pb-1">
+<span class="text-primary font-bold text-2xl mr-1 select-none">₦</span>
+<input class="w-full font-amount-lg-mobile text-amount-lg-mobile text-on-surface font-bold bg-transparent border-0 p-0 focus:ring-0 tabular-nums tracking-tight" id="deal_amount" type="text" value="850,000.00"/>
+</div>
+<!-- Quick increment chips -->
+<div class="flex items-center gap-space-sm pt-1">
+<button class="h-8 px-3 rounded-full bg-surface-container hover:bg-surface-container-high border border-outline-variant/30 text-on-surface-variant font-label text-[13px] font-medium transition-colors active:scale-95" type="button">
+            +₦50,000
+          </button>
+<button class="h-8 px-3 rounded-full bg-surface-container hover:bg-surface-container-high border border-outline-variant/30 text-on-surface-variant font-label text-[13px] font-medium transition-colors active:scale-95" type="button">
+            +₦100,000
+          </button>
+<button class="h-8 px-3 rounded-full bg-surface-container hover:bg-surface-container-high border border-outline-variant/30 text-on-surface-variant font-label text-[13px] font-medium transition-colors active:scale-95" type="button">
+            Custom
+          </button>
+</div>
+</section>
+<!-- Inspection & Delivery Window -->
+<section class="flex flex-col gap-1.5">
+<label class="font-caption text-caption text-on-surface-variant font-medium">Inspection &amp; Delivery Window</label>
+<div class="w-full min-h-[52px] px-space-md py-2.5 rounded-xl bg-surface-container-lowest border border-outline-variant flex items-center justify-between cursor-pointer hover:border-outline transition-colors">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">timer</span>
+<span class="font-body-medium text-body-medium text-on-surface">Inspection Window: 48 Hours after courier delivery</span>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px]">expand_more</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[16px] text-outline">info</span>
+          Time granted to buyer to test item before automatic release
+        </p>
+</section>
+<!-- Milestones / Checkpoints toggle -->
+<section class="p-space-md rounded-xl bg-surface-container-lowest border border-outline-variant/40 flex items-center justify-between">
+<div class="flex flex-col pr-space-md">
+<span class="font-label text-label text-on-surface font-semibold">Single Release on Full Delivery</span>
+<span class="font-caption text-caption text-on-surface-variant">Recommended for physical items requiring courier drop-off</span>
+</div>
+<!-- Toggle Switch ON -->
+<label class="relative inline-flex items-center cursor-pointer shrink-0">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</section>
+<!-- Escrow Protection Trust Notice -->
+<section class="p-space-md rounded-xl bg-surface-container-high/60 border border-outline-variant/30 flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-primary-container text-[20px] shrink-0 mt-0.5" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<p class="font-caption text-caption text-on-surface-variant leading-snug">
+          Funds will be held in CBN-regulated trust escrow until inspection period concludes without dispute.
+        </p>
+</section>
+</main>
+<!-- Sticky Bottom CTA Section -->
+<footer class="sticky bottom-0 left-0 right-0 w-full bg-surface-container-lowest/95 backdrop-blur-md border-t border-outline-variant/30 px-margin py-space-sm flex flex-col gap-space-xs z-40 shadow-[0_-4px_16px_rgba(30,26,27,0.06)]">
+<button class="w-full h-[52px] rounded-xl bg-primary-container hover:bg-primary text-on-primary font-label text-label flex items-center justify-center gap-space-sm active:scale-[0.99] transition-all shadow-md" type="button">
+<span>Continue to Fees &amp; Terms</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<button class="w-full h-10 rounded-xl text-on-surface-variant hover:text-primary font-label text-label transition-colors flex items-center justify-center" type="button">
+        Cancel
+      </button>
+</footer>
+</div>
+</body></html>

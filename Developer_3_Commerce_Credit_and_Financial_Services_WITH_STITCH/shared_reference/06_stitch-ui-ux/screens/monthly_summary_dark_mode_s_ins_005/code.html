@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Monthly Summary (Dark Mode) - YourApp</title>
+<!-- Material Symbols Outlined Font -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Inter Google Font for Crisp Numerical & Financial Legibility -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN with forms and container-queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Design System Tailwind Theme Configuration Verbatim -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-dim": "#151314",
+            "primary": "#ffb0ca",
+            "on-surface-variant": "#dac0c6",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "secondary": "#ffb4a8",
+            "primary-container": "#e0709a",
+            "on-background": "#e7e1e2",
+            "tertiary-fixed": "#d9e2ff",
+            "on-error-container": "#ffdad6",
+            "on-primary-fixed-variant": "#7f234b",
+            "on-secondary-container": "#ff9f90",
+            "surface": "#151314",
+            "on-error": "#690005",
+            "tertiary-container": "#6a92ee",
+            "on-tertiary-container": "#002a69",
+            "inverse-surface": "#e7e1e2",
+            "background": "#151314",
+            "secondary-fixed-dim": "#ffb4a8",
+            "secondary-container": "#822c20",
+            "surface-container-high": "#2c292a",
+            "error": "#ffb4ab",
+            "surface-tint": "#ffb0ca",
+            "on-secondary": "#61130a",
+            "surface-variant": "#373435",
+            "secondary-fixed": "#ffdad4",
+            "on-secondary-fixed": "#410000",
+            "on-surface": "#e7e1e2",
+            "surface-container-lowest": "#100e0f",
+            "surface-container-highest": "#373435",
+            "on-secondary-fixed-variant": "#7f291e",
+            "surface-container-low": "#1d1b1c",
+            "on-primary-container": "#5d0331",
+            "outline": "#a28b91",
+            "on-primary": "#620735",
+            "inverse-on-surface": "#323031",
+            "on-tertiary-fixed-variant": "#06429a",
+            "on-tertiary-fixed": "#001945",
+            "surface-bright": "#3b3839",
+            "on-primary-fixed": "#3e001f",
+            "error-container": "#93000a",
+            "primary-fixed": "#ffd9e3",
+            "inverse-primary": "#9e3b63",
+            "tertiary": "#b0c6ff",
+            "outline-variant": "#544247",
+            "surface-container": "#211f20",
+            "primary-fixed-dim": "#ffb0ca",
+            "on-tertiary": "#002d6f"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "1rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "gutter": "1rem",
+            "space-xl": "2rem",
+            "space-xs": "0.25rem",
+            "margin-mobile": "1rem",
+            "space-lg": "1.5rem",
+            "gutter-mobile": "0.75rem"
+          },
+          "fontFamily": {
+            "headline-sm": ["Inter"],
+            "display-currency": ["Inter"],
+            "title-currency": ["Inter"],
+            "label-lg": ["Inter"],
+            "label-md": ["Inter"],
+            "headline-md": ["Inter"],
+            "body-md": ["Inter"],
+            "headline-lg": ["Inter"],
+            "label-sm": ["Inter"],
+            "body-lg": ["Inter"]
+          },
+          "fontSize": {
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "title-currency": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-lg": ["15px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    /* Tabular numeric rendering for exact currency columns */
+    .tnum {
+      font-variant-numeric: tabular-nums;
+    }
+    
+    /* Native App Smooth Scrolling & Hidden Scrollbar */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    
+    /* Safe padding handling */
+    .pb-safe {
+      padding-bottom: max(16px, env(safe-area-inset-bottom));
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-lowest text-on-surface antialiased font-body-md text-body-md flex justify-center min-h-screen selection:bg-primary-container selection:text-surface-container-lowest">
+<!-- Mobile Viewport Canvas Container: 390px reference frame -->
+<main class="w-full max-w-[390px] min-h-screen bg-surface-container-lowest flex flex-col relative border-x border-outline-variant/30 shadow-2xl">
+<!-- Top Header Bar with Contextual Back & Metadata -->
+<header class="sticky top-0 z-40 bg-surface-container-low/90 backdrop-blur-md px-margin py-space-sm flex items-center justify-between border-b border-outline-variant/30">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Go back to Insights" class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-on-surface hover:bg-surface-container-high active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-xl" data-icon="arrow_back">arrow_back</span>
+</button>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface">Monthly Summary</span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+</div>
+<p class="font-label-sm text-label-sm text-outline">February 2026 Wrap-Up • S-INS-005</p>
+</div>
+</div>
+<!-- Right Action Tools -->
+<div class="flex items-center gap-1">
+<button aria-label="Share financial summary" class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-on-surface hover:bg-surface-container-high active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-xl" data-icon="share">share</span>
+</button>
+</div>
+</header>
+<!-- Scrollable Report Canvas (padded safely for Docked BottomNavBar) -->
+<div class="flex-1 px-margin py-space-md space-y-space-md pb-[104px] overflow-y-auto no-scrollbar">
+<!-- Month Selector Pill Carousel -->
+<section aria-label="Billing cycle selector" class="relative">
+<div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-0.5">
+<!-- Past Month 1 -->
+<button class="px-3.5 py-1.5 rounded-full bg-surface-container border border-outline-variant/40 text-on-surface-variant font-label-md text-label-md shrink-0 hover:bg-surface-container-high transition-colors" type="button">
+            Dec 2025
+          </button>
+<!-- Past Month 2 -->
+<button class="px-3.5 py-1.5 rounded-full bg-surface-container border border-outline-variant/40 text-on-surface-variant font-label-md text-label-md shrink-0 hover:bg-surface-container-high transition-colors" type="button">
+            Jan 2026
+          </button>
+<!-- Active Month (Feb 2026) -->
+<button class="px-4 py-1.5 rounded-full bg-primary-container text-surface-container-lowest font-label-md text-label-md shrink-0 font-semibold shadow-sm flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-sm" data-icon="calendar_month">calendar_month</span>
+            Feb 2026
+          </button>
+<!-- Upcoming Month -->
+<button class="px-3.5 py-1.5 rounded-full bg-surface-container/60 border border-outline-variant/20 text-outline font-label-md text-label-md shrink-0 cursor-not-allowed" type="button">
+            Mar 2026 <span class="text-[10px] text-outline font-normal">(Upcoming)</span>
+</button>
+</div>
+</section>
+<!-- HERO CARD: Cash Flow & Net Position -->
+<section class="bg-surface-container-low rounded-xl border border-outline-variant/40 p-space-md relative overflow-hidden">
+<!-- Ambient decorative glow -->
+<div class="absolute -right-8 -top-8 w-32 h-32 bg-primary-container/10 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-sm text-label-sm text-outline tracking-wider font-semibold uppercase">Net Retained Capital</span>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#132B1E] text-[#4CC38A] font-label-sm text-label-sm font-semibold border border-[#4CC38A]/20">
+<span class="material-symbols-outlined text-xs" data-icon="verified">verified</span>
+            32.2% Savings Rate • Excellent
+          </span>
+</div>
+<!-- Net Position Display -->
+<div class="mb-space-md">
+<div class="font-display-currency text-display-currency text-on-surface tnum flex items-baseline">
+<span class="text-primary-container mr-1 text-2xl">₦</span>135,500<span class="text-lg text-outline">.00</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5">Surplus unallocated &amp; saved this cycle</p>
+</div>
+<!-- Split Inflow / Outflow KPI Bento Modules -->
+<div class="grid grid-cols-2 gap-2.5 pt-space-sm border-t border-outline-variant/30">
+<!-- Inflow Box -->
+<div class="p-3 bg-surface-container rounded-lg border border-outline-variant/30">
+<div class="flex items-center justify-between mb-1">
+<span class="font-label-sm text-label-sm text-outline">Total Inflow</span>
+<span class="flex items-center text-xs text-[#4CC38A] font-semibold">
+<span class="material-symbols-outlined text-xs" data-icon="north_east">north_east</span>
+                +15%
+              </span>
+</div>
+<div class="font-title-currency text-title-currency text-on-surface tnum font-semibold">
+<span class="text-[#4CC38A]">₦</span>420,000<span class="text-xs text-outline">.00</span>
+</div>
+<p class="text-[11px] text-outline mt-0.5">Salary &amp; Transfers</p>
+</div>
+<!-- Outflow Box -->
+<div class="p-3 bg-surface-container rounded-lg border border-outline-variant/30">
+<div class="flex items-center justify-between mb-1">
+<span class="font-label-sm text-label-sm text-outline">Total Spent</span>
+<span class="flex items-center text-xs text-secondary font-semibold">
+<span class="material-symbols-outlined text-xs" data-icon="south_east">south_east</span>
+                -6%
+              </span>
+</div>
+<div class="font-title-currency text-title-currency text-on-surface tnum font-semibold">
+<span class="text-secondary">₦</span>284,500<span class="text-xs text-outline">.00</span>
+</div>
+<p class="text-[11px] text-outline mt-0.5">Debits &amp; Outflows</p>
+</div>
+</div>
+</section>
+<!-- Cashflow Waterfall Visualizer Component -->
+<section class="bg-surface-container-low rounded-xl border border-outline-variant/40 p-space-md space-y-space-sm">
+<div class="flex items-center justify-between">
+<h2 class="font-label-lg text-label-lg text-on-surface">Cash Flow Waterfall</h2>
+<span class="font-label-sm text-label-sm text-outline">Normalized View</span>
+</div>
+<!-- Segmented Stacked Progress Bar -->
+<div class="w-full h-3 bg-surface-container rounded-full overflow-hidden flex gap-0.5 p-0.5 border border-outline-variant/30">
+<!-- Spent / Debits (67.8%) -->
+<div class="h-full bg-secondary-container rounded-l-full relative group transition-all" style="width: 67.8%;" title="Expenses: 67.8%"></div>
+<!-- Retained Capital (32.2%) -->
+<div class="h-full bg-[#4CC38A] rounded-r-full relative group transition-all" style="width: 32.2%;" title="Retained: 32.2%"></div>
+</div>
+<!-- Legend Breakdown Details -->
+<div class="flex items-center justify-between pt-1 font-label-sm text-label-sm">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary-container"></span>
+<span class="text-on-surface-variant">Disbursed (67.8%)</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-[#4CC38A]"></span>
+<span class="text-on-surface-variant">Retained Capital (32.2%)</span>
+</div>
+</div>
+</section>
+<!-- Top 3 Spending Shifts vs Last Month -->
+<section class="space-y-space-sm">
+<div class="flex items-center justify-between px-1">
+<h2 class="font-label-lg text-label-lg text-on-surface">Top Shifts vs Last Month</h2>
+<span class="font-label-sm text-label-sm text-primary cursor-pointer hover:underline">Full Analytics</span>
+</div>
+<div class="space-y-2">
+<!-- Item 1: Food & Groceries (Increased) -->
+<article class="p-3 bg-surface-container-low rounded-xl border border-outline-variant/40 flex items-center justify-between gap-3">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center shrink-0 border border-outline-variant/30">
+<span class="material-symbols-outlined text-primary-container" data-icon="shopping_basket">shopping_basket</span>
+</div>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface">Food &amp; Groceries</p>
+<p class="font-label-sm text-label-sm text-outline">Bulk market restock (Lekki)</p>
+</div>
+</div>
+<div class="text-right shrink-0">
+<div class="font-label-lg text-label-lg text-on-surface tnum">₦112,000</div>
+<div class="flex items-center justify-end text-xs text-secondary font-medium">
+<span class="material-symbols-outlined text-[14px]" data-icon="arrow_upward">arrow_upward</span>
+                +₦14,000 (+14%)
+              </div>
+</div>
+</article>
+<!-- Item 2: Entertainment & Dining Out (Discipline Win) -->
+<article class="p-3 bg-surface-container-low rounded-xl border border-outline-variant/40 flex items-center justify-between gap-3">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center shrink-0 border border-outline-variant/30">
+<span class="material-symbols-outlined text-[#4CC38A]" data-icon="restaurant">restaurant</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-lg text-label-lg text-on-surface">Entertainment &amp; Dining</span>
+</div>
+<span class="inline-block font-label-sm text-label-sm text-[#4CC38A]">Discipline Win ✨</span>
+</div>
+</div>
+<div class="text-right shrink-0">
+<div class="font-label-lg text-label-lg text-on-surface tnum">₦10,000</div>
+<div class="flex items-center justify-end text-xs text-[#4CC38A] font-medium">
+<span class="material-symbols-outlined text-[14px]" data-icon="arrow_downward">arrow_downward</span>
+                -₦18,000 (-64%)
+              </div>
+</div>
+</article>
+<!-- Item 3: Utilities & Bills (Flat) -->
+<article class="p-3 bg-surface-container-low rounded-xl border border-outline-variant/40 flex items-center justify-between gap-3">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center shrink-0 border border-outline-variant/30">
+<span class="material-symbols-outlined text-outline" data-icon="bolt">bolt</span>
+</div>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface">Utilities &amp; Bills</p>
+<p class="font-label-sm text-label-sm text-outline">Power token &amp; Fibre ISP</p>
+</div>
+</div>
+<div class="text-right shrink-0">
+<div class="font-label-lg text-label-lg text-on-surface tnum">₦68,500</div>
+<div class="flex items-center justify-end text-xs text-outline font-medium">
+<span class="material-symbols-outlined text-[14px]" data-icon="remove">remove</span>
+                Flat (0%)
+              </div>
+</div>
+</article>
+</div>
+</section>
+<!-- Financial Health Scorecard / Gentle Milestones -->
+<section class="bg-surface-container-low rounded-xl border border-outline-variant/40 p-space-md space-y-3">
+<div class="flex items-center justify-between">
+<h2 class="font-label-lg text-label-lg text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-base" data-icon="award_star">award_star</span>
+            Financial Milestones
+          </h2>
+<span class="font-label-sm text-label-sm text-outline">Feb Tracker</span>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<!-- Milestone 1 -->
+<div class="bg-surface-container rounded-lg p-2.5 border border-outline-variant/20 flex flex-col justify-between">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="track_changes">track_changes</span>
+<div class="mt-2">
+<div class="font-headline-sm text-headline-sm text-on-surface tnum">94%</div>
+<p class="text-[11px] text-outline leading-tight mt-0.5">Budget Adherence</p>
+</div>
+</div>
+<!-- Milestone 2 -->
+<div class="bg-surface-container rounded-lg p-2.5 border border-outline-variant/20 flex flex-col justify-between">
+<span class="material-symbols-outlined text-[#4CC38A] text-lg" data-icon="savings">savings</span>
+<div class="mt-2">
+<div class="font-headline-sm text-headline-sm text-on-surface tnum">₦85k</div>
+<p class="text-[11px] text-outline leading-tight mt-0.5">Vault Auto-Swept</p>
+</div>
+</div>
+<!-- Milestone 3 -->
+<div class="bg-surface-container rounded-lg p-2.5 border border-outline-variant/20 flex flex-col justify-between">
+<span class="material-symbols-outlined text-tertiary text-lg" data-icon="receipt_long">receipt_long</span>
+<div class="mt-2">
+<div class="font-headline-sm text-headline-sm text-on-surface tnum">42</div>
+<p class="text-[11px] text-outline leading-tight mt-0.5">Digital Receipts</p>
+</div>
+</div>
+</div>
+<!-- Smart Forecast Note Banner -->
+<div class="p-3 bg-surface-container rounded-lg border-l-2 border-primary-container flex items-start gap-2.5 mt-2">
+<span class="material-symbols-outlined text-primary-container text-lg shrink-0 mt-0.5" data-icon="insights">insights</span>
+<p class="font-body-md text-body-md text-on-surface-variant text-[13px] leading-snug">
+            At your current savings rate, your <strong class="text-on-surface font-semibold">Emergency Fund goal</strong> will be fully funded by <span class="text-primary font-semibold">May 2026</span>.
+          </p>
+</div>
+</section>
+<!-- Action Buttons Cluster -->
+<section class="space-y-2.5 pt-1">
+<!-- Primary Action: Rewards Transition (52px ergonomic height) -->
+<button class="w-full h-[52px] rounded-xl bg-primary-container text-surface-container-lowest font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 hover:bg-opacity-95 active:scale-[0.98] transition-all shadow-md" type="button">
+<span>Review Rewards Earned (₦4,250)</span>
+<span class="material-symbols-outlined text-lg" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<!-- Secondary Ghost Action: PDF Download (52px ergonomic height) -->
+<button class="w-full h-[52px] rounded-xl bg-surface-container border border-outline-variant/40 text-on-surface font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 hover:bg-surface-container-high active:scale-[0.98] transition-all" type="button">
+<span class="material-symbols-outlined text-outline" data-icon="download">download</span>
+<span>Download PDF Financial Summary</span>
+</button>
+</section>
+<!-- Brand Integrity Footer Signature -->
+<div class="py-2 text-center">
+<p class="font-label-sm text-label-sm text-outline/60 tracking-wider uppercase font-semibold">YourApp Secure Financial Systems</p>
+</div>
+</div>
+<!-- DOCKED BOTTOM NAVIGATION BAR (Shared Component from JSON) -->
+<!-- Destination: More / Insights is marked active according to navigation logic -->
+<nav class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-margin h-16 max-w-[560px] mx-auto pb-safe bg-surface-container-lowest dark:bg-surface-container shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)] border-t border-outline-variant/20">
+<!-- Tab 1: Home (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="home">home</span>
+<span class="font-caption text-[11px] font-medium leading-none">Home</span>
+</a>
+<!-- Tab 2: Payments (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="send">send</span>
+<span class="font-caption text-[11px] font-medium leading-none">Payments</span>
+</a>
+<!-- Tab 3: Cards (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="credit_card">credit_card</span>
+<span class="font-caption text-[11px] font-medium leading-none">Cards</span>
+</a>
+<!-- Tab 4: Save & Borrow (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="savings">savings</span>
+<span class="font-caption text-[11px] font-medium leading-none">Save &amp; Borrow</span>
+</a>
+<!-- Tab 5: More (Active: Spending Insights Hub) -->
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed font-semibold min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="more_horiz" style="font-variation-settings: 'FILL' 1;">more_horiz</span>
+<span class="font-caption text-[11px] font-medium leading-none text-primary-container">More</span>
+</a>
+</nav>
+</main>
+<script>
+    // Lightweight client micro-interaction logic
+    document.addEventListener('DOMContentLoaded', () => {
+      // Month pill active switch support
+      const monthButtons = document.querySelectorAll('section[aria-label="Billing cycle selector"] button');
+      monthButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (btn.innerText.includes('Upcoming')) return;
+          monthButtons.forEach(b => {
+            b.className = "px-3.5 py-1.5 rounded-full bg-surface-container border border-outline-variant/40 text-on-surface-variant font-label-md text-label-md shrink-0 hover:bg-surface-container-high transition-colors";
+          });
+          btn.className = "px-4 py-1.5 rounded-full bg-primary-container text-surface-container-lowest font-label-md text-label-md shrink-0 font-semibold shadow-sm flex items-center gap-1.5";
+        });
+      });
+    });
+  </script>
+</body></html>

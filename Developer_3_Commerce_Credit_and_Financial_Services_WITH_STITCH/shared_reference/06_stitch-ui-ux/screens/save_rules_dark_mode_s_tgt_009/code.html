@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YourApp - Smart Save Rules (S-TGT-009)</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Inter Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-surface": "#e7e1e2",
+            "secondary-fixed": "#ffdad4",
+            "primary-fixed": "#ffd9e3",
+            "on-surface": "#e7e1e2",
+            "error": "#ffb4ab",
+            "surface-tint": "#ffb0ca",
+            "surface-container": "#211f20",
+            "on-tertiary-fixed": "#001945",
+            "secondary-fixed-dim": "#ffb4a8",
+            "on-primary-container": "#5d0331",
+            "surface-variant": "#373435",
+            "surface-dim": "#151314",
+            "on-primary-fixed": "#3e001f",
+            "error-container": "#93000a",
+            "surface-bright": "#3b3839",
+            "inverse-on-surface": "#323031",
+            "outline-variant": "#544247",
+            "surface-container-high": "#2c292a",
+            "on-error-container": "#ffdad6",
+            "on-secondary": "#61130a",
+            "tertiary": "#b0c6ff",
+            "primary": "#ffb0ca",
+            "on-background": "#e7e1e2",
+            "inverse-primary": "#9e3b63",
+            "on-primary-fixed-variant": "#7f234b",
+            "primary-fixed-dim": "#ffb0ca",
+            "on-error": "#690005",
+            "on-tertiary-fixed-variant": "#06429a",
+            "on-secondary-container": "#ff9f90",
+            "surface-container-lowest": "#100e0f",
+            "surface-container-low": "#1d1b1c",
+            "secondary-container": "#822c20",
+            "on-tertiary-container": "#002a69",
+            "on-primary": "#620735",
+            "surface-container-highest": "#373435",
+            "tertiary-fixed": "#d9e2ff",
+            "on-secondary-fixed-variant": "#7f291e",
+            "background": "#151314",
+            "on-surface-variant": "#dac0c6",
+            "on-secondary-fixed": "#410000",
+            "on-tertiary": "#002d6f",
+            "secondary": "#ffb4a8",
+            "surface": "#151314",
+            "outline": "#a28b91",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "primary-container": "#e0709a",
+            "tertiary-container": "#6a92ee"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "1rem",
+            "space-md": "1rem",
+            "gutter-mobile": "0.75rem",
+            "gutter": "1rem",
+            "space-sm": "0.5rem",
+            "space-lg": "1.5rem",
+            "margin-mobile": "1rem",
+            "space-xs": "0.25rem",
+            "space-xl": "2rem"
+          },
+          "fontFamily": {
+            "body-lg": ["Inter"],
+            "title-currency": ["Inter"],
+            "label-md": ["Inter"],
+            "body-md": ["Inter"],
+            "headline-lg": ["Inter"],
+            "label-lg": ["Inter"],
+            "headline-md": ["Inter"],
+            "headline-sm": ["Inter"],
+            "label-sm": ["Inter"],
+            "display-currency": ["Inter"]
+          },
+          "fontSize": {
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "title-currency": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "label-lg": ["15px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      font-size: 22px;
+      line-height: 1;
+    }
+    .material-symbols-filled {
+      font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+      font-size: 22px;
+      line-height: 1;
+    }
+    /* Tabular numbers for financial balance integrity */
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-lowest text-on-surface antialiased flex justify-center min-h-screen select-none">
+<!-- Mobile Device Simulation Frame (390 x 844 viewport standard) -->
+<div class="w-full max-w-[390px] min-h-[844px] bg-surface-container-lowest relative flex flex-col shadow-2xl">
+<!-- Top App Bar Navigation Anchor -->
+<header class="sticky top-0 z-40 bg-surface-container-lowest/95 backdrop-blur-md px-margin py-space-sm flex items-center justify-between min-h-[56px] shadow-sm">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Go back" class="w-10 h-10 flex items-center justify-center rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface transition-colors active:scale-95 duration-150" type="button">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<div>
+<div class="flex items-center gap-space-xs">
+<span class="text-primary font-headline-sm text-label-sm font-bold tracking-tight">YourApp</span>
+<span class="text-outline-variant text-label-sm">•</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">Target Savings</span>
+</div>
+<h1 class="font-headline-sm text-headline-sm font-semibold text-on-surface tracking-tight leading-none mt-0.5">Smart Save Rules</h1>
+</div>
+</div>
+<button aria-label="Rule Engine Information" class="w-10 h-10 flex items-center justify-center rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface-variant hover:text-primary transition-colors active:scale-95 duration-150" type="button">
+<span class="material-symbols-outlined" data-icon="info">info</span>
+</button>
+</header>
+<!-- Main Scrollable Canvas -->
+<main class="flex-1 px-margin pb-[108px] pt-space-xs flex flex-col gap-space-md overflow-y-auto">
+<!-- Automated Savings Engine Header Bento Banner -->
+<section class="rounded-xl p-space-md bg-surface-container-low border border-outline-variant/30 relative overflow-hidden">
+<div class="absolute -right-6 -bottom-6 w-32 h-32 rounded-full bg-primary-container/10 blur-2xl pointer-events-none"></div>
+<div class="flex items-start justify-between relative z-10">
+<div>
+<div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-primary-container/15 text-primary text-label-sm font-label-sm mb-2">
+<span class="material-symbols-outlined text-sm font-bold" data-icon="auto_mode">auto_mode</span>
+              Auto-Pilot Vault
+            </div>
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface tracking-tight">Save without Thinking</h2>
+</div>
+<div class="w-11 h-11 rounded-xl bg-surface-container-highest flex items-center justify-center text-primary-container border border-outline-variant/40">
+<span class="material-symbols-outlined material-symbols-filled text-2xl" data-icon="bolt">bolt</span>
+</div>
+</div>
+<!-- Metrics pill container -->
+<div class="mt-4 pt-3 border-t border-outline-variant/25 flex items-center justify-between text-label-md font-label-md">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+<span class="text-on-surface-variant font-medium">2 active rules</span>
+</div>
+<div class="text-right">
+<span class="text-on-surface-variant">Saved this month: </span>
+<span class="font-title-currency text-body-lg text-primary tabular-nums font-bold">₦48,250.00</span>
+</div>
+</div>
+</section>
+<!-- Active Rules Module -->
+<section class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between px-0.5">
+<h3 class="font-headline-sm text-body-lg font-semibold text-on-surface tracking-tight">Active Automation Rules</h3>
+<span class="text-label-sm font-label-sm text-outline uppercase tracking-wider">Configured (2)</span>
+</div>
+<!-- Rule Card 1: 10% Inbound Paycheck Sweep -->
+<article class="p-space-md rounded-xl bg-surface-container-low border border-outline-variant/40 transition-all hover:border-primary-container/50">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-surface-container-high flex items-center justify-center text-primary border border-outline-variant/30 shrink-0">
+<span class="material-symbols-outlined material-symbols-filled" data-icon="account_balance_wallet">account_balance_wallet</span>
+</div>
+<div>
+<h4 class="font-label-lg text-label-lg font-semibold text-on-surface leading-snug">10% Inbound Paycheck Sweep</h4>
+<span class="inline-block mt-0.5 px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-primary-container/20 text-primary-fixed-dim">
+                  MacBook Pro Goal
+                </span>
+</div>
+</div>
+<!-- Custom Switch (ON) -->
+<label class="relative inline-flex items-center cursor-pointer shrink-0">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-surface-container-lowest after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-primary-container after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-3 leading-relaxed">
+            Whenever <span class="text-on-surface tabular-nums font-semibold">₦100,000</span> or more is credited to Main Account, automatically sweep <span class="text-primary font-semibold">10%</span> into MacBook Pro Goal.
+          </p>
+<div class="mt-3 pt-3 border-t border-outline-variant/20 flex items-center justify-between text-label-sm font-label-sm">
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-base text-outline" data-icon="schedule">schedule</span>
+<span>Next run: <strong class="text-on-surface font-medium">On next inbound credit</strong></span>
+</div>
+<button class="text-primary hover:text-primary-fixed font-semibold flex items-center gap-0.5 transition-colors" type="button">
+              Edit rule
+              <span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</article>
+<!-- Rule Card 2: Spare Change Round-Up -->
+<article class="p-space-md rounded-xl bg-surface-container-low border border-outline-variant/40 transition-all hover:border-primary-container/50">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-surface-container-high flex items-center justify-center text-secondary border border-outline-variant/30 shrink-0">
+<span class="material-symbols-outlined material-symbols-filled" data-icon="shopping_cart">shopping_cart</span>
+</div>
+<div>
+<h4 class="font-label-lg text-label-lg font-semibold text-on-surface leading-snug">Spare Change Round-Up</h4>
+<span class="inline-block mt-0.5 px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-secondary-container/40 text-secondary-fixed">
+                  Emergency Goal
+                </span>
+</div>
+</div>
+<!-- Custom Switch (ON) -->
+<label class="relative inline-flex items-center cursor-pointer shrink-0">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-surface-container-lowest after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-primary-container after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-3 leading-relaxed">
+            Round up everyday card purchases to nearest <span class="text-on-surface tabular-nums font-semibold">₦500</span> and deposit the spare change into Emergency Goal.
+          </p>
+<div class="mt-3 pt-3 border-t border-outline-variant/20 flex items-center justify-between text-label-sm font-label-sm">
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-base text-outline" data-icon="savings">savings</span>
+<span>Month-to-date saved:</span>
+</div>
+<span class="font-title-currency text-label-lg text-primary tabular-nums font-bold">₦6,250.00</span>
+</div>
+</article>
+</section>
+<!-- Section: Create New Smart Rule Interactive Configurator -->
+<section class="rounded-xl p-space-md bg-surface-container border border-dashed border-outline-variant flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-7 h-7 rounded-lg bg-primary-container/20 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-lg" data-icon="add_circle">add_circle</span>
+</span>
+<h3 class="font-headline-sm text-body-lg font-semibold text-on-surface">Configure Smart Rule</h3>
+</div>
+<span class="text-label-sm font-label-sm text-primary font-medium">Step 1 of 2</span>
+</div>
+<!-- 1. Rule Type Segmented Selector -->
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2 font-medium">1. Select Rule Mechanism</label>
+<div class="grid grid-cols-3 gap-1.5 p-1 bg-surface-container-lowest rounded-xl border border-outline-variant/30">
+<button class="py-2 px-1 text-center rounded-lg bg-surface-container-high border border-primary-container/60 text-primary font-label-md text-label-sm font-semibold shadow-sm transition-transform active:scale-95" type="button">
+              Percent Inflow
+            </button>
+<button class="py-2 px-1 text-center rounded-lg hover:bg-surface-container-high/50 text-on-surface-variant font-label-md text-label-sm font-normal transition-colors active:scale-95" type="button">
+              Round-Ups
+            </button>
+<button class="py-2 px-1 text-center rounded-lg hover:bg-surface-container-high/50 text-on-surface-variant font-label-md text-label-sm font-normal transition-colors active:scale-95" type="button">
+              Daily Stash
+            </button>
+</div>
+</div>
+<!-- 2. Target Goal Destination Picker -->
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1.5 font-medium">2. Destination Target Goal</label>
+<div class="h-[52px] px-3.5 bg-surface-container-low border border-outline-variant/50 rounded-xl flex items-center justify-between cursor-pointer hover:border-primary-container/60 transition-colors">
+<div class="flex items-center gap-2.5">
+<div class="w-7 h-7 rounded-lg bg-primary-container/20 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-base" data-icon="laptop_mac">laptop_mac</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface font-medium truncate max-w-[210px]">MacBook Pro M3 Max Goal (Selected)</span>
+</div>
+<span class="material-symbols-outlined text-outline" data-icon="unfold_more">unfold_more</span>
+</div>
+</div>
+<!-- 3. Minimum Credit Threshold Input -->
+<div>
+<div class="flex items-center justify-between mb-1.5">
+<label class="font-label-md text-label-md text-on-surface-variant font-medium">3. Trigger Trigger Inflow (Min.)</label>
+<span class="text-label-sm font-label-sm text-outline">Default: ₦50,000</span>
+</div>
+<div class="relative h-[52px] bg-surface-container-low border border-outline-variant/50 rounded-xl flex items-center px-3.5 focus-within:border-primary-container focus-within:ring-1 focus-within:ring-primary-container transition-all">
+<span class="text-primary font-headline-sm font-bold mr-1.5 tabular-nums">₦</span>
+<input class="w-full bg-transparent border-0 p-0 text-on-surface font-title-currency text-title-currency tabular-nums font-semibold focus:ring-0 focus:outline-none" placeholder="0.00" type="text" value="50,000.00"/>
+<span class="text-label-sm font-label-sm text-outline-variant uppercase">NGN</span>
+</div>
+</div>
+<!-- 4. Percentage Slider/Chips -->
+<div>
+<div class="flex items-center justify-between mb-2">
+<label class="font-label-md text-label-md text-on-surface-variant font-medium">4. Sweep Percentage Rate</label>
+<span class="font-label-md text-label-md text-primary font-bold">15% selected</span>
+</div>
+<div class="grid grid-cols-4 gap-2">
+<button class="h-10 rounded-xl border border-outline-variant/40 bg-surface-container-low text-on-surface font-label-lg text-label-md font-medium hover:border-primary-container active:scale-95 transition-all" type="button">
+              5%
+            </button>
+<button class="h-10 rounded-xl border border-outline-variant/40 bg-surface-container-low text-on-surface font-label-lg text-label-md font-medium hover:border-primary-container active:scale-95 transition-all" type="button">
+              10%
+            </button>
+<button class="h-10 rounded-xl bg-primary-container text-on-primary-container border border-primary-container font-label-lg text-label-md font-bold shadow-sm active:scale-95 transition-all" type="button">
+              15%
+            </button>
+<button class="h-10 rounded-xl border border-outline-variant/40 bg-surface-container-low text-on-surface font-label-lg text-label-md font-medium hover:border-primary-container active:scale-95 transition-all" type="button">
+              20%
+            </button>
+</div>
+</div>
+</section>
+<!-- Statutory Balance Shield Disclosure Card -->
+<div class="p-3.5 rounded-xl bg-surface-container-low/70 border border-outline-variant/30 flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-xl shrink-0 mt-0.5" data-icon="verified_user">verified_user</span>
+<p class="font-body-md text-label-sm text-on-surface-variant leading-relaxed">
+          Smart save rules will never overdraw your account. Protected by <span class="text-on-surface font-medium">Smart Balance Shield</span> (maintains minimum <span class="text-on-surface tabular-nums font-semibold">₦10,000</span> free balance at all times).
+        </p>
+</div>
+<!-- Primary Action CTA Button (52px ergonomic height) -->
+<div class="pt-1">
+<button class="w-full h-[52px] rounded-xl bg-primary-container hover:bg-[#c4557f] active:bg-[#c4557f] text-on-primary-container font-label-lg text-label-lg font-bold flex items-center justify-center gap-2 shadow-lg transition-transform active:scale-[0.98] duration-150" type="button">
+<span class="material-symbols-outlined text-xl" data-icon="add">add</span>
+          Create New Smart Rule
+        </button>
+</div>
+</main>
+<!-- Docked 5-Tab Bottom Navigation Bar (Save & Borrow ACTIVE) -->
+<nav class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-margin h-16 max-w-[560px] mx-auto pb-safe bg-surface-container shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)]">
+<!-- Tab 1: Home (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" type="button">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-caption text-label-sm font-medium">Home</span>
+</button>
+<!-- Tab 2: Payments (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" type="button">
+<span class="material-symbols-outlined" data-icon="send">send</span>
+<span class="font-caption text-label-sm font-medium">Payments</span>
+</button>
+<!-- Tab 3: Cards (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" type="button">
+<span class="material-symbols-outlined" data-icon="credit_card">credit_card</span>
+<span class="font-caption text-label-sm font-medium">Cards</span>
+</button>
+<!-- Tab 4: Save & Borrow (ACTIVE) -->
+<button class="flex flex-col items-center justify-center text-primary-fixed font-semibold min-w-[48px] py-space-xs gap-space-xs active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined material-symbols-filled text-primary" data-icon="savings">savings</span>
+<span class="font-caption text-label-sm font-semibold text-primary">Save &amp; Borrow</span>
+</button>
+<!-- Tab 5: More (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" type="button">
+<span class="material-symbols-outlined" data-icon="more_horiz">more_horiz</span>
+<span class="font-caption text-label-sm font-medium">More</span>
+</button>
+</nav>
+</div>
+</body></html>

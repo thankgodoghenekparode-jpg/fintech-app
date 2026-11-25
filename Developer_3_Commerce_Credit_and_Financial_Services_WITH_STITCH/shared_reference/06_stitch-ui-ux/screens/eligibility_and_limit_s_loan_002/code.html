@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Credit Eligibility &amp; Limit - YourApp Instant Loan</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary-fixed-variant": "#8c170e",
+            "on-primary-container": "#ffa0ba",
+            "on-surface-variant": "#564146",
+            "surface-container": "#f5eced",
+            "inverse-primary": "#ffb1c5",
+            "surface-container-low": "#fbf1f2",
+            "on-error-container": "#93000a",
+            "on-error": "#ffffff",
+            "surface": "#fff8f8",
+            "on-secondary": "#ffffff",
+            "on-secondary-fixed": "#410000",
+            "on-primary": "#ffffff",
+            "outline-variant": "#dcbfc5",
+            "on-primary-fixed-variant": "#881646",
+            "surface-container-lowest": "#ffffff",
+            "on-tertiary-container": "#c6b7bd",
+            "primary-fixed": "#ffd9e1",
+            "secondary": "#ae3123",
+            "tertiary-fixed": "#eedee4",
+            "error-container": "#ffdad6",
+            "background": "#fff8f8",
+            "surface-container-high": "#efe6e7",
+            "secondary-fixed": "#ffdad4",
+            "tertiary-container": "#53484d",
+            "on-primary-fixed": "#3f001b",
+            "inverse-on-surface": "#f8eeef",
+            "on-background": "#1f1b1c",
+            "tertiary": "#3b3236",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "primary": "#6d0033",
+            "surface-container-highest": "#e9e0e1",
+            "error": "#ba1a1a",
+            "outline": "#897176",
+            "inverse-surface": "#342f30",
+            "surface-tint": "#a8315d",
+            "on-tertiary-fixed": "#21191e",
+            "secondary-fixed-dim": "#ffb4a8",
+            "surface-dim": "#e1d8d9",
+            "on-secondary-container": "#690000",
+            "surface-variant": "#e9e0e1",
+            "primary-fixed-dim": "#ffb1c5",
+            "surface-bright": "#fff8f8",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "on-surface": "#1f1b1c",
+            "secondary-container": "#fc6955",
+            "on-tertiary": "#ffffff",
+            "primary-container": "#8e1b4a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "1rem",
+            "space-md": "0.75rem",
+            "space-2xl": "2rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1rem",
+            "space-xl": "1.5rem",
+            "space-3xl": "3rem",
+            "space-sm": "0.5rem",
+            "margin": "1rem"
+          },
+          "fontFamily": {
+            "label": ["Inter"],
+            "body-medium": ["Inter"],
+            "body": ["Inter"],
+            "subtitle": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "display": ["Inter"],
+            "caption": ["Inter"],
+            "amount-lg": ["Inter"],
+            "title": ["Inter"]
+          },
+          "fontSize": {
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-body text-on-surface antialiased min-h-screen flex justify-center selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Mobile Container (Max 560px for tablet, 390px native mobile shell) -->
+<main class="w-full max-w-[560px] min-h-screen bg-surface flex flex-col justify-between shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08)] relative pb-space-2xl">
+<!-- Top Action & Context Bar (Linear flow task screen: suppression of global bottom navbar per semantic shell rule) -->
+<header class="w-full px-margin pt-space-md pb-space-sm flex items-center justify-between bg-surface sticky top-0 z-40">
+<button aria-label="Go back" class="w-12 h-12 flex items-center justify-start text-on-surface hover:text-primary active:scale-95 transition-transform duration-150 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-container" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<div class="flex-1 text-center pr-2">
+<h1 class="font-subtitle text-subtitle text-on-surface tracking-tight font-semibold">Credit Eligibility &amp; Limit</h1>
+<p class="font-caption text-caption text-on-surface-variant font-medium">Instant Loan · Step 2 of 4</p>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[20px]" data-weight="fill" style="font-variation-settings: 'FILL' 1;">help</span>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="px-margin flex-1 flex flex-col gap-space-lg">
+<!-- Eligibility Summary Card (Hero Bento Card) -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] relative overflow-hidden">
+<div class="absolute -right-6 -bottom-6 w-28 h-28 bg-primary-fixed/30 rounded-full blur-xl pointer-events-none"></div>
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-caption text-caption text-on-surface-variant font-medium">Eligible Loan Offer</span>
+<span class="inline-flex items-center gap-1 px-space-sm py-space-xs rounded-lg bg-surface-container text-primary-container font-label text-caption font-semibold">
+<span class="material-symbols-outlined text-[16px]" data-weight="fill" style="font-variation-settings: 'FILL' 1;">verified</span>
+            Pre-Approved
+          </span>
+</div>
+<div class="space-y-space-xs mb-space-md">
+<p class="font-body text-caption text-on-surface-variant">You qualify for up to</p>
+<div class="flex items-baseline gap-1 text-primary-container">
+<span class="font-amount-lg-mobile text-amount-lg-mobile font-bold tracking-tight tabular-nums">₦150,000.00</span>
+</div>
+</div>
+<!-- Metric Divider -->
+<div class="pt-space-md border-t border-outline-variant/30 flex items-center justify-between">
+<div>
+<p class="font-caption text-caption text-on-surface-variant mb-0.5">Credit Health Score</p>
+<div class="flex items-center gap-1.5">
+<span class="font-body-medium text-body-medium font-semibold text-on-surface tabular-nums">740</span>
+<span class="font-caption text-caption text-on-surface-variant">/ 850</span>
+<span class="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-full bg-primary-fixed/40 text-primary font-caption text-caption font-semibold ml-1">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+                Good
+              </span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[20px]">speed</span>
+</div>
+</div>
+</section>
+<!-- Credit Limit Progress / Tier Breakdown -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] space-y-space-md">
+<div class="flex items-center justify-between">
+<h2 class="font-body-medium text-body-medium font-semibold text-on-surface">Borrowing Capacity</h2>
+<span class="font-caption text-caption text-on-surface-variant">Tier Progression</span>
+</div>
+<!-- Custom Step Progress Visual -->
+<div class="space-y-space-xs">
+<div class="w-full bg-surface-container h-2.5 rounded-full overflow-hidden flex">
+<div class="bg-primary-container h-full w-[35%] rounded-full transition-all duration-300"></div>
+<div class="bg-outline-variant/50 h-full w-[65%] rounded-r-full"></div>
+</div>
+<div class="flex justify-between font-caption text-caption text-on-surface-variant">
+<span>Current: ₦150k</span>
+<span>Target: ₦500k</span>
+</div>
+</div>
+<!-- Tier 2 Details -->
+<div class="p-space-md rounded-lg bg-surface-container-low border border-outline-variant/30 flex items-start justify-between gap-space-sm">
+<div class="space-y-0.5">
+<div class="flex items-center gap-1.5">
+<span class="font-body-medium text-label text-on-surface font-semibold">Current Limit</span>
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-caption text-caption text-[11px] font-medium">
+<span class="material-symbols-outlined text-[14px] text-primary">check_circle</span>
+                Tier 2 Verified
+              </span>
+</div>
+<p class="font-subtitle text-subtitle font-bold text-on-surface tabular-nums">₦150,000.00</p>
+</div>
+<span class="font-caption text-caption text-primary font-medium mt-1">Active Now</span>
+</div>
+<!-- Potential Tier 3 Details -->
+<div class="p-space-md rounded-lg bg-surface border border-dashed border-outline-variant flex items-start gap-space-md">
+<div class="w-8 h-8 rounded-full bg-surface-container flex-shrink-0 flex items-center justify-center text-on-surface-variant mt-0.5">
+<span class="material-symbols-outlined text-[18px]">lock_open</span>
+</div>
+<div class="space-y-1">
+<div class="flex items-center justify-between">
+<span class="font-label text-label font-semibold text-on-surface">Potential Limit</span>
+<span class="font-label text-label font-bold text-on-surface tabular-nums">₦500,000.00</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant leading-relaxed">
+              Upon Tier 3 Address Verification &amp; 3 on-time repayments.
+            </p>
+</div>
+</div>
+</section>
+<!-- Evaluation Factors Bento Card -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] space-y-space-md">
+<div class="flex items-center justify-between">
+<h2 class="font-body-medium text-body-medium font-semibold text-on-surface">Evaluation Factors</h2>
+<span class="font-caption text-caption text-primary font-medium flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]">auto_awesome</span>
+            AI Underwritten
+          </span>
+</div>
+<ul class="space-y-space-sm divide-y divide-outline-variant/20">
+<!-- Factor 1: Turnover -->
+<li class="pt-space-xs flex items-center justify-between gap-space-sm min-h-[48px]">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">account_balance_wallet</span>
+</div>
+<div>
+<p class="font-label text-label text-on-surface font-semibold">Cashflow &amp; Turnover</p>
+<p class="font-caption text-caption text-on-surface-variant tabular-nums">Verified (₦450k monthly inflow)</p>
+</div>
+</div>
+<div class="flex items-center gap-1 text-primary font-caption text-caption font-semibold bg-surface-container px-2 py-1 rounded-md">
+<span class="material-symbols-outlined text-[16px]">check</span>
+<span>Pass</span>
+</div>
+</li>
+<!-- Factor 2: Repayment History -->
+<li class="pt-space-sm flex items-center justify-between gap-space-sm min-h-[48px]">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</div>
+<div>
+<p class="font-label text-label text-on-surface font-semibold">Repayment History</p>
+<p class="font-caption text-caption text-on-surface-variant">Clean record (0 defaults)</p>
+</div>
+</div>
+<div class="flex items-center gap-1 text-primary font-caption text-caption font-semibold bg-surface-container px-2 py-1 rounded-md">
+<span class="material-symbols-outlined text-[16px]">verified_user</span>
+<span>Clean</span>
+</div>
+</li>
+<!-- Factor 3: Bureau Check -->
+<li class="pt-space-sm flex items-center justify-between gap-space-sm min-h-[48px]">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">policy</span>
+</div>
+<div>
+<p class="font-label text-label text-on-surface font-semibold">Credit Bureau Check</p>
+<p class="font-caption text-caption text-on-surface-variant">CRC &amp; FirstCentral certified</p>
+</div>
+</div>
+<div class="flex items-center gap-1 text-primary font-caption text-caption font-semibold bg-surface-container px-2 py-1 rounded-md">
+<span class="material-symbols-outlined text-[16px]">task_alt</span>
+<span>Clear</span>
+</div>
+</li>
+</ul>
+</section>
+<!-- Privacy & Consumer Assurance Banner -->
+<section class="bg-surface-container-low rounded-xl p-space-md border border-outline-variant/30 flex items-start gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-primary-fixed/50 flex-shrink-0 flex items-center justify-center text-primary mt-0.5">
+<span class="material-symbols-outlined text-[18px]" data-weight="fill" style="font-variation-settings: 'FILL' 1;">security</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant leading-relaxed">
+          Your credit data is encrypted and strictly used for risk assessment. We adhere to <strong class="text-on-surface font-medium">CBN responsible lending principles</strong>.
+        </p>
+</section>
+</div>
+<!-- Sticky Footer CTAs -->
+<footer class="px-margin pt-space-lg pb-space-md bg-surface border-t border-outline-variant/30 flex flex-col items-center gap-space-md mt-space-lg">
+<button class="w-full h-[52px] rounded-xl bg-primary-container text-on-primary font-label text-label font-semibold flex items-center justify-center gap-2 active:bg-primary active:scale-[0.99] transition-all duration-150 shadow-[0_4px_12px_-2px_rgba(30,26,27,0.04)] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary-container" type="button">
+<span>Proceed to Choose Amount</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+<a class="inline-flex items-center gap-1 text-primary-container font-label text-label font-semibold hover:underline active:scale-95 transition-transform duration-150 py-1" href="#increase-limit">
+<span>How to increase your credit limit</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</a>
+</footer>
+</main>
+</body></html>

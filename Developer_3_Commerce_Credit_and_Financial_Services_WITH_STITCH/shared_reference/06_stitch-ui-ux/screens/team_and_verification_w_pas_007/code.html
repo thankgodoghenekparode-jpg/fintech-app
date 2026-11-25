@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pay Am Small - Store Team &amp; Commercial KYB Verification (W-PAS-007)</title>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config verbatim from specification -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-bright": "#fff8f8",
+            "on-primary-container": "#ffa0ba",
+            "surface-container-low": "#fbf1f2",
+            "surface-variant": "#e9e0e1",
+            "inverse-primary": "#ffb1c5",
+            "on-tertiary": "#ffffff",
+            "on-primary-fixed": "#3f001b",
+            "primary-fixed-dim": "#ffb1c5",
+            "on-tertiary-fixed": "#21191e",
+            "surface": "#fff8f8",
+            "on-primary-fixed-variant": "#881646",
+            "on-surface": "#1f1b1c",
+            "on-background": "#1f1b1c",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "outline-variant": "#dcbfc5",
+            "primary-container": "#8e1b4a",
+            "secondary-container": "#fc6955",
+            "tertiary-fixed": "#eedee4",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "on-secondary-fixed-variant": "#8c170e",
+            "on-error": "#ffffff",
+            "error-container": "#ffdad6",
+            "secondary": "#ae3123",
+            "tertiary": "#3b3236",
+            "secondary-fixed": "#ffdad4",
+            "inverse-on-surface": "#f8eeef",
+            "outline": "#897176",
+            "on-tertiary-container": "#c6b7bd",
+            "on-secondary-fixed": "#410000",
+            "inverse-surface": "#342f30",
+            "on-secondary-container": "#690000",
+            "surface-dim": "#e1d8d9",
+            "surface-container": "#f5eced",
+            "tertiary-container": "#53484d",
+            "surface-container-lowest": "#ffffff",
+            "error": "#ba1a1a",
+            "surface-container-highest": "#e9e0e1",
+            "primary-fixed": "#ffd9e1",
+            "surface-tint": "#a8315d",
+            "on-secondary": "#ffffff",
+            "background": "#fff8f8",
+            "surface-container-high": "#efe6e7",
+            "primary": "#6d0033",
+            "on-primary": "#ffffff",
+            "on-surface-variant": "#564146",
+            "on-error-container": "#93000a",
+            "secondary-fixed-dim": "#ffb4a8"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-md": "0.75rem",
+            "space-lg": "1rem",
+            "space-xs": "0.25rem",
+            "gutter": "1rem",
+            "space-2xl": "2rem",
+            "space-3xl": "3rem",
+            "space-sm": "0.5rem",
+            "space-xl": "1.5rem",
+            "margin": "1rem"
+          },
+          "fontFamily": {
+            "body": ["Inter"],
+            "title": ["Inter"],
+            "amount-lg": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "display": ["Inter"],
+            "body-medium": ["Inter"],
+            "label": ["Inter"],
+            "caption": ["Inter"],
+            "subtitle": ["Inter"]
+          },
+          "fontSize": {
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #fbf1f2;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #dcbfc5;
+      border-radius: 4px;
+    }
+    .card-shadow {
+      box-shadow: 0 2px 8px -2px rgba(30, 26, 27, 0.05), 0 1px 3px 0 rgba(30, 26, 27, 0.03);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body antialiased min-h-screen flex flex-col selection:bg-primary-fixed selection:text-primary">
+<!-- Main Docked Layout: Left SideNav (w-72) + Main Canvas (ml-72) -->
+<div class="flex flex-1 min-h-screen">
+<!-- LEFT NAVIGATION SIDEBAR (Docked w-72 per JSON Anchors) -->
+<aside class="fixed left-0 top-0 h-screen w-72 flex flex-col justify-between py-space-xl px-space-lg bg-surface-container-lowest border-r border-surface-variant z-30 overflow-y-auto custom-scrollbar shadow-sm">
+<!-- Tenant Crest & Header -->
+<div>
+<div class="flex items-center gap-space-md mb-space-xl pb-space-lg border-b border-surface-variant">
+<div class="w-11 h-11 rounded-xl bg-primary-container text-surface-container-lowest flex items-center justify-center font-subtitle text-subtitle shadow-sm">
+<span class="material-symbols-outlined text-[24px]">account_balance</span>
+</div>
+<div class="overflow-hidden">
+<h1 class="text-subtitle font-subtitle text-primary tracking-tight truncate">Pay Am Small</h1>
+<p class="text-caption font-caption text-on-surface-variant truncate">Slot Systems • #VEN-SLOT-041</p>
+</div>
+</div>
+<!-- Tenant Branch Badge -->
+<div class="mb-space-lg p-space-md rounded-lg bg-surface-container-low border border-outline-variant flex items-center justify-between">
+<div class="flex items-center gap-space-xs truncate">
+<span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+<span class="text-caption font-caption text-on-surface font-medium truncate">Ikeja Flagship</span>
+</div>
+<span class="text-[11px] font-label px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant uppercase">Tier 1</span>
+</div>
+<!-- Navigation Tab Registry -->
+<nav class="space-y-1">
+<!-- Dashboard -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span>Dashboard</span>
+</a>
+<!-- Products & Prices -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">inventory_2</span>
+<span>Products &amp; Prices</span>
+</a>
+<!-- Orders & Fulfilment -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">local_shipping</span>
+<span>Orders &amp; Fulfilment</span>
+</a>
+<!-- Plans & Customers -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">groups</span>
+<span>Plans &amp; Customers</span>
+</a>
+<!-- Credit Offers -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">handshake</span>
+<span>Credit Offers</span>
+</a>
+<!-- Payouts & Wallet -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">account_balance_wallet</span>
+<span>Payouts &amp; Wallet</span>
+</a>
+<!-- Team & Verification (ACTIVE ITEM: Exact Semantic Match) -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg bg-surface-container-low text-primary font-label text-label border border-outline-variant shadow-sm transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-[20px] text-primary" style="font-variation-settings: 'FILL' 1;">badge</span>
+<span class="flex-1">Team &amp; Verification</span>
+<span class="w-1.5 h-4 bg-primary rounded-full"></span>
+</a>
+<!-- Settings -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span>Settings</span>
+</a>
+<!-- Help & Support -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">help_outline</span>
+<span>Help &amp; Support</span>
+</a>
+</nav>
+</div>
+<!-- Sidebar Footer Operations -->
+<div class="pt-space-lg border-t border-surface-variant space-y-2">
+<div class="p-space-md rounded-lg bg-surface-container border border-surface-variant">
+<div class="flex items-center gap-2 text-primary font-label text-caption mb-1">
+<span class="material-symbols-outlined text-[16px]">verified_user</span>
+<span>Dual-Control Active</span>
+</div>
+<p class="text-[11px] font-caption text-on-surface-variant leading-tight">
+            High-value approvals require dual merchant keys.
+          </p>
+</div>
+<a class="flex items-center gap-space-md px-space-lg py-2.5 rounded-lg text-secondary font-label text-label hover:bg-error-container/40 transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">logout</span>
+<span>Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- RIGHT MAIN CANVAS WRAPPER (Offset ml-72) -->
+<div class="ml-72 flex-1 flex flex-col min-w-0 bg-background">
+<!-- TOP BAR NAV (Docked & Sticky per JSON Anchors) -->
+<header class="sticky top-0 right-0 h-16 w-full flex items-center justify-between px-space-xl bg-surface-container-lowest border-b border-surface-variant z-20">
+<!-- Search Field -->
+<div class="flex items-center gap-3 w-96">
+<div class="relative w-full">
+<span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-outline">
+<span class="material-symbols-outlined text-[18px]">search</span>
+</span>
+<input class="w-full h-10 pl-9 pr-3 rounded-lg bg-surface-container-low border border-surface-variant text-caption font-caption text-on-surface placeholder:text-outline focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all" placeholder="Search team members, roles, KYB filings..." type="text"/>
+</div>
+</div>
+<!-- Trailing System Actions & Status Cluster -->
+<div class="flex items-center gap-space-lg">
+<!-- Live Tier Status Tag -->
+<div class="hidden xl:flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200">
+<span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+<span class="text-caption font-caption text-emerald-900 font-medium">Merchant Verified Tier 1 • All Branches Active</span>
+</div>
+<!-- Dual Authorization Indicator -->
+<button class="h-10 px-3.5 rounded-lg bg-surface-container hover:bg-surface-container-high border border-surface-variant text-on-surface-variant font-label text-caption flex items-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-[18px] text-primary">security</span>
+<span>Dual Authorization: Enforced</span>
+</button>
+<!-- Notification Bell -->
+<button class="relative w-10 h-10 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-secondary"></span>
+</button>
+<!-- Help Outline -->
+<button class="w-10 h-10 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[20px]">help_outline</span>
+</button>
+<!-- Profile Badge -->
+<div class="flex items-center gap-space-md pl-space-md border-l border-surface-variant">
+<img class="w-9 h-9 rounded-full object-cover border border-outline-variant" data-alt="Dignified editorial portrait photo of a senior Nigerian male banking executive wearing modern glasses and sharp executive attire in a brightly lit modern Lagos corporate office with warm burgundy ambient tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkHfRQk-E1lg-t6rX-j7wImr4kR3QtYhJjWbOQ1BtFgwW3-4O334yF8jXqSf7eB2r-FJg64HD4nftlkps83HwsHLWiZMAbEZxsw2uKv3s4f-GRhMEs2p1eIwkTHZ5J2MHSWYm599ZWfITvRiWMRDSRsLyzItXj0zzf8L9S_lUPXWqWCn3hHhTtJyXdGWQ0KtrtY4XNhW71W2bnS06VZNxbQo7qfydCNK6sJHmMvOG2"/>
+<div class="hidden lg:block text-left">
+<div class="text-label font-label text-on-surface leading-tight">Nnamdi Eze</div>
+<div class="text-[11px] font-caption text-on-surface-variant leading-tight">Managing Merchant Director</div>
+</div>
+</div>
+</div>
+</header>
+<!-- PAGE CONTENT CANVAS -->
+<main class="p-space-xl flex-1 max-w-[1600px] w-full mx-auto space-y-space-xl">
+<!-- HEADER & ACTIONS BAR -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-lg pb-space-xs">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<h1 class="text-title font-title text-on-surface tracking-tight">Store Team &amp; Commercial KYB Verification</h1>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant text-caption font-caption">W-PAS-007</span>
+</div>
+<p class="text-caption font-caption text-on-surface-variant max-w-3xl">
+              Manage store managers, sales clerks, cashier POS authorizations, delivery code verification permissions, and statutory merchant compliance documents.
+            </p>
+</div>
+<!-- Action Buttons Group -->
+<div class="flex flex-wrap items-center gap-space-md">
+<button class="h-[44px] px-4 rounded-xl border border-surface-variant bg-surface-container-lowest hover:bg-surface-container text-on-surface font-label text-label flex items-center gap-2 transition-all card-shadow">
+<span class="material-symbols-outlined text-[18px]">file_download</span>
+<span>Download Verification Dossier (PDF)</span>
+</button>
+<button class="h-[44px] px-4 rounded-xl border border-surface-variant bg-surface-container-lowest hover:bg-surface-container text-on-surface font-label text-label flex items-center gap-2 transition-all card-shadow">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span>Update KYB Filings</span>
+</button>
+<button class="h-[44px] px-5 rounded-xl bg-primary-container hover:bg-[#731540] text-surface-container-lowest font-label text-label flex items-center gap-2 transition-all shadow-sm">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+<span>+ Invite New Team Member</span>
+</button>
+</div>
+</div>
+<!-- TOP 4 KPI / HEALTH CARDS (Bento Grid Style) -->
+<section class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-space-lg">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl border border-surface-variant card-shadow flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="text-caption font-caption text-on-surface-variant">Active Staff Accounts</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-low text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">badge</span>
+</div>
+</div>
+<div class="mt-space-md">
+<div class="text-amount-lg-mobile font-amount-lg-mobile text-on-surface">8 Members</div>
+<p class="text-caption font-caption text-on-surface-variant mt-1 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px] text-emerald-700">storefront</span>
+                Across 2 branches (Ikeja &amp; VI)
+              </p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl border border-surface-variant card-shadow flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="text-caption font-caption text-on-surface-variant">Delivery Code Handover Auth</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-low text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">key</span>
+</div>
+</div>
+<div class="mt-space-md">
+<div class="text-amount-lg-mobile font-amount-lg-mobile text-primary">5 Authorized Clerks</div>
+<p class="text-caption font-caption text-on-surface-variant mt-1 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px] text-emerald-700">security</span>
+                FIDO2 &amp; SMS OTP verified
+              </p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl border border-surface-variant card-shadow flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="text-caption font-caption text-on-surface-variant">KYB Verification Level</span>
+<div class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-800 flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+</div>
+</div>
+<div class="mt-space-md">
+<div class="text-amount-lg-mobile font-amount-lg-mobile text-emerald-900">Tier 1 Apex</div>
+<p class="text-caption font-caption text-on-surface-variant mt-1 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px] text-emerald-700">check_circle</span>
+                CAC, FIRS &amp; Store Lease Validated
+              </p>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl border border-surface-variant card-shadow flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="text-caption font-caption text-on-surface-variant">Role Audit &amp; Compliance</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-low text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">gavel</span>
+</div>
+</div>
+<div class="mt-space-md">
+<div class="text-amount-lg-mobile font-amount-lg-mobile text-on-surface">100% Compliant</div>
+<p class="text-caption font-caption text-on-surface-variant mt-1 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px] text-emerald-700">published_with_changes</span>
+                Zero overrides • Attested Q1
+              </p>
+</div>
+</div>
+</section>
+<!-- SECURITY PROTOCOL NOTICE BANNER -->
+<div class="p-space-md px-space-lg rounded-xl bg-surface-container-low border border-outline-variant flex items-start sm:items-center gap-3">
+<div class="w-7 h-7 rounded-full bg-primary-container text-surface-container-lowest flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px]">info</span>
+</div>
+<div class="flex-1 text-caption font-caption text-on-surface-variant">
+<strong class="font-label text-on-surface">Store Security Protocol:</strong> Only users with 'Store Officer' or 'Manager' roles can validate 6-digit delivery codes and release ring-fenced merchandise. Price changes and BNPL credit approval exceedances require Merchant Director dual-signoff.
+          </div>
+<span class="text-primary font-label text-caption cursor-pointer hover:underline shrink-0 hidden md:inline">
+            Read Security Charter
+          </span>
+</div>
+<!-- SPLIT LAYOUT: MAIN TABLE (65%) + INSPECTION DRAWER (35%) -->
+<div class="flex flex-col lg:flex-row gap-space-xl items-start">
+<!-- MAIN REGISTRY (w-[65%]) -->
+<div class="w-full lg:w-[65%] space-y-space-md">
+<!-- Filter Bar and Segmented Tabs -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl border border-surface-variant card-shadow flex flex-wrap items-center justify-between gap-space-md">
+<!-- Tabs -->
+<div class="flex items-center gap-1 bg-surface-container p-1 rounded-lg">
+<button class="px-3 py-1.5 rounded bg-surface-container-lowest text-primary font-label text-caption shadow-xs">
+                  All Team (8)
+                </button>
+<button class="px-3 py-1.5 rounded text-on-surface-variant hover:text-on-surface font-label text-caption transition-colors">
+                  Store Managers (2)
+                </button>
+<button class="px-3 py-1.5 rounded text-on-surface-variant hover:text-on-surface font-label text-caption transition-colors">
+                  Cashiers &amp; Clerks (5)
+                </button>
+<button class="px-3 py-1.5 rounded text-on-surface-variant hover:text-on-surface font-label text-caption transition-colors">
+                  Audited / Suspended (1)
+                </button>
+</div>
+<!-- Quick Search Filter -->
+<div class="flex items-center gap-2">
+<button class="h-9 px-3 rounded-lg border border-surface-variant bg-surface-container-low hover:bg-surface-container text-on-surface-variant font-label text-caption flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">filter_list</span>
+<span>Filter Roles</span>
+</button>
+<button class="h-9 px-3 rounded-lg border border-surface-variant bg-surface-container-low hover:bg-surface-container text-on-surface-variant font-label text-caption flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">download</span>
+<span>Export CSV</span>
+</button>
+</div>
+</div>
+<!-- Team Members & Permissions Table -->
+<div class="bg-surface-container-lowest rounded-xl border border-surface-variant card-shadow overflow-hidden">
+<div class="overflow-x-auto custom-scrollbar">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-surface-variant bg-surface-container text-on-surface-variant font-label text-caption">
+<th class="py-3 px-4">Member Name &amp; Designation</th>
+<th class="py-3 px-4">Branch Location</th>
+<th class="py-3 px-4">Role &amp; Access Scope</th>
+<th class="py-3 px-4">Handover Auth</th>
+<th class="py-3 px-4">Last Active</th>
+<th class="py-3 px-4">Status</th>
+<th class="py-3 px-4 text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-variant font-caption text-caption text-on-surface">
+<!-- Row 1: Nnamdi Eze -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3 px-4">
+<div class="flex items-center gap-3">
+<img class="w-9 h-9 rounded-full object-cover border border-outline-variant" data-alt="Editorial portrait of an experienced Nigerian tech entrepreneur and director with stylish framed eyeglasses, warm studio portrait lighting against a soft rose-tinted backdrop." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEejk7Oo9PXYbGoqTyPEkFWFbKbD5E1YcpnHsz4Np_b_dX3Thro8jqM1spIOjxLTqFHER19PHphiKBfiiIlafeXrZq9byj4RlyM9_GH602-KLPXkWuL6yj9n9mWEt3QJy51A8vyuBHjK3Ch3mq45YO8a0iZ6DauzhEPaGpdO26OCh6NDv5bjk3IojLVoQQHj1buU_8cv81Lw78aIYrwAzkSTMMHXHpxWwHgTHHPz9R"/>
+<div>
+<div class="font-label text-on-surface">Nnamdi Eze</div>
+<div class="text-[12px] text-on-surface-variant">Managing Merchant Director</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-4">
+<span class="font-medium">Ikeja Flagship</span>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-label bg-primary-fixed text-primary">
+                          Full Admin &amp; Payouts
+                        </span>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-1 text-emerald-800 font-medium">
+<span class="material-symbols-outlined text-[15px]">verified</span>
+<span>All Permissions</span>
+</div>
+</td>
+<td class="py-3 px-4 text-on-surface-variant">Active Now</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-label bg-emerald-50 text-emerald-800 border border-emerald-200">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Verified Exco
+                        </span>
+</td>
+<td class="py-3 px-4 text-right">
+<button class="p-1 hover:bg-surface-container rounded text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 2: Amara Nwosu (ACTIVE / SELECTED INSPECTION TARGET) -->
+<tr class="bg-surface-container-low/70 border-l-4 border-l-primary hover:bg-surface-container-low transition-colors">
+<td class="py-3 px-4">
+<div class="flex items-center gap-3">
+<img class="w-9 h-9 rounded-full object-cover border-2 border-primary" data-alt="Close up professional portrait of a confident young Nigerian female operations executive wearing a stylish warm-colored blouse in an organized retail storefront setting with warm natural light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZU9RiZ-1_pfXMQLr2tM0O5Kg1onsZ1CqqID3US33ZoEPlPKY9ekQRJ-D4jhydHSFPKEESy1jAE6q2GCH8rDVNFodQZWIEOlX7SyRDKf9nL5M6RzkK_dn6j3Gzb29irLvHhBcnKIuqOc8iKEnovLetDPV0AtpK8V-5L68Hk5DhJBgMndJ-wqofUd0GWYQqjJ7IxMxdQDcPD6wmoPVvfth4EZajJ4OCO51YPmpoFNR-"/>
+<div>
+<div class="font-label text-primary flex items-center gap-1">
+<span>Amara Nwosu</span>
+<span class="material-symbols-outlined text-[14px]">arrow_right_alt</span>
+</div>
+<div class="text-[12px] text-on-surface-variant">Head of Operations &amp; Fulfilment</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-4">
+<span class="font-medium">Ikeja Flagship</span>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-label bg-surface-container-highest text-on-surface">
+                          Store Manager
+                        </span>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-1 text-primary font-medium">
+<span class="material-symbols-outlined text-[15px]">pin</span>
+<span>Delivery Code + Handover Auth</span>
+</div>
+</td>
+<td class="py-3 px-4 text-on-surface-variant">12m ago</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-label bg-emerald-50 text-emerald-800 border border-emerald-200">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Active
+                        </span>
+</td>
+<td class="py-3 px-4 text-right">
+<button class="px-2.5 py-1 rounded bg-surface-container text-primary font-label text-caption hover:bg-surface-container-high transition-colors">
+                          Inspect
+                        </button>
+</td>
+</tr>
+<!-- Row 3: Tunde Oladipo -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3 px-4">
+<div class="flex items-center gap-3">
+<img class="w-9 h-9 rounded-full object-cover border border-outline-variant" data-alt="Portrait photo of a young Nigerian male logistics supervisor holding an inventory scanner tablet with an ultra-clean retail tech warehouse background lit with warm corporate illumination." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC01ADJPQtSzajVk_9BzXR8uurPuhLIA851LdF7cz84mUyq0CUePAnhKSP1LRmAsS635-6ft7mZ3KHGlAKV9zFEwQhlA946VfKgAxlKB0lytZJTEiYHGeFBFFNS9OImBU6Ha5hdGtPbzHAWJh1iABiAkWeP6gdiQfKOyUcQBgZ9f1MVLFf8HN5Ylohex663C6xZDE9-XAqCVDXajz53qfLq8vKYoBjIS85ndjQdOFPt"/>
+<div>
+<div class="font-label text-on-surface">Tunde Oladipo</div>
+<div class="text-[12px] text-on-surface-variant">Lead Inventory &amp; Ring-Fence Officer</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-4">
+<span class="font-medium">Ikeja Flagship</span>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-label bg-surface-container-highest text-on-surface">
+                          Inventory Specialist
+                        </span>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[15px]">inventory</span>
+<span>Catalogue &amp; Serial Lock Only</span>
+</div>
+</td>
+<td class="py-3 px-4 text-on-surface-variant">1h ago</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-label bg-emerald-50 text-emerald-800 border border-emerald-200">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Active
+                        </span>
+</td>
+<td class="py-3 px-4 text-right">
+<button class="p-1 hover:bg-surface-container rounded text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 4: Chidinma Okeke -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3 px-4">
+<div class="flex items-center gap-3">
+<img class="w-9 h-9 rounded-full object-cover border border-outline-variant" data-alt="Friendly portrait photo of a cheerful Nigerian female retail cashier in smart company polo with store point-of-sale terminal background, clean aesthetic and warm ambient tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJzdRDKqJi_ljlPg8UO0Sj7o3zgmoK45WNsY3vqD3oHrbZb4L4V9t8ksTsmS6CYc30RSplHrVClMmAWZbJVl6hH9Rac5VGO5rcIWfm_FETLbvseH7jmZAVCEIIXqmmGqx1nFCySvWMEGUHh4ULS7aKcq8aDYVdnB6kDafS0vGZUB8IjAApusd4ywPGWP2XzOeUNsbhCbzhSoEOcnejagdB4F3FPqJw9NzsrB3w4GaO"/>
+<div>
+<div class="font-label text-on-surface">Chidinma Okeke</div>
+<div class="text-[12px] text-on-surface-variant">Senior Cashier &amp; Customer Service</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-4">
+<span class="font-medium">Ikeja Flagship</span>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-label bg-surface-container-highest text-on-surface">
+                          Cashier / Sales Clerk
+                        </span>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-1 text-primary font-medium">
+<span class="material-symbols-outlined text-[15px]">pin</span>
+<span>Delivery Code (Up to ₦2M)</span>
+</div>
+</td>
+<td class="py-3 px-4 text-on-surface-variant">5m ago</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-label bg-emerald-50 text-emerald-800 border border-emerald-200">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Active
+                        </span>
+</td>
+<td class="py-3 px-4 text-right">
+<button class="p-1 hover:bg-surface-container rounded text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 5: Babajide Sanwo-Olu Jr -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3 px-4">
+<div class="flex items-center gap-3">
+<img class="w-9 h-9 rounded-full object-cover border border-outline-variant" data-alt="Professional studio portrait of an energetic young Nigerian male store trainee at a checkout desk in Ikeja Lagos with high-key warm ambient lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpT1mtuDqTTu8XHWwDmiFM-RvKhRQ0r2bhujaQdOuALfVXWYh38lkf1qxhGq07Oje3lOqOk8fcBWChlE4bpsr0wciVKoVdohJetnvkfc010I42ogewPtu1cbilY_YubZDaY7Io9pNr3kLmpnR1aQbCGDz_IRfgVCCAjTZMXlOxATs37Qt5sCl8TZWFFJ09AvMP2qqn1I3VoLFONAHZ6xkfWJO2iffvpRqDKMJm5ZsH"/>
+<div>
+<div class="font-label text-on-surface">Babajide Sanwo-Olu Jr</div>
+<div class="text-[12px] text-on-surface-variant">Junior Cashier &amp; Counter Clerk</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-4">
+<span class="font-medium">Ikeja Flagship</span>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-label bg-surface-container-highest text-on-surface">
+                          Cashier
+                        </span>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[15px]">supervised_user_circle</span>
+<span>Under Supervision Only</span>
+</div>
+</td>
+<td class="py-3 px-4 text-on-surface-variant">Yesterday</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-label bg-amber-50 text-amber-800 border border-amber-200">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> Supervised
+                        </span>
+</td>
+<td class="py-3 px-4 text-right">
+<button class="p-1 hover:bg-surface-container rounded text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Pagination & Footer -->
+<div class="p-space-md bg-surface-container-low border-t border-surface-variant flex items-center justify-between text-caption font-caption text-on-surface-variant">
+<span>Showing 5 of 8 registered staff accounts</span>
+<div class="flex items-center gap-2">
+<button class="px-2.5 py-1 rounded bg-surface-container-lowest border border-surface-variant hover:bg-surface-container disabled:opacity-50" disabled="">Previous</button>
+<span class="px-2 font-label text-on-surface">1</span>
+<button class="px-2.5 py-1 rounded bg-surface-container-lowest border border-surface-variant hover:bg-surface-container">2</button>
+<button class="px-2.5 py-1 rounded bg-surface-container-lowest border border-surface-variant hover:bg-surface-container">Next</button>
+</div>
+</div>
+</div>
+<!-- POS Hardware & Delivery Handover Terminal Card -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl border border-surface-variant card-shadow">
+<div class="flex items-center justify-between mb-space-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[22px]">point_of_sale</span>
+<h3 class="font-subtitle text-subtitle text-on-surface">Store Handover Terminals (Ikeja Flagship)</h3>
+</div>
+<span class="text-caption font-caption text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">
+                  3 POS Terminals Paired
+                </span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<div class="p-space-md rounded-lg bg-surface-container border border-surface-variant">
+<div class="flex items-center justify-between text-caption text-on-surface font-label mb-1">
+<span>Counter 1 POS (Main)</span>
+<span class="text-emerald-800 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Online</span>
+</div>
+<div class="text-[12px] text-on-surface-variant">Auth Clerk: Chidinma Okeke</div>
+<div class="text-[11px] text-outline mt-2 font-mono">SN: PAYAM-IKJ-01992</div>
+</div>
+<div class="p-space-md rounded-lg bg-surface-container border border-surface-variant">
+<div class="flex items-center justify-between text-caption text-on-surface font-label mb-1">
+<span>Counter 2 POS (Pickups)</span>
+<span class="text-emerald-800 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Online</span>
+</div>
+<div class="text-[12px] text-on-surface-variant">Auth Lead: Amara Nwosu</div>
+<div class="text-[11px] text-outline mt-2 font-mono">SN: PAYAM-IKJ-01994</div>
+</div>
+<div class="p-space-md rounded-lg bg-surface-container border border-surface-variant">
+<div class="flex items-center justify-between text-caption text-on-surface font-label mb-1">
+<span>Vault Handover Tablet</span>
+<span class="text-emerald-800 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Online</span>
+</div>
+<div class="text-[12px] text-on-surface-variant">Auth Officer: Tunde Oladipo</div>
+<div class="text-[11px] text-outline mt-2 font-mono">SN: PAYAM-IKJ-02100</div>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT INSPECTION DRAWER (w-[35%]) -->
+<div class="w-full lg:w-[35%] space-y-space-md">
+<!-- SECTION A: MEMBER PERMISSIONS INSPECTOR -->
+<div class="bg-surface-container-lowest rounded-xl border border-surface-variant card-shadow overflow-hidden">
+<!-- Header -->
+<div class="p-space-md px-space-lg bg-surface-container-low border-b border-surface-variant flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary">manage_accounts</span>
+<span class="text-label font-label text-on-surface">Member Permissions Inspector</span>
+</div>
+<span class="px-2 py-0.5 rounded text-[11px] font-label bg-emerald-100 text-emerald-800">Verified Token</span>
+</div>
+<!-- Focused Member Profile Details -->
+<div class="p-space-lg space-y-space-md">
+<div class="flex items-center gap-space-md pb-space-md border-b border-surface-variant">
+<img class="w-14 h-14 rounded-xl object-cover border-2 border-primary-container shadow-xs" data-alt="Portrait photography of Amara Nwosu, an articulate African store manager in business casual attire with natural soft ambient interior warm lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAu9dN4fHV3WC6jpWEBTQEM_cNk6EbsvcdBpbjbBwvy4iX173TH9MpF7fgiwsTlaeNQmRUhVG_ut-yoDWQrQrPa8eV-IZnwgpzEKhTti7GaLQUCjijISCKXQmPbjnGFSRLHIO3gXHery9FyIxs-JDIVp7tbDCenhtyEq7jMRdEd7yfYXNep6f5aESGHxIEwFhpQx3a8MHTcdH6vrUBCqrCSEab-IFCiKQE8TQ5ZU8C5"/>
+<div>
+<h4 class="font-subtitle text-subtitle text-on-surface">Amara Nwosu</h4>
+<p class="text-caption font-caption text-primary font-medium">Head of Operations &amp; Handover Lead</p>
+<p class="text-[12px] font-caption text-on-surface-variant mt-0.5">Assigned: Ikeja Flagship Store (#VEN-SLOT-041)</p>
+</div>
+</div>
+<!-- Handover Scope Matrix -->
+<div>
+<label class="text-caption font-label text-on-surface block mb-2">Operational Permissions Matrix</label>
+<div class="space-y-2">
+<!-- Permission Item 1 -->
+<div class="p-2.5 rounded-lg bg-surface-container flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-emerald-700">pin</span>
+<span class="text-caption font-caption text-on-surface">Validate 6-digit buyer delivery code</span>
+</div>
+<span class="px-2 py-0.5 rounded text-[11px] font-label bg-emerald-100 text-emerald-800">Enabled</span>
+</div>
+<!-- Permission Item 2 -->
+<div class="p-2.5 rounded-lg bg-surface-container flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-emerald-700">lock_open</span>
+<span class="text-caption font-caption text-on-surface">Release ring-fenced warehouse units</span>
+</div>
+<span class="px-2 py-0.5 rounded text-[11px] font-label bg-emerald-100 text-emerald-800">Enabled</span>
+</div>
+<!-- Permission Item 3 -->
+<div class="p-2.5 rounded-lg bg-surface-container flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-emerald-700">chat</span>
+<span class="text-caption font-caption text-on-surface">Access customer WhatsApp nudge tools</span>
+</div>
+<span class="px-2 py-0.5 rounded text-[11px] font-label bg-emerald-100 text-emerald-800">Enabled</span>
+</div>
+<!-- Permission Item 4 -->
+<div class="p-2.5 rounded-lg bg-surface-container flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">sell</span>
+<span class="text-caption font-caption text-on-surface">Modify SKU shelf prices</span>
+</div>
+<span class="px-2 py-0.5 rounded text-[11px] font-label bg-surface-container-high text-on-surface-variant">Needs Director Signoff</span>
+</div>
+<!-- Permission Item 5 -->
+<div class="p-2.5 rounded-lg bg-surface-container flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-secondary">payments</span>
+<span class="text-caption font-caption text-on-surface">Trigger bank settlement sweep</span>
+</div>
+<span class="px-2 py-0.5 rounded text-[11px] font-label bg-rose-100 text-rose-800">Restricted</span>
+</div>
+</div>
+</div>
+<!-- Hardware Security Binding -->
+<div class="p-space-md rounded-lg bg-surface-container-low border border-outline-variant">
+<div class="flex items-center justify-between text-caption font-label text-on-surface mb-1">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary">security_update_good</span>
+<span>MFA &amp; Hardware Key Binding</span>
+</span>
+<span class="text-emerald-800 font-semibold text-[11px]">ACTIVE</span>
+</div>
+<p class="text-[12px] font-caption text-on-surface-variant leading-relaxed">
+                    YubiKey 5 NFC Hardware FIDO2 Authenticator paired to Store Handover Tablet #2. Re-attested Jan 2025.
+                  </p>
+</div>
+<!-- Inspector Action Buttons -->
+<div class="grid grid-cols-2 gap-2 pt-space-xs">
+<button class="h-10 px-3 rounded-lg border border-surface-variant bg-surface-container hover:bg-surface-container-high text-on-surface font-label text-caption transition-colors">
+                    Edit Permissions
+                  </button>
+<button class="h-10 px-3 rounded-lg border border-error-container bg-error-container/20 hover:bg-error-container/40 text-secondary font-label text-caption transition-colors">
+                    Temporarily Suspend
+                  </button>
+</div>
+</div>
+</div>
+<!-- SECTION B: STATUTORY MERCHANT DOCUMENTS & KYB FILINGS HUB -->
+<div class="bg-surface-container-lowest rounded-xl border border-surface-variant card-shadow overflow-hidden">
+<!-- Header -->
+<div class="p-space-md px-space-lg bg-surface-container-low border-b border-surface-variant flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary">assignment_turned_in</span>
+<span class="text-label font-label text-on-surface">Statutory KYB Compliance Hub</span>
+</div>
+<span class="px-2 py-0.5 rounded text-[11px] font-label bg-emerald-100 text-emerald-800">Tier 1 Active</span>
+</div>
+<!-- Statutory Filing Documents -->
+<div class="p-space-lg space-y-space-md">
+<div class="space-y-2.5">
+<!-- CAC Filing -->
+<div class="p-3 rounded-lg bg-surface-container border border-surface-variant flex items-start justify-between">
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[20px] text-emerald-800 mt-0.5">verified</span>
+<div>
+<div class="text-label font-label text-on-surface">CAC Certificate of Incorporation</div>
+<div class="text-[12px] text-on-surface-variant font-mono">RC-419820 (Slot Systems Ltd)</div>
+<div class="text-[11px] text-outline mt-0.5">Corporate Affairs Commission Validated</div>
+</div>
+</div>
+<button class="text-primary hover:text-[#731540] p-1">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+<!-- FIRS Tax Clearance -->
+<div class="p-3 rounded-lg bg-surface-container border border-surface-variant flex items-start justify-between">
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[20px] text-emerald-800 mt-0.5">verified</span>
+<div>
+<div class="text-label font-label text-on-surface">FIRS Tax Clearance Certificate</div>
+<div class="text-[12px] text-on-surface-variant">TIN: 104889201-0001 • Valid thru Dec 2027</div>
+<div class="text-[11px] text-outline mt-0.5">Federal Inland Revenue Service Verified</div>
+</div>
+</div>
+<button class="text-primary hover:text-[#731540] p-1">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+<!-- Ikeja Store Lease Agreement -->
+<div class="p-3 rounded-lg bg-surface-container border border-surface-variant flex items-start justify-between">
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[20px] text-emerald-800 mt-0.5">verified</span>
+<div>
+<div class="text-label font-label text-on-surface">Ikeja Flagship Store Lease Agreement</div>
+<div class="text-[12px] text-on-surface-variant">Commercial Property Lease valid thru 2029</div>
+<div class="text-[11px] text-outline mt-0.5">Physical Site Verified by YourApp Field Ops</div>
+</div>
+</div>
+<button class="text-primary hover:text-[#731540] p-1">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+<!-- Director BVN & Liveness Verification -->
+<div class="p-3 rounded-lg bg-surface-container border border-surface-variant flex items-start justify-between">
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[20px] text-emerald-800 mt-0.5">verified</span>
+<div>
+<div class="text-label font-label text-on-surface">Director BVN &amp; Liveness Verification</div>
+<div class="text-[12px] text-on-surface-variant">Nnamdi Eze (NIBSS Verified Tier 3)</div>
+<div class="text-[11px] text-outline mt-0.5">Biometrics &amp; Govt ID Match Confirmed</div>
+</div>
+</div>
+<button class="text-primary hover:text-[#731540] p-1">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+</div>
+<!-- Recertification Due Warning / Notice -->
+<div class="p-space-md rounded-lg bg-surface-container-high flex items-center justify-between text-caption font-caption text-on-surface-variant">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary">calendar_month</span>
+<span>Next Statutory Recertification: Q3 2026</span>
+</span>
+<span class="font-label text-primary cursor-pointer hover:underline">Schedule</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- SYSTEM STRIP (Bottom Sticky Operational Registry) -->
+<footer class="mt-auto bg-surface-container-lowest border-t border-surface-variant px-space-xl py-3 flex flex-col md:flex-row items-center justify-between text-caption font-caption text-on-surface-variant gap-2">
+<div class="flex items-center gap-3">
+<span class="flex items-center gap-1.5 font-medium text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-primary">lock</span>
+            Encrypted Multi-Tenant Staff Management
+          </span>
+<span class="text-surface-variant">•</span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-emerald-700">shield</span>
+            NDIC Protected Settlement Registry
+          </span>
+</div>
+<div class="flex items-center gap-4 text-[12px]">
+<span>CBN Licensed Merchant Service Provider</span>
+<span>Pay Am Small v4.9.2</span>
+<span class="text-primary font-label font-semibold">YourApp Institutional Banking</span>
+</div>
+</footer>
+</div>
+</div>
+</body></html>

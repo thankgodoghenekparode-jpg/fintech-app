@@ -1,0 +1,48 @@
+{
+  "name": "@sixth-bank/merchant-tools-web",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Merchant Tools React feature package; not a standalone Next.js app.",
+  "type": "module",
+  "types": "./src/index.ts",
+  "scripts": {
+    "dev": "vite --config preview/vite.config.ts --host 127.0.0.1",
+    "dev:pas-vendor": "vite --config preview/pay_am_small_vendor/vite.config.ts --configLoader runner",
+    "build:pas-vendor": "vite build --config preview/pay_am_small_vendor/vite.config.ts --configLoader runner",
+    "preview:pas-vendor": "vite preview --config preview/pay_am_small_vendor/vite.config.ts --configLoader runner",
+    "build": "npm run typecheck && tsc -p tsconfig.build.json && node scripts/copy-styles.mjs && vite build --config preview/vite.config.ts",
+    "format": "prettier --write src preview *.json *.ts *.cjs scripts",
+    "format:check": "prettier --check src preview *.json *.ts *.cjs scripts",
+    "lint": "eslint src preview --ext .ts,.tsx",
+    "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p preview/tsconfig.json",
+    "test": "vitest run --configLoader runner",
+    "test:pas-vendor": "vitest run --configLoader runner src/pay_am_small_vendor"
+  },
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "peerDependencies": {
+    "@tanstack/react-query": ">=5.83.0 <6",
+    "next": ">=15.4.0 <16",
+    "react": ">=19.1.0 <20",
+    "react-dom": ">=19.1.0 <20"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.6.4",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "@typescript-eslint/eslint-plugin": "^8.38.0",
+    "@typescript-eslint/parser": "^8.38.0",
+    "eslint": "^8.57.1",
+    "jsdom": "^24.1.3",
+    "prettier": "^3.6.2",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5",
+    "vitest": "^3.2.4"
+  }
+}

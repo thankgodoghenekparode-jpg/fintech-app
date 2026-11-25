@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Business Home (Dark Mode) - S-MER-001</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Inter Google Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration verbatim -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "outline-variant": "#544247",
+            "on-tertiary-container": "#002a69",
+            "surface-container": "#211f20",
+            "on-secondary": "#61130a",
+            "primary-container": "#e0709a",
+            "secondary-container": "#822c20",
+            "primary-fixed-dim": "#ffb0ca",
+            "on-background": "#e7e1e2",
+            "surface-dim": "#151314",
+            "surface-container-highest": "#373435",
+            "surface-tint": "#ffb0ca",
+            "on-error": "#690005",
+            "tertiary-fixed": "#d9e2ff",
+            "tertiary": "#b0c6ff",
+            "surface-container-lowest": "#100e0f",
+            "on-error-container": "#ffdad6",
+            "surface-bright": "#3b3839",
+            "on-surface-variant": "#dac0c6",
+            "error": "#ffb4ab",
+            "surface-container-high": "#2c292a",
+            "inverse-primary": "#9e3b63",
+            "surface-variant": "#373435",
+            "error-container": "#93000a",
+            "on-secondary-container": "#ff9f90",
+            "secondary-fixed": "#ffdad4",
+            "on-primary-container": "#5d0331",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "on-primary-fixed-variant": "#7f234b",
+            "primary-fixed": "#ffd9e3",
+            "on-primary-fixed": "#3e001f",
+            "on-tertiary-fixed": "#001945",
+            "secondary": "#ffb4a8",
+            "inverse-surface": "#e7e1e2",
+            "on-primary": "#620735",
+            "inverse-on-surface": "#323031",
+            "surface-container-low": "#1d1b1c",
+            "tertiary-container": "#6a92ee",
+            "on-surface": "#e7e1e2",
+            "background": "#151314",
+            "on-secondary-fixed-variant": "#7f291e",
+            "on-tertiary-fixed-variant": "#06429a",
+            "surface": "#151314",
+            "secondary-fixed-dim": "#ffb4a8",
+            "on-secondary-fixed": "#410000",
+            "on-tertiary": "#002d6f",
+            "primary": "#ffb0ca",
+            "outline": "#a28b91"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-md": "1rem",
+            "space-lg": "1.5rem",
+            "margin-mobile": "1rem",
+            "gutter": "1rem",
+            "gutter-mobile": "0.75rem",
+            "margin": "1rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "space-xl": "2rem"
+          },
+          "fontFamily": {
+            "label-lg": ["Inter"],
+            "label-md": ["Inter"],
+            "body-lg": ["Inter"],
+            "headline-md": ["Inter"],
+            "display-currency": ["Inter"],
+            "label-sm": ["Inter"],
+            "title-currency": ["Inter"],
+            "headline-sm": ["Inter"],
+            "headline-lg": ["Inter"],
+            "body-md": ["Inter"]
+          },
+          "fontSize": {
+            "label-lg": ["15px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "title-currency": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      background-color: #121011;
+      color: #F5F1F0;
+      -webkit-tap-highlight-color: transparent;
+      font-family: 'Inter', sans-serif;
+    }
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen flex justify-center antialiased select-none">
+<!-- Mobile Viewport Wrapper (390px base canvas standard) -->
+<div class="w-full max-w-[390px] min-h-screen flex flex-col bg-surface relative overflow-x-hidden pb-[92px]">
+<!-- Top Bar Component (Adapted from Shared TopAppBar with Business Identity) -->
+<header class="flex justify-between items-center w-full px-margin py-space-sm min-h-[56px] bg-surface sticky top-0 z-40 backdrop-blur-md">
+<div class="flex items-center gap-2.5">
+<!-- Business Avatar Initial -->
+<div class="w-10 h-10 rounded-full bg-surface-container-high border border-outline-variant/40 flex items-center justify-center text-primary-container font-headline-sm text-headline-sm font-bold">
+          A
+        </div>
+<!-- Business Switcher Dropdown -->
+<button class="flex flex-col text-left active:scale-95 transition-transform duration-150">
+<div class="flex items-center gap-1">
+<span class="font-label-lg text-label-lg text-on-surface tracking-tight truncate max-w-[170px]">Adeleke Agro &amp; Provisions</span>
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">expand_more</span>
+</div>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="inline-flex items-center gap-0.5 px-1.5 py-0.2 rounded-full text-[10px] font-label-sm font-semibold bg-emerald-500/10 text-emerald-400">
+<span class="material-symbols-outlined text-[11px]" data-weight="fill" style="font-variation-settings: 'FILL' 1;">verified</span>
+              Verified
+            </span>
+<span class="font-label-sm text-label-sm text-outline">RC: 1849201</span>
+</div>
+</button>
+</div>
+<!-- Trailing Action Icons -->
+<div class="flex items-center gap-1">
+<button aria-label="QR Scanner" class="w-[44px] h-[44px] flex items-center justify-center rounded-full hover:bg-surface-container active:scale-95 transition-transform duration-150 text-on-surface">
+<span class="material-symbols-outlined text-[22px]">qr_code_scanner</span>
+</button>
+<button aria-label="Notifications" class="w-[44px] h-[44px] flex items-center justify-center rounded-full hover:bg-surface-container active:scale-95 transition-transform duration-150 text-on-surface relative">
+<span class="material-symbols-outlined text-[22px]">notifications</span>
+<span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-primary-container"></span>
+</button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 px-margin space-y-space-md pt-space-xs">
+<!-- HERO BALANCE CARD (Raised #262122, Border #3A3335) -->
+<section class="bg-surface-container rounded-xl p-space-md border border-outline-variant/40 shadow-sm relative overflow-hidden">
+<!-- Ambient decorative glow -->
+<div class="absolute -top-12 -right-12 w-32 h-32 bg-primary-container/10 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-md text-label-md text-on-surface-variant flex items-center gap-1.5">
+            Total Merchant Settlement Balance
+            <span class="material-symbols-outlined text-[15px] text-outline cursor-pointer">info</span>
+</span>
+<button class="text-on-surface-variant hover:text-on-surface p-1 active:scale-90 transition-transform" id="toggle-balance">
+<span class="material-symbols-outlined text-[20px]" id="eye-icon">visibility</span>
+</button>
+</div>
+<!-- Big Settlement Denomination -->
+<div class="flex items-baseline gap-1 my-2">
+<span class="font-display-currency text-display-currency text-on-surface tabular-nums tracking-tight" id="balance-value">₦3,480,500.00</span>
+</div>
+<!-- Today's Inflow Badge -->
+<div class="inline-flex items-center gap-1.5 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 rounded-full mt-1">
+<span class="material-symbols-outlined text-[16px] text-emerald-400">trending_up</span>
+<span class="font-label-sm text-label-sm text-emerald-400 font-semibold tabular-nums">+₦245,000.00 today (18 transactions)</span>
+</div>
+</section>
+<!-- PRIMARY MERCHANT QUICK ACTION TILES (4 Round Icon Tiles, 52px ergonomics) -->
+<section class="grid grid-cols-4 gap-2 pt-1">
+<!-- Tile 1: Payment Link -->
+<button class="flex flex-col items-center gap-1.5 group active:scale-95 transition-transform duration-150">
+<div class="w-[52px] h-[52px] rounded-xl bg-surface-container-high border border-outline-variant/30 flex items-center justify-center text-primary-container group-hover:border-primary-container/50 transition-colors">
+<span class="material-symbols-outlined text-[24px]">link</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface text-center tracking-tight leading-tight">Payment Link</span>
+</button>
+<!-- Tile 2: Show QR Code -->
+<button class="flex flex-col items-center gap-1.5 group active:scale-95 transition-transform duration-150">
+<div class="w-[52px] h-[52px] rounded-xl bg-surface-container-high border border-outline-variant/30 flex items-center justify-center text-primary-container group-hover:border-primary-container/50 transition-colors">
+<span class="material-symbols-outlined text-[24px]">qr_code_2</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface text-center tracking-tight leading-tight">Show QR Code</span>
+</button>
+<!-- Tile 3: Create Invoice -->
+<button class="flex flex-col items-center gap-1.5 group active:scale-95 transition-transform duration-150">
+<div class="w-[52px] h-[52px] rounded-xl bg-surface-container-high border border-outline-variant/30 flex items-center justify-center text-primary-container group-hover:border-primary-container/50 transition-colors">
+<span class="material-symbols-outlined text-[24px]">receipt_long</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface text-center tracking-tight leading-tight">Create Invoice</span>
+</button>
+<!-- Tile 4: Cashier Mode -->
+<button class="flex flex-col items-center gap-1.5 group active:scale-95 transition-transform duration-150">
+<div class="w-[52px] h-[52px] rounded-xl bg-surface-container-high border border-outline-variant/30 flex items-center justify-center text-primary-container group-hover:border-primary-container/50 transition-colors">
+<span class="material-symbols-outlined text-[24px]">point_of_sale</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface text-center tracking-tight leading-tight">Cashier Mode</span>
+</button>
+</section>
+<!-- TODAY'S POS / COLLECTION PERFORMANCE STRIP (2-column cards) -->
+<section class="grid grid-cols-2 gap-space-sm">
+<!-- Metric Card 1: Settled -->
+<div class="bg-surface-container-low border border-outline-variant/40 rounded-xl p-3 flex flex-col justify-between">
+<div class="flex items-center gap-1.5 text-on-surface-variant mb-1">
+<span class="material-symbols-outlined text-[16px] text-emerald-400">check_circle</span>
+<span class="font-label-sm text-label-sm font-medium">Settled to Wallet</span>
+</div>
+<div class="font-title-currency text-title-currency text-on-surface tabular-nums">₦1,200,000.00</div>
+<span class="font-label-sm text-label-sm text-outline mt-1">Automatic real-time</span>
+</div>
+<!-- Metric Card 2: Pending Payout -->
+<div class="bg-surface-container-low border border-outline-variant/40 rounded-xl p-3 flex flex-col justify-between">
+<div class="flex items-center gap-1.5 text-on-surface-variant mb-1">
+<span class="material-symbols-outlined text-[16px] text-amber-400">schedule</span>
+<span class="font-label-sm text-label-sm font-medium">Pending Payout</span>
+</div>
+<div class="font-title-currency text-title-currency text-on-surface tabular-nums">₦245,000.00</div>
+<span class="font-label-sm text-label-sm text-amber-400 mt-1">Sweeps at 11:00 PM</span>
+</div>
+</section>
+<!-- ACTIVE PAYMENT CHANNELS & TOOLS OVERVIEW (Modular Card Stack) -->
+<section class="space-y-space-xs">
+<div class="flex justify-between items-center px-0.5">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Payment Channels &amp; Tools</h2>
+<button class="font-label-md text-label-md text-primary-container font-semibold hover:underline">Manage</button>
+</div>
+<div class="bg-surface-container-low border border-outline-variant/40 rounded-xl divide-y divide-outline-variant/30 overflow-hidden">
+<!-- Channel 1: Dynamic & Static QR Codes -->
+<div class="p-3 flex items-center justify-between hover:bg-surface-container/60 transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[20px]">qr_code</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-semibold">Dynamic &amp; Static QR Codes</p>
+<p class="font-body-md text-body-md text-on-surface-variant text-[12px] flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                  Terminal B4 active · 34 scans today
+                </p>
+</div>
+</div>
+<span class="material-symbols-outlined text-[20px] text-outline">chevron_right</span>
+</div>
+<!-- Channel 2: Active Payment Links -->
+<div class="p-3 flex items-center justify-between hover:bg-surface-container/60 transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[20px]">add_link</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-semibold">Active Payment Links</p>
+<p class="font-body-md text-body-md text-on-surface-variant text-[12px]">2 links active · "Bulk Yam Delivery" ₦85,000.00</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-[20px] text-outline">chevron_right</span>
+</div>
+<!-- Channel 3: Pending Invoices -->
+<div class="p-3 flex items-center justify-between hover:bg-surface-container/60 transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-amber-400">
+<span class="material-symbols-outlined text-[20px]">pending_actions</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-semibold">Pending Invoices</p>
+<p class="font-body-md text-body-md text-on-surface-variant text-[12px]">3 unpaid invoices · <span class="text-amber-400 tabular-nums">₦190,000.00</span> due</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-[20px] text-outline">chevron_right</span>
+</div>
+<!-- Channel 4: Team Cashiers -->
+<div class="p-3 flex items-center justify-between hover:bg-surface-container/60 transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[20px]">badge</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-semibold">Team Cashiers</p>
+<p class="font-body-md text-body-md text-on-surface-variant text-[12px]">2 cashiers on shift: 'Emeka' &amp; 'Bisi'</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-[20px] text-outline">chevron_right</span>
+</div>
+</div>
+</section>
+<!-- RECENT BUSINESS TRANSACTIONS -->
+<section class="space-y-space-xs">
+<div class="flex justify-between items-center px-0.5">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Recent Transactions</h2>
+<button class="font-label-md text-label-md text-primary-container font-semibold hover:underline">See All</button>
+</div>
+<div class="bg-surface-container-low border border-outline-variant/40 rounded-xl divide-y divide-outline-variant/30 overflow-hidden">
+<!-- Transaction 1: Customer POS Scan / Payment Link -->
+<div class="p-3 flex items-center justify-between min-h-[64px] hover:bg-surface-container/50 transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-emerald-400">
+<span class="material-symbols-outlined text-[20px]">north_east</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-semibold truncate max-w-[170px]">Alhaji Bello &amp; Sons</p>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="font-label-sm text-label-sm text-outline">20 Bags Fertilizer · 10:14 AM WAT</span>
+</div>
+</div>
+</div>
+<div class="text-right">
+<p class="font-label-lg text-label-lg text-emerald-400 font-bold tabular-nums">+₦150,000.00</p>
+<span class="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full text-[10px] font-label-sm bg-emerald-500/10 text-emerald-400 font-medium">
+                Successful
+              </span>
+</div>
+</div>
+<!-- Transaction 2: In-Store Dynamic QR -->
+<div class="p-3 flex items-center justify-between min-h-[64px] hover:bg-surface-container/50 transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-emerald-400">
+<span class="material-symbols-outlined text-[20px]">qr_code_scanner</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-semibold truncate max-w-[170px]">Anonymous Walk-in</p>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="font-label-sm text-label-sm text-outline">Cashier Emeka · 09:48 AM WAT</span>
+</div>
+</div>
+</div>
+<div class="text-right">
+<p class="font-label-lg text-label-lg text-emerald-400 font-bold tabular-nums">+₦12,500.00</p>
+<span class="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full text-[10px] font-label-sm bg-emerald-500/10 text-emerald-400 font-medium">
+                Successful
+              </span>
+</div>
+</div>
+<!-- Transaction 3: Payout to Primary Settlement Bank -->
+<div class="p-3 flex items-center justify-between min-h-[64px] hover:bg-surface-container/50 transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">account_balance</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-semibold truncate max-w-[170px]">Zenith Bank (•••• 4092)</p>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="font-label-sm text-label-sm text-outline">Daily Sweep · 08:00 AM WAT</span>
+</div>
+</div>
+</div>
+<div class="text-right">
+<p class="font-label-lg text-label-lg text-on-surface font-bold tabular-nums">-₦500,000.00</p>
+<span class="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full text-[10px] font-label-sm bg-surface-container-high text-on-surface-variant font-medium">
+                Settled
+              </span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- DOCKED BOTTOM NAVIGATION (Shared BottomNavBar Definition) -->
+<!-- Active Tab: 'Payments' (Merchant context under Banking ecosystem) -->
+<nav class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-margin h-16 max-w-[560px] mx-auto pb-safe bg-surface-container shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)] backdrop-blur-md">
+<!-- Tab 1: Home -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95">
+<span class="material-symbols-outlined text-[22px]">home</span>
+<span class="font-caption text-caption font-medium text-[11px] leading-none">Home</span>
+</button>
+<!-- Tab 2: Payments (ACTIVE per User & Hierarchy Mandate) -->
+<button class="flex flex-col items-center justify-center text-primary-fixed font-semibold min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95">
+<span class="material-symbols-outlined text-[22px]" data-weight="fill" style="font-variation-settings: 'FILL' 1;">send</span>
+<span class="font-caption text-caption font-semibold text-[11px] leading-none text-primary-container">Payments</span>
+</button>
+<!-- Tab 3: Cards -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95">
+<span class="material-symbols-outlined text-[22px]">credit_card</span>
+<span class="font-caption text-caption font-medium text-[11px] leading-none">Cards</span>
+</button>
+<!-- Tab 4: Save & Borrow -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95">
+<span class="material-symbols-outlined text-[22px]">savings</span>
+<span class="font-caption text-caption font-medium text-[11px] leading-none whitespace-nowrap">Save &amp; Borrow</span>
+</button>
+<!-- Tab 5: More -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95">
+<span class="material-symbols-outlined text-[22px]">more_horiz</span>
+<span class="font-caption text-caption font-medium text-[11px] leading-none">More</span>
+</button>
+</nav>
+</div>
+<!-- Micro-interactions Script -->
+<script>
+    // Eye toggle for total balance
+    const toggleBtn = document.getElementById('toggle-balance');
+    const balanceVal = document.getElementById('balance-value');
+    const eyeIcon = document.getElementById('eye-icon');
+    let isHidden = false;
+
+    if (toggleBtn && balanceVal && eyeIcon) {
+      toggleBtn.addEventListener('click', () => {
+        isHidden = !isHidden;
+        if (isHidden) {
+          balanceVal.textContent = '₦ ••••••••';
+          eyeIcon.textContent = 'visibility_off';
+        } else {
+          balanceVal.textContent = '₦3,480,500.00';
+          eyeIcon.textContent = 'visibility';
+        }
+      });
+    }
+  </script>
+</body></html>

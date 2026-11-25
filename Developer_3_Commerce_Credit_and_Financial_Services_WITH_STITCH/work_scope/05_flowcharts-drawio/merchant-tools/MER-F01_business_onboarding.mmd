@@ -1,0 +1,17 @@
+flowchart TD
+  a(["Owner taps Create business"])
+  b[/"Business name, type, registration, owner ID, settlement bank"/]
+  c["Create tenant; dedicated account RESTRICTED"]
+  d["Verification review"]
+  e{"Verified?"}
+  f["Rejected with reason; resubmit"]
+  g["Activate; add team"]
+  h(["Ready to collect"])
+  a --> b
+  b --> c
+  c --> d
+  d --> e
+  e -->|no| f
+  f --> b
+  e -->|yes| g
+  g --> h

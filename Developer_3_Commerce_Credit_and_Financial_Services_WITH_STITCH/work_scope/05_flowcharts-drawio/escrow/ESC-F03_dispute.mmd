@@ -1,0 +1,27 @@
+flowchart TD
+  a(["Party opens dispute in window"])
+  b["Freeze funds; notify other party"]
+  c["Both upload evidence by deadline"]
+  d["Dispute officer reviews; may request more info"]
+  e{"Decision"}
+  f["Release to seller"]
+  g["Refund to buyer"]
+  h["Split per decision"]
+  i{"Appeal requested?"}
+  j["Second reviewer decides"]
+  k["Apply fees per outcome"]
+  l(["Closed with rationale"])
+  a --> b
+  b --> c
+  c --> d
+  d --> e
+  e -->|release| f
+  e -->|refund| g
+  e -->|split| h
+  f --> i
+  g --> i
+  h --> i
+  i -->|yes| j
+  i -->|no| k
+  j --> k
+  k --> l

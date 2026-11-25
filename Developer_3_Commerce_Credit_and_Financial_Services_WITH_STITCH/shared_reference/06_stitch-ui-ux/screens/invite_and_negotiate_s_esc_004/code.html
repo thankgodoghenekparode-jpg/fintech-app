@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YourApp Escrow - Invite &amp; Negotiate</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary-fixed": "#3f001b",
+            "primary": "#6d0033",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-highest": "#e9e0e1",
+            "secondary-fixed": "#ffdad4",
+            "secondary-fixed-dim": "#ffb4a8",
+            "tertiary-fixed": "#eedee4",
+            "inverse-primary": "#ffb1c5",
+            "on-primary-container": "#ffa0ba",
+            "on-surface-variant": "#564146",
+            "on-secondary-container": "#690000",
+            "outline-variant": "#dcbfc5",
+            "outline": "#897176",
+            "on-tertiary-container": "#c6b7bd",
+            "primary-fixed-dim": "#ffb1c5",
+            "on-tertiary-fixed": "#21191e",
+            "inverse-surface": "#342f30",
+            "surface-bright": "#fff8f8",
+            "on-secondary-fixed": "#410000",
+            "on-primary-fixed-variant": "#881646",
+            "tertiary-container": "#53484d",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "on-error": "#ffffff",
+            "on-secondary": "#ffffff",
+            "surface-container-low": "#fbf1f2",
+            "surface-tint": "#a8315d",
+            "primary-fixed": "#ffd9e1",
+            "error": "#ba1a1a",
+            "background": "#fff8f8",
+            "on-error-container": "#93000a",
+            "surface": "#fff8f8",
+            "tertiary": "#3b3236",
+            "surface-variant": "#e9e0e1",
+            "primary-container": "#8e1b4a",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "surface-dim": "#e1d8d9",
+            "secondary": "#ae3123",
+            "surface-container-high": "#efe6e7",
+            "inverse-on-surface": "#f8eeef",
+            "on-surface": "#1f1b1c",
+            "surface-container": "#f5eced",
+            "secondary-container": "#fc6955",
+            "on-tertiary": "#ffffff",
+            "error-container": "#ffdad6",
+            "on-secondary-fixed-variant": "#8c170e",
+            "on-background": "#1f1b1c",
+            "on-primary": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "1rem",
+            "space-xl": "1.5rem",
+            "space-3xl": "3rem",
+            "space-sm": "0.5rem",
+            "space-xs": "0.25rem",
+            "space-2xl": "2rem",
+            "space-md": "0.75rem",
+            "gutter": "1rem",
+            "space-lg": "1rem"
+          },
+          "fontFamily": {
+            "display": ["Inter"],
+            "body-medium": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "subtitle": ["Inter"],
+            "caption": ["Inter"],
+            "title": ["Inter"],
+            "amount-lg": ["Inter"],
+            "label": ["Inter"],
+            "body": ["Inter"]
+          },
+          "fontSize": {
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased flex justify-center min-h-screen">
+<!-- Mobile Container: 390px x 844px context with max-w-[560px] responsive handling -->
+<main class="w-full max-w-[560px] bg-surface flex flex-col min-h-screen relative pb-space-3xl">
+<!-- Top Bar / App Bar with Step Meta -->
+<header class="sticky top-0 z-40 bg-surface/95 backdrop-blur-md px-margin py-space-sm shadow-sm flex flex-col gap-space-xs">
+<div class="flex items-center justify-between min-h-[48px]">
+<button aria-label="Go back" class="w-12 h-12 -ml-2 rounded-xl flex items-center justify-center text-on-surface hover:bg-surface-container transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<div class="flex items-center gap-space-xs">
+<span class="font-title text-title font-bold text-primary tracking-tight">YourApp</span>
+<span class="text-outline-variant">/</span>
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary-fixed text-primary font-label text-caption font-semibold">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+            Escrow
+          </div>
+</div>
+<button aria-label="Help and escrow guide" class="w-12 h-12 -mr-2 rounded-xl flex items-center justify-center text-on-surface-variant hover:bg-surface-container transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[22px]">help_outline</span>
+</button>
+</div>
+<div class="px-space-xs pb-space-xs flex items-baseline justify-between">
+<div>
+<h1 class="font-subtitle text-subtitle font-bold text-on-surface">Invite Counterparty</h1>
+<p class="font-caption text-caption text-on-surface-variant">Step 3 of 4: Invite &amp; Negotiate</p>
+</div>
+<span class="font-caption text-caption font-semibold px-2 py-0.5 rounded bg-surface-container text-on-surface-variant">S-ESC-004</span>
+</div>
+</header>
+<!-- Main Scrollable Flow -->
+<div class="px-margin flex flex-col gap-space-xl pt-space-md">
+<!-- Progress Stepper (4 Steps) -->
+<section aria-label="Escrow Setup Progress" class="w-full">
+<div class="grid grid-cols-4 gap-2 relative">
+<!-- Step 1 Done -->
+<div class="flex flex-col gap-1.5">
+<div class="h-1.5 w-full rounded-full bg-primary-container"></div>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-caption text-caption font-semibold text-[11px] leading-tight">Details</span>
+</div>
+</div>
+<!-- Step 2 Done -->
+<div class="flex flex-col gap-1.5">
+<div class="h-1.5 w-full rounded-full bg-primary-container"></div>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-caption text-caption font-semibold text-[11px] leading-tight">Terms</span>
+</div>
+</div>
+<!-- Step 3 Active -->
+<div class="flex flex-col gap-1.5">
+<div class="h-1.5 w-full rounded-full bg-primary-container relative">
+<div class="absolute -top-1 right-1/2 translate-x-1/2 w-2 h-2 rounded-full bg-primary-container ring-2 ring-surface"></div>
+</div>
+<div class="flex items-center gap-1 text-primary-container">
+<span class="w-3.5 h-3.5 rounded-full bg-primary-container text-surface-container-lowest text-[10px] flex items-center justify-center font-bold">3</span>
+<span class="font-caption text-caption font-bold text-[11px] leading-tight">Party</span>
+</div>
+</div>
+<!-- Step 4 Pending -->
+<div class="flex flex-col gap-1.5">
+<div class="h-1.5 w-full rounded-full bg-surface-container-highest"></div>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="w-3.5 h-3.5 rounded-full bg-surface-container-highest text-on-surface-variant text-[10px] flex items-center justify-center font-semibold">4</span>
+<span class="font-caption text-caption text-on-surface-variant text-[11px] leading-tight">Lock</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Counterparty Contact Card -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant/60 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] p-space-lg flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">person_add</span>
+</div>
+<div>
+<h2 class="font-body-medium text-body-medium font-semibold text-on-surface">Counterparty Contact</h2>
+<p class="font-caption text-caption text-on-surface-variant">Identify seller by phone or @tag</p>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-caption text-caption font-semibold">
+            Seller
+          </span>
+</div>
+<!-- Input Field Form -->
+<div class="flex flex-col gap-space-xs pt-space-xs">
+<label class="font-caption text-caption font-medium text-on-surface-variant" for="seller-identifier">
+            Seller's Phone Number or YourApp @tag
+          </label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3.5 text-[20px] text-outline">alternate_email</span>
+<input class="w-full h-[52px] pl-10 pr-12 rounded-xl bg-surface-container-lowest border border-primary-container text-body text-on-surface focus:outline-none focus:ring-2 focus:ring-primary-container/20 font-medium" id="seller-identifier" placeholder="+234 803 000 0000 or @tag" type="text" value="@ade_laptops"/>
+<span class="material-symbols-outlined absolute right-3.5 text-[20px] text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<!-- Verified Account Badge Lookup Result -->
+<div class="mt-space-xs p-3 rounded-lg bg-surface-container-low border border-outline-variant/40 flex items-start justify-between gap-space-sm">
+<div class="flex items-start gap-2.5">
+<div class="w-8 h-8 rounded-full bg-primary-container text-surface-container-lowest flex items-center justify-center font-bold text-caption mt-0.5">
+                AL
+              </div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-label text-label font-bold text-on-surface">Adebayo Laptops &amp; Gadgets</span>
+<span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant">+234 803 456 7890 • Ikeja, Lagos</p>
+</div>
+</div>
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container-lowest border border-outline-variant/60 shadow-xs">
+<span class="material-symbols-outlined text-[13px] text-primary">shield</span>
+<span class="font-caption text-caption text-[11px] font-semibold text-primary">Tier 3 Verified</span>
+</div>
+</div>
+</div>
+<!-- Quick Shareable Deal Link -->
+<div class="border-t border-outline-variant/30 pt-space-md flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-caption text-caption font-semibold text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">link</span> Direct Invite Link
+            </span>
+<span class="font-caption text-caption text-on-surface-variant/80">Expires in 24h</span>
+</div>
+<div class="bg-surface-container px-3 py-2 rounded-lg flex items-center justify-between text-on-surface-variant font-caption text-caption">
+<span class="truncate pr-2 font-mono text-[12px]">yourapp.bank/escrow/inv/mac-850k-x9f2</span>
+<span class="text-primary font-semibold text-[11px] shrink-0">Secured SSL</span>
+</div>
+<div class="grid grid-cols-2 gap-space-sm pt-space-xs">
+<button class="h-10 px-3 rounded-lg border border-outline-variant text-on-surface font-label text-label font-medium hover:bg-surface-container transition-all active:scale-95 flex items-center justify-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+              Copy Link
+            </button>
+<button class="h-10 px-3 rounded-lg bg-surface-container text-on-surface font-label text-label font-medium hover:bg-surface-container-high transition-all active:scale-95 flex items-center justify-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[18px] text-primary">share</span>
+              WhatsApp Invite
+            </button>
+</div>
+</div>
+</section>
+<!-- Deal Terms Snapshot -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant/60 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] p-space-lg flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-xs border-b border-outline-variant/30">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[20px] text-primary">description</span>
+<h2 class="font-body-medium text-body-medium font-semibold text-on-surface">Deal Terms Snapshot</h2>
+</div>
+<span class="font-caption text-caption text-on-surface-variant font-medium">To be shared</span>
+</div>
+<!-- Deal Item Highlight -->
+<div class="flex items-start gap-space-md bg-surface-container-low p-space-md rounded-xl">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center shrink-0 text-on-surface-variant">
+<span class="material-symbols-outlined text-[24px]">laptop_mac</span>
+</div>
+<div class="flex flex-col">
+<span class="font-caption text-caption text-on-surface-variant uppercase tracking-wider font-semibold">Agreed Item</span>
+<span class="font-body-medium text-body-medium font-bold text-on-surface">2019 MacBook Pro 16-inch</span>
+<span class="font-caption text-caption text-on-surface-variant">Space Grey • 1TB SSD • 16GB RAM</span>
+</div>
+</div>
+<!-- Financial & Operational Spec Rows -->
+<div class="flex flex-col divide-y divide-outline-variant/20">
+<div class="py-2.5 flex items-center justify-between">
+<span class="font-caption text-caption text-on-surface-variant">Escrow Value</span>
+<span class="font-body-medium text-body-medium font-bold text-on-surface tabular-nums">₦850,000.00</span>
+</div>
+<div class="py-2.5 flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-caption text-caption text-on-surface-variant">Fee Allocation</span>
+<span class="font-label text-label font-semibold text-primary">Split 50 / 50</span>
+</div>
+<div class="text-on-surface-variant font-caption text-caption flex items-center justify-between text-[12px]">
+<span>Seller pays: <strong class="text-on-surface tabular-nums">₦6,375.00</strong> (deducted from payout)</span>
+<span>Buyer pays: <strong class="text-on-surface tabular-nums">₦6,375.00</strong></span>
+</div>
+</div>
+<div class="py-2.5 flex items-center justify-between">
+<span class="font-caption text-caption text-on-surface-variant">Inspection Window</span>
+<div class="flex items-center gap-1.5 font-label text-label font-semibold text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-primary">timelapse</span>
+<span>48 hours post-courier delivery</span>
+</div>
+</div>
+<div class="py-2.5 flex items-center justify-between">
+<span class="font-caption text-caption text-on-surface-variant">Delivery Mode</span>
+<span class="font-label text-label font-medium text-on-surface">Insured Waybill Dispatch</span>
+</div>
+</div>
+</section>
+<!-- Terms Agreement & Adjustments (Negotiation & Counter-Offer Thread) -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant/60 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] p-space-lg flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-xs border-b border-outline-variant/30">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[20px] text-primary">sync_alt</span>
+<h2 class="font-body-medium text-body-medium font-semibold text-on-surface">Terms Agreement &amp; Adjustments</h2>
+</div>
+<!-- Counterparty Status Tag with Icon + Label mandate -->
+<div class="inline-flex items-center gap-1 px-2 py-1 rounded bg-secondary-fixed text-on-secondary-fixed font-caption text-caption font-semibold">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+<span>Pending Seller Review</span>
+</div>
+</div>
+<!-- Toggle for Counter Offers -->
+<div class="flex items-start justify-between gap-space-md p-space-sm bg-surface-container-low rounded-xl">
+<div class="flex flex-col gap-0.5">
+<label class="font-label text-label font-bold text-on-surface cursor-pointer" for="allow-counter">
+              Allow Seller counter-proposals
+            </label>
+<p class="font-caption text-caption text-on-surface-variant text-[12px]">
+              Allows Adebayo to suggest alternative delivery windows or fee split options before locking funds.
+            </p>
+</div>
+<div class="relative inline-flex items-center shrink-0 cursor-pointer pt-1">
+<input checked="" class="sr-only peer" id="allow-counter" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[6px] after:left-[2px] after:bg-surface-container-lowest after:border-outline-variant after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</div>
+</div>
+<!-- Special Instructions / Notes Textarea -->
+<div class="flex flex-col gap-space-xs">
+<label class="font-caption text-caption font-medium text-on-surface-variant flex items-center justify-between" for="special-instructions">
+<span>Special instructions or notes for seller</span>
+<span class="text-outline text-[12px]">Optional</span>
+</label>
+<textarea class="w-full p-3 rounded-xl bg-surface-container-lowest border border-outline-variant text-body text-on-surface focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container text-sm leading-relaxed" id="special-instructions" placeholder="e.g. Please ensure original 96W Apple charger and serial number matching box are included before dispatch." rows="3">Please ensure original 96W Apple charger and serial number matching box are included before dispatch.</textarea>
+<span class="font-caption text-caption text-[11px] text-on-surface-variant text-right">86 / 250 characters</span>
+</div>
+</section>
+<!-- Security Notice Card -->
+<section class="bg-surface-container-low border border-primary/20 rounded-xl p-space-md flex items-start gap-space-md">
+<div class="w-8 h-8 rounded-full bg-primary-fixed text-primary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+</div>
+<div class="flex flex-col">
+<h3 class="font-label text-label font-bold text-on-surface">Institutional Escrow Protection</h3>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">
+            Funds will not be debited until both parties accept terms and you authorize locking the deal.
+          </p>
+</div>
+</section>
+<!-- Bottom Clearance -->
+<div class="h-28"></div>
+</div>
+<!-- Sticky Bottom Actions Bar (Standardized 52px buttons) -->
+<div class="fixed bottom-0 left-0 right-0 z-50 bg-surface-container-lowest/95 backdrop-blur-md border-t border-outline-variant/40 px-margin py-3 max-w-[560px] mx-auto shadow-[0_8px_24px_-4px_rgba(30,26,27,0.12)]">
+<div class="flex items-center gap-space-sm w-full">
+<!-- Back Button (Outline 52px) -->
+<button class="h-[52px] px-5 rounded-xl border-[1.5px] border-outline-variant text-on-surface font-label text-label font-semibold hover:bg-surface-container transition-all active:scale-95 flex items-center justify-center shrink-0" type="button">
+          Back
+        </button>
+<!-- Primary Berry Action Button (52px primary-container) -->
+<button class="flex-1 h-[52px] rounded-xl bg-primary-container hover:bg-primary text-surface-container-lowest font-label text-label font-semibold shadow-[0_2px_8px_-2px_rgba(110,0,51,0.4)] transition-all active:scale-[0.98] flex items-center justify-center gap-2" type="button">
+<span>Send Invite &amp; Review Deal</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</main>
+</body></html>

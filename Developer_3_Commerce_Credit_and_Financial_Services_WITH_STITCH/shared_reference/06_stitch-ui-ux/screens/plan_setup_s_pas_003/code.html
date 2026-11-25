@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YourApp - Pay Am Small Plan Setup</title>
+<!-- Material Symbols Outlined Font -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Inter Google Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration verbatim as specified -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-primary": "#ffb1c5",
+            "primary-container": "#8e1b4a",
+            "on-primary-container": "#ffa0ba",
+            "error-container": "#ffdad6",
+            "on-tertiary-fixed": "#21191e",
+            "error": "#ba1a1a",
+            "on-surface": "#1f1b1c",
+            "outline-variant": "#dcbfc5",
+            "on-surface-variant": "#564146",
+            "tertiary-fixed": "#eedee4",
+            "inverse-surface": "#342f30",
+            "background": "#fff8f8",
+            "inverse-on-surface": "#f8eeef",
+            "on-secondary-container": "#690000",
+            "secondary-fixed-dim": "#ffb4a8",
+            "on-tertiary-container": "#c6b7bd",
+            "surface-container": "#f5eced",
+            "outline": "#897176",
+            "on-primary-fixed": "#3f001b",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "tertiary": "#3b3236",
+            "primary-fixed-dim": "#ffb1c5",
+            "secondary-fixed": "#ffdad4",
+            "surface-container-highest": "#e9e0e1",
+            "on-background": "#1f1b1c",
+            "on-secondary-fixed-variant": "#8c170e",
+            "secondary-container": "#fc6955",
+            "surface-container-low": "#fbf1f2",
+            "tertiary-container": "#53484d",
+            "on-primary-fixed-variant": "#881646",
+            "surface-container-lowest": "#ffffff",
+            "on-secondary-fixed": "#410000",
+            "surface-bright": "#fff8f8",
+            "surface-tint": "#a8315d",
+            "on-error-container": "#93000a",
+            "secondary": "#ae3123",
+            "primary": "#6d0033",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "on-tertiary": "#ffffff",
+            "on-error": "#ffffff",
+            "surface": "#fff8f8",
+            "on-primary": "#ffffff",
+            "on-secondary": "#ffffff",
+            "primary-fixed": "#ffd9e1",
+            "surface-variant": "#e9e0e1",
+            "surface-dim": "#e1d8d9",
+            "surface-container-high": "#efe6e7"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-md": "0.75rem",
+            "space-2xl": "2rem",
+            "margin": "1rem",
+            "space-3xl": "3rem",
+            "space-lg": "1rem",
+            "gutter": "1rem",
+            "space-xl": "1.5rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "subtitle": ["Inter"],
+            "display": ["Inter"],
+            "title": ["Inter"],
+            "body-medium": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "amount-lg": ["Inter"],
+            "label": ["Inter"],
+            "caption": ["Inter"],
+            "body": ["Inter"]
+          },
+          "fontSize": {
+            "subtitle": [
+              "20px",
+              {
+                "lineHeight": "28px",
+                "letterSpacing": "-0.01em",
+                "fontWeight": "600"
+              }
+            ],
+            "display": [
+              "32px",
+              {
+                "lineHeight": "40px",
+                "letterSpacing": "-0.02em",
+                "fontWeight": "700"
+              }
+            ],
+            "title": [
+              "24px",
+              {
+                "lineHeight": "32px",
+                "letterSpacing": "-0.015em",
+                "fontWeight": "700"
+              }
+            ],
+            "body-medium": [
+              "16px",
+              {
+                "lineHeight": "24px",
+                "letterSpacing": "0em",
+                "fontWeight": "500"
+              }
+            ],
+            "amount-lg-mobile": [
+              "32px",
+              {
+                "lineHeight": "40px",
+                "letterSpacing": "-0.02em",
+                "fontWeight": "700"
+              }
+            ],
+            "amount-lg": [
+              "36px",
+              {
+                "lineHeight": "44px",
+                "letterSpacing": "-0.03em",
+                "fontWeight": "700"
+              }
+            ],
+            "label": [
+              "14px",
+              {
+                "lineHeight": "20px",
+                "letterSpacing": "0.01em",
+                "fontWeight": "600"
+              }
+            ],
+            "caption": [
+              "13px",
+              {
+                "lineHeight": "18px",
+                "letterSpacing": "0.01em",
+                "fontWeight": "400"
+              }
+            ],
+            "body": [
+              "16px",
+              {
+                "lineHeight": "24px",
+                "letterSpacing": "0em",
+                "fontWeight": "400"
+              }
+            ]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .tnum {
+      font-feature-settings: "tnum" 1;
+      font-variant-numeric: tabular-nums;
+    }
+    /* Hide scrollbar for clean chip rail */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased flex justify-center min-h-screen selection:bg-primary-fixed selection:text-primary">
+<!-- Mobile Frame Container (Strict 390x844 responsive boundary, max 560px) -->
+<div class="w-full max-w-[420px] bg-surface flex flex-col min-h-screen relative shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)]">
+<!-- Top App Bar / Progress Header (Task-focused journey: BottomNav suppressed as per shell rules) -->
+<header class="sticky top-0 z-30 bg-surface/95 backdrop-blur-md px-margin pt-space-md pb-space-sm border-b border-outline-variant/30 flex flex-col gap-space-xs">
+<div class="flex items-center justify-between min-h-[48px]">
+<button aria-label="Go back" class="w-12 h-12 -ml-2 rounded-xl flex items-center justify-center text-on-surface hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<div class="text-center">
+<h1 class="font-title text-title font-bold text-primary tracking-tight">Configure Plan</h1>
+</div>
+<button class="w-12 h-12 -mr-2 rounded-xl flex items-center justify-center text-on-surface-variant font-label text-label hover:text-error active:scale-95 transition-all" type="button">
+          Cancel
+        </button>
+</div>
+<!-- Stepper Indicator -->
+<div class="px-space-xs pb-space-xs">
+<div class="flex items-center justify-between font-caption text-caption text-on-surface-variant mb-1.5">
+<span class="font-medium text-primary font-caption text-caption flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">lock_clock</span>
+            Step 1 of 2: Vault Plan Setup
+          </span>
+<span class="font-caption text-caption text-on-surface-variant">Next: Payment Review</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden flex">
+<div class="bg-primary-container h-full w-1/2 rounded-full"></div>
+</div>
+</div>
+</header>
+<!-- Scrollable Content Canvas -->
+<main class="flex-1 px-margin pt-space-lg pb-space-3xl space-y-space-xl">
+<!-- Items in this Vault Section -->
+<section class="space-y-space-sm">
+<div class="flex items-center justify-between px-space-xs">
+<h2 class="font-label text-label text-on-surface-variant flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-primary">inventory_2</span>
+            Items in this Price-Lock Vault
+          </h2>
+<span class="inline-flex items-center gap-1 bg-surface-container px-2 py-0.5 rounded-lg font-caption text-caption text-on-surface-variant font-medium">
+<span class="material-symbols-outlined text-[14px] text-primary">verified</span> Guaranteed
+          </span>
+</div>
+<!-- Product Card -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] space-y-space-md">
+<div class="flex gap-space-md items-start">
+<!-- Product Thumbnail Image -->
+<div class="w-20 h-20 rounded-xl overflow-hidden bg-surface-container-low shrink-0 border border-outline-variant/30 flex items-center justify-center relative">
+<img class="w-full h-full object-cover" data-alt="A modern metallic Haier Thermocool chest freezer in an organized retail home appliance showroom with bright, natural lighting, crisp reflections on stainless steel, styled in an elegant, contemporary retail setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzGxxDT7acXjCKf-Ds9fSnTlS1HmecN-VNuQS6Nhi4szxFPFDh9PzxinLp_y1uGtSyjWSyirpf9aaxztVBPBMHHqssNiiZJ3XhwgAn7-HW6Z1hmGUH6-Qy2HJCNwT_yvLuWzuJaBbLcQJzJPx2YdFpfFN0ewboB2bzHqbJJtMdbBKgwO80mumrD02u3KeUJMFubXFvsisfSJVqxQrgE0FEFH-FcJAw9EYbXxYDRLPqWMdXDb53PLZ48Q"/>
+<span class="absolute bottom-1 right-1 bg-inverse-surface/80 text-inverse-on-surface font-caption text-[10px] px-1.5 py-0.5 rounded">
+                Qty 1
+              </span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-start justify-between gap-1">
+<h3 class="font-body-medium text-body-medium text-on-surface font-semibold leading-tight line-clamp-2">
+                  Haier Thermocool 200L Chest Freezer
+                </h3>
+</div>
+<div class="flex items-center gap-1.5 mt-1 text-on-surface-variant font-caption text-caption">
+<span class="material-symbols-outlined text-[16px] text-primary">storefront</span>
+<span>MegaPlaza Lagos</span>
+<span class="text-outline-variant">•</span>
+<span class="text-on-surface-variant font-medium">Lekki Branch</span>
+</div>
+<div class="mt-2.5 flex items-baseline justify-between">
+<span class="font-subtitle text-subtitle text-primary font-bold tnum">₦285,000.00</span>
+<span class="font-caption text-[11px] text-on-surface-variant bg-surface-container px-2 py-0.5 rounded">Price Locked</span>
+</div>
+</div>
+</div>
+<!-- Add Another Item Action Button -->
+<div class="pt-space-xs border-t border-surface-container-high">
+<button class="w-full py-2.5 px-space-md rounded-xl bg-surface-container-low hover:bg-surface-container active:scale-[0.99] border border-dashed border-outline-variant/60 flex items-center justify-center gap-space-xs text-primary font-label text-label transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+              + Add Another Item to Vault
+            </button>
+</div>
+</div>
+</section>
+<!-- Target Vault Amount Banner -->
+<section class="bg-surface-container-low rounded-xl p-space-lg border border-outline-variant/30 flex items-center justify-between">
+<div>
+<p class="font-caption text-caption text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">price_check</span>
+            Target Vault Lock Amount
+          </p>
+<p class="font-amount-lg-mobile text-amount-lg-mobile font-bold text-on-surface tracking-tight tnum mt-0.5">
+            ₦285,000<span class="font-subtitle text-subtitle text-on-surface-variant">.00</span>
+</p>
+</div>
+<div class="text-right">
+<span class="inline-flex items-center gap-1 bg-surface-container-lowest text-primary font-label text-label px-2.5 py-1 rounded-lg border border-outline-variant/30">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">shield</span>
+            Zero Inflation
+          </span>
+<p class="font-caption text-[11px] text-on-surface-variant mt-1">Vendor honored rate</p>
+</div>
+</section>
+<!-- Plan Deadline & Duration Selector -->
+<section class="space-y-space-sm">
+<div class="flex items-center justify-between px-space-xs">
+<label class="font-label text-label text-on-surface font-semibold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-primary">calendar_month</span>
+            Plan Deadline &amp; Duration
+          </label>
+<span class="font-caption text-caption text-on-surface-variant">Flexible tenure</span>
+</div>
+<!-- Duration Horizontal Chip Scroller -->
+<div class="flex items-center gap-space-xs overflow-x-auto no-scrollbar pb-1 -mx-margin px-margin">
+<button class="shrink-0 h-10 px-4 rounded-xl border border-outline-variant/60 bg-surface-container-lowest font-label text-label text-on-surface-variant hover:bg-surface-container active:scale-95 transition-all" type="button">
+            1 Month
+          </button>
+<button class="shrink-0 h-10 px-4 rounded-xl border border-outline-variant/60 bg-surface-container-lowest font-label text-label text-on-surface-variant hover:bg-surface-container active:scale-95 transition-all" type="button">
+            2 Months
+          </button>
+<!-- Selected Chip -->
+<button class="shrink-0 h-10 px-4 rounded-xl bg-primary text-on-primary font-label text-label shadow-sm flex items-center gap-1.5 active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+            3 Months (Recommended)
+          </button>
+<button class="shrink-0 h-10 px-4 rounded-xl border border-outline-variant/60 bg-surface-container-lowest font-label text-label text-on-surface-variant hover:bg-surface-container active:scale-95 transition-all" type="button">
+            4 Months
+          </button>
+<button class="shrink-0 h-10 px-4 rounded-xl border border-outline-variant/60 bg-surface-container-lowest font-label text-label text-on-surface-variant hover:bg-surface-container active:scale-95 transition-all" type="button">
+            Custom
+          </button>
+</div>
+<!-- Target Date Banner Info -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl border border-outline-variant/40 flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-lg bg-primary-fixed/60 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">event_available</span>
+</div>
+<div>
+<p class="font-caption text-caption text-on-surface-variant">Lock Guarantee Closes</p>
+<p class="font-body-medium text-body-medium font-semibold text-on-surface">15 March 2027</p>
+</div>
+</div>
+<span class="font-caption text-caption font-medium text-primary bg-surface-container px-2.5 py-1 rounded-lg">
+            90 Days Lock
+          </span>
+</div>
+</section>
+<!-- Top-Up Schedule & Funding Method -->
+<section class="space-y-space-md">
+<div class="px-space-xs">
+<h2 class="font-label text-label text-on-surface font-semibold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-primary">autorenew</span>
+            Top-Up Schedule &amp; Funding Method
+          </h2>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">Choose how you wish to complete the locked purchase</p>
+</div>
+<!-- Segmented Tab Toggle -->
+<div class="bg-surface-container p-1 rounded-xl flex items-center gap-1">
+<button class="flex-1 py-2.5 px-space-sm rounded-lg bg-surface-container-lowest text-primary font-label text-label font-semibold shadow-sm flex items-center justify-center gap-1.5 transition-all" type="button">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">check</span>
+            Automated Monthly Debit
+          </button>
+<button class="flex-1 py-2.5 px-space-sm rounded-lg text-on-surface-variant font-label text-label hover:text-on-surface transition-all flex items-center justify-center gap-1" type="button">
+            Flexible / Manual
+          </button>
+</div>
+<!-- Schedule Breakdown Details Card -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant/40 space-y-space-md">
+<div class="flex items-center justify-between pb-space-sm border-b border-surface-container-high">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container"></span>
+<span class="font-body-medium text-body-medium font-medium text-on-surface">3 Scheduled Debits</span>
+</div>
+<span class="font-body-medium text-body-medium font-bold text-primary tnum">₦95,000.00 / mo</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">schedule</span>
+            Automated debits process on the <strong>15th of each month</strong>.
+          </p>
+<!-- Initial Deposit Component -->
+<div class="pt-space-xs space-y-space-xs">
+<div class="flex justify-between items-center">
+<label class="font-caption text-caption text-on-surface font-medium">Initial Deposit Today (Optional / Recommended)</label>
+<span class="font-caption text-[11px] text-primary">Reduces monthly debit</span>
+</div>
+<!-- Pre-selection chips -->
+<div class="grid grid-cols-3 gap-2">
+<button class="h-10 rounded-xl border border-outline-variant/50 bg-surface-container-low font-label text-caption text-on-surface hover:border-primary transition-all tnum" type="button">
+                ₦0.00
+              </button>
+<button class="h-10 rounded-xl border-1.5 border-primary bg-primary-fixed/30 font-label text-caption text-primary font-bold transition-all tnum flex items-center justify-center gap-1" type="button">
+<span class="material-symbols-outlined text-[14px]">check</span>
+                ₦20,000.00
+              </button>
+<button class="h-10 rounded-xl border border-outline-variant/50 bg-surface-container-low font-label text-caption text-on-surface hover:border-primary transition-all tnum" type="button">
+                ₦50,000.00
+              </button>
+</div>
+<!-- Standard 52px Input for custom amount -->
+<div class="relative mt-2">
+<div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-on-surface-variant font-medium">
+                ₦
+              </div>
+<input class="w-full h-[52px] pl-8 pr-4 bg-surface-container-lowest border border-outline-variant rounded-xl font-body text-body text-on-surface focus:border-primary focus:ring-1 focus:ring-primary tnum outline-none transition-all" placeholder="Enter deposit amount" type="text" value="20,000.00"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Funding Source Account Card -->
+<section class="space-y-space-xs">
+<label class="px-space-xs font-label text-label text-on-surface font-semibold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-primary">account_balance_wallet</span>
+          Funding Source Account
+        </label>
+<div class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant/40 shadow-sm flex items-center justify-between active:bg-surface-container transition-all cursor-pointer">
+<div class="flex items-center gap-space-md">
+<div class="w-11 h-11 rounded-xl bg-surface-container flex items-center justify-center text-primary shrink-0 border border-outline-variant/30">
+<span class="material-symbols-outlined text-[24px]">account_balance</span>
+</div>
+<div>
+<p class="font-body-medium text-body-medium font-semibold text-on-surface">Pay from YourApp Tier 2 Savings</p>
+<p class="font-caption text-caption text-on-surface-variant tnum mt-0.5">
+                Available Bal: <span class="font-medium text-on-surface">₦142,850.00</span>
+</p>
+</div>
+</div>
+<button aria-label="Change funding account" class="w-8 h-8 rounded-lg flex items-center justify-center text-on-surface-variant hover:text-primary" type="button">
+<span class="material-symbols-outlined text-[22px]">swap_horiz</span>
+</button>
+</div>
+</section>
+<!-- Price-Lock Rules & Penalty Transparency Bento Card -->
+<section class="space-y-space-sm">
+<div class="flex items-center gap-1.5 px-space-xs">
+<span class="material-symbols-outlined text-[18px] text-primary">gavel</span>
+<h2 class="font-label text-label text-on-surface font-semibold">Price-Lock Rules &amp; Transparency</h2>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant/40 space-y-space-md">
+<!-- Rule 1: Stock Guarantee -->
+<div class="flex items-start gap-space-md">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+</div>
+<div>
+<p class="font-body-medium text-[15px] font-semibold text-on-surface">Vendor Stock Guarantee</p>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5 leading-relaxed">
+                MegaPlaza reserves and isolates your unit in warehouse inventory throughout this period.
+              </p>
+</div>
+</div>
+<!-- Rule 2: Grace Period -->
+<div class="flex items-start gap-space-md pt-2 border-t border-surface-container-high">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">timelapse</span>
+</div>
+<div>
+<p class="font-body-medium text-[15px] font-semibold text-on-surface">Deadline &amp; Grace Period</p>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5 leading-relaxed">
+                A 7-day grace period is granted if a scheduled debit fails, before any lock review occurs.
+              </p>
+</div>
+</div>
+<!-- Rule 3: Early Exit & Transparent Penalties -->
+<div class="flex items-start gap-space-md pt-2 border-t border-surface-container-high">
+<div class="w-8 h-8 rounded-lg bg-error-container/40 flex items-center justify-center text-error shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">info</span>
+</div>
+<div>
+<p class="font-body-medium text-[15px] font-semibold text-on-surface">Early Exit / Withdrawal</p>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5 leading-relaxed">
+                If you cancel before completion, savings are returned to your account minus a <strong>2.5% vendor restocking/admin fee (₦7,125.00)</strong>.
+              </p>
+</div>
+</div>
+<!-- Institutional Note -->
+<div class="mt-2 p-space-md bg-surface-container-low rounded-xl border border-outline-variant/30 flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-primary shrink-0 mt-0.5">policy</span>
+<p class="font-caption text-[12px] text-on-surface-variant leading-normal">
+              This is a price-lock savings vault, not an escrow deposit. Total funds disburse directly to vendor upon 100% completion.
+            </p>
+</div>
+</div>
+</section>
+</main>
+<!-- Sticky Bottom CTA Action Bar (52px standardized button with elevation) -->
+<div class="sticky bottom-0 z-30 bg-surface/95 backdrop-blur-md px-margin py-space-md border-t border-outline-variant/30 shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)] pb-safe">
+<button class="w-full h-[52px] bg-primary-container text-on-primary hover:bg-primary font-label text-label font-semibold rounded-xl flex items-center justify-center gap-2 active:scale-[0.98] transition-all shadow-md group" type="button">
+<span>Review Plan Summary &amp; Terms</span>
+<span class="material-symbols-outlined text-[20px] group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+</button>
+<p class="text-center font-caption text-[11px] text-on-surface-variant mt-2 flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-primary">lock</span>
+        Zero interest • Regulated retail protection
+      </p>
+</div>
+</div>
+</body></html>

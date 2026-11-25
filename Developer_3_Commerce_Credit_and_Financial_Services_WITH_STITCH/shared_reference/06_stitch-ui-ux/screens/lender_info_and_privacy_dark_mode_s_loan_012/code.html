@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lender Info &amp; Privacy - YourApp</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary": "#61130a",
+            "surface-dim": "#151314",
+            "on-background": "#e7e1e2",
+            "inverse-surface": "#e7e1e2",
+            "on-error-container": "#ffdad6",
+            "surface-container-lowest": "#100e0f",
+            "on-secondary-container": "#ff9f90",
+            "on-surface-variant": "#dac0c6",
+            "on-primary-fixed-variant": "#7f234b",
+            "on-tertiary-fixed": "#001945",
+            "secondary-fixed": "#ffdad4",
+            "surface-variant": "#373435",
+            "secondary-fixed-dim": "#ffb4a8",
+            "surface-tint": "#ffb0ca",
+            "background": "#151314",
+            "surface": "#151314",
+            "error": "#ffb4ab",
+            "outline": "#a28b91",
+            "on-tertiary-container": "#002a69",
+            "on-secondary-fixed": "#410000",
+            "on-tertiary": "#002d6f",
+            "secondary": "#ffb4a8",
+            "surface-bright": "#3b3839",
+            "tertiary-fixed": "#d9e2ff",
+            "surface-container-low": "#1d1b1c",
+            "outline-variant": "#544247",
+            "primary": "#ffb0ca",
+            "inverse-primary": "#9e3b63",
+            "on-surface": "#e7e1e2",
+            "on-error": "#690005",
+            "inverse-on-surface": "#323031",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "on-primary-fixed": "#3e001f",
+            "on-primary-container": "#5d0331",
+            "surface-container-high": "#2c292a",
+            "on-primary": "#620735",
+            "primary-container": "#e0709a",
+            "on-tertiary-fixed-variant": "#06429a",
+            "on-secondary-fixed-variant": "#7f291e",
+            "primary-fixed-dim": "#ffb0ca",
+            "surface-container": "#211f20",
+            "primary-fixed": "#ffd9e3",
+            "tertiary-container": "#6a92ee",
+            "surface-container-highest": "#373435",
+            "tertiary": "#b0c6ff",
+            "error-container": "#93000a",
+            "secondary-container": "#822c20"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "1rem",
+            "space-sm": "0.5rem",
+            "space-lg": "1.5rem",
+            "space-xs": "0.25rem",
+            "space-xl": "2rem",
+            "gutter": "1rem",
+            "gutter-mobile": "0.75rem",
+            "margin-mobile": "1rem",
+            "space-md": "1rem"
+          },
+          "fontFamily": {
+            "body-md": ["Inter"],
+            "headline-lg": ["Inter"],
+            "display-currency": ["Inter"],
+            "title-currency": ["Inter"],
+            "headline-sm": ["Inter"],
+            "label-md": ["Inter"],
+            "label-sm": ["Inter"],
+            "headline-md": ["Inter"],
+            "label-lg": ["Inter"],
+            "body-lg": ["Inter"]
+          },
+          "fontSize": {
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "title-currency": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-lg": ["15px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .material-symbols-outlined.fill {
+      font-variation-settings: 'FILL' 1;
+    }
+    body {
+      background-color: #121011;
+      color: #e7e1e2;
+      font-family: 'Inter', sans-serif;
+    }
+    /* Hide scrollbar for clean mobile presentation */
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    * {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-lowest min-h-screen flex justify-center selection:bg-primary-container selection:text-surface-container-lowest">
+<!-- Mobile Viewport Container (390 x 844 reference, max-w-[440px] responsive frame) -->
+<div class="w-full max-w-[440px] min-h-screen bg-surface-container-lowest relative flex flex-col pb-[96px] shadow-2xl">
+<!-- Sticky Header with Subtitle & Back Action -->
+<header class="sticky top-0 z-40 bg-surface-container-lowest/95 backdrop-blur-md px-margin py-space-sm flex items-center justify-between min-h-[56px] border-b border-outline-variant/30">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Go back" class="w-10 h-10 -ml-1.5 rounded-full flex items-center justify-center text-on-surface hover:bg-surface-container transition-colors active:scale-95 duration-150" type="button">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<div>
+<h1 class="font-headline-sm text-headline-sm text-on-surface leading-tight">Lender Info &amp; Privacy</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+            Regulatory Transparency • S-LOAN-012
+          </p>
+</div>
+</div>
+<div class="flex items-center">
+<button aria-label="Information audit notice" class="w-9 h-9 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined" data-icon="shield">shield</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="px-margin pt-space-md flex flex-col gap-space-md">
+<!-- Trust Badge Bar -->
+<section class="bg-surface-container-low border border-outline-variant/40 rounded-xl p-space-sm flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-lg bg-[#132B1E] flex items-center justify-center text-[#4CC38A]">
+<span class="material-symbols-outlined text-[18px] fill" data-icon="verified_user">verified_user</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface font-semibold">Tier-1 Microfinance Underwriter</span>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-[#132B1E] text-[#4CC38A] font-semibold border border-[#4CC38A]/20">
+          Active License
+        </span>
+</section>
+<!-- 1. Underwriting Institutional Partner Card -->
+<section class="bg-surface-container border border-outline-variant/40 rounded-xl p-space-md flex flex-col gap-space-md">
+<!-- Institution Header -->
+<div class="flex items-start gap-space-md">
+<div class="w-13 h-13 min-w-[48px] h-[48px] rounded-xl bg-surface-container-high border border-outline-variant/60 flex items-center justify-center text-primary-container shadow-inner">
+<span class="material-symbols-outlined text-[28px]" data-icon="account_balance">account_balance</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="font-headline-sm text-headline-sm text-on-surface">CreditSwitch MFB Ltd</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">Licensed Institutional Lending Underwriter</p>
+</div>
+</div>
+<div class="h-[1px] bg-outline-variant/30 w-full"></div>
+<!-- Institutional Details List -->
+<div class="flex flex-col gap-3">
+<!-- CBN License -->
+<div class="flex items-start gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-primary mt-0.5 flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]" data-icon="assured_workload">assured_workload</span>
+</div>
+<div class="flex-1">
+<p class="font-label-sm text-label-sm text-on-surface-variant">Banking License &amp; Regulator</p>
+<p class="font-body-md text-body-md text-on-surface font-medium">Central Bank of Nigeria (CBN)</p>
+<p class="font-label-sm text-label-sm text-primary font-mono mt-0.5">License No. MFB/2019/042</p>
+</div>
+</div>
+<!-- NDIC Deposit Insurance -->
+<div class="flex items-start gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-primary mt-0.5 flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]" data-icon="security">security</span>
+</div>
+<div class="flex-1">
+<p class="font-label-sm text-label-sm text-on-surface-variant">Deposit &amp; Settlement Protection</p>
+<p class="font-body-md text-body-md text-on-surface font-medium">Nigeria Deposit Insurance Corporation (NDIC)</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">Fully covered and guaranteed by federal statutes</p>
+</div>
+</div>
+<!-- Head Office -->
+<div class="flex items-start gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-primary mt-0.5 flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]" data-icon="location_on">location_on</span>
+</div>
+<div class="flex-1">
+<p class="font-label-sm text-label-sm text-on-surface-variant">Registered Corporate Office</p>
+<p class="font-body-md text-body-md text-on-surface font-medium leading-snug">Plot 14, Adeola Odeku Street, Victoria Island, Lagos State, Nigeria</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 2. Consumer Privacy & Data Rights Covenant Card -->
+<section class="bg-surface-container border border-outline-variant/40 rounded-xl p-space-md flex flex-col gap-space-md relative overflow-hidden">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-primary-container/20 text-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px] fill" data-icon="shield">shield</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Data Rights Covenant</h2>
+</div>
+<span class="font-label-sm text-label-sm px-2.5 py-0.5 rounded-full bg-[#14223B] text-[#7AA2FF] font-semibold border border-[#7AA2FF]/30">
+            NDPR Compliant
+          </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          Your personal data rights are safeguarded under the Nigeria Data Protection Act (NDPA) and strict international standards.
+        </p>
+<!-- Zero Scraping Highlight Box -->
+<div class="bg-surface-container-low border border-primary-container/30 rounded-lg p-space-sm flex flex-col gap-2">
+<div class="flex items-center gap-2 text-primary-container">
+<span class="material-symbols-outlined text-[18px]" data-icon="lock_open_right">lock_open_right</span>
+<span class="font-label-md text-label-md font-semibold text-primary">Zero Contact Scraping Guarantee</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+            YourApp and its lending partners <strong class="text-primary-container font-semibold">NEVER</strong> request access to your contact list, call logs, or media gallery. We do <strong class="text-on-surface font-semibold">NOT</strong> contact friends, family, or employers under any circumstances.
+          </p>
+</div>
+<!-- Bureau Reporting Transparency -->
+<div class="flex items-start gap-3 bg-surface-container-high/60 rounded-lg p-space-sm border border-outline-variant/20">
+<div class="w-7 h-7 rounded-md bg-[#14223B] flex items-center justify-center text-[#7AA2FF] mt-0.5 flex-shrink-0">
+<span class="material-symbols-outlined text-[16px]" data-icon="notifications_active">notifications_active</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-semibold">Mandatory 7-Day Bureau Pre-Notice</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-0.5 leading-snug">
+              In accordance with CBN credit reporting rules, you will receive explicit digital notification 7 business days prior to any adverse submission to CreditRegistry, CRC, or FirstCentral.
+            </p>
+</div>
+</div>
+</section>
+<!-- 3. Transparent Pricing Disclosure Card -->
+<section class="bg-surface-container border border-outline-variant/40 rounded-xl p-space-md flex flex-col gap-space-sm">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" data-icon="percent">percent</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Transparent Pricing</h2>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Statutory rate schedule &amp; protections</p>
+</div>
+</div>
+<!-- Bento Metric Grid -->
+<div class="grid grid-cols-2 gap-space-sm mt-1">
+<div class="bg-surface-container-low border border-outline-variant/30 rounded-lg p-space-sm flex flex-col justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Annual Percentage Rate (APR)</span>
+<div class="my-1">
+<span class="font-headline-md text-headline-md text-primary font-bold">18% – 28%</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Risk-based annual equivalent</span>
+</div>
+<div class="bg-surface-container-low border border-outline-variant/30 rounded-lg p-space-sm flex flex-col justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Predatory Rollovers</span>
+<div class="my-1">
+<span class="font-headline-md text-headline-md text-[#4CC38A] font-bold">₦0.00</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Zero compounding penalties</span>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-lg p-space-sm border border-outline-variant/30 flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[20px] text-[#4CC38A]" data-icon="check_circle">check_circle</span>
+<p class="font-label-sm text-label-sm text-on-surface leading-tight">
+            No early repayment penalties. All fees, daily interest breakdown, and VAT are displayed before acceptance.
+          </p>
+</div>
+</section>
+<!-- 4. Consumer Complaints & Escalation Channels -->
+<section class="bg-surface-container border border-outline-variant/40 rounded-xl p-space-md flex flex-col gap-space-sm">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" data-icon="support_agent">support_agent</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Complaints &amp; Escalation</h2>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Statutory dispute resolution paths</p>
+</div>
+</div>
+<div class="flex flex-col gap-2 mt-1">
+<!-- In-App Support -->
+<div class="bg-surface-container-low border border-outline-variant/20 rounded-lg p-space-sm flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-primary" data-icon="chat">chat</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-semibold">In-App Priority Help Desk</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Available 24/7 • Max 2-hour SLA</p>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-semibold">Open Chat</span>
+</div>
+<!-- CBN Channel -->
+<a class="bg-surface-container-low border border-outline-variant/20 rounded-lg p-space-sm flex items-center justify-between hover:bg-surface-container-high transition-colors" href="mailto:cpd@cbn.gov.ng">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant" data-icon="mail">mail</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-semibold">CBN Consumer Protection</p>
+<p class="font-label-sm text-label-sm text-primary font-mono">cpd@cbn.gov.ng</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant" data-icon="arrow_forward">arrow_forward</span>
+</a>
+<!-- FCCPC Channel -->
+<a class="bg-surface-container-low border border-outline-variant/20 rounded-lg p-space-sm flex items-center justify-between hover:bg-surface-container-high transition-colors" href="mailto:complaints@fccpc.gov.ng">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant" data-icon="gavel">gavel</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-semibold">FCCPC Consumer Portal</p>
+<p class="font-label-sm text-label-sm text-primary font-mono">complaints@fccpc.gov.ng</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</section>
+<!-- 5. Action Buttons (Standard 52px Touch Standard) -->
+<section class="flex flex-col gap-space-sm pt-2">
+<button class="w-full h-[52px] rounded-xl bg-primary-container text-surface-container-lowest font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 active:bg-[#c4557f] transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="download">download</span>
+          Download Full Regulatory Disclosure (PDF)
+        </button>
+<button class="w-full h-[52px] rounded-xl bg-surface-container-high border border-outline-variant/50 text-on-surface font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 active:bg-surface-variant transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px] text-primary" data-icon="contact_mail">contact_mail</span>
+          Contact Lending Compliance Officer
+        </button>
+</section>
+<!-- Regulatory Disclaimer Note -->
+<p class="font-label-sm text-label-sm text-on-surface-variant text-center px-space-sm pb-space-sm leading-relaxed">
+        Credit facilities offered through YourApp are underwritten by duly licensed financial institutions regulated by the Central Bank of Nigeria. YourApp is a registered digital technology trademark.
+      </p>
+</main>
+<!-- Docked 5-tab Bottom Navigation (Destination: 'Save & Borrow' Active) -->
+<nav class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-margin h-16 max-w-[560px] mx-auto pb-safe bg-surface-container border-t border-outline-variant/30 backdrop-blur-lg shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)]">
+<!-- 1. Home (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" type="button">
+<span class="material-symbols-outlined text-[22px]" data-icon="home">home</span>
+<span class="font-caption text-caption text-[11px] leading-none font-medium">Home</span>
+</button>
+<!-- 2. Payments (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" type="button">
+<span class="material-symbols-outlined text-[22px]" data-icon="send">send</span>
+<span class="font-caption text-caption text-[11px] leading-none font-medium">Payments</span>
+</button>
+<!-- 3. Cards (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" type="button">
+<span class="material-symbols-outlined text-[22px]" data-icon="credit_card">credit_card</span>
+<span class="font-caption text-caption text-[11px] leading-none font-medium">Cards</span>
+</button>
+<!-- 4. Save & Borrow (Active) -->
+<button class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed font-semibold min-w-[48px] py-space-xs gap-space-xs active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined text-[22px] fill" data-icon="savings">savings</span>
+<span class="font-caption text-caption text-[11px] leading-none font-semibold">Save &amp; Borrow</span>
+</button>
+<!-- 5. More (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" type="button">
+<span class="material-symbols-outlined text-[22px]" data-icon="more_horiz">more_horiz</span>
+<span class="font-caption text-caption text-[11px] leading-none font-medium">More</span>
+</button>
+</nav>
+</div>
+</body></html>

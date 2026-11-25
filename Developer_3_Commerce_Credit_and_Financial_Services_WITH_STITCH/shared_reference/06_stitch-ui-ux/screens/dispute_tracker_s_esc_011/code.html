@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YourApp Escrow - Dispute Tracker</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-highest": "#e9e0e1",
+            "primary-fixed": "#ffd9e1",
+            "surface-variant": "#e9e0e1",
+            "secondary": "#ae3123",
+            "inverse-surface": "#342f30",
+            "on-secondary": "#ffffff",
+            "on-error-container": "#93000a",
+            "on-secondary-fixed-variant": "#8c170e",
+            "on-error": "#ffffff",
+            "tertiary": "#3b3236",
+            "primary-fixed-dim": "#ffb1c5",
+            "on-primary-container": "#ffa0ba",
+            "surface-tint": "#a8315d",
+            "on-tertiary": "#ffffff",
+            "tertiary-fixed": "#eedee4",
+            "background": "#fff8f8",
+            "surface-container-high": "#efe6e7",
+            "error": "#ba1a1a",
+            "on-primary-fixed": "#3f001b",
+            "surface-container-lowest": "#ffffff",
+            "outline-variant": "#dcbfc5",
+            "inverse-on-surface": "#f8eeef",
+            "tertiary-container": "#53484d",
+            "on-primary-fixed-variant": "#881646",
+            "on-surface": "#1f1b1c",
+            "on-surface-variant": "#564146",
+            "outline": "#897176",
+            "on-secondary-container": "#690000",
+            "on-tertiary-fixed": "#21191e",
+            "on-background": "#1f1b1c",
+            "surface": "#fff8f8",
+            "primary": "#6d0033",
+            "surface-container-low": "#fbf1f2",
+            "on-secondary-fixed": "#410000",
+            "surface-dim": "#e1d8d9",
+            "primary-container": "#8e1b4a",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "error-container": "#ffdad6",
+            "surface-bright": "#fff8f8",
+            "secondary-fixed-dim": "#ffb4a8",
+            "secondary-fixed": "#ffdad4",
+            "inverse-primary": "#ffb1c5",
+            "on-primary": "#ffffff",
+            "on-tertiary-container": "#c6b7bd",
+            "secondary-container": "#fc6955",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "surface-container": "#f5eced"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-3xl": "3rem",
+            "space-lg": "1rem",
+            "space-md": "0.75rem",
+            "margin": "1rem",
+            "space-xl": "1.5rem",
+            "gutter": "1rem",
+            "space-2xl": "2rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "amount-lg-mobile": ["Inter", "sans-serif"],
+            "label": ["Inter", "sans-serif"],
+            "display": ["Inter", "sans-serif"],
+            "amount-lg": ["Inter", "sans-serif"],
+            "body": ["Inter", "sans-serif"],
+            "subtitle": ["Inter", "sans-serif"],
+            "title": ["Inter", "sans-serif"],
+            "caption": ["Inter", "sans-serif"],
+            "body-medium": ["Inter", "sans-serif"]
+          },
+          "fontSize": {
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex justify-center selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Mobile Frame Container (Max 560px for tablet, 390px native layout) -->
+<div class="w-full max-w-[560px] bg-background min-h-screen flex flex-col relative pb-[84px] shadow-sm">
+<!-- Top App Bar (Header with back arrow & Case context) -->
+<header class="sticky top-0 z-40 bg-surface-container-lowest/90 backdrop-blur-md px-margin py-space-sm flex flex-col gap-space-xs shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)]">
+<div class="flex items-center justify-between min-h-[48px]">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Go back" class="w-10 h-10 -ml-1 rounded-xl flex items-center justify-center text-on-surface hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-subtitle text-subtitle text-on-surface tracking-tight">Dispute Case #DSP-7741</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="font-caption text-caption text-on-surface-variant">Deal #ESC-94820</span>
+<span class="text-outline-variant">•</span>
+<span class="font-caption text-caption text-on-surface-variant font-medium">MacBook Pro 16" M3</span>
+</div>
+</div>
+</div>
+<div class="flex items-center">
+<button aria-label="Case Help" class="w-10 h-10 rounded-xl flex items-center justify-center text-on-surface-variant hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[22px]">help_outline</span>
+</button>
+</div>
+</div>
+<!-- Under Arbitrator Review Status Chip -->
+<div class="flex items-center justify-between pt-1 pb-0.5">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-50 border border-amber-200/80 text-amber-900 shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-amber-700 animate-spin" style="animation-duration: 4s;">sync</span>
+<span class="font-caption text-caption font-semibold tracking-wide">Under Arbitrator Review</span>
+</div>
+<span class="font-caption text-caption text-outline font-medium">Auto-Adjudication Stage 2/3</span>
+</div>
+</header>
+<!-- Main Content Flow -->
+<main class="flex-1 px-margin pt-space-md space-y-space-lg">
+<!-- Case Header Bento Card -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] border border-surface-container-highest/60 relative overflow-hidden">
+<!-- Subtle berry tint accent bar -->
+<div class="absolute top-0 left-0 right-0 h-1.5 bg-primary-container"></div>
+<div class="flex flex-col gap-space-md">
+<!-- Total Disputed Vault -->
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="font-caption text-caption text-on-surface-variant font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-primary">lock</span>
+                Total Disputed Vault
+              </span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-primary font-caption text-[11px] font-bold tracking-wider">
+                FROZEN
+              </span>
+</div>
+<div class="font-amount-lg-mobile text-amount-lg-mobile text-on-surface tracking-tight tabular-nums flex items-baseline gap-1">
+<span>₦856,375.00</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">
+              Held in ring-fenced escrow custody under CBN guidelines.
+            </p>
+</div>
+<div class="h-px bg-surface-container-highest/70 w-full"></div>
+<!-- Arbitrator & SLA Info -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md pt-0.5">
+<!-- Assigned Arbitrator -->
+<div class="flex items-start gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center shrink-0 border border-outline-variant/40">
+<span class="material-symbols-outlined text-primary text-[20px]">gavel</span>
+</div>
+<div>
+<span class="font-caption text-caption text-on-surface-variant block">Assigned Arbitrator</span>
+<span class="font-label text-label text-on-surface block">Folake Balogun</span>
+<span class="font-caption text-[11px] text-primary font-medium">Senior Escrow Counsel</span>
+</div>
+</div>
+<!-- Decision SLA Deadline -->
+<div class="flex items-start gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-primary-fixed/40 flex items-center justify-center shrink-0 border border-primary-fixed">
+<span class="material-symbols-outlined text-primary text-[20px]">schedule</span>
+</div>
+<div>
+<span class="font-caption text-caption text-on-surface-variant block">Decision SLA Deadline</span>
+<span class="font-label text-label text-on-surface block">Today, 6:00 PM WAT</span>
+<span class="font-caption text-[11px] text-secondary font-medium flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary inline-block animate-ping"></span>
+                  4h 15m remaining
+                </span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Interactive Tab Navigation -->
+<section>
+<div class="flex p-1 bg-surface-container rounded-xl gap-1">
+<!-- Timeline & Status (Active) -->
+<button class="flex-1 py-2.5 px-2 rounded-lg bg-surface-container-lowest text-primary font-label text-label shadow-sm text-center transition-all flex items-center justify-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[18px]">timeline</span>
+<span>Timeline &amp; Status</span>
+</button>
+<!-- Evidence & Claims -->
+<button class="flex-1 py-2.5 px-2 rounded-lg text-on-surface-variant font-label text-label hover:text-on-surface text-center transition-all flex items-center justify-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[18px]">inventory_2</span>
+<span>Evidence &amp; Claims</span>
+</button>
+<!-- Messages -->
+<button class="flex-1 py-2.5 px-2 rounded-lg text-on-surface-variant font-label text-label hover:text-on-surface text-center transition-all flex items-center justify-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[18px]">forum</span>
+<span>Messages <span class="bg-primary-fixed text-primary px-1.5 py-0.2 rounded-full text-[11px] font-bold">6</span></span>
+</button>
+</div>
+</section>
+<!-- Dispute Timeline Stepper -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] border border-surface-container-highest/60">
+<div class="flex items-center justify-between mb-space-md">
+<h2 class="font-subtitle text-subtitle text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[22px]">account_tree</span>
+            Dispute Timeline
+          </h2>
+<span class="font-caption text-caption text-on-surface-variant">Live Audit Trail</span>
+</div>
+<div class="relative space-y-0">
+<!-- Step 1: Completed -->
+<div class="flex gap-space-md relative pb-6">
+<div class="flex flex-col items-center">
+<div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 z-10 border border-emerald-300">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="w-0.5 bg-emerald-300 absolute top-8 bottom-0 left-4 -translate-x-1/2"></div>
+</div>
+<div class="flex-1 pt-0.5">
+<div class="flex items-baseline justify-between">
+<h3 class="font-label text-label text-on-surface">Dispute Opened by Buyer</h3>
+<span class="font-caption text-[12px] text-on-surface-variant tabular-nums">19 Feb, 09:30 AM</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">
+                Reason: Spec Mismatch (<span class="font-medium text-on-surface">RAM 16GB vs 32GB</span> ordered).
+              </p>
+</div>
+</div>
+<!-- Step 2: Completed -->
+<div class="flex gap-space-md relative pb-6">
+<div class="flex flex-col items-center">
+<div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 z-10 border border-emerald-300">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="w-0.5 bg-emerald-300 absolute top-8 bottom-0 left-4 -translate-x-1/2"></div>
+</div>
+<div class="flex-1 pt-0.5">
+<div class="flex items-baseline justify-between">
+<h3 class="font-label text-label text-on-surface">Funds Vault Frozen in CBN Custody</h3>
+<span class="font-caption text-[12px] text-on-surface-variant tabular-nums">19 Feb, 09:31 AM</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">
+<span class="font-medium text-on-surface tabular-nums">₦856,375.00</span> locked under escrow smart-contract lock.
+              </p>
+</div>
+</div>
+<!-- Step 3: Completed -->
+<div class="flex gap-space-md relative pb-6">
+<div class="flex flex-col items-center">
+<div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 z-10 border border-emerald-300">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="w-0.5 bg-primary-container absolute top-8 bottom-0 left-4 -translate-x-1/2"></div>
+</div>
+<div class="flex-1 pt-0.5">
+<div class="flex items-baseline justify-between">
+<h3 class="font-label text-label text-on-surface">Seller Evidence Requested</h3>
+<span class="font-caption text-[12px] text-on-surface-variant tabular-nums">19 Feb, 10:00 AM</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">
+                Merchant Adebayo Gadgets uploaded proof of packing slip &amp; serial logs.
+              </p>
+</div>
+</div>
+<!-- Step 4: Active Pulse (In Review) -->
+<div class="flex gap-space-md relative pb-6">
+<div class="flex flex-col items-center">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary flex items-center justify-center shrink-0 z-10 ring-4 ring-primary-fixed/60 animate-pulse">
+<span class="material-symbols-outlined text-[18px]">policy</span>
+</div>
+<div class="w-0.5 bg-outline-variant/40 absolute top-8 bottom-0 left-4 -translate-x-1/2"></div>
+</div>
+<div class="flex-1 pt-0.5">
+<div class="flex items-baseline justify-between">
+<div class="flex items-center gap-2">
+<h3 class="font-label text-label text-primary font-bold">Neutral Arbitrator Assessment</h3>
+<span class="bg-primary-fixed text-primary px-2 py-0.2 rounded-full font-caption text-[11px] font-bold">IN REVIEW</span>
+</div>
+<span class="font-caption text-[12px] text-primary font-semibold tabular-nums">Active Now</span>
+</div>
+<p class="font-caption text-caption text-on-surface mt-1">
+                Folake Balogun verifying hardware serials, benchmark diagnostics, and delivery receipt timestamps.
+              </p>
+</div>
+</div>
+<!-- Step 5: Ruling & Disbursement (Pending) -->
+<div class="flex gap-space-md relative pb-6">
+<div class="flex flex-col items-center">
+<div class="w-8 h-8 rounded-full bg-surface-container text-outline flex items-center justify-center shrink-0 z-10 border border-outline-variant/50">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+</div>
+<div class="w-0.5 bg-outline-variant/40 absolute top-8 bottom-0 left-4 -translate-x-1/2"></div>
+</div>
+<div class="flex-1 pt-0.5">
+<div class="flex items-baseline justify-between">
+<h3 class="font-label text-label text-on-surface-variant">Ruling &amp; Fund Disbursement</h3>
+<span class="font-caption text-[12px] text-outline">Pending</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">
+                Arbitrator issues binding ruling and releases payout instructions.
+              </p>
+</div>
+</div>
+<!-- Step 6: 24-Hour Appeal Window (Pending) -->
+<div class="flex gap-space-md relative">
+<div class="flex flex-col items-center">
+<div class="w-8 h-8 rounded-full bg-surface-container text-outline flex items-center justify-center shrink-0 z-10 border border-outline-variant/50">
+<span class="material-symbols-outlined text-[18px]">alarm</span>
+</div>
+</div>
+<div class="flex-1 pt-0.5">
+<div class="flex items-baseline justify-between">
+<h3 class="font-label text-label text-on-surface-variant">24-Hour Appeal Window</h3>
+<span class="font-caption text-[12px] text-outline">Queued</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">
+                Both parties retain statutory rights to escalate with certified counter-evidence.
+              </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Evidence Summary Comparison Card -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] border border-surface-container-highest/60 space-y-space-md">
+<div class="flex items-center justify-between">
+<h2 class="font-subtitle text-subtitle text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[22px]">compare_arrows</span>
+            Evidence Comparison
+          </h2>
+<span class="font-caption text-caption text-primary font-medium">Both Submissions Verified</span>
+</div>
+<div class="grid grid-cols-1 gap-space-md">
+<!-- Buyer Claim Box -->
+<div class="p-3.5 rounded-xl bg-surface-container-low border border-surface-container-highest">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-primary-fixed text-primary flex items-center justify-center text-xs font-bold">B</span>
+<span class="font-label text-label text-on-surface">Buyer Claim</span>
+</div>
+<span class="inline-flex items-center gap-1 font-caption text-caption text-primary font-medium">
+<span class="material-symbols-outlined text-[16px]">photo_library</span>
+                2 photos attached
+              </span>
+</div>
+<p class="font-body text-[14px] text-on-surface-variant leading-relaxed">
+              "RAM is 16GB; chassis dented along edge. System Profiler screenshot confirms model spec mismatch from original deal contract."
+            </p>
+<div class="mt-2 flex gap-2">
+<span class="px-2 py-1 rounded bg-surface-container text-[12px] font-mono text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">image</span> specs_diag.png
+              </span>
+<span class="px-2 py-1 rounded bg-surface-container text-[12px] font-mono text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">image</span> body_dent.png
+              </span>
+</div>
+</div>
+<!-- Seller Response Box -->
+<div class="p-3.5 rounded-xl bg-surface-container-low border border-surface-container-highest">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-surface-container-highest text-tertiary flex items-center justify-center text-xs font-bold">S</span>
+<span class="font-label text-label text-on-surface">Seller Response (Adebayo Gadgets)</span>
+</div>
+<span class="inline-flex items-center gap-1 font-caption text-caption text-on-surface-variant font-medium">
+<span class="material-symbols-outlined text-[16px]">description</span>
+                1 document attached
+              </span>
+</div>
+<p class="font-body text-[14px] text-on-surface-variant leading-relaxed">
+              "Dispatched right model per factory warehouse inventory barcode; courier transit handling or unboxing mix-up suspected."
+            </p>
+<div class="mt-2 flex gap-2">
+<span class="px-2 py-1 rounded bg-surface-container text-[12px] font-mono text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">picture_as_pdf</span> waybill_dispatch_manifest.pdf
+              </span>
+</div>
+</div>
+</div>
+</section>
+<!-- Preliminary Ruling / Next Steps Preview Card -->
+<section class="bg-surface-container-low rounded-xl p-space-lg border border-primary-fixed/80 relative overflow-hidden">
+<div class="flex items-start gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-primary-fixed flex items-center justify-center shrink-0 text-primary">
+<span class="material-symbols-outlined text-[20px]">lightbulb</span>
+</div>
+<div class="flex-1">
+<h3 class="font-label text-label text-primary font-bold mb-1">
+              Arbitration Protocol: Ruling Preview
+            </h3>
+<p class="font-body text-[13px] text-on-surface-variant leading-relaxed">
+              If ruling favours Buyer: Merchant automatically generates an insured return waybill. The full <span class="font-semibold text-on-surface tabular-nums">₦856,375.00</span> is refunded to Buyer wallet instantly upon courier pickup scan. The Escrow transaction fee is entirely waived.
+            </p>
+</div>
+</div>
+</section>
+<!-- Actions Strip -->
+<section class="space-y-space-sm pt-space-xs">
+<!-- Secondary Button: Submit Additional Evidence -->
+<button class="w-full h-[52px] rounded-xl bg-primary-fixed/50 hover:bg-primary-fixed active:bg-primary-fixed-dim text-primary font-label text-label flex items-center justify-center gap-2 transition-all active:scale-[0.99]" type="button">
+<span class="material-symbols-outlined text-[20px]">add_photo_alternate</span>
+<span>Submit Additional Evidence</span>
+</button>
+<!-- Outline / Text Action: Contact Assigned Arbitrator -->
+<button class="w-full h-[52px] rounded-xl border border-outline-variant/60 hover:bg-surface-container text-on-surface font-label text-label flex items-center justify-center gap-2 transition-all active:scale-[0.99]" type="button">
+<span class="material-symbols-outlined text-[20px] text-primary">support_agent</span>
+<span>Contact Assigned Arbitrator</span>
+</button>
+<!-- Disabled Action: Appeal Ruling -->
+<button class="w-full h-[52px] rounded-xl bg-surface-container text-outline font-label text-label flex items-center justify-center gap-2 cursor-not-allowed transition-all opacity-80" disabled="" type="button">
+<span class="material-symbols-outlined text-[20px]">gavel</span>
+<span>Appeal Ruling (Opens upon decision)</span>
+</button>
+</section>
+<!-- Escrow SafeGuarantee Footer Note -->
+<footer class="pt-space-xs pb-space-lg text-center">
+<div class="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-high/60 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="font-caption text-[11px] font-medium leading-tight">
+            All dispute adjudications are backed by CBN-licensed consumer protection protocols.
+          </span>
+</div>
+</footer>
+</main>
+<!-- Global 5-Tab Bottom Navigation Bar ('Save & Borrow' active per prompt specification) -->
+<nav class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-margin h-16 max-w-[560px] mx-auto pb-safe bg-surface-container-lowest shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)]">
+<!-- Tab 1: Home -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" type="button">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="font-caption text-caption font-medium">Home</span>
+</button>
+<!-- Tab 2: Payments -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" type="button">
+<span class="material-symbols-outlined text-[24px]">send</span>
+<span class="font-caption text-caption font-medium">Payments</span>
+</button>
+<!-- Tab 3: Cards -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" type="button">
+<span class="material-symbols-outlined text-[24px]">credit_card</span>
+<span class="font-caption text-caption font-medium">Cards</span>
+</button>
+<!-- Tab 4: Save & Borrow (Active) -->
+<button class="flex flex-col items-center justify-center text-primary font-semibold min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" type="button">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">savings</span>
+<span class="font-caption text-caption font-medium">Save &amp; Borrow</span>
+</button>
+<!-- Tab 5: More -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" type="button">
+<span class="material-symbols-outlined text-[24px]">more_horiz</span>
+<span class="font-caption text-caption font-medium">More</span>
+</button>
+</nav>
+</div>
+</body></html>

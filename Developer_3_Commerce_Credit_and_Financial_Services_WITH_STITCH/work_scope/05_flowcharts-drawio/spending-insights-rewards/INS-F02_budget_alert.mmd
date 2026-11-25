@@ -1,0 +1,11 @@
+flowchart TD
+  a(["Customer creates a budget"])
+  b["Track spend per category"]
+  c{"Spend reaches 80% or 100%?"}
+  d["Send alert with simple options"]
+  e(["Budget period ends; summary"])
+  a --> b
+  b --> c
+  c -->|yes| d
+  c -->|no, period ends| e
+  d -->|continue| b

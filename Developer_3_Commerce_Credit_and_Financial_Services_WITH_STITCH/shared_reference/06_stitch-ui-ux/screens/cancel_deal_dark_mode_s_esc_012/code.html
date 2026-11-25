@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cancel Escrow Deal - YourApp</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary-fixed": "#d9e2ff",
+            "on-secondary": "#61130a",
+            "secondary-container": "#822c20",
+            "surface-variant": "#373435",
+            "surface-container-low": "#1d1b1c",
+            "primary-fixed-dim": "#ffb0ca",
+            "background": "#151314",
+            "on-secondary-fixed": "#410000",
+            "on-primary-fixed": "#3e001f",
+            "on-secondary-container": "#ff9f90",
+            "surface-tint": "#ffb0ca",
+            "tertiary": "#b0c6ff",
+            "inverse-primary": "#9e3b63",
+            "primary-container": "#e0709a",
+            "secondary-fixed": "#ffdad4",
+            "surface-container-highest": "#373435",
+            "on-background": "#e7e1e2",
+            "inverse-on-surface": "#323031",
+            "on-error": "#690005",
+            "surface-container": "#211f20",
+            "on-primary-fixed-variant": "#7f234b",
+            "surface-container-high": "#2c292a",
+            "error-container": "#93000a",
+            "surface-dim": "#151314",
+            "secondary": "#ffb4a8",
+            "error": "#ffb4ab",
+            "tertiary-container": "#6a92ee",
+            "surface-bright": "#3b3839",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "secondary-fixed-dim": "#ffb4a8",
+            "on-tertiary": "#002d6f",
+            "on-secondary-fixed-variant": "#7f291e",
+            "on-tertiary-container": "#002a69",
+            "outline": "#a28b91",
+            "surface": "#151314",
+            "on-surface": "#e7e1e2",
+            "on-primary-container": "#5d0331",
+            "on-tertiary-fixed-variant": "#06429a",
+            "surface-container-lowest": "#100e0f",
+            "inverse-surface": "#e7e1e2",
+            "on-tertiary-fixed": "#001945",
+            "primary-fixed": "#ffd9e3",
+            "on-error-container": "#ffdad6",
+            "primary": "#ffb0ca",
+            "on-surface-variant": "#dac0c6",
+            "outline-variant": "#544247",
+            "on-primary": "#620735"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin-mobile": "1rem",
+            "space-xs": "0.25rem",
+            "space-xl": "2rem",
+            "gutter": "1rem",
+            "gutter-mobile": "0.75rem",
+            "space-sm": "0.5rem",
+            "margin": "1rem",
+            "space-lg": "1.5rem",
+            "space-md": "1rem"
+          },
+          "fontFamily": {
+            "body-md": ["Inter"],
+            "headline-md": ["Inter"],
+            "display-currency": ["Inter"],
+            "body-lg": ["Inter"],
+            "headline-lg": ["Inter"],
+            "label-md": ["Inter"],
+            "label-sm": ["Inter"],
+            "headline-sm": ["Inter"],
+            "label-lg": ["Inter"],
+            "title-currency": ["Inter"]
+          },
+          "fontSize": {
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "label-lg": ["15px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "title-currency": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 20px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      -webkit-font-smoothing: antialiased;
+    }
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+    /* Hide scrollbars for slick mobile viewport simulation */
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-[#121011] text-on-surface antialiased flex justify-center min-h-screen select-none font-body-md text-body-md">
+<!-- Mobile Viewport Container (390px base canvas standard) -->
+<div class="w-full max-w-[390px] min-h-screen bg-[#121011] flex flex-col relative pb-[92px] shadow-2xl">
+<!-- Top App Bar Navigation Cluster -->
+<header class="sticky top-0 z-40 bg-[#121011]/90 backdrop-blur-md px-margin-mobile py-space-sm flex items-center justify-between min-h-[56px] border-b border-outline-variant/20">
+<button aria-label="Go back" class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface hover:bg-surface-container active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[22px]">arrow_back</span>
+</button>
+<div class="flex flex-col items-center text-center">
+<h1 class="font-headline-sm text-headline-sm text-on-surface tracking-tight leading-none">Cancel Escrow Deal</h1>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium mt-0.5">Deal #ESC-8921-FX3</span>
+</div>
+<button aria-label="Deal information" class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface hover:bg-surface-container active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[20px]">info</span>
+</button>
+</header>
+<!-- Scrollable Flow Canvas -->
+<main class="flex-1 px-margin-mobile pt-space-md space-y-space-md">
+<!-- Context Banner / Deal Item Quick Pill -->
+<div class="bg-[#1C1819] border border-outline-variant/40 rounded-xl p-space-sm flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined">videocam</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-on-surface font-label-md text-label-md truncate font-semibold">Brand New Sony FX3 Cinema Camera Bundle</p>
+<div class="flex items-center gap-1.5 font-label-sm text-label-sm text-outline">
+<span>Counterparty: Emeka Alaba Electronics</span>
+<span>•</span>
+<span class="text-primary font-medium">Locked</span>
+</div>
+</div>
+</div>
+<!-- 2. Status / Cancellation Scenario Lead Card -->
+<section class="bg-[#262122] border border-outline-variant/40 rounded-xl p-space-md shadow-sm">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm px-2.5 py-0.5 rounded-full bg-primary-container/15 text-primary border border-primary/20">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+            Mutual Consent Cancellation / Pre-Dispatch
+          </span>
+<span class="font-label-sm text-label-sm text-outline">Stage 02 of 04</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface mt-2 mb-1">Initiate Bilateral Cancellation</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Both parties have agreed to void this transaction before dispatch handoff, or seller has breached the 72h SLA dispatch window.
+        </p>
+</section>
+<!-- 3. Cancellation Scenario Picker -->
+<section class="space-y-space-sm">
+<p class="font-label-md text-label-md text-outline font-semibold uppercase tracking-wider px-1">Select Active Protocol</p>
+<!-- Scenario A (Active / Selected) -->
+<label class="block cursor-pointer">
+<input checked="" class="sr-only peer" name="escrow_scenario" type="radio" value="mutual_pre_dispatch"/>
+<div class="p-3.5 rounded-xl bg-[#262122] border-2 border-primary-container transition-all relative peer-checked:bg-[#262122] peer-checked:shadow-sm">
+<div class="flex items-start gap-3">
+<div class="w-5 h-5 rounded-full border-2 border-primary flex items-center justify-center mt-0.5 shrink-0 bg-primary">
+<div class="w-2 h-2 rounded-full bg-[#121011]"></div>
+</div>
+<div class="space-y-1">
+<div class="flex items-center justify-between">
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">Mutual Bilateral Agreement (Pre-Dispatch)</span>
+<span class="font-label-sm text-label-sm bg-primary/20 text-primary px-1.5 py-0.5 rounded text-[10px] font-bold">0% FEE</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-snug">
+                  100% Principal Refund. Zero penalty fees charged to either party as codified in Step 2 terms.
+                </p>
+</div>
+</div>
+</div>
+</label>
+<!-- Scenario B (Unselected) -->
+<label class="block cursor-pointer">
+<input class="sr-only peer" name="escrow_scenario" type="radio" value="sla_breach"/>
+<div class="p-3.5 rounded-xl bg-[#1C1819] border border-outline-variant/40 hover:border-outline-variant transition-all peer-checked:border-primary-container peer-checked:bg-[#262122]">
+<div class="flex items-start gap-3">
+<div class="w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center mt-0.5 shrink-0">
+<div class="w-2 h-2 rounded-full bg-transparent"></div>
+</div>
+<div class="space-y-1">
+<div class="flex items-center justify-between">
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">Seller Failed to Dispatch within 72h SLA</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-snug">
+                  100% Principal + Fee Refund automatically reversed to Buyer wallet. Seller escrow rating penalized.
+                </p>
+</div>
+</div>
+</div>
+</label>
+<!-- Scenario C (Unselected) -->
+<label class="block cursor-pointer">
+<input class="sr-only peer" name="escrow_scenario" type="radio" value="post_inspection_rejection"/>
+<div class="p-3.5 rounded-xl bg-[#1C1819] border border-outline-variant/40 hover:border-outline-variant transition-all peer-checked:border-primary-container peer-checked:bg-[#262122]">
+<div class="flex items-start gap-3">
+<div class="w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center mt-0.5 shrink-0">
+<div class="w-2 h-2 rounded-full bg-transparent"></div>
+</div>
+<div class="space-y-1">
+<div class="flex items-center justify-between">
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">Post-Inspection Rejection &amp; Return</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-snug">
+                  Goods returned via tracked courier. Net refund disbursed upon verified return delivery receipt.
+                </p>
+</div>
+</div>
+</div>
+</label>
+</section>
+<!-- 4. Financial Reconciliation Breakdown -->
+<section class="bg-[#1C1819] border border-outline-variant/40 rounded-2xl p-4 space-y-3">
+<div class="flex items-center justify-between border-b border-outline-variant/30 pb-2.5">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-[18px]">account_balance_wallet</span>
+<h3 class="font-label-lg text-label-lg text-on-surface font-semibold">Escrow Settlement &amp; Refund Breakdown</h3>
+</div>
+<span class="font-label-sm text-label-sm text-[#4CC38A] bg-[#4CC38A]/10 px-2 py-0.5 rounded-full font-medium">Bilateral Waiver</span>
+</div>
+<div class="space-y-2 font-body-md text-body-md">
+<div class="flex justify-between items-center text-on-surface-variant">
+<span>Deal Principal Funded</span>
+<span class="tabular-nums font-semibold text-on-surface">₦1,200,000.00</span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant">
+<div class="flex items-center gap-1">
+<span>Buyer Escrow Share (0.75%)</span>
+<span class="material-symbols-outlined text-[14px] text-outline" title="Standard Escrow transaction protection fee">help</span>
+</div>
+<span class="tabular-nums font-semibold text-on-surface">₦9,000.00</span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant">
+<span class="text-primary-fixed-dim">Escrow Fee Waived (Mutual Agreement Clause)</span>
+<span class="tabular-nums font-semibold text-[#4CC38A]">-₦0.00</span>
+</div>
+</div>
+<div class="border-t border-outline-variant/30 pt-3 flex flex-col gap-1">
+<div class="flex justify-between items-baseline">
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">Total Net Refund Credited</span>
+<span class="font-title-currency text-title-currency tabular-nums text-primary font-bold tracking-tight">₦1,209,000.00</span>
+</div>
+<div class="flex items-center gap-2 mt-1 pt-2 border-t border-dashed border-outline-variant/30 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-primary text-[16px]">verified</span>
+<span>Destination: <strong class="text-on-surface font-medium">YourApp Main Wallet (•••• 2019)</strong> • Instant Credit</span>
+</div>
+</div>
+</section>
+<!-- 5. Counterparty Notification & Consent Notice -->
+<section class="bg-surface-container border border-outline-variant/40 rounded-xl p-3.5 flex items-start gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-high border border-outline-variant/30 flex items-center justify-center text-primary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">sync_alt</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          A cancellation concurrence request will be sent to <span class="text-on-surface font-semibold">Emeka Alaba Electronics</span> (<span class="tabular-nums text-on-surface">+234 803 ••• 4419</span>). If pre-dispatch mutual terms apply, funds unlock immediately.
+        </p>
+</section>
+<!-- 6. Reason for Cancellation (Form Inputs) -->
+<section class="space-y-space-sm">
+<label class="block font-label-md text-label-md text-outline font-semibold uppercase tracking-wider px-1" for="cancellation-reason">
+          Reason for Cancellation
+        </label>
+<div class="relative">
+<select class="w-full h-[52px] bg-[#262122] border border-outline-variant/40 rounded-xl text-on-surface px-4 font-body-md text-body-md appearance-none focus:outline-none focus:border-primary-container focus:ring-0" id="cancellation-reason">
+<option selected="">Mutual agreement between buyer and seller</option>
+<option>Seller out of requested stock specification</option>
+<option>Dispatch delay exceeds acceptable timeline</option>
+<option>Pricing or shipping term discrepancy</option>
+<option>Other personal settlement reasons</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">expand_more</span>
+</div>
+</div>
+<textarea class="w-full bg-[#262122] border border-outline-variant/40 rounded-xl text-on-surface p-3 font-body-md text-body-md placeholder:text-outline focus:outline-none focus:border-primary-container focus:ring-0 resize-none" placeholder="Add additional settlement remarks (optional)..." rows="2"></textarea>
+</section>
+<!-- 7. Regulatory & Custody Guarantee Notice -->
+<section class="p-3 rounded-xl bg-surface-container-lowest border border-outline-variant/30 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-[22px] shrink-0" style="font-variation-settings: 'FILL' 1;">gavel</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant leading-snug">
+          Protected under <strong class="text-on-surface font-medium">CBN Escrow Regulations</strong>. Segregated funds in Providus/Zenith custody vault are reversed immediately upon dual confirmation.
+        </p>
+</section>
+<!-- 8. Primary Actions -->
+<section class="pt-2 pb-4 space-y-2.5">
+<button class="w-full h-[52px] bg-[#E0709A] hover:bg-[#C4557F] active:scale-[0.98] text-[#121011] rounded-xl font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 transition-all shadow-md">
+<span>Confirm Cancellation &amp; Refund (PIN)</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<button class="w-full h-[52px] bg-[#262122] border border-outline-variant/50 hover:bg-surface-container-high active:scale-[0.98] text-on-surface rounded-xl font-label-lg text-label-lg font-semibold flex items-center justify-center transition-all">
+          Keep Deal Active
+        </button>
+</section>
+</main>
+<!-- 9. Docked Bottom Navigation Bar (Shared Component JSON Source) -->
+<!-- Active Navigation Tab: Save & Borrow (Index 3, representing Escrow/Vaults) -->
+<nav class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-margin h-16 max-w-[560px] mx-auto pb-safe bg-[#1C1819] border-t border-outline-variant/40 shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)] backdrop-blur-md">
+<!-- Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined text-[22px]">home</span>
+<span class="font-caption text-label-sm">Home</span>
+</a>
+<!-- Payments -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined text-[22px]">send</span>
+<span class="font-caption text-label-sm">Payments</span>
+</a>
+<!-- Cards -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined text-[22px]">credit_card</span>
+<span class="font-caption text-label-sm">Cards</span>
+</a>
+<!-- Save & Borrow (Active with Berry Accent) -->
+<a class="flex flex-col items-center justify-center text-primary font-semibold min-w-[48px] py-space-xs gap-space-xs hover:text-primary active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">savings</span>
+<span class="font-caption text-label-sm">Save &amp; Borrow</span>
+</a>
+<!-- More -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined text-[22px]">more_horiz</span>
+<span class="font-caption text-label-sm">More</span>
+</a>
+</nav>
+</div>
+</body></html>

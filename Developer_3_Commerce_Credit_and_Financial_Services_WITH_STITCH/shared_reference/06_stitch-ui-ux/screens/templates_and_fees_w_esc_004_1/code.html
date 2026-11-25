@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Templates &amp; Fees | YourApp Escrow Ops (W-ESC-004)</title>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config Verbatim -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary": "#ffffff",
+            "on-primary-container": "#ffa0ba",
+            "surface-container-lowest": "#ffffff",
+            "error-container": "#ffdad6",
+            "tertiary": "#3b3236",
+            "surface-container-high": "#efe6e7",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "on-error": "#ffffff",
+            "on-tertiary-fixed": "#21191e",
+            "background": "#fff8f8",
+            "tertiary-container": "#53484d",
+            "surface-variant": "#e9e0e1",
+            "secondary-fixed": "#ffdad4",
+            "on-tertiary": "#ffffff",
+            "surface-container-highest": "#e9e0e1",
+            "surface-container-low": "#fbf1f2",
+            "on-secondary-fixed": "#410000",
+            "secondary": "#ae3123",
+            "primary-fixed": "#ffd9e1",
+            "primary-container": "#8e1b4a",
+            "surface-container": "#f5eced",
+            "error": "#ba1a1a",
+            "surface-bright": "#fff8f8",
+            "surface": "#fff8f8",
+            "surface-tint": "#a8315d",
+            "on-error-container": "#93000a",
+            "outline": "#897176",
+            "secondary-fixed-dim": "#ffb4a8",
+            "on-tertiary-container": "#c6b7bd",
+            "tertiary-fixed": "#eedee4",
+            "on-secondary-container": "#690000",
+            "primary": "#6d0033",
+            "on-primary-fixed": "#3f001b",
+            "inverse-on-surface": "#f8eeef",
+            "on-background": "#1f1b1c",
+            "inverse-surface": "#342f30",
+            "on-primary": "#ffffff",
+            "primary-fixed-dim": "#ffb1c5",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "on-surface-variant": "#564146",
+            "on-secondary-fixed-variant": "#8c170e",
+            "on-surface": "#1f1b1c",
+            "outline-variant": "#dcbfc5",
+            "on-primary-fixed-variant": "#881646",
+            "secondary-container": "#fc6955",
+            "inverse-primary": "#ffb1c5",
+            "surface-dim": "#e1d8d9"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "space-2xl": "2rem",
+            "space-xl": "1.5rem",
+            "space-md": "0.75rem",
+            "space-lg": "1rem",
+            "space-3xl": "3rem",
+            "margin": "1rem",
+            "space-sm": "0.5rem",
+            "gutter": "1rem"
+          },
+          "fontFamily": {
+            "body": ["Inter"],
+            "display": ["Inter"],
+            "label": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "body-medium": ["Inter"],
+            "title": ["Inter"],
+            "subtitle": ["Inter"],
+            "amount-lg": ["Inter"],
+            "caption": ["Inter"]
+          },
+          "fontSize": {
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fff8f8;
+      color: #1f1b1c;
+      overflow-x: hidden;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-outlined[data-weight="fill"] {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+    /* Custom subtle scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #fbf1f2;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #dcbfc5;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #8e1b4a;
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface antialiased flex min-h-screen selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- ========================================================================= -->
+<!-- 1. FIXED LEFT NAVIGATION SIDEBAR (w-72 / 288px)                            -->
+<!-- ========================================================================= -->
+<aside class="fixed left-0 top-0 h-screen w-72 flex flex-col justify-between py-space-xl px-space-lg bg-surface-container-lowest border-r border-surface-variant z-30 shadow-sm overflow-y-auto">
+<!-- Top Branding & Switcher -->
+<div class="flex flex-col gap-space-lg">
+<!-- Crest & Identity -->
+<div class="flex items-center gap-space-md pb-space-sm border-b border-surface-variant">
+<div class="w-10 h-10 rounded-xl bg-primary-container flex items-center justify-center text-on-primary shadow-sm">
+<span class="material-symbols-outlined text-2xl" data-weight="fill">verified_user</span>
+</div>
+<div>
+<h1 class="text-subtitle font-subtitle text-primary tracking-tight leading-tight">YourApp Escrow Ops</h1>
+<p class="text-caption font-caption text-on-surface-variant">Policy &amp; Tariff Config</p>
+</div>
+</div>
+<!-- Active Tenant Switcher -->
+<div class="bg-surface-container-low p-space-sm rounded-lg border border-outline-variant flex items-center justify-between">
+<div class="flex items-center gap-space-xs overflow-hidden">
+<span class="material-symbols-outlined text-primary text-base">domain</span>
+<div class="truncate">
+<span class="text-caption font-caption text-on-surface-variant block text-[11px] leading-tight">Active Escrow Tenant</span>
+<span class="text-label font-label text-on-surface block truncate text-xs">Institutional Trust (#ESC-HQ-001)</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-sm">unfold_more</span>
+</div>
+<!-- Main Navigation Menu -->
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-xl">account_balance_wallet</span>
+<span>Deals &amp; Portfolio</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-xl">pending_actions</span>
+<span>Dispute Queue</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-xl">gavel</span>
+<span>Dispute Resolution Case</span>
+</a>
+<!-- ACTIVE TAB: Templates & Fees -->
+<a class="flex items-center justify-between px-space-lg py-space-md rounded-lg bg-surface-container-low text-primary font-label text-label border-l-4 border-primary-container shadow-xs" href="#">
+<div class="flex items-center gap-space-md">
+<span class="material-symbols-outlined text-xl text-primary" data-weight="fill">tune</span>
+<span class="font-bold">Templates &amp; Fees</span>
+</div>
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-xl">receipt_long</span>
+<span>Settlements &amp; Ledger</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-xl">history</span>
+<span>Audit Trail</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-xl">admin_panel_settings</span>
+<span>Security &amp; Settings</span>
+</a>
+</nav>
+</div>
+<!-- Sidebar Footer -->
+<div class="pt-space-md border-t border-surface-variant flex flex-col gap-space-sm">
+<!-- Dual-Control Active badge -->
+<div class="flex items-center gap-space-sm bg-surface-container-high px-space-md py-space-sm rounded-lg border border-outline-variant">
+<span class="material-symbols-outlined text-primary-container text-base" data-weight="fill">shield_person</span>
+<div class="flex-1">
+<span class="text-caption font-caption text-[11px] block font-semibold text-primary">Dual-Control Active</span>
+<span class="text-caption font-caption text-[10px] block text-on-surface-variant">4-Eyes Governance Rule</span>
+</div>
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+</div>
+<button class="w-full flex items-center justify-start gap-space-md px-space-lg py-space-sm rounded-lg text-on-surface-variant hover:text-error hover:bg-error-container font-label text-label transition-colors duration-150" type="button">
+<span class="material-symbols-outlined text-lg">logout</span>
+<span>Sign Out</span>
+</button>
+</div>
+</aside>
+<!-- ========================================================================= -->
+<!-- 2. MAIN VIEW CONTAINER (ml-72 for sidebar offset)                         -->
+<!-- ========================================================================= -->
+<div class="ml-72 flex-1 flex flex-col min-w-0">
+<!-- TOP NAVIGATION BAR (h-16 sticky) -->
+<header class="sticky top-0 h-16 w-full flex items-center justify-between px-space-xl bg-surface-container-lowest border-b border-surface-variant z-20">
+<!-- Left: Global Search -->
+<div class="flex items-center w-5/12">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-lg">search</span>
+<input class="w-full h-10 pl-10 pr-4 text-caption font-caption bg-surface-container-low border border-outline-variant rounded-lg focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container text-on-surface placeholder:text-outline" placeholder="Search escrow template, contract tier, fee schedules, inspection presets..." type="text"/>
+</div>
+</div>
+<!-- Right: Live Status Pill, Armed Badge, Officer Profile -->
+<div class="flex items-center gap-space-md">
+<!-- Live CBN Status Pill -->
+<div class="hidden xl:flex items-center gap-space-xs px-3 py-1.5 rounded-full bg-surface-container border border-outline-variant text-caption font-caption text-on-surface-variant">
+<span class="material-symbols-outlined text-sm text-primary" data-weight="fill">verified</span>
+<span class="font-medium text-xs">CBN Approved Tariff v4.1</span>
+<span class="text-outline text-xs">•</span>
+<span class="text-[11px] text-primary font-semibold">Dual-Signoff Enforced</span>
+</div>
+<!-- Dual-Authorization Armed badge -->
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-primary-fixed border border-primary-fixed-dim text-on-primary-fixed">
+<span class="material-symbols-outlined text-sm text-primary" data-weight="fill">lock</span>
+<span class="text-caption font-caption font-bold text-xs uppercase tracking-wider">Armed</span>
+</div>
+<!-- Notifications -->
+<button class="relative p-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors" type="button">
+<span class="material-symbols-outlined text-xl">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-secondary"></span>
+</button>
+<div class="h-6 w-px bg-surface-variant"></div>
+<!-- Staff Officer Profile -->
+<div class="flex items-center gap-space-sm pl-space-xs">
+<div class="w-9 h-9 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-bold text-sm shadow-xs border border-primary-fixed-dim">
+            GS
+          </div>
+<div class="text-left">
+<span class="block text-label font-label text-xs font-bold text-on-surface leading-tight">Alhaji Garba Shehu</span>
+<span class="block text-caption font-caption text-[11px] text-on-surface-variant leading-tight">Head of Escrow Products</span>
+</div>
+</div>
+</div>
+</header>
+<!-- MAIN SCROLLABLE CONTENT CANVAS -->
+<main class="flex-1 p-space-xl flex flex-col gap-space-xl max-w-[1360px] mx-auto w-full">
+<!-- ===================================================================== -->
+<!-- PAGE HEADER                                                           -->
+<!-- ===================================================================== -->
+<section class="flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div>
+<div class="flex items-center gap-space-sm mb-1">
+<h1 class="text-title font-title text-on-background tracking-tight">
+              Escrow Contract Templates &amp; Statutory Fee Schedules
+            </h1>
+<span class="px-2 py-0.5 rounded text-xs font-label bg-surface-container-highest text-primary border border-outline-variant font-mono">
+              W-ESC-004
+            </span>
+</div>
+<p class="text-caption font-caption text-on-surface-variant max-w-3xl">
+            Configure multi-party milestone templates, inspection timers, cancellation rules, and CBN-compliant sliding fee schedules with dual-control governance.
+          </p>
+</div>
+<!-- Header Actions -->
+<div class="flex items-center gap-space-md shrink-0">
+<button class="h-[52px] px-space-lg rounded-xl border border-outline-variant bg-surface-container-lowest text-on-surface font-label text-label flex items-center gap-space-sm hover:bg-surface-container-low transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-lg">picture_as_pdf</span>
+<span>Export Fee Schedule (PDF)</span>
+</button>
+<button class="h-[52px] px-space-xl rounded-xl bg-primary-container hover:bg-[#731540] text-on-primary font-label text-label flex items-center gap-space-sm transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-lg">add_circle</span>
+<span>+ Create New Deal Template</span>
+</button>
+</div>
+</section>
+<!-- ===================================================================== -->
+<!-- TARIFF & TEMPLATE ARCHITECTURE KPIS (4 Cards across top)              -->
+<!-- ===================================================================== -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl border border-surface-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant mb-2">
+<span class="text-caption font-caption font-medium">Active Deal Templates</span>
+<span class="material-symbols-outlined text-primary text-xl">description</span>
+</div>
+<div>
+<div class="text-subtitle font-subtitle text-on-surface font-bold">6 Standardized</div>
+<p class="text-caption font-caption text-on-surface-variant mt-1 text-xs">
+              Physical Goods, Tech, Property, Agro, Equipment, Retainers
+            </p>
+</div>
+<div class="mt-3 pt-2 border-t border-surface-container flex items-center gap-1 text-[11px] text-primary font-medium">
+<span class="material-symbols-outlined text-xs">check_circle</span> 100% CBN Compliance checked
+          </div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl border border-surface-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant mb-2">
+<span class="text-caption font-caption font-medium">Baseline Escrow Tariff</span>
+<span class="material-symbols-outlined text-primary text-xl">percent</span>
+</div>
+<div>
+<div class="text-subtitle font-subtitle text-on-surface font-bold">1.20% Flat</div>
+<p class="text-caption font-caption text-on-surface-variant mt-1 text-xs">
+              Sliding down to 0.45% on enterprise volumes &gt;₦500M
+            </p>
+</div>
+<div class="mt-3 pt-2 border-t border-surface-container flex items-center gap-1 text-[11px] text-secondary font-medium">
+<span class="material-symbols-outlined text-xs">trending_down</span> Volume discounts active
+          </div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl border border-surface-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant mb-2">
+<span class="text-caption font-caption font-medium">Minimum Escrow Floor</span>
+<span class="material-symbols-outlined text-primary text-xl">payments</span>
+</div>
+<div>
+<div class="text-subtitle font-subtitle text-on-surface font-bold tabular-nums">₦2,500.00</div>
+<p class="text-caption font-caption text-on-surface-variant mt-1 text-xs">
+              Protected floor covers automated NIBSS/NIP settlement sweeps
+            </p>
+</div>
+<div class="mt-3 pt-2 border-t border-surface-container flex items-center gap-1 text-[11px] text-on-surface-variant">
+<span class="material-symbols-outlined text-xs">lock</span> Floor guarantee locked
+          </div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl border border-outline-variant shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="absolute top-0 right-0 w-16 h-16 bg-primary-fixed rounded-bl-full flex items-start justify-end pr-2 pt-2 -mr-3 -mt-3">
+<span class="material-symbols-outlined text-primary text-sm font-bold">pending</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant mb-2">
+<span class="text-caption font-caption font-medium">Pending Policy Revisions</span>
+</div>
+<div>
+<div class="text-subtitle font-subtitle text-primary font-bold">1 Draft Pending</div>
+<p class="text-caption font-caption text-on-surface-variant mt-1 text-xs">
+              Commodity Inspection Timer Update • Needs 2nd Signoff
+            </p>
+</div>
+<div class="mt-3 pt-2 border-t border-surface-container flex items-center gap-1 text-[11px] text-secondary font-semibold">
+<span class="material-symbols-outlined text-xs" data-weight="fill">warning</span> Awaiting Chief Financial Officer
+          </div>
+</div>
+</section>
+<!-- ===================================================================== -->
+<!-- STATUTORY ESCROW COVENANT & ANTI-PRICE GOUGING NOTICE                -->
+<!-- ===================================================================== -->
+<section class="bg-surface-container-low border border-primary-fixed p-space-md rounded-xl flex items-start gap-space-md">
+<div class="p-2 rounded-lg bg-primary-container text-on-primary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-lg" data-weight="fill">gavel</span>
+</div>
+<div class="flex-1 text-xs text-on-surface leading-relaxed">
+<span class="font-bold text-primary block text-sm mb-0.5">
+            Statutory Escrow Covenant &amp; Anti-Price Gouging Regulatory Notice
+          </span>
+          Pursuant to the <strong>Central Bank of Nigeria (CBN) Framework for Escrow Services</strong> and <strong>FCCPC Consumer Protection Guidelines (2024/REV-09)</strong>, all sliding scale adjustments, dispute penalty formulas, and minimum floors are legally binding and immutable upon agreement execution. Fee alterations require <strong>30-day gazetted notice</strong> and cryptographic dual-trustee signoff.
+        </div>
+<button class="shrink-0 text-caption font-caption text-primary hover:underline font-semibold flex items-center gap-1" type="button">
+<span>Read CBN Circular</span>
+<span class="material-symbols-outlined text-sm">open_in_new</span>
+</button>
+</section>
+<!-- ===================================================================== -->
+<!-- MAIN SPLIT SECTION: TEMPLATES (7/12) vs FEE SCHEDULE & DUAL CONTROL (5/12) -->
+<!-- ===================================================================== -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-start">
+<!-- =================================================================== -->
+<!-- LEFT / MAIN SECTION (w-7/12): DEAL TEMPLATES LIBRARY                -->
+<!-- =================================================================== -->
+<section class="lg:col-span-7 flex flex-col gap-space-lg">
+<!-- Tab Navigation Bar -->
+<div class="flex items-center justify-between border-b border-surface-variant pb-space-xs">
+<div class="flex items-center gap-space-md">
+<button class="pb-2 text-label font-label text-primary border-b-2 border-primary-container flex items-center gap-1.5 font-bold" type="button">
+<span class="material-symbols-outlined text-base">folder_open</span>
+<span>Contract Templates (6)</span>
+</button>
+<button class="pb-2 text-label font-label text-on-surface-variant hover:text-on-surface flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-base">price_change</span>
+<span>Fee Schedules &amp; Tiers (3)</span>
+</button>
+<button class="pb-2 text-label font-label text-on-surface-variant hover:text-on-surface flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-base">rule</span>
+<span>Cancellation &amp; Penalty Matrix</span>
+</button>
+<button class="pb-2 text-label font-label text-on-surface-variant hover:text-on-surface flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-base">assignment</span>
+<span>Regulatory Filings</span>
+</button>
+</div>
+<button class="text-caption font-caption text-on-surface-variant hover:text-primary flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-sm">filter_list</span>
+<span>Filter</span>
+</button>
+</div>
+<!-- Templates Cards Stack -->
+<div class="flex flex-col gap-space-md">
+<!-- TEMPLATE 1: SELECTED (Agro-Commodities & Bulk Produce Supply) -->
+<div class="bg-surface-container-lowest rounded-xl border-2 border-primary-container p-space-lg shadow-md relative">
+<div class="flex items-start justify-between gap-space-md mb-space-sm">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-surface-container text-primary uppercase tracking-wider">
+                      Physical Goods
+                    </span>
+<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-primary-fixed text-on-primary-fixed">
+                      Active Template • v4.2
+                    </span>
+</div>
+<h3 class="text-subtitle font-subtitle text-on-surface font-bold">
+                    Agro-Commodities &amp; Bulk Produce Supply
+                  </h3>
+</div>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-lg" data-weight="fill">check_circle</span>
+<span class="text-caption font-caption font-bold">Default Active</span>
+</div>
+</div>
+<!-- Key Meta Attributes -->
+<div class="grid grid-cols-3 gap-2 bg-surface-container-low p-space-sm rounded-lg mb-space-md text-xs">
+<div>
+<span class="text-on-surface-variant block text-[11px]">Inspection Window</span>
+<span class="font-bold text-on-surface">48 Hours post-delivery</span>
+</div>
+<div>
+<span class="text-on-surface-variant block text-[11px]">Fee Split Default</span>
+<span class="font-bold text-on-surface">50% Buyer / 50% Seller</span>
+</div>
+<div>
+<span class="text-on-surface-variant block text-[11px]">Milestones</span>
+<span class="font-bold text-on-surface">4 Checkpoints</span>
+</div>
+</div>
+<!-- Milestones Timeline Flow -->
+<div class="mb-space-md">
+<span class="text-caption font-caption text-on-surface-variant block text-xs font-semibold mb-2">
+                  Sequential Milestone Execution Chain:
+                </span>
+<div class="space-y-2">
+<div class="flex items-center gap-3 p-2 bg-surface-bright rounded-lg border border-surface-variant">
+<span class="w-6 h-6 rounded-full bg-primary-container text-on-primary text-xs font-bold flex items-center justify-center shrink-0">1</span>
+<div class="flex-1">
+<span class="text-label font-label text-xs font-bold text-on-surface block">Inbound Escrow Funding</span>
+<span class="text-caption font-caption text-[11px] text-on-surface-variant">Automated NIBSS payment verification &amp; vault reservation</span>
+</div>
+<span class="text-[11px] font-mono text-outline font-medium">Automated</span>
+</div>
+<div class="flex items-center gap-3 p-2 bg-surface-bright rounded-lg border border-surface-variant">
+<span class="w-6 h-6 rounded-full bg-primary-container text-on-primary text-xs font-bold flex items-center justify-center shrink-0">2</span>
+<div class="flex-1">
+<span class="text-label font-label text-xs font-bold text-on-surface block">Waybill &amp; Weighbridge Slip Upload</span>
+<span class="text-caption font-caption text-[11px] text-on-surface-variant">Logistics manifest cross-matched with depot inventory</span>
+</div>
+<span class="text-[11px] font-mono text-outline font-medium">Logistics Gate</span>
+</div>
+<div class="flex items-center gap-3 p-2 bg-surface-bright rounded-lg border border-surface-variant">
+<span class="w-6 h-6 rounded-full bg-primary-container text-on-primary text-xs font-bold flex items-center justify-center shrink-0">3</span>
+<div class="flex-1">
+<span class="text-label font-label text-xs font-bold text-on-surface block">Moisture &amp; Quality Lab Test</span>
+<span class="text-caption font-caption text-[11px] text-on-surface-variant">Independent accredited surveyor certificate attestation</span>
+</div>
+<span class="text-[11px] font-mono text-outline font-medium">Surveyor Signoff</span>
+</div>
+<div class="flex items-center gap-3 p-2 bg-surface-bright rounded-lg border border-surface-variant">
+<span class="w-6 h-6 rounded-full bg-primary-container text-on-primary text-xs font-bold flex items-center justify-center shrink-0">4</span>
+<div class="flex-1">
+<span class="text-label font-label text-xs font-bold text-on-surface block">Port / Warehouse Custody Transfer</span>
+<span class="text-caption font-caption text-[11px] text-on-surface-variant">Full release to seller account within 60 seconds</span>
+</div>
+<span class="text-[11px] font-mono text-primary font-bold">Settlement Release</span>
+</div>
+</div>
+</div>
+<!-- Cancellation & Penalty Clause -->
+<div class="p-space-sm rounded-lg bg-surface-container border border-surface-variant mb-space-md text-xs">
+<span class="font-bold text-on-surface">Cancellation Policy: </span>
+<span class="text-on-surface-variant">Mutual cancellation free prior to dispatch; 5% logistics fee retention applies once waybill is verified.</span>
+</div>
+<!-- Template Action Buttons -->
+<div class="flex items-center justify-between pt-space-sm border-t border-surface-variant">
+<div class="flex items-center gap-2">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container text-primary font-label text-xs hover:bg-surface-container-high transition-colors" type="button">
+                    Edit Checkpoints
+                  </button>
+<button class="px-3 py-1.5 rounded-lg border border-outline-variant text-on-surface font-label text-xs hover:bg-surface-container-low transition-colors" type="button">
+                    Clone as Custom Blueprint
+                  </button>
+</div>
+<button class="text-caption font-caption text-primary hover:underline text-xs flex items-center gap-1 font-semibold" type="button">
+<span class="material-symbols-outlined text-sm">history</span>
+<span>View Version History (v4.2)</span>
+</button>
+</div>
+</div>
+<!-- TEMPLATE 2: Software Engineering & Technical Milestone Delivery -->
+<div class="bg-surface-container-lowest rounded-xl border border-surface-variant p-space-lg shadow-sm hover:border-outline-variant transition-colors">
+<div class="flex items-start justify-between gap-space-md mb-2">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-surface-container text-on-surface-variant uppercase">
+                      Service Milestones
+                    </span>
+<span class="text-caption font-caption text-[11px] text-outline">Preset #ESC-TPL-002</span>
+</div>
+<h4 class="text-label font-label text-base font-bold text-on-surface">
+                    Software Engineering &amp; Technical Milestone Delivery
+                  </h4>
+</div>
+<span class="text-xs font-medium text-on-surface-variant bg-surface-container-low px-2 py-1 rounded">
+                  Fee: 100% Client / Buyer
+                </span>
+</div>
+<p class="text-caption font-caption text-on-surface-variant text-xs mb-3">
+                Sprint Acceptance, UAT Deployment, Source Code Transfer • <strong>Inspection Timer:</strong> 5 Business Days
+              </p>
+<div class="flex items-center justify-between text-xs pt-2 border-t border-surface-container">
+<span class="text-outline">3 Verification Milestones • Git Webhook Integration Ready</span>
+<button class="text-primary font-label hover:underline text-xs" type="button">Configure →</button>
+</div>
+</div>
+<!-- TEMPLATE 3: Commercial Real Estate & Long-Term Lease Agreement -->
+<div class="bg-surface-container-lowest rounded-xl border border-surface-variant p-space-lg shadow-sm hover:border-outline-variant transition-colors">
+<div class="flex items-start justify-between gap-space-md mb-2">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-surface-container text-on-surface-variant uppercase">
+                      Property / Tenancy
+                    </span>
+<span class="text-caption font-caption text-[11px] text-outline">Preset #ESC-TPL-003</span>
+</div>
+<h4 class="text-label font-label text-base font-bold text-on-surface">
+                    Commercial Real Estate &amp; Long-Term Lease Agreement
+                  </h4>
+</div>
+<span class="text-xs font-medium text-on-surface-variant bg-surface-container-low px-2 py-1 rounded">
+                  Fee: 50% Landlord / 50% Tenant
+                </span>
+</div>
+<p class="text-caption font-caption text-on-surface-variant text-xs mb-3">
+                Legal Title Search, Deed Signing, Key Handover • <strong>Inspection Timer:</strong> 7 Calendar Days
+              </p>
+<div class="flex items-center justify-between text-xs pt-2 border-t border-surface-container">
+<span class="text-outline">Dual Notary Endorsement • Stamp Duty Escrow Withholding</span>
+<button class="text-primary font-label hover:underline text-xs" type="button">Configure →</button>
+</div>
+</div>
+<!-- TEMPLATE 4: Heavy Machinery & Automotive Fleet Procurement -->
+<div class="bg-surface-container-lowest rounded-xl border border-surface-variant p-space-lg shadow-sm hover:border-outline-variant transition-colors">
+<div class="flex items-start justify-between gap-space-md mb-2">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-surface-container text-on-surface-variant uppercase">
+                      Equipment &amp; Fleet
+                    </span>
+<span class="text-caption font-caption text-[11px] text-outline">Preset #ESC-TPL-004</span>
+</div>
+<h4 class="text-label font-label text-base font-bold text-on-surface">
+                    Heavy Machinery &amp; Automotive Fleet Procurement
+                  </h4>
+</div>
+<span class="text-xs font-medium text-on-surface-variant bg-surface-container-low px-2 py-1 rounded">
+                  Fee: Sliding Scale by Value
+                </span>
+</div>
+<p class="text-caption font-caption text-on-surface-variant text-xs mb-3">
+                Customs Clearance, Physical Pre-Delivery Inspection (PDI), Chassis Transfer • <strong>Timer:</strong> 72 Hours
+              </p>
+<div class="flex items-center justify-between text-xs pt-2 border-t border-surface-container">
+<span class="text-outline">VIN Registry Cross-Check • NAICOM Transit Insurance Bonded</span>
+<button class="text-primary font-label hover:underline text-xs" type="button">Configure →</button>
+</div>
+</div>
+</div>
+</section>
+<!-- =================================================================== -->
+<!-- RIGHT PANEL (w-5/12): SLIDING FEE SCHEDULE & DUAL-CONTROL EDITOR    -->
+<!-- =================================================================== -->
+<section class="lg:col-span-5 flex flex-col gap-space-lg">
+<!-- Sliding Fee Structure Card -->
+<div class="bg-surface-container-lowest rounded-xl border border-surface-variant p-space-lg shadow-sm">
+<div class="flex items-center justify-between pb-space-sm border-b border-surface-variant mb-space-md">
+<div>
+<h3 class="text-subtitle font-subtitle text-on-surface font-bold">
+                  Escrow Fee Architecture &amp; Sliding Scales
+                </h3>
+<p class="text-caption font-caption text-on-surface-variant text-xs">
+                  Statutory Tier Breakdown based on Nigerian Escrow Rules
+                </p>
+</div>
+<span class="material-symbols-outlined text-primary text-xl">analytics</span>
+</div>
+<!-- Volume Tier Pricing Table Matrix -->
+<div class="border border-surface-variant rounded-lg overflow-hidden mb-space-md">
+<table class="w-full text-left text-xs border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-surface-variant text-on-surface-variant">
+<th class="p-2.5 font-semibold">Tier Range (NGN)</th>
+<th class="p-2.5 font-semibold text-right">Escrow Fee</th>
+<th class="p-2.5 font-semibold text-right">Floor / Cap</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container">
+<tr class="hover:bg-surface-bright">
+<td class="p-2.5">
+<span class="font-bold text-on-surface block">Tier 1</span>
+<span class="text-outline tabular-nums">₦0 - ₦10,000,000.00</span>
+</td>
+<td class="p-2.5 text-right font-bold text-primary tabular-nums">1.20%</td>
+<td class="p-2.5 text-right text-outline tabular-nums">Min ₦2,500.00</td>
+</tr>
+<tr class="bg-surface-container-low/40 hover:bg-surface-bright border-l-2 border-primary-container">
+<td class="p-2.5">
+<div class="flex items-center gap-1">
+<span class="font-bold text-on-surface">Tier 2</span>
+<span class="text-[10px] text-secondary font-bold uppercase">(Pending Rev)</span>
+</div>
+<span class="text-outline tabular-nums">₦10,000,001.00 - ₦50,000,000.00</span>
+</td>
+<td class="p-2.5 text-right font-bold text-primary tabular-nums">0.95%</td>
+<td class="p-2.5 text-right text-outline tabular-nums">Standard</td>
+</tr>
+<tr class="hover:bg-surface-bright">
+<td class="p-2.5">
+<span class="font-bold text-on-surface block">Tier 3</span>
+<span class="text-outline tabular-nums">₦50,000,001.00 - ₦200,000,000.00</span>
+</td>
+<td class="p-2.5 text-right font-bold text-primary tabular-nums">0.75%</td>
+<td class="p-2.5 text-right text-outline tabular-nums">Standard</td>
+</tr>
+<tr class="hover:bg-surface-bright">
+<td class="p-2.5">
+<span class="font-bold text-on-surface block">Tier 4 (Institutional)</span>
+<span class="text-outline tabular-nums">₦200,000,001.00+</span>
+</td>
+<td class="p-2.5 text-right font-bold text-primary tabular-nums">0.45%</td>
+<td class="p-2.5 text-right text-outline tabular-nums">Cap ₦1,500,000.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Dispute & Cancellation Fee Handling Policy -->
+<div class="space-y-2 mb-2">
+<span class="text-caption font-caption text-on-surface-variant font-bold text-xs uppercase tracking-wider block">
+                Dispute &amp; Cancellation Fee Policy
+              </span>
+<ul class="text-xs space-y-1.5 text-on-surface">
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-sm mt-0.5" data-weight="fill">check_circle</span>
+<span><strong>Fee Payer Rules:</strong> Configurable per template (Buyer 100%, Seller 100%, or 50/50 Split).</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-sm mt-0.5" data-weight="fill">check_circle</span>
+<span><strong>Pre-funding Cancellation:</strong> <span class="tabular-nums font-semibold">₦0.00</span> (Zero operational fee).</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-sm mt-0.5" data-weight="fill">check_circle</span>
+<span><strong>Post-funding Mutual Cancellation:</strong> 0.20% administrative handling charge deducted from return.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-sm mt-0.5" data-weight="fill">check_circle</span>
+<span><strong>Arbitrated Dispute Fee:</strong> Losing party absorbs 100% of escrow fee per tribunal award.</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Pending Fee Amendment Dual-Control Box (Interactive Highlight) -->
+<div class="bg-surface-container-lowest rounded-xl border-2 border-secondary-fixed-dim p-space-lg shadow-md relative">
+<div class="flex items-center justify-between pb-space-sm border-b border-surface-variant mb-space-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-xl" data-weight="fill">lock_clock</span>
+<span class="text-label font-label text-secondary font-bold">Dual-Control Signoff Required</span>
+</div>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-error-container text-on-error-container uppercase">
+                Revision Pending
+              </span>
+</div>
+<!-- Amendment Details -->
+<div class="space-y-2 mb-space-md text-xs">
+<div class="p-space-sm bg-surface-container-low rounded-lg border border-outline-variant">
+<span class="text-caption font-caption text-on-surface-variant block text-[11px]">Proposed Modification:</span>
+<span class="font-bold text-on-surface text-sm block">
+                  Reduce Tier 2 Rate from 0.95% to 0.85% for Agro-Commodities
+                </span>
+<span class="text-outline text-[11px] block mt-1">
+                  Target: Stimulate Northern corridor grain harvest aggregations.
+                </span>
+</div>
+<div class="grid grid-cols-2 gap-2 text-[11px]">
+<div class="p-2 bg-surface-bright rounded border border-surface-variant">
+<span class="text-outline block">Initiated By (1st Signoff):</span>
+<span class="font-bold text-on-surface">Alhaji Garba Shehu</span>
+<span class="text-outline block text-[10px]">Head of Escrow Products • 25 Feb 2027</span>
+</div>
+<div class="p-2 bg-surface-bright rounded border border-surface-variant">
+<span class="text-outline block">Second Reviewer Status:</span>
+<span class="font-bold text-secondary">Awaiting Cosign</span>
+<span class="text-outline block text-[10px]">Chief Financial Officer (CFO Desk)</span>
+</div>
+</div>
+</div>
+<!-- Dual-Control Signoff Form / Action Buttons -->
+<div class="flex flex-col gap-2">
+<!-- Primary Berry Button (Rigid 52px height) -->
+<button class="h-[52px] w-full rounded-xl bg-primary-container hover:bg-[#731540] text-on-primary font-label text-label flex items-center justify-center gap-space-sm transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-lg">verified_user</span>
+<span>Cosign &amp; Submit Tariff to CBN Registry</span>
+</button>
+<!-- Secondary Outline Button (52px height) -->
+<button class="h-[52px] w-full rounded-xl border border-outline-variant bg-transparent hover:bg-surface-container-low text-on-surface font-label text-label flex items-center justify-center gap-space-sm transition-colors" type="button">
+<span class="material-symbols-outlined text-lg">cancel</span>
+<span>Reject Amendment</span>
+</button>
+</div>
+<div class="mt-space-sm text-center">
+<span class="text-[10px] text-outline flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-xs">info</span>
+                Action will be cryptographically logged to immutable audit ledger.
+              </span>
+</div>
+</div>
+<!-- Quick Regulatory Reference Tag -->
+<div class="bg-surface-container p-space-md rounded-xl border border-surface-variant flex items-center justify-between text-xs">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">fact_check</span>
+<div>
+<span class="font-bold text-on-surface block">Automated Tariff Auditor</span>
+<span class="text-on-surface-variant text-[11px]">Last run: 4 mins ago (0 anomalies)</span>
+</div>
+</div>
+<span class="text-primary font-bold text-xs uppercase tracking-wider">Pass 100%</span>
+</div>
+</section>
+</div>
+</main>
+<!-- ========================================================================= -->
+<!-- FOOTER SYSTEM STATUS                                                      -->
+<!-- ========================================================================= -->
+<footer class="mt-auto px-space-xl py-space-md bg-surface-container-lowest border-t border-surface-variant flex items-center justify-between text-caption font-caption text-xs text-on-surface-variant">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span>Multi-Tenant Escrow Configuration System</span>
+<span>•</span>
+<span>ISO 20022 Financial Messaging</span>
+<span>•</span>
+<span>Regulated under Central Bank of Nigeria Financial Institutions Mandate</span>
+</div>
+<div class="flex items-center gap-4">
+<span>CBN Tariff Index: <strong class="text-on-surface font-mono">2027.02-C</strong></span>
+<span>Latency: <strong class="text-on-surface font-mono">24ms</strong></span>
+</div>
+</footer>
+</div>
+</body></html>

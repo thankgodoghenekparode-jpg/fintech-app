@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Configure Your Loan - YourApp Instant Loan</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-lowest": "#100e0f",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "inverse-on-surface": "#323031",
+            "surface-container-high": "#2c292a",
+            "secondary": "#ffb4a8",
+            "on-primary": "#620735",
+            "error-container": "#93000a",
+            "on-background": "#e7e1e2",
+            "on-primary-fixed-variant": "#7f234b",
+            "surface-container": "#211f20",
+            "primary-fixed-dim": "#ffb0ca",
+            "surface-tint": "#ffb0ca",
+            "primary-container": "#e0709a",
+            "on-primary-container": "#5d0331",
+            "on-secondary": "#61130a",
+            "secondary-container": "#822c20",
+            "on-tertiary-container": "#002a69",
+            "surface-container-low": "#1d1b1c",
+            "tertiary-container": "#6a92ee",
+            "on-error": "#690005",
+            "error": "#ffb4ab",
+            "outline": "#a28b91",
+            "on-error-container": "#ffdad6",
+            "on-surface": "#e7e1e2",
+            "primary": "#ffb0ca",
+            "surface-container-highest": "#373435",
+            "outline-variant": "#544247",
+            "tertiary-fixed": "#d9e2ff",
+            "surface-dim": "#151314",
+            "secondary-fixed-dim": "#ffb4a8",
+            "on-tertiary-fixed-variant": "#06429a",
+            "on-tertiary-fixed": "#001945",
+            "surface-bright": "#3b3839",
+            "inverse-primary": "#9e3b63",
+            "on-surface-variant": "#dac0c6",
+            "on-secondary-container": "#ff9f90",
+            "inverse-surface": "#e7e1e2",
+            "background": "#151314",
+            "on-secondary-fixed": "#410000",
+            "on-secondary-fixed-variant": "#7f291e",
+            "surface-variant": "#373435",
+            "secondary-fixed": "#ffdad4",
+            "primary-fixed": "#ffd9e3",
+            "on-tertiary": "#002d6f",
+            "tertiary": "#b0c6ff",
+            "surface": "#151314",
+            "on-primary-fixed": "#3e001f"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xl": "2rem",
+            "space-xs": "0.25rem",
+            "gutter": "1rem",
+            "margin": "1rem",
+            "space-sm": "0.5rem",
+            "margin-mobile": "1rem",
+            "space-lg": "1.5rem",
+            "gutter-mobile": "0.75rem",
+            "space-md": "1rem"
+          },
+          "fontFamily": {
+            "body-lg": ["Inter"],
+            "label-sm": ["Inter"],
+            "label-md": ["Inter"],
+            "headline-lg": ["Inter"],
+            "title-currency": ["Inter"],
+            "label-lg": ["Inter"],
+            "headline-sm": ["Inter"],
+            "headline-md": ["Inter"],
+            "display-currency": ["Inter"],
+            "body-md": ["Inter"]
+          },
+          "fontSize": {
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "title-currency": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-lg": ["15px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen flex justify-center antialiased select-none font-body-md text-body-md">
+<!-- Mobile Shell Target Viewport 390px x 844px -->
+<main class="w-full max-w-[390px] min-h-screen bg-surface flex flex-col relative pb-[104px]">
+<!-- TopAppBar (Task-focused screen: Back, Title, Step Context) -->
+<header class="sticky top-0 z-40 bg-surface/90 backdrop-blur-md px-margin py-space-sm flex items-center justify-between border-b border-outline-variant/30">
+<button aria-label="Go back" class="w-10 h-10 -ml-2 rounded-xl flex items-center justify-center text-on-surface hover:bg-surface-container active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<div class="flex-1 text-center px-space-xs">
+<h1 class="font-headline-sm text-headline-sm text-on-surface tracking-tight leading-none">Configure Your Loan</h1>
+<p class="font-label-sm text-label-sm text-primary tracking-normal mt-0.5 font-medium">Step 1 of 3: Loan Terms</p>
+</div>
+<button aria-label="Support and Information" class="w-10 h-10 -mr-2 rounded-xl flex items-center justify-center text-on-surface-variant hover:bg-surface-container active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined text-[20px]">info</span>
+</button>
+</header>
+<!-- Content Canvas -->
+<section class="flex-1 px-margin py-space-md flex flex-col gap-space-md">
+<!-- Amount Selection Card -->
+<div class="bg-surface-container-low rounded-xl p-space-md border border-outline-variant/40 flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">How much do you need?</span>
+<span class="font-label-sm text-label-sm text-tertiary-fixed-dim bg-surface-container px-2 py-0.5 rounded-full border border-outline-variant/30">
+            Available: ₦250,000.00
+          </span>
+</div>
+<!-- Numeric Stepper Display -->
+<div class="flex items-center justify-between py-space-sm gap-2">
+<button aria-label="Decrease amount by 10,000" class="w-[52px] h-[52px] rounded-xl bg-surface-container border border-outline-variant flex items-center justify-center text-on-surface hover:bg-surface-container-high active:scale-95 transition-transform duration-150 shrink-0" id="decrement-btn" type="button">
+<span class="material-symbols-outlined text-[24px]">remove</span>
+</button>
+<div class="flex-1 flex items-baseline justify-center overflow-hidden px-1">
+<span class="font-display-currency text-display-currency tracking-tight text-on-surface tabular-nums truncate" id="loan-amount-display">
+              ₦150,000.00
+            </span>
+</div>
+<button aria-label="Increase amount by 10,000" class="w-[52px] h-[52px] rounded-xl bg-surface-container border border-outline-variant flex items-center justify-center text-on-surface hover:bg-surface-container-high active:scale-95 transition-transform duration-150 shrink-0" id="increment-btn" type="button">
+<span class="material-symbols-outlined text-[24px]">add</span>
+</button>
+</div>
+<!-- Quick Amount Pills -->
+<div class="flex items-center gap-space-xs overflow-x-auto pb-1 scrollbar-none">
+<button class="quick-chip h-[32px] px-3 rounded-full bg-surface-container border border-outline-variant/40 font-label-md text-label-md text-on-surface-variant hover:text-on-surface whitespace-nowrap active:scale-95 transition-all duration-150" data-amount="50000" type="button">
+            ₦50,000
+          </button>
+<button class="quick-chip h-[32px] px-3 rounded-full bg-surface-container border border-outline-variant/40 font-label-md text-label-md text-on-surface-variant hover:text-on-surface whitespace-nowrap active:scale-95 transition-all duration-150" data-amount="100000" type="button">
+            ₦100,000
+          </button>
+<button class="quick-chip active-chip h-[32px] px-3 rounded-full bg-primary-container text-on-primary-container font-semibold border border-primary-container whitespace-nowrap active:scale-95 transition-all duration-150" data-amount="150000" type="button">
+            ₦150,000
+          </button>
+<button class="quick-chip h-[32px] px-3 rounded-full bg-surface-container border border-outline-variant/40 font-label-md text-label-md text-on-surface-variant hover:text-on-surface whitespace-nowrap active:scale-95 transition-all duration-150" data-amount="200000" type="button">
+            ₦200,000
+          </button>
+<button class="quick-chip h-[32px] px-3 rounded-full bg-surface-container border border-outline-variant/40 font-label-md text-label-md text-on-surface-variant hover:text-on-surface whitespace-nowrap active:scale-95 transition-all duration-150" data-amount="250000" type="button">
+            ₦250,000 Max
+          </button>
+</div>
+</div>
+<!-- Tenor Duration Selector -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<label class="font-headline-sm text-headline-sm text-on-surface">Repayment Period</label>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Select tenor</span>
+</div>
+<div class="grid grid-cols-1 gap-2.5">
+<!-- 15 Days Option -->
+<button class="tenor-card w-full text-left p-3.5 rounded-xl bg-surface-container-low border border-outline-variant/30 flex items-center justify-between hover:bg-surface-container transition-colors duration-150 active:scale-[0.99]" data-date="15 Mar 2026" data-rate="0.025" data-tenor="15" type="button">
+<div class="flex items-center gap-3">
+<span class="radio-indicator w-5 h-5 rounded-full border border-outline flex items-center justify-center shrink-0">
+<span class="indicator-inner w-2.5 h-2.5 rounded-full bg-transparent"></span>
+</span>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface">15 Days</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Due 15 Mar 2026</p>
+</div>
+</div>
+<div class="text-right">
+<span class="font-label-md text-label-md font-semibold text-secondary">2.5%</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant">flat fee</p>
+</div>
+</button>
+<!-- 30 Days Option (SELECTED) -->
+<button class="tenor-card active-tenor w-full text-left p-3.5 rounded-xl bg-surface-container border-2 border-primary-container shadow-sm flex items-center justify-between active:scale-[0.99] transition-colors duration-150" data-date="30 Mar 2026" data-rate="0.048" data-tenor="30" type="button">
+<div class="flex items-center gap-3">
+<span class="radio-indicator w-5 h-5 rounded-full border-2 border-primary-container flex items-center justify-center shrink-0">
+<span class="indicator-inner w-2.5 h-2.5 rounded-full bg-primary-container"></span>
+</span>
+<div>
+<div class="flex items-center gap-2">
+<p class="font-label-lg text-label-lg text-on-surface">30 Days</p>
+<span class="bg-primary/20 text-primary-fixed-dim text-[10px] leading-tight px-1.5 py-0.5 rounded font-medium">Recommended</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Due 30 Mar 2026</p>
+</div>
+</div>
+<div class="text-right">
+<span class="font-label-md text-label-md font-semibold text-primary">4.8%</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant">flat fee</p>
+</div>
+</button>
+<!-- 60 Days Option -->
+<button class="tenor-card w-full text-left p-3.5 rounded-xl bg-surface-container-low border border-outline-variant/30 flex items-center justify-between hover:bg-surface-container transition-colors duration-150 active:scale-[0.99]" data-date="29 Apr 2026" data-rate="0.092" data-tenor="60" type="button">
+<div class="flex items-center gap-3">
+<span class="radio-indicator w-5 h-5 rounded-full border border-outline flex items-center justify-center shrink-0">
+<span class="indicator-inner w-2.5 h-2.5 rounded-full bg-transparent"></span>
+</span>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface">60 Days (2 Months)</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">2 Equal installments</p>
+</div>
+</div>
+<div class="text-right">
+<span class="font-label-md text-label-md font-semibold text-secondary">9.2%</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant">flat fee</p>
+</div>
+</button>
+<!-- 90 Days Option -->
+<button class="tenor-card w-full text-left p-3.5 rounded-xl bg-surface-container-low border border-outline-variant/30 flex items-center justify-between hover:bg-surface-container transition-colors duration-150 active:scale-[0.99]" data-date="29 May 2026" data-rate="0.135" data-tenor="90" type="button">
+<div class="flex items-center gap-3">
+<span class="radio-indicator w-5 h-5 rounded-full border border-outline flex items-center justify-center shrink-0">
+<span class="indicator-inner w-2.5 h-2.5 rounded-full bg-transparent"></span>
+</span>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface">90 Days (3 Months)</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">3 Equal installments</p>
+</div>
+</div>
+<div class="text-right">
+<span class="font-label-md text-label-md font-semibold text-secondary">13.5%</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant">flat fee</p>
+</div>
+</button>
+</div>
+</div>
+<!-- Live Financial Transparency Breakdown -->
+<div class="bg-surface-container-low rounded-xl p-space-md border border-outline-variant/40 flex flex-col gap-3">
+<div class="flex items-center justify-between pb-1 border-b border-outline-variant/20">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-primary">verified_user</span>
+<span class="font-label-lg text-label-lg text-on-surface">Cost Breakdown</span>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary-fixed-dim bg-tertiary-fixed-dim/10 px-2 py-0.5 rounded-full">Transparent Pricing</span>
+</div>
+<div class="space-y-2 text-sm pt-1">
+<div class="flex justify-between items-center">
+<span class="font-body-md text-body-md text-on-surface-variant">Principal Amount</span>
+<span class="font-label-md text-label-md text-on-surface tabular-nums" id="summary-principal">₦150,000.00</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-body-md text-body-md text-on-surface-variant" id="summary-fee-label">Interest &amp; Management Fee (4.8%)</span>
+<span class="font-label-md text-label-md text-on-surface tabular-nums" id="summary-fee">₦7,200.00</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-body-md text-body-md text-on-surface-variant">Processing / Credit Insurance</span>
+<span class="font-label-md text-label-md text-[#4CC38A] tabular-nums font-medium">₦0.00 (Waived)</span>
+</div>
+<div class="pt-2 border-t border-outline-variant/30 flex justify-between items-center">
+<div>
+<span class="font-label-lg text-label-lg text-on-surface">Total Repayable</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant" id="summary-due-subtext">Due 30 March 2026 (in 30 days)</p>
+</div>
+<span class="font-title-currency text-title-currency font-bold text-primary tabular-nums" id="summary-total">₦157,200.00</span>
+</div>
+</div>
+<!-- Repayment Source Info -->
+<div class="mt-1 pt-2.5 border-t border-outline-variant/20 flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant mt-0.5">account_balance_wallet</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant leading-relaxed">
+            Repayment Source: Auto-deduct from Main Wallet or linked debit card
+          </p>
+</div>
+</div>
+<!-- Fair Lending Commitment note -->
+<div class="p-3 rounded-xl bg-surface-container border border-outline-variant/30 flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-primary shrink-0 mt-0.5">sentiment_satisfied</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant leading-snug">
+          Zero penalty for early repayment. Pay earlier to save on fees and increase your credit rating.
+        </p>
+</div>
+</section>
+<!-- Sticky Docked Action Area (52px Primary Berry Button, Safe Area) -->
+<div class="fixed bottom-0 left-0 right-0 max-w-[390px] mx-auto bg-surface/95 backdrop-blur-md px-margin py-3 border-t border-outline-variant/30 z-50">
+<button class="w-full h-[52px] rounded-xl bg-primary-container text-on-primary-container font-label-lg text-label-lg flex items-center justify-center gap-2 font-semibold shadow-lg hover:brightness-105 active:scale-[0.98] transition-all duration-150" id="submit-btn" type="button">
+<span>Continue to Affordability Check (Step 2)</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+</main>
+<!-- Interactive State Logic -->
+<script>
+    (function() {
+      let currentAmount = 150000;
+      const minAmount = 20000;
+      const maxAmount = 250000;
+      const step = 10000;
+
+      let selectedTenor = 30;
+      let selectedRate = 0.048;
+      let selectedDate = "30 March 2026";
+
+      const amountDisplay = document.getElementById('loan-amount-display');
+      const decrementBtn = document.getElementById('decrement-btn');
+      const incrementBtn = document.getElementById('increment-btn');
+      const quickChips = document.querySelectorAll('.quick-chip');
+      const tenorCards = document.querySelectorAll('.tenor-card');
+
+      const summaryPrincipal = document.getElementById('summary-principal');
+      const summaryFeeLabel = document.getElementById('summary-fee-label');
+      const summaryFee = document.getElementById('summary-fee');
+      const summaryTotal = document.getElementById('summary-total');
+      const summaryDueSubtext = document.getElementById('summary-due-subtext');
+
+      function formatNaira(num) {
+        return '₦' + Number(num).toLocaleString('en-NG', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      }
+
+      function updateCalculations() {
+        amountDisplay.textContent = formatNaira(currentAmount);
+        summaryPrincipal.textContent = formatNaira(currentAmount);
+
+        const feeAmount = currentAmount * selectedRate;
+        const totalAmount = currentAmount + feeAmount;
+
+        const ratePercentage = (selectedRate * 100).toFixed(1);
+        summaryFeeLabel.textContent = `Interest & Management Fee (${ratePercentage}%)`;
+        summaryFee.textContent = formatNaira(feeAmount);
+        summaryTotal.textContent = formatNaira(totalAmount);
+        summaryDueSubtext.textContent = `Due ${selectedDate} (in ${selectedTenor} days)`;
+
+        // Highlight matching quick chip if exact
+        quickChips.forEach(chip => {
+          const val = parseInt(chip.getAttribute('data-amount'), 10);
+          if (val === currentAmount) {
+            chip.className = "quick-chip active-chip h-[32px] px-3 rounded-full bg-primary-container text-on-primary-container font-semibold border border-primary-container whitespace-nowrap active:scale-95 transition-all duration-150";
+          } else {
+            chip.className = "quick-chip h-[32px] px-3 rounded-full bg-surface-container border border-outline-variant/40 font-label-md text-label-md text-on-surface-variant hover:text-on-surface whitespace-nowrap active:scale-95 transition-all duration-150";
+          }
+        });
+      }
+
+      decrementBtn.addEventListener('click', () => {
+        if (currentAmount - step >= minAmount) {
+          currentAmount -= step;
+          updateCalculations();
+        }
+      });
+
+      incrementBtn.addEventListener('click', () => {
+        if (currentAmount + step <= maxAmount) {
+          currentAmount += step;
+          updateCalculations();
+        }
+      });
+
+      quickChips.forEach(chip => {
+        chip.addEventListener('click', () => {
+          currentAmount = parseInt(chip.getAttribute('data-amount'), 10);
+          updateCalculations();
+        });
+      });
+
+      tenorCards.forEach(card => {
+        card.addEventListener('click', () => {
+          selectedTenor = parseInt(card.getAttribute('data-tenor'), 10);
+          selectedRate = parseFloat(card.getAttribute('data-rate'));
+          selectedDate = card.getAttribute('data-date');
+
+          tenorCards.forEach(c => {
+            c.className = "tenor-card w-full text-left p-3.5 rounded-xl bg-surface-container-low border border-outline-variant/30 flex items-center justify-between hover:bg-surface-container transition-colors duration-150 active:scale-[0.99]";
+            const radio = c.querySelector('.radio-indicator');
+            const inner = c.querySelector('.indicator-inner');
+            radio.className = "radio-indicator w-5 h-5 rounded-full border border-outline flex items-center justify-center shrink-0";
+            inner.className = "indicator-inner w-2.5 h-2.5 rounded-full bg-transparent";
+          });
+
+          card.className = "tenor-card active-tenor w-full text-left p-3.5 rounded-xl bg-surface-container border-2 border-primary-container shadow-sm flex items-center justify-between active:scale-[0.99] transition-colors duration-150";
+          const activeRadio = card.querySelector('.radio-indicator');
+          const activeInner = card.querySelector('.indicator-inner');
+          activeRadio.className = "radio-indicator w-5 h-5 rounded-full border-2 border-primary-container flex items-center justify-center shrink-0";
+          activeInner.className = "indicator-inner w-2.5 h-2.5 rounded-full bg-primary-container";
+
+          updateCalculations();
+        });
+      });
+
+      updateCalculations();
+    })();
+  </script>
+</body></html>

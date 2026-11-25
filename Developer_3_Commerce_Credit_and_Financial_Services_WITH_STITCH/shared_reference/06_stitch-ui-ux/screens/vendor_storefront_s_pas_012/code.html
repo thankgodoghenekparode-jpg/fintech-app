@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YourApp - Vendor Storefront (Pay Am Small)</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary": "#3b3236",
+            "surface": "#fff8f8",
+            "surface-container": "#f5eced",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "surface-variant": "#e9e0e1",
+            "surface-container-high": "#efe6e7",
+            "error": "#ba1a1a",
+            "on-tertiary": "#ffffff",
+            "surface-container-low": "#fbf1f2",
+            "primary-container": "#8e1b4a",
+            "on-secondary-fixed": "#410000",
+            "on-tertiary-container": "#c6b7bd",
+            "surface-tint": "#a8315d",
+            "tertiary-fixed": "#eedee4",
+            "on-secondary-container": "#690000",
+            "on-surface-variant": "#564146",
+            "inverse-on-surface": "#f8eeef",
+            "surface-bright": "#fff8f8",
+            "secondary-fixed": "#ffdad4",
+            "inverse-surface": "#342f30",
+            "secondary-container": "#fc6955",
+            "outline": "#897176",
+            "surface-container-highest": "#e9e0e1",
+            "primary-fixed-dim": "#ffb1c5",
+            "on-error-container": "#93000a",
+            "on-background": "#1f1b1c",
+            "on-primary-fixed": "#3f001b",
+            "on-surface": "#1f1b1c",
+            "primary": "#6d0033",
+            "on-primary": "#ffffff",
+            "surface-dim": "#e1d8d9",
+            "secondary": "#ae3123",
+            "outline-variant": "#dcbfc5",
+            "on-tertiary-fixed": "#21191e",
+            "secondary-fixed-dim": "#ffb4a8",
+            "on-primary-container": "#ffa0ba",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "background": "#fff8f8",
+            "primary-fixed": "#ffd9e1",
+            "on-secondary": "#ffffff",
+            "on-secondary-fixed-variant": "#8c170e",
+            "on-primary-fixed-variant": "#881646",
+            "tertiary-container": "#53484d",
+            "error-container": "#ffdad6",
+            "inverse-primary": "#ffb1c5",
+            "on-error": "#ffffff",
+            "surface-container-lowest": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xl": "1.5rem",
+            "space-2xl": "2rem",
+            "space-sm": "0.5rem",
+            "margin": "1rem",
+            "space-lg": "1rem",
+            "space-3xl": "3rem",
+            "gutter": "1rem",
+            "space-xs": "0.25rem",
+            "space-md": "0.75rem"
+          },
+          "fontFamily": {
+            "caption": ["Inter"],
+            "display": ["Inter"],
+            "body-medium": ["Inter"],
+            "amount-lg": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "subtitle": ["Inter"],
+            "body": ["Inter"],
+            "label": ["Inter"],
+            "title": ["Inter"]
+          },
+          "fontSize": {
+            "caption": ["13px", {"lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+            "display": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "body-medium": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500"}],
+            "amount-lg": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700"}],
+            "amount-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "subtitle": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "body": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400"}],
+            "label": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+            "title": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700"}]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased selection:bg-primary-fixed selection:text-primary min-h-screen flex flex-col justify-between">
+<!-- Mobile Viewport Shell Wrapper (390px scaled container up to 560px max) -->
+<div class="w-full max-w-[560px] mx-auto min-h-screen bg-surface flex flex-col relative pb-28 shadow-sm">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-40 bg-surface flex justify-between items-center w-full px-margin py-space-sm min-h-[56px] shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)]">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Go back" class="w-12 h-12 flex items-center justify-center rounded-full hover:bg-surface-container active:scale-95 transition-all text-on-surface" type="button">
+<span class="material-symbols-outlined text-on-surface" data-icon="arrow_back">arrow_back</span>
+</button>
+<span class="font-title text-title font-bold text-primary">YourApp</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<button aria-label="Search catalog" class="w-12 h-12 flex items-center justify-center rounded-full hover:bg-surface-container active:scale-95 transition-all text-on-surface" type="button">
+<span class="material-symbols-outlined text-on-surface" data-icon="search">search</span>
+</button>
+<button aria-label="Share store" class="w-12 h-12 flex items-center justify-center rounded-full hover:bg-surface-container active:scale-95 transition-all text-on-surface" type="button">
+<span class="material-symbols-outlined text-on-surface" data-icon="share">share</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-margin pt-space-md flex flex-col gap-space-xl">
+<!-- Storefront Header & Hero Card (Bento Pattern) -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] flex flex-col gap-space-md">
+<!-- Top Row: Avatar & Brand Badges -->
+<div class="flex items-start gap-space-md">
+<div class="w-16 h-16 rounded-xl bg-surface-container-high overflow-hidden shrink-0 flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="A refined minimalist Nigerian consumer electronics boutique showroom with sleek shelving, warm premium lighting, deep wine corporate accents, and modern boxed appliances on pristine white display stands." src="https://lh3.googleusercontent.com/aida-public/AB6AXuASpBzC0Uc0af9N9lpND7XFGE60eJYFHIi4wwj6Ut6OPyH3Pa-Wfjf0l9USfixvvMlINyjy9OF20K4Bj6YrOHpvtjs53xCL0BkUzpmdpTxQizP82Pev7S3CU0FXodOtPs_o2AmVru-QOhE4sSYGLuXxYBcye5kBPybTYIRGdpOGv5X0iidaCL5N308awcR6IbueEKZpOoaDkfQ1rpKHUiIKOaWL1eic7VrK5UNS-jyi7LIKxumntPxnMQ"/>
+</div>
+<div class="flex-1 flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<h1 class="font-subtitle text-subtitle text-on-surface">MegaPlaza Electronics</h1>
+</div>
+<!-- Badges -->
+<div class="flex flex-wrap items-center gap-space-xs">
+<span class="inline-flex items-center gap-1 rounded-lg px-2 py-0.5 bg-surface-container text-primary font-caption text-caption">
+<span class="material-symbols-outlined text-[15px]" data-icon="verified" data-weight="fill" style="font-variation-settings: 'FILL' 1;">verified</span>
+                Verified Partner
+              </span>
+<span class="inline-flex items-center gap-1 rounded-lg px-2 py-0.5 bg-surface-container-low text-on-surface-variant font-caption text-caption">
+<span class="material-symbols-outlined text-[15px]" data-icon="verified_user">verified_user</span>
+                Official Distributor
+              </span>
+</div>
+</div>
+</div>
+<!-- Rating & Dispatch Record Metrics -->
+<div class="grid grid-cols-2 gap-space-sm pt-space-xs border-t border-surface-container-high">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-1 text-on-surface">
+<span class="material-symbols-outlined text-secondary-container" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-body-medium text-body-medium">4.9</span>
+<span class="font-caption text-caption text-on-surface-variant">(218 reviews)</span>
+</div>
+<span class="font-caption text-caption text-on-surface-variant">Top-rated merchant</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="local_shipping">local_shipping</span>
+<span class="font-label text-label">100% Dispatched</span>
+</div>
+<span class="font-caption text-caption text-on-surface-variant">Over 450+ Price-Lock items fulfilled</span>
+</div>
+</div>
+<!-- Physical Location & Bio -->
+<div class="flex flex-col gap-space-xs pt-space-xs">
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px] text-primary" data-icon="location_on">location_on</span>
+<span class="font-caption text-caption">Victoria Island, Lagos &amp; Lekki Phase 1 Showroom</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant">
+            Premium home appliances, electronics, and solar power with manufacturer warranty. Authorized partner for Haier Thermocool, LG, and Scanfrost Nigeria.
+          </p>
+</div>
+<!-- Action Row -->
+<div class="flex items-center gap-space-sm pt-space-xs">
+<button class="flex-1 h-[52px] bg-primary-container text-on-primary rounded-xl font-label text-label flex items-center justify-center gap-2 hover:bg-primary transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined" data-icon="chat">chat</span>
+            Message Merchant
+          </button>
+<button class="h-[52px] px-space-lg bg-surface-container text-primary rounded-xl font-label text-label flex items-center justify-center gap-1.5 hover:bg-surface-container-high transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined" data-icon="bookmark_border">bookmark_border</span>
+            Follow
+          </button>
+</div>
+</section>
+<!-- Store Policies Strip (Horizontal Scroll Chips) -->
+<section class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<h2 class="font-label text-label text-on-surface">Store Guarantees &amp; Terms</h2>
+<span class="font-caption text-caption text-primary">Pay Am Small Ready</span>
+</div>
+<div class="flex gap-space-sm overflow-x-auto no-scrollbar py-1">
+<div class="shrink-0 flex items-center gap-1.5 bg-surface-container-lowest px-3 py-2 rounded-lg shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)]">
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="lock_clock">lock_clock</span>
+<span class="font-caption text-caption text-on-surface">Price-Lock Guaranteed</span>
+</div>
+<div class="shrink-0 flex items-center gap-1.5 bg-surface-container-lowest px-3 py-2 rounded-lg shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)]">
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="speed">speed</span>
+<span class="font-caption text-caption text-on-surface">3-Day Doorstep Delivery</span>
+</div>
+<div class="shrink-0 flex items-center gap-1.5 bg-surface-container-lowest px-3 py-2 rounded-lg shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)]">
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="workspace_premium">workspace_premium</span>
+<span class="font-caption text-caption text-on-surface">Official 2-Year Warranty</span>
+</div>
+<div class="shrink-0 flex items-center gap-1.5 bg-surface-container-lowest px-3 py-2 rounded-lg shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)]">
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="storefront">storefront</span>
+<span class="font-caption text-caption text-on-surface">Free In-Store Pickup</span>
+</div>
+</div>
+</section>
+<!-- Catalog Filter & Tabs -->
+<section class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<h2 class="font-subtitle text-subtitle text-on-surface">Catalog &amp; Price-Lock Plans</h2>
+<span class="font-caption text-caption text-on-surface-variant">32 Items</span>
+</div>
+<!-- Filter Tabs -->
+<div class="flex gap-space-xs overflow-x-auto no-scrollbar">
+<button class="shrink-0 px-4 py-2 rounded-xl bg-primary text-on-primary font-label text-label shadow-sm active:scale-95 transition-all" type="button">
+            All Products (32)
+          </button>
+<button class="shrink-0 px-4 py-2 rounded-xl bg-surface-container text-on-surface-variant font-label text-label hover:bg-surface-container-high active:scale-95 transition-all" type="button">
+            Home Appliances
+          </button>
+<button class="shrink-0 px-4 py-2 rounded-xl bg-surface-container text-on-surface-variant font-label text-label hover:bg-surface-container-high active:scale-95 transition-all" type="button">
+            Kitchen
+          </button>
+<button class="shrink-0 px-4 py-2 rounded-xl bg-surface-container text-on-surface-variant font-label text-label hover:bg-surface-container-high active:scale-95 transition-all" type="button">
+            Freezers &amp; Fridges
+          </button>
+<button class="shrink-0 px-4 py-2 rounded-xl bg-surface-container text-on-surface-variant font-label text-label hover:bg-surface-container-high active:scale-95 transition-all" type="button">
+            Entertainment
+          </button>
+</div>
+<!-- Product Cards Stack -->
+<div class="flex flex-col gap-space-lg">
+<!-- Product 1 -->
+<article class="bg-surface-container-lowest rounded-xl p-space-lg shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] flex flex-col gap-space-md">
+<div class="flex gap-space-md">
+<div class="w-24 h-24 rounded-lg bg-surface-container overflow-hidden shrink-0 relative">
+<img class="w-full h-full object-cover" data-alt="A modern white Haier Thermocool chest freezer with chrome handle set in a pristine, bright kitchen setup. Contemporary Nigerian home setting with warm ambient lighting and soft neutral textures." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAphhvIkzSajmAHojD0yWu6zJ-Srik80Fp9B5bp9sdYQVWw0FOEOZFiQ3mz76zI69DUwgwqeJ1X1GXoC--4XhVRIT5fcEyb-oe46GHcQ0c13bOVZdpcJrCJzNTR2zY2t_isJpvRM5yGl-TCG3tdHJe4EETBy4_ZKrPOo4avlMllik_wNgxe-38HRKl4ziHyNkraPR9ifi7IYIacV4p4EW-C37N2enyBfH2npO6UEiGzlnL6CneW30JvcQ"/>
+<span class="absolute top-1 left-1 bg-primary text-on-primary font-caption text-[11px] px-1.5 py-0.5 rounded">
+                  Bestseller
+                </span>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<h3 class="font-body-medium text-body-medium text-on-surface">Haier Thermocool 200L Chest Freezer</h3>
+<p class="font-caption text-caption text-on-surface-variant">Low voltage stabilizer, turbo freeze</p>
+</div>
+<div>
+<span class="font-body-medium text-body-medium text-on-surface tabular-nums">₦285,000.00</span>
+<div class="flex items-center gap-1 mt-0.5 text-primary">
+<span class="material-symbols-outlined text-[16px]" data-icon="lock_clock">lock_clock</span>
+<span class="font-caption text-caption font-semibold tabular-nums">From ₦95,000/mo (3 mos)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Price lock mini actions -->
+<div class="flex items-center gap-space-sm pt-space-xs border-t border-surface-container-high">
+<button class="flex-1 h-[48px] bg-primary-container text-on-primary rounded-lg font-label text-label flex items-center justify-center gap-1.5 hover:bg-primary transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="lock_open">lock_open</span>
+                Start Price-Lock
+              </button>
+<button class="h-[48px] px-4 bg-surface-container text-on-surface rounded-lg font-label text-label flex items-center justify-center hover:bg-surface-container-high transition-colors active:scale-95" type="button">
+                Buy Outright
+              </button>
+</div>
+</article>
+<!-- Product 2 -->
+<article class="bg-surface-container-lowest rounded-xl p-space-lg shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] flex flex-col gap-space-md">
+<div class="flex gap-space-md">
+<div class="w-24 h-24 rounded-lg bg-surface-container overflow-hidden shrink-0 relative">
+<img class="w-full h-full object-cover" data-alt="An ultra-thin LG 55 inch 4K UHD Smart television mounted against a tasteful warm-toned wall panel in an upscale living room, screen illuminated with vibrant ultra-high-definition scenery." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTF1sc4yhugEOJqPXZJqfCkAlmlBVGVHIY72JXUUjBIgTyeIzzO5HkkdusavIpZkxWJQNxPrkvK1Lba-VfcOKDF0jvo1NKP1-iOhty5uGUhvRQEgLBEFjm78qm9YrL66XyajLOeFTcU7rQr_DNNcgqUyRfVsoNoDmcvGKIF2cSK9EEPUle_panQO_ZQ2NMsjLylHvBZVrCS6hJlSyiy1SDSRtBQYaKGfglPGcDTpYI4onGHoxiMloNxA"/>
+<span class="absolute top-1 left-1 bg-surface-tint text-on-primary font-caption text-[11px] px-1.5 py-0.5 rounded">
+                  Credit OK
+                </span>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<h3 class="font-body-medium text-body-medium text-on-surface">LG 55" 4K UHD Smart TV</h3>
+<p class="font-caption text-caption text-on-surface-variant">webOS, Magic Remote &amp; HDR10</p>
+</div>
+<div>
+<span class="font-body-medium text-body-medium text-on-surface tabular-nums">₦490,000.00</span>
+<div class="flex items-center gap-1 mt-0.5 text-primary">
+<span class="material-symbols-outlined text-[16px]" data-icon="lock_clock">lock_clock</span>
+<span class="font-caption text-caption font-semibold tabular-nums">From ₦122,500/mo (4 mos)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Price lock mini actions -->
+<div class="flex items-center gap-space-sm pt-space-xs border-t border-surface-container-high">
+<button class="flex-1 h-[48px] bg-primary-container text-on-primary rounded-lg font-label text-label flex items-center justify-center gap-1.5 hover:bg-primary transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="lock_open">lock_open</span>
+                Start Price-Lock
+              </button>
+<button class="h-[48px] px-4 bg-surface-container text-on-surface rounded-lg font-label text-label flex items-center justify-center hover:bg-surface-container-high transition-colors active:scale-95" type="button">
+                Buy Outright
+              </button>
+</div>
+</article>
+<!-- Product 3 -->
+<article class="bg-surface-container-lowest rounded-xl p-space-lg shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] flex flex-col gap-space-md">
+<div class="flex gap-space-md">
+<div class="w-24 h-24 rounded-lg bg-surface-container overflow-hidden shrink-0 relative">
+<img class="w-full h-full object-cover" data-alt="A stainless steel Scanfrost 4-burner gas cooker with clear glass lid positioned on a polished marble counter inside a clean, sophisticated residential culinary interior." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1dKgTMfQaThjcwwAJlP_FS4iGjso6SzbKZavTLeYcwuPaVbKv5d4mEUpdiLq1GaXuySAzxGekB55JXSysRixGtbhxZWdP3aiODw8mM8wQ0g_UIa3w50W99nG_G7tkZhp_5sBh-cm6ab9gcOZZnB3dgxOUos8kO7Nnb6n581gAF8OUr5lp70TGk5ebCSMFsnzfhmlrsp3pwi-6t7x7bvMcGMQgZEM1S9DJq6GZNhxDMpoWtZ5wnG_4pQ"/>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<h3 class="font-body-medium text-body-medium text-on-surface">Scanfrost 4-Burner Gas Cooker</h3>
+<p class="font-caption text-caption text-on-surface-variant">Stainless steel, auto ignition, oven</p>
+</div>
+<div>
+<span class="font-body-medium text-body-medium text-on-surface tabular-nums">₦175,000.00</span>
+<div class="flex items-center gap-1 mt-0.5 text-primary">
+<span class="material-symbols-outlined text-[16px]" data-icon="lock_clock">lock_clock</span>
+<span class="font-caption text-caption font-semibold tabular-nums">From ₦58,333/mo (3 mos)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Price lock mini actions -->
+<div class="flex items-center gap-space-sm pt-space-xs border-t border-surface-container-high">
+<button class="flex-1 h-[48px] bg-primary-container text-on-primary rounded-lg font-label text-label flex items-center justify-center gap-1.5 hover:bg-primary transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="lock_open">lock_open</span>
+                Start Price-Lock
+              </button>
+<button class="h-[48px] px-4 bg-surface-container text-on-surface rounded-lg font-label text-label flex items-center justify-center hover:bg-surface-container-high transition-colors active:scale-95" type="button">
+                Buy Outright
+              </button>
+</div>
+</article>
+<!-- Product 4 -->
+<article class="bg-surface-container-lowest rounded-xl p-space-lg shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] flex flex-col gap-space-md">
+<div class="flex gap-space-md">
+<div class="w-24 h-24 rounded-lg bg-surface-container overflow-hidden shrink-0 relative">
+<img class="w-full h-full object-cover" data-alt="A sleek white wall-mounted Hisense 1.5HP inverter air conditioner blowing gentle cool air in a well-lit Nigerian master suite with natural daylight and elegant wood finishes." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7KxwA1r04Q0uxJFX_VUZ1XLEEIoRr1QSMqCJAC8xbmcMULzrYhtH4eUMgr93qyuAkxZOiwa69iLViIBCgOlX3oZBFEC4HerDbCNQPH21r_fq9UJ0AqECZVxS7ytjJ3SzTEVgiWKIL26MPvcnELFLL89-tF1ImL2TeYDbDagMt3w6bQTb5_moP4ntAuV1mZQLRNe8KZi9pDJY9iL8WpLzCpylb6vj-Dap5fAuQWCn2ZbRCyigx9CB3qg"/>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<h3 class="font-body-medium text-body-medium text-on-surface">Hisense 1.5HP Inverter AC</h3>
+<p class="font-caption text-caption text-on-surface-variant">Copper condenser, energy saver R32</p>
+</div>
+<div>
+<span class="font-body-medium text-body-medium text-on-surface tabular-nums">₦310,000.00</span>
+<div class="flex items-center gap-1 mt-0.5 text-primary">
+<span class="material-symbols-outlined text-[16px]" data-icon="lock_clock">lock_clock</span>
+<span class="font-caption text-caption font-semibold tabular-nums">From ₦103,333/mo (3 mos)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Price lock mini actions -->
+<div class="flex items-center gap-space-sm pt-space-xs border-t border-surface-container-high">
+<button class="flex-1 h-[48px] bg-primary-container text-on-primary rounded-lg font-label text-label flex items-center justify-center gap-1.5 hover:bg-primary transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="lock_open">lock_open</span>
+                Start Price-Lock
+              </button>
+<button class="h-[48px] px-4 bg-surface-container text-on-surface rounded-lg font-label text-label flex items-center justify-center hover:bg-surface-container-high transition-colors active:scale-95" type="button">
+                Buy Outright
+              </button>
+</div>
+</article>
+</div>
+</section>
+<!-- In-Store Pickup & Warehouse Location Map Snippet -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="storefront">storefront</span>
+<h2 class="font-subtitle text-subtitle text-on-surface">Showroom &amp; Fulfillment</h2>
+</div>
+<span class="inline-flex items-center gap-1 font-caption text-caption text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-secondary-container"></span> Open Now
+          </span>
+</div>
+<!-- Map visual block -->
+<div class="relative w-full h-36 rounded-lg overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="An artistic high-contrast map rendering of Victoria Island and Lekki axis in Lagos with subtle berry-toned navigational pins indicating retail electronic pickup depots." data-location="Lagos" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAf-WNHDjwL8TwFb_fVAqCyt9KXLf7RmvsZcEpPZ5Wt3vk0bCFU40WG-fH0TWj2uP0vmFfeB00wLksTF31T52OQsRXV0ziX7BeCAt6vqyzqHxHAd47vzNDqKIzy8VFiCyjspRWzPPFVnMB8ljahJDejClyzJkXmlTelB2gOh5u4rEhQLRWyzcWNHTLao7wsxeArsV8x6qOwpv1d6sKd5FpARqDgFJbMRk8cENf7hb-0NHyTksH1lTNKuw"/>
+<div class="absolute bottom-2 left-2 right-2 bg-surface-container-lowest/95 backdrop-blur-sm px-3 py-2 rounded-lg flex items-center justify-between text-on-surface shadow-sm">
+<div class="flex flex-col">
+<span class="font-label text-label">MegaPlaza VI Flagship Hub</span>
+<span class="font-caption text-caption text-on-surface-variant">Plot 14B Idowu Martins St, VI, Lagos</span>
+</div>
+<a class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center text-primary hover:bg-surface-container-high active:scale-95" href="#directions">
+<span class="material-symbols-outlined text-[20px]" data-icon="directions">directions</span>
+</a>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs text-on-surface-variant">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary" data-icon="schedule">schedule</span>
+<span class="font-caption text-caption">Operating Hours: Mon–Sat 8:30am – 7:00pm</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary" data-icon="inventory_2">inventory_2</span>
+<span class="font-caption text-caption">Direct warehouse handover with instant physical inspection</span>
+</div>
+</div>
+</section>
+<!-- Merchant Assurance Guarantee (Escrow Custody Banner) -->
+<section class="bg-surface-container-low rounded-xl p-space-lg flex items-start gap-space-md mb-space-md">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]" data-icon="shield">shield</span>
+</div>
+<div class="flex flex-col gap-0.5">
+<h4 class="font-label text-label text-on-surface">Protected by YourApp SafeShopping</h4>
+<p class="font-caption text-caption text-on-surface-variant">
+            NDIC escrow custody protects your payments. Funds are safely held and never remitted to the merchant until you receive and verify the authentic item handover.
+          </p>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Shared Component: Save & Borrow Active) -->
+<nav class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-margin h-16 max-w-[560px] mx-auto pb-safe bg-surface-container-lowest shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)]">
+<!-- Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#home">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-caption text-caption font-medium">Home</span>
+</a>
+<!-- Payments -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#payments">
+<span class="material-symbols-outlined" data-icon="send">send</span>
+<span class="font-caption text-caption font-medium">Payments</span>
+</a>
+<!-- Cards -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#cards">
+<span class="material-symbols-outlined" data-icon="credit_card">credit_card</span>
+<span class="font-caption text-caption font-medium">Cards</span>
+</a>
+<!-- Save & Borrow (ACTIVE) -->
+<a class="flex flex-col items-center justify-center text-primary font-semibold min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#save-and-borrow">
+<span class="material-symbols-outlined" data-icon="savings" data-weight="fill" style="font-variation-settings: 'FILL' 1;">savings</span>
+<span class="font-caption text-caption font-medium">Save &amp; Borrow</span>
+</a>
+<!-- More -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#more">
+<span class="material-symbols-outlined" data-icon="more_horiz">more_horiz</span>
+<span class="font-caption text-caption font-medium">More</span>
+</a>
+</nav>
+</div>
+</body></html>

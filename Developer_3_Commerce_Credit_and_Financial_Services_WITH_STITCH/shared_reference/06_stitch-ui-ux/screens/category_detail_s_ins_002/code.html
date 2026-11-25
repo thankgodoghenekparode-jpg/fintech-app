@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Food &amp; Groceries Detail - YourApp</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Inter Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary-fixed": "#ffdad4",
+            "on-primary-container": "#ffa0ba",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "surface-container-low": "#fbf1f2",
+            "on-tertiary-fixed": "#21191e",
+            "surface": "#fff8f8",
+            "primary-container": "#8e1b4a",
+            "surface-container-lowest": "#ffffff",
+            "primary-fixed": "#ffd9e1",
+            "primary": "#6d0033",
+            "surface-variant": "#e9e0e1",
+            "inverse-primary": "#ffb1c5",
+            "tertiary": "#3b3236",
+            "on-surface-variant": "#564146",
+            "on-secondary": "#ffffff",
+            "tertiary-fixed": "#eedee4",
+            "on-primary-fixed-variant": "#881646",
+            "on-surface": "#1f1b1c",
+            "on-secondary-fixed": "#410000",
+            "outline-variant": "#dcbfc5",
+            "on-primary-fixed": "#3f001b",
+            "on-tertiary": "#ffffff",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "inverse-on-surface": "#f8eeef",
+            "inverse-surface": "#342f30",
+            "error": "#ba1a1a",
+            "surface-tint": "#a8315d",
+            "on-error-container": "#93000a",
+            "surface-dim": "#e1d8d9",
+            "primary-fixed-dim": "#ffb1c5",
+            "secondary-container": "#fc6955",
+            "surface-container": "#f5eced",
+            "secondary": "#ae3123",
+            "background": "#fff8f8",
+            "surface-container-highest": "#e9e0e1",
+            "secondary-fixed-dim": "#ffb4a8",
+            "on-tertiary-container": "#c6b7bd",
+            "surface-container-high": "#efe6e7",
+            "on-background": "#1f1b1c",
+            "on-secondary-container": "#690000",
+            "error-container": "#ffdad6",
+            "on-secondary-fixed-variant": "#8c170e",
+            "surface-bright": "#fff8f8",
+            "outline": "#897176",
+            "on-error": "#ffffff",
+            "on-primary": "#ffffff",
+            "tertiary-container": "#53484d"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "space-md": "0.75rem",
+            "space-lg": "1rem",
+            "space-xl": "1.5rem",
+            "space-2xl": "2rem",
+            "space-3xl": "3rem",
+            "margin": "1rem",
+            "gutter": "1rem"
+          },
+          "fontFamily": {
+            "amount-lg-mobile": ["Inter"],
+            "body": ["Inter"],
+            "display": ["Inter"],
+            "caption": ["Inter"],
+            "label": ["Inter"],
+            "body-medium": ["Inter"],
+            "amount-lg": ["Inter"],
+            "title": ["Inter"],
+            "subtitle": ["Inter"]
+          },
+          "fontSize": {
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface antialiased min-h-screen flex flex-col justify-between selection:bg-primary-fixed selection:text-primary">
+<!-- Main Mobile Canvas Container (Max 560px for tablet, 390px base viewport target) -->
+<div class="w-full max-w-[560px] mx-auto min-h-screen flex flex-col pb-24 relative shadow-sm bg-surface">
+<!-- 1. Navigation Header -->
+<header class="sticky top-0 z-40 bg-surface/95 backdrop-blur-md px-margin py-space-sm flex items-center justify-between min-h-[56px] border-b border-outline-variant/30">
+<div class="flex items-center gap-space-md">
+<button aria-label="Go back" class="w-12 h-12 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors duration-150 active:scale-95 text-on-surface">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<div>
+<h1 class="font-subtitle text-subtitle text-on-surface leading-tight font-bold">Food &amp; Groceries</h1>
+<p class="font-caption text-caption text-on-surface-variant font-medium">February 2027</p>
+</div>
+</div>
+<div class="flex items-center">
+<button aria-label="Share or Export Category" class="w-12 h-12 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors duration-150 active:scale-95 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="ios_share">ios_share</span>
+</button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="px-margin pt-space-md flex flex-col gap-space-xl">
+<!-- 2. Category Hero Block -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] flex flex-col gap-space-md">
+<!-- Avatar and Category Label -->
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-2xl" data-icon="shopping_basket">shopping_basket</span>
+</div>
+<div>
+<span class="font-caption text-caption text-on-surface-variant uppercase tracking-wider font-semibold">Total Category Spent</span>
+<div class="font-amount-lg-mobile text-amount-lg-mobile font-bold text-on-surface tabular-nums tracking-tight">₦108,110.00</div>
+</div>
+</div>
+<!-- Budget Progress Bar -->
+<div class="flex flex-col gap-space-xs mt-1">
+<div class="flex justify-between items-center text-on-surface-variant font-caption text-caption">
+<span>₦11,890.00 left of ₦120,000.00</span>
+<span class="font-label text-label text-primary-container font-semibold">90% utilized</span>
+</div>
+<div class="w-full bg-surface-container-highest rounded-full h-2.5 overflow-hidden">
+<div class="bg-primary-container h-full rounded-full w-[90%] transition-all duration-500"></div>
+</div>
+</div>
+<!-- Stat Pill Badges (Daily Average & Month-over-Month) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm pt-space-xs border-t border-outline-variant/30">
+<div class="flex items-center gap-space-xs text-on-surface-variant py-1">
+<span class="material-symbols-outlined text-base text-primary-container" data-icon="calendar_today">calendar_today</span>
+<span class="font-caption text-caption text-on-surface"><span class="font-medium tabular-nums">₦4,504.00</span> / day (24 days)</span>
+</div>
+<div class="flex items-center gap-space-xs text-on-surface-variant py-1">
+<span class="material-symbols-outlined text-base text-secondary" data-icon="trending_up">trending_up</span>
+<span class="font-caption text-caption text-on-surface"><span class="font-medium text-secondary tabular-nums">+12%</span> vs last month (₦96.5k)</span>
+</div>
+</div>
+</section>
+<!-- 3. Weekly Spend Rhythm (Mini Bar Chart) -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] flex flex-col gap-space-md">
+<div class="flex justify-between items-center">
+<h2 class="font-subtitle text-subtitle text-on-surface font-bold text-base">Weekly Spend Rhythm</h2>
+<span class="font-caption text-caption text-on-surface-variant">4 Weeks Tracked</span>
+</div>
+<!-- Bars Area -->
+<div class="pt-space-md pb-space-xs flex items-end justify-between gap-space-md h-36 border-b border-outline-variant/30">
+<!-- Week 1 -->
+<div class="flex-1 flex flex-col items-center gap-space-xs h-full justify-end group">
+<span class="font-caption text-caption text-on-surface-variant opacity-80 tabular-nums">₦24k</span>
+<div class="w-full max-w-[44px] bg-primary-fixed-dim rounded-t-lg transition-all duration-300 group-hover:bg-primary-container" style="height: 62%;"></div>
+<span class="font-caption text-caption font-medium text-on-surface-variant">W1</span>
+</div>
+<!-- Week 2 (Peak) -->
+<div class="flex-1 flex flex-col items-center gap-space-xs h-full justify-end group">
+<span class="font-caption text-caption text-primary-container font-semibold tabular-nums">₦31k</span>
+<div class="w-full max-w-[44px] bg-primary-container rounded-t-lg shadow-sm transition-all duration-300" style="height: 80%;"></div>
+<span class="font-caption text-caption font-semibold text-primary">W2</span>
+</div>
+<!-- Week 3 -->
+<div class="flex-1 flex flex-col items-center gap-space-xs h-full justify-end group">
+<span class="font-caption text-caption text-on-surface-variant opacity-80 tabular-nums">₦28k</span>
+<div class="w-full max-w-[44px] bg-primary-fixed-dim rounded-t-lg transition-all duration-300 group-hover:bg-primary-container" style="height: 72%;"></div>
+<span class="font-caption text-caption font-medium text-on-surface-variant">W3</span>
+</div>
+<!-- Week 4 -->
+<div class="flex-1 flex flex-col items-center gap-space-xs h-full justify-end group">
+<span class="font-caption text-caption text-on-surface-variant opacity-80 tabular-nums">₦25.1k</span>
+<div class="w-full max-w-[44px] bg-primary-fixed-dim rounded-t-lg transition-all duration-300 group-hover:bg-primary-container" style="height: 64%;"></div>
+<span class="font-caption text-caption font-medium text-on-surface-variant">W4</span>
+</div>
+</div>
+<p class="font-caption text-caption text-on-surface-variant flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-sm text-outline" data-icon="info">info</span>
+          Highest spend occurred in Week 2 during monthly household restocking.
+        </p>
+</section>
+<!-- 4. Subcategory Split -->
+<section class="flex flex-col gap-space-sm">
+<h2 class="font-subtitle text-subtitle text-on-surface font-bold text-base px-space-xs">Subcategory Breakdown</h2>
+<div class="bg-surface-container-lowest rounded-xl p-space-md border border-outline-variant/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] flex flex-col gap-space-sm">
+<!-- Supermarkets -->
+<div class="flex flex-col gap-1 p-space-xs">
+<div class="flex justify-between items-center">
+<span class="font-label text-label text-on-surface font-semibold flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container inline-block"></span>
+                Supermarkets
+              </span>
+<span class="font-body-medium text-body-medium text-on-surface tabular-nums font-semibold">₦64,500.00 <span class="font-caption text-caption text-on-surface-variant font-normal">(60%)</span></span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1.5 overflow-hidden">
+<div class="bg-primary-container h-full rounded-full" style="width: 60%"></div>
+</div>
+</div>
+<div class="h-[1px] bg-outline-variant/30 my-0.5"></div>
+<!-- Restaurants & Bukas -->
+<div class="flex flex-col gap-1 p-space-xs">
+<div class="flex justify-between items-center">
+<span class="font-label text-label text-on-surface font-semibold flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary-container inline-block"></span>
+                Restaurants &amp; Bukas
+              </span>
+<span class="font-body-medium text-body-medium text-on-surface tabular-nums font-semibold">₦32,110.00 <span class="font-caption text-caption text-on-surface-variant font-normal">(30%)</span></span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1.5 overflow-hidden">
+<div class="bg-secondary-container h-full rounded-full" style="width: 30%"></div>
+</div>
+</div>
+<div class="h-[1px] bg-outline-variant/30 my-0.5"></div>
+<!-- Food Delivery -->
+<div class="flex flex-col gap-1 p-space-xs">
+<div class="flex justify-between items-center">
+<span class="font-label text-label text-on-surface font-semibold flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-outline inline-block"></span>
+                Food Delivery
+              </span>
+<span class="font-body-medium text-body-medium text-on-surface tabular-nums font-semibold">₦11,500.00 <span class="font-caption text-caption text-on-surface-variant font-normal">(10%)</span></span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1.5 overflow-hidden">
+<div class="bg-outline h-full rounded-full" style="width: 10%"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. Merchant Breakdown -->
+<section class="flex flex-col gap-space-sm">
+<h2 class="font-subtitle text-subtitle text-on-surface font-bold text-base px-space-xs">Top Merchants</h2>
+<div class="grid grid-cols-1 gap-space-sm">
+<!-- Merchant 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md border border-outline-variant/40 flex items-center justify-between">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary-container font-semibold">
+<span class="material-symbols-outlined text-xl" data-icon="store">store</span>
+</div>
+<div>
+<p class="font-label text-label text-on-surface font-semibold">Spar Supermarket VI</p>
+<p class="font-caption text-caption text-on-surface-variant">4 transactions</p>
+</div>
+</div>
+<div class="text-right">
+<span class="font-body-medium text-body-medium text-on-surface font-semibold tabular-nums">₦38,000.00</span>
+<span class="block font-caption text-caption text-on-surface-variant">35.2% of cat.</span>
+</div>
+</div>
+<!-- Merchant 2 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md border border-outline-variant/40 flex items-center justify-between">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary-container font-semibold">
+<span class="material-symbols-outlined text-xl" data-icon="restaurant">restaurant</span>
+</div>
+<div>
+<p class="font-label text-label text-on-surface font-semibold">Mama Cass Eatery</p>
+<p class="font-caption text-caption text-on-surface-variant">6 transactions</p>
+</div>
+</div>
+<div class="text-right">
+<span class="font-body-medium text-body-medium text-on-surface font-semibold tabular-nums">₦24,500.00</span>
+<span class="block font-caption text-caption text-on-surface-variant">22.6% of cat.</span>
+</div>
+</div>
+<!-- Merchant 3 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md border border-outline-variant/40 flex items-center justify-between">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary-container font-semibold">
+<span class="material-symbols-outlined text-xl" data-icon="fastfood">fastfood</span>
+</div>
+<div>
+<p class="font-label text-label text-on-surface font-semibold">Chicken Republic</p>
+<p class="font-caption text-caption text-on-surface-variant">5 transactions</p>
+</div>
+</div>
+<div class="text-right">
+<span class="font-body-medium text-body-medium text-on-surface font-semibold tabular-nums">₦18,200.00</span>
+<span class="block font-caption text-caption text-on-surface-variant">16.8% of cat.</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 6. Transaction List in Category -->
+<section class="flex flex-col gap-space-sm">
+<div class="flex justify-between items-center px-space-xs">
+<h2 class="font-subtitle text-subtitle text-on-surface font-bold text-base">Recent Transactions</h2>
+<button class="font-label text-label text-primary font-semibold hover:underline">View All</button>
+</div>
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/40 overflow-hidden divide-y divide-outline-variant/20 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)]">
+<!-- Item 1 -->
+<div class="min-h-[64px] py-3 px-space-md flex items-center justify-between hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-xl" data-icon="shopping_bag">shopping_bag</span>
+</div>
+<div>
+<p class="font-body-medium text-body-medium text-on-surface font-semibold">Spar Supermarket</p>
+<p class="font-caption text-caption text-on-surface-variant">Yesterday • POS Debit</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-body-medium text-body-medium text-on-surface font-semibold tabular-nums">-₦14,200.00</p>
+<div class="inline-flex items-center gap-1 bg-surface-container px-2 py-0.5 rounded text-[11px] font-medium text-on-surface-variant">
+<span class="material-symbols-outlined text-[13px] text-green-700" data-icon="check_circle">check_circle</span>
+<span>Successful</span>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="min-h-[64px] py-3 px-space-md flex items-center justify-between hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-xl" data-icon="outdoor_grill">outdoor_grill</span>
+</div>
+<div>
+<p class="font-body-medium text-body-medium text-on-surface font-semibold">Glover Court Suya</p>
+<p class="font-caption text-caption text-on-surface-variant">21 Feb • Instant Transfer</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-body-medium text-body-medium text-on-surface font-semibold tabular-nums">-₦6,500.00</p>
+<div class="inline-flex items-center gap-1 bg-surface-container px-2 py-0.5 rounded text-[11px] font-medium text-on-surface-variant">
+<span class="material-symbols-outlined text-[13px] text-green-700" data-icon="check_circle">check_circle</span>
+<span>Successful</span>
+</div>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="min-h-[64px] py-3 px-space-md flex items-center justify-between hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-xl" data-icon="skillet">skillet</span>
+</div>
+<div>
+<p class="font-body-medium text-body-medium text-on-surface font-semibold">Choplife Kitchen</p>
+<p class="font-caption text-caption text-on-surface-variant">19 Feb • Web Checkout</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-body-medium text-body-medium text-on-surface font-semibold tabular-nums">-₦8,400.00</p>
+<div class="inline-flex items-center gap-1 bg-surface-container px-2 py-0.5 rounded text-[11px] font-medium text-on-surface-variant">
+<span class="material-symbols-outlined text-[13px] text-green-700" data-icon="check_circle">check_circle</span>
+<span>Successful</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 7. Category Controls -->
+<section class="flex flex-col gap-space-md pt-space-xs pb-space-lg">
+<!-- Secondary Outline Button (52px height) -->
+<button class="w-full h-[52px] rounded-xl border-[1.5px] border-outline-variant bg-transparent text-primary hover:bg-surface-container transition-colors duration-150 flex items-center justify-center gap-2 font-label text-label font-semibold active:scale-[0.98]">
+<span class="material-symbols-outlined text-xl" data-icon="tune">tune</span>
+          Adjust Category Budget
+        </button>
+<!-- Toggle Row -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md border border-outline-variant/40 flex items-center justify-between">
+<div class="pr-space-md">
+<p class="font-label text-label text-on-surface font-semibold">Exclude from Insights</p>
+<p class="font-caption text-caption text-on-surface-variant">Remove this category from total spend analytics</p>
+</div>
+<!-- Custom Toggle Switch -->
+<label class="relative inline-flex items-center cursor-pointer min-w-[48px] min-h-[48px] justify-center">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[14px] after:left-[6px] after:bg-white after:border-outline-variant after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</section>
+</main>
+<!-- 8. Standard BottomNavBar (Exact JSON Specification) -->
+<!-- JSON: labels: ["Home", "Payments", "Cards", "Save & Borrow", "More"] -->
+<!-- JSON icons: ["home", "send", "credit_card", "savings", "more_horiz"] -->
+<!-- Active tab set to Home (since Insights falls under Home overview dashboard) -->
+<nav aria-label="Bottom Navigation" class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-margin h-16 max-w-[560px] mx-auto pb-safe bg-surface-container-lowest shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)] border-t border-outline-variant/40">
+<!-- Tab 1: Home (Active Context) -->
+<button class="flex flex-col items-center justify-center text-primary font-semibold min-w-[48px] py-space-xs gap-space-xs active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined text-2xl" data-icon="home" data-weight="fill" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-caption text-caption font-medium">Home</span>
+</button>
+<!-- Tab 2: Payments -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs active:scale-95 transition-transform duration-150 hover:text-primary">
+<span class="material-symbols-outlined text-2xl" data-icon="send">send</span>
+<span class="font-caption text-caption font-medium">Payments</span>
+</button>
+<!-- Tab 3: Cards -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs active:scale-95 transition-transform duration-150 hover:text-primary">
+<span class="material-symbols-outlined text-2xl" data-icon="credit_card">credit_card</span>
+<span class="font-caption text-caption font-medium">Cards</span>
+</button>
+<!-- Tab 4: Save & Borrow -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs active:scale-95 transition-transform duration-150 hover:text-primary">
+<span class="material-symbols-outlined text-2xl" data-icon="savings">savings</span>
+<span class="font-caption text-caption font-medium">Save &amp; Borrow</span>
+</button>
+<!-- Tab 5: More -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs active:scale-95 transition-transform duration-150 hover:text-primary">
+<span class="material-symbols-outlined text-2xl" data-icon="more_horiz">more_horiz</span>
+<span class="font-caption text-caption font-medium">More</span>
+</button>
+</nav>
+</div>
+</body></html>

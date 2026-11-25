@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Open Escrow Dispute - YourApp</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-highest": "#e9e0e1",
+            "primary-fixed": "#ffd9e1",
+            "surface-variant": "#e9e0e1",
+            "secondary": "#ae3123",
+            "inverse-surface": "#342f30",
+            "on-secondary": "#ffffff",
+            "on-error-container": "#93000a",
+            "on-secondary-fixed-variant": "#8c170e",
+            "on-error": "#ffffff",
+            "tertiary": "#3b3236",
+            "primary-fixed-dim": "#ffb1c5",
+            "on-primary-container": "#ffa0ba",
+            "surface-tint": "#a8315d",
+            "on-tertiary": "#ffffff",
+            "tertiary-fixed": "#eedee4",
+            "background": "#fff8f8",
+            "surface-container-high": "#efe6e7",
+            "error": "#ba1a1a",
+            "on-primary-fixed": "#3f001b",
+            "surface-container-lowest": "#ffffff",
+            "outline-variant": "#dcbfc5",
+            "inverse-on-surface": "#f8eeef",
+            "tertiary-container": "#53484d",
+            "on-primary-fixed-variant": "#881646",
+            "on-surface": "#1f1b1c",
+            "on-surface-variant": "#564146",
+            "outline": "#897176",
+            "on-secondary-container": "#690000",
+            "on-tertiary-fixed": "#21191e",
+            "on-background": "#1f1b1c",
+            "surface": "#fff8f8",
+            "primary": "#6d0033",
+            "surface-container-low": "#fbf1f2",
+            "on-secondary-fixed": "#410000",
+            "surface-dim": "#e1d8d9",
+            "primary-container": "#8e1b4a",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "error-container": "#ffdad6",
+            "surface-bright": "#fff8f8",
+            "secondary-fixed-dim": "#ffb4a8",
+            "secondary-fixed": "#ffdad4",
+            "inverse-primary": "#ffb1c5",
+            "on-primary": "#ffffff",
+            "on-tertiary-container": "#c6b7bd",
+            "secondary-container": "#fc6955",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "surface-container": "#f5eced"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-3xl": "3rem",
+            "space-lg": "1rem",
+            "space-md": "0.75rem",
+            "margin": "1rem",
+            "space-xl": "1.5rem",
+            "gutter": "1rem",
+            "space-2xl": "2rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "amount-lg-mobile": ["Inter"],
+            "label": ["Inter"],
+            "display": ["Inter"],
+            "amount-lg": ["Inter"],
+            "body": ["Inter"],
+            "subtitle": ["Inter"],
+            "title": ["Inter"],
+            "caption": ["Inter"],
+            "body-medium": ["Inter"]
+          },
+          "fontSize": {
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface antialiased min-h-screen flex justify-center selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Mobile Device Shell (390px base scaled up cleanly on desktop, max-w-[560px]) -->
+<main class="w-full max-w-[560px] bg-surface min-h-screen flex flex-col relative pb-36">
+<!-- Top App Bar (Task-Focused: Suppresses standard tabs, emphasizes deal reference and escape path) -->
+<header class="sticky top-0 z-40 bg-surface/95 backdrop-blur-md px-margin py-space-sm flex items-center justify-between min-h-[56px] shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)]">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Back to deal details" class="w-10 h-10 -ml-1 rounded-xl flex items-center justify-center text-on-surface hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<div>
+<h1 class="font-subtitle text-[17px] leading-5 font-bold text-on-surface">Open Escrow Dispute</h1>
+<p class="font-caption text-caption text-on-surface-variant font-medium tracking-tight">Deal #ESC-94820</p>
+</div>
+</div>
+<button aria-label="Arbitration Guidelines and Help" class="w-10 h-10 rounded-xl flex items-center justify-center text-primary-container hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[24px]">help_outline</span>
+</button>
+</header>
+<!-- Content Canvas -->
+<div class="px-margin flex flex-col gap-space-xl pt-space-md">
+<!-- Immediate Custody Protection Banner (High-contrast alert card) -->
+<section class="bg-primary-container text-on-primary rounded-xl p-space-lg shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)] relative overflow-hidden">
+<div class="absolute -right-4 -bottom-6 text-on-primary opacity-10 pointer-events-none">
+<span class="material-symbols-outlined text-[110px]" style="font-variation-settings: 'FILL' 1;">lock_clock</span>
+</div>
+<div class="relative z-10 flex gap-space-md items-start">
+<div class="w-10 h-10 rounded-lg bg-surface-container-lowest/15 backdrop-blur-sm flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[24px] text-white" style="font-variation-settings: 'FILL' 1;">security</span>
+</div>
+<div class="flex-1">
+<div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-surface-container-lowest/20 mb-1.5">
+<span class="material-symbols-outlined text-[14px] text-white" style="font-variation-settings: 'FILL' 1;">lock</span>
+<span class="font-caption text-[11px] font-semibold text-white tracking-wide uppercase">Immediate Custody Lock</span>
+</div>
+<h2 class="font-label text-white text-[16px] leading-tight font-bold mb-1">
+              Escrow Vault Payout Frozen Immediately
+            </h2>
+<p class="font-caption text-white/90 text-caption leading-relaxed">
+<span class="font-semibold text-white tabular-nums">₦856,375.00</span> is locked in CBN trust custody. No disbursement will occur until our neutral dispute resolution concludes.
+            </p>
+</div>
+</div>
+</section>
+<!-- Deal Summary Header (Bento-style Compact Metric Card) -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant/40 p-space-lg shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] flex flex-col gap-space-sm">
+<div class="flex items-center justify-between pb-space-sm border-b border-surface-container">
+<span class="font-caption text-caption text-on-surface-variant font-medium">Custody Ledger Summary</span>
+<span class="inline-flex items-center gap-1 text-secondary font-label text-[12px] bg-secondary-fixed/50 px-2 py-0.5 rounded-lg">
+<span class="material-symbols-outlined text-[14px]">gavel</span>
+            Dispute Pending
+          </span>
+</div>
+<div class="flex justify-between items-start pt-1">
+<div>
+<h3 class="font-subtitle text-[17px] font-bold text-on-surface tracking-tight">2019 MacBook Pro 16-inch</h3>
+<div class="flex items-center gap-1.5 text-on-surface-variant mt-0.5">
+<span class="material-symbols-outlined text-[16px]">storefront</span>
+<span class="font-caption text-caption">Seller: <strong class="text-on-surface font-semibold">Adebayo Gadgets</strong></span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-caption text-[12px] text-on-surface-variant block">Disputed Escrow</span>
+<span class="font-title text-[20px] font-bold text-primary tabular-nums tracking-tight">₦856,375.00</span>
+</div>
+</div>
+</section>
+<!-- Step 1: Select Dispute Reason -->
+<section class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<label class="font-label text-caption font-bold uppercase tracking-wider text-on-surface-variant flex items-center gap-1.5">
+<span class="w-5 h-5 rounded-full bg-primary-container text-white flex items-center justify-center text-[11px] font-bold">1</span>
+            Select Primary Dispute Reason
+          </label>
+<span class="font-caption text-[12px] text-secondary font-medium">Required</span>
+</div>
+<div aria-label="Dispute reason options" class="space-y-space-sm" role="radiogroup">
+<!-- Option 1: Selected -->
+<label class="relative flex items-start gap-space-md p-space-md rounded-xl bg-surface-container-lowest border-2 border-primary-container shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] cursor-pointer transition-all">
+<input checked="" class="mt-1 h-5 w-5 text-primary-container border-outline-variant focus:ring-primary-container accent-primary-container" name="dispute_reason" type="radio"/>
+<div class="flex-1">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-primary-container">build_circle</span>
+<span class="font-body-medium text-[15px] font-semibold text-on-surface">Item condition differs materially from agreed terms</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">
+                e.g. cracked display, battery failure, incorrect RAM specs, cosmetic damage not disclosed.
+              </p>
+</div>
+</label>
+<!-- Option 2 -->
+<label class="relative flex items-start gap-space-md p-space-md rounded-xl bg-surface-container-lowest border border-outline-variant/50 hover:bg-surface-container-low cursor-pointer transition-all">
+<input class="mt-1 h-5 w-5 text-primary-container border-outline-variant focus:ring-primary-container accent-primary-container" name="dispute_reason" type="radio"/>
+<div class="flex-1">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">report</span>
+<span class="font-body-medium text-[15px] font-semibold text-on-surface">Counterfeit or unauthorized item</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">
+                Non-genuine hardware, forged serial numbers, or cloned product.
+              </p>
+</div>
+</label>
+<!-- Option 3 -->
+<label class="relative flex items-start gap-space-md p-space-md rounded-xl bg-surface-container-lowest border border-outline-variant/50 hover:bg-surface-container-low cursor-pointer transition-all">
+<input class="mt-1 h-5 w-5 text-primary-container border-outline-variant focus:ring-primary-container accent-primary-container" name="dispute_reason" type="radio"/>
+<div class="flex-1">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">local_shipping</span>
+<span class="font-body-medium text-[15px] font-semibold text-on-surface">Non-delivery / Courier lost parcel</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">
+                Waybill marked delivered with no recipient signature or missing en route.
+              </p>
+</div>
+</label>
+<!-- Option 4 -->
+<label class="relative flex items-start gap-space-md p-space-md rounded-xl bg-surface-container-lowest border border-outline-variant/50 hover:bg-surface-container-low cursor-pointer transition-all">
+<input class="mt-1 h-5 w-5 text-primary-container border-outline-variant focus:ring-primary-container accent-primary-container" name="dispute_reason" type="radio"/>
+<div class="flex-1">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">widgets</span>
+<span class="font-body-medium text-[15px] font-semibold text-on-surface">Missing critical accessories or components</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">
+                Charger, original cables, or bundled peripherals excluded without consent.
+              </p>
+</div>
+</label>
+<!-- Option 5 -->
+<label class="relative flex items-start gap-space-md p-space-md rounded-xl bg-surface-container-lowest border border-outline-variant/50 hover:bg-surface-container-low cursor-pointer transition-all">
+<input class="mt-1 h-5 w-5 text-primary-container border-outline-variant focus:ring-primary-container accent-primary-container" name="dispute_reason" type="radio"/>
+<div class="flex-1">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">handshake</span>
+<span class="font-body-medium text-[15px] font-semibold text-on-surface">Other contract breach</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">
+                Violation of pre-agreed terms captured in the escrow contract manifest.
+              </p>
+</div>
+</label>
+</div>
+</section>
+<!-- Step 2: Dispute Details & Explanation -->
+<section class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between mb-1">
+<label class="font-label text-caption font-bold uppercase tracking-wider text-on-surface-variant flex items-center gap-1.5" for="dispute-explanation">
+<span class="w-5 h-5 rounded-full bg-primary-container text-white flex items-center justify-center text-[11px] font-bold">2</span>
+            Dispute Details &amp; Explanation
+          </label>
+<span class="font-caption text-[12px] text-on-surface-variant tabular-nums">168 / 1000</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant mb-1">
+          Describe what went wrong in detail (include serial mismatch, defects, or failure to deliver)
+        </p>
+<div class="relative">
+<textarea class="w-full rounded-xl bg-surface-container-lowest border border-outline-variant/60 p-space-md font-body text-[15px] text-on-surface focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all resize-none shadow-[0_1px_3px_0_rgba(30,26,27,0.03)] leading-relaxed" id="dispute-explanation" rows="4">Laptop was delivered with 16GB RAM instead of agreed 32GB RAM, and battery cycle count shows 640 instead of under 250 advertised. Bottom chassis has visible dent.</textarea>
+</div>
+</section>
+<!-- Step 3: Verifiable Evidence Upload -->
+<section class="flex flex-col gap-space-sm">
+<label class="font-label text-caption font-bold uppercase tracking-wider text-on-surface-variant flex items-center gap-1.5">
+<span class="w-5 h-5 rounded-full bg-primary-container text-white flex items-center justify-center text-[11px] font-bold">3</span>
+          Verifiable Evidence Upload
+        </label>
+<!-- Multi-file Dropzone -->
+<div class="border-2 border-dashed border-outline-variant rounded-xl p-space-lg bg-surface-container-low hover:bg-surface-container flex flex-col items-center justify-center text-center cursor-pointer transition-colors group">
+<div class="w-12 h-12 rounded-full bg-surface-container-lowest flex items-center justify-center text-primary-container group-hover:scale-105 transition-transform mb-2 shadow-sm">
+<span class="material-symbols-outlined text-[28px]">cloud_upload</span>
+</div>
+<span class="font-label text-on-surface text-[14px]">Tap to upload inspection photos or delivery receipts</span>
+<span class="font-caption text-caption text-on-surface-variant mt-0.5">
+            PNG, JPG, MP4 or PDF up to 25 MB each. Timestamped files favored in arbitration.
+          </span>
+</div>
+<!-- Uploaded Evidence List -->
+<div class="space-y-space-sm mt-1">
+<!-- File 1 -->
+<div class="flex items-center justify-between p-space-sm px-space-md rounded-xl bg-surface-container-lowest border border-outline-variant/50 shadow-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined text-[20px]">image</span>
+</div>
+<div class="truncate">
+<p class="font-body-medium text-[13px] font-semibold text-on-surface truncate">specs_system_report_screenshot.png</p>
+<div class="flex items-center gap-2">
+<span class="font-caption text-[11px] text-on-surface-variant tabular-nums">1.8 MB</span>
+<span class="inline-flex items-center gap-0.5 text-primary text-[11px] font-medium">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+                    SHA-256 Stamped
+                  </span>
+</div>
+</div>
+</div>
+<button aria-label="Remove specs screenshot" class="w-8 h-8 rounded-lg flex items-center justify-center text-on-surface-variant hover:text-error hover:bg-error-container/30 transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<!-- File 2 -->
+<div class="flex items-center justify-between p-space-sm px-space-md rounded-xl bg-surface-container-lowest border border-outline-variant/50 shadow-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined text-[20px]">image</span>
+</div>
+<div class="truncate">
+<p class="font-body-medium text-[13px] font-semibold text-on-surface truncate">chassis_dent_photo.jpg</p>
+<div class="flex items-center gap-2">
+<span class="font-caption text-[11px] text-on-surface-variant tabular-nums">3.1 MB</span>
+<span class="inline-flex items-center gap-0.5 text-primary text-[11px] font-medium">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+                    GPS/Time Tagged
+                  </span>
+</div>
+</div>
+</div>
+<button aria-label="Remove chassis dent photo" class="w-8 h-8 rounded-lg flex items-center justify-center text-on-surface-variant hover:text-error hover:bg-error-container/30 transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Step 4: Desired Resolution Pathway -->
+<section class="flex flex-col gap-space-sm">
+<label class="font-label text-caption font-bold uppercase tracking-wider text-on-surface-variant flex items-center gap-1.5">
+<span class="w-5 h-5 rounded-full bg-primary-container text-white flex items-center justify-center text-[11px] font-bold">4</span>
+          Desired Resolution Pathway
+        </label>
+<div aria-label="Resolution options" class="space-y-space-sm" role="radiogroup">
+<!-- Pathway 1: Selected -->
+<label class="relative flex items-center justify-between p-space-md rounded-xl bg-surface-container-lowest border-2 border-primary-container cursor-pointer shadow-sm">
+<div class="flex items-center gap-space-md">
+<input checked="" class="h-5 w-5 text-primary-container border-outline-variant focus:ring-primary-container accent-primary-container" name="resolution_path" type="radio"/>
+<div>
+<span class="font-body-medium text-[15px] font-bold text-on-surface block">
+                  Full refund to Buyer upon courier return
+                </span>
+<span class="font-caption text-caption text-primary font-semibold tabular-nums">
+                  ₦856,375.00 returned after seller receives return
+                </span>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary-container text-[20px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</label>
+<!-- Pathway 2 -->
+<label class="relative flex items-center justify-between p-space-md rounded-xl bg-surface-container-lowest border border-outline-variant/50 hover:bg-surface-container-low cursor-pointer transition-all">
+<div class="flex items-center gap-space-md">
+<input class="h-5 w-5 text-primary-container border-outline-variant focus:ring-primary-container accent-primary-container" name="resolution_path" type="radio"/>
+<div>
+<span class="font-body-medium text-[15px] font-semibold text-on-surface block">
+                  Partial refund &amp; price renegotiation
+                </span>
+<span class="font-caption text-caption text-on-surface-variant">
+                  Keep item with compensatory discount released to you
+                </span>
+</div>
+</div>
+</label>
+<!-- Pathway 3 -->
+<label class="relative flex items-center justify-between p-space-md rounded-xl bg-surface-container-lowest border border-outline-variant/50 hover:bg-surface-container-low cursor-pointer transition-all">
+<div class="flex items-center gap-space-md">
+<input class="h-5 w-5 text-primary-container border-outline-variant focus:ring-primary-container accent-primary-container" name="resolution_path" type="radio"/>
+<div>
+<span class="font-body-medium text-[15px] font-semibold text-on-surface block">
+                  Seller replacement of device
+                </span>
+<span class="font-caption text-caption text-on-surface-variant">
+                  Hold custody funds until genuine 32GB unit is delivered
+                </span>
+</div>
+</div>
+</label>
+</div>
+</section>
+<!-- Arbitration SLA & Timeline Box -->
+<section class="bg-surface-container-low border border-outline-variant/40 rounded-xl p-space-md flex gap-space-md items-start">
+<div class="w-8 h-8 rounded-lg bg-surface-container-highest flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined text-[20px]">schedule</span>
+</div>
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<h4 class="font-label text-[13px] font-bold text-on-surface">Neutral Arbitration SLA Terms</h4>
+<span class="bg-primary-fixed text-on-primary-fixed text-[10px] font-bold px-1.5 py-0.5 rounded">48-Hr SLA</span>
+</div>
+<p class="font-caption text-[12px] leading-relaxed text-on-surface-variant">
+            A neutral YourApp dispute officer is assigned within <strong>4 hours</strong>. Seller has 24 hours to review evidence and submit counter-claims before final CBN trustee ruling.
+          </p>
+</div>
+</section>
+<!-- Legal Confirmation Checkbox -->
+<div class="flex items-start gap-space-md pt-space-xs pb-space-sm">
+<input checked="" class="mt-1 h-5 w-5 rounded-md text-primary-container border-outline-variant focus:ring-primary-container accent-primary-container cursor-pointer shrink-0" id="legal-declaration" type="checkbox"/>
+<label class="font-caption text-caption text-on-surface-variant leading-snug cursor-pointer select-none" for="legal-declaration">
+          I declare under penalty of platform de-registration that the evidence provided is accurate, untampered, and represents the true state of the received package.
+        </label>
+</div>
+</div>
+<!-- Sticky Bottom Action Bar (Level 2 Elevation, 52px Primary Berry Button) -->
+<div class="fixed bottom-0 left-0 right-0 z-50 bg-surface-container-lowest/95 backdrop-blur-md px-margin py-3 border-t border-outline-variant/30 shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)]">
+<div class="max-w-[560px] mx-auto flex flex-col gap-1.5">
+<button class="w-full h-[52px] bg-primary-container hover:bg-primary active:bg-primary text-white rounded-xl font-label text-[15px] font-bold tracking-wide flex items-center justify-center gap-2 shadow-sm transition-all active:scale-[0.99]" type="button">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">gavel</span>
+<span>Submit Dispute &amp; Freeze Custody Vault</span>
+</button>
+<div class="flex items-center justify-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[13px] text-primary">verified_user</span>
+<span class="font-caption text-[11px] font-medium text-center">Protected by YourApp 100% Escrow Guarantee</span>
+</div>
+</div>
+</div>
+</main>
+</body></html>

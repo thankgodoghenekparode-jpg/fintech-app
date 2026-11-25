@@ -1,0 +1,14 @@
+flowchart TD
+  a(["Authorised user selects payment"])
+  b[/"Amount and reason"/]
+  c{"Funds available and within refund window?"}
+  d["Blocked with reason"]
+  e["Confirm with PIN (dual control above threshold)"]
+  f["Refund to payer account; notify"]
+  g(["Done"])
+  a --> b
+  b --> c
+  c -->|no| d
+  c -->|yes| e
+  e --> f
+  f --> g

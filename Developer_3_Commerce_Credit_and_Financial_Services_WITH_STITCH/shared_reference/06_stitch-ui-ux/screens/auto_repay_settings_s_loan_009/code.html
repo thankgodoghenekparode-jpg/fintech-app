@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YourApp - Auto-Repay Settings</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with Forms and Container Queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary-fixed-variant": "#8c170e",
+            "on-tertiary": "#ffffff",
+            "on-surface": "#1f1b1c",
+            "outline-variant": "#dcbfc5",
+            "on-secondary-fixed": "#410000",
+            "surface-container-highest": "#e9e0e1",
+            "secondary": "#ae3123",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "background": "#fff8f8",
+            "surface": "#fff8f8",
+            "primary": "#6d0033",
+            "secondary-fixed": "#ffdad4",
+            "primary-fixed": "#ffd9e1",
+            "on-primary-fixed": "#3f001b",
+            "tertiary-fixed": "#eedee4",
+            "inverse-surface": "#342f30",
+            "surface-container": "#f5eced",
+            "on-primary": "#ffffff",
+            "on-secondary": "#ffffff",
+            "on-secondary-container": "#690000",
+            "on-background": "#1f1b1c",
+            "on-primary-fixed-variant": "#881646",
+            "primary-container": "#8e1b4a",
+            "surface-dim": "#e1d8d9",
+            "secondary-container": "#fc6955",
+            "outline": "#897176",
+            "surface-variant": "#e9e0e1",
+            "surface-tint": "#a8315d",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "inverse-on-surface": "#f8eeef",
+            "on-tertiary-container": "#c6b7bd",
+            "on-primary-container": "#ffa0ba",
+            "tertiary": "#3b3236",
+            "surface-container-high": "#efe6e7",
+            "error-container": "#ffdad6",
+            "surface-bright": "#fff8f8",
+            "on-tertiary-fixed": "#21191e",
+            "surface-container-lowest": "#ffffff",
+            "secondary-fixed-dim": "#ffb4a8",
+            "inverse-primary": "#ffb1c5",
+            "on-error": "#ffffff",
+            "on-surface-variant": "#564146",
+            "on-error-container": "#93000a",
+            "primary-fixed-dim": "#ffb1c5",
+            "surface-container-low": "#fbf1f2",
+            "tertiary-container": "#53484d",
+            "error": "#ba1a1a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "space-lg": "1rem",
+            "gutter": "1rem",
+            "space-xl": "1.5rem",
+            "space-2xl": "2rem",
+            "space-md": "0.75rem",
+            "space-sm": "0.5rem",
+            "margin": "1rem",
+            "space-3xl": "3rem"
+          },
+          "fontFamily": {
+            "body-medium": ["Inter"],
+            "display": ["Inter"],
+            "amount-lg": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "subtitle": ["Inter"],
+            "label": ["Inter"],
+            "title": ["Inter"],
+            "caption": ["Inter"],
+            "body": ["Inter"]
+          },
+          "fontSize": {
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-outlined.fill-1 {
+      font-variation-settings: 'FILL' 1;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased min-h-screen selection:bg-primary-fixed selection:text-on-primary-fixed flex flex-col justify-between items-center">
+<!-- Mobile Viewport Canvas Container (390px base, up to 560px on tablet/desktop) -->
+<div class="w-full max-w-[560px] min-h-screen flex flex-col bg-surface shadow-sm relative">
+<!-- Top Navigation Header (Linear Task: Back button + Title) -->
+<header class="sticky top-0 z-40 bg-surface/95 backdrop-blur-md px-margin py-space-sm flex items-center justify-between min-h-[56px] border-b border-outline-variant/30">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Go back" class="w-12 h-12 -ml-2 rounded-xl flex items-center justify-center text-on-surface hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<div>
+<h1 class="font-subtitle text-subtitle text-on-surface tracking-tight leading-snug">Auto-Repay Settings</h1>
+<p class="font-caption text-caption text-on-surface-variant font-medium">Instant Loan • Ref: S-LOAN-009</p>
+</div>
+</div>
+<button aria-label="Help and Info" class="w-10 h-10 rounded-xl flex items-center justify-center text-on-surface-variant hover:bg-surface-container hover:text-primary active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[22px]">help_outline</span>
+</button>
+</header>
+<!-- Main Scrollable Flow Body -->
+<main class="flex-1 px-margin py-space-lg space-y-space-xl pb-space-3xl">
+<!-- Master Toggle Hero Card -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] transition-all">
+<div class="flex items-start justify-between gap-space-md">
+<div class="space-y-space-xs flex-1">
+<div class="flex items-center gap-space-sm flex-wrap">
+<h2 class="font-title text-[18px] leading-6 font-bold text-on-surface">Automated Repayment</h2>
+<!-- Semantic Status Badge with Mandatory Icon + Text -->
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-surface-container text-primary font-caption text-[11px] font-semibold border border-primary/20">
+<span class="material-symbols-outlined text-[14px] text-primary fill-1" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                Active
+              </span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant leading-relaxed">
+              Automatically debit your account on instalment due dates so you never miss a payment or incur penalties.
+            </p>
+</div>
+<!-- Master Switch -->
+<label class="relative inline-flex items-center cursor-pointer shrink-0 mt-0.5">
+<input checked="" class="sr-only peer" id="master-toggle" type="checkbox"/>
+<div class="w-12 h-7 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-surface-container-lowest after:border-outline-variant/30 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</section>
+<!-- Next Payment Reminder Banner -->
+<section class="rounded-xl bg-surface-container-low p-space-md border border-outline-variant/30 flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed/50 flex items-center justify-center shrink-0 text-secondary">
+<span class="material-symbols-outlined text-[22px]">calendar_clock</span>
+</div>
+<div class="flex-1 min-w-0">
+<span class="font-caption text-caption text-on-surface-variant font-medium block">Upcoming Schedule</span>
+<p class="font-label text-label text-on-surface font-semibold truncate">
+            Next debit: <span class="font-bold tabular-nums text-primary">₦29,467.00</span> on 22 Nov 2026
+          </p>
+<span class="font-caption text-[12px] text-secondary font-medium block">(in 29 days)</span>
+</div>
+</section>
+<!-- Funding Source Configuration Module -->
+<section class="space-y-space-md">
+<div class="flex items-center justify-between">
+<h3 class="font-label text-label uppercase tracking-wider text-on-surface-variant font-bold text-[12px]">Funding Source Configuration</h3>
+<span class="font-caption text-caption text-outline font-medium">Priority Order</span>
+</div>
+<!-- Primary Funding Source Card -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg border-2 border-primary-container/30 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] relative overflow-hidden">
+<div class="flex items-start justify-between gap-space-sm mb-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-primary-fixed/40 flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[20px]">account_balance_wallet</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<h4 class="font-body-medium text-body-medium font-semibold text-on-surface">YourApp Tier 2 Savings</h4>
+</div>
+<p class="font-caption text-caption text-on-surface-variant">Acct: <span class="tabular-nums font-medium text-on-surface">0124892019</span></p>
+</div>
+</div>
+<!-- Default Badge -->
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-primary-container text-on-primary font-caption text-[11px] font-semibold shrink-0">
+<span class="material-symbols-outlined text-[13px]">verified</span>
+              Default
+            </span>
+</div>
+<div class="pt-space-sm mt-space-sm border-t border-outline-variant/30 flex items-baseline justify-between">
+<span class="font-caption text-caption text-on-surface-variant">Available Balance</span>
+<span class="font-title text-[18px] font-bold text-on-surface tabular-nums">₦142,850.00</span>
+</div>
+</div>
+<!-- Fallback Funding Account Card -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] space-y-space-sm">
+<div class="flex items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant shrink-0">
+<span class="material-symbols-outlined text-[20px]">credit_card</span>
+</div>
+<div>
+<h4 class="font-body-medium text-body-medium font-semibold text-on-surface">External Debit Card</h4>
+<p class="font-caption text-caption text-on-surface-variant font-medium">Mastercard •••• 4082</p>
+</div>
+</div>
+<!-- Fallback Switch -->
+<label class="relative inline-flex items-center cursor-pointer shrink-0">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-surface-container-lowest after:border-outline-variant/30 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<div class="flex items-start gap-1.5 pt-space-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-outline shrink-0 mt-0.5">info</span>
+<p class="font-caption text-[12px] leading-tight text-on-surface-variant">
+              Only charged if primary account balance is insufficient 24h after due date.
+            </p>
+</div>
+</div>
+<!-- Add Backup Button -->
+<button class="w-full h-[52px] rounded-xl border-[1.5px] border-outline-variant/60 bg-transparent text-on-surface font-label text-label font-semibold flex items-center justify-center gap-2 hover:bg-surface-container active:scale-[0.99] transition-all" type="button">
+<span class="material-symbols-outlined text-[20px] text-primary">add_card</span>
+          + Add Backup Payment Card
+        </button>
+</section>
+<!-- Debit Timing Preference -->
+<section class="space-y-space-md">
+<h3 class="font-label text-label uppercase tracking-wider text-on-surface-variant font-bold text-[12px]">Debit Timing Preference</h3>
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/40 divide-y divide-outline-variant/30 overflow-hidden shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)]">
+<!-- Option 1: On Due Date -->
+<label class="flex items-center justify-between p-space-lg cursor-pointer hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-space-md">
+<div class="w-5 h-5 rounded-full border-2 border-primary-container flex items-center justify-center">
+<div class="w-2.5 h-2.5 rounded-full bg-primary-container"></div>
+</div>
+<div>
+<p class="font-body-medium text-body-medium font-semibold text-on-surface">On Due Date</p>
+<p class="font-caption text-caption text-on-surface-variant">Scheduled at 06:00 AM WAT</p>
+</div>
+</div>
+<input checked="" class="sr-only" name="debit_timing" type="radio" value="on_due"/>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-surface-container text-on-surface-variant font-caption text-[11px] font-medium">Standard</span>
+</label>
+<!-- Option 2: 1 Day Prior -->
+<label class="flex items-center justify-between p-space-lg cursor-pointer hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-space-md">
+<div class="w-5 h-5 rounded-full border-[1.5px] border-outline-variant flex items-center justify-center">
+<div class="w-2.5 h-2.5 rounded-full bg-transparent"></div>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<p class="font-body-medium text-body-medium font-semibold text-on-surface">1 Day Prior to Due Date</p>
+</div>
+<p class="font-caption text-caption text-on-surface-variant">Avoid unexpected gateway delays</p>
+</div>
+</div>
+<input class="sr-only" name="debit_timing" type="radio" value="prior"/>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-secondary-fixed/50 text-secondary font-caption text-[11px] font-semibold">Early bird</span>
+</label>
+</div>
+</section>
+<!-- Notifications & Alerts -->
+<section class="space-y-space-md">
+<h3 class="font-label text-label uppercase tracking-wider text-on-surface-variant font-bold text-[12px]">Notifications &amp; Alerts</h3>
+<div class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant/40 space-y-space-lg shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)]">
+<!-- Notification 1 -->
+<div class="flex items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-sm flex-1">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant shrink-0">
+<span class="material-symbols-outlined text-[18px]">notifications_active</span>
+</div>
+<div>
+<p class="font-body-medium text-body-medium font-medium text-on-surface">SMS &amp; Push reminders</p>
+<p class="font-caption text-caption text-on-surface-variant">Dispatched 3 days before scheduled debit</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer shrink-0">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-surface-container-lowest after:border-outline-variant/30 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<div class="border-t border-outline-variant/20"></div>
+<!-- Notification 2 -->
+<div class="flex items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-sm flex-1">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant shrink-0">
+<span class="material-symbols-outlined text-[18px]">receipt_long</span>
+</div>
+<div>
+<p class="font-body-medium text-body-medium font-medium text-on-surface">Immediate debit receipt</p>
+<p class="font-caption text-caption text-on-surface-variant">Delivered to registered email address</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer shrink-0">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-surface-container-lowest after:border-outline-variant/30 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</div>
+</section>
+<!-- NIBSS Mandate Details (Compliance Card) -->
+<section class="space-y-space-sm">
+<h3 class="font-label text-label uppercase tracking-wider text-on-surface-variant font-bold text-[12px]">Regulatory &amp; Direct Debit Mandate</h3>
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/40 p-space-lg shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] space-y-space-md">
+<div class="flex items-center justify-between border-b border-outline-variant/20 pb-space-sm">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-primary">security</span>
+<span class="font-label text-label font-semibold text-on-surface">NIBSS e-Mandate Verification</span>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-surface-container text-primary font-caption text-[11px] font-semibold border border-primary/20">
+<span class="material-symbols-outlined text-[13px] text-primary fill-1" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+              Authorized &amp; Active
+            </span>
+</div>
+<div class="grid grid-cols-1 gap-space-sm text-caption">
+<div class="flex justify-between items-center py-1">
+<span class="text-on-surface-variant font-caption">Mandate Reference</span>
+<span class="font-body-medium text-[14px] font-semibold text-on-surface tabular-nums">NIBSS-MND-992018</span>
+</div>
+<div class="flex justify-between items-center py-1">
+<span class="text-on-surface-variant font-caption">Max Debit Cap</span>
+<span class="font-body-medium text-[14px] font-semibold text-on-surface tabular-nums">₦35,000.00 / month</span>
+</div>
+<div class="flex justify-between items-center py-1">
+<span class="text-on-surface-variant font-caption">Mandate Status</span>
+<span class="font-caption text-caption font-semibold text-on-surface">Authorized &amp; Active</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Sticky Bottom Execution Drawer / CTA -->
+<div class="sticky bottom-0 left-0 right-0 z-30 bg-surface-container-lowest/95 backdrop-blur-md p-margin border-t border-outline-variant/30 shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)]">
+<div class="max-w-[560px] mx-auto space-y-space-xs">
+<button class="w-full h-[52px] rounded-xl bg-primary-container hover:bg-[#731540] active:scale-[0.99] text-on-primary font-label text-label font-semibold shadow-sm transition-all flex items-center justify-center gap-2" type="button">
+<span class="material-symbols-outlined text-[20px]">save</span>
+          Save Repayment Preferences
+        </button>
+<p class="font-caption text-[12px] leading-tight text-center text-on-surface-variant px-space-sm pt-space-xs">
+          You can pause or modify automated debits up to 24 hours prior to the scheduled deduction date.
+        </p>
+</div>
+</div>
+</div>
+</body></html>

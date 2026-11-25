@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YourApp Merchant Console - Business Overview (W-MER-001)</title>
+<!-- Inter Google Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary-fixed-dim": "#ffb4a8",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "on-primary-fixed-variant": "#881646",
+            "error": "#ba1a1a",
+            "surface-variant": "#e9e0e1",
+            "on-secondary-fixed-variant": "#8c170e",
+            "surface-dim": "#e1d8d9",
+            "on-background": "#1f1b1c",
+            "on-tertiary-container": "#c6b7bd",
+            "on-error": "#ffffff",
+            "primary-fixed-dim": "#ffb1c5",
+            "on-tertiary-fixed": "#21191e",
+            "surface-bright": "#fff8f8",
+            "inverse-primary": "#ffb1c5",
+            "tertiary-fixed": "#eedee4",
+            "surface": "#fff8f8",
+            "on-tertiary": "#ffffff",
+            "surface-container-high": "#efe6e7",
+            "primary-fixed": "#ffd9e1",
+            "secondary": "#ae3123",
+            "outline": "#897176",
+            "inverse-on-surface": "#f8eeef",
+            "background": "#fff8f8",
+            "tertiary-container": "#53484d",
+            "surface-container-lowest": "#ffffff",
+            "secondary-container": "#fc6955",
+            "on-secondary-fixed": "#410000",
+            "surface-container-low": "#fbf1f2",
+            "primary": "#6d0033",
+            "inverse-surface": "#342f30",
+            "on-primary-container": "#ffa0ba",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "surface-container-highest": "#e9e0e1",
+            "primary-container": "#8e1b4a",
+            "on-surface-variant": "#564146",
+            "on-primary-fixed": "#3f001b",
+            "on-secondary": "#ffffff",
+            "outline-variant": "#dcbfc5",
+            "on-surface": "#1f1b1c",
+            "on-primary": "#ffffff",
+            "surface-tint": "#a8315d",
+            "on-secondary-container": "#690000",
+            "tertiary": "#3b3236",
+            "error-container": "#ffdad6",
+            "on-error-container": "#93000a",
+            "secondary-fixed": "#ffdad4",
+            "surface-container": "#f5eced"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "1rem",
+            "space-3xl": "3rem",
+            "space-xs": "0.25rem",
+            "space-2xl": "2rem",
+            "space-md": "0.75rem",
+            "margin": "1rem",
+            "space-lg": "1rem",
+            "space-sm": "0.5rem",
+            "space-xl": "1.5rem"
+          },
+          "fontFamily": {
+            "caption": ["Inter"],
+            "amount-lg": ["Inter"],
+            "body-medium": ["Inter"],
+            "display": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "body": ["Inter"],
+            "label": ["Inter"],
+            "subtitle": ["Inter"],
+            "title": ["Inter"]
+          },
+          "fontSize": {
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #FAF8F7;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #dcbfc5;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex selection:bg-primary-fixed selection:text-primary">
+<!-- ==================== 1. LEFT NAVIGATION SIDEBAR (w-72 / 288px) ==================== -->
+<aside class="fixed left-0 top-0 h-full w-72 flex flex-col justify-between py-space-xl px-space-lg overflow-y-auto bg-surface-container-lowest border-r border-surface-variant z-30 shadow-sm custom-scrollbar">
+<!-- Top Area: Brand & Merchant Context -->
+<div class="flex flex-col gap-space-lg">
+<!-- Brand Logo / Header -->
+<div class="flex items-center gap-space-md px-space-sm pb-space-xs">
+<div class="w-10 h-10 rounded-xl bg-primary-container flex items-center justify-center text-on-primary shadow-sm flex-shrink-0">
+<span class="material-symbols-outlined text-[24px]" data-icon="storefront">storefront</span>
+</div>
+<div>
+<h1 class="text-subtitle font-subtitle text-primary tracking-tight leading-none">YourApp Merchant</h1>
+<p class="text-caption font-caption text-on-surface-variant mt-1">Business Console</p>
+</div>
+</div>
+<!-- Merchant Tenant Card & Tier 3 Badge -->
+<div class="p-space-md rounded-xl bg-surface-container-low border border-outline-variant/50">
+<div class="flex items-start justify-between gap-space-xs">
+<div class="min-w-0">
+<h2 class="text-label font-label text-on-surface truncate">Kemi Adebayo Haute Couture Ltd</h2>
+<p class="text-caption font-caption text-on-surface-variant truncate">Lekki Store #01 • RC: 1849204</p>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-surface-container-lowest text-primary text-[11px] font-label border border-outline-variant flex-shrink-0 shadow-xs">
+<span class="material-symbols-outlined text-[13px] text-primary" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+            Tier 3
+          </span>
+</div>
+<div class="mt-space-sm pt-space-xs border-t border-outline-variant/40 flex items-center justify-between text-caption font-caption text-on-surface-variant">
+<span class="flex items-center gap-1 text-[12px]">
+<span class="w-2 h-2 rounded-full bg-emerald-600 inline-block"></span>
+            Merchant Active
+          </span>
+<span class="text-[12px] font-mono text-tertiary">#MER-LAG-0491</span>
+</div>
+</div>
+<!-- Main Navigation Menu -->
+<nav aria-label="Merchant Navigation" class="flex flex-col gap-1 mt-space-xs">
+<!-- Dashboard (Active) -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg bg-surface-container-low text-primary font-label text-label transition-colors duration-150 border-l-4 border-primary" href="#dashboard">
+<span class="material-symbols-outlined text-primary" data-icon="dashboard" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span>Dashboard</span>
+</a>
+<!-- Invoices -->
+<a class="flex items-center justify-between px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#invoices">
+<div class="flex items-center gap-space-md">
+<span class="material-symbols-outlined text-outline" data-icon="receipt_long">receipt_long</span>
+<span>Invoices</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-[11px] font-caption text-on-surface-variant">#MER-INV</span>
+</a>
+<!-- Payment Links & QR -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#payment-links">
+<span class="material-symbols-outlined text-outline" data-icon="qr_code_2">qr_code_2</span>
+<span>Payment Links &amp; QR</span>
+</a>
+<!-- Transactions & Payouts -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#transactions">
+<span class="material-symbols-outlined text-outline" data-icon="sync_alt">sync_alt</span>
+<span>Transactions &amp; Payouts</span>
+</a>
+<!-- Cashier Terminals -->
+<a class="flex items-center justify-between px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#terminals">
+<div class="flex items-center gap-space-md">
+<span class="material-symbols-outlined text-outline" data-icon="point_of_sale">point_of_sale</span>
+<span>Cashier Terminals</span>
+</div>
+<span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-secondary-fixed text-on-secondary-fixed text-[11px] font-label">3</span>
+</a>
+<!-- Reports & Reconciliation -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#reports">
+<span class="material-symbols-outlined text-outline" data-icon="analytics">analytics</span>
+<span>Reports &amp; Reconciliation</span>
+</a>
+<!-- Team & Roles -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#team">
+<span class="material-symbols-outlined text-outline" data-icon="badge">badge</span>
+<span>Team &amp; Roles</span>
+</a>
+<!-- Security & Settings -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#settings">
+<span class="material-symbols-outlined text-outline" data-icon="admin_panel_settings">admin_panel_settings</span>
+<span>Security &amp; Settings</span>
+</a>
+</nav>
+</div>
+<!-- Bottom Footer Area -->
+<div class="flex flex-col gap-space-md pt-space-md border-t border-surface-variant">
+<!-- 24/7 Merchant Support Hotlink -->
+<div class="p-space-sm rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-primary" data-icon="support_agent">support_agent</span>
+<div>
+<div class="text-[12px] font-label text-on-surface">Merchant Desk</div>
+<div class="text-[11px] font-caption text-on-surface-variant">0700-YOUR-MERCHANT</div>
+</div>
+</div>
+<span class="w-2 h-2 rounded-full bg-emerald-500" title="Desk Online"></span>
+</div>
+<!-- Sign Out Action -->
+<button class="flex items-center gap-space-md px-space-lg py-space-sm rounded-lg text-secondary font-label text-label hover:bg-secondary-fixed/30 transition-colors duration-150 w-full text-left">
+<span class="material-symbols-outlined text-secondary" data-icon="logout">logout</span>
+<span>Sign Out</span>
+</button>
+</div>
+</aside>
+<!-- ==================== 2. MAIN APP CANVAS WRAPPER ==================== -->
+<div class="w-[calc(100%-18rem)] ml-72 flex flex-col min-h-screen bg-background">
+<!-- TOP NAVIGATION BAR -->
+<header class="sticky top-0 h-16 w-full flex items-center justify-between px-space-xl bg-surface-container-lowest border-b border-surface-variant z-20 shadow-none">
+<!-- Left: Omni Search Engine -->
+<div class="flex items-center gap-space-md w-96">
+<div class="relative w-full">
+<span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-outline">
+<span class="material-symbols-outlined text-[20px]" data-icon="search">search</span>
+</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant rounded-xl text-caption font-caption text-on-surface placeholder:text-outline focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all" placeholder="Search transactions, invoice #, customer name..." type="text"/>
+</div>
+</div>
+<!-- Center / Mid-Right: Live Settlement Node Status & Active Cashiers -->
+<div class="flex items-center gap-space-md">
+<!-- Live Node Status -->
+<div class="hidden xl:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-container border border-outline-variant/60">
+<span class="relative flex h-2.5 w-2.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-600"></span>
+</span>
+<span class="text-caption font-caption text-on-surface">
+            Zenith Merchant Settlement Active <span class="text-outline mx-1">•</span> Next Sweep <strong class="font-label text-primary">17:00 WAT</strong>
+</span>
+</div>
+<!-- Cashier Status Capsule -->
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-container-low border border-outline-variant/50 text-caption font-caption text-on-surface">
+<span class="material-symbols-outlined text-[18px] text-primary" data-icon="desktop_windows">desktop_windows</span>
+<span class="font-label text-on-surface">3 Cashiers Active</span>
+</div>
+<!-- Trailing Actions: Notifications & Profile -->
+<div class="flex items-center gap-2 pl-space-sm border-l border-surface-variant">
+<!-- Notification Bell with Unread Badge -->
+<button class="relative p-2 rounded-xl text-on-surface-variant hover:bg-surface-container-high transition-colors" title="Surveillance Alerts">
+<span class="material-symbols-outlined text-[22px]" data-icon="notifications">notifications</span>
+<span class="absolute top-1.5 right-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-secondary text-[10px] font-bold text-on-secondary ring-2 ring-surface-container-lowest">
+              2
+            </span>
+</button>
+<!-- Help / Support icon -->
+<button class="p-2 rounded-xl text-on-surface-variant hover:bg-surface-container-high transition-colors" title="Merchant Knowledge Base">
+<span class="material-symbols-outlined text-[22px]" data-icon="help_outline">help_outline</span>
+</button>
+<!-- Profile Badge & Menu -->
+<div class="flex items-center gap-3 pl-2">
+<img class="w-9 h-9 rounded-full object-cover ring-1.5 ring-primary/40 border border-surface-container-lowest" data-alt="A dignified, polished portrait of a Nigerian female executive in luxury corporate attire with pearl accessories, set against warm-toned studio lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_K1eFaGCl7ISkMjUhDCu4de5eFl8d-UluT1pBYr8n3hUqPvvIoPhsOUbW6K_GtOzSG4upmp0Hwoq-Lz8xIdL2HxgMR48muBU-etnH0O8uVfsrxGEsaIFpVMP_huY1VuPuYeo0MRuDqtliqaOiL-aOiHkes8nLxYDAydvabfRUMcTQ1-jitadBarHxhFg6TSTR3sjSfZEfKtQH9eCkdmvp2fcO87j50mlEmo0lWdi_"/>
+<div class="hidden lg:block text-left">
+<div class="text-label font-label text-on-surface leading-tight">Mrs. Kemi Adebayo</div>
+<div class="text-[12px] font-caption text-on-surface-variant leading-none">Managing Director</div>
+</div>
+<span class="material-symbols-outlined text-[18px] text-outline" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+</div>
+</header>
+<!-- ==================== 3. MAIN DASHBOARD CONTENT ==================== -->
+<main class="flex-1 px-space-xl py-space-xl flex flex-col gap-space-xl max-w-[1400px] w-full mx-auto">
+<!-- Page Header & Global Toolbar Actions -->
+<section class="flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="px-2 py-0.5 rounded bg-primary-fixed text-on-primary-fixed-variant text-[11px] font-label tracking-wide uppercase">W-MER-001</span>
+<span class="text-caption font-caption text-outline">Real-Time Surveillance Engine</span>
+</div>
+<h1 class="text-title font-title text-on-background tracking-tight">Business Overview &amp; Sales Surveillance</h1>
+<p class="text-caption font-caption text-on-surface-variant mt-0.5">Real-time surveillance of omnichannel sales, payment link collections, invoice payments, and automated bank settlements.</p>
+</div>
+<div class="flex items-center gap-3 flex-shrink-0">
+<!-- Outline Secondary Action -->
+<button class="h-[52px] px-space-lg rounded-xl border-[1.5px] border-outline-variant bg-surface-container-lowest text-on-surface font-label text-label hover:bg-surface-container-low transition-all flex items-center gap-2 shadow-xs">
+<span class="material-symbols-outlined text-[20px] text-outline" data-icon="file_download">file_download</span>
+<span>Export Daily Sales Blotter (CSV)</span>
+</button>
+<!-- Primary Berry Action -->
+<button class="h-[52px] px-space-xl rounded-xl bg-primary-container text-on-primary font-label text-label hover:bg-[#731540] active:scale-[0.99] transition-all flex items-center gap-2 shadow-md">
+<span class="material-symbols-outlined text-[20px]" data-icon="add_circle">add_circle</span>
+<span>+ Create Payment Link / Invoice</span>
+</button>
+</div>
+</section>
+<!-- Real-Time Settlement Safeguard Banner -->
+<section class="rounded-2xl p-space-md bg-gradient-to-r from-surface-container-low via-surface-container-lowest to-surface-container border border-outline-variant/70 shadow-xs flex items-center justify-between gap-4">
+<div class="flex items-center gap-space-md">
+<div class="w-11 h-11 rounded-xl bg-primary-fixed flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-[24px]" data-icon="verified_user" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="text-label font-label text-primary">Instant NIBSS Settlement Safeguard Active</span>
+<span class="px-2 py-0.2 bg-emerald-100 text-emerald-800 text-[11px] rounded font-label border border-emerald-200">Zero Intercept</span>
+</div>
+<p class="text-caption font-caption text-on-surface-variant mt-0.5">
+              Card, USSD, and transfer payments are segregated and swept daily at <strong class="text-on-surface font-label">17:00 WAT</strong> to Zenith Bank Corporate Account (<strong class="font-mono text-primary font-label">*9201</strong>) with zero merchant fees.
+            </p>
+</div>
+</div>
+<div class="hidden lg:flex items-center gap-3 pr-2">
+<span class="text-[12px] font-mono text-outline">NIBSS-ZIB-GATE-4409</span>
+<button class="px-3 py-1.5 rounded-lg border border-outline-variant bg-surface-container-lowest text-caption font-label text-on-surface hover:bg-surface-container-low transition-colors">
+            Configure Sweeps
+          </button>
+</div>
+</section>
+<!-- 4 Merchant KPI Metric Tiles (Bento Grid) -->
+<section aria-label="Key Performance Indicators" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-lg">
+<!-- Tile 1: Gross Sales (Today / MTD) -->
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest border border-outline-variant shadow-sm hover:shadow-md transition-shadow relative overflow-hidden flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="text-caption font-caption text-on-surface-variant">Gross Sales (Today / MTD)</span>
+<div class="w-9 h-9 rounded-lg bg-surface-container-low text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" data-icon="payments">payments</span>
+</div>
+</div>
+<div class="my-space-sm">
+<div class="text-amount-lg font-amount-lg text-on-background tracking-tight">₦4,850,000.00</div>
+<div class="flex items-center gap-1.5 mt-1 text-caption font-caption text-on-surface">
+<span class="inline-flex items-center text-emerald-700 font-label">
+<span class="material-symbols-outlined text-[16px]" data-icon="arrow_upward">arrow_upward</span>
+                42 transactions
+              </span>
+<span class="text-outline">• Today</span>
+</div>
+</div>
+<div class="pt-space-xs border-t border-surface-variant flex items-center justify-between text-[12px] font-caption text-on-surface-variant">
+<span>₦38,200,000.00 MTD</span>
+<span class="text-emerald-700 font-label">+18.4% vs last mo</span>
+</div>
+</div>
+<!-- Tile 2: Awaiting Customer Settlement -->
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest border border-outline-variant shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="text-caption font-caption text-on-surface-variant">Awaiting Settlement</span>
+<div class="w-9 h-9 rounded-lg bg-secondary-fixed/50 text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" data-icon="pending_actions">pending_actions</span>
+</div>
+</div>
+<div class="my-space-sm">
+<div class="text-amount-lg font-amount-lg text-secondary tracking-tight">₦3,450,000.00</div>
+<div class="flex items-center gap-1.5 mt-1 text-caption font-caption text-on-surface">
+<span class="inline-flex items-center text-secondary font-label">
+<span class="material-symbols-outlined text-[16px]" data-icon="warning">warning</span>
+                6 unpaid invoices
+              </span>
+<span class="text-outline">• 2 due today</span>
+</div>
+</div>
+<div class="pt-space-xs border-t border-surface-variant flex items-center justify-between text-[12px] font-caption text-on-surface-variant">
+<span>Corporate Aggregators</span>
+<span class="text-primary font-label hover:underline cursor-pointer">Review #INV</span>
+</div>
+</div>
+<!-- Tile 3: Available Payout Balance -->
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest border border-outline-variant shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="text-caption font-caption text-on-surface-variant">Available Payout Balance</span>
+<div class="w-9 h-9 rounded-lg bg-surface-container-high text-on-surface flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" data-icon="account_balance">account_balance</span>
+</div>
+</div>
+<div class="my-space-sm">
+<div class="text-amount-lg font-amount-lg text-primary tracking-tight">₦4,120,000.00</div>
+<div class="flex items-center gap-1.5 mt-1 text-caption font-caption text-on-surface">
+<span class="inline-flex items-center text-primary font-label">
+<span class="material-symbols-outlined text-[16px]" data-icon="schedule">schedule</span>
+                Auto-Sweep at 17:00
+              </span>
+<span class="text-outline">• Zenith *9201</span>
+</div>
+</div>
+<div class="pt-space-xs border-t border-surface-variant flex items-center justify-between text-[12px] font-caption text-on-surface-variant">
+<span>Zero transfer surcharges</span>
+<span class="text-emerald-700 font-label">Automated</span>
+</div>
+</div>
+<!-- Tile 4: Successful Payment Rate -->
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest border border-outline-variant shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="text-caption font-caption text-on-surface-variant">Successful Payment Rate</span>
+<div class="w-9 h-9 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" data-icon="check_circle">check_circle</span>
+</div>
+</div>
+<div class="my-space-sm">
+<div class="text-amount-lg font-amount-lg text-on-background tracking-tight">99.4%</div>
+<div class="flex items-center gap-1.5 mt-1 text-caption font-caption text-on-surface">
+<span class="inline-flex items-center text-emerald-700 font-label">
+<span class="material-symbols-outlined text-[16px]" data-icon="network_check">network_check</span>
+                Sub-3s NIBSS latency
+              </span>
+</div>
+</div>
+<div class="pt-space-xs border-t border-surface-variant flex items-center justify-between text-[12px] font-caption text-on-surface-variant">
+<span>Across Web, QR &amp; Cashier POS</span>
+<span class="text-emerald-700 font-label">Optimal</span>
+</div>
+</div>
+</section>
+<!-- ==================== 5. SPLIT MAIN SECTION ==================== -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-start">
+<!-- ================= LEFT COLUMN (2/3 width -> col-span-8) ================= -->
+<div class="lg:col-span-8 flex flex-col gap-space-xl">
+<!-- Sales Velocity & Channel Breakdown Card -->
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest border border-outline-variant shadow-sm">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-space-md border-b border-surface-variant">
+<div>
+<h3 class="text-subtitle font-subtitle text-on-surface leading-tight">Sales Velocity &amp; Channel Distribution</h3>
+<p class="text-caption font-caption text-on-surface-variant">Continuous transaction telemetry across digital and boutique channels</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-1 rounded-lg bg-surface-container-low text-primary text-caption font-label border border-outline-variant">Today's Blotter</span>
+<span class="text-caption font-caption text-outline">Hourly aggregated</span>
+</div>
+</div>
+<!-- Visual Channel Distribution Progress Bar -->
+<div class="mt-space-md">
+<div class="flex items-center justify-between text-caption font-caption mb-2">
+<span class="font-label text-on-surface">Channel Inflow Share</span>
+<span class="text-outline">₦4,850,000.00 Total Cleared</span>
+</div>
+<!-- Stacked Segment Bar -->
+<div class="h-3.5 w-full bg-surface-container rounded-full overflow-hidden flex">
+<div class="bg-primary-container h-full transition-all duration-300" style="width: 48%;" title="Payment Links: 48%"></div>
+<div class="bg-secondary-container h-full transition-all duration-300" style="width: 32%;" title="Cashier Mode: 32%"></div>
+<div class="bg-tertiary-container h-full transition-all duration-300" style="width: 20%;" title="Invoices: 20%"></div>
+</div>
+<!-- Legend Tiles -->
+<div class="grid grid-cols-3 gap-2 mt-3 pt-1">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded bg-primary-container flex-shrink-0"></div>
+<div>
+<div class="text-[12px] font-label text-on-surface leading-tight">Dynamic Links 48%</div>
+<div class="text-[11px] font-caption text-on-surface-variant">₦2,328,000.00</div>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded bg-secondary-container flex-shrink-0"></div>
+<div>
+<div class="text-[12px] font-label text-on-surface leading-tight">In-Store Cashiers 32%</div>
+<div class="text-[11px] font-caption text-on-surface-variant">₦1,552,000.00</div>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded bg-tertiary-container flex-shrink-0"></div>
+<div>
+<div class="text-[12px] font-label text-on-surface leading-tight">B2B Invoices 20%</div>
+<div class="text-[11px] font-caption text-on-surface-variant">₦970,000.00</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Hourly Sales Trend Visualization (CSS Bar Array) -->
+<div class="mt-space-lg pt-space-md border-t border-surface-variant">
+<div class="flex items-center justify-between text-caption font-caption mb-3">
+<span class="font-label text-on-surface">Hourly Volume Velocity (08:00 - 16:00 WAT)</span>
+<span class="text-emerald-700 font-label flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px]" data-icon="trending_up">trending_up</span> Peak: 14:00 (₦1.1M)
+                </span>
+</div>
+<div class="h-28 flex items-end justify-between gap-2 px-2 pt-2 bg-surface-container-low/50 rounded-xl border border-outline-variant/40">
+<!-- 08:00 -->
+<div class="flex-1 flex flex-col items-center gap-1.5 h-full justify-end group">
+<div class="w-full bg-primary/20 group-hover:bg-primary-container rounded-t transition-all" style="height: 18%;"></div>
+<span class="text-[10px] font-caption text-outline">08h</span>
+</div>
+<!-- 09:00 -->
+<div class="flex-1 flex flex-col items-center gap-1.5 h-full justify-end group">
+<div class="w-full bg-primary/25 group-hover:bg-primary-container rounded-t transition-all" style="height: 28%;"></div>
+<span class="text-[10px] font-caption text-outline">09h</span>
+</div>
+<!-- 10:00 -->
+<div class="flex-1 flex flex-col items-center gap-1.5 h-full justify-end group">
+<div class="w-full bg-primary/40 group-hover:bg-primary-container rounded-t transition-all" style="height: 45%;"></div>
+<span class="text-[10px] font-caption text-outline">10h</span>
+</div>
+<!-- 11:00 -->
+<div class="flex-1 flex flex-col items-center gap-1.5 h-full justify-end group">
+<div class="w-full bg-primary/35 group-hover:bg-primary-container rounded-t transition-all" style="height: 38%;"></div>
+<span class="text-[10px] font-caption text-outline">11h</span>
+</div>
+<!-- 12:00 -->
+<div class="flex-1 flex flex-col items-center gap-1.5 h-full justify-end group">
+<div class="w-full bg-primary/60 group-hover:bg-primary-container rounded-t transition-all" style="height: 62%;"></div>
+<span class="text-[10px] font-caption text-outline">12h</span>
+</div>
+<!-- 13:00 -->
+<div class="flex-1 flex flex-col items-center gap-1.5 h-full justify-end group">
+<div class="w-full bg-primary/75 group-hover:bg-primary-container rounded-t transition-all" style="height: 78%;"></div>
+<span class="text-[10px] font-caption text-outline">13h</span>
+</div>
+<!-- 14:00 (Peak) -->
+<div class="flex-1 flex flex-col items-center gap-1.5 h-full justify-end group">
+<div class="w-full bg-primary-container rounded-t shadow-xs transition-all" style="height: 94%;"></div>
+<span class="text-[10px] font-label text-primary font-bold">14h</span>
+</div>
+<!-- 15:00 -->
+<div class="flex-1 flex flex-col items-center gap-1.5 h-full justify-end group">
+<div class="w-full bg-primary/70 group-hover:bg-primary-container rounded-t transition-all" style="height: 68%;"></div>
+<span class="text-[10px] font-caption text-outline">15h</span>
+</div>
+<!-- 16:00 (Current) -->
+<div class="flex-1 flex flex-col items-center gap-1.5 h-full justify-end group">
+<div class="w-full bg-secondary-container rounded-t transition-all" style="height: 52%;"></div>
+<span class="text-[10px] font-caption text-secondary">Now</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Significant Sales & Transactions Table -->
+<div class="rounded-2xl bg-surface-container-lowest border border-outline-variant shadow-sm overflow-hidden">
+<div class="px-space-lg py-space-md border-b border-surface-variant flex items-center justify-between">
+<div>
+<h3 class="text-subtitle font-subtitle text-on-surface leading-tight">Recent Significant Sales &amp; Collections</h3>
+<p class="text-caption font-caption text-on-surface-variant">Live audit queue of verified customer checkouts and settlement status</p>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1.5 rounded-lg border border-outline-variant text-caption font-label text-on-surface hover:bg-surface-container-low transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="filter_list">filter_list</span> Filter
+                </button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-low text-primary text-caption font-label hover:bg-surface-container transition-colors">
+                  View All (42)
+                </button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/70 border-b border-surface-variant text-[12px] font-label text-on-surface-variant uppercase tracking-wider">
+<th class="py-3 px-4">Reference &amp; Time</th>
+<th class="py-3 px-4">Customer</th>
+<th class="py-3 px-4">Channel</th>
+<th class="py-3 px-4">Item / Narration</th>
+<th class="py-3 px-4 text-right">Gross Amount</th>
+<th class="py-3 px-4 text-center">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-variant text-caption font-caption">
+<!-- Row 1 (Chief Femi Otedola) - Selected State -->
+<tr class="bg-surface-container-low/40 hover:bg-surface-container-low transition-colors border-l-4 border-primary">
+<td class="py-3.5 px-4">
+<div class="font-label text-on-surface font-mono text-[12px]">#TXN-MER-8921</div>
+<div class="text-[11px] text-on-surface-variant">15:42 WAT • Transfer</div>
+</td>
+<td class="py-3.5 px-4 font-body-medium text-on-surface">Chief Femi Otedola</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container text-primary font-label text-[11px]">
+<span class="material-symbols-outlined text-[13px]" data-icon="link">link</span>
+                        #LNK-402
+                      </span>
+</td>
+<td class="py-3.5 px-4 text-on-surface-variant">Bespoke Agbada 3-Piece Silk</td>
+<td class="py-3.5 px-4 text-right font-label text-on-background font-mono">₦850,000.00</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-1 rounded-lg bg-emerald-100 text-emerald-800 text-[11px] font-label border border-emerald-200">
+<span class="material-symbols-outlined text-[14px]" data-icon="check_circle">check_circle</span>
+                        Paid &amp; Cleared
+                      </span>
+</td>
+</tr>
+<!-- Row 2 (Folake Coker) -->
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="py-3.5 px-4">
+<div class="font-label text-on-surface font-mono text-[12px]">#TXN-MER-8920</div>
+<div class="text-[11px] text-on-surface-variant">15:28 WAT • Card POS</div>
+</td>
+<td class="py-3.5 px-4 font-body-medium text-on-surface">Folake Coker</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-secondary-fixed/40 text-on-secondary-fixed font-label text-[11px]">
+<span class="material-symbols-outlined text-[13px]" data-icon="point_of_sale">point_of_sale</span>
+                        Till #02
+                      </span>
+</td>
+<td class="py-3.5 px-4 text-on-surface-variant">Silk Ready-to-Wear Scarf</td>
+<td class="py-3.5 px-4 text-right font-label text-on-background font-mono">₦65,000.00</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-1 rounded-lg bg-emerald-100 text-emerald-800 text-[11px] font-label border border-emerald-200">
+<span class="material-symbols-outlined text-[14px]" data-icon="check_circle">check_circle</span>
+                        Paid &amp; Cleared
+                      </span>
+</td>
+</tr>
+<!-- Row 3 (Dangote Group Protocol) -->
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="py-3.5 px-4">
+<div class="font-label text-on-surface font-mono text-[12px]">#TXN-MER-8919</div>
+<div class="text-[11px] text-on-surface-variant">14:50 WAT • B2B Net-14</div>
+</td>
+<td class="py-3.5 px-4 font-body-medium text-on-surface">Dangote Group Protocol</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container-high text-on-surface font-label text-[11px]">
+<span class="material-symbols-outlined text-[13px]" data-icon="receipt_long">receipt_long</span>
+                        #INV-2027-088
+                      </span>
+</td>
+<td class="py-3.5 px-4 text-on-surface-variant">Corporate Uniform Aggregation</td>
+<td class="py-3.5 px-4 text-right font-label text-secondary font-mono">₦1,450,000.00</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-1 rounded-lg bg-amber-100 text-amber-800 text-[11px] font-label border border-amber-200">
+<span class="material-symbols-outlined text-[14px]" data-icon="hourglass_top">hourglass_top</span>
+                        Pending Transfer
+                      </span>
+</td>
+</tr>
+<!-- Row 4 (Dr. Amina Bello) -->
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="py-3.5 px-4">
+<div class="font-label text-on-surface font-mono text-[12px]">#TXN-MER-8918</div>
+<div class="text-[11px] text-on-surface-variant">14:15 WAT • QR USSD</div>
+</td>
+<td class="py-3.5 px-4 font-body-medium text-on-surface">Dr. Amina Bello</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container text-primary font-label text-[11px]">
+<span class="material-symbols-outlined text-[13px]" data-icon="qr_code_2">qr_code_2</span>
+                        Dynamic QR
+                      </span>
+</td>
+<td class="py-3.5 px-4 text-on-surface-variant">Bridal Consultation Deposit</td>
+<td class="py-3.5 px-4 text-right font-label text-on-background font-mono">₦200,000.00</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-1 rounded-lg bg-emerald-100 text-emerald-800 text-[11px] font-label border border-emerald-200">
+<span class="material-symbols-outlined text-[14px]" data-icon="check_circle">check_circle</span>
+                        Paid &amp; Cleared
+                      </span>
+</td>
+</tr>
+<!-- Row 5 (Victoria Crest Logistics) -->
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="py-3.5 px-4">
+<div class="font-label text-on-surface font-mono text-[12px]">#TXN-MER-8917</div>
+<div class="text-[11px] text-on-surface-variant">13:30 WAT • Transfer</div>
+</td>
+<td class="py-3.5 px-4 font-body-medium text-on-surface">Victoria Crest Logistics</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container text-primary font-label text-[11px]">
+<span class="material-symbols-outlined text-[13px]" data-icon="link">link</span>
+                        #LNK-398
+                      </span>
+</td>
+<td class="py-3.5 px-4 text-on-surface-variant">Corporate Staff Blazers</td>
+<td class="py-3.5 px-4 text-right font-label text-on-background font-mono">₦620,000.00</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-1 rounded-lg bg-emerald-100 text-emerald-800 text-[11px] font-label border border-emerald-200">
+<span class="material-symbols-outlined text-[14px]" data-icon="check_circle">check_circle</span>
+                        Paid &amp; Cleared
+                      </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer Pagination / Summary -->
+<div class="px-space-lg py-3 bg-surface-container-low/50 border-t border-surface-variant flex items-center justify-between text-caption font-caption text-on-surface-variant">
+<span>Showing 5 of 42 transactions recorded today</span>
+<div class="flex items-center gap-1">
+<button class="px-2 py-1 rounded border border-outline-variant bg-surface-container-lowest text-outline hover:text-on-surface">Prev</button>
+<button class="px-2 py-1 rounded bg-primary text-on-primary font-label text-[12px]">1</button>
+<button class="px-2 py-1 rounded border border-outline-variant bg-surface-container-lowest text-on-surface hover:bg-surface-container">2</button>
+<button class="px-2 py-1 rounded border border-outline-variant bg-surface-container-lowest text-on-surface hover:bg-surface-container">3</button>
+<button class="px-2 py-1 rounded border border-outline-variant bg-surface-container-lowest text-outline hover:text-on-surface">Next</button>
+</div>
+</div>
+</div>
+</div>
+<!-- ================= RIGHT COLUMN (1/3 width -> col-span-4) ================= -->
+<div class="lg:col-span-4 flex flex-col gap-space-xl">
+<!-- Active Transaction Dossier Card (Focused on #TXN-MER-8921) -->
+<div class="rounded-2xl bg-surface-container-lowest border border-outline-variant shadow-sm overflow-hidden">
+<!-- Header -->
+<div class="p-space-lg bg-surface-container-low border-b border-surface-variant flex items-center justify-between">
+<div>
+<span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 text-[11px] font-label">Transaction Dossier</span>
+<h3 class="text-subtitle font-subtitle text-on-surface mt-1">#TXN-MER-8921</h3>
+<span class="text-caption font-caption text-outline">Verified NIBSS Instant Direct Credit</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<!-- Customer & Payment Breakdown Details -->
+<div class="p-space-lg flex flex-col gap-space-md">
+<!-- Customer Profile Row -->
+<div class="flex items-center justify-between pb-space-sm border-b border-surface-variant">
+<div>
+<div class="text-label font-label text-on-surface">Chief Femi Otedola</div>
+<div class="text-caption font-caption text-on-surface-variant">+234 803 291 8840</div>
+</div>
+<span class="px-2 py-1 rounded bg-surface-container text-primary text-[11px] font-label">Private Client</span>
+</div>
+<!-- Item info -->
+<div class="text-caption font-caption">
+<span class="text-on-surface-variant block">Purchased Item / Service:</span>
+<span class="font-body-medium text-on-surface">Bespoke Agbada 3-Piece Silk (Emerald/Gold)</span>
+</div>
+<!-- Financial Breakdown -->
+<div class="p-space-md rounded-xl bg-surface-container-low border border-outline-variant/60 flex flex-col gap-2">
+<div class="flex justify-between text-caption font-caption">
+<span class="text-on-surface-variant">Gross Paid:</span>
+<span class="font-label text-on-surface">₦850,000.00</span>
+</div>
+<div class="flex justify-between text-caption font-caption">
+<span class="text-on-surface-variant">Processing Fee:</span>
+<span class="font-label text-emerald-700">₦0.00 (Standard Promo)</span>
+</div>
+<div class="pt-2 border-t border-outline-variant/50 flex justify-between text-body-medium font-body-medium">
+<span class="text-primary font-label">Net Swept to Zenith:</span>
+<span class="font-bold text-primary font-mono">₦850,000.00</span>
+</div>
+</div>
+<!-- Receipt & QR Verification Mock -->
+<div class="p-space-md rounded-xl border border-dashed border-outline flex items-center gap-3 bg-surface-container-low/30">
+<div class="w-14 h-14 bg-surface-container-lowest border border-outline-variant rounded-lg flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-[36px]" data-icon="qr_code_2">qr_code_2</span>
+</div>
+<div>
+<div class="text-[12px] font-label text-on-surface">Digital Receipt Generated</div>
+<div class="text-[11px] font-caption text-on-surface-variant">Hash: 8921-AF4-ZENITH-OK</div>
+<span class="text-[11px] font-mono text-emerald-700">Audit Stamp 15:42:19 WAT</span>
+</div>
+</div>
+<!-- Quick Action Triggers -->
+<div class="flex flex-col gap-2 pt-space-xs">
+<button class="w-full h-11 px-4 rounded-xl bg-surface-container text-primary font-label text-[13px] hover:bg-surface-container-high transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="chat">chat</span>
+<span>Resend WhatsApp Receipt</span>
+</button>
+<button class="w-full h-11 px-4 rounded-xl border border-outline-variant bg-surface-container-lowest text-on-surface font-label text-[13px] hover:bg-surface-container-low transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-outline" data-icon="picture_as_pdf">picture_as_pdf</span>
+<span>Download Official Tax Invoice</span>
+</button>
+<button class="w-full h-10 px-4 rounded-xl text-secondary hover:bg-secondary-fixed/30 font-label text-[12px] transition-colors flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]" data-icon="assignment_return">assignment_return</span>
+<span>Initiate Partial/Full Refund (W-MER-009)</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Live Cashier Shift Monitor Widget -->
+<div class="rounded-2xl bg-surface-container-lowest border border-outline-variant shadow-sm p-space-lg flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-xs border-b border-surface-variant">
+<div>
+<h4 class="text-subtitle font-subtitle text-on-surface leading-tight">Live Cashier Shift Monitor</h4>
+<p class="text-caption font-caption text-on-surface-variant">In-Store Register Status (Lekki Branch)</p>
+</div>
+<span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+</div>
+<!-- Tills List -->
+<div class="flex flex-col gap-2.5">
+<!-- Till 1 -->
+<div class="p-3 rounded-xl bg-surface-container-low/70 border border-outline-variant/50 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-primary-fixed text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]" data-icon="point_of_sale">point_of_sale</span>
+</div>
+<div>
+<div class="text-[13px] font-label text-on-surface">Till #01 • Chinedu</div>
+<div class="text-[11px] font-caption text-on-surface-variant">Lekki Front Counter</div>
+</div>
+</div>
+<div class="text-right">
+<div class="text-[13px] font-label text-on-surface font-mono">₦1,240,000.00</div>
+<span class="inline-flex items-center gap-1 text-[11px] font-label text-emerald-700">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Online
+                  </span>
+</div>
+</div>
+<!-- Till 2 -->
+<div class="p-3 rounded-xl bg-surface-container-low/70 border border-outline-variant/50 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-primary-fixed text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]" data-icon="point_of_sale">point_of_sale</span>
+</div>
+<div>
+<div class="text-[13px] font-label text-on-surface">Till #02 • Zainab</div>
+<div class="text-[11px] font-caption text-on-surface-variant">Fitting Suite VIP</div>
+</div>
+</div>
+<div class="text-right">
+<div class="text-[13px] font-label text-on-surface font-mono">₦680,000.00</div>
+<span class="inline-flex items-center gap-1 text-[11px] font-label text-emerald-700">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Online
+                  </span>
+</div>
+</div>
+<!-- Till 3 -->
+<div class="p-3 rounded-xl bg-surface-container-low/40 border border-outline-variant/40 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container text-outline flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]" data-icon="pause_circle">pause_circle</span>
+</div>
+<div>
+<div class="text-[13px] font-label text-on-surface">Till #03 • Bimbo</div>
+<div class="text-[11px] font-caption text-on-surface-variant">Dispatch Desk</div>
+</div>
+</div>
+<div class="text-right">
+<div class="text-[13px] font-label text-outline font-mono">₦320,000.00</div>
+<span class="inline-flex items-center gap-1 text-[11px] font-caption text-amber-800">
+                    Shift Paused
+                  </span>
+</div>
+</div>
+</div>
+<!-- View Registers Button -->
+<button class="w-full py-2.5 rounded-xl border border-outline-variant text-caption font-label text-on-surface hover:bg-surface-container-low transition-colors text-center mt-1">
+              View All Active Registers &amp; End-of-Day Blots
+            </button>
+</div>
+</div>
+</div>
+</main>
+<!-- ==================== 6. INSTITUTIONAL FOOTER BAR ==================== -->
+<footer class="mt-auto px-space-xl py-space-md border-t border-surface-variant bg-surface-container-lowest flex flex-col sm:flex-row items-center justify-between gap-3 text-caption font-caption text-on-surface-variant">
+<div class="flex items-center gap-3">
+<span class="inline-flex items-center gap-1 text-primary font-label">
+<span class="material-symbols-outlined text-[16px]" data-icon="account_balance">account_balance</span>
+          CBN Licenced Payment Terminal Operator Interop
+        </span>
+<span class="text-outline">•</span>
+<span>ISO/IEC 27001 Certified</span>
+<span class="text-outline">•</span>
+<span>NDPR Compliant</span>
+</div>
+<div class="flex items-center gap-4">
+<span>System Version <strong class="font-mono text-on-surface">v4.12-prod</strong></span>
+<span class="text-outline">•</span>
+<a class="hover:text-primary transition-colors" href="#audit">Audit Node: LAG-EDGE-01</a>
+</div>
+</footer>
+</div>
+</body></html>

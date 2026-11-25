@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Deal Detail - YourApp Escrow</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-tertiary-fixed-variant": "#06429a",
+            "inverse-on-surface": "#323031",
+            "surface-bright": "#3b3839",
+            "primary-fixed": "#ffd9e3",
+            "inverse-primary": "#9e3b63",
+            "surface-container-lowest": "#100e0f",
+            "outline": "#a28b91",
+            "on-secondary-fixed": "#410000",
+            "surface": "#151314",
+            "surface-tint": "#ffb0ca",
+            "primary": "#ffb0ca",
+            "error": "#ffb4ab",
+            "surface-dim": "#151314",
+            "surface-container-highest": "#373435",
+            "tertiary-fixed": "#d9e2ff",
+            "surface-container-low": "#1d1b1c",
+            "on-tertiary-container": "#002a69",
+            "on-tertiary-fixed": "#001945",
+            "on-primary-fixed-variant": "#7f234b",
+            "tertiary": "#b0c6ff",
+            "surface-variant": "#373435",
+            "tertiary-container": "#6a92ee",
+            "on-primary-container": "#5d0331",
+            "secondary": "#ffb4a8",
+            "secondary-container": "#822c20",
+            "on-tertiary": "#002d6f",
+            "error-container": "#93000a",
+            "on-error-container": "#ffdad6",
+            "primary-fixed-dim": "#ffb0ca",
+            "on-secondary": "#61130a",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "on-secondary-container": "#ff9f90",
+            "primary-container": "#e0709a",
+            "background": "#151314",
+            "surface-container-high": "#2c292a",
+            "on-primary": "#620735",
+            "on-surface": "#e7e1e2",
+            "surface-container": "#211f20",
+            "on-background": "#e7e1e2",
+            "secondary-fixed-dim": "#ffb4a8",
+            "on-error": "#690005",
+            "on-surface-variant": "#dac0c6",
+            "secondary-fixed": "#ffdad4",
+            "inverse-surface": "#e7e1e2",
+            "outline-variant": "#544247",
+            "on-primary-fixed": "#3e001f",
+            "on-secondary-fixed-variant": "#7f291e"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "gutter-mobile": "0.75rem",
+            "space-xl": "2rem",
+            "gutter": "1rem",
+            "space-md": "1rem",
+            "space-xs": "0.25rem",
+            "margin-mobile": "1rem",
+            "space-lg": "1.5rem",
+            "margin": "1rem"
+          },
+          "fontFamily": {
+            "headline-lg": ["Inter"],
+            "label-md": ["Inter"],
+            "headline-sm": ["Inter"],
+            "title-currency": ["Inter"],
+            "display-currency": ["Inter"],
+            "label-lg": ["Inter"],
+            "headline-md": ["Inter"],
+            "body-md": ["Inter"],
+            "label-sm": ["Inter"],
+            "body-lg": ["Inter"]
+          },
+          "fontSize": {
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "title-currency": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-lg": ["15px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+    /* Hide scrollbar for tabs */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen flex justify-center">
+<!-- Mobile Viewport Wrapper (390px reference mobile canvas) -->
+<div class="w-full max-w-[390px] min-h-screen bg-background relative flex flex-col pb-[96px] shadow-2xl">
+<!-- Top App Bar Navigation Shell -->
+<header class="sticky top-0 z-40 bg-surface/95 backdrop-blur-md px-margin py-space-sm flex items-center justify-between min-h-[56px] border-b border-outline-variant/30">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Go Back" class="w-9 h-9 rounded-full flex items-center justify-center text-on-surface hover:bg-surface-container active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[20px]">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<h1 class="font-headline-sm text-headline-sm text-on-surface leading-tight">Deal Detail</h1>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="font-label-sm text-label-sm text-primary font-semibold tracking-wider tabular-nums">#ESC-8921-FX3</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Escrow Protected</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-1">
+<button aria-label="Share Deal" class="w-9 h-9 rounded-full flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[20px]">share</span>
+</button>
+<button aria-label="Deal Options" class="w-9 h-9 rounded-full flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 px-margin pt-space-md flex flex-col gap-space-md">
+<!-- Hero Status Card -->
+<section class="bg-surface-container-low rounded-xl border border-outline-variant/50 p-space-md flex flex-col gap-space-md relative overflow-hidden">
+<!-- Ambient subtle glow behind protected vault status -->
+<div class="absolute -right-10 -top-10 w-36 h-36 bg-primary-container/10 rounded-full blur-2xl pointer-events-none"></div>
+<!-- Deal Title & Category -->
+<div class="flex flex-col gap-1 z-10">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary">verified_user</span>
+              Electronics Escrow Vault
+            </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant tabular-nums">Ref: FX3-NG-04</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-semibold tracking-tight">
+            Brand New Sony FX3 Cinema Camera Bundle
+          </h2>
+</div>
+<!-- Amount and Fee Breakdown Container -->
+<div class="bg-surface rounded-lg p-space-sm border border-outline-variant/30 flex flex-col gap-1 z-10">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Total Protected Amount</span>
+<div class="flex items-baseline justify-between">
+<div class="flex items-baseline gap-1">
+<span class="font-title-currency text-title-currency text-primary-container font-semibold">₦</span>
+<span class="font-headline-lg text-headline-lg text-on-surface tabular-nums">1,200,000.00</span>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-surface-container-high text-primary border border-outline-variant/40">
+              In Custody
+            </span>
+</div>
+<div class="pt-1 mt-1 border-t border-outline-variant/20 flex items-center justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>Escrow Fee Protected (Split 50/50)</span>
+<span class="tabular-nums font-medium text-on-surface">Fee: ₦9,000.00 each</span>
+</div>
+</div>
+<!-- Active Deal Status Pill with Pulsing Indicator -->
+<div class="flex items-center gap-2.5 bg-surface-container p-2.5 rounded-lg border border-outline-variant/40 z-10">
+<div class="relative flex items-center justify-center w-3 h-3 flex-shrink-0">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary-fixed opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-secondary">
+              In Transit • Awaiting Courier Delivery
+            </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">
+              Logistics partner handoff verified by dispatch agent
+            </span>
+</div>
+</div>
+<!-- Inspection Window Banner -->
+<div class="flex items-center gap-2 px-2.5 py-2 rounded-lg bg-surface-container-high/60 border border-outline-variant/20 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="timer">timer</span>
+<span class="font-label-sm text-label-sm">
+<span class="text-on-surface font-semibold">72h Inspection:</span> Starts automatically upon confirmed delivery.
+          </span>
+</div>
+</section>
+<!-- Next Action Highlight Banner (Amber/Warning Card with SLA Countdown) -->
+<section class="bg-secondary-container/20 rounded-xl border border-secondary/50 p-space-md flex flex-col gap-2 relative">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]" data-icon="local_shipping">local_shipping</span>
+<h3 class="font-label-lg text-label-lg font-semibold text-on-surface">
+              Next Step: Seller Dispatches &amp; Uploads Waybill
+            </h3>
+</div>
+<span class="bg-secondary-container/80 text-secondary-fixed text-[11px] font-semibold px-2 py-0.5 rounded uppercase tracking-wider tabular-nums flex-shrink-0">
+            48h SLA
+          </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          Seller has <span class="text-secondary font-semibold tabular-nums">48 hours</span> remaining to provide valid GIG Logistics tracking ID before automated cancellation &amp; buyer full refund trigger.
+        </p>
+</section>
+<!-- Interactive Internal Deal Tabs -->
+<nav aria-label="Deal Sections" class="flex items-center bg-surface-container-low p-1 rounded-xl border border-outline-variant/30">
+<button class="flex-1 py-2 text-center rounded-lg bg-primary-container text-on-primary-container font-label-md text-label-md font-semibold shadow-sm transition-all">
+          Timeline
+        </button>
+<button class="flex-1 py-2 text-center rounded-lg text-on-surface-variant font-label-md text-label-md font-medium hover:text-on-surface transition-colors flex items-center justify-center gap-1">
+<span>Docs &amp; Evidence</span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary inline-block"></span>
+</button>
+<button class="flex-1 py-2 text-center rounded-lg text-on-surface-variant font-label-md text-label-md font-medium hover:text-on-surface transition-colors">
+          Deal Chat
+        </button>
+</nav>
+<!-- Interactive Step Timeline Module -->
+<section class="bg-surface-container-low rounded-xl border border-outline-variant/40 p-space-md flex flex-col gap-space-sm">
+<div class="flex items-center justify-between pb-2 border-b border-outline-variant/20">
+<h3 class="font-label-lg text-label-lg font-semibold text-on-surface">Escrow Milestone Protocol</h3>
+<span class="font-label-sm text-label-sm text-primary font-medium">Step 4 of 6 Active</span>
+</div>
+<div class="relative flex flex-col pt-2">
+<!-- Step 1: Completed -->
+<div class="flex gap-3 relative pb-6 group">
+<div class="flex flex-col items-center">
+<div class="w-7 h-7 rounded-full bg-primary/20 text-primary border border-primary/40 flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-[16px] font-bold" data-icon="check">check</span>
+</div>
+<div class="w-0.5 bg-primary/40 flex-1 absolute top-7 bottom-0 left-3.5 -ml-px"></div>
+</div>
+<div class="flex flex-col flex-1 pt-0.5">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Deal Created &amp; Specs Drafted</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant tabular-nums">24 Feb, 14:20</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant text-[13px] leading-snug">Item specifications, packaging checklist, and release criteria codified.</p>
+</div>
+</div>
+<!-- Step 2: Completed -->
+<div class="flex gap-3 relative pb-6 group">
+<div class="flex flex-col items-center">
+<div class="w-7 h-7 rounded-full bg-primary/20 text-primary border border-primary/40 flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-[16px] font-bold" data-icon="check">check</span>
+</div>
+<div class="w-0.5 bg-primary/40 flex-1 absolute top-7 bottom-0 left-3.5 -ml-px"></div>
+</div>
+<div class="flex flex-col flex-1 pt-0.5">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Terms Negotiated &amp; Accepted</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant tabular-nums">25 Feb, 10:14</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant text-[13px] leading-snug">Mutual bilateral signing digitally stamped by both counterparties.</p>
+</div>
+</div>
+<!-- Step 3: Completed -->
+<div class="flex gap-3 relative pb-6 group">
+<div class="flex flex-col items-center">
+<div class="w-7 h-7 rounded-full bg-primary/20 text-primary border border-primary/40 flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-[16px] font-bold" data-icon="check">check</span>
+</div>
+<div class="w-0.5 bg-secondary flex-1 absolute top-7 bottom-0 left-3.5 -ml-px"></div>
+</div>
+<div class="flex flex-col flex-1 pt-0.5">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Escrow Funded by Buyer</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant tabular-nums">25 Feb, 10:28</span>
+</div>
+<p class="font-body-md text-body-md text-primary font-medium text-[13px] leading-snug tabular-nums">
+                ₦1,209,000.00 Locked in Sovereign Custody Vault
+              </p>
+</div>
+</div>
+<!-- Step 4: Active Current Step -->
+<div class="flex gap-3 relative pb-6">
+<div class="flex flex-col items-center">
+<div class="w-7 h-7 rounded-full bg-secondary-container border-2 border-secondary text-secondary-fixed flex items-center justify-center z-10 shadow-[0_0_12px_rgba(255,180,168,0.3)]">
+<span class="material-symbols-outlined text-[15px]" data-icon="inventory_2">inventory_2</span>
+</div>
+<div class="w-0.5 bg-outline-variant/30 flex-1 absolute top-7 bottom-0 left-3.5 -ml-px"></div>
+</div>
+<div class="flex flex-col flex-1 pt-0.5 bg-surface-container/60 p-2.5 rounded-lg border border-secondary/30">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md font-semibold text-secondary">Dispatch &amp; Milestone Delivery</span>
+<span class="font-label-sm text-label-sm px-1.5 py-0.2 bg-secondary/10 text-secondary rounded font-medium">Active</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface text-[13px] leading-snug mt-1">
+                Seller preparing package with courier. Waybill tracking upload requested.
+              </p>
+</div>
+</div>
+<!-- Step 5: Upcoming -->
+<div class="flex gap-3 relative pb-6">
+<div class="flex flex-col items-center">
+<div class="w-7 h-7 rounded-full bg-surface-container border border-outline-variant/50 text-outline flex items-center justify-center z-10">
+<span class="font-label-sm text-label-sm font-semibold tabular-nums">5</span>
+</div>
+<div class="w-0.5 bg-outline-variant/30 flex-1 absolute top-7 bottom-0 left-3.5 -ml-px"></div>
+</div>
+<div class="flex flex-col flex-1 pt-0.5">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md font-medium text-on-surface-variant">Buyer 72h Physical Inspection &amp; Testing</span>
+<span class="font-label-sm text-label-sm text-outline">Upcoming</span>
+</div>
+<p class="font-body-md text-body-md text-outline text-[13px] leading-snug">Serial number audit, shutter test, and accessory verification window.</p>
+</div>
+</div>
+<!-- Step 6: Upcoming -->
+<div class="flex gap-3 relative">
+<div class="flex flex-col items-center">
+<div class="w-7 h-7 rounded-full bg-surface-container border border-outline-variant/50 text-outline flex items-center justify-center z-10">
+<span class="font-label-sm text-label-sm font-semibold tabular-nums">6</span>
+</div>
+</div>
+<div class="flex flex-col flex-1 pt-0.5">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md font-medium text-on-surface-variant">Fund Release / Dispute Arbitration</span>
+<span class="font-label-sm text-label-sm text-outline">Upcoming</span>
+</div>
+<p class="font-body-md text-body-md text-outline text-[13px] leading-snug">Payout released to seller or instant custody claim review upon dispute.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Counterparty Card -->
+<section class="bg-surface-container-low rounded-xl border border-outline-variant/40 p-space-md flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Counterparty Details</span>
+<span class="font-label-sm text-label-sm text-primary flex items-center gap-1 font-medium">
+<span class="material-symbols-outlined text-[14px]">shield</span> Tier 2 Verified
+          </span>
+</div>
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-full bg-surface-container-high border border-outline-variant/50 flex items-center justify-center text-primary font-headline-sm font-bold">
+              EA
+            </div>
+<div class="flex flex-col">
+<h4 class="font-label-lg text-label-lg font-semibold text-on-surface">Emeka Alaba Electronics</h4>
+<span class="font-body-md text-body-md text-on-surface-variant text-[13px] tabular-nums">+234 803 ••• 4419</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button aria-label="Call Seller" class="w-10 h-10 rounded-xl bg-surface-container border border-outline-variant/40 flex items-center justify-center text-on-surface hover:text-primary active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[20px]" data-icon="call">call</span>
+</button>
+<button aria-label="Message Seller" class="w-10 h-10 rounded-xl bg-surface-container border border-outline-variant/40 flex items-center justify-center text-on-surface hover:text-primary active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[20px]" data-icon="chat">chat</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Quick Actions / Safety CTA Grid -->
+<section class="flex flex-col gap-space-sm pt-1">
+<!-- Primary Button: View Delivery Tracking -->
+<button class="h-[52px] rounded-xl bg-primary-container text-on-primary-container font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 hover:bg-primary-fixed-dim active:bg-on-primary-fixed-variant active:text-on-surface transition-all shadow-md active:scale-[0.98]">
+<span>View Delivery Tracking</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+<!-- Secondary Button: Dispute Action -->
+<button class="h-[52px] rounded-xl bg-surface-container border border-outline-variant/60 text-secondary hover:border-secondary active:scale-[0.98] transition-all font-label-lg text-label-lg font-medium flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-secondary" data-icon="report_problem">report_problem</span>
+<span>Report Problem / Open Dispute</span>
+</button>
+</section>
+<!-- Escrow Protection Covenant Reminder -->
+<footer class="p-space-sm rounded-lg bg-surface/50 border border-outline-variant/20 flex items-start gap-2.5 text-on-surface-variant mb-2">
+<span class="material-symbols-outlined text-[18px] text-primary flex-shrink-0 mt-0.5" data-icon="security">security</span>
+<p class="font-label-sm text-label-sm leading-relaxed">
+<strong class="text-on-surface font-medium">YourApp Escrow Covenant:</strong> Seller funds cannot be liquidated until you explicitly tap <em class="text-on-surface not-italic font-semibold">"Accept &amp; Release"</em> after your 72-hour physical bench test.
+        </p>
+</footer>
+</main>
+<!-- Docked 5-tab Bottom Navigation Shell -->
+<!-- Active State Logic: 'Save & Borrow' corresponds to escrow & locked vaults -->
+<nav aria-label="Bottom Navigation" class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-margin h-16 max-w-[390px] mx-auto pb-safe bg-surface-container-lowest border-t border-outline-variant/20 shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)]">
+<!-- Tab 1: Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#home">
+<span class="material-symbols-outlined text-[22px]" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm font-medium">Home</span>
+</a>
+<!-- Tab 2: Payments -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#payments">
+<span class="material-symbols-outlined text-[22px]" data-icon="send">send</span>
+<span class="font-label-sm text-label-sm font-medium">Payments</span>
+</a>
+<!-- Tab 3: Cards -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#cards">
+<span class="material-symbols-outlined text-[22px]" data-icon="credit_card">credit_card</span>
+<span class="font-label-sm text-label-sm font-medium">Cards</span>
+</a>
+<!-- Tab 4: Save & Borrow (ACTIVE ESCROW DEPOSIT VAULT) -->
+<a aria-current="page" class="flex flex-col items-center justify-center text-primary font-semibold min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#save-borrow">
+<span class="material-symbols-outlined text-[22px]" data-icon="savings" data-weight="fill" style="font-variation-settings: 'FILL' 1;">savings</span>
+<span class="font-label-sm text-label-sm font-semibold">Save &amp; Borrow</span>
+</a>
+<!-- Tab 5: More -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#more">
+<span class="material-symbols-outlined text-[22px]" data-icon="more_horiz">more_horiz</span>
+<span class="font-label-sm text-label-sm font-medium">More</span>
+</a>
+</nav>
+</div>
+</body></html>

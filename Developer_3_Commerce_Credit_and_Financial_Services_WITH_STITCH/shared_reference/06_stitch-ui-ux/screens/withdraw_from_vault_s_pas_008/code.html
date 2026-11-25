@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Withdraw from vault (S-PAS-008)</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Inter Google Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-surface": "#342f30",
+            "on-primary-fixed": "#3f001b",
+            "on-secondary-fixed": "#410000",
+            "on-secondary-container": "#690000",
+            "on-secondary-fixed-variant": "#8c170e",
+            "surface-variant": "#e9e0e1",
+            "surface-container": "#f5eced",
+            "surface-bright": "#fff8f8",
+            "surface-container-low": "#fbf1f2",
+            "primary-fixed": "#ffd9e1",
+            "surface-container-lowest": "#ffffff",
+            "on-tertiary": "#ffffff",
+            "on-tertiary-container": "#c6b7bd",
+            "secondary-container": "#fc6955",
+            "on-tertiary-fixed": "#21191e",
+            "outline": "#897176",
+            "on-primary-container": "#ffa0ba",
+            "primary-container": "#8e1b4a",
+            "secondary-fixed-dim": "#ffb4a8",
+            "error": "#ba1a1a",
+            "surface-container-highest": "#e9e0e1",
+            "outline-variant": "#dcbfc5",
+            "on-primary-fixed-variant": "#881646",
+            "on-primary": "#ffffff",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "primary": "#6d0033",
+            "surface": "#fff8f8",
+            "secondary": "#ae3123",
+            "on-secondary": "#ffffff",
+            "error-container": "#ffdad6",
+            "on-error-container": "#93000a",
+            "on-background": "#1f1b1c",
+            "surface-dim": "#e1d8d9",
+            "tertiary-fixed": "#eedee4",
+            "on-surface": "#1f1b1c",
+            "tertiary": "#3b3236",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "on-error": "#ffffff",
+            "secondary-fixed": "#ffdad4",
+            "background": "#fff8f8",
+            "inverse-on-surface": "#f8eeef",
+            "tertiary-container": "#53484d",
+            "surface-tint": "#a8315d",
+            "surface-container-high": "#efe6e7",
+            "inverse-primary": "#ffb1c5",
+            "primary-fixed-dim": "#ffb1c5",
+            "on-surface-variant": "#564146"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "1rem",
+            "space-lg": "1rem",
+            "space-3xl": "3rem",
+            "space-md": "0.75rem",
+            "space-xl": "1.5rem",
+            "gutter": "1rem",
+            "space-2xl": "2rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "body": ["Inter"],
+            "caption": ["Inter"],
+            "subtitle": ["Inter"],
+            "body-medium": ["Inter"],
+            "amount-lg": ["Inter"],
+            "label": ["Inter"],
+            "display": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "title": ["Inter"]
+          },
+          "fontSize": {
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex justify-center selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Mobile Viewport Frame (390px x 844px context on mobile, reflows cleanly up to 560px max) -->
+<div class="w-full max-w-[560px] bg-background min-h-screen flex flex-col relative pb- space-3xl shadow-sm">
+<!-- Top App Bar (Task-based Early Exit subview with context) -->
+<header class="sticky top-0 z-40 bg-surface/90 backdrop-blur-md px-margin py-space-sm min-h-[56px] flex items-center justify-between">
+<button aria-label="Go back" class="w-12 h-12 flex items-center justify-center rounded-full hover:bg-surface-container active:scale-95 transition-all text-on-surface" type="button">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="flex flex-col items-center">
+<h1 class="font-subtitle text-subtitle text-on-surface">Early Vault Exit</h1>
+<span class="font-caption text-caption text-on-surface-variant font-medium">S-PAS-008 • Pay Am Small</span>
+</div>
+<button aria-label="Help and Support" class="w-12 h-12 flex items-center justify-center rounded-full hover:bg-surface-container active:scale-95 transition-all text-on-surface" type="button">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-margin pt-space-xs pb-space-3xl flex flex-col gap-space-lg">
+<!-- Gentle Warning / Nudge Banner (Preserving Price Benefit) -->
+<section class="bg-surface-container-low rounded-xl p-space-lg border border-outline-variant/50 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] flex flex-col gap-space-sm">
+<div class="flex items-center gap-space-sm text-secondary">
+<span class="material-symbols-outlined text-[20px]" data-icon="warning" data-weight="fill" style="font-variation-settings: 'FILL' 1;">warning</span>
+<h2 class="font-label text-label text-on-secondary-fixed-variant">Are you sure you want to cancel this price lock?</h2>
+</div>
+<p class="font-caption text-caption text-on-surface-variant leading-relaxed">
+          You have locked <span class="font-medium text-on-surface">Haier Thermocool 200L Chest Freezer</span> at <span class="font-medium text-on-surface tabular-nums">₦285,000.00</span>. Current market retail price is <span class="font-medium text-on-surface tabular-nums">₦320,000.00</span>. Canceling now will forfeit your locked discount of <span class="font-semibold text-secondary tabular-nums">₦35,000.00</span>.
+        </p>
+</section>
+<!-- Financial Settlement Breakdown Card -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<h3 class="font-label text-label text-on-surface">Settlement &amp; Refund Calculation</h3>
+<span class="inline-flex items-center gap-space-xs px-2 py-0.5 rounded-lg bg-surface-container text-on-surface-variant font-caption text-caption">
+<span class="material-symbols-outlined text-[14px]" data-icon="receipt_long">receipt_long</span>
+            Vault Audit
+          </span>
+</div>
+<div class="flex flex-col gap-space-sm divide-y divide-outline-variant/30">
+<div class="flex justify-between items-center pt-space-xs">
+<span class="font-caption text-caption text-on-surface-variant">Total Saved in Vault</span>
+<span class="font-body-medium text-body-medium text-on-surface tabular-nums">₦128,333.33</span>
+</div>
+<div class="flex justify-between items-center pt-space-sm">
+<div class="flex flex-col">
+<span class="font-caption text-caption text-on-surface-variant">Early Cancellation / Restocking Fee</span>
+<span class="font-caption text-caption text-outline">2.5% per agreed terms</span>
+</div>
+<span class="font-body-medium text-body-medium text-secondary tabular-nums">-₦3,208.33</span>
+</div>
+<div class="flex justify-between items-center pt-space-sm">
+<span class="font-caption text-caption text-on-surface-variant">Platform Processing Fee</span>
+<span class="font-body-medium text-body-medium text-on-surface tabular-nums">₦0.00 (Waived)</span>
+</div>
+<div class="flex justify-between items-baseline pt-space-md bg-surface-container-low -mx-space-lg -mb-space-lg p-space-lg rounded-b-xl border-t border-outline-variant/40">
+<div>
+<p class="font-caption text-caption text-on-surface-variant">Net Refund Amount</p>
+<p class="font-caption text-caption text-outline">Calculated to primary account</p>
+</div>
+<div class="text-right">
+<span class="font-amount-lg-mobile text-amount-lg-mobile text-primary tabular-nums tracking-tight">₦125,125.00</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Refund Destination Card -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] flex items-start gap-space-md">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-primary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[20px]" data-icon="account_balance">account_balance</span>
+</div>
+<div class="flex-1 flex flex-col gap-1">
+<p class="font-caption text-caption text-on-surface-variant">Destination Account</p>
+<p class="font-body-medium text-body-medium text-on-surface">YourApp Tier 2 Savings (Acct: ...2019)</p>
+<div class="flex items-center gap-space-xs mt-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="bolt">bolt</span>
+<span class="font-caption text-caption font-medium">Instant credit (within 5 minutes)</span>
+</div>
+</div>
+</section>
+<!-- Reason for Early Exit (Radio Options) -->
+<section class="flex flex-col gap-space-sm">
+<div class="flex justify-between items-center px-1">
+<h3 class="font-label text-label text-on-surface">Reason for Early Exit</h3>
+<span class="font-caption text-caption text-outline">Required</span>
+</div>
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/40 p-space-sm flex flex-col gap-1 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)]">
+<!-- Option 1: Selected -->
+<label class="flex items-center justify-between p-space-md rounded-lg bg-surface-container-low cursor-pointer border border-outline-variant/30 min-h-[48px]">
+<span class="font-body-medium text-body-medium text-on-surface">Financial emergency / need cash now</span>
+<div class="w-5 h-5 rounded-full border-2 border-primary-container flex items-center justify-center">
+<div class="w-2.5 h-2.5 rounded-full bg-primary-container"></div>
+</div>
+</label>
+<!-- Option 2 -->
+<label class="flex items-center justify-between p-space-md rounded-lg hover:bg-surface-container cursor-pointer transition-colors min-h-[48px]">
+<span class="font-body text-body text-on-surface">Found a better deal elsewhere</span>
+<div class="w-5 h-5 rounded-full border border-outline"></div>
+</label>
+<!-- Option 3 -->
+<label class="flex items-center justify-between p-space-md rounded-lg hover:bg-surface-container cursor-pointer transition-colors min-h-[48px]">
+<span class="font-body text-body text-on-surface">No longer need this item</span>
+<div class="w-5 h-5 rounded-full border border-outline"></div>
+</label>
+<!-- Option 4 -->
+<label class="flex items-center justify-between p-space-md rounded-lg hover:bg-surface-container cursor-pointer transition-colors min-h-[48px]">
+<span class="font-body text-body text-on-surface">Other reason</span>
+<div class="w-5 h-5 rounded-full border border-outline"></div>
+</label>
+</div>
+</section>
+<!-- Explicit Confirmation Checkbox -->
+<section class="pt-space-xs">
+<label class="flex items-start gap-space-md p-space-md rounded-xl bg-surface-container-low/60 border border-outline-variant/40 cursor-pointer min-h-[48px]">
+<div class="w-5 h-5 mt-0.5 rounded bg-primary-container text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px]" data-icon="check">check</span>
+</div>
+<span class="font-caption text-caption text-on-surface leading-normal">
+            I understand that canceling this vault will release the item reservation at MegaPlaza and deduct the 2.5% (<span class="tabular-nums font-medium">₦3,208.33</span>) admin fee.
+          </span>
+</label>
+</section>
+<!-- Action Buttons Stack -->
+<div class="flex flex-col gap-space-md pt-space-sm pb-space-lg">
+<!-- Encouraging Retention: Solid Berry Primary Button -->
+<button class="h-[52px] w-full bg-primary-container text-on-primary rounded-xl font-label text-label flex items-center justify-center gap-space-sm active:scale-[0.98] transition-transform duration-150 shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)]" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="lock_open">lock_open</span>
+<span>Keep My Price-Lock Plan</span>
+</button>
+<!-- Destructive/Exit Action: Berry Outline Button -->
+<button class="h-[52px] w-full bg-transparent border-[1.5px] border-outline text-primary rounded-xl font-label text-label flex items-center justify-center gap-space-xs active:scale-[0.98] transition-transform duration-150 hover:bg-surface-container" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="cancel">cancel</span>
+<span class="tabular-nums">Confirm Cancellation &amp; Withdraw ₦125,125.00 (PIN)</span>
+</button>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Save & Borrow is active tab as per context) -->
+<nav class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-margin h-16 max-w-[560px] mx-auto pb-safe bg-surface-container-lowest shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)]">
+<!-- Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#home">
+<span class="material-symbols-outlined text-[24px]" data-icon="home">home</span>
+<span class="font-caption text-caption font-medium">Home</span>
+</a>
+<!-- Payments -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#payments">
+<span class="material-symbols-outlined text-[24px]" data-icon="send">send</span>
+<span class="font-caption text-caption font-medium">Payments</span>
+</a>
+<!-- Cards -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#cards">
+<span class="material-symbols-outlined text-[24px]" data-icon="credit_card">credit_card</span>
+<span class="font-caption text-caption font-medium">Cards</span>
+</a>
+<!-- Save & Borrow (Active) -->
+<a class="flex flex-col items-center justify-center text-primary font-semibold min-w-[48px] py-space-xs gap-space-xs active:scale-95 transition-transform duration-150" href="#save-borrow">
+<span class="material-symbols-outlined text-[24px]" data-icon="savings" data-weight="fill" style="font-variation-settings: 'FILL' 1;">savings</span>
+<span class="font-caption text-caption font-medium">Save &amp; Borrow</span>
+</a>
+<!-- More -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#more">
+<span class="material-symbols-outlined text-[24px]" data-icon="more_horiz">more_horiz</span>
+<span class="font-caption text-caption font-medium">More</span>
+</a>
+</nav>
+</div>
+</body></html>

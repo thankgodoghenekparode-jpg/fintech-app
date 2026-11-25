@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Pay Am Small - Plan Setup</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "outline": "#a28b91",
+            "on-tertiary-fixed-variant": "#06429a",
+            "on-primary-fixed-variant": "#7f234b",
+            "on-surface": "#e7e1e2",
+            "primary-fixed-dim": "#ffb0ca",
+            "on-primary": "#620735",
+            "inverse-primary": "#9e3b63",
+            "background": "#151314",
+            "on-error": "#690005",
+            "primary-container": "#e0709a",
+            "on-primary-container": "#5d0331",
+            "tertiary-container": "#6a92ee",
+            "on-tertiary-container": "#002a69",
+            "surface-container-low": "#1d1b1c",
+            "on-surface-variant": "#dac0c6",
+            "secondary": "#ffb4a8",
+            "on-secondary-container": "#ff9f90",
+            "surface-container": "#211f20",
+            "inverse-on-surface": "#323031",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "surface-bright": "#3b3839",
+            "on-background": "#e7e1e2",
+            "on-tertiary": "#002d6f",
+            "tertiary-fixed": "#d9e2ff",
+            "on-secondary-fixed-variant": "#7f291e",
+            "surface-container-highest": "#373435",
+            "on-tertiary-fixed": "#001945",
+            "surface-tint": "#ffb0ca",
+            "inverse-surface": "#e7e1e2",
+            "primary": "#ffb0ca",
+            "surface": "#151314",
+            "error": "#ffb4ab",
+            "on-secondary": "#61130a",
+            "surface-container-high": "#2c292a",
+            "tertiary": "#b0c6ff",
+            "secondary-container": "#822c20",
+            "secondary-fixed-dim": "#ffb4a8",
+            "error-container": "#93000a",
+            "outline-variant": "#544247",
+            "primary-fixed": "#ffd9e3",
+            "on-error-container": "#ffdad6",
+            "surface-dim": "#151314",
+            "surface-variant": "#373435",
+            "secondary-fixed": "#ffdad4",
+            "on-secondary-fixed": "#410000",
+            "surface-container-lowest": "#100e0f"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "1rem",
+            "space-md": "1rem",
+            "space-sm": "0.5rem",
+            "space-xl": "2rem",
+            "margin-mobile": "1rem",
+            "gutter-mobile": "0.75rem",
+            "space-xs": "0.25rem",
+            "margin": "1rem",
+            "space-lg": "1.5rem"
+          },
+          "fontFamily": {
+            "label-lg": ["Inter"],
+            "label-sm": ["Inter"],
+            "headline-md": ["Inter"],
+            "body-lg": ["Inter"],
+            "headline-sm": ["Inter"],
+            "display-currency": ["Inter"],
+            "label-md": ["Inter"],
+            "title-currency": ["Inter"],
+            "headline-lg": ["Inter"],
+            "body-md": ["Inter"]
+          },
+          "fontSize": {
+            "label-lg": ["15px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "title-currency": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    body {
+      background-color: #121011;
+      color: #e7e1e2;
+      font-family: 'Inter', sans-serif;
+    }
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-lowest text-on-surface antialiased flex justify-center min-h-screen selection:bg-primary-container selection:text-on-primary-container">
+<!-- Mobile Viewport Container: 390px base width -->
+<div class="w-full max-w-[390px] min-h-screen bg-surface-container-lowest flex flex-col relative pb-[104px]">
+<!-- Top Bar: Task Navigation & Step Indicator (Linear Flow, Global Shell Suppressed per Mandate) -->
+<header class="w-full px-margin-mobile pt-space-lg pb-space-sm flex items-center justify-between sticky top-0 bg-surface-container-lowest/90 backdrop-blur-md z-40">
+<button aria-label="Go back" class="w-[42px] h-[42px] rounded-xl bg-surface-container-low border border-outline-variant/30 flex items-center justify-center text-on-surface active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="flex flex-col items-center">
+<span class="font-headline-sm text-headline-sm font-bold tracking-tight text-on-surface">Pay Am Small</span>
+<span class="font-label-sm text-label-sm text-primary tracking-wide">Step 1 of 2: Configure Plan</span>
+</div>
+<div class="w-[42px] h-[42px] rounded-xl flex items-center justify-center text-on-surface-variant hover:text-on-surface">
+<span class="material-symbols-outlined text-[20px]" data-icon="help_outline">help_outline</span>
+</div>
+</header>
+<!-- Main Config Flow Canvas -->
+<main class="px-margin-mobile flex flex-col gap-space-md mt-space-xs">
+<!-- Item in Vault Card -->
+<section class="bg-surface-container-low border border-outline-variant/40 rounded-xl p-space-md flex flex-col gap-space-sm shadow-sm">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex gap-space-sm items-center">
+<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center border border-outline-variant/30 shrink-0 text-primary-container">
+<span class="material-symbols-outlined text-[26px]" data-icon="solar_power" data-weight="fill" style="font-variation-settings: 'FILL' 1;">solar_power</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline tracking-wider uppercase">Locked Asset Item</span>
+<h2 class="font-label-lg text-label-lg text-on-surface leading-snug font-semibold">Luminous 1.5kVA Solar Inverter Bundle</h2>
+</div>
+</div>
+</div>
+<div class="flex items-baseline justify-between pt-space-xs border-t border-outline-variant/20">
+<span class="font-body-md text-body-md text-on-surface-variant">Locked Value</span>
+<span class="font-title-currency text-title-currency font-bold text-on-surface tabular-nums">₦420,000.00</span>
+</div>
+<button class="flex items-center gap-space-xs text-primary font-label-md text-label-md pt-space-xs self-start hover:text-primary-fixed transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="add_circle">add_circle</span>
+<span>+ Add more items to this vault</span>
+</button>
+</section>
+<!-- Target Setup & Cadence Form Module -->
+<section class="bg-surface-container-low border border-outline-variant/40 rounded-xl p-space-md flex flex-col gap-space-md">
+<!-- Target Amount Entry (Read-only locked target) -->
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant font-medium">Target Amount</label>
+<div class="h-[52px] bg-surface-container rounded-xl border border-outline-variant/30 px-space-md flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold tabular-nums">₦420,000.00</span>
+<div class="flex items-center gap-1 text-primary bg-primary-container/10 px-2 py-0.5 rounded-full border border-primary/20">
+<span class="material-symbols-outlined text-[14px]" data-icon="lock" data-weight="fill" style="font-variation-settings: 'FILL' 1;">lock</span>
+<span class="font-label-sm text-[10px]">Price Locked</span>
+</div>
+</div>
+</div>
+<!-- Target Deadline Selector -->
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant font-medium">Choose Target Deadline</label>
+<button class="h-[52px] bg-surface-container rounded-xl border border-outline-variant/30 px-space-md flex items-center justify-between text-left active:scale-[0.99] transition-transform" type="button">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-outline text-[20px]" data-icon="calendar_month">calendar_month</span>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface font-medium">15 December 2026</span>
+<span class="font-label-sm text-label-sm text-outline">Target duration: 6 months</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
+</button>
+</div>
+<!-- Contribution Cadence Segmented Tabs -->
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant font-medium">Contribution Cadence</label>
+<div class="grid grid-cols-3 p-1 bg-surface-container rounded-xl border border-outline-variant/30" role="tablist">
+<button aria-selected="false" class="h-10 rounded-lg font-label-md text-label-md text-on-surface-variant flex items-center justify-center hover:text-on-surface transition-colors" role="tab" type="button">
+              Weekly
+            </button>
+<button aria-selected="false" class="h-10 rounded-lg font-label-md text-label-md text-on-surface-variant flex items-center justify-center hover:text-on-surface transition-colors" role="tab" type="button">
+              Bi-Weekly
+            </button>
+<button aria-selected="true" class="h-10 rounded-lg font-label-md text-label-md text-on-primary bg-primary-container font-semibold shadow-sm flex items-center justify-center" role="tab" type="button">
+              Monthly
+            </button>
+</div>
+</div>
+<!-- Auto-Calculated Contribution Hero Callout -->
+<div class="bg-surface-container-high/70 border border-primary-container/30 rounded-xl p-space-md flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-primary tracking-wide">Calculated monthly saving</span>
+<span class="font-headline-md text-headline-md font-bold text-on-surface tabular-nums">₦70,000.00<span class="font-body-md text-body-md text-outline font-normal"> / month</span></span>
+</div>
+<div class="w-10 h-10 rounded-full bg-primary-container/15 flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[22px]" data-icon="savings" data-weight="fill" style="font-variation-settings: 'FILL' 1;">savings</span>
+</div>
+</div>
+</section>
+<!-- Auto-Save Toggle Module -->
+<section class="bg-surface-container-low border border-outline-variant/40 rounded-xl p-space-md flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]" data-icon="autorenew">autorenew</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg font-semibold text-on-surface">Automate Monthly Deductions</span>
+<span class="font-body-md text-body-md text-outline">Auto-debit from designated vault</span>
+</div>
+</div>
+<!-- Switch Component (Active State) -->
+<button aria-checked="true" class="w-12 h-7 bg-primary-container rounded-full p-0.5 transition-colors relative flex items-center focus:outline-none focus:ring-2 focus:ring-primary/40" role="switch" type="button">
+<span class="w-6 h-6 bg-surface-container-lowest rounded-full shadow-md transform translate-x-5 transition-transform"></span>
+</button>
+</div>
+<div class="mt-space-xs pt-space-xs border-t border-outline-variant/20 flex items-center justify-between text-body-md font-body-md">
+<span class="text-on-surface-variant flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="account_balance_wallet">account_balance_wallet</span>
+            Funding Account
+          </span>
+<div class="text-right">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Tier 2 Savings</span>
+<span class="font-label-sm text-label-sm text-outline block tabular-nums">(₦350,000.00 avail)</span>
+</div>
+</div>
+</section>
+<!-- Penalty & Deadline Rules Plain Language Module -->
+<section class="bg-surface-container-low border border-outline-variant/40 rounded-xl p-space-md flex flex-col gap-space-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-tertiary-fixed-dim" data-icon="verified_user">verified_user</span>
+<h3 class="font-label-lg text-label-lg font-semibold text-on-surface">Penalty &amp; Deadline Rules</h3>
+</div>
+<div class="space-y-space-sm text-body-md font-body-md text-on-surface-variant">
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-tertiary mt-0.5 shrink-0" data-icon="schedule">schedule</span>
+<p class="leading-relaxed">If deadline is missed, you have <strong class="text-on-surface font-semibold">14 days grace</strong> to extend schedule or withdraw funds.</p>
+</div>
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-error mt-0.5 shrink-0" data-icon="info">info</span>
+<p class="leading-relaxed">Early exit incurs a <strong class="text-error font-semibold">2.5% statutory administrative refund fee</strong>; locked price commitment lapses immediately.</p>
+</div>
+</div>
+<!-- Zero Platform Charge Pill Badge -->
+<div class="mt-space-xs pt-space-xs border-t border-outline-variant/20 flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">Transparent Pricing</span>
+<div class="h-[26px] px-2.5 rounded-full bg-[rgba(76,195,138,0.12)] border border-[rgba(76,195,138,0.24)] flex items-center gap-1.5 text-[#4CC38A]">
+<span class="material-symbols-outlined text-[14px]" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-label-sm text-label-sm font-semibold tabular-nums">₦0.00 platform fee</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Sticky Bottom Action Footer (52px Touch Standard, Docked) -->
+<div class="fixed bottom-0 left-0 right-0 w-full max-w-[390px] mx-auto p-margin-mobile bg-surface-container-lowest/95 backdrop-blur-md border-t border-outline-variant/30 z-50">
+<button class="w-full h-[52px] bg-primary-container text-on-primary-container rounded-xl font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 hover:bg-primary-container/90 active:scale-[0.98] transition-all shadow-md" type="button">
+<span>Review Plan Terms</span>
+<span class="material-symbols-outlined text-[20px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Campaign Details - Spending Insights and Rewards</title>
+<!-- Material Symbols Outlined Font -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Inter Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-dim": "#151314",
+            "primary": "#ffb0ca",
+            "on-surface-variant": "#dac0c6",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "secondary": "#ffb4a8",
+            "primary-container": "#e0709a",
+            "on-background": "#e7e1e2",
+            "tertiary-fixed": "#d9e2ff",
+            "on-error-container": "#ffdad6",
+            "on-primary-fixed-variant": "#7f234b",
+            "on-secondary-container": "#ff9f90",
+            "surface": "#151314",
+            "on-error": "#690005",
+            "tertiary-container": "#6a92ee",
+            "on-tertiary-container": "#002a69",
+            "inverse-surface": "#e7e1e2",
+            "background": "#151314",
+            "secondary-fixed-dim": "#ffb4a8",
+            "secondary-container": "#822c20",
+            "surface-container-high": "#2c292a",
+            "error": "#ffb4ab",
+            "surface-tint": "#ffb0ca",
+            "on-secondary": "#61130a",
+            "surface-variant": "#373435",
+            "secondary-fixed": "#ffdad4",
+            "on-secondary-fixed": "#410000",
+            "on-surface": "#e7e1e2",
+            "surface-container-lowest": "#100e0f",
+            "surface-container-highest": "#373435",
+            "on-secondary-fixed-variant": "#7f291e",
+            "surface-container-low": "#1d1b1c",
+            "on-primary-container": "#5d0331",
+            "outline": "#a28b91",
+            "on-primary": "#620735",
+            "inverse-on-surface": "#323031",
+            "on-tertiary-fixed-variant": "#06429a",
+            "on-tertiary-fixed": "#001945",
+            "surface-bright": "#3b3839",
+            "on-primary-fixed": "#3e001f",
+            "error-container": "#93000a",
+            "primary-fixed": "#ffd9e3",
+            "inverse-primary": "#9e3b63",
+            "tertiary": "#b0c6ff",
+            "outline-variant": "#544247",
+            "surface-container": "#211f20",
+            "primary-fixed-dim": "#ffb0ca",
+            "on-tertiary": "#002d6f"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "1rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "gutter": "1rem",
+            "space-xl": "2rem",
+            "space-xs": "0.25rem",
+            "margin-mobile": "1rem",
+            "space-lg": "1.5rem",
+            "gutter-mobile": "0.75rem"
+          },
+          "fontFamily": {
+            "headline-sm": ["Inter"],
+            "display-currency": ["Inter"],
+            "title-currency": ["Inter"],
+            "label-lg": ["Inter"],
+            "label-md": ["Inter"],
+            "headline-md": ["Inter"],
+            "body-md": ["Inter"],
+            "headline-lg": ["Inter"],
+            "label-sm": ["Inter"],
+            "body-lg": ["Inter"]
+          },
+          "fontSize": {
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "title-currency": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-lg": ["15px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .tnum { font-variant-numeric: tabular-nums; }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-[#121011] text-[#F5F1F0] antialiased flex justify-center min-h-screen selection:bg-primary-container selection:text-surface-container-lowest">
+<!-- Mobile Viewport Frame (390px baseline) -->
+<div class="w-full max-w-[390px] min-h-screen bg-[#121011] flex flex-col relative pb-[168px]">
+<!-- Top App Bar Header -->
+<header class="sticky top-0 z-40 bg-[#151314]/95 backdrop-blur-md px-margin py-space-sm flex items-center justify-between min-h-[56px] shadow-sm">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Go Back" class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container text-on-surface hover:bg-surface-container-high active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="arrow_back">arrow_back</span>
+</button>
+<div>
+<span class="font-label-sm text-label-sm text-outline tracking-wider block">YourApp Rewards</span>
+<h1 class="font-headline-sm text-headline-sm text-[#F5F1F0] tracking-tight">Campaign Details</h1>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<button aria-label="Share Campaign" class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container text-on-surface hover:bg-surface-container-high active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="share">share</span>
+</button>
+</div>
+</header>
+<!-- Main Scrollable Canvas Content -->
+<main class="px-margin flex flex-col gap-space-md pt-space-xs">
+<!-- Campaign Hero Card -->
+<section class="bg-[#1C1819] border border-[#3A3335] rounded-xl p-space-md flex flex-col gap-space-md relative overflow-hidden">
+<div class="absolute -right-10 -top-10 w-32 h-32 bg-primary-container/10 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-start gap-space-md">
+<div class="w-12 h-12 rounded-xl bg-[#4A152B] border border-primary/20 flex items-center justify-center flex-shrink-0 text-primary-fixed shadow-inner">
+<span class="material-symbols-outlined text-[26px]" data-icon="bolt">bolt</span>
+</div>
+<div class="flex-1">
+<div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-primary/10 border border-primary/20 mb-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-primary font-medium tracking-wide">ACTIVE CHALLENGE</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-[#F5F1F0] leading-snug">Pay Bills, Get ₦500 Cashback</h2>
+<p class="font-body-md text-body-md text-[#C4BBBD] mt-1">YourApp Community Loyalty Program • Valid until 15 March 2026</p>
+</div>
+</div>
+<!-- Reward Pot Box -->
+<div class="bg-[#262122] border border-[#3A3335] rounded-lg p-space-sm flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-[#1C1819] flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[18px]" data-icon="savings">savings</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-outline block">Instant Cash Reward</span>
+<span class="font-label-md text-label-md text-[#F5F1F0]">Direct primary account credit</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-title-currency text-title-currency text-primary font-bold tnum">₦500.00</span>
+</div>
+</div>
+</section>
+<!-- Milestone Progress Tracker -->
+<section class="bg-[#1C1819] border border-[#3A3335] rounded-xl p-space-md flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-[#F5F1F0]">Milestone Progress</h3>
+<p class="font-body-md text-body-md text-[#C4BBBD]">2 of 3 Tasks Completed</p>
+</div>
+<div class="px-2.5 py-1 rounded-full bg-[#4CC38A]/10 border border-[#4CC38A]/20">
+<span class="font-label-md text-label-md text-[#4CC38A] font-semibold tnum">66% Done</span>
+</div>
+</div>
+<!-- Progress Bar Indicator -->
+<div class="w-full bg-[#262122] h-2 rounded-full overflow-hidden flex">
+<div class="bg-primary-container h-full rounded-full transition-all duration-500" style="width: 66.6%;"></div>
+</div>
+<!-- Tasks Step List -->
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<!-- Task 1: Completed -->
+<div class="flex items-start gap-space-sm p-space-sm rounded-lg bg-[#262122] border border-[#3A3335]">
+<div class="w-7 h-7 rounded-full bg-[#4CC38A]/15 text-[#4CC38A] flex items-center justify-center flex-shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<p class="font-label-md text-label-md text-[#F5F1F0]">Pay 1 Electricity Bill</p>
+<span class="font-label-sm text-label-sm text-[#4CC38A] font-medium">Completed</span>
+</div>
+<p class="font-body-md text-body-md text-[#C4BBBD] text-xs">IKEDC / EKEDC distribution</p>
+<div class="mt-1 flex items-center gap-2 font-label-sm text-label-sm text-outline tnum">
+<span>18 Feb 2026</span>
+<span>•</span>
+<span>₦12,500.00</span>
+</div>
+</div>
+</div>
+<!-- Task 2: Completed -->
+<div class="flex items-start gap-space-sm p-space-sm rounded-lg bg-[#262122] border border-[#3A3335]">
+<div class="w-7 h-7 rounded-full bg-[#4CC38A]/15 text-[#4CC38A] flex items-center justify-center flex-shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<p class="font-label-md text-label-md text-[#F5F1F0]">Recharge Airtime or Data</p>
+<span class="font-label-sm text-label-sm text-[#4CC38A] font-medium">Completed</span>
+</div>
+<p class="font-body-md text-body-md text-[#C4BBBD] text-xs">Min transaction threshold ₦2,000</p>
+<div class="mt-1 flex items-center gap-2 font-label-sm text-label-sm text-outline tnum">
+<span>24 Feb 2026</span>
+<span>•</span>
+<span>₦3,000.00</span>
+</div>
+</div>
+</div>
+<!-- Task 3: Incomplete Pending Action -->
+<div class="flex items-start gap-space-sm p-space-sm rounded-lg bg-[#262122] border border-primary-container/40 relative overflow-hidden">
+<div class="w-7 h-7 rounded-full bg-primary-container/20 text-primary flex items-center justify-center flex-shrink-0 mt-0.5 font-label-md text-label-md font-bold">
+              3
+            </div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<p class="font-label-md text-label-md text-[#F5F1F0] font-semibold">Pay Waste or Water Levy</p>
+<span class="font-label-sm text-label-sm text-[#E3B341] font-medium">0/1 done</span>
+</div>
+<p class="font-body-md text-body-md text-[#C4BBBD] text-xs">Municipal levy minimum ₦1,500</p>
+<div class="mt-2 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-primary">Final step required</span>
+<span class="font-label-sm text-label-sm text-outline tnum">Ends in 19 days</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- How to Complete Section -->
+<section class="bg-[#1C1819] border border-[#3A3335] rounded-xl p-space-md flex flex-col gap-space-md">
+<h3 class="font-headline-sm text-headline-sm text-[#F5F1F0]">How to Complete</h3>
+<div class="flex flex-col gap-space-md">
+<div class="flex items-start gap-space-md">
+<div class="w-6 h-6 rounded-full bg-surface-container-high text-[#F5F1F0] flex items-center justify-center font-label-sm text-label-sm font-semibold flex-shrink-0">
+              1
+            </div>
+<div>
+<p class="font-label-md text-label-md text-[#F5F1F0]">Open Payments tab and select Bills &amp; Utilities</p>
+<p class="font-body-md text-body-md text-[#C4BBBD] mt-0.5 text-xs">Navigate straight to bill payments via the bottom dock or quick action below.</p>
+</div>
+</div>
+<div class="flex items-start gap-space-md">
+<div class="w-6 h-6 rounded-full bg-surface-container-high text-[#F5F1F0] flex items-center justify-center font-label-sm text-label-sm font-semibold flex-shrink-0">
+              2
+            </div>
+<div>
+<p class="font-label-md text-label-md text-[#F5F1F0]">Pay any qualifying water or municipal waste levy</p>
+<p class="font-body-md text-body-md text-[#C4BBBD] mt-0.5 text-xs">Complete a minimum transaction of ₦1,500 before 15 March 2026.</p>
+</div>
+</div>
+<div class="flex items-start gap-space-md">
+<div class="w-6 h-6 rounded-full bg-surface-container-high text-[#F5F1F0] flex items-center justify-center font-label-sm text-label-sm font-semibold flex-shrink-0">
+              3
+            </div>
+<div>
+<p class="font-label-md text-label-md text-[#F5F1F0]">Automatic ₦500 cashback credit</p>
+<p class="font-body-md text-body-md text-[#C4BBBD] mt-0.5 text-xs">Funds arrive automatically in your primary balance within 60 seconds of confirmation.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Campaign Rules & Transparency Terms -->
+<section class="bg-[#1C1819] border border-[#3A3335] rounded-xl p-space-md flex flex-col gap-space-sm mb-space-sm">
+<div class="flex items-center gap-space-xs text-[#F5F1F0]">
+<span class="material-symbols-outlined text-[18px] text-outline" data-icon="policy">policy</span>
+<h3 class="font-headline-sm text-headline-sm">Campaign Rules &amp; Fair Play</h3>
+</div>
+<ul class="flex flex-col gap-space-xs pt-space-xs">
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-outline mt-0.5" data-icon="check">check</span>
+<span class="font-body-md text-body-md text-[#C4BBBD] text-xs"><strong>Eligible accounts:</strong> Tier 1, Tier 2, and Tier 3 verified users in good standing.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-outline mt-0.5" data-icon="check">check</span>
+<span class="font-body-md text-body-md text-[#C4BBBD] text-xs"><strong>Limit:</strong> One reward per customer per calendar month.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-outline mt-0.5" data-icon="check">check</span>
+<span class="font-body-md text-body-md text-[#C4BBBD] text-xs"><strong>Fair play:</strong> Reversed, failed, or disputed bill payments do not count toward milestone completion.</span>
+</li>
+</ul>
+</section>
+</main>
+<!-- Floating Sticky Action Button Section (Above Dock) -->
+<div class="fixed bottom-16 left-0 right-0 z-40 max-w-[390px] mx-auto px-margin py-space-xs bg-[#121011]/90 backdrop-blur-md border-t border-[#3A3335]">
+<div class="flex flex-col gap-2">
+<button class="w-full h-[52px] rounded-xl bg-primary-container text-[#121011] font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 active:bg-[#C4557F] transition-colors shadow-lg shadow-primary-container/20" type="button">
+<span>Pay Final Bill Now (Go to Bills)</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<button class="w-full py-1 text-center font-label-sm text-label-sm text-outline hover:text-[#F5F1F0] transition-colors" type="button">
+          Terms &amp; Fair Play FAQ
+        </button>
+</div>
+</div>
+<!-- Docked Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-margin h-16 max-w-[560px] mx-auto pb-safe bg-surface-container-lowest dark:bg-surface-container shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)]">
+<!-- 1. Home -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" type="button">
+<span class="material-symbols-outlined text-[22px]" data-icon="home">home</span>
+<span class="font-caption text-caption font-medium text-[11px] leading-none">Home</span>
+</button>
+<!-- 2. Payments -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" type="button">
+<span class="material-symbols-outlined text-[22px]" data-icon="send">send</span>
+<span class="font-caption text-caption font-medium text-[11px] leading-none">Payments</span>
+</button>
+<!-- 3. Cards -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" type="button">
+<span class="material-symbols-outlined text-[22px]" data-icon="credit_card">credit_card</span>
+<span class="font-caption text-caption font-medium text-[11px] leading-none">Cards</span>
+</button>
+<!-- 4. Save & Borrow (Active tab for Rewards, Spending & Insights) -->
+<button class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed font-semibold min-w-[48px] py-space-xs gap-space-xs active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined text-[22px]" data-icon="savings" data-weight="fill" style="font-variation-settings: 'FILL' 1;">savings</span>
+<span class="font-caption text-caption font-medium text-[11px] leading-none">Save &amp; Borrow</span>
+</button>
+<!-- 5. More -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" type="button">
+<span class="material-symbols-outlined text-[22px]" data-icon="more_horiz">more_horiz</span>
+<span class="font-caption text-caption font-medium text-[11px] leading-none">More</span>
+</button>
+</nav>
+</div>
+</body></html>

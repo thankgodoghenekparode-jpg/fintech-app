@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YourApp - Create Business</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary-container": "#53484d",
+            "secondary-fixed": "#ffdad4",
+            "inverse-surface": "#342f30",
+            "on-secondary-fixed": "#410000",
+            "primary-container": "#8e1b4a",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "surface-bright": "#fff8f8",
+            "error": "#ba1a1a",
+            "tertiary": "#3b3236",
+            "surface-dim": "#e1d8d9",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "on-tertiary": "#ffffff",
+            "outline": "#897176",
+            "primary-fixed-dim": "#ffb1c5",
+            "outline-variant": "#dcbfc5",
+            "on-error": "#ffffff",
+            "on-surface": "#1f1b1c",
+            "surface-container-high": "#efe6e7",
+            "surface-container-low": "#fbf1f2",
+            "inverse-on-surface": "#f8eeef",
+            "tertiary-fixed": "#eedee4",
+            "surface": "#fff8f8",
+            "surface-container": "#f5eced",
+            "secondary": "#ae3123",
+            "on-secondary-fixed-variant": "#8c170e",
+            "on-primary-fixed-variant": "#881646",
+            "primary-fixed": "#ffd9e1",
+            "on-primary-container": "#ffa0ba",
+            "on-tertiary-fixed": "#21191e",
+            "on-tertiary-container": "#c6b7bd",
+            "background": "#fff8f8",
+            "error-container": "#ffdad6",
+            "primary": "#6d0033",
+            "inverse-primary": "#ffb1c5",
+            "on-error-container": "#93000a",
+            "surface-container-highest": "#e9e0e1",
+            "on-background": "#1f1b1c",
+            "secondary-container": "#fc6955",
+            "on-primary": "#ffffff",
+            "surface-container-lowest": "#ffffff",
+            "surface-variant": "#e9e0e1",
+            "surface-tint": "#a8315d",
+            "on-secondary": "#ffffff",
+            "on-primary-fixed": "#3f001b",
+            "on-surface-variant": "#564146",
+            "secondary-fixed-dim": "#ffb4a8"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-3xl": "3rem",
+            "space-xs": "0.25rem",
+            "space-2xl": "2rem",
+            "space-sm": "0.5rem",
+            "margin": "1rem",
+            "space-xl": "1.5rem",
+            "space-lg": "1rem",
+            "gutter": "1rem",
+            "space-md": "0.75rem"
+          },
+          "fontFamily": {
+            "subtitle": ["Inter"],
+            "display": ["Inter"],
+            "caption": ["Inter"],
+            "body-medium": ["Inter"],
+            "body": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "label": ["Inter"],
+            "title": ["Inter"],
+            "amount-lg": ["Inter"]
+          },
+          "fontSize": {
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+    }
+    /* Tabular figures for institutional currency certainty */
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-body text-on-surface antialiased min-h-screen flex justify-center">
+<!-- Main Mobile Canvas Container (390px - 560px responsive constraint) -->
+<div class="w-full max-w-[560px] bg-surface flex flex-col min-h-screen relative shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08)] pb-12">
+<!-- Top Bar Component (Docked with subtle elevation and navigation context) -->
+<header class="flex justify-between items-center w-full px-margin py-space-sm max-w-[560px] mx-auto min-h-[56px] bg-surface sticky top-0 z-40">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Go back" class="w-12 h-12 rounded-xl flex items-center justify-center text-on-surface hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<div>
+<span class="font-title text-title font-bold text-primary tracking-tight">YourApp</span>
+<span class="inline-block ml-space-xs px-2 py-0.5 rounded-lg bg-surface-container-high text-primary font-caption text-caption font-medium">Merchant</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<button aria-label="Help and Support" class="w-12 h-12 rounded-xl flex items-center justify-center text-on-surface-variant hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+</div>
+</header>
+<!-- Header Title & Subtitle Canvas -->
+<section class="px-margin pt-space-xs pb-space-md">
+<h1 class="font-title text-title text-on-surface tracking-tight">Create business</h1>
+<p class="font-caption text-caption text-on-surface-variant mt-1">Complete verified KYB registration to enable merchant pos, instant payouts, and multi-currency collections.</p>
+</section>
+<!-- Onboarding Stepper Navigation -->
+<section aria-label="Registration Progress" class="px-margin mb-space-lg">
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded-xl p-space-md shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)]">
+<div class="flex items-center justify-between">
+<!-- Step 1: Active -->
+<div class="flex flex-col items-center flex-1">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-label text-label shadow-sm">
+              1
+            </div>
+<span class="font-caption text-caption font-semibold text-primary mt-1 text-center">Business</span>
+</div>
+<div class="h-0.5 flex-1 bg-outline-variant/60 -mt-5 mx-1"></div>
+<!-- Step 2: Upcoming -->
+<div class="flex flex-col items-center flex-1">
+<div class="w-8 h-8 rounded-full bg-surface-container text-on-surface-variant flex items-center justify-center font-label text-label">
+              2
+            </div>
+<span class="font-caption text-caption font-normal text-on-surface-variant mt-1 text-center">CAC Legal</span>
+</div>
+<div class="h-0.5 flex-1 bg-outline-variant/60 -mt-5 mx-1"></div>
+<!-- Step 3: Upcoming -->
+<div class="flex flex-col items-center flex-1">
+<div class="w-8 h-8 rounded-full bg-surface-container text-on-surface-variant flex items-center justify-center font-label text-label">
+              3
+            </div>
+<span class="font-caption text-caption font-normal text-on-surface-variant mt-1 text-center">Settlement</span>
+</div>
+<div class="h-0.5 flex-1 bg-outline-variant/60 -mt-5 mx-1"></div>
+<!-- Step 4: Upcoming -->
+<div class="flex flex-col items-center flex-1">
+<div class="w-8 h-8 rounded-full bg-surface-container text-on-surface-variant flex items-center justify-center font-label text-label">
+              4
+            </div>
+<span class="font-caption text-caption font-normal text-on-surface-variant mt-1 text-center">Review</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Main Registration Form Container -->
+<main class="px-margin flex flex-col gap-space-xl">
+<!-- Category Selector Segmented Card -->
+<section class="flex flex-col gap-space-xs">
+<label class="font-caption text-caption text-on-surface-variant font-medium">Business entity structure</label>
+<div class="grid grid-cols-2 gap-space-sm bg-surface-container-high p-1 rounded-xl border border-outline-variant/40">
+<button class="flex flex-col items-start p-space-sm rounded-lg bg-surface-container-lowest border border-outline-variant/60 shadow-[0_1px_3px_0_rgba(30,26,27,0.03)] text-left transition-all active:scale-[0.98]" type="button">
+<div class="flex items-center justify-between w-full">
+<span class="font-label text-label text-primary font-semibold">Registered Entity</span>
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<span class="font-caption text-caption text-on-surface-variant mt-0.5 text-xs">RC / BN with CAC registry</span>
+</button>
+<button class="flex flex-col items-start p-space-sm rounded-lg hover:bg-surface-container-lowest/60 text-left transition-all active:scale-[0.98]" type="button">
+<div class="flex items-center justify-between w-full">
+<span class="font-label text-label text-on-surface-variant font-medium">Sole Trader</span>
+<span class="material-symbols-outlined text-outline text-[18px]" data-icon="radio_button_unchecked">radio_button_unchecked</span>
+</div>
+<span class="font-caption text-caption text-on-surface-variant/80 mt-0.5 text-xs">Starter / Freelance</span>
+</button>
+</div>
+</section>
+<!-- Business General Info Fields -->
+<section class="bg-surface-container-lowest rounded-2xl p-space-lg border border-outline-variant/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] flex flex-col gap-space-md">
+<div class="flex items-center justify-between border-b border-outline-variant/30 pb-space-sm">
+<h2 class="font-subtitle text-subtitle text-on-surface font-semibold">1. Business Profile</h2>
+<span class="inline-flex items-center gap-1 font-caption text-caption text-primary bg-primary-fixed/40 px-2 py-0.5 rounded-lg font-medium">
+<span class="material-symbols-outlined text-xs" data-icon="corporate_fare">corporate_fare</span>
+            Corporate
+          </span>
+</div>
+<!-- Legal Name Field -->
+<div class="flex flex-col gap-1">
+<label class="font-caption text-caption text-on-surface-variant font-medium" for="legal-name">Business Legal Name (as registered with CAC)</label>
+<div class="relative">
+<input class="w-full h-[52px] rounded-xl bg-surface-container-lowest border border-outline-variant text-on-surface font-body text-body px-3.5 focus:border-primary-container focus:ring-0 transition-colors" id="legal-name" type="text" value="Ade &amp; Sons Trading Enterprise Ltd"/>
+<div class="absolute right-3.5 top-1/2 -translate-y-1/2 text-primary-container flex items-center">
+<span class="material-symbols-outlined text-[20px]" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+</div>
+<!-- Trading / Display Name -->
+<div class="flex flex-col gap-1">
+<label class="font-caption text-caption text-on-surface-variant font-medium" for="trading-name">Trading / Display Name</label>
+<input class="w-full h-[52px] rounded-xl bg-surface-container-lowest border border-outline-variant text-on-surface font-body text-body px-3.5 focus:border-primary-container focus:ring-0 transition-colors" id="trading-name" type="text" value="Ade Supermarket &amp; Stores"/>
+</div>
+<!-- Category Dropdown -->
+<div class="flex flex-col gap-1">
+<label class="font-caption text-caption text-on-surface-variant font-medium" for="category-select">Industry &amp; Category</label>
+<div class="relative">
+<select class="w-full h-[52px] rounded-xl bg-surface-container-lowest border border-outline-variant text-on-surface font-body text-body px-3.5 appearance-none focus:border-primary-container focus:ring-0 pr-10 transition-colors" id="category-select">
+<option selected="">FMCG, Retail &amp; Supermarkets</option>
+<option>Hospitality &amp; Food Services</option>
+<option>Logistics, Freight &amp; Haulage</option>
+<option>Healthcare &amp; Pharmaceuticals</option>
+<option>Information Technology &amp; Telecoms</option>
+</select>
+<span class="material-symbols-outlined absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<!-- Operating Address -->
+<div class="flex flex-col gap-1">
+<label class="font-caption text-caption text-on-surface-variant font-medium" for="operating-address">Physical Operating Address</label>
+<input class="w-full h-[52px] rounded-xl bg-surface-container-lowest border border-outline-variant text-on-surface font-body text-body px-3.5 focus:border-primary-container focus:ring-0 transition-colors" id="operating-address" type="text" value="Plot 14, Commercial Avenue, Ikeja, Lagos State"/>
+<div class="flex items-center gap-1 mt-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="location_on">location_on</span>
+<span class="font-caption text-caption text-xs">Lagos State Jurisdiction — Verified Location</span>
+</div>
+</div>
+<!-- Phone & Email Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<div class="flex flex-col gap-1">
+<label class="font-caption text-caption text-on-surface-variant font-medium" for="business-phone">Business Phone Number</label>
+<input class="w-full h-[52px] rounded-xl bg-surface-container-lowest border border-outline-variant text-on-surface font-body text-body px-3.5 focus:border-primary-container focus:ring-0 tabular-nums transition-colors" id="business-phone" type="tel" value="+234 803 456 7890"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-caption text-caption text-on-surface-variant font-medium" for="official-email">Official Business Email</label>
+<input class="w-full h-[52px] rounded-xl bg-surface-container-lowest border border-outline-variant text-on-surface font-body text-body px-3.5 focus:border-primary-container focus:ring-0 transition-colors" id="official-email" type="email" value="finance@adesons.ng"/>
+</div>
+</div>
+</section>
+<!-- CAC Verification Upload Section -->
+<section class="bg-surface-container-lowest rounded-2xl p-space-lg border border-outline-variant/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] flex flex-col gap-space-md">
+<div class="flex items-center justify-between border-b border-outline-variant/30 pb-space-sm">
+<div>
+<h2 class="font-subtitle text-subtitle text-on-surface font-semibold">2. Registration &amp; CAC</h2>
+<p class="font-caption text-caption text-on-surface-variant">Instant Corporate Affairs Commission sync</p>
+</div>
+<span class="material-symbols-outlined text-primary text-[24px]" data-icon="policy">policy</span>
+</div>
+<!-- RC / BN Input with instant status badge -->
+<div class="flex flex-col gap-1">
+<label class="font-caption text-caption text-on-surface-variant font-medium" for="cac-number">RC Number / Business Number (BN)</label>
+<div class="relative">
+<input class="w-full h-[52px] rounded-xl bg-surface-container-lowest border border-outline-variant text-on-surface font-body text-body px-3.5 font-medium tracking-wide focus:border-primary-container focus:ring-0 uppercase tabular-nums transition-colors" id="cac-number" type="text" value="RC-1928471"/>
+<button class="absolute right-2 top-1/2 -translate-y-1/2 px-3 py-1.5 bg-primary-fixed text-primary font-caption text-caption font-semibold rounded-lg hover:bg-primary-fixed-dim transition-colors" type="button">
+              Re-verify
+            </button>
+</div>
+<!-- Instant CAC Lookup Status Badge (Strict Icon + Label Mandate) -->
+<div class="mt-1 flex items-center justify-between bg-surface-container p-space-sm rounded-xl border border-outline-variant/40">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-primary-container text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]" data-icon="check" style="font-variation-settings: 'FILL' 1;">check</span>
+</span>
+<div class="flex flex-col">
+<span class="font-label text-label text-on-surface font-semibold">Verified with CAC Registry</span>
+<span class="font-caption text-caption text-on-surface-variant text-xs">Incorporation Date: 14 Oct 2019 • Status: Active</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-lg bg-surface-container-highest text-on-surface-variant font-caption text-caption font-medium">TIN: 24890123-0001</span>
+</div>
+</div>
+<!-- Document Upload Card (PDF/JPEG Preview) -->
+<div class="flex flex-col gap-1">
+<label class="font-caption text-caption text-on-surface-variant font-medium">Certificate of Incorporation (CAC 1.1 / Form CAC2)</label>
+<!-- Upload Box / Preview -->
+<div class="border-2 border-dashed border-outline-variant rounded-2xl p-space-md bg-surface-container-low flex flex-col gap-space-sm hover:border-primary transition-colors">
+<div class="flex items-center justify-between bg-surface-container-lowest p-space-sm rounded-xl border border-outline-variant/50 shadow-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-12 h-12 rounded-xl bg-primary-fixed/50 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]" data-icon="picture_as_pdf">picture_as_pdf</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-medium text-body-medium text-on-surface truncate max-w-[190px]">Ade_Sons_CAC_Cert.pdf</span>
+<span class="font-caption text-caption text-on-surface-variant text-xs tabular-nums">2.4 MB • Uploaded &amp; Scanned</span>
+</div>
+</div>
+<div class="flex items-center gap-1">
+<button aria-label="Preview Document" class="w-9 h-9 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="visibility">visibility</span>
+</button>
+<button aria-label="Delete File" class="w-9 h-9 rounded-lg flex items-center justify-center text-error hover:bg-error-container/40" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+<div class="flex items-center justify-between px-1">
+<span class="font-caption text-caption text-on-surface-variant text-xs flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary" data-icon="lock">lock</span>
+                Encrypted bank-grade transmission
+              </span>
+<button class="font-caption text-caption font-semibold text-primary hover:underline flex items-center gap-0.5" type="button">
+<span class="material-symbols-outlined text-[16px]" data-icon="upload_file">upload_file</span>
+                Replace file
+              </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Settlement Account Selection Bento Group -->
+<section class="bg-surface-container-lowest rounded-2xl p-space-lg border border-outline-variant/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] flex flex-col gap-space-md">
+<div class="flex items-center justify-between border-b border-outline-variant/30 pb-space-sm">
+<div>
+<h2 class="font-subtitle text-subtitle text-on-surface font-semibold">3. Settlement Account</h2>
+<p class="font-caption text-caption text-on-surface-variant">Where transaction funds and POS settlements land</p>
+</div>
+<span class="material-symbols-outlined text-primary text-[24px]" data-icon="account_balance">account_balance</span>
+</div>
+<div class="space-y-space-sm">
+<!-- Option A: Dedicated Merchant Settlement (Selected) -->
+<label class="flex items-start p-space-md rounded-xl border-2 border-primary bg-primary-fixed/15 cursor-pointer transition-all">
+<input checked="" class="mt-1 h-5 w-5 text-primary border-outline focus:ring-primary" name="settlement_account" type="radio"/>
+<div class="ml-space-sm flex-1">
+<div class="flex items-center justify-between">
+<span class="font-label text-label font-bold text-on-surface">Create Dedicated Merchant Account</span>
+<span class="px-2 py-0.5 text-xs font-semibold rounded-md bg-primary-container text-on-primary">Recommended</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">Automated overnight sweeps, POS merchant ID assignment, and higher NIBSS regulatory caps.</p>
+<div class="mt-space-sm p-space-sm rounded-lg bg-surface-container-lowest border border-outline-variant/60 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-primary font-bold text-xs">
+                    ₦
+                  </div>
+<div>
+<span class="font-label text-label text-on-surface block">YourApp Business Settlement</span>
+<span class="font-caption text-caption text-on-surface-variant text-xs">Tier 3 KYB Account • Auto-Generated</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+</label>
+<!-- Option B: Link Existing Personal Account -->
+<label class="flex items-start p-space-md rounded-xl border border-outline-variant hover:bg-surface-container-low cursor-pointer transition-all">
+<input class="mt-1 h-5 w-5 text-primary border-outline focus:ring-primary" name="settlement_account" type="radio"/>
+<div class="ml-space-sm flex-1">
+<div class="flex items-center justify-between">
+<span class="font-label text-label font-semibold text-on-surface">Link Existing Personal Account</span>
+<span class="font-caption text-caption text-on-surface-variant">Instant link</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">Settle directly into your YourApp personal savings wallet (Adekunle Balogun • 0123984712).</p>
+</div>
+</label>
+</div>
+<div class="bg-surface-container-high/60 rounded-xl p-space-sm flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="info">info</span>
+<span class="font-caption text-caption text-on-surface-variant text-xs">
+            Merchant accounts require zero minimum opening deposit with 0.15% capped flat settlement fees on POS transactions.
+          </span>
+</div>
+</section>
+<!-- Declaration & Consent Section -->
+<section class="bg-surface-container-lowest rounded-2xl p-space-lg border border-outline-variant/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] flex flex-col gap-space-md">
+<h2 class="font-subtitle text-subtitle text-on-surface font-semibold">4. Compliance &amp; Declaration</h2>
+<div class="space-y-space-md">
+<!-- Checkbox 1: NDPR & Privacy -->
+<label class="flex items-start gap-space-sm cursor-pointer select-none">
+<input checked="" class="mt-0.5 h-5 w-5 rounded text-primary-container border-outline focus:ring-primary-container" type="checkbox"/>
+<span class="font-caption text-caption text-on-surface-variant leading-relaxed">
+              I consent to the processing of enterprise identity data under the <strong class="text-on-surface font-semibold">Nigeria Data Protection Regulation (NDPR)</strong> and authorize automated verification checks with CAC, NIBSS, and FIRS registries.
+            </span>
+</label>
+<!-- Checkbox 2: Statutory Business Tax Compliance -->
+<label class="flex items-start gap-space-sm cursor-pointer select-none">
+<input checked="" class="mt-0.5 h-5 w-5 rounded text-primary-container border-outline focus:ring-primary-container" type="checkbox"/>
+<span class="font-caption text-caption text-on-surface-variant leading-relaxed">
+              I declare that all submitted company information is accurate and matches our statutory filings. I acknowledge compliance obligations with <strong class="text-on-surface font-semibold">CAMA 2020</strong> statutory business reporting frameworks.
+            </span>
+</label>
+</div>
+</section>
+<!-- Primary & Secondary 52px CTAs -->
+<section class="flex flex-col gap-space-sm pt-space-xs pb-space-lg">
+<!-- Primary 52px Berry CTA Button -->
+<button class="w-full h-[52px] rounded-xl bg-primary-container text-on-primary font-label text-label font-semibold flex items-center justify-center gap-space-xs shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)] active:bg-[#731540] active:scale-[0.98] transition-all" type="button">
+<span>Save &amp; Continue to Settlement Setup</span>
+<span class="material-symbols-outlined text-[20px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<!-- Secondary 52px Draft Button -->
+<button class="w-full h-[52px] rounded-xl bg-[#F8E8EE] text-primary font-label text-label font-semibold flex items-center justify-center gap-space-xs hover:bg-primary-fixed/60 active:scale-[0.98] transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="drafts">drafts</span>
+<span>Save as Draft</span>
+</button>
+<!-- Safety Assurance Microcopy -->
+<div class="flex items-center justify-center gap-1.5 pt-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-outline" data-icon="verified_user">verified_user</span>
+<span class="font-caption text-caption text-xs">Regulated by the Central Bank of Nigeria (CBN) • NDIC Insured</span>
+</div>
+</section>
+</main>
+</div>
+</body></html>

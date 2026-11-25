@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YourApp Credit Ops - Team &amp; Verification (W-MER-005)</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Inter Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary-fixed-dim": "#ffb4a8",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "on-primary-fixed-variant": "#881646",
+            "error": "#ba1a1a",
+            "surface-variant": "#e9e0e1",
+            "on-secondary-fixed-variant": "#8c170e",
+            "surface-dim": "#e1d8d9",
+            "on-background": "#1f1b1c",
+            "on-tertiary-container": "#c6b7bd",
+            "on-error": "#ffffff",
+            "primary-fixed-dim": "#ffb1c5",
+            "on-tertiary-fixed": "#21191e",
+            "surface-bright": "#fff8f8",
+            "inverse-primary": "#ffb1c5",
+            "tertiary-fixed": "#eedee4",
+            "surface": "#fff8f8",
+            "on-tertiary": "#ffffff",
+            "surface-container-high": "#efe6e7",
+            "primary-fixed": "#ffd9e1",
+            "secondary": "#ae3123",
+            "outline": "#897176",
+            "inverse-on-surface": "#f8eeef",
+            "background": "#fff8f8",
+            "tertiary-container": "#53484d",
+            "surface-container-lowest": "#ffffff",
+            "secondary-container": "#fc6955",
+            "on-secondary-fixed": "#410000",
+            "surface-container-low": "#fbf1f2",
+            "primary": "#6d0033",
+            "inverse-surface": "#342f30",
+            "on-primary-container": "#ffa0ba",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "surface-container-highest": "#e9e0e1",
+            "primary-container": "#8e1b4a",
+            "on-surface-variant": "#564146",
+            "on-primary-fixed": "#3f001b",
+            "on-secondary": "#ffffff",
+            "outline-variant": "#dcbfc5",
+            "on-surface": "#1f1b1c",
+            "on-primary": "#ffffff",
+            "surface-tint": "#a8315d",
+            "on-secondary-container": "#690000",
+            "tertiary": "#3b3236",
+            "error-container": "#ffdad6",
+            "on-error-container": "#93000a",
+            "secondary-fixed": "#ffdad4",
+            "surface-container": "#f5eced"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "1rem",
+            "space-3xl": "3rem",
+            "space-xs": "0.25rem",
+            "space-2xl": "2rem",
+            "space-md": "0.75rem",
+            "margin": "1rem",
+            "space-lg": "1rem",
+            "space-sm": "0.5rem",
+            "space-xl": "1.5rem"
+          },
+          "fontFamily": {
+            "caption": ["Inter"],
+            "amount-lg": ["Inter"],
+            "body-medium": ["Inter"],
+            "display": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "body": ["Inter"],
+            "label": ["Inter"],
+            "subtitle": ["Inter"],
+            "title": ["Inter"]
+          },
+          "fontSize": {
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-shadow-lvl1 {
+      box-shadow: 0 2px 8px -2px rgba(30, 26, 27, 0.05), 0 1px 3px 0 rgba(30, 26, 27, 0.03);
+    }
+    .custom-shadow-lvl2 {
+      box-shadow: 0 8px 24px -4px rgba(30, 26, 27, 0.08), 0 4px 12px -2px rgba(30, 26, 27, 0.04);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex flex-col font-body">
+<!-- ========================================================================= -->
+<!-- SHARED COMPONENT 1: SideNavBar                                            -->
+<!-- ========================================================================= -->
+<aside class="fixed left-0 top-0 h-screen w-72 flex flex-col z-30 bg-surface-container-lowest border-r border-surface-variant justify-between py-space-xl px-space-lg overflow-y-auto">
+<!-- Header Brand Lockup -->
+<div>
+<div class="flex items-center gap-space-md px-space-sm mb-space-2xl">
+<div class="w-10 h-10 rounded-xl bg-primary-container text-on-primary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-on-primary text-[24px]">shield</span>
+</div>
+<div class="flex flex-col">
+<span class="text-subtitle font-subtitle text-primary tracking-tight leading-tight">YourApp Credit Ops</span>
+<span class="text-caption font-caption text-on-surface-variant">Enterprise Portal</span>
+</div>
+</div>
+<!-- Merchant Tenant Indicator Box -->
+<div class="mb-space-xl p-space-md rounded-xl bg-surface-container-low border border-outline-variant">
+<div class="flex items-center justify-between mb-1">
+<span class="text-caption font-caption text-on-surface-variant font-medium">Business Tenant</span>
+<span class="inline-flex items-center gap-1 text-[11px] font-semibold text-primary bg-primary-fixed px-1.5 py-0.5 rounded">#MER-0491</span>
+</div>
+<p class="text-label font-label text-on-surface truncate">Kemi Adebayo Haute Couture Ltd</p>
+<span class="text-[12px] text-outline">Lekki Boutique HQ • LAG</span>
+</div>
+<!-- Navigation Links -->
+<nav aria-label="Main Navigation" class="flex flex-col gap-1.5">
+<!-- 1. Dashboard -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span>Dashboard</span>
+</a>
+<!-- 2. Applications Queue -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">pending_actions</span>
+<span>Applications Queue</span>
+</a>
+<!-- 3. Credit Portfolio & Collections -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">account_balance_wallet</span>
+<span>Credit Portfolio &amp; Collections</span>
+</a>
+<!-- 4. Product Configuration (Mapped: Team & Roles Intent) -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg bg-surface-container-low text-primary font-label text-label" href="#">
+<span class="material-symbols-outlined text-primary text-[20px]" style="font-variation-settings: 'FILL' 1;">tune</span>
+<span>Product Configuration</span>
+</a>
+<!-- 5. Partner Settlement -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">handshake</span>
+<span>Partner Settlement</span>
+</a>
+<!-- 6. Audit Log -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">history</span>
+<span>Audit Log</span>
+</a>
+</nav>
+</div>
+<!-- Footer Utility Links -->
+<div class="pt-space-lg border-t border-surface-variant flex flex-col gap-1.5">
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">admin_panel_settings</span>
+<span>Security &amp; Settings</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">logout</span>
+<span>Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- ========================================================================= -->
+<!-- MAIN WORKSPACE & TOP BAR                                                  -->
+<!-- ========================================================================= -->
+<div class="ml-72 flex-1 flex flex-col min-h-screen">
+<!-- TopNavBar -->
+<header class="sticky top-0 right-0 h-16 w-full flex items-center justify-between px-space-xl bg-surface-container-lowest border-b border-surface-variant z-20">
+<!-- Search Input on Left -->
+<div class="flex items-center gap-space-md w-96">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+<input class="w-full h-10 pl-10 pr-4 text-caption font-caption rounded-xl bg-surface-container-low border border-outline-variant focus:outline-none focus:border-primary text-on-surface placeholder:text-outline transition-colors" placeholder="Search staff member, role, phone..." type="text"/>
+</div>
+</div>
+<!-- Center Branch Indicator -->
+<div class="flex items-center gap-2 px-space-md py-1 rounded-full bg-surface-container border border-surface-variant">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="text-caption font-caption text-on-surface font-medium">Lagos Island Main Branch (012)</span>
+</div>
+<!-- Right Trailing Actions & Merchant Profile -->
+<div class="flex items-center gap-space-lg">
+<button class="h-9 px-space-md flex items-center gap-1.5 rounded-lg bg-surface-container-low border border-outline-variant text-primary font-label text-[13px] hover:bg-surface-container transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+<span>Dual Authorization</span>
+</button>
+<div class="flex items-center gap-1">
+<button aria-label="Notifications" class="w-9 h-9 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container transition-colors relative" type="button">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-secondary"></span>
+</button>
+<button aria-label="Help &amp; Documentation" class="w-9 h-9 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">help_outline</span>
+</button>
+</div>
+<!-- Profile Chip -->
+<div class="flex items-center gap-space-md pl-space-md border-l border-surface-variant">
+<div class="w-9 h-9 rounded-full bg-surface-container-highest border border-outline-variant overflow-hidden flex items-center justify-center">
+<img alt="Staff Officer Passport Photo" class="w-full h-full object-cover" data-alt="A dignified Nigerian senior institutional compliance staff officer dressed in professional corporate business attire against an editorial warm-tinted studio backdrop with crisp natural lighting and balanced tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbPc7P11l1MBlbPkHVu0VysjWr4fu9VB8H_fKJn8Z-AqToCxUPq9jhHPlEUsaenuEOLLZ9C25irmxlSYqcmK1-YRvA5d0E-eZM0fjuZ4Zkc4shqNJgY2KqZotIAUho747Fcrr-L5q8axoTfYy4OCfmHQLRR7pf2WnIsoNyYJ3WuHDP99HaDTWdSK-KDbsz8EnGOx66JAuOkSJgvPBuiTWOViAL1SCgxfTw67rdDJmU"/>
+</div>
+<div class="flex flex-col text-left">
+<span class="text-label font-label text-on-surface text-[13px] leading-tight">Mrs. K. Adebayo</span>
+<span class="text-caption font-caption text-outline text-[11px]">Director / Super-Admin</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Canvas Content Area -->
+<main class="flex-1 p-space-xl max-w-[1440px] mx-auto w-full space-y-space-xl pb-space-3xl">
+<!-- Page Header & Action Bar -->
+<section class="flex items-start justify-between gap-space-xl">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="text-caption font-caption font-semibold tracking-wide text-primary-container bg-primary-fixed px-2 py-0.5 rounded">W-MER-005</span>
+<span class="text-caption font-caption text-outline">• Merchant Access Protocol</span>
+</div>
+<h1 class="text-title font-title text-on-surface">Business Verification &amp; Team Access Governance (W-MER-005)</h1>
+<p class="text-caption font-caption text-on-surface-variant mt-1 max-w-3xl leading-relaxed">
+            Maintain corporate KYB accreditation, manage multi-role staff permissions, configure cashier terminal bindings, and review dual-control administrative actions.
+          </p>
+</div>
+<!-- Header CTAs -->
+<div class="flex items-center gap-space-md shrink-0">
+<button class="h-[52px] px-space-lg rounded-xl border-[1.5px] border-outline-variant text-on-surface font-label text-label flex items-center gap-2 hover:bg-surface-container-low transition-colors duration-150" type="button">
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant">picture_as_pdf</span>
+<span>Download KYB Certificate (PDF)</span>
+</button>
+<button class="h-[52px] px-space-xl rounded-xl bg-primary-container text-on-primary font-label text-label flex items-center gap-2 hover:bg-primary shadow-sm active:translate-y-0.5 transition-all duration-150" type="button">
+<span class="material-symbols-outlined text-[20px] text-on-primary">person_add</span>
+<span>+ Invite Team Member</span>
+</button>
+</div>
+</section>
+<!-- 4 Governance & Identity KPI Tiles -->
+<section class="grid grid-cols-4 gap-space-lg">
+<!-- Tile 1 -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-surface-variant custom-shadow-lvl1 flex flex-col justify-between">
+<div class="flex items-center justify-between mb-3">
+<span class="text-caption font-caption text-on-surface-variant font-medium">KYB Verification Tier</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<div>
+<div class="text-subtitle font-subtitle text-primary mb-1">Tier 3 Verified</div>
+<p class="text-caption font-caption text-outline">CAC, FIRS TIN, Director BVN certified</p>
+</div>
+</div>
+<!-- Tile 2 -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-surface-variant custom-shadow-lvl1 flex flex-col justify-between">
+<div class="flex items-center justify-between mb-3">
+<span class="text-caption font-caption text-on-surface-variant font-medium">Active Team Members</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">groups</span>
+</div>
+</div>
+<div>
+<div class="text-subtitle font-subtitle text-on-surface mb-1">8 Personnel</div>
+<p class="text-caption font-caption text-outline">1 Owner, 2 Managers, 4 Cashiers, 1 Accountant</p>
+</div>
+</div>
+<!-- Tile 3 -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-surface-variant custom-shadow-lvl1 flex flex-col justify-between">
+<div class="flex items-center justify-between mb-3">
+<span class="text-caption font-caption text-on-surface-variant font-medium">Active Cashier Terminals</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">point_of_sale</span>
+</div>
+</div>
+<div>
+<div class="text-subtitle font-subtitle text-on-surface mb-1">3 Tills Paired</div>
+<p class="text-caption font-caption text-outline">Hardware bound to Lekki Boutique</p>
+</div>
+</div>
+<!-- Tile 4 -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-surface-variant custom-shadow-lvl1 flex flex-col justify-between">
+<div class="flex items-center justify-between mb-3">
+<span class="text-caption font-caption text-on-surface-variant font-medium">Staff Security Audit</span>
+<div class="w-8 h-8 rounded-lg bg-secondary-fixed flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[20px]">lock_clock</span>
+</div>
+</div>
+<div>
+<div class="text-subtitle font-subtitle text-on-surface mb-1">100% Compliant</div>
+<p class="text-caption font-caption text-outline">All active logins verified with 2FA / Passcode</p>
+</div>
+</div>
+</section>
+<!-- Regulatory KYB Covenant Banner -->
+<section class="p-space-lg rounded-xl bg-surface-container-low border border-outline-variant flex items-center gap-space-lg">
+<div class="w-10 h-10 rounded-xl bg-primary text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[22px]">policy</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-0.5">
+<span class="text-label font-label text-primary">CBN Regulatory Assurance</span>
+<span class="text-[11px] font-semibold uppercase tracking-wider text-outline">Compliant &amp; Monitored</span>
+</div>
+<p class="text-caption font-caption text-on-surface-variant">
+            Central Bank of Nigeria (CBN) Anti-Money Laundering (AML) Compliance: Corporate identity is linked to CAC Registration #RC-1849204. Daily sales volume up to ₦100,000,000.00 with unrestricted settlement sweeps.
+          </p>
+</div>
+<div class="shrink-0 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+<span class="text-caption font-caption text-on-surface font-semibold">Active Accreditation</span>
+</div>
+</section>
+<!-- Split Main Section: 60% Left, 40% Right -->
+<div class="grid grid-cols-12 gap-space-xl items-start">
+<!-- Left Column: Staff Roster & Operational Permissions Table (60% = 7 cols) -->
+<section class="col-span-7 bg-surface-container-lowest rounded-xl border border-surface-variant custom-shadow-lvl1 overflow-hidden">
+<!-- Card Header & Segmented Tabs -->
+<div class="p-space-lg border-b border-surface-variant">
+<div class="flex items-center justify-between mb-space-md">
+<div>
+<h2 class="text-subtitle font-subtitle text-on-surface">Staff Roster &amp; Permissions</h2>
+<p class="text-caption font-caption text-outline">Role-based terminal access and identity tokens</p>
+</div>
+<span class="text-caption font-caption text-on-surface-variant bg-surface-container px-2.5 py-1 rounded-full font-medium">8 Members Registered</span>
+</div>
+<!-- Tabs Segmented Bar -->
+<div class="flex items-center gap-2 p-1 rounded-lg bg-surface-container-low border border-outline-variant w-fit">
+<button class="px-space-md py-1.5 rounded-md bg-surface-container-lowest text-primary font-label text-caption custom-shadow-lvl1" type="button">
+                All Staff (8)
+              </button>
+<button class="px-space-md py-1.5 rounded-md text-on-surface-variant font-label text-caption hover:text-on-surface transition-colors" type="button">
+                Store Managers (2)
+              </button>
+<button class="px-space-md py-1.5 rounded-md text-on-surface-variant font-label text-caption hover:text-on-surface transition-colors" type="button">
+                Cashiers (4)
+              </button>
+<button class="px-space-md py-1.5 rounded-md text-on-surface-variant font-label text-caption hover:text-on-surface transition-colors" type="button">
+                Finance &amp; Audit (1)
+              </button>
+</div>
+</div>
+<!-- Roster Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-surface-variant text-caption font-caption text-outline font-semibold">
+<th class="py-3 px-space-lg">Staff Member</th>
+<th class="py-3 px-space-md">Role &amp; Scope</th>
+<th class="py-3 px-space-md">Assigned Location</th>
+<th class="py-3 px-space-md">Security Status</th>
+<th class="py-3 px-space-lg text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-variant text-caption font-caption">
+<!-- Row 1: Mrs. Kemi Adebayo -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3.5 px-space-lg">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-primary-fixed text-primary font-bold flex items-center justify-center shrink-0 text-xs">
+                        KA
+                      </div>
+<div>
+<div class="font-label text-label text-on-surface">Mrs. Kemi Adebayo</div>
+<div class="text-[12px] text-outline">kemi@kadebayo.ng</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[12px] font-medium bg-primary-fixed text-on-primary-fixed-variant">
+                      Managing Director / Owner
+                    </span>
+<div class="text-[11px] text-outline mt-0.5">Full Business Admin</div>
+</td>
+<td class="py-3.5 px-space-md text-on-surface-variant">
+                    All Outlets (Omni)
+                  </td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-1.5 text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 1;">fingerprint</span>
+<span>Passcode + Biometrics</span>
+</div>
+</td>
+<td class="py-3.5 px-space-lg text-right">
+<button aria-label="Staff options" class="text-on-surface-variant hover:text-primary transition-colors p-1" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 2: Chinedu Okeke (Selected Row Highlighted) -->
+<tr class="bg-surface-container-low/80 border-l-4 border-l-primary-container">
+<td class="py-3.5 px-space-lg">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-secondary-fixed text-on-secondary-fixed font-bold flex items-center justify-center shrink-0 text-xs">
+                        CO
+                      </div>
+<div>
+<div class="font-label text-label text-on-surface flex items-center gap-1.5">
+<span>Chinedu Okeke</span>
+<span class="text-[10px] bg-primary text-on-primary px-1.5 py-0.2 rounded font-semibold">Inspecting</span>
+</div>
+<div class="text-[12px] text-outline">chinedu.o@kadebayo.ng</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[12px] font-medium bg-surface-container text-on-surface">
+                      Senior Store Manager
+                    </span>
+<div class="text-[11px] text-outline mt-0.5">Sales &amp; Refunds Scope</div>
+</td>
+<td class="py-3.5 px-space-md text-on-surface-variant">
+                    Lekki Main Store
+                  </td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-1.5 text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-primary">smartphone</span>
+<span>2FA Mobile App</span>
+</div>
+</td>
+<td class="py-3.5 px-space-lg text-right">
+<button class="text-primary font-medium hover:underline p-1 text-[12px]" type="button">
+                      Edit
+                    </button>
+</td>
+</tr>
+<!-- Row 3: Zainab Al-Hassan -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3.5 px-space-lg">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-bold flex items-center justify-center shrink-0 text-xs">
+                        ZA
+                      </div>
+<div>
+<div class="font-label text-label text-on-surface">Zainab Al-Hassan</div>
+<div class="text-[12px] text-outline">zainab.till2@kadebayo.ng</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[12px] font-medium bg-surface-container text-on-surface">
+                      Fitting Suite Cashier
+                    </span>
+<div class="text-[11px] text-outline mt-0.5">Till #02 POS Assigned</div>
+</td>
+<td class="py-3.5 px-space-md text-on-surface-variant">
+                    Terminal Till #02
+                  </td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-1.5 text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-outline">pin</span>
+<span>4-Digit PIN</span>
+</div>
+</td>
+<td class="py-3.5 px-space-lg text-right">
+<button aria-label="Staff options" class="text-on-surface-variant hover:text-primary transition-colors p-1" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 4: Bimbo Adeyemi -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3.5 px-space-lg">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-tertiary-fixed-dim text-on-tertiary-container font-bold flex items-center justify-center shrink-0 text-xs">
+                        BA
+                      </div>
+<div>
+<div class="font-label text-label text-on-surface">Bimbo Adeyemi</div>
+<div class="text-[12px] text-outline">bimbo.desk@kadebayo.ng</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[12px] font-medium bg-surface-container text-on-surface">
+                      Front Desk Cashier
+                    </span>
+<div class="text-[11px] text-outline mt-0.5">Till #01 POS Assigned</div>
+</td>
+<td class="py-3.5 px-space-md text-on-surface-variant">
+                    Terminal Till #01
+                  </td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-1.5 text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-outline">pin</span>
+<span>4-Digit PIN</span>
+</div>
+</td>
+<td class="py-3.5 px-space-lg text-right">
+<button aria-label="Staff options" class="text-on-surface-variant hover:text-primary transition-colors p-1" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 5: Olumide Adeleke, FCA -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3.5 px-space-lg">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-primary-fixed text-primary font-bold flex items-center justify-center shrink-0 text-xs">
+                        OA
+                      </div>
+<div>
+<div class="font-label text-label text-on-surface">Olumide Adeleke, FCA</div>
+<div class="text-[12px] text-outline">o.adeleke@adeleke-advisory.ng</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[12px] font-medium bg-surface-container text-on-surface">
+                      External Accountant
+                    </span>
+<div class="text-[11px] text-outline mt-0.5">Read-Only Financials</div>
+</td>
+<td class="py-3.5 px-space-md text-on-surface-variant">
+                    Remote Advisory
+                  </td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-1.5 text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-primary">key</span>
+<span>YubiKey FIDO2</span>
+</div>
+</td>
+<td class="py-3.5 px-space-lg text-right">
+<button aria-label="Staff options" class="text-on-surface-variant hover:text-primary transition-colors p-1" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Bottom Info -->
+<div class="p-space-md border-t border-surface-variant bg-surface-container-low flex items-center justify-between text-caption font-caption text-outline">
+<span>Showing 5 of 8 registered merchant personnel</span>
+<div class="flex items-center gap-2">
+<button aria-label="Previous page" class="p-1 rounded text-outline hover:text-on-surface disabled:opacity-40" disabled="" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<span class="font-medium text-on-surface">Page 1 of 2</span>
+<button aria-label="Next page" class="p-1 rounded text-outline hover:text-on-surface" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Right Column: Corporate KYB Accreditation & Permission Inspector Drawer (40% = 5 cols) -->
+<div class="col-span-5 space-y-space-xl">
+<!-- Card 1: Business Identity & KYB Documents -->
+<div class="bg-surface-container-lowest rounded-xl border border-surface-variant custom-shadow-lvl1 p-space-lg">
+<div class="flex items-center justify-between pb-space-md border-b border-surface-variant mb-space-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">assured_workload</span>
+<h3 class="text-subtitle font-subtitle text-on-surface">Corporate KYB Credentials</h3>
+</div>
+<span class="inline-flex items-center gap-1 text-[12px] font-semibold text-primary bg-primary-fixed px-2 py-0.5 rounded">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                Valid
+              </span>
+</div>
+<!-- Credentials List -->
+<div class="space-y-3.5 text-caption font-caption">
+<div>
+<span class="text-outline block text-[12px]">Corporate Entity</span>
+<span class="font-label text-label text-on-surface">Kemi Adebayo Haute Couture Limited</span>
+</div>
+<div class="flex items-center justify-between py-1 border-t border-surface-container">
+<div>
+<span class="text-outline block text-[12px]">CAC Registration</span>
+<span class="font-medium text-on-surface">#RC-1849204</span>
+</div>
+<div class="flex items-center gap-1 text-primary">
+<span class="text-[12px] font-medium">Verified ✓</span>
+<a class="text-[12px] underline ml-1 hover:text-primary-container" href="#">View Doc</a>
+</div>
+</div>
+<div class="flex items-center justify-between py-1 border-t border-surface-container">
+<div>
+<span class="text-outline block text-[12px]">JTB / FIRS Tax ID (TIN)</span>
+<span class="font-medium text-on-surface">#20918492-0001</span>
+</div>
+<span class="text-[12px] font-medium text-primary">Verified ✓</span>
+</div>
+<div class="py-1 border-t border-surface-container">
+<span class="text-outline block text-[12px]">Registered Commercial Address</span>
+<span class="font-medium text-on-surface">14 Admiralty Way, Lekki Phase 1, Lagos State, Nigeria</span>
+</div>
+<div class="py-1 border-t border-surface-container">
+<span class="text-outline block text-[12px]">Designated Settlement Account</span>
+<div class="flex items-center justify-between mt-0.5">
+<span class="font-medium text-on-surface">Zenith Bank Plc • #1018492019</span>
+<span class="text-[11px] font-semibold text-primary bg-primary-fixed px-1.5 py-0.5 rounded">Director Match</span>
+</div>
+</div>
+</div>
+<div class="mt-space-lg pt-space-md border-t border-surface-variant">
+<button class="w-full h-10 rounded-lg border border-outline-variant text-on-surface font-label text-caption hover:bg-surface-container-low transition-colors flex items-center justify-center gap-2" type="button">
+<span class="material-symbols-outlined text-[18px] text-outline">upload_file</span>
+<span>Update Corporate Documents / Upload Gazette</span>
+</button>
+</div>
+</div>
+<!-- Card 2: Granular Permission Matrix for Selected Staff -->
+<div class="bg-surface-container-lowest rounded-xl border border-surface-variant custom-shadow-lvl1 p-space-lg">
+<div class="flex items-center justify-between pb-space-md border-b border-surface-variant mb-space-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">manage_accounts</span>
+<h3 class="text-subtitle font-subtitle text-on-surface">Staff Permission Matrix</h3>
+</div>
+<span class="text-[12px] text-outline">Target: Chinedu Okeke</span>
+</div>
+<p class="text-caption font-caption text-outline mb-space-md">
+              Modifying operational privileges for Store Manager level. Dual-authorization PIN will be required upon save.
+            </p>
+<!-- Toggle Permissions -->
+<div class="space-y-space-md">
+<!-- Permission 1: Issue Invoices -->
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-low">
+<div>
+<div class="font-label text-label text-on-surface">Issue Invoices &amp; Payment Links</div>
+<div class="text-[12px] text-outline">Generate direct web checkouts</div>
+</div>
+<!-- Custom CSS Checkbox / Toggle (Allowed - Checked) -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-surface-variant after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<!-- Permission 2: Process Refunds -->
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-low">
+<div>
+<div class="font-label text-label text-on-surface">Process Customer Refunds</div>
+<div class="text-[12px] text-outline">Capped up to ₦100,000.00 / txn</div>
+</div>
+<!-- Toggle Checked -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-surface-variant after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<!-- Permission 3: Settlement Details -->
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-low">
+<div>
+<div class="font-label text-label text-on-surface">View Bank Settlement Details</div>
+<div class="text-[12px] text-outline">Corporate payout bank routing</div>
+</div>
+<!-- Toggle Unchecked -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-surface-variant after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<!-- Permission 4: Shift Day-End Signoff -->
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-low">
+<div>
+<div class="font-label text-label text-on-surface">Shift Day-End Cash Balance Signoff</div>
+<div class="text-[12px] text-outline">Close daily register drawer batch</div>
+</div>
+<!-- Toggle Checked -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-surface-variant after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</div>
+<!-- Action Cluster -->
+<div class="mt-space-lg pt-space-md border-t border-surface-variant space-y-2">
+<button class="w-full h-[52px] rounded-xl bg-primary-container text-on-primary font-label text-label hover:bg-primary transition-all flex items-center justify-center gap-2" type="button">
+<span class="material-symbols-outlined text-[20px]">save</span>
+<span>Save Permission Adjustments</span>
+</button>
+<div class="text-center pt-1">
+<button class="text-caption font-caption text-secondary hover:underline font-semibold flex items-center gap-1 mx-auto" type="button">
+<span class="material-symbols-outlined text-[16px]">person_remove</span>
+<span>Revoke Staff Access</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Security Institutional Footer -->
+<footer class="mt-auto border-t border-surface-variant bg-surface-container-lowest py-space-md px-space-xl">
+<div class="flex items-center justify-between text-caption font-caption text-outline">
+<div class="flex items-center gap-space-lg">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary">verified</span>
+<span>ISO/IEC 27001 Certified</span>
+</span>
+<span>•</span>
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary">account_balance</span>
+<span>CBN Tier 3 Merchant Portal</span>
+</span>
+<span>•</span>
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary">lock</span>
+<span>256-bit Encrypted Session</span>
+</span>
+</div>
+<div class="flex items-center gap-3">
+<span>Security Token: <span class="font-mono text-[11px] text-on-surface">#SEC-LAG-84920</span></span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span>Server Status: Operational</span>
+</div>
+</div>
+</footer>
+</div>
+</body></html>

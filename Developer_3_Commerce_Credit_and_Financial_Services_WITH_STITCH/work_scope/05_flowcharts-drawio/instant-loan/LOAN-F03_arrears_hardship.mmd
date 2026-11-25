@@ -1,0 +1,20 @@
+flowchart TD
+  a(["Instalment overdue"])
+  b["Grace and reminders"]
+  c{"Customer requests hardship help?"}
+  d["Review: extension or restructure (approval)"]
+  e["Late fee per rule (capped)"]
+  f["Collections contact within approved channels and hours"]
+  g{"Resolved?"}
+  h["Escalate per policy; no third-party contact"]
+  i(["Closed or written off per policy"])
+  a --> b
+  b --> c
+  c -->|yes| d
+  c -->|no| e
+  d --> i
+  e --> f
+  f --> g
+  g -->|yes| i
+  g -->|no| h
+  h --> i

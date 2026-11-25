@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Merchant Invoicing &amp; Accounts Receivable | YourApp Credit Ops</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary-fixed-dim": "#ffb4a8",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "on-primary-fixed-variant": "#881646",
+            "error": "#ba1a1a",
+            "surface-variant": "#e9e0e1",
+            "on-secondary-fixed-variant": "#8c170e",
+            "surface-dim": "#e1d8d9",
+            "on-background": "#1f1b1c",
+            "on-tertiary-container": "#c6b7bd",
+            "on-error": "#ffffff",
+            "primary-fixed-dim": "#ffb1c5",
+            "on-tertiary-fixed": "#21191e",
+            "surface-bright": "#fff8f8",
+            "inverse-primary": "#ffb1c5",
+            "tertiary-fixed": "#eedee4",
+            "surface": "#fff8f8",
+            "on-tertiary": "#ffffff",
+            "surface-container-high": "#efe6e7",
+            "primary-fixed": "#ffd9e1",
+            "secondary": "#ae3123",
+            "outline": "#897176",
+            "inverse-on-surface": "#f8eeef",
+            "background": "#fff8f8",
+            "tertiary-container": "#53484d",
+            "surface-container-lowest": "#ffffff",
+            "secondary-container": "#fc6955",
+            "on-secondary-fixed": "#410000",
+            "surface-container-low": "#fbf1f2",
+            "primary": "#6d0033",
+            "inverse-surface": "#342f30",
+            "on-primary-container": "#ffa0ba",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "surface-container-highest": "#e9e0e1",
+            "primary-container": "#8e1b4a",
+            "on-surface-variant": "#564146",
+            "on-primary-fixed": "#3f001b",
+            "on-secondary": "#ffffff",
+            "outline-variant": "#dcbfc5",
+            "on-surface": "#1f1b1c",
+            "on-primary": "#ffffff",
+            "surface-tint": "#a8315d",
+            "tertiary": "#3b3236",
+            "error-container": "#ffdad6",
+            "on-error-container": "#93000a",
+            "secondary-fixed": "#ffdad4",
+            "surface-container": "#f5eced"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "1rem",
+            "space-3xl": "3rem",
+            "space-xs": "0.25rem",
+            "space-2xl": "2rem",
+            "space-md": "0.75rem",
+            "margin": "1rem",
+            "space-lg": "1rem",
+            "space-sm": "0.5rem",
+            "space-xl": "1.5rem"
+          },
+          "fontFamily": {
+            "caption": ["Inter"],
+            "amount-lg": ["Inter"],
+            "body-medium": ["Inter"],
+            "display": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "body": ["Inter"],
+            "label": ["Inter"],
+            "subtitle": ["Inter"],
+            "title": ["Inter"]
+          },
+          "fontSize": {
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    /* Ambient warm soft shadow according to design tokens */
+    .elevation-level-1 {
+      box-shadow: 0 2px 8px -2px rgba(30, 26, 27, 0.05), 0 1px 3px 0 rgba(30, 26, 27, 0.03);
+    }
+    .elevation-level-2 {
+      box-shadow: 0 8px 24px -4px rgba(30, 26, 27, 0.08), 0 4px 12px -2px rgba(30, 26, 27, 0.04);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex selection:bg-primary selection:text-on-primary">
+<!-- SideNavBar (Shared Component JSON anchor) -->
+<aside class="fixed left-0 top-0 h-full w-72 flex flex-col justify-between py-space-xl px-space-lg overflow-y-auto bg-surface-container-lowest border-r border-surface-variant z-30 shadow-sm">
+<div class="flex flex-col gap-space-xl">
+<!-- Header Crest & Brand Title -->
+<div class="flex items-center gap-space-md px-space-sm">
+<div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-on-primary shadow-sm">
+<span class="material-symbols-outlined text-title" data-icon="account_balance">account_balance</span>
+</div>
+<div class="flex flex-col">
+<span class="text-subtitle font-subtitle text-primary tracking-tight leading-tight">YourApp Credit Ops</span>
+<span class="text-caption font-caption text-on-surface-variant">Enterprise Portal</span>
+</div>
+</div>
+<!-- Tenant Cardlet -->
+<div class="p-space-md rounded-xl bg-surface-container-low border border-surface-variant flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-on-surface-variant">Active Merchant Tenant</span>
+<span class="w-2 h-2 rounded-full bg-secondary-container"></span>
+</div>
+<span class="text-label font-label text-primary truncate">Kemi Adebayo Haute Couture</span>
+<div class="flex items-center gap-space-xs text-caption font-caption text-on-surface-variant">
+<span class="material-symbols-outlined text-caption" data-icon="verified_user">verified_user</span>
+<span>RC: #MER-LAG-0491</span>
+</div>
+</div>
+<!-- Main Navigation Tabs -->
+<nav class="flex flex-col gap-1">
+<!-- 1. Dashboard -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<!-- 2. Applications Queue -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="pending_actions">pending_actions</span>
+<span>Applications Queue</span>
+</a>
+<!-- 3. Credit Portfolio & Collections (Active: Closest semantically to B2B Invoices / Accounts Receivable) -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg bg-surface-container-low text-primary font-label text-label transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-primary font-bold" data-icon="account_balance_wallet" data-weight="fill" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+<span>Credit Portfolio &amp; Collections</span>
+</a>
+<!-- 4. Product Configuration -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="tune">tune</span>
+<span>Product Configuration</span>
+</a>
+<!-- 5. Partner Settlement -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="handshake">handshake</span>
+<span>Partner Settlement</span>
+</a>
+<!-- 6. Audit Log -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span>Audit Log</span>
+</a>
+</nav>
+</div>
+<!-- SideNav Footer -->
+<div class="flex flex-col gap-1 pt-space-md border-t border-surface-variant">
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="admin_panel_settings">admin_panel_settings</span>
+<span>Security &amp; Settings</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-secondary font-label text-label hover:bg-secondary-fixed hover:bg-opacity-30 transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span>Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- Main Viewport Layout -->
+<div class="ml-72 flex-1 flex flex-col min-w-0">
+<!-- TopNavBar (Shared Component JSON anchor) -->
+<header class="sticky top-0 right-0 h-16 flex items-center justify-between px-space-xl bg-surface-container-lowest border-b border-surface-variant z-20">
+<!-- Search on Left -->
+<div class="flex items-center gap-space-md w-96">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input class="w-full h-10 pl-10 pr-4 bg-surface-container-low border border-surface-variant rounded-lg text-body font-body text-on-surface placeholder:text-outline text-caption focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container" placeholder="Search invoice number, client name, CAC RC..." type="text"/>
+</div>
+</div>
+<!-- Central Product / Branch Indicator -->
+<div class="flex items-center gap-space-sm px-space-md py-1 bg-surface-container rounded-full border border-surface-variant">
+<span class="material-symbols-outlined text-caption text-primary" data-icon="location_on">location_on</span>
+<span class="text-caption font-caption text-on-surface font-medium">Lagos Island Main Branch (012)</span>
+<span class="text-caption font-caption text-outline">|</span>
+<span class="text-caption font-caption text-secondary-container font-semibold">NIP Online</span>
+</div>
+<!-- Trailing Action Cluster & Dual Auth -->
+<div class="flex items-center gap-space-lg">
+<button class="h-9 px-space-md rounded-lg border border-primary-container text-primary-container font-label text-caption hover:bg-primary hover:text-on-primary transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-caption" data-icon="verified">verified</span>
+<span>Dual Authorization</span>
+</button>
+<div class="flex items-center gap-space-xs text-on-surface-variant">
+<button class="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-surface-container transition-colors relative" title="Notifications">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-secondary-container"></span>
+</button>
+<button class="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-surface-container transition-colors" title="Support">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+</div>
+<!-- Staff Officer Profile -->
+<div class="flex items-center gap-space-md pl-space-md border-l border-surface-variant">
+<img class="w-10 h-10 rounded-full border border-outline-variant object-cover" data-alt="A dignified corporate photographic headshot of Kemi Adebayo, an executive Nigerian luxury fashion businesswoman and director, wearing bespoke traditional berry-toned attire with refined warm studio lighting and pristine corporate backdrop." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtJEivjdRZTStERXqYW-GmonFm1zUV-KCj2VJVoXUy8k-N5EXOxQIWWZN4UyyP9r2lPPmoZhf_3R2gSQJpRxh6PD6Qc6WoLUotFs1r0fzaZO0s9qbpuB4fJOITRd0B0rxHwHjsWZlwunP-9ycrpOtOkYAxUu7SjaAoLZLJVoW1VCDMJH5rSpnee8QPmw5jn3aYURa_YeU3kOvdgRYLFgtXfcAg4z5MvZA9vGKEIUR_"/>
+<div class="flex flex-col text-left">
+<span class="text-label font-label text-on-surface leading-tight">Kemi Adebayo</span>
+<span class="text-caption font-caption text-outline leading-tight">Managing Director</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Content Workspace Canvas -->
+<main class="flex-1 p-space-xl overflow-y-auto space-y-space-xl">
+<!-- Page Header & Global Commercial Actions -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-lg">
+<div>
+<div class="flex items-center gap-space-sm">
+<h1 class="text-title font-title text-on-background tracking-tight">B2B Commercial Invoicing &amp; Accounts Receivable</h1>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-primary font-label text-caption border border-surface-variant">W-MER-002</span>
+</div>
+<p class="text-body font-body text-on-surface-variant text-caption mt-1">
+            Generate statutory e-invoices, configure milestone billing, track payment aging, and automate payment reminders.
+          </p>
+</div>
+<div class="flex items-center gap-space-md shrink-0">
+<button class="h-[52px] px-space-lg rounded-xl border border-outline-variant text-on-surface font-label text-label hover:bg-surface-container transition-colors flex items-center gap-space-sm bg-surface-container-lowest">
+<span class="material-symbols-outlined text-outline" data-icon="download">download</span>
+<span>Export Invoices Ledger (CSV/PDF)</span>
+</button>
+<button class="h-[52px] px-space-xl rounded-xl bg-primary-container text-on-primary font-label text-label hover:bg-primary transition-colors elevation-level-1 flex items-center gap-space-sm">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+<span>+ Create New Invoice (W-MER-005)</span>
+</button>
+</div>
+</div>
+<!-- Four Invoicing KPI Tiles (Bento Warm Elevation) -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-lg">
+<!-- Tile 1: Total Invoiced -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-outline-variant elevation-level-1 flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-on-surface-variant font-medium">Total Invoiced (MTD)</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-caption" data-icon="receipt_long">receipt_long</span>
+</div>
+</div>
+<div class="my-space-md">
+<span class="text-title font-title text-on-background tracking-tight">₦18,450,000.00</span>
+</div>
+<div class="flex items-center gap-1 text-caption font-caption text-on-surface-variant">
+<span class="material-symbols-outlined text-caption text-primary" data-icon="business">business</span>
+<span>Across 24 corporate accounts</span>
+</div>
+</div>
+<!-- Tile 2: Paid & Reconciled -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-outline-variant elevation-level-1 flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-on-surface-variant font-medium">Paid &amp; Reconciled</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-caption" data-icon="check_circle">check_circle</span>
+</div>
+</div>
+<div class="my-space-md">
+<span class="text-title font-title text-on-background tracking-tight">₦13,800,000.00</span>
+</div>
+<div class="flex items-center gap-1 text-caption font-caption text-primary">
+<span class="material-symbols-outlined text-caption text-primary" data-icon="trending_up">trending_up</span>
+<span class="font-medium">74.8% collection efficiency</span>
+</div>
+</div>
+<!-- Tile 3: Overdue Receivables -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-outline-variant elevation-level-1 flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-on-surface-variant font-medium">Overdue Receivables</span>
+<div class="w-8 h-8 rounded-lg bg-secondary-fixed flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-caption" data-icon="warning">warning</span>
+</div>
+</div>
+<div class="my-space-md">
+<span class="text-title font-title text-secondary tracking-tight">₦3,200,000.00</span>
+</div>
+<div class="flex items-center gap-1 text-caption font-caption text-secondary">
+<span class="material-symbols-outlined text-caption text-secondary" data-icon="alarm">alarm</span>
+<span>3 invoices past 14-day payment terms</span>
+</div>
+</div>
+<!-- Tile 4: Average Days to Settle -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-outline-variant elevation-level-1 flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-on-surface-variant font-medium">Average Days to Settle</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-caption" data-icon="speed">speed</span>
+</div>
+</div>
+<div class="my-space-md">
+<span class="text-title font-title text-on-background tracking-tight">4.2 Days</span>
+</div>
+<div class="flex items-center gap-1 text-caption font-caption text-on-surface-variant">
+<span class="material-symbols-outlined text-caption text-primary" data-icon="bolt">bolt</span>
+<span>Down from 8.6d via automated reminders</span>
+</div>
+</div>
+</section>
+<!-- Statutory Invoicing Regulation Banner -->
+<section class="p-space-md px-space-lg rounded-xl bg-surface-container-low border border-primary-fixed flex items-center justify-between gap-space-lg">
+<div class="flex items-center gap-space-md">
+<div class="w-9 h-9 rounded-lg bg-primary-container text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-subtitle" data-icon="qr_code_2">qr_code_2</span>
+</div>
+<div class="text-caption font-caption text-on-surface">
+<strong class="text-primary font-label">NIBSS E-Invoice Interop:</strong> Generated invoices are cryptographically stamped with Federal Inland Revenue Service (FIRS) VAT compliant QR code and support instant 1-tap NIP transfer verification.
+          </div>
+</div>
+<div class="flex items-center gap-space-sm shrink-0">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-surface-container-lowest border border-outline-variant text-caption font-caption text-primary font-medium">
+<span class="material-symbols-outlined text-caption" data-icon="verified_user">verified_user</span>
+<span>FIRS Tax Gateway Active</span>
+</span>
+</div>
+</section>
+<!-- Split Layout: Table (65%) vs Inspector Drawer (35%) -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-xl items-start">
+<!-- Left Column: Invoices Table Workspace (65% -> 8 columns out of 12) -->
+<section class="xl:col-span-8 flex flex-col gap-space-md">
+<!-- Table Controls Header: Tabs & Filters -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest border border-outline-variant elevation-level-1 flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<!-- Segmented Filter Tabs -->
+<div class="inline-flex p-1 bg-surface-container rounded-lg border border-surface-variant overflow-x-auto">
+<button class="px-space-md py-1.5 rounded-md bg-surface-container-lowest text-primary font-label text-caption shadow-sm whitespace-nowrap">
+                All Invoices (24)
+              </button>
+<button class="px-space-md py-1.5 rounded-md text-on-surface-variant font-label text-caption hover:text-on-surface whitespace-nowrap">
+                Paid (18)
+              </button>
+<button class="px-space-md py-1.5 rounded-md text-on-surface-variant font-label text-caption hover:text-on-surface whitespace-nowrap">
+                Pending Payment (3)
+              </button>
+<button class="px-space-md py-1.5 rounded-md text-secondary font-label text-caption hover:bg-secondary-fixed whitespace-nowrap">
+                Overdue (3)
+              </button>
+<button class="px-space-md py-1.5 rounded-md text-on-surface-variant font-label text-caption hover:text-on-surface whitespace-nowrap">
+                Drafts (2)
+              </button>
+</div>
+<!-- Granular Filter Dropdowns -->
+<div class="flex items-center gap-space-sm flex-wrap">
+<div class="flex items-center gap-1 px-3 py-1.5 rounded-lg border border-outline-variant bg-surface-container-lowest text-caption font-caption text-on-surface">
+<span class="material-symbols-outlined text-caption text-outline" data-icon="calendar_month">calendar_month</span>
+<span>This Month</span>
+</div>
+<div class="flex items-center gap-1 px-3 py-1.5 rounded-lg border border-outline-variant bg-surface-container-lowest text-caption font-caption text-on-surface">
+<span class="material-symbols-outlined text-caption text-outline" data-icon="filter_list">filter_list</span>
+<span>Client Tier: All</span>
+</div>
+<div class="flex items-center gap-1 px-3 py-1.5 rounded-lg border border-outline-variant bg-surface-container-lowest text-caption font-caption text-on-surface">
+<span class="material-symbols-outlined text-caption text-outline" data-icon="payments">payments</span>
+<span>Amount: Any</span>
+</div>
+</div>
+</div>
+<!-- Main Table Container -->
+<div class="rounded-xl bg-surface-container-lowest border border-outline-variant elevation-level-1 overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-surface-variant text-caption font-caption text-on-surface-variant">
+<th class="py-space-md px-space-lg font-semibold">Invoice # &amp; Date</th>
+<th class="py-space-md px-space-md font-semibold">Client &amp; Contact</th>
+<th class="py-space-md px-space-md font-semibold">Line Items Summary</th>
+<th class="py-space-md px-space-md font-semibold">Due Date</th>
+<th class="py-space-md px-space-md font-semibold">Total (₦)</th>
+<th class="py-space-md px-space-md font-semibold">Status</th>
+<th class="py-space-md px-space-lg text-right font-semibold">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-variant text-caption font-caption text-on-surface">
+<!-- Row 1: Active Focus (#INV-2027-089) -->
+<tr class="bg-surface-container-low/60 hover:bg-surface-container-low transition-colors cursor-pointer border-l-4 border-l-primary-container">
+<td class="py-space-md px-space-lg">
+<div class="flex flex-col">
+<span class="font-label text-label text-primary">#INV-2027-089</span>
+<span class="text-on-surface-variant">Issue: 21 Feb 2027</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">Dangote Protocol Directorate</span>
+<span class="text-on-surface-variant text-[12px]">Mukhtar Bello (Head of Protocol)</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="truncate max-w-[180px] block" title="45x Executive Silk Agbada Sets">45x Executive Silk Agbada Sets</span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="inline-flex items-center gap-1 text-primary-container font-semibold">
+<span class="material-symbols-outlined text-caption" data-icon="schedule">schedule</span>
+<span>Due Today</span>
+</div>
+</td>
+<td class="py-space-md px-space-md font-label text-label text-on-background">
+                      ₦2,250,000.00
+                    </td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-surface-container-high text-on-surface font-label text-[12px] border border-outline-variant">
+<span class="material-symbols-outlined text-caption text-primary" data-icon="hourglass_top">hourglass_top</span>
+<span>Pending (Grace 48h)</span>
+</span>
+</td>
+<td class="py-space-md px-space-lg text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1 rounded hover:bg-surface-container text-primary" title="View Dossier">
+<span class="material-symbols-outlined text-caption" data-icon="visibility">visibility</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant" title="Options">
+<span class="material-symbols-outlined text-caption" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2: #INV-2027-088 (Overdue) -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-space-md px-space-lg">
+<div class="flex flex-col">
+<span class="font-label text-label text-on-surface">#INV-2027-088</span>
+<span class="text-on-surface-variant">Issue: 04 Feb 2027</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">Eko Grand Marina Hotel</span>
+<span class="text-on-surface-variant text-[12px]">Procurement Desk</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="truncate max-w-[180px] block" title="Banquet Uniform Supply">Banquet Uniform Supply</span>
+</td>
+<td class="py-space-md px-space-md text-secondary font-medium">
+                      18 Feb 2027
+                    </td>
+<td class="py-space-md px-space-md font-label text-label text-on-background">
+                      ₦1,450,000.00
+                    </td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-secondary-fixed text-secondary font-label text-[12px]">
+<span class="material-symbols-outlined text-caption" data-icon="error_outline">error_outline</span>
+<span>Overdue (5 days)</span>
+</span>
+</td>
+<td class="py-space-md px-space-lg text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant" title="View">
+<span class="material-symbols-outlined text-caption" data-icon="visibility">visibility</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant" title="Options">
+<span class="material-symbols-outlined text-caption" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3: #INV-2027-087 (Paid) -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-space-md px-space-lg">
+<div class="flex flex-col">
+<span class="font-label text-label text-on-surface">#INV-2027-087</span>
+<span class="text-on-surface-variant">Issue: 10 Feb 2027</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">First Atlantic Maritime Ltd</span>
+<span class="text-on-surface-variant text-[12px]">Capt. Davies Okafor</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="truncate max-w-[180px] block" title="12x Bespoke Suits &amp; Embroidery">12x Bespoke Suits &amp; Embroidery</span>
+</td>
+<td class="py-space-md px-space-md text-on-surface-variant">
+                      24 Feb 2027
+                    </td>
+<td class="py-space-md px-space-md font-label text-label text-on-background">
+                      ₦1,800,000.00
+                    </td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-surface-container text-primary-container font-label text-[12px] border border-outline-variant">
+<span class="material-symbols-outlined text-caption text-primary-container" data-icon="check_circle">check_circle</span>
+<span>Paid &amp; Settled ✓</span>
+</span>
+</td>
+<td class="py-space-md px-space-lg text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant" title="View">
+<span class="material-symbols-outlined text-caption" data-icon="visibility">visibility</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant" title="Options">
+<span class="material-symbols-outlined text-caption" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4: #INV-2027-086 (Overdue 14 days) -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-space-md px-space-lg">
+<div class="flex flex-col">
+<span class="font-label text-label text-on-surface">#INV-2027-086</span>
+<span class="text-on-surface-variant">Issue: 27 Jan 2027</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">Lekki Free Zone Enterprise</span>
+<span class="text-on-surface-variant text-[12px]">Finance Directorate</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="truncate max-w-[180px] block" title="Annual Event Wardrobe Staff">Annual Event Wardrobe Staff</span>
+</td>
+<td class="py-space-md px-space-md text-secondary font-medium">
+                      10 Feb 2027
+                    </td>
+<td class="py-space-md px-space-md font-label text-label text-on-background">
+                      ₦1,750,000.00
+                    </td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-secondary-fixed text-secondary font-label text-[12px]">
+<span class="material-symbols-outlined text-caption" data-icon="warning">warning</span>
+<span>Overdue (14 days)</span>
+</span>
+</td>
+<td class="py-space-md px-space-lg text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant" title="View">
+<span class="material-symbols-outlined text-caption" data-icon="visibility">visibility</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant" title="Options">
+<span class="material-symbols-outlined text-caption" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5: #INV-2027-085 (Paid) -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-space-md px-space-lg">
+<div class="flex flex-col">
+<span class="font-label text-label text-on-surface">#INV-2027-085</span>
+<span class="text-on-surface-variant">Issue: 06 Feb 2027</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">Flutterwave Corp HQ</span>
+<span class="text-on-surface-variant text-[12px]">Brand &amp; Culture Team</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="truncate max-w-[180px] block" title="Executive Gala Attire">Executive Gala Attire</span>
+</td>
+<td class="py-space-md px-space-md text-on-surface-variant">
+                      20 Feb 2027
+                    </td>
+<td class="py-space-md px-space-md font-label text-label text-on-background">
+                      ₦950,000.00
+                    </td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-surface-container text-primary-container font-label text-[12px] border border-outline-variant">
+<span class="material-symbols-outlined text-caption text-primary-container" data-icon="check_circle">check_circle</span>
+<span>Paid &amp; Settled ✓</span>
+</span>
+</td>
+<td class="py-space-md px-space-lg text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant" title="View">
+<span class="material-symbols-outlined text-caption" data-icon="visibility">visibility</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant" title="Options">
+<span class="material-symbols-outlined text-caption" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Pagination Bar -->
+<div class="p-space-md px-space-lg bg-surface-container-low border-t border-surface-variant flex items-center justify-between">
+<span class="text-caption font-caption text-on-surface-variant">Showing 1 to 5 of 24 corporate invoices</span>
+<div class="flex items-center gap-1">
+<button class="px-2.5 py-1 rounded border border-outline-variant bg-surface-container-lowest text-caption font-caption text-outline hover:text-on-surface disabled:opacity-50" disabled="">Previous</button>
+<button class="px-2.5 py-1 rounded bg-primary-container text-on-primary text-caption font-caption">1</button>
+<button class="px-2.5 py-1 rounded border border-outline-variant bg-surface-container-lowest text-caption font-caption text-on-surface hover:bg-surface-container">2</button>
+<button class="px-2.5 py-1 rounded border border-outline-variant bg-surface-container-lowest text-caption font-caption text-on-surface hover:bg-surface-container">3</button>
+<button class="px-2.5 py-1 rounded border border-outline-variant bg-surface-container-lowest text-caption font-caption text-on-surface hover:bg-surface-container">Next</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Column: Focused Invoice Inspector & Action Drawer (35% -> 4 columns out of 12) -->
+<aside class="xl:col-span-4 flex flex-col gap-space-lg">
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-outline-variant elevation-level-2 flex flex-col gap-space-md sticky top-20">
+<!-- Drawer Header with State Badges -->
+<div class="flex items-center justify-between pb-space-md border-b border-surface-variant">
+<div>
+<div class="flex items-center gap-space-xs">
+<span class="text-title font-title text-primary tracking-tight">#INV-2027-089</span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-primary-container font-label text-[11px] border border-outline-variant">E-INVOICE</span>
+</div>
+<span class="text-caption font-caption text-on-surface-variant">Generated 21 Feb 2027 • Standard Net-14</span>
+</div>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-primary font-label text-caption border border-outline-variant">
+<span class="material-symbols-outlined text-caption text-primary" data-icon="hourglass_top">hourglass_top</span>
+<span>Due Today</span>
+</span>
+</div>
+<!-- Client Dossier Information Card -->
+<div class="p-space-md rounded-xl bg-surface-container-low border border-surface-variant flex flex-col gap-space-xs">
+<span class="text-caption font-caption text-on-surface-variant font-medium">Billed Enterprise</span>
+<span class="text-subtitle font-subtitle text-on-surface">Dangote Protocol Directorate</span>
+<div class="mt-1 flex flex-col gap-1 text-caption font-caption text-on-surface-variant">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-caption text-outline" data-icon="person">person</span>
+<span class="text-on-surface font-medium">Alhaji Mukhtar Bello</span>
+<span class="text-outline">(Head of Protocol)</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-caption text-outline" data-icon="call">call</span>
+<span>+234 802 881 9920</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-caption text-outline" data-icon="mail">mail</span>
+<span>protocol@dangote.com</span>
+</div>
+</div>
+</div>
+<!-- Detailed Line Item Breakdown -->
+<div class="flex flex-col gap-space-xs">
+<span class="text-caption font-caption text-on-surface-variant font-medium">Line Item Breakdown</span>
+<div class="p-space-md rounded-xl border border-surface-variant bg-surface-container-lowest flex flex-col divide-y divide-surface-variant">
+<div class="py-2 flex items-center justify-between text-caption font-caption">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">30x Embroidered Cashmere Agbada</span>
+<span class="text-outline">Unit: ₦50,000.00</span>
+</div>
+<span class="font-label text-label text-on-surface">₦1,500,000.00</span>
+</div>
+<div class="py-2 flex items-center justify-between text-caption font-caption">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">15x Premium Silk Fila Caps</span>
+<span class="text-outline">Unit: ₦50,000.00</span>
+</div>
+<span class="font-label text-label text-on-surface">₦750,000.00</span>
+</div>
+<div class="py-2 flex items-center justify-between text-caption font-caption text-on-surface-variant">
+<span>7.5% VAT (FIRS Statutory Remittance)</span>
+<span class="text-primary font-medium">Included / Exempt</span>
+</div>
+<div class="pt-3 pb-1 flex items-center justify-between">
+<span class="text-label font-label text-on-surface">Total Payable</span>
+<span class="text-title font-title text-primary tracking-tight">₦2,250,000.00</span>
+</div>
+</div>
+</div>
+<!-- Instant NIP Payment Link & QR Verification -->
+<div class="p-space-md rounded-xl bg-surface-container-low border border-surface-variant flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-on-surface font-semibold">1-Tap Commercial Payment Link</span>
+<span class="text-caption font-caption text-primary flex items-center gap-1 cursor-pointer hover:underline">
+<span class="material-symbols-outlined text-caption" data-icon="content_copy">content_copy</span>
+<span>Copy</span>
+</span>
+</div>
+<div class="p-2 rounded bg-surface-container-lowest border border-outline-variant font-mono text-caption text-on-surface truncate">
+                https://yourapp.ng/pay/inv-8921-dangote
+              </div>
+</div>
+<!-- Automated Reminder Cadence Box -->
+<div class="p-space-md rounded-xl bg-surface-container border border-surface-variant flex items-start gap-space-md">
+<span class="material-symbols-outlined text-subtitle text-primary mt-0.5" data-icon="schedule_send">schedule_send</span>
+<div class="flex flex-col">
+<span class="text-caption font-caption font-semibold text-on-surface">Automated WhatsApp &amp; SMS Cadence</span>
+<p class="text-caption font-caption text-on-surface-variant mt-0.5">
+                  Last reminder dispatched 2 hours ago (Delivered). Next automated escalation scheduled for <strong>Tomorrow at 09:00 WAT</strong>.
+                </p>
+</div>
+</div>
+<!-- Primary & Secondary Action Triggers -->
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<!-- Berry Primary 52px button -->
+<button class="h-[52px] w-full rounded-xl bg-primary-container text-on-primary font-label text-label hover:bg-primary transition-colors elevation-level-1 flex items-center justify-center gap-space-sm">
+<span class="material-symbols-outlined" data-icon="send">send</span>
+<span>Send Instant WhatsApp Reminder</span>
+</button>
+<!-- Secondary button: Mark as Paid -->
+<button class="h-[52px] w-full rounded-xl bg-surface-container-high text-primary font-label text-label hover:bg-surface-variant transition-colors flex items-center justify-center gap-space-sm border border-outline-variant">
+<span class="material-symbols-outlined" data-icon="account_balance">account_balance</span>
+<span>Mark as Paid Manually (Bank Deposit)</span>
+</button>
+<div class="grid grid-cols-2 gap-space-sm">
+<!-- Tertiary button: PDF Download -->
+<button class="h-10 rounded-lg border border-outline-variant text-on-surface font-label text-caption hover:bg-surface-container transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-caption" data-icon="picture_as_pdf">picture_as_pdf</span>
+<span>Certified PDF</span>
+</button>
+<!-- Destructive button: Void -->
+<button class="h-10 rounded-lg border border-outline-variant text-secondary font-label text-caption hover:bg-secondary-fixed transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-caption" data-icon="block">block</span>
+<span>Void Invoice</span>
+</button>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<!-- Statutory Compliance & Cryptographic Audit Footer -->
+<footer class="pt-space-xl pb-space-lg border-t border-surface-variant flex flex-col md:flex-row items-center justify-between text-caption font-caption text-on-surface-variant gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-caption" data-icon="security">security</span>
+<span class="font-medium">NIBSS ISO-20022 Interoperable</span>
+</div>
+<span class="text-outline">|</span>
+<span>FIRS Commercial VAT Clearance ID: #TCC-2027-LAG-992144</span>
+<span class="text-outline">|</span>
+<span>Central Bank of Nigeria (CBN) Merchant Credit Framework Compliant</span>
+</div>
+<div>
+<span>YourApp Credit Ops v4.9.2-b2b • Powered by Warm Dignity Architecture</span>
+</div>
+</footer>
+</main>
+</div>
+</body></html>

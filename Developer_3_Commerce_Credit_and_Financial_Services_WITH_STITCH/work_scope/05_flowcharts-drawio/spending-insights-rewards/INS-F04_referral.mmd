@@ -1,0 +1,20 @@
+flowchart TD
+  a(["New user signs up with referral code"])
+  b["Link referrer and referee; run duplicate checks"]
+  c{"Referee completes first real transaction?"}
+  d["Wait; expire after window"]
+  e["Risk checks and caps"]
+  f{"Passes?"}
+  g["Flag for review"]
+  h["Credit referral rewards"]
+  i(["Notify both"])
+  a --> b
+  b --> c
+  c -->|not yet| d
+  d --> c
+  c -->|yes| e
+  e --> f
+  f -->|no| g
+  f -->|yes| h
+  h --> i
+  g --> i

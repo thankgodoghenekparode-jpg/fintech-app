@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YourApp Credit Ops - Campaigns and rules (W-INS-001)</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "error-container": "#ffdad6",
+            "on-primary-fixed-variant": "#881646",
+            "surface-tint": "#a8315d",
+            "surface": "#fff8f8",
+            "on-error": "#ffffff",
+            "tertiary-fixed": "#eedee4",
+            "on-secondary-fixed-variant": "#8c170e",
+            "surface-variant": "#e9e0e1",
+            "on-background": "#1f1b1c",
+            "on-tertiary": "#ffffff",
+            "on-primary-container": "#ffa0ba",
+            "outline": "#897176",
+            "on-tertiary-fixed": "#21191e",
+            "secondary": "#ae3123",
+            "surface-container-high": "#efe6e7",
+            "outline-variant": "#dcbfc5",
+            "on-error-container": "#93000a",
+            "primary-container": "#8e1b4a",
+            "on-primary": "#ffffff",
+            "secondary-fixed-dim": "#ffb4a8",
+            "on-surface": "#1f1b1c",
+            "tertiary-container": "#53484d",
+            "background": "#fff8f8",
+            "tertiary": "#3b3236",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "inverse-on-surface": "#f8eeef",
+            "primary-fixed-dim": "#ffb1c5",
+            "surface-container": "#f5eced",
+            "surface-bright": "#fff8f8",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "surface-container-low": "#fbf1f2",
+            "error": "#ba1a1a",
+            "on-secondary": "#ffffff",
+            "surface-dim": "#e1d8d9",
+            "on-secondary-fixed": "#410000",
+            "inverse-surface": "#342f30",
+            "surface-container-highest": "#e9e0e1",
+            "on-secondary-container": "#690000",
+            "secondary-fixed": "#ffdad4",
+            "secondary-container": "#fc6955",
+            "surface-container-lowest": "#ffffff",
+            "on-tertiary-container": "#c6b7bd",
+            "primary-fixed": "#ffd9e1",
+            "on-primary-fixed": "#3f001b",
+            "inverse-primary": "#ffb1c5",
+            "primary": "#6d0033",
+            "on-surface-variant": "#564146"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "space-3xl": "3rem",
+            "space-md": "0.75rem",
+            "space-xl": "1.5rem",
+            "space-lg": "1rem",
+            "space-2xl": "2rem",
+            "space-xs": "0.25rem",
+            "margin": "1rem",
+            "gutter": "1rem"
+          },
+          "fontFamily": {
+            "amount-lg": ["Inter"],
+            "title": ["Inter"],
+            "label": ["Inter"],
+            "subtitle": ["Inter"],
+            "body-medium": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "body": ["Inter"],
+            "display": ["Inter"],
+            "caption": ["Inter"]
+          },
+          "fontSize": {
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .tabular-nums { font-variant-numeric: tabular-nums; }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #dcbfc5;
+      border-radius: 9999px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: transparent;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex flex-col font-body selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Docked Left Navigation Bar (SideNavBar shared component) -->
+<aside class="fixed left-0 top-0 h-full w-72 flex flex-col justify-between py-space-xl px-space-lg overflow-y-auto bg-surface-container-lowest border-r border-surface-variant z-30 shadow-sm">
+<div class="flex flex-col gap-space-lg">
+<!-- Crest Header -->
+<div class="flex items-center gap-space-md px-space-xs">
+<div class="h-10 w-10 rounded-xl bg-primary-container flex items-center justify-center text-on-primary shadow-sm flex-shrink-0">
+<span class="material-symbols-outlined" data-icon="account_balance">account_balance</span>
+</div>
+<div class="flex flex-col">
+<span class="text-subtitle font-subtitle text-primary tracking-tight leading-none">YourApp Credit Ops</span>
+<span class="text-caption font-caption text-on-surface-variant mt-0.5">Enterprise Portal</span>
+</div>
+</div>
+<!-- Tenant Indicator Card -->
+<div class="p-space-md rounded-xl bg-surface-container-low border border-outline-variant flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-on-surface-variant uppercase tracking-wider text-[11px] font-semibold">Tenant Instance</span>
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 text-[11px] font-medium border border-emerald-200">
+<span class="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            Online
+          </span>
+</div>
+<span class="text-label font-label text-on-surface truncate">Retail Bank Rewards &amp; Loyalty #LOY-001</span>
+<span class="text-caption font-caption text-outline text-[12px]">Sub-ledger: NGN Core Engine</span>
+</div>
+<!-- Main Navigation Cluster -->
+<nav class="flex flex-col gap-1 mt-space-xs">
+<!-- Dashboard -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<!-- Campaigns & Rules (ACTIVE W-INS-001) -->
+<a class="flex items-center justify-between px-space-lg py-space-md rounded-lg bg-surface-container-low text-primary font-label text-label border border-outline-variant shadow-sm" href="#">
+<div class="flex items-center gap-space-md">
+<span class="material-symbols-outlined text-[20px] text-primary" data-icon="tune">tune</span>
+<span>Product Configuration</span>
+</div>
+<span class="inline-flex items-center justify-center px-1.5 py-0.5 text-[11px] font-bold rounded bg-primary-fixed text-on-primary-fixed">W-INS-001</span>
+</a>
+<!-- Applications Queue -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="pending_actions">pending_actions</span>
+<span>Applications Queue</span>
+</a>
+<!-- Credit Portfolio & Collections -->
+<a class="flex items-center justify-between px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<div class="flex items-center gap-space-md">
+<span class="material-symbols-outlined text-[20px]" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span>Credit Portfolio &amp; Collections</span>
+</div>
+<span class="text-caption font-caption text-outline text-[11px]">W-INS-002</span>
+</a>
+<!-- Partner Settlement -->
+<a class="flex items-center justify-between px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<div class="flex items-center gap-space-md">
+<span class="material-symbols-outlined text-[20px]" data-icon="handshake">handshake</span>
+<span>Partner Settlement</span>
+</div>
+</a>
+<!-- Audit Log -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="history">history</span>
+<span>Audit Log</span>
+</a>
+</nav>
+</div>
+<!-- Footer Cluster -->
+<div class="flex flex-col gap-1 pt-space-md border-t border-surface-variant">
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="admin_panel_settings">admin_panel_settings</span>
+<span>Security &amp; Settings</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="logout">logout</span>
+<span>Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- Sticky Top Nav Bar (TopNavBar shared component) -->
+<header class="sticky top-0 right-0 h-16 flex items-center justify-between px-space-xl bg-surface-container-lowest border-b border-surface-variant z-20 ml-72">
+<!-- Search Bar on the Left -->
+<div class="flex items-center gap-space-md w-[460px]">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-[20px]" data-icon="search">search</span>
+<input class="w-full h-11 pl-10 pr-4 rounded-xl bg-surface-container-low border border-outline-variant text-body font-body text-on-surface placeholder:text-outline text-sm focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all" placeholder="Search campaigns by name, rule ID, target segment, or merchant..." type="text"/>
+</div>
+</div>
+<!-- Quick Telemetry Badges & Dual Auth Pill -->
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-surface-container text-on-surface-variant text-caption font-label border border-outline-variant">
+<span class="material-symbols-outlined text-[15px] text-emerald-600" data-icon="bolt">bolt</span>
+<span>Active Rules: <strong>14 Live</strong></span>
+</span>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-surface-container text-on-surface-variant text-caption font-label border border-outline-variant">
+<span class="material-symbols-outlined text-[15px] text-primary" data-icon="sync_alt">sync_alt</span>
+<span>Engine: Auto-Credited via NIBSS (Zero-Delay)</span>
+</span>
+</div>
+<!-- Dual Authorization Badge -->
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed text-caption font-label border border-outline-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="verified_user">verified_user</span>
+<span>Dual Authorization</span>
+</span>
+<!-- Primary Action CTA -->
+<button class="h-10 px-4 rounded-xl bg-primary-container hover:bg-[#731540] text-on-primary text-label font-label flex items-center gap-2 shadow-sm transition-all duration-150">
+<span class="material-symbols-outlined text-[18px]" data-icon="add_circle">add_circle</span>
+<span>+ Create New Campaign</span>
+</button>
+<!-- Trailing Action Icons -->
+<div class="flex items-center gap-1 border-l border-surface-variant pl-space-md">
+<button class="p-2 rounded-lg hover:bg-surface-container-high text-on-surface-variant transition-colors" title="Notifications">
+<span class="material-symbols-outlined text-[20px]" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 rounded-lg hover:bg-surface-container-high text-on-surface-variant transition-colors" title="Help &amp; Documentation">
+<span class="material-symbols-outlined text-[20px]" data-icon="help_outline">help_outline</span>
+</button>
+</div>
+<!-- Staff Officer Passport Profile -->
+<div class="flex items-center gap-space-sm pl-space-sm">
+<img class="h-9 w-9 rounded-full object-cover border border-outline-variant shadow-xs" data-alt="Close-up professional photographic portrait of Mrs. Ifeoma Okonkwo, an executive African woman with elegant braided hair wearing institutional corporate attire in soft natural ambient light with deep berry accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBASd3JmDXH2BCWJM1ST8Vgqo_vYShH27bGpvU9VfUw4uCDps6knYop_K7lTBc2Ac72h5dPBFvMtZ4xO-D-jXtWJDy7ckefWb0yimezt-Ts934LJEVDijfuQKKoCNCPPm1f3Q4XGojTp8dADokdif1rh4WVNpuVewrTY3LXyEaePKqaMk9FbEP11jmX-a9Kv058YbK2hUdnWansZyOZviKsdLztF2O6DYKJrIJh193H"/>
+<div class="flex flex-col text-left">
+<span class="text-label font-label text-on-surface leading-tight text-[13px]">Mrs. Ifeoma Okonkwo</span>
+<span class="text-caption font-caption text-on-surface-variant text-[11px]">Head of Growth &amp; Retention</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Viewport Canvas -->
+<main class="ml-72 flex-1 p-space-xl flex flex-col gap-space-xl max-w-[1580px]">
+<!-- Page Title & Primary Operational Metadata -->
+<section class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-space-md pb-space-xs border-b border-surface-variant">
+<div>
+<div class="flex items-center gap-3">
+<h1 class="text-title font-title text-on-surface tracking-tight">Growth Campaigns, Cashback Rules &amp; Reward Automation</h1>
+<span class="px-2.5 py-0.5 rounded-md bg-surface-container-highest text-on-surface-variant font-label text-caption border border-outline-variant">
+            W-INS-001
+          </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 text-[11px] font-semibold border border-emerald-200">
+<span class="material-symbols-outlined text-[13px] text-emerald-600" data-icon="check_circle">check_circle</span>
+            CBN Compliant
+          </span>
+</div>
+<p class="text-body font-body text-on-surface-variant text-sm mt-1 max-w-3xl">
+          Define real-time debit card rebates, POS fuel loyalty tiers, and referral triggers. Built-in anti-gaming algorithms prevent synthetic velocity clusters while ensuring automatic sub-second ledger disbursement.
+        </p>
+</div>
+<!-- Header Action Buttons -->
+<div class="flex items-center gap-space-sm flex-shrink-0">
+<button class="h-10 px-4 rounded-xl border border-outline-variant bg-surface-container-lowest hover:bg-surface-container text-on-surface font-label text-label flex items-center gap-2 transition-all">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant" data-icon="file_download">file_download</span>
+<span>Export Campaign Performance (CSV)</span>
+</button>
+<button class="h-10 px-4 rounded-xl border border-primary-container text-primary hover:bg-surface-container-low font-label text-label flex items-center gap-2 transition-all">
+<span class="material-symbols-outlined text-[18px] text-primary" data-icon="batch_prediction">batch_prediction</span>
+<span>Simulate Campaign ROI</span>
+</button>
+</div>
+</section>
+<!-- KPI Strip: 4 Bento Metric Tiles -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- Tile 1 -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-outline-variant shadow-sm hover:border-primary-container transition-colors">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-on-surface-variant font-medium">Total Active Campaigns</span>
+<div class="h-8 w-8 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]" data-icon="campaign">campaign</span>
+</div>
+</div>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="text-title font-title text-on-surface">14 Live</span>
+<span class="text-caption font-caption text-emerald-700 font-semibold">+2 this week</span>
+</div>
+<div class="mt-2 text-caption font-caption text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="info">info</span>
+<span>9 Cashback, 3 Referral, 2 Partner-Funded</span>
+</div>
+</div>
+<!-- Tile 2 -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-outline-variant shadow-sm hover:border-primary-container transition-colors">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-on-surface-variant font-medium">MTD Rewards Distributed</span>
+<div class="h-8 w-8 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]" data-icon="payments">payments</span>
+</div>
+</div>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="text-title font-title text-on-surface tabular-nums">₦14,850,000.00</span>
+</div>
+<div class="mt-2 text-caption font-caption text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-emerald-600" data-icon="groups">groups</span>
+<span>Across 124,500 qualified customers</span>
+</div>
+</div>
+<!-- Tile 3 -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-outline-variant shadow-sm hover:border-primary-container transition-colors">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-on-surface-variant font-medium">Average Reward Value</span>
+<div class="h-8 w-8 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]" data-icon="stacked_line_chart">stacked_line_chart</span>
+</div>
+</div>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="text-title font-title text-on-surface tabular-nums">₦120.00</span>
+<span class="text-caption font-caption text-on-surface-variant">/ redemption</span>
+</div>
+<div class="mt-2 text-caption font-caption text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="account_balance">account_balance</span>
+<span>Median: ₦100.00 Airtime / Cashback</span>
+</div>
+</div>
+<!-- Tile 4 -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-outline-variant shadow-sm hover:border-primary-container transition-colors">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-on-surface-variant font-medium">Campaign ROI / Velocity Lift</span>
+<div class="h-8 w-8 rounded-lg bg-surface-container flex items-center justify-center text-emerald-700">
+<span class="material-symbols-outlined text-[18px]" data-icon="trending_up">trending_up</span>
+</div>
+</div>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="text-title font-title text-emerald-700">+28.4%</span>
+<span class="text-caption font-caption text-emerald-800 font-medium">uplift MoM</span>
+</div>
+<div class="mt-2 text-caption font-caption text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="speed">speed</span>
+<span>Monthly transaction velocity lift</span>
+</div>
+</div>
+</section>
+<!-- Transparent Reward Covenant & Fair Practice Banner -->
+<section class="p-space-md rounded-xl bg-gradient-to-r from-surface-container-low via-surface-container to-surface-container-low border border-outline-variant flex items-center justify-between gap-space-lg">
+<div class="flex items-center gap-space-md">
+<div class="h-9 w-9 rounded-lg bg-primary-container text-on-primary flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]" data-icon="verified">verified</span>
+</div>
+<div>
+<h2 class="text-label font-label text-on-surface font-semibold">Transparent Reward Covenant &amp; Regulatory Compliance</h2>
+<p class="text-caption font-caption text-on-surface-variant">
+            Strictly zero predatory lock-in or hidden thresholds. Payouts credit instantly to customers' central core savings ledger. Anti-wash trading &amp; automated sybil resistance active on all MCC triggers.
+          </p>
+</div>
+</div>
+<div class="flex items-center gap-space-sm flex-shrink-0">
+<span class="inline-flex items-center gap-1 text-[12px] font-label text-on-surface-variant">
+<span class="h-2 w-2 rounded-full bg-emerald-500"></span>
+          Audit Hash Signed
+        </span>
+<button class="text-caption font-label text-primary hover:underline flex items-center gap-1">
+<span>Review SLA</span>
+<span class="material-symbols-outlined text-[14px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</section>
+<!-- Two-Column Operations Layout (7/12 vs 5/12 cols) -->
+<div class="grid grid-cols-12 gap-space-xl items-start">
+<!-- LEFT COLUMN: Campaigns & Rules Matrix (7 cols) -->
+<section class="col-span-12 xl:col-span-7 flex flex-col gap-space-md">
+<!-- Filter Bar & Segment Tabs -->
+<div class="p-space-sm rounded-xl bg-surface-container-lowest border border-outline-variant shadow-sm flex items-center justify-between flex-wrap gap-space-sm">
+<div class="flex items-center gap-1 overflow-x-auto">
+<button class="px-3 py-1.5 rounded-lg bg-primary-container text-on-primary font-label text-caption shadow-xs">
+              All Campaigns (14)
+            </button>
+<button class="px-3 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container font-label text-caption transition-colors">
+              Transaction Cashback (7)
+            </button>
+<button class="px-3 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container font-label text-caption transition-colors">
+              Referral Incentives (3)
+            </button>
+<button class="px-3 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container font-label text-caption transition-colors">
+              Merchant Boosts (4)
+            </button>
+<button class="px-3 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container font-label text-caption transition-colors">
+              Drafts (2)
+            </button>
+</div>
+<div class="flex items-center gap-2">
+<button class="h-8 px-2.5 rounded-lg border border-outline-variant bg-surface-container-lowest hover:bg-surface-container text-on-surface-variant text-caption font-label flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px]" data-icon="filter_list">filter_list</span>
+<span>Filter</span>
+</button>
+<button class="h-8 px-2.5 rounded-lg border border-outline-variant bg-surface-container-lowest hover:bg-surface-container text-on-surface-variant text-caption font-label flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px]" data-icon="swap_vert">swap_vert</span>
+<span>Sort</span>
+</button>
+</div>
+</div>
+<!-- Table Container Card -->
+<div class="rounded-xl bg-surface-container-lowest border border-outline-variant shadow-sm overflow-hidden flex flex-col">
+<div class="overflow-x-auto custom-scroll">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-surface-variant text-on-surface-variant font-label text-caption select-none">
+<th class="py-3 px-4 font-semibold">Campaign Name &amp; Code</th>
+<th class="py-3 px-3 font-semibold">Incentive Type</th>
+<th class="py-3 px-3 font-semibold">Eligibility Segment</th>
+<th class="py-3 px-3 font-semibold text-right">Budget Cap / Payout</th>
+<th class="py-3 px-3 font-semibold text-center">Status</th>
+<th class="py-3 px-3 font-semibold text-center">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-variant text-sm">
+<!-- Row 1: Selected State (Focused in Right Drawer) -->
+<tr class="bg-surface-container-low/60 hover:bg-surface-container-low transition-colors cursor-pointer border-l-4 border-l-primary-container">
+<td class="py-3.5 px-4">
+<div class="flex flex-col">
+<span class="font-label text-on-surface font-semibold flex items-center gap-1.5">
+                        Friday Fuel Flash Cashback
+                        <span class="material-symbols-outlined text-[14px] text-primary" data-icon="local_gas_station">local_gas_station</span>
+</span>
+<span class="text-caption font-caption text-outline text-[12px] font-mono">#CMP-2027-01</span>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-secondary-fixed text-on-secondary-fixed text-[11px] font-semibold">
+                      5% POS Rebate
+                    </span>
+</td>
+<td class="py-3.5 px-3">
+<div class="text-caption text-on-surface-variant">Active Fuel Stations</div>
+<div class="text-[11px] text-outline font-mono">MCC 5541 / 5542</div>
+</td>
+<td class="py-3.5 px-3 text-right">
+<div class="font-label text-on-surface tabular-nums">₦3,000,000.00</div>
+<div class="text-[11px] text-on-surface-variant font-medium">68% burned (₦500 cap)</div>
+</td>
+<td class="py-3.5 px-3 text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-800 text-[11px] font-semibold border border-emerald-200">
+<span class="material-symbols-outlined text-[13px] text-emerald-600" data-icon="check_circle">check_circle</span>
+                      Active Live
+                    </span>
+</td>
+<td class="py-3.5 px-3 text-center">
+<button class="p-1 rounded-lg hover:bg-surface-container text-on-surface-variant" title="View details">
+<span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="py-3.5 px-4">
+<div class="flex flex-col">
+<span class="font-label text-on-surface font-medium flex items-center gap-1.5">
+                        First 3 Transfers Welcome Bonus
+                        <span class="material-symbols-outlined text-[14px] text-outline" data-icon="send_money">send_money</span>
+</span>
+<span class="text-caption font-caption text-outline text-[12px] font-mono">#CMP-2027-02</span>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-surface-container-high text-on-surface-variant text-[11px] font-semibold">
+                      ₦200 Flat Bonus
+                    </span>
+</td>
+<td class="py-3.5 px-3">
+<div class="text-caption text-on-surface-variant">Tier 1 &amp; Tier 2 New KYC</div>
+<div class="text-[11px] text-outline">First 30 days active</div>
+</td>
+<td class="py-3.5 px-3 text-right">
+<div class="font-label text-on-surface tabular-nums">₦5,000,000.00</div>
+<div class="text-[11px] text-on-surface-variant">42% burned</div>
+</td>
+<td class="py-3.5 px-3 text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-800 text-[11px] font-semibold border border-emerald-200">
+<span class="material-symbols-outlined text-[13px] text-emerald-600" data-icon="check_circle">check_circle</span>
+                      Active Live
+                    </span>
+</td>
+<td class="py-3.5 px-3 text-center">
+<button class="p-1 rounded-lg hover:bg-surface-container text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="py-3.5 px-4">
+<div class="flex flex-col">
+<span class="font-label text-on-surface font-medium flex items-center gap-1.5">
+                        Refer a Salary Earner
+                        <span class="material-symbols-outlined text-[14px] text-outline" data-icon="person_add">person_add</span>
+</span>
+<span class="text-caption font-caption text-outline text-[12px] font-mono">#CMP-2027-03</span>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-surface-container-high text-on-surface-variant text-[11px] font-semibold">
+                      ₦1,000 Referrer
+                    </span>
+</td>
+<td class="py-3.5 px-3">
+<div class="text-caption text-on-surface-variant">Verified Inbound Inflow</div>
+<div class="text-[11px] text-outline">Min. ₦50k deposit</div>
+</td>
+<td class="py-3.5 px-3 text-right">
+<div class="font-label text-on-surface tabular-nums">₦4,000,000.00</div>
+<div class="text-[11px] text-on-surface-variant">81% burned</div>
+</td>
+<td class="py-3.5 px-3 text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-800 text-[11px] font-semibold border border-emerald-200">
+<span class="material-symbols-outlined text-[13px] text-emerald-600" data-icon="check_circle">check_circle</span>
+                      Active Live
+                    </span>
+</td>
+<td class="py-3.5 px-3 text-center">
+<button class="p-1 rounded-lg hover:bg-surface-container text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="py-3.5 px-4">
+<div class="flex flex-col">
+<span class="font-label text-on-surface font-medium flex items-center gap-1.5">
+                        Supermarket Weekend Double Reward
+                        <span class="material-symbols-outlined text-[14px] text-outline" data-icon="shopping_cart">shopping_cart</span>
+</span>
+<span class="text-caption font-caption text-outline text-[12px] font-mono">#CMP-2027-04</span>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-surface-container-high text-on-surface-variant text-[11px] font-semibold">
+                      2.0% Cashback
+                    </span>
+</td>
+<td class="py-3.5 px-3">
+<div class="text-caption text-on-surface-variant">All Active Debit Cards</div>
+<div class="text-[11px] text-outline">MCC 5411 Groceries</div>
+</td>
+<td class="py-3.5 px-3 text-right">
+<div class="font-label text-on-surface tabular-nums">₦2,500,000.00</div>
+<div class="text-[11px] text-on-surface-variant">Starts Saturday</div>
+</td>
+<td class="py-3.5 px-3 text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-amber-50 text-amber-800 text-[11px] font-semibold border border-amber-200">
+<span class="material-symbols-outlined text-[13px] text-amber-600" data-icon="schedule">schedule</span>
+                      Scheduled
+                    </span>
+</td>
+<td class="py-3.5 px-3 text-center">
+<button class="p-1 rounded-lg hover:bg-surface-container text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="py-3.5 px-4">
+<div class="flex flex-col">
+<span class="font-label text-on-surface font-medium flex items-center gap-1.5">
+                        Electricity Bill Auto-Pay Loyalty
+                        <span class="material-symbols-outlined text-[14px] text-outline" data-icon="electric_bolt">electric_bolt</span>
+</span>
+<span class="text-caption font-caption text-outline text-[12px] font-mono">#CMP-2027-05</span>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-surface-container-high text-on-surface-variant text-[11px] font-semibold">
+                      ₦100 Bill Rebate
+                    </span>
+</td>
+<td class="py-3.5 px-3">
+<div class="text-caption text-on-surface-variant">Utility Savers Segment</div>
+<div class="text-[11px] text-outline">IKEDC / EKEDC recurring</div>
+</td>
+<td class="py-3.5 px-3 text-right">
+<div class="font-label text-on-surface tabular-nums">₦1,800,000.00</div>
+<div class="text-[11px] text-on-surface-variant">55% burned</div>
+</td>
+<td class="py-3.5 px-3 text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-800 text-[11px] font-semibold border border-emerald-200">
+<span class="material-symbols-outlined text-[13px] text-emerald-600" data-icon="check_circle">check_circle</span>
+                      Active Live
+                    </span>
+</td>
+<td class="py-3.5 px-3 text-center">
+<button class="p-1 rounded-lg hover:bg-surface-container text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Bar -->
+<div class="p-space-md border-t border-surface-variant flex items-center justify-between bg-surface-container-low/40">
+<span class="text-caption font-caption text-on-surface-variant">
+              Showing <strong class="text-on-surface">1 to 5</strong> of <strong class="text-on-surface">14</strong> campaigns
+            </span>
+<div class="flex items-center gap-1">
+<button class="h-8 px-3 rounded-lg border border-outline-variant bg-surface-container-lowest text-outline text-caption font-label opacity-60 cursor-not-allowed">
+                Previous
+              </button>
+<button class="h-8 w-8 rounded-lg bg-primary-container text-on-primary text-caption font-label">1</button>
+<button class="h-8 w-8 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface text-caption font-label hover:bg-surface-container">2</button>
+<button class="h-8 w-8 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface text-caption font-label hover:bg-surface-container">3</button>
+<button class="h-8 px-3 rounded-lg border border-outline-variant bg-surface-container-lowest hover:bg-surface-container text-on-surface text-caption font-label">
+                Next
+              </button>
+</div>
+</div>
+</div>
+</section>
+<!-- RIGHT COLUMN: Campaign Configuration & Inspector Drawer (5 cols) -->
+<section class="col-span-12 xl:col-span-5 flex flex-col gap-space-md">
+<div class="rounded-xl bg-surface-container-lowest border border-outline-variant shadow-sm p-space-lg flex flex-col gap-space-lg">
+<!-- Inspector Header -->
+<div class="flex items-start justify-between border-b border-surface-variant pb-space-md">
+<div>
+<div class="flex items-center gap-2">
+<span class="text-subtitle font-subtitle text-on-surface tracking-tight">Campaign Dossier</span>
+<span class="font-mono text-caption text-primary font-bold bg-primary-fixed px-2 py-0.5 rounded">#CMP-2027-01</span>
+</div>
+<h2 class="text-label font-label text-on-surface-variant mt-0.5">Friday Fuel Flash Cashback</h2>
+</div>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-800 text-[11px] font-semibold border border-emerald-200">
+<span class="material-symbols-outlined text-[13px] text-emerald-600" data-icon="radio_button_checked">radio_button_checked</span>
+              Active &amp; Funding Live
+            </span>
+</div>
+<!-- Section 1: Trigger Definition -->
+<div class="flex flex-col gap-space-xs">
+<span class="text-caption font-caption text-outline font-semibold uppercase tracking-wider text-[11px] flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="terminal">terminal</span>
+              Trigger Definition
+            </span>
+<div class="p-space-md rounded-xl bg-surface-container-low border border-outline-variant flex flex-col gap-2">
+<div class="flex justify-between items-center text-sm">
+<span class="text-on-surface-variant font-label text-caption">Event Source:</span>
+<span class="font-semibold text-on-surface font-mono">Card POS Purchase (Interswitch / NIBSS)</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-on-surface-variant font-label text-caption">Target Merchant MCCs:</span>
+<span class="font-semibold text-on-surface font-mono">5541 (Service Stations), 5542 (Fuel Dispenser)</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-on-surface-variant font-label text-caption">Active Time Window:</span>
+<span class="font-semibold text-on-surface font-body text-caption">Every Friday 06:00:00 to 23:59:59 WAT</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-on-surface-variant font-label text-caption">Minimum Ticket Value:</span>
+<span class="font-semibold text-on-surface tabular-nums">₦5,000.00</span>
+</div>
+</div>
+</div>
+<!-- Section 2: Reward Formulation -->
+<div class="flex flex-col gap-space-xs">
+<span class="text-caption font-caption text-outline font-semibold uppercase tracking-wider text-[11px] flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="functions">functions</span>
+              Reward Formulation
+            </span>
+<div class="p-space-md rounded-xl bg-surface-container-low border border-outline-variant flex flex-col gap-2">
+<div class="flex justify-between items-center text-sm">
+<span class="text-on-surface-variant font-label text-caption">Reward Rate:</span>
+<span class="font-semibold text-primary font-label">5.0% Instant Rebate</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-on-surface-variant font-label text-caption">Payout Ceiling:</span>
+<span class="font-semibold text-on-surface tabular-nums">₦500.00 max per transaction</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-on-surface-variant font-label text-caption">Customer Velocity Cap:</span>
+<span class="font-semibold text-on-surface">Max 2 transactions per customer per week</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-on-surface-variant font-label text-caption">Ledger Settlement:</span>
+<span class="font-semibold text-emerald-800 text-caption flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-emerald-600" data-icon="check">check</span>
+                  Instant Credit to Primary Naira Account
+                </span>
+</div>
+</div>
+</div>
+<!-- Section 3: Budget & Spend Gauge -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-outline font-semibold uppercase tracking-wider text-[11px] flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="pie_chart">pie_chart</span>
+                Budget &amp; Burn Gauge
+              </span>
+<span class="text-caption font-caption text-primary font-bold">68.0% Consumed</span>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-low border border-outline-variant flex flex-col gap-2.5">
+<div class="w-full bg-surface-container-high rounded-full h-3 overflow-hidden">
+<div class="bg-primary-container h-full rounded-full transition-all duration-500" style="width: 68%;"></div>
+</div>
+<div class="flex justify-between items-center text-xs">
+<div class="flex flex-col">
+<span class="text-outline">Disbursed (Burned):</span>
+<span class="font-bold text-on-surface tabular-nums text-sm">₦2,040,000.00</span>
+</div>
+<div class="flex flex-col text-right">
+<span class="text-outline">Remaining Pool:</span>
+<span class="font-bold text-emerald-700 tabular-nums text-sm">₦960,000.00</span>
+</div>
+</div>
+<div class="text-[11px] text-on-surface-variant border-t border-surface-variant pt-2 flex items-center justify-between">
+<span>Total Approved Allocation:</span>
+<span class="font-semibold tabular-nums">₦3,000,000.00</span>
+</div>
+</div>
+</div>
+<!-- Section 4: Anti-Fraud & Syndicate Safeguards -->
+<div class="flex flex-col gap-space-xs">
+<span class="text-caption font-caption text-outline font-semibold uppercase tracking-wider text-[11px] flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="security">security</span>
+              Anti-Fraud &amp; Syndicate Safeguards
+            </span>
+<div class="p-space-md rounded-xl bg-surface-container-low border border-outline-variant flex flex-col gap-2">
+<div class="flex items-center justify-between text-xs">
+<span class="text-on-surface font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-emerald-600" data-icon="check_circle">check_circle</span>
+                  Duplicate Terminal Frequency Limit
+                </span>
+<span class="text-outline font-mono">Max 1 txn / terminal / 6h</span>
+</div>
+<div class="flex items-center justify-between text-xs">
+<span class="text-on-surface font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-emerald-600" data-icon="check_circle">check_circle</span>
+                  Geofenced Location Check
+                </span>
+<span class="text-emerald-700 font-semibold">Strict Nigeria Only</span>
+</div>
+<div class="flex items-center justify-between text-xs">
+<span class="text-on-surface font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-emerald-600" data-icon="check_circle">check_circle</span>
+                  Blacklisted Card Velocity Block
+                </span>
+<span class="text-emerald-700 font-semibold">Active &amp; Armed</span>
+</div>
+</div>
+</div>
+<!-- Dual-Control Attestation -->
+<div class="p-space-md rounded-xl bg-surface-container border border-outline-variant flex items-center gap-space-md">
+<div class="h-9 w-9 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]" data-icon="policy">policy</span>
+</div>
+<div class="flex flex-col text-xs">
+<span class="font-bold text-on-surface">Dual-Control Cosignature Verified</span>
+<span class="text-on-surface-variant">Initiated by Growth Lead (I. Okonkwo), Cosigned by Chief Risk Officer (A. Sanusi)</span>
+</div>
+</div>
+<!-- Action CTA Group -->
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<button class="w-full h-[52px] rounded-xl bg-primary-container hover:bg-[#731540] text-on-primary font-label text-label flex items-center justify-center gap-2 shadow-sm transition-all duration-150">
+<span class="material-symbols-outlined text-[20px]" data-icon="save">save</span>
+<span>Save Rule Modifications</span>
+</button>
+<button class="w-full h-[52px] rounded-xl bg-surface-container hover:bg-surface-container-high text-primary font-label text-label flex items-center justify-center gap-2 transition-all duration-150">
+<span class="material-symbols-outlined text-[20px] text-secondary" data-icon="pause_circle">pause_circle</span>
+<span>Pause Campaign Immediately</span>
+</button>
+<div class="flex justify-center mt-1">
+<button class="text-caption font-label text-outline hover:text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="download">download</span>
+<span>Download Cryptographic Audit Hash (SHA-256)</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Institutional Compliance Footer Strip -->
+<footer class="mt-space-md pt-space-lg border-t border-surface-variant flex flex-col sm:flex-row items-center justify-between text-caption font-caption text-outline gap-space-md">
+<div class="flex items-center gap-space-md flex-wrap">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-emerald-600" data-icon="gavel">gavel</span>
+          CBN Fair Promotion Directives 2024
+        </span>
+<span class="h-3 w-px bg-outline-variant"></span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-emerald-600" data-icon="shield">shield</span>
+          NDIC Protection Insured
+        </span>
+<span class="h-3 w-px bg-outline-variant"></span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-emerald-600" data-icon="lock">lock</span>
+          ISO 27001 Certified Subsystem
+        </span>
+</div>
+<div class="flex items-center gap-2">
+<span class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+<span class="text-on-surface-variant font-medium">Real-Time Inflow Telemetry: Connected (Latency: 42ms)</span>
+</div>
+</footer>
+</main>
+</body></html>

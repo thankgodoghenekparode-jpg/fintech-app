@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Privacy and preferences (S-INS-009) - YourApp</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-tint": "#a8315d",
+            "primary-fixed-dim": "#ffb1c5",
+            "primary": "#6d0033",
+            "tertiary-fixed": "#eedee4",
+            "error-container": "#ffdad6",
+            "on-error": "#ffffff",
+            "surface-dim": "#e1d8d9",
+            "on-primary-fixed-variant": "#881646",
+            "surface-container-high": "#efe6e7",
+            "surface": "#fff8f8",
+            "on-primary": "#ffffff",
+            "on-error-container": "#93000a",
+            "surface-container-lowest": "#ffffff",
+            "surface-container": "#f5eced",
+            "on-background": "#1f1b1c",
+            "on-secondary": "#ffffff",
+            "error": "#ba1a1a",
+            "secondary-container": "#fc6955",
+            "on-tertiary-container": "#c6b7bd",
+            "tertiary-container": "#53484d",
+            "surface-container-highest": "#e9e0e1",
+            "secondary-fixed-dim": "#ffb4a8",
+            "on-secondary-container": "#690000",
+            "on-primary-container": "#ffa0ba",
+            "background": "#fff8f8",
+            "on-tertiary-fixed": "#21191e",
+            "primary-container": "#8e1b4a",
+            "on-surface-variant": "#564146",
+            "outline-variant": "#dcbfc5",
+            "primary-fixed": "#ffd9e1",
+            "on-secondary-fixed-variant": "#8c170e",
+            "secondary": "#ae3123",
+            "inverse-surface": "#342f30",
+            "secondary-fixed": "#ffdad4",
+            "tertiary": "#3b3236",
+            "surface-bright": "#fff8f8",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "inverse-on-surface": "#f8eeef",
+            "inverse-primary": "#ffb1c5",
+            "surface-variant": "#e9e0e1",
+            "on-primary-fixed": "#3f001b",
+            "on-surface": "#1f1b1c",
+            "surface-container-low": "#fbf1f2",
+            "on-tertiary": "#ffffff",
+            "on-secondary-fixed": "#410000",
+            "outline": "#897176",
+            "on-tertiary-fixed-variant": "#4e4449"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-md": "0.75rem",
+            "space-sm": "0.5rem",
+            "gutter": "1rem",
+            "margin": "1rem",
+            "space-xl": "1.5rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1rem",
+            "space-3xl": "3rem",
+            "space-2xl": "2rem"
+          },
+          "fontFamily": {
+            "title": ["Inter"],
+            "caption": ["Inter"],
+            "body-medium": ["Inter"],
+            "display": ["Inter"],
+            "label": ["Inter"],
+            "subtitle": ["Inter"],
+            "body": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "amount-lg": ["Inter"]
+          },
+          "fontSize": {
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    body {
+      background-color: #FAF8F7;
+      color: #1F1B1C;
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen bg-background text-on-surface flex justify-center selection:bg-primary-fixed selection:text-primary">
+<!-- Mobile Screen Canvas (390px constrained wrapper up to 560px for tablet preview) -->
+<div class="w-full max-w-[560px] min-h-screen flex flex-col bg-background pb-32 relative">
+<!-- Top App Bar (Header with back, title, help) -->
+<header class="sticky top-0 z-40 bg-surface/95 backdrop-blur-md px-margin py-space-sm flex items-center justify-between min-h-[56px] shadow-sm">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Go back" class="w-12 h-12 flex items-center justify-center rounded-full text-on-surface hover:bg-surface-container active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<span class="font-caption text-caption text-on-surface-variant leading-tight">Spending Insights &amp; Rewards</span>
+<h1 class="font-subtitle text-subtitle text-on-surface font-semibold tracking-tight">Insights &amp; Privacy Settings</h1>
+</div>
+</div>
+<button aria-label="Help and guidance" class="w-12 h-12 flex items-center justify-center rounded-full text-on-surface hover:bg-surface-container active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[24px]">help_outline</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="px-margin pt-space-md flex flex-col gap-space-xl">
+<!-- Context Notification / NDPR CBN Badge -->
+<div class="flex items-center gap-space-sm bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-space-sm shadow-[0_2px_8px_-2px_rgba(30,26,27,0.04)]">
+<span class="material-symbols-outlined text-primary text-[20px] ml-space-xs" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<p class="font-caption text-caption text-on-surface-variant">NDPR &amp; Central Bank of Nigeria Consumer Protection Standard v2.4</p>
+</div>
+<!-- Section 1: Insights & Analytics Display -->
+<section class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">monitoring</span>
+<h2 class="font-label text-label text-on-surface tracking-normal uppercase text-xs font-bold text-on-surface-variant">Section 1 • Insights &amp; Analytics Display</h2>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded-xl divide-y divide-outline-variant/20 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] overflow-hidden">
+<!-- Toggle 1: Include Savings in Net Worth [ON] -->
+<div class="p-space-lg flex items-start justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs flex-1">
+<span class="font-body-medium text-body-medium text-on-surface">Include Savings in Net Worth</span>
+<p class="font-caption text-caption text-on-surface-variant">Include target savings balances in overall monthly financial health computations.</p>
+</div>
+<!-- Switch (ON) -->
+<label class="relative inline-flex items-center cursor-pointer min-w-[52px] min-h-[48px] justify-center">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-7 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-5 peer-checked:after:border-surface-container-lowest after:content-[''] after:absolute after:top-[12.5px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<!-- Toggle 2: Exclude Internal Transfers [ON] -->
+<div class="p-space-lg flex items-start justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs flex-1">
+<span class="font-body-medium text-body-medium text-on-surface">Exclude Internal Transfers</span>
+<p class="font-caption text-caption text-on-surface-variant">Prevent self-transfers between your own accounts from inflating spending aggregates.</p>
+</div>
+<!-- Switch (ON) -->
+<label class="relative inline-flex items-center cursor-pointer min-w-[52px] min-h-[48px] justify-center">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-7 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-5 peer-checked:after:border-surface-container-lowest after:content-[''] after:absolute after:top-[12.5px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<!-- Toggle 3: Weekend Spending Highlights [ON] -->
+<div class="p-space-lg flex items-start justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs flex-1">
+<span class="font-body-medium text-body-medium text-on-surface">Weekend Spending Highlights</span>
+<p class="font-caption text-caption text-on-surface-variant">Receive encouraging nudges regarding weekend run rates and leisure budgets.</p>
+</div>
+<!-- Switch (ON) -->
+<label class="relative inline-flex items-center cursor-pointer min-w-[52px] min-h-[48px] justify-center">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-7 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-5 peer-checked:after:border-surface-container-lowest after:content-[''] after:absolute after:top-[12.5px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</div>
+</section>
+<!-- Section 2: Smart Categorization Engine -->
+<section class="flex flex-col gap-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">psychology</span>
+<h2 class="font-label text-label text-on-surface tracking-normal uppercase text-xs font-bold text-on-surface-variant">Section 2 • Smart Categorization Engine</h2>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded-xl divide-y divide-outline-variant/20 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] overflow-hidden">
+<!-- Row 1: Auto-categorize transactions -->
+<div class="p-space-lg flex items-center justify-between min-h-[64px] hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex flex-col gap-space-xs">
+<span class="font-body-medium text-body-medium text-on-surface">Auto-categorize transactions</span>
+<div class="flex items-center gap-space-xs">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed text-[11px] font-medium font-caption">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+                  Active
+                </span>
+<span class="font-caption text-caption text-on-surface-variant">Automatic with AI matching</span>
+</div>
+</div>
+<button class="w-12 h-12 flex items-center justify-center text-outline hover:text-on-surface">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+<!-- Row 2: Custom merchant rules -->
+<div class="p-space-lg flex items-center justify-between min-h-[64px] hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex flex-col gap-space-xs">
+<span class="font-body-medium text-body-medium text-on-surface">Custom merchant rules</span>
+<p class="font-caption text-caption text-on-surface-variant">3 rules configured • e.g. Glover Suya tagged as Dining</p>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="font-label text-label text-primary font-semibold hidden sm:inline">Tap to edit</span>
+<button class="w-12 h-12 flex items-center justify-center text-primary hover:bg-surface-container rounded-full">
+<span class="material-symbols-outlined text-[20px]">edit_note</span>
+</button>
+</div>
+</div>
+<!-- Row 3: Reset learned merchant tags -->
+<div class="p-space-lg flex items-center justify-between min-h-[64px] hover:bg-error-container/20 transition-colors cursor-pointer group">
+<div class="flex flex-col gap-space-xs">
+<span class="font-body-medium text-body-medium text-error font-medium">Reset learned merchant tags</span>
+<p class="font-caption text-caption text-on-surface-variant">Revert merchant classifications to bank default rules</p>
+</div>
+<button aria-label="Reset classification" class="w-12 h-12 flex items-center justify-center text-error group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[20px]">restart_alt</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Section 3: Privacy & Data Protection (NDPR & CBN Compliant) -->
+<section class="flex flex-col gap-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">security</span>
+<h2 class="font-label text-label text-on-surface tracking-normal uppercase text-xs font-bold text-on-surface-variant">Section 3 • Privacy &amp; Data Protection</h2>
+</div>
+<!-- Sacred Guarantee Information Card -->
+<div class="bg-surface-container-low border border-outline-variant/40 rounded-xl p-space-lg flex items-start gap-space-md shadow-[0_2px_8px_-2px_rgba(30,26,27,0.03)]">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center shrink-0 text-primary">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">shield_lock</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<span class="font-label text-label text-primary font-bold">Sacred Privacy Commitment</span>
+<p class="font-caption text-caption text-on-surface-variant leading-relaxed">
+              Your financial privacy is sacred. <span class="font-semibold text-on-surface">YourApp</span> never sells transaction history to third-party advertisers or data brokers. All data is processed strictly in accordance with NDPR and CBN data guidelines.
+            </p>
+</div>
+</div>
+<!-- Privacy Toggles & Data Download Card -->
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded-xl divide-y divide-outline-variant/20 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] overflow-hidden">
+<!-- Toggle: Personalized Reward Offers [ON] -->
+<div class="p-space-lg flex items-start justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs flex-1">
+<div class="flex items-center gap-space-xs">
+<span class="font-body-medium text-body-medium text-on-surface">Personalized Reward Offers</span>
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] font-medium bg-tertiary-fixed text-on-tertiary-fixed font-caption">Tailored</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant">Use transaction patterns to suggest relevant grocery, fuel &amp; dining discounts from verified partners.</p>
+</div>
+<!-- Switch (ON) -->
+<label class="relative inline-flex items-center cursor-pointer min-w-[52px] min-h-[48px] justify-center">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-7 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-5 peer-checked:after:border-surface-container-lowest after:content-[''] after:absolute after:top-[12.5px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<!-- Toggle: Anonymous Aggregate Benchmarking [OFF] -->
+<div class="p-space-lg flex items-start justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs flex-1">
+<span class="font-body-medium text-body-medium text-on-surface">Anonymous Aggregate Benchmarking</span>
+<p class="font-caption text-caption text-on-surface-variant">Compare your monthly category averages anonymously against general peers in your region.</p>
+</div>
+<!-- Switch (OFF) -->
+<label class="relative inline-flex items-center cursor-pointer min-w-[52px] min-h-[48px] justify-center">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-7 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-5 peer-checked:after:border-surface-container-lowest after:content-[''] after:absolute after:top-[12.5px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<!-- Link: Download My Insights Data Archive -->
+<div class="p-space-lg flex items-center justify-between min-h-[56px] hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">download_for_offline</span>
+</div>
+<span class="font-body-medium text-body-medium text-primary font-semibold">Download My Insights Data Archive (JSON/CSV)</span>
+</div>
+<span class="material-symbols-outlined text-[18px] text-primary">open_in_new</span>
+</div>
+</div>
+</section>
+<!-- Section 4: Budget Alerts & Notifications -->
+<section class="flex flex-col gap-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">notifications_active</span>
+<h2 class="font-label text-label text-on-surface tracking-normal uppercase text-xs font-bold text-on-surface-variant">Section 4 • Budget Alerts &amp; Notifications</h2>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded-xl p-space-lg flex flex-col gap-space-lg shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)]">
+<!-- Threshold Selector -->
+<div class="flex flex-col gap-space-xs">
+<label class="font-caption text-caption text-on-surface-variant font-medium">Alert threshold triggers</label>
+<div class="h-[52px] px-space-md bg-surface border border-outline-variant/50 rounded-xl flex items-center justify-between cursor-pointer hover:border-primary transition-colors">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[20px] text-primary">tune</span>
+<span class="font-body text-body text-on-surface font-medium">Notify at 80% and 100% of budget</span>
+</div>
+<span class="material-symbols-outlined text-[20px] text-outline">expand_more</span>
+</div>
+<span class="font-caption text-caption text-outline">Prompts will sound when monthly budget pace approaches ceiling</span>
+</div>
+<!-- Preferred Channel -->
+<div class="flex flex-col gap-space-xs">
+<label class="font-caption text-caption text-on-surface-variant font-medium">Delivery channel</label>
+<div class="h-[52px] px-space-md bg-surface border border-outline-variant/50 rounded-xl flex items-center justify-between cursor-pointer hover:border-primary transition-colors">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[20px] text-primary">mark_chat_read</span>
+<span class="font-body text-body text-on-surface font-medium">In-App Push + Email Digest</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-surface-container text-on-surface-variant">Bi-weekly</span>
+<span class="material-symbols-outlined text-[20px] text-outline">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Primary Action Trigger -->
+<div class="pt-space-sm pb-space-lg">
+<button class="w-full h-[52px] bg-primary-container text-on-primary font-label text-label rounded-xl flex items-center justify-center gap-space-xs shadow-md active:bg-[#731540] active:scale-[0.99] transition-all duration-150">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">save</span>
+<span>Save Preferences</span>
+</button>
+</div>
+</main>
+<!-- Docked Standard 5-tab Bottom Navigation Bar -->
+<!-- Mapped directly to Shared Component JSON rules & styling -->
+<nav aria-label="Bottom Navigation" class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-margin h-16 max-w-[560px] mx-auto pb-safe bg-surface-container-lowest shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)]">
+<!-- Tab 1: Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="font-caption text-caption font-medium">Home</span>
+</a>
+<!-- Tab 2: Payments -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[24px]">send</span>
+<span class="font-caption text-caption font-medium">Payments</span>
+</a>
+<!-- Tab 3: Cards -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[24px]">credit_card</span>
+<span class="font-caption text-caption font-medium">Cards</span>
+</a>
+<!-- Tab 4: Save & Borrow -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[24px]">savings</span>
+<span class="font-caption text-caption font-medium">Save &amp; Borrow</span>
+</a>
+<!-- Tab 5: More (Active intent: Settings, privacy and account rules sit under More) -->
+<a aria-current="page" class="flex flex-col items-center justify-center text-primary font-semibold min-w-[48px] py-space-xs gap-space-xs active:scale-95" href="#">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">more_horiz</span>
+<span class="font-caption text-caption font-medium text-primary font-semibold">More</span>
+</a>
+</nav>
+</div>
+</body></html>

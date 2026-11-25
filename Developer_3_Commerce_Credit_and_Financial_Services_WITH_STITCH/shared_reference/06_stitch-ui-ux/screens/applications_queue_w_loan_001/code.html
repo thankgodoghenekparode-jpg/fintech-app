@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YourApp Credit Ops - Applications Queue</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Inter Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary-container": "#8e1b4a",
+            "surface-variant": "#e9e0e1",
+            "surface-bright": "#fff8f8",
+            "tertiary": "#3b3236",
+            "primary-fixed": "#ffd9e1",
+            "on-secondary-fixed-variant": "#8c170e",
+            "surface-tint": "#a8315d",
+            "on-surface": "#1f1b1c",
+            "on-primary-fixed": "#3f001b",
+            "surface-dim": "#e1d8d9",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "primary": "#6d0033",
+            "on-primary-fixed-variant": "#881646",
+            "on-surface-variant": "#564146",
+            "on-tertiary-fixed": "#21191e",
+            "inverse-primary": "#ffb1c5",
+            "background": "#FAF8F7",
+            "on-secondary-container": "#690000",
+            "on-tertiary": "#ffffff",
+            "tertiary-container": "#53484d",
+            "inverse-surface": "#342f30",
+            "surface-container": "#f5eced",
+            "outline": "#897176",
+            "outline-variant": "#dcbfc5",
+            "surface": "#FAF8F7",
+            "surface-container-lowest": "#ffffff",
+            "secondary": "#ae3123",
+            "secondary-fixed": "#ffdad4",
+            "on-secondary-fixed": "#410000",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "surface-container-low": "#fbf1f2",
+            "surface-container-high": "#efe6e7",
+            "on-primary": "#ffffff",
+            "on-tertiary-container": "#c6b7bd",
+            "tertiary-fixed": "#eedee4",
+            "on-error": "#ffffff",
+            "on-secondary": "#ffffff",
+            "secondary-fixed-dim": "#ffb4a8",
+            "inverse-on-surface": "#f8eeef",
+            "on-background": "#1f1b1c",
+            "error-container": "#ffdad6",
+            "on-primary-container": "#ffa0ba",
+            "error": "#ba1a1a",
+            "secondary-container": "#fc6955",
+            "surface-container-highest": "#e9e0e1",
+            "primary-fixed-dim": "#ffb1c5",
+            "on-error-container": "#93000a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-lg": "1rem",
+            "space-sm": "0.5rem",
+            "space-xl": "1.5rem",
+            "space-2xl": "2rem",
+            "space-3xl": "3rem",
+            "margin": "1rem",
+            "gutter": "1rem",
+            "space-md": "0.75rem",
+            "space-xs": "0.25rem"
+          },
+          "fontFamily": {
+            "amount-lg": ["Inter", "sans-serif"],
+            "label": ["Inter", "sans-serif"],
+            "subtitle": ["Inter", "sans-serif"],
+            "body": ["Inter", "sans-serif"],
+            "amount-lg-mobile": ["Inter", "sans-serif"],
+            "display": ["Inter", "sans-serif"],
+            "title": ["Inter", "sans-serif"],
+            "caption": ["Inter", "sans-serif"],
+            "body-medium": ["Inter", "sans-serif"]
+          },
+          "fontSize": {
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #FAF8F7;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #dcbfc5;
+      border-radius: 9999px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #897176;
+    }
+    .tabular-naira {
+      font-feature-settings: "tnum" 1;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body antialiased flex h-screen overflow-hidden selection:bg-primary-fixed selection:text-primary">
+<!-- ================= SIDE NAVIGATION BAR (SHARED COMPONENT) ================= -->
+<aside class="fixed left-0 top-0 h-screen w-72 flex flex-col justify-between py-space-xl px-space-lg bg-surface-container-lowest border-r border-surface-variant z-30 shadow-sm custom-scrollbar">
+<div class="flex flex-col gap-space-xl">
+<!-- Crest & Brand Title -->
+<div class="flex items-center gap-space-md px-space-sm">
+<div class="w-10 h-10 rounded-xl bg-primary-container flex items-center justify-center text-on-primary shadow-sm flex-shrink-0">
+<span class="material-symbols-outlined text-[24px]">account_balance</span>
+</div>
+<div class="flex flex-col">
+<span class="text-subtitle font-subtitle text-primary tracking-tight">YourApp Credit Ops</span>
+<span class="text-caption font-caption text-on-surface-variant">Enterprise Portal</span>
+</div>
+</div>
+<!-- Main Navigation Menu -->
+<nav aria-label="Main Navigation" class="flex flex-col gap-1.5">
+<!-- 1. Dashboard -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span>Dashboard</span>
+</a>
+<!-- 2. Applications Queue (Active) -->
+<a class="flex items-center justify-between px-space-lg py-space-md rounded-lg bg-surface-container-low text-primary font-label text-label transition-colors duration-150" href="#">
+<div class="flex items-center gap-space-md">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">pending_actions</span>
+<span>Applications Queue</span>
+</div>
+<span class="px-2 py-0.5 rounded-full text-xs font-semibold bg-primary-container text-on-primary tabular-naira">42</span>
+</a>
+<!-- 3. Credit Portfolio & Collections -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">account_balance_wallet</span>
+<span>Credit Portfolio &amp; Collections</span>
+</a>
+<!-- 4. Product Configuration -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+<span>Product Configuration</span>
+</a>
+<!-- 5. Partner Settlement -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">handshake</span>
+<span>Partner Settlement</span>
+</a>
+<!-- 6. Audit Log -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">history</span>
+<span>Audit Log</span>
+</a>
+</nav>
+</div>
+<!-- Navigation Footer -->
+<div class="flex flex-col gap-1.5 pt-space-md border-t border-surface-variant">
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">admin_panel_settings</span>
+<span>Security &amp; Settings</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-secondary font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">logout</span>
+<span>Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- ================= TOP BAR & MAIN CONTENT WRAPPER ================= -->
+<div class="flex flex-col flex-1 pl-72 h-screen overflow-hidden">
+<!-- TopNavBar (Shared Component) -->
+<header class="sticky top-0 right-0 h-16 w-full flex items-center justify-between px-space-xl bg-surface-container-lowest border-b border-surface-variant z-20 flex-shrink-0">
+<!-- Search & Branch Context -->
+<div class="flex items-center gap-space-xl flex-1 max-w-2xl">
+<!-- Branch pill badge -->
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-container border border-surface-variant/70 text-on-surface flex-shrink-0">
+<span class="material-symbols-outlined text-primary text-[18px]">location_on</span>
+<span class="text-caption font-label font-semibold text-primary">Lagos Island Main Branch (012)</span>
+</div>
+<!-- Global Search Bar -->
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+<input class="w-full h-10 pl-10 pr-4 text-caption font-body bg-surface rounded-lg border border-outline-variant/60 focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container placeholder:text-outline/70 transition-all" placeholder="Search by Application ID, Customer Name, or BVN..." type="text"/>
+</div>
+</div>
+<!-- Action items & Profile -->
+<div class="flex items-center gap-space-lg flex-shrink-0">
+<!-- Trailing Quick Action: Dual Authorization -->
+<button class="flex items-center gap-2 h-10 px-4 rounded-xl bg-primary-container text-on-primary text-label font-label shadow-sm hover:bg-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+<span>Dual Authorization</span>
+</button>
+<!-- Notification & Help icons -->
+<div class="flex items-center gap-1">
+<button class="w-10 h-10 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors relative" title="Notifications" type="button">
+<span class="material-symbols-outlined text-[22px]">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-secondary"></span>
+</button>
+<button class="w-10 h-10 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors" title="Support" type="button">
+<span class="material-symbols-outlined text-[22px]">help_outline</span>
+</button>
+</div>
+<div class="h-6 w-px bg-surface-variant"></div>
+<!-- Officer Profile -->
+<div class="flex items-center gap-space-md">
+<img class="w-10 h-10 rounded-full object-cover border border-outline-variant/50 shadow-sm" data-alt="Close up professional portrait of a senior Nigerian credit operations banker in Lagos wearing modern formal corporate attire against a warm neutral office backdrop with subtle warm berry atmospheric reflections." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEZUOyJGd6j3Ku65ULZkNhaKnfB3utwz_Mw71xEsn3TFyPZvQtiYZaoa-HVMJTEmtIF4_aPlUDHKJ-xT7vums3ZbhfBuwLAIJsOxN-nQAaljTccD45iwRzodT3nRWX4CbnCJAIvL0CG55yfVpAwK3gqap4cyU5jL8VyYs3NnkCW4imUZ2i7L9GYmCq6lhlaRA4ggSpdmV9dppw_T9T6UhGjY2euk4X2KDqprR3BYB-CITij0fmyYXgzw"/>
+<div class="flex flex-col text-left">
+<span class="text-caption font-label font-semibold text-on-surface leading-tight">Segun Adebayo</span>
+<span class="text-[12px] font-caption text-on-surface-variant">Senior Credit Officer</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Scrollable Workspace Canvas -->
+<div class="flex-1 overflow-y-auto custom-scrollbar p-space-xl space-y-space-xl bg-surface">
+<!-- Breadcrumbs & Page Header -->
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2 text-caption font-caption text-outline">
+<span>Credit Operations</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-primary font-medium">Applications Queue</span>
+</div>
+<div class="flex items-center justify-between flex-wrap gap-4">
+<div class="flex items-center gap-space-md">
+<h1 class="text-title font-title text-on-surface tracking-tight">Loan Underwriting &amp; Applications Queue</h1>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed text-caption font-label">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+              42 Applications Awaiting Action
+            </span>
+</div>
+<div class="flex items-center gap-space-md">
+<button class="h-10 px-4 rounded-xl border border-outline-variant bg-surface-container-lowest text-on-surface hover:bg-surface-container text-label font-label flex items-center gap-2 transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>Export CSV</span>
+</button>
+<button class="h-10 px-4 rounded-xl border border-outline-variant bg-surface-container-lowest text-on-surface hover:bg-surface-container text-label font-label flex items-center gap-2 transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+<span>Queue Settings</span>
+</button>
+</div>
+</div>
+</div>
+<!-- KPI Summary Row (4 metric Bento cards) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-lg">
+<!-- 1. Pending Underwriting -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-outline-variant/60 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] flex flex-col justify-between">
+<div class="flex items-center justify-between mb-3">
+<span class="text-caption font-label font-medium text-on-surface-variant">Pending Underwriting</span>
+<div class="w-8 h-8 rounded-lg bg-primary-fixed/50 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">hourglass_top</span>
+</div>
+</div>
+<div class="flex items-baseline gap-2 mb-2">
+<span class="text-amount-lg font-amount-lg text-primary tabular-naira">42</span>
+<span class="text-caption font-body text-outline">active files</span>
+</div>
+<div class="pt-3 border-t border-surface-container flex items-center justify-between text-caption font-caption">
+<span class="text-on-surface-variant font-medium tabular-naira">₦14.2M volume</span>
+<span class="inline-flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[14px]">speed</span>
+<span>4.2m avg SLA</span>
+</span>
+</div>
+</div>
+<!-- 2. Auto-Approved Today -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-outline-variant/60 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] flex flex-col justify-between">
+<div class="flex items-center justify-between mb-3">
+<span class="text-caption font-label font-medium text-on-surface-variant">Auto-Approved Today</span>
+<div class="w-8 h-8 rounded-lg bg-[#E2F5EA] flex items-center justify-center text-[#137A47]">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+</div>
+</div>
+<div class="flex items-baseline gap-2 mb-2">
+<span class="text-amount-lg font-amount-lg text-on-surface tabular-naira">186</span>
+<span class="text-caption font-body text-outline">instant grants</span>
+</div>
+<div class="pt-3 border-t border-surface-container flex items-center justify-between text-caption font-caption">
+<span class="text-on-surface-variant font-medium tabular-naira">₦48.5M disbursed</span>
+<span class="inline-flex items-center gap-1 text-[#137A47] font-semibold">
+<span class="material-symbols-outlined text-[14px]">bolt</span>
+<span>84.5% straight-thru</span>
+</span>
+</div>
+</div>
+<!-- 3. Manual Review Required -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-outline-variant/60 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] flex flex-col justify-between">
+<div class="flex items-center justify-between mb-3">
+<span class="text-caption font-label font-medium text-on-surface-variant">Manual Review Required</span>
+<div class="w-8 h-8 rounded-lg bg-[#FEF4E6] flex items-center justify-center text-[#B05B00]">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</div>
+</div>
+<div class="flex items-baseline gap-2 mb-2">
+<span class="text-amount-lg font-amount-lg text-on-surface tabular-naira">28</span>
+<span class="text-caption font-body text-outline">flagged cases</span>
+</div>
+<div class="pt-3 border-t border-surface-container flex items-center justify-between text-caption font-caption">
+<span class="text-on-surface-variant font-medium tabular-naira">₦9.8M volume</span>
+<span class="inline-flex items-center gap-1 text-[#B05B00] font-medium">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+<span>Risk engine flag</span>
+</span>
+</div>
+</div>
+<!-- 4. Rejected / Hardship -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-outline-variant/60 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] flex flex-col justify-between">
+<div class="flex items-center justify-between mb-3">
+<span class="text-caption font-label font-medium text-on-surface-variant">Rejected / Hardship</span>
+<div class="w-8 h-8 rounded-lg bg-error-container/60 flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[20px]">cancel</span>
+</div>
+</div>
+<div class="flex items-baseline gap-2 mb-2">
+<span class="text-amount-lg font-amount-lg text-on-surface tabular-naira">12</span>
+<span class="text-caption font-body text-outline">unsuccessful</span>
+</div>
+<div class="pt-3 border-t border-surface-container flex items-center justify-between text-caption font-caption">
+<span class="text-error font-medium truncate">CBN DSR &gt; 45%</span>
+<span class="text-on-surface-variant">BVN mismatch</span>
+</div>
+</div>
+</div>
+<!-- Dual-Control Notification Banner -->
+<div class="p-space-lg rounded-xl bg-secondary-fixed/50 border border-secondary-container/40 flex items-center justify-between gap-space-lg">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-lg bg-secondary text-on-secondary flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[22px]">policy</span>
+</div>
+<div>
+<div class="text-label font-label text-on-secondary-fixed font-bold flex items-center gap-2">
+              Dual-Control Protocol Active
+              <span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-secondary text-on-secondary">Level 2 Signoff</span>
+</div>
+<p class="text-caption font-body text-on-surface-variant mt-0.5">
+              Dual-Control Required: High-value facilities above ₦500,000 require secondary approval from Branch Manager.
+            </p>
+</div>
+</div>
+<div class="flex items-center gap-2 flex-shrink-0">
+<button class="h-9 px-3 rounded-lg bg-surface-container-lowest border border-outline-variant text-label font-label text-on-surface hover:bg-surface-container transition-colors" type="button">
+            View Policy Matrix
+          </button>
+</div>
+</div>
+<!-- Filter and Search Toolbar -->
+<div class="p-space-md bg-surface-container-lowest rounded-xl border border-outline-variant/60 flex flex-wrap items-center justify-between gap-space-md shadow-sm">
+<div class="flex items-center flex-wrap gap-2">
+<!-- Filter Pills -->
+<button class="px-3 py-1.5 rounded-lg text-caption font-label bg-primary text-on-primary font-semibold flex items-center gap-1.5 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">list_alt</span>
+            All Statuses
+          </button>
+<button class="px-3 py-1.5 rounded-lg text-caption font-label bg-surface-container text-on-surface-variant hover:bg-surface-container-high font-medium flex items-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px] text-error">trending_down</span>
+            Flagged for DSR
+          </button>
+<button class="px-3 py-1.5 rounded-lg text-caption font-label bg-surface-container text-on-surface-variant hover:bg-surface-container-high font-medium flex items-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px] text-primary">person_check</span>
+            Underwriter Assigned
+          </button>
+<button class="px-3 py-1.5 rounded-lg text-caption font-label bg-surface-container text-on-surface-variant hover:bg-surface-container-high font-medium flex items-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px] text-secondary">priority_high</span>
+            High Priority (&gt;₦250k)
+          </button>
+</div>
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface border border-outline-variant/70 text-on-surface text-caption font-label">
+<span class="material-symbols-outlined text-outline text-[18px]">calendar_today</span>
+<span>Today: 24 Feb 2027</span>
+<span class="material-symbols-outlined text-outline text-[16px]">expand_more</span>
+</div>
+<button class="h-9 px-3 rounded-lg bg-surface border border-outline-variant/70 text-on-surface-variant hover:text-on-surface flex items-center gap-1.5 text-caption font-label transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+<span>More Filters</span>
+</button>
+</div>
+</div>
+<!-- MAIN CONTENT SPLIT: TABLE & SLIDE-OVER REVIEW DRAWER -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-xl items-start">
+<!-- Applications Data Table (xl:col-span-8) -->
+<div class="xl:col-span-8 bg-surface-container-lowest rounded-xl border border-outline-variant/60 shadow-sm overflow-hidden flex flex-col">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="sticky top-0 bg-surface-container-low border-b border-outline-variant text-[13px] font-label text-on-surface-variant select-none">
+<tr>
+<th class="py-3 px-4" scope="col">Application ID</th>
+<th class="py-3 px-4" scope="col">Applicant / BVN</th>
+<th class="py-3 px-4" scope="col">Product &amp; Tenor</th>
+<th class="py-3 px-4 text-right" scope="col">Requested</th>
+<th class="py-3 px-4" scope="col">DSR &amp; Score</th>
+<th class="py-3 px-4" scope="col">Risk Decision</th>
+<th class="py-3 px-4" scope="col">Reviewer</th>
+<th class="py-3 px-4 text-right" scope="col">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-variant text-caption font-body">
+<!-- ROW 1 (ACTIVE / SELECTED: Kelechi Okonkwo) -->
+<tr class="bg-primary-fixed/20 hover:bg-primary-fixed/30 transition-colors">
+<td class="py-3.5 px-4 font-semibold text-primary">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+                      #LN-2027-8912
+                    </div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-on-surface">Kelechi Okonkwo</div>
+<div class="text-[11px] text-outline tabular-naira">BVN: 2218****102</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-block px-2 py-0.5 rounded text-[12px] bg-surface-container font-medium text-on-surface">3M Salary Advance</span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="font-semibold text-on-surface tabular-naira">₦150,000.00</div>
+<div class="text-[11px] text-outline tabular-naira">₦420,000/mo</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5">
+<span class="font-semibold text-on-surface">18% DSR</span>
+<span class="text-outline">•</span>
+<span class="text-[#137A47] font-semibold">785</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-[12px] font-semibold bg-[#FEF4E6] text-[#B05B00]">
+<span class="material-symbols-outlined text-[14px]">pending</span>
+                      Auto-Qualify / Review
+                    </span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 text-[12px] font-medium text-on-surface">
+<span class="w-5 h-5 rounded-full bg-primary-container text-on-primary text-[10px] flex items-center justify-center font-bold">SA</span>
+                      Segun A.
+                    </span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="px-2.5 py-1 rounded bg-primary-container text-on-primary text-xs font-label hover:bg-primary transition-colors" type="button">
+                        Review
+                      </button>
+<button class="px-2 py-1 rounded bg-[#E2F5EA] text-[#137A47] text-xs font-label hover:bg-[#d0eedd] transition-colors" title="Quick Approve" type="button">
+                        Quick Approve
+                      </button>
+</div>
+</td>
+</tr>
+<!-- ROW 2: Fatima Aliyu Bello -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-3.5 px-4 font-semibold text-on-surface">#LN-2027-8913</td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-on-surface">Fatima Aliyu Bello</div>
+<div class="text-[11px] text-outline tabular-naira">BVN: 2240****991</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-block px-2 py-0.5 rounded text-[12px] bg-surface-container font-medium text-on-surface">6M Personal Facility</span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="font-semibold text-on-surface tabular-naira">₦450,000.00</div>
+<div class="text-[11px] text-outline tabular-naira">₦850,000/mo</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5">
+<span class="font-semibold text-on-surface">24% DSR</span>
+<span class="text-outline">•</span>
+<span class="text-[#137A47] font-semibold">810</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-[12px] font-semibold bg-[#EBF3FE] text-[#1459C3]">
+<span class="material-symbols-outlined text-[14px]">shield</span>
+                      Awaiting Level 2 Approval
+                    </span>
+</td>
+<td class="py-3.5 px-4">
+<span class="px-2 py-0.5 rounded text-[11px] bg-secondary-fixed text-on-secondary-fixed-variant font-semibold">Dual Req.</span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="px-2.5 py-1 rounded bg-surface-container border border-outline-variant text-on-surface text-xs font-label hover:bg-surface-container-high transition-colors" type="button">
+                        Authorize
+                      </button>
+<button class="px-2 py-1 rounded text-primary text-xs font-label hover:underline" type="button">
+                        View Detail
+                      </button>
+</div>
+</td>
+</tr>
+<!-- ROW 3: Babatunde Adebayo -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-3.5 px-4 font-semibold text-on-surface">#LN-2027-8914</td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-on-surface">Babatunde Adebayo</div>
+<div class="text-[11px] text-outline tabular-naira">BVN: 2291****440</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-block px-2 py-0.5 rounded text-[12px] bg-surface-container font-medium text-on-surface">1M Micro Flash</span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="font-semibold text-on-surface tabular-naira">₦35,000.00</div>
+<div class="text-[11px] text-outline tabular-naira">₦110,000/mo</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5">
+<span class="font-semibold text-on-surface">32% DSR</span>
+<span class="text-outline">•</span>
+<span class="text-on-surface-variant font-semibold">640</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-[12px] font-semibold bg-[#E2F5EA] text-[#137A47]">
+<span class="material-symbols-outlined text-[14px]">verified</span>
+                      Recommended Approve
+                    </span>
+</td>
+<td class="py-3.5 px-4">
+<span class="text-caption text-outline italic">Unassigned</span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="px-2.5 py-1 rounded border border-primary-container text-primary text-xs font-label hover:bg-primary-fixed/30 transition-colors" type="button">
+                        Assign Me
+                      </button>
+<button class="px-2 py-1 rounded text-on-surface-variant text-xs font-label hover:bg-surface-container transition-colors" type="button">
+                        Review
+                      </button>
+</div>
+</td>
+</tr>
+<!-- ROW 4: Chidinma Nwosu -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-3.5 px-4 font-semibold text-on-surface">#LN-2027-8915</td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-on-surface">Chidinma Nwosu</div>
+<div class="text-[11px] text-outline tabular-naira">BVN: 2255****773</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-block px-2 py-0.5 rounded text-[12px] bg-surface-container font-medium text-on-surface">3M SME Float</span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="font-semibold text-on-surface tabular-naira">₦200,000.00</div>
+<div class="text-[11px] text-outline tabular-naira">₦380,000/mo</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5">
+<span class="font-semibold text-error">48% DSR</span>
+<span class="text-outline">•</span>
+<span class="text-error font-semibold">590</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-[12px] font-semibold bg-error-container text-error">
+<span class="material-symbols-outlined text-[14px]">error_outline</span>
+                      DSR Exceeded (&gt;45%)
+                    </span>
+</td>
+<td class="py-3.5 px-4">
+<span class="text-caption text-on-surface-variant font-medium">Risk Auto</span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="px-2.5 py-1 rounded bg-error/10 text-error text-xs font-label hover:bg-error/20 transition-colors" type="button">
+                        Decline
+                      </button>
+<button class="px-2 py-1 rounded bg-surface-container text-on-surface text-xs font-label hover:bg-surface-container-high transition-colors" type="button">
+                        Request Guarantor
+                      </button>
+</div>
+</td>
+</tr>
+<!-- ROW 5: Musa Garba -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-3.5 px-4 font-semibold text-on-surface">#LN-2027-8916</td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-on-surface">Musa Garba</div>
+<div class="text-[11px] text-outline tabular-naira">BVN: 2233****019</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-block px-2 py-0.5 rounded text-[12px] bg-surface-container font-medium text-on-surface">12M Asset Loan</span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="font-semibold text-on-surface tabular-naira">₦750,000.00</div>
+<div class="text-[11px] text-outline tabular-naira">₦1,200,000/mo</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5">
+<span class="font-semibold text-on-surface">29% DSR</span>
+<span class="text-outline">•</span>
+<span class="text-[#137A47] font-semibold">760</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-[12px] font-semibold bg-[#F5E8FF] text-[#7828C8]">
+<span class="material-symbols-outlined text-[14px]">lock_clock</span>
+                      Dual-Control Pending
+                    </span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 text-[12px] font-medium text-on-surface">
+<span class="w-5 h-5 rounded-full bg-secondary text-on-secondary text-[10px] flex items-center justify-center font-bold">CE</span>
+                      Chidi E. (Mgr)
+                    </span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="px-2.5 py-1 rounded bg-secondary text-on-secondary text-xs font-label hover:bg-secondary/90 transition-colors" type="button">
+                        Manager Signoff
+                      </button>
+<button class="px-2 py-1 rounded text-outline hover:text-on-surface transition-colors" title="Audit History" type="button">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Bar -->
+<div class="p-space-md bg-surface-container-lowest border-t border-surface-variant flex items-center justify-between flex-wrap gap-space-md">
+<span class="text-caption font-caption text-on-surface-variant">
+              Showing <span class="font-semibold text-on-surface">1</span> to <span class="font-semibold text-on-surface">5</span> of <span class="font-semibold text-on-surface">42</span> entries
+            </span>
+<div class="flex items-center gap-1">
+<button class="h-8 px-2.5 rounded-lg border border-outline-variant bg-surface text-caption font-label text-outline hover:text-on-surface hover:bg-surface-container transition-colors disabled:opacity-40" disabled="" type="button">
+                Previous
+              </button>
+<button class="w-8 h-8 rounded-lg bg-primary-container text-on-primary text-caption font-label font-semibold" type="button">
+                1
+              </button>
+<button class="w-8 h-8 rounded-lg border border-outline-variant bg-surface hover:bg-surface-container text-caption font-label text-on-surface transition-colors" type="button">
+                2
+              </button>
+<button class="w-8 h-8 rounded-lg border border-outline-variant bg-surface hover:bg-surface-container text-caption font-label text-on-surface transition-colors" type="button">
+                3
+              </button>
+<button class="h-8 px-2.5 rounded-lg border border-outline-variant bg-surface text-caption font-label text-on-surface hover:bg-surface-container transition-colors" type="button">
+                Next
+              </button>
+</div>
+</div>
+</div>
+<!-- Slide-over Review Drawer (xl:col-span-4) -->
+<div class="xl:col-span-4 bg-surface-container-lowest rounded-xl border border-outline-variant/60 shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08)] flex flex-col overflow-hidden">
+<!-- Drawer Header -->
+<div class="p-space-lg bg-surface-container-low border-b border-surface-variant flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-bold text-subtitle">
+                KO
+              </div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="text-subtitle font-subtitle text-on-surface">Kelechi Okonkwo</h3>
+<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-[#E2F5EA] text-[#137A47] flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[12px]">verified</span>
+                    Tier 3
+                  </span>
+</div>
+<p class="text-caption font-caption text-outline">Application #LN-2027-8912 • Instant Salary Advance</p>
+</div>
+</div>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-outline hover:bg-surface-container transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Drawer Body: Affordability Check Breakdown -->
+<div class="p-space-lg space-y-space-lg custom-scrollbar">
+<!-- Primary Metric Callout -->
+<div class="p-space-md rounded-xl bg-surface-container border border-surface-variant/80 flex items-center justify-between">
+<div>
+<span class="text-caption font-caption text-on-surface-variant">Requested Facility</span>
+<div class="text-title font-title text-primary tabular-naira">₦150,000.00</div>
+</div>
+<div class="text-right">
+<span class="text-caption font-caption text-on-surface-variant">Tenor / Interest</span>
+<div class="text-label font-label text-on-surface font-semibold">90 Days @ 3.5%/mo</div>
+</div>
+</div>
+<!-- Affordability Analysis Box -->
+<div class="space-y-space-sm">
+<div class="flex items-center justify-between">
+<span class="text-label font-label text-on-surface">Affordability Breakdown</span>
+<span class="text-[12px] font-semibold px-2 py-0.5 rounded bg-[#E2F5EA] text-[#137A47]">
+                  Passes CBN 33.3% Cap
+                </span>
+</div>
+<div class="p-space-md rounded-xl bg-surface border border-outline-variant/50 space-y-2.5 text-caption font-caption">
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant">Net Monthly Salary (3-mo avg):</span>
+<span class="font-semibold text-on-surface tabular-naira">₦420,000.00</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant">CRC Credit Bureau Status:</span>
+<span class="inline-flex items-center gap-1 font-semibold text-[#137A47]">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                    Clean (0 Delinquencies)
+                  </span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant">Existing Debt Obligations:</span>
+<span class="font-medium text-on-surface tabular-naira">₦24,000.00 / mo</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant">Proposed Monthly Instalment:</span>
+<span class="font-semibold text-primary tabular-naira">₦54,120.00 / mo</span>
+</div>
+<!-- DSR Meter -->
+<div class="pt-2 border-t border-surface-variant space-y-1">
+<div class="flex justify-between items-center">
+<span class="font-label font-medium text-on-surface">Resulting Total DSR:</span>
+<span class="font-label font-bold text-[#137A47] tabular-naira">18.6%</span>
+</div>
+<!-- Progress Bar -->
+<div class="w-full h-2 rounded-full bg-surface-variant overflow-hidden flex">
+<div class="h-full bg-[#137A47] rounded-full" style="width: 18.6%;"></div>
+</div>
+<div class="flex justify-between text-[11px] text-outline pt-0.5">
+<span>Current: 18.6%</span>
+<span>Max CBN Threshold: 33.3%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Verification Checklist -->
+<div class="space-y-space-sm">
+<span class="text-label font-label text-on-surface">Institutional Verification</span>
+<div class="space-y-2 text-caption">
+<div class="p-2.5 rounded-lg bg-surface flex items-center justify-between border border-outline-variant/40">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#137A47] text-[18px]">verified_user</span>
+<span class="text-on-surface">BVN &amp; Face Match Verification</span>
+</div>
+<span class="text-[12px] font-semibold text-[#137A47]">99.4% Match</span>
+</div>
+<div class="p-2.5 rounded-lg bg-surface flex items-center justify-between border border-outline-variant/40">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#137A47] text-[18px]">account_balance</span>
+<span class="text-on-surface">Direct Debit Mandate (NIBSS)</span>
+</div>
+<span class="text-[12px] font-semibold text-[#137A47]">Pre-Authorized</span>
+</div>
+<div class="p-2.5 rounded-lg bg-surface flex items-center justify-between border border-outline-variant/40">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#B05B00] text-[18px]">badge</span>
+<span class="text-on-surface">Employer Payroll Validation</span>
+</div>
+<span class="text-[12px] font-semibold text-[#B05B00]">Confirmed FMCG</span>
+</div>
+</div>
+</div>
+<!-- Underwriter Notes -->
+<div class="space-y-1">
+<label class="text-caption font-caption text-on-surface-variant">Officer Decision Notes</label>
+<textarea class="w-full text-caption font-body bg-surface rounded-lg border border-outline-variant/70 p-2.5 focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container resize-none" placeholder="Optional notes for audit logs..." rows="2">Applicant meets clean CRC threshold with stable 2-year salary history at Nigerian Breweries PLC.</textarea>
+</div>
+<!-- Action Buttons Standardized -->
+<div class="pt-space-md border-t border-surface-variant flex flex-col gap-2.5">
+<button class="w-full h-[52px] rounded-xl bg-primary-container hover:bg-[#731540] text-on-primary font-label text-label flex items-center justify-center gap-2 shadow-sm transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+<span>Approve Facility (₦150,000.00)</span>
+</button>
+<div class="grid grid-cols-2 gap-2">
+<button class="h-11 rounded-xl border border-outline-variant text-on-surface hover:bg-surface-container font-label text-caption flex items-center justify-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">receipt_long</span>
+                  Request Pay Slip
+                </button>
+<button class="h-11 rounded-xl bg-error/10 hover:bg-error/20 text-error font-label text-caption flex items-center justify-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">block</span>
+                  Reject with Reason
+                </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

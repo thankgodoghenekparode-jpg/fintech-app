@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Refer &amp; Earn - YourApp</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-tint": "#a8315d",
+            "primary-fixed-dim": "#ffb1c5",
+            "primary": "#6d0033",
+            "tertiary-fixed": "#eedee4",
+            "error-container": "#ffdad6",
+            "on-error": "#ffffff",
+            "surface-dim": "#e1d8d9",
+            "on-primary-fixed-variant": "#881646",
+            "surface-container-high": "#efe6e7",
+            "surface": "#fff8f8",
+            "on-primary": "#ffffff",
+            "on-error-container": "#93000a",
+            "surface-container-lowest": "#ffffff",
+            "surface-container": "#f5eced",
+            "on-background": "#1f1b1c",
+            "on-secondary": "#ffffff",
+            "error": "#ba1a1a",
+            "secondary-container": "#fc6955",
+            "on-tertiary-container": "#c6b7bd",
+            "tertiary-container": "#53484d",
+            "surface-container-highest": "#e9e0e1",
+            "secondary-fixed-dim": "#ffb4a8",
+            "on-secondary-container": "#690000",
+            "on-primary-container": "#ffa0ba",
+            "background": "#fff8f8",
+            "on-tertiary-fixed": "#21191e",
+            "primary-container": "#8e1b4a",
+            "on-surface-variant": "#564146",
+            "outline-variant": "#dcbfc5",
+            "primary-fixed": "#ffd9e1",
+            "on-secondary-fixed-variant": "#8c170e",
+            "secondary": "#ae3123",
+            "inverse-surface": "#342f30",
+            "secondary-fixed": "#ffdad4",
+            "tertiary": "#3b3236",
+            "surface-bright": "#fff8f8",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "inverse-on-surface": "#f8eeef",
+            "inverse-primary": "#ffb1c5",
+            "surface-variant": "#e9e0e1",
+            "on-primary-fixed": "#3f001b",
+            "on-surface": "#1f1b1c",
+            "surface-container-low": "#fbf1f2",
+            "on-tertiary": "#ffffff",
+            "on-secondary-fixed": "#410000",
+            "outline": "#897176",
+            "on-tertiary-fixed-variant": "#4e4449"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-md": "0.75rem",
+            "space-sm": "0.5rem",
+            "gutter": "1rem",
+            "margin": "1rem",
+            "space-xl": "1.5rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1rem",
+            "space-3xl": "3rem",
+            "space-2xl": "2rem"
+          },
+          "fontFamily": {
+            "title": ["Inter"],
+            "caption": ["Inter"],
+            "body-medium": ["Inter"],
+            "display": ["Inter"],
+            "label": ["Inter"],
+            "subtitle": ["Inter"],
+            "body": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "amount-lg": ["Inter"]
+          },
+          "fontSize": {
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased flex justify-center min-h-screen">
+<!-- Mobile Viewport Shell (390 x 844 scaled canvas max-w-[560px]) -->
+<div class="w-full max-w-[560px] min-h-screen flex flex-col bg-background relative shadow-sm pb-space-3xl">
+<!-- Top App Bar (Docked full-width top) -->
+<header class="sticky top-0 z-40 bg-surface/95 backdrop-blur-md px-margin py-space-sm min-h-[56px] flex items-center justify-between border-b border-outline-variant/40">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Go back" class="w-12 h-12 flex items-center justify-center rounded-full hover:bg-surface-container active:scale-95 transition-all text-primary" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<h1 class="font-subtitle text-subtitle text-on-surface font-semibold tracking-tight">Refer &amp; Earn</h1>
+</div>
+<div class="flex items-center">
+<button aria-label="Referral History Info" class="w-12 h-12 flex items-center justify-center rounded-full hover:bg-surface-container active:scale-95 transition-all text-on-surface-variant" type="button">
+<span class="material-symbols-outlined text-[22px]">help_outline</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-margin pt-space-md pb-space-2xl space-y-space-xl">
+<!-- Hero Card: Celebratory & Dignified -->
+<section class="relative overflow-hidden rounded-xl bg-surface-container-lowest border border-outline-variant/50 p-space-lg shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)]">
+<div class="absolute -right-6 -top-6 w-32 h-32 bg-primary-fixed/30 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex flex-col items-center text-center">
+<div class="w-14 h-14 rounded-full bg-primary-fixed flex items-center justify-center mb-space-md text-primary ring-4 ring-surface-container-low">
+<span class="material-symbols-outlined text-[32px]" style="font-variation-settings: 'FILL' 1;">featured_seasonal_and_gifts</span>
+</div>
+<span class="font-label text-caption font-semibold text-primary tracking-wide bg-primary-fixed/40 px-space-sm py-space-xs rounded-full mb-space-xs">
+            Double Rewards Program
+          </span>
+<h2 class="font-title text-title text-on-surface font-bold tracking-tight mb-space-xs">
+            Give ₦500, Get ₦1,000
+          </h2>
+<p class="font-body text-body text-on-surface-variant max-w-[420px] leading-relaxed">
+            Share the ease of YourApp. When your friend opens an account and makes their first transfer or bill payment of at least ₦1,000, you both get rewarded.
+          </p>
+</div>
+</section>
+<!-- Referral Code & Share Link Section -->
+<section class="space-y-space-md">
+<!-- Code Card Box -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/60 p-space-lg shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)]">
+<div class="flex flex-col gap-space-md">
+<div>
+<span class="font-caption text-caption text-on-surface-variant font-medium block mb-space-xs">
+                Your Unique Invite Code
+              </span>
+<div class="flex items-center justify-between bg-surface-container-low rounded-xl px-space-md py-space-sm border border-outline-variant/30">
+<span class="font-title text-title text-primary tracking-widest font-bold tabular-nums" id="referralCode">
+                  CHIO-9021
+                </span>
+<button class="h-[44px] px-space-md bg-primary text-on-primary rounded-xl font-label text-label flex items-center gap-space-xs hover:bg-primary-container active:scale-95 transition-all" onclick="navigator.clipboard?.writeText('CHIO-9021');" type="button">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+<span>Copy</span>
+</button>
+</div>
+</div>
+<!-- Share Link Bar -->
+<div>
+<span class="font-caption text-caption text-on-surface-variant font-medium block mb-space-xs">
+                Direct Invite Link
+              </span>
+<div class="flex items-center justify-between bg-surface rounded-xl px-space-md py-space-sm border border-outline-variant/40">
+<span class="font-caption text-caption text-on-surface truncate pr-space-sm select-all">
+                  yourapp.ng/invite/chio-9021
+                </span>
+<button aria-label="Copy Invite Link" class="w-10 h-10 flex items-center justify-center text-primary hover:bg-surface-container rounded-lg active:scale-95 transition-all" onclick="navigator.clipboard?.writeText('https://yourapp.ng/invite/chio-9021');" type="button">
+<span class="material-symbols-outlined text-[20px]">link</span>
+</button>
+</div>
+</div>
+<!-- Social Quick Share Row -->
+<div class="pt-space-xs">
+<span class="font-caption text-caption text-on-surface-variant font-medium block mb-space-sm">
+                Share directly via
+              </span>
+<div class="grid grid-cols-4 gap-space-sm">
+<button class="h-[52px] flex flex-col items-center justify-center rounded-xl bg-surface-container-low hover:bg-surface-container border border-outline-variant/30 active:scale-95 transition-all group" type="button">
+<span class="material-symbols-outlined text-[22px] text-primary group-hover:scale-110 transition-transform">chat</span>
+<span class="font-caption text-[11px] text-on-surface-variant mt-0.5">WhatsApp</span>
+</button>
+<button class="h-[52px] flex flex-col items-center justify-center rounded-xl bg-surface-container-low hover:bg-surface-container border border-outline-variant/30 active:scale-95 transition-all group" type="button">
+<span class="material-symbols-outlined text-[22px] text-primary group-hover:scale-110 transition-transform">sms</span>
+<span class="font-caption text-[11px] text-on-surface-variant mt-0.5">SMS</span>
+</button>
+<button class="h-[52px] flex flex-col items-center justify-center rounded-xl bg-surface-container-low hover:bg-surface-container border border-outline-variant/30 active:scale-95 transition-all group" type="button">
+<span class="material-symbols-outlined text-[22px] text-primary group-hover:scale-110 transition-transform">share</span>
+<span class="font-caption text-[11px] text-on-surface-variant mt-0.5">X (Twitter)</span>
+</button>
+<button class="h-[52px] flex flex-col items-center justify-center rounded-xl bg-surface-container-low hover:bg-surface-container border border-outline-variant/30 active:scale-95 transition-all group" type="button">
+<span class="material-symbols-outlined text-[22px] text-primary group-hover:scale-110 transition-transform">more_horiz</span>
+<span class="font-caption text-[11px] text-on-surface-variant mt-0.5">More</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Earnings & Progress Card: Bento Style Grid -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant/50 p-space-lg shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)]">
+<div class="flex items-center justify-between mb-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+<h3 class="font-subtitle text-subtitle text-on-surface font-semibold">Earnings &amp; Progress</h3>
+</div>
+<span class="font-caption text-caption text-primary font-medium bg-primary-fixed/40 px-2.5 py-1 rounded-full">
+            8 Friends Joined
+          </span>
+</div>
+<div class="grid grid-cols-2 gap-space-sm pt-space-xs">
+<!-- Total Bonus Earned -->
+<div class="bg-surface-container-low p-space-md rounded-xl border border-outline-variant/30 flex flex-col justify-between">
+<span class="font-caption text-caption text-on-surface-variant">Total Bonus Earned</span>
+<div class="mt-space-xs">
+<span class="font-title text-title text-primary font-bold tabular-nums">₦6,000.00</span>
+<div class="flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[15px] text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-caption text-[12px] text-primary font-medium">Credited to wallet</span>
+</div>
+</div>
+</div>
+<!-- Pending Qualification -->
+<div class="bg-surface-container-low p-space-md rounded-xl border border-outline-variant/30 flex flex-col justify-between">
+<span class="font-caption text-caption text-on-surface-variant">Pending Payout</span>
+<div class="mt-space-xs">
+<span class="font-title text-title text-on-surface font-bold tabular-nums">₦2,000.00</span>
+<div class="flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[15px] text-outline">schedule</span>
+<span class="font-caption text-[12px] text-on-surface-variant">2 awaiting transfer</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Referred Friends Activity List -->
+<section class="space-y-space-sm">
+<div class="flex items-center justify-between">
+<h3 class="font-subtitle text-subtitle text-on-surface font-semibold">Referred Friends</h3>
+<span class="font-caption text-caption text-on-surface-variant">Real-time status</span>
+</div>
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/50 divide-y divide-outline-variant/20 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] overflow-hidden">
+<!-- Friend 1: Babatunde Adebayo -->
+<div class="min-h-[64px] py-space-md px-space-lg flex items-center justify-between hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-space-md min-w-0 pr-space-xs">
+<div class="w-10 h-10 rounded-full bg-primary-fixed/50 text-primary font-label text-label flex items-center justify-center shrink-0">
+                BA
+              </div>
+<div class="truncate">
+<p class="font-body-medium text-body-medium text-on-surface truncate">Babatunde Adebayo</p>
+<p class="font-caption text-caption text-on-surface-variant truncate">Signed up 23 Feb • First transaction complete</p>
+</div>
+</div>
+<div class="shrink-0 flex items-center gap-1 bg-surface-container-low px-2.5 py-1 rounded-lg border border-outline-variant/40">
+<span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-label text-caption text-primary font-semibold tabular-nums">₦1,000 Paid</span>
+</div>
+</div>
+<!-- Friend 2: Blessing Okon -->
+<div class="min-h-[64px] py-space-md px-space-lg flex items-center justify-between hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-space-md min-w-0 pr-space-xs">
+<div class="w-10 h-10 rounded-full bg-primary-fixed/50 text-primary font-label text-label flex items-center justify-center shrink-0">
+                BO
+              </div>
+<div class="truncate">
+<p class="font-body-medium text-body-medium text-on-surface truncate">Blessing Okon</p>
+<p class="font-caption text-caption text-on-surface-variant truncate">Signed up 20 Feb • First transaction complete</p>
+</div>
+</div>
+<div class="shrink-0 flex items-center gap-1 bg-surface-container-low px-2.5 py-1 rounded-lg border border-outline-variant/40">
+<span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-label text-caption text-primary font-semibold tabular-nums">₦1,000 Paid</span>
+</div>
+</div>
+<!-- Friend 3: Emeka Johnson -->
+<div class="min-h-[64px] py-space-md px-space-lg flex items-center justify-between hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-space-md min-w-0 pr-space-xs">
+<div class="w-10 h-10 rounded-full bg-surface-container text-on-surface-variant font-label text-label flex items-center justify-center shrink-0">
+                EJ
+              </div>
+<div class="truncate">
+<p class="font-body-medium text-body-medium text-on-surface truncate">Emeka Johnson</p>
+<p class="font-caption text-caption text-on-surface-variant truncate">Signed up Yesterday • Needs ₦1,000 transaction</p>
+</div>
+</div>
+<button class="shrink-0 flex items-center gap-1 bg-surface-container-high hover:bg-surface-container-highest px-2.5 py-1.5 rounded-lg border border-outline-variant/40 active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">hourglass_top</span>
+<span class="font-label text-caption text-on-surface-variant font-semibold">Remind</span>
+</button>
+</div>
+<!-- Friend 4: Hadiza Umar -->
+<div class="min-h-[64px] py-space-md px-space-lg flex items-center justify-between hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-space-md min-w-0 pr-space-xs">
+<div class="w-10 h-10 rounded-full bg-surface-container text-on-surface-variant font-label text-label flex items-center justify-center shrink-0">
+                HU
+              </div>
+<div class="truncate">
+<p class="font-body-medium text-body-medium text-on-surface truncate">Hadiza Umar</p>
+<p class="font-caption text-caption text-on-surface-variant truncate">Signed up 18 Feb • Needs ₦1,000 transaction</p>
+</div>
+</div>
+<button class="shrink-0 flex items-center gap-1 bg-surface-container-high hover:bg-surface-container-highest px-2.5 py-1.5 rounded-lg border border-outline-variant/40 active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">hourglass_top</span>
+<span class="font-label text-caption text-on-surface-variant font-semibold">Remind</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Transparent Referral Rules (Collapsible/Informational card) -->
+<section class="bg-surface-container-low/70 rounded-xl border border-outline-variant/40 p-space-lg space-y-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">verified_user</span>
+<h4 class="font-label text-label text-on-surface font-semibold">Transparent Referral Program Rules</h4>
+</div>
+<ul class="space-y-space-sm font-caption text-caption text-on-surface-variant">
+<li class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5">verified</span>
+<span>Identity verification requires valid Nigerian BVN or NIN for both parties to ensure security and prevent automated duplicate signups.</span>
+</li>
+<li class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5">bolt</span>
+<span>Your ₦1,000 reward is credited automatically to your primary account within 60 seconds of your friend completing their qualifying transaction.</span>
+</li>
+<li class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5">all_inclusive</span>
+<span>No limit on total earnings. Refer as many colleagues, friends, and family members as you wish.</span>
+</li>
+</ul>
+</section>
+<!-- Standalone 52px Primary Action -->
+<div class="pt-space-xs">
+<button class="w-full h-[52px] bg-primary-container text-on-primary rounded-xl font-label text-label font-semibold flex items-center justify-center gap-space-sm shadow-md hover:bg-primary active:scale-[0.98] transition-all" onclick="navigator.clipboard?.writeText('https://yourapp.ng/invite/chio-9021'); alert('Link copied to clipboard!');" type="button">
+<span class="material-symbols-outlined text-[20px]">share</span>
+<span>Invite Friends Now</span>
+</button>
+</div>
+</main>
+<!-- Docked standard 5-tab bottom navigation bar -->
+<nav aria-label="Main Navigation" class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-margin h-16 max-w-[560px] mx-auto pb-safe bg-surface-container-lowest shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)]">
+<!-- Tab 1: Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="font-caption text-caption font-medium">Home</span>
+</a>
+<!-- Tab 2: Payments -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[24px]">send</span>
+<span class="font-caption text-caption font-medium">Payments</span>
+</a>
+<!-- Tab 3: Cards -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[24px]">credit_card</span>
+<span class="font-caption text-caption font-medium">Cards</span>
+</a>
+<!-- Tab 4: Save & Borrow -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[24px]">savings</span>
+<span class="font-caption text-caption font-medium">Save &amp; Borrow</span>
+</a>
+<!-- Tab 5: More (Active tab representing Spending Insights & Rewards / Referral Program) -->
+<a class="flex flex-col items-center justify-center text-primary font-semibold min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">more_horiz</span>
+<span class="font-caption text-caption font-medium">More</span>
+</a>
+</nav>
+</div>
+</body></html>

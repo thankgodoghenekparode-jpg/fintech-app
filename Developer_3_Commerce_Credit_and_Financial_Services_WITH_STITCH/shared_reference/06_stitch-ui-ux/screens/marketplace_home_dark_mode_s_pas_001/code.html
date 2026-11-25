@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Marketplace Home - Pay Am Small</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "outline": "#a28b91",
+            "on-tertiary-fixed-variant": "#06429a",
+            "on-primary-fixed-variant": "#7f234b",
+            "on-surface": "#e7e1e2",
+            "primary-fixed-dim": "#ffb0ca",
+            "on-primary": "#620735",
+            "inverse-primary": "#9e3b63",
+            "background": "#151314",
+            "on-error": "#690005",
+            "primary-container": "#e0709a",
+            "on-primary-container": "#5d0331",
+            "tertiary-container": "#6a92ee",
+            "on-tertiary-container": "#002a69",
+            "surface-container-low": "#1d1b1c",
+            "on-surface-variant": "#dac0c6",
+            "secondary": "#ffb4a8",
+            "on-secondary-container": "#ff9f90",
+            "surface-container": "#211f20",
+            "inverse-on-surface": "#323031",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "surface-bright": "#3b3839",
+            "on-background": "#e7e1e2",
+            "on-tertiary": "#002d6f",
+            "tertiary-fixed": "#d9e2ff",
+            "on-secondary-fixed-variant": "#7f291e",
+            "surface-container-highest": "#373435",
+            "on-tertiary-fixed": "#001945",
+            "surface-tint": "#ffb0ca",
+            "inverse-surface": "#e7e1e2",
+            "primary": "#ffb0ca",
+            "surface": "#151314",
+            "error": "#ffb4ab",
+            "on-secondary": "#61130a",
+            "surface-container-high": "#2c292a",
+            "tertiary": "#b0c6ff",
+            "secondary-container": "#822c20",
+            "secondary-fixed-dim": "#ffb4a8",
+            "error-container": "#93000a",
+            "outline-variant": "#544247",
+            "primary-fixed": "#ffd9e3",
+            "on-error-container": "#ffdad6",
+            "surface-dim": "#151314",
+            "surface-variant": "#373435",
+            "secondary-fixed": "#ffdad4",
+            "on-secondary-fixed": "#410000",
+            "surface-container-lowest": "#100e0f"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "1rem",
+            "space-md": "1rem",
+            "space-sm": "0.5rem",
+            "space-xl": "2rem",
+            "margin-mobile": "1rem",
+            "gutter-mobile": "0.75rem",
+            "space-xs": "0.25rem",
+            "margin": "1rem",
+            "space-lg": "1.5rem"
+          },
+          "fontFamily": {
+            "label-lg": ["Inter"],
+            "label-sm": ["Inter"],
+            "headline-md": ["Inter"],
+            "body-lg": ["Inter"],
+            "headline-sm": ["Inter"],
+            "display-currency": ["Inter"],
+            "label-md": ["Inter"],
+            "title-currency": ["Inter"],
+            "headline-lg": ["Inter"],
+            "body-md": ["Inter"]
+          },
+          "fontSize": {
+            "label-lg": ["15px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "title-currency": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .pb-safe {
+      padding-bottom: env(safe-area-inset-bottom, 20px);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-lowest text-on-surface antialiased flex justify-center min-h-screen selection:bg-primary-container selection:text-on-primary-container">
+<!-- Mobile Viewport Canvas Container (390px baseline, expands cleanly to 560px max) -->
+<div class="w-full max-w-[560px] min-h-screen bg-surface-container-lowest flex flex-col relative pb-[96px]">
+<!-- Top App Bar / Identity Navigation (JSON TopAppBar Pattern with Contextual Brand Lock) -->
+<header class="sticky top-0 z-40 bg-surface-container-low/95 backdrop-blur-md px-margin py-space-sm shadow-[0_4px_16px_rgba(0,0,0,0.35)]">
+<div class="flex items-center justify-between min-h-[52px]">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-surface-container-high border border-outline-variant/40 flex items-center justify-center text-primary font-bold">
+<span class="material-symbols-outlined text-primary text-[20px]">account_balance_wallet</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface tracking-tight">YourApp</span>
+<span class="font-label-sm text-label-sm text-primary font-medium tracking-wide">Pay Am Small</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm">
+<button aria-label="Locked Price Vaults" class="w-[44px] h-[44px] rounded-xl bg-surface-container border border-outline-variant/30 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors relative" type="button">
+<span class="material-symbols-outlined text-[22px]">lock</span>
+<span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-primary-container"></span>
+</button>
+<button aria-label="Notifications" class="w-[44px] h-[44px] rounded-xl bg-surface-container border border-outline-variant/30 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-[22px]">notifications</span>
+</button>
+</div>
+</div>
+<!-- Integrated Search Input Field -->
+<div class="mt-space-sm pb-1">
+<div class="relative w-full flex items-center">
+<span class="material-symbols-outlined absolute left-3.5 text-outline text-[20px] pointer-events-none">search</span>
+<input class="w-full h-[48px] pl-11 pr-10 rounded-xl bg-surface-container-low border border-outline-variant/40 text-on-surface placeholder-outline font-body-md text-body-md focus:border-primary-container focus:ring-0 focus:outline-none transition-all" placeholder="Search electronics, solar, appliances..." type="text"/>
+<button aria-label="Voice Search or Scan" class="absolute right-3 text-outline hover:text-on-surface" type="button">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Scrollable Marketplace Flow -->
+<main class="flex-1 px-margin pt-space-md flex flex-col gap-space-lg">
+<!-- Category Filter Chips -->
+<section aria-label="Categories" class="-mx-margin px-margin overflow-x-auto no-scrollbar flex items-center gap-2 py-0.5">
+<button class="h-[38px] px-4 rounded-full bg-primary-container text-on-primary-container font-label-md text-label-md flex items-center justify-center shrink-0 shadow-sm" type="button">
+          All
+        </button>
+<button class="h-[38px] px-4 rounded-full bg-surface-container-low border border-outline-variant/30 text-on-surface-variant hover:border-primary/40 font-label-md text-label-md flex items-center justify-center shrink-0 transition-colors" type="button">
+          Electronics
+        </button>
+<button class="h-[38px] px-4 rounded-full bg-surface-container-low border border-outline-variant/30 text-on-surface-variant hover:border-primary/40 font-label-md text-label-md flex items-center justify-center shrink-0 transition-colors" type="button">
+          Solar &amp; Inverters
+        </button>
+<button class="h-[38px] px-4 rounded-full bg-surface-container-low border border-outline-variant/30 text-on-surface-variant hover:border-primary/40 font-label-md text-label-md flex items-center justify-center shrink-0 transition-colors" type="button">
+          Home &amp; Kitchen
+        </button>
+<button class="h-[38px] px-4 rounded-full bg-surface-container-low border border-outline-variant/30 text-on-surface-variant hover:border-primary/40 font-label-md text-label-md flex items-center justify-center shrink-0 transition-colors" type="button">
+          Phones
+        </button>
+</section>
+<!-- Banner: "Lock Today's Price" Vault Value Proposition -->
+<section class="relative overflow-hidden rounded-xl bg-surface-container border border-outline-variant/35 p-space-md">
+<div class="absolute -right-12 -top-12 w-44 h-44 rounded-full bg-primary-container/10 blur-2xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col gap-space-xs">
+<div class="flex items-center gap-1.5 w-fit px-2.5 py-1 rounded-full bg-primary-container/15 border border-primary-container/30 text-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">shield_lock</span>
+<span>Inflation Hedge Protocol</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface mt-1">
+            Lock Today's Price
+          </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            Save towards high-ticket items directly in your automated vault to freeze the vendor's price against currency inflation with <span class="text-on-surface font-semibold">zero interest</span>.
+          </p>
+<div class="mt-space-sm pt-space-xs flex items-center justify-between">
+<div class="flex items-center gap-2 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[18px] text-tertiary">check_circle</span>
+<span>Price locked until final payment</span>
+</div>
+<button class="px-3.5 py-2 rounded-lg bg-surface-container-high border border-outline-variant/40 text-primary font-label-sm text-label-sm hover:bg-surface-container-highest transition-colors" type="button">
+              How it works
+            </button>
+</div>
+</div>
+</section>
+<!-- Section Title: Featured Marketplace Items -->
+<section class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Featured Products</h3>
+<p class="font-label-sm text-label-sm text-outline">Verified Nigerian merchants with flexible fulfillment</p>
+</div>
+<button class="text-primary font-label-md text-label-md flex items-center gap-0.5" type="button">
+<span>View all</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+<!-- Product Cards Vertical/Grid Flow -->
+<div class="flex flex-col gap-space-md">
+<!-- Product 1: Luminous 1.5kVA Solar Inverter Bundle -->
+<article class="rounded-xl bg-surface-container-low border border-outline-variant/35 p-space-md flex flex-col gap-3.5 hover:border-outline-variant/60 transition-all">
+<div class="flex gap-3.5">
+<div class="w-24 h-24 rounded-lg bg-surface-container flex items-center justify-center shrink-0 border border-outline-variant/20 overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="Modern hybrid solar power inverter system with pure sine wave display unit and lithium backup battery on dark slate studio surface. The composition uses dramatic dark mode moody lighting with warm magenta highlights, presenting high-end engineering quality in Lagos, Nigeria with refined clean angles and industrial design textures." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZoLK0kYg7lIsVJSProFINhTFHnKGmoVZuapOjn-O6-Z2QXCHirr_nTVlyIebeE5d0-ogOXRrfMM1uF-CkDETI5_huQXRTetWp0XOGXNTwyuTehE7cIHu3UBOhewDOQnZ_S_2ggn5FDL5RkKeBd5NmSKo7XsJg06rzfzeAtRF8JFReA5fS3aTOLT2r4XaKDv8LQoI8-uvV94-WUzrCpXS6CrdIr8ituJAeJR3_Ju5q"/>
+<span class="absolute top-1 left-1 px-1.5 py-0.5 rounded bg-surface-container-lowest/80 text-[10px] font-label-sm text-primary border border-outline-variant/30">
+                  Solar
+                </span>
+</div>
+<div class="flex-1 flex flex-col justify-between min-w-0">
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-label-sm text-outline truncate">Alaba GreenTech</span>
+<span class="inline-flex items-center gap-0.5 px-1.5 py-0.2 rounded bg-tertiary-container/20 text-tertiary text-[11px] font-label-sm" title="Verified Merchant">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span>Verified</span>
+</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-semibold leading-snug mt-0.5 line-clamp-2">
+                    Luminous 1.5kVA Solar Inverter Bundle
+                  </h4>
+</div>
+<div class="mt-1">
+<span class="font-body-md text-body-md text-outline">Full Price</span>
+<p class="font-title-currency text-title-currency text-on-surface font-bold">
+                    ₦420,000.00
+                  </p>
+</div>
+</div>
+</div>
+<!-- Installment Badges & Price-Lock Action Row -->
+<div class="pt-2 border-t border-outline-variant/25 flex flex-wrap items-center justify-between gap-2">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-primary-container/15 text-primary text-[11px] font-label-sm font-semibold border border-primary-container/30">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">lock</span>
+                  Save ₦35,000/mo
+                </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-on-surface-variant text-[11px] font-label-sm border border-outline-variant/30">
+<span class="material-symbols-outlined text-[13px]">payments</span>
+                  Pay in 4
+                </span>
+</div>
+<button class="h-[36px] px-3.5 rounded-lg bg-primary-container text-on-primary-container font-label-sm text-label-sm font-semibold flex items-center gap-1 active:scale-95 transition-transform ml-auto" type="button">
+<span>Lock Price</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</article>
+<!-- Product 2: iPhone 15 Pro Max 256GB -->
+<article class="rounded-xl bg-surface-container-low border border-outline-variant/35 p-space-md flex flex-col gap-3.5 hover:border-outline-variant/60 transition-all">
+<div class="flex gap-3.5">
+<div class="w-24 h-24 rounded-lg bg-surface-container flex items-center justify-center shrink-0 border border-outline-variant/20 overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="Flagship sleek titanium smartphone resting upright against a deep charcoal textured surface with soft cinematic rim lighting. Elegant dark ambient aesthetic highlighting refined micro-etched edges, high-contrast dark palette with gentle rose illumination, depicting authentic consumer technology luxury." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCODEp19LFJxmo9JjlspI-mOS5KdBqhrfJ0xvgZiB7WF6i_yZVfYp8iBMN5CD71JEkk1z8Mh7wEkH4OOXTp4DG6F4YAZd1FCVnHdK-VKtv0vazLKmJqc1EBJL8Lhdc3T3jYcjJwadyVE8q4Z-9FMCbe5M2PyiOF2dILRZIP2VO4RRWVBNqSRKwIcVJn7ihkhBDJfo_sthOqN65Wfxmf3dhJgmFCZHKBpdVA564mcbnG"/>
+<span class="absolute top-1 left-1 px-1.5 py-0.5 rounded bg-surface-container-lowest/80 text-[10px] font-label-sm text-primary border border-outline-variant/30">
+                  Tech
+                </span>
+</div>
+<div class="flex-1 flex flex-col justify-between min-w-0">
+<div>
+<div class="flex items-center justify-between gap-1">
+<div class="flex items-center gap-1.5 truncate">
+<span class="font-label-sm text-label-sm text-outline truncate">Slot Authorized</span>
+<span class="inline-flex items-center gap-0.5 px-1.5 py-0.2 rounded bg-tertiary-container/20 text-tertiary text-[11px] font-label-sm">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span>Verified</span>
+</span>
+</div>
+<div class="flex items-center gap-0.5 text-secondary text-[12px] font-label-sm font-semibold">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span>4.9</span>
+</div>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-semibold leading-snug mt-0.5 line-clamp-2">
+                    iPhone 15 Pro Max 256GB
+                  </h4>
+</div>
+<div class="mt-1">
+<span class="font-body-md text-body-md text-outline">Full Price</span>
+<p class="font-title-currency text-title-currency text-on-surface font-bold">
+                    ₦1,450,000.00
+                  </p>
+</div>
+</div>
+</div>
+<!-- Installment Badges & Price-Lock Action Row -->
+<div class="pt-2 border-t border-outline-variant/25 flex flex-wrap items-center justify-between gap-2">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-primary-container/15 text-primary text-[11px] font-label-sm font-semibold border border-primary-container/30">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">lock</span>
+                  ₦120,833/mo
+                </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-outline text-[11px] font-label-sm border border-outline-variant/30">
+<span class="material-symbols-outlined text-[13px]">calendar_month</span>
+                  12 mos vault
+                </span>
+</div>
+<button class="h-[36px] px-3.5 rounded-lg bg-primary-container text-on-primary-container font-label-sm text-label-sm font-semibold flex items-center gap-1 active:scale-95 transition-transform ml-auto" type="button">
+<span>Lock Price</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</article>
+<!-- Product 3: Haier Thermocool 200L Chest Freezer -->
+<article class="rounded-xl bg-surface-container-low border border-outline-variant/35 p-space-md flex flex-col gap-3.5 hover:border-outline-variant/60 transition-all">
+<div class="flex gap-3.5">
+<div class="w-24 h-24 rounded-lg bg-surface-container flex items-center justify-center shrink-0 border border-outline-variant/20 overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="Durable stainless steel chest freezer home appliance displayed in a minimalist architectural kitchen interior at dusk. Crisp clean reflections, subtle dark mode slate surfaces, precision metal finishes, with warm ambient accents evoking reliable modern refrigeration for home and business storage." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAL22-vI5p8MzobXW2Q7SsJNcXTWccExs5V3aiDbeqCE5v5WAkRtMhaeBXzVklTBiVOAeXJSavxZ1Lz8FgTs9ieuOISRs707e-snlWKyOltNbE8fYTCFJ0fCDRKlsUPJAicwChVk9qF1HDt2npqBtuFHV6dG2c_JkOlrkpxlVkoXSC-6zi7OM7ghjJaHzN3Z6J8ZeAdrFjf_E4BMqAI0HxUVZAlGRG2d3MrT4Dq6myY"/>
+<span class="absolute top-1 left-1 px-1.5 py-0.5 rounded bg-surface-container-lowest/80 text-[10px] font-label-sm text-primary border border-outline-variant/30">
+                  Home
+                </span>
+</div>
+<div class="flex-1 flex flex-col justify-between min-w-0">
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-label-sm text-outline truncate">MegaPlaza Lekki</span>
+<span class="inline-flex items-center gap-0.5 px-1.5 py-0.2 rounded bg-tertiary-container/20 text-tertiary text-[11px] font-label-sm">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span>Verified</span>
+</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-semibold leading-snug mt-0.5 line-clamp-2">
+                    Haier Thermocool 200L Chest Freezer
+                  </h4>
+</div>
+<div class="mt-1">
+<span class="font-body-md text-body-md text-outline">Full Price</span>
+<p class="font-title-currency text-title-currency text-on-surface font-bold">
+                    ₦310,000.00
+                  </p>
+</div>
+</div>
+</div>
+<!-- Installment Badges & Price-Lock Action Row -->
+<div class="pt-2 border-t border-outline-variant/25 flex flex-wrap items-center justify-between gap-2">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-primary-container/15 text-primary text-[11px] font-label-sm font-semibold border border-primary-container/30">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">lock</span>
+                  Save ₦25,833/mo
+                </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-on-surface-variant text-[11px] font-label-sm border border-outline-variant/30">
+<span class="material-symbols-outlined text-[13px]">bolt</span>
+                  Inverter Ready
+                </span>
+</div>
+<button class="h-[36px] px-3.5 rounded-lg bg-primary-container text-on-primary-container font-label-sm text-label-sm font-semibold flex items-center gap-1 active:scale-95 transition-transform ml-auto" type="button">
+<span>Lock Price</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</article>
+</div>
+</section>
+<!-- Verified Vendor Guarantee Trust Architecture Card -->
+<section class="rounded-xl bg-surface-container border border-outline-variant/35 p-space-md flex flex-col gap-3 shadow-lg">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-tertiary-container/20 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">security</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">YourApp Buyer Escrow Guarantee</h4>
+<p class="font-label-sm text-label-sm text-outline">Institutional consumer protection on every order</p>
+</div>
+</div>
+<ul class="flex flex-col gap-2.5 mt-1">
+<li class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-primary text-[18px] mt-0.5">verified_user</span>
+<span class="font-body-md text-body-md text-on-surface-variant">
+<strong class="text-on-surface font-semibold">100% Genuine Warranty:</strong> Sourced only from accredited brand distributors.
+            </span>
+</li>
+<li class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-primary text-[18px] mt-0.5">local_shipping</span>
+<span class="font-body-md text-body-md text-on-surface-variant">
+<strong class="text-on-surface font-semibold">Inspected Delivery:</strong> Inspect the package physically before accepting handover.
+            </span>
+</li>
+<li class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-primary text-[18px] mt-0.5">pin</span>
+<span class="font-body-md text-body-md text-on-surface-variant">
+<strong class="text-on-surface font-semibold">Protected Escrow Release:</strong> Funds remain securely held in your locked vault until you release your 4-digit <span class="text-primary font-medium">Delivery Code</span>.
+            </span>
+</li>
+</ul>
+</section>
+</main>
+<!-- Docked Bottom Navigation Bar (Exact adherence to Shared Components JSON & Style Guidance) -->
+<!-- Active Destination: "Save & Borrow" (as this is the savings vault / credit marketplace destination) -->
+<nav class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-margin h-16 max-w-[560px] mx-auto pb-safe bg-surface-container shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)] backdrop-blur-lg">
+<!-- Tab 1: Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[22px]">home</span>
+<span class="font-caption text-label-sm font-medium">Home</span>
+</a>
+<!-- Tab 2: Payments -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[22px]">send</span>
+<span class="font-caption text-label-sm font-medium">Payments</span>
+</a>
+<!-- Tab 3: Cards -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[22px]">credit_card</span>
+<span class="font-caption text-label-sm font-medium">Cards</span>
+</a>
+<!-- Tab 4: Save & Borrow (Active Intent Match for Price-Lock Savings Marketplace) -->
+<a class="flex flex-col items-center justify-center text-primary-fixed font-semibold min-w-[48px] py-space-xs gap-space-xs active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">savings</span>
+<span class="font-caption text-label-sm font-semibold">Save &amp; Borrow</span>
+</a>
+<!-- Tab 5: More -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[22px]">more_horiz</span>
+<span class="font-caption text-label-sm font-medium">More</span>
+</a>
+</nav>
+</div>
+</body></html>

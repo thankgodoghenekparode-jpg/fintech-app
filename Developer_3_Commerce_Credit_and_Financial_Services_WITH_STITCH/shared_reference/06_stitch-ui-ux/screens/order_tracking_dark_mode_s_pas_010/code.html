@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>YourApp - Order &amp; Delivery Tracking</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-tertiary-fixed-variant": "#06429a",
+            "error-container": "#93000a",
+            "primary": "#ffb0ca",
+            "outline": "#a28b91",
+            "background": "#151314",
+            "on-secondary-fixed": "#410000",
+            "on-tertiary-container": "#002a69",
+            "secondary-container": "#822c20",
+            "surface-container-highest": "#373435",
+            "on-error": "#690005",
+            "surface-container-low": "#1d1b1c",
+            "on-tertiary": "#002d6f",
+            "on-tertiary-fixed": "#001945",
+            "on-secondary-container": "#ff9f90",
+            "on-surface-variant": "#dac0c6",
+            "surface-tint": "#ffb0ca",
+            "on-secondary-fixed-variant": "#7f291e",
+            "on-surface": "#e7e1e2",
+            "surface-container-lowest": "#100e0f",
+            "primary-fixed": "#ffd9e3",
+            "surface-bright": "#3b3839",
+            "on-primary-fixed-variant": "#7f234b",
+            "surface": "#151314",
+            "on-secondary": "#61130a",
+            "secondary": "#ffb4a8",
+            "surface-dim": "#151314",
+            "on-error-container": "#ffdad6",
+            "tertiary-fixed": "#d9e2ff",
+            "tertiary-container": "#6a92ee",
+            "inverse-primary": "#9e3b63",
+            "on-background": "#e7e1e2",
+            "outline-variant": "#544247",
+            "error": "#ffb4ab",
+            "primary-container": "#e0709a",
+            "surface-container": "#211f20",
+            "on-primary-fixed": "#3e001f",
+            "tertiary": "#b0c6ff",
+            "primary-fixed-dim": "#ffb0ca",
+            "on-primary-container": "#5d0331",
+            "secondary-fixed": "#ffdad4",
+            "surface-variant": "#373435",
+            "inverse-on-surface": "#323031",
+            "on-primary": "#620735",
+            "surface-container-high": "#2c292a",
+            "secondary-fixed-dim": "#ffb4a8",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "inverse-surface": "#e7e1e2"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "space-xl": "2rem",
+            "gutter-mobile": "0.75rem",
+            "gutter": "1rem",
+            "space-sm": "0.5rem",
+            "space-lg": "1.5rem",
+            "margin": "1rem",
+            "space-md": "1rem",
+            "margin-mobile": "1rem"
+          },
+          "fontFamily": {
+            "body-lg": ["Inter"],
+            "display-currency": ["Inter"],
+            "title-currency": ["Inter"],
+            "headline-lg": ["Inter"],
+            "label-lg": ["Inter"],
+            "headline-md": ["Inter"],
+            "label-sm": ["Inter"],
+            "label-md": ["Inter"],
+            "body-md": ["Inter"],
+            "headline-sm": ["Inter"]
+          },
+          "fontSize": {
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "title-currency": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "label-lg": ["15px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      font-size: 20px;
+    }
+    .num-tabular {
+      font-feature-settings: 'tnum' 1, 'cv05' 1;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-lowest text-on-surface font-body-md antialiased min-h-screen selection:bg-primary-container selection:text-surface">
+<!-- Mobile Viewport Shell (390 x 844 target canvas) -->
+<div class="relative w-full max-w-[560px] mx-auto min-h-screen bg-surface flex flex-col pb-[96px] shadow-2xl">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-40 bg-surface/95 backdrop-blur-md px-margin py-space-sm border-b border-outline-variant/30 flex items-center justify-between min-h-[56px]">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Go back" class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-on-surface hover:bg-surface-container-high transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<h1 class="font-headline-sm text-headline-sm text-on-surface font-bold tracking-tight">Order &amp; Delivery Tracking</h1>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium tracking-wide">S-PAS-010 • Luminous Inverter Vault #8821</span>
+</div>
+</div>
+<button aria-label="Share tracking info" class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined" data-icon="share">share</span>
+</button>
+</header>
+<!-- Content Canvas -->
+<main class="flex-1 px-margin py-space-md flex flex-col gap-space-md">
+<!-- Hero Card: 6-Digit Delivery Unlock Handover Code -->
+<section class="bg-surface-container rounded-xl border border-outline-variant/40 p-space-md shadow-lg relative overflow-hidden">
+<!-- Ambient subtle glow behind unlock code -->
+<div class="absolute -top-12 -right-12 w-36 h-36 bg-primary-container/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary" data-icon="lock" style="font-variation-settings: 'FILL' 1;">lock</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">6-Digit Delivery Handover Code</span>
+</div>
+<span class="inline-flex items-center gap-1 text-[11px] font-label-sm text-[#4CC38A] bg-[#4CC38A]/10 px-2 py-0.5 rounded-full border border-[#4CC38A]/20">
+<span class="material-symbols-outlined text-sm" data-icon="verified_user" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+            Escrow Protected
+          </span>
+</div>
+<!-- High-Contrast Code Presentation Box -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md border border-outline-variant/30 flex flex-col items-center gap-space-sm my-space-xs">
+<div class="flex items-center justify-between w-full">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Passcode for Courier Inspection</span>
+<span class="font-label-sm text-label-sm text-primary flex items-center gap-1 cursor-pointer hover:underline">
+<span class="material-symbols-outlined text-sm" data-icon="sync">sync</span> Auto-refreshed
+            </span>
+</div>
+<!-- Code Digits Blocks -->
+<div class="flex items-center justify-center gap-2 w-full py-1">
+<span class="w-10 h-12 rounded-lg bg-surface-container-high border border-outline-variant/50 text-primary-fixed font-title-currency text-title-currency font-bold flex items-center justify-center num-tabular shadow-inner">7</span>
+<span class="w-10 h-12 rounded-lg bg-surface-container-high border border-outline-variant/50 text-primary-fixed font-title-currency text-title-currency font-bold flex items-center justify-center num-tabular shadow-inner">4</span>
+<span class="w-10 h-12 rounded-lg bg-surface-container-high border border-outline-variant/50 text-primary-fixed font-title-currency text-title-currency font-bold flex items-center justify-center num-tabular shadow-inner">9</span>
+<span class="w-2 text-outline text-center font-bold">·</span>
+<span class="w-10 h-12 rounded-lg bg-surface-container-high border border-outline-variant/50 text-primary-fixed font-title-currency text-title-currency font-bold flex items-center justify-center num-tabular shadow-inner">2</span>
+<span class="w-10 h-12 rounded-lg bg-surface-container-high border border-outline-variant/50 text-primary-fixed font-title-currency text-title-currency font-bold flex items-center justify-center num-tabular shadow-inner">0</span>
+<span class="w-10 h-12 rounded-lg bg-surface-container-high border border-outline-variant/50 text-primary-fixed font-title-currency text-title-currency font-bold flex items-center justify-center num-tabular shadow-inner">1</span>
+</div>
+<button class="w-full mt-1 py-2 px-3 rounded-lg bg-surface-container hover:bg-surface-container-high border border-outline-variant/40 flex items-center justify-center gap-2 text-on-surface font-label-md text-label-md active:scale-95 transition-all" id="copy-code-btn">
+<span class="material-symbols-outlined text-sm" data-icon="content_copy">content_copy</span>
+<span>Copy Passcode</span>
+</button>
+</div>
+<!-- Critical Security Notice -->
+<div class="mt-space-sm p-space-sm bg-secondary-container/20 rounded-lg border border-secondary-container/40 flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[#E3B341] shrink-0 mt-0.5 text-base" data-icon="warning" style="font-variation-settings: 'FILL' 1;">warning</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant leading-relaxed">
+<strong class="text-[#E3B341]">CRITICAL:</strong> NEVER share this code via phone call or SMS. ONLY verbally disclose it to the delivery courier after you physically inspect and confirm your goods are in perfect condition.
+          </p>
+</div>
+</section>
+<!-- Status Timeline (Vertical Stepper) -->
+<section class="bg-surface-container rounded-xl border border-outline-variant/40 p-space-md shadow-md">
+<div class="flex items-center justify-between pb-space-sm border-b border-outline-variant/30 mb-space-sm">
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">Delivery Status</h2>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold tracking-wide bg-[#E3B341]/10 text-[#E3B341] border border-[#E3B341]/20">
+<span class="w-1.5 h-1.5 rounded-full bg-[#E3B341] animate-pulse"></span>
+            En Route
+          </span>
+</div>
+<!-- Vertical Stepper List -->
+<div class="relative pl-7 space-y-6 before:content-[''] before:absolute before:left-3 before:top-2 before:bottom-2 before:w-0.5 before:bg-outline-variant/30">
+<!-- Step 1: Completed -->
+<div class="relative group">
+<div class="absolute -left-7 top-0 w-6 h-6 rounded-full bg-[#4CC38A]/20 border border-[#4CC38A] flex items-center justify-center text-[#4CC38A]">
+<span class="material-symbols-outlined text-sm font-bold" data-icon="check">check</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Vault 100% Completed</span>
+<span class="font-label-sm text-label-sm text-outline num-tabular">15 Dec 2026, 09:15 AM WAT</span>
+</div>
+</div>
+<!-- Step 2: Completed -->
+<div class="relative group">
+<div class="absolute -left-7 top-0 w-6 h-6 rounded-full bg-[#4CC38A]/20 border border-[#4CC38A] flex items-center justify-center text-[#4CC38A]">
+<span class="material-symbols-outlined text-sm font-bold" data-icon="check">check</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Vendor Packed &amp; Ready</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Alaba GreenTech Warehouse</span>
+<span class="font-label-sm text-label-sm text-outline num-tabular">16 Dec 2026, 02:30 PM WAT</span>
+</div>
+</div>
+<!-- Step 3: In Transit (Active Highlight) -->
+<div class="relative group">
+<div class="absolute -left-7 top-0 w-6 h-6 rounded-full bg-primary-container border-2 border-primary-fixed flex items-center justify-center text-on-primary-container shadow-md shadow-primary-container/40">
+<span class="material-symbols-outlined text-sm" data-icon="local_shipping" style="font-variation-settings: 'FILL' 1;">local_shipping</span>
+</div>
+<div class="bg-surface-container-high rounded-xl p-space-sm border border-primary/30 flex flex-col gap-1.5 shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-primary font-bold">Out for Courier Dispatch</span>
+<span class="text-[11px] font-label-sm px-2 py-0.5 rounded bg-primary-container/20 text-primary-fixed font-semibold">Today by 4:00 PM WAT</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface">
+                Driver: <span class="font-semibold text-on-surface">Ibrahim Musa</span>
+</p>
+<div class="flex flex-wrap gap-x-3 gap-y-1 text-[12px] font-label-sm text-on-surface-variant">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-outline" data-icon="local_shipping">local_shipping</span> GIG Logistics
+                </span>
+<span class="flex items-center gap-1 num-tabular">
+<span class="material-symbols-outlined text-xs text-outline" data-icon="badge">badge</span> Plate: KJA-492-LG
+                </span>
+<span class="flex items-center gap-1 num-tabular">
+<span class="material-symbols-outlined text-xs text-outline" data-icon="call">call</span> +234 803 ••• 1928
+                </span>
+</div>
+</div>
+</div>
+<!-- Step 4: Pending -->
+<div class="relative opacity-60">
+<div class="absolute -left-7 top-0.5 w-6 h-6 rounded-full bg-surface-container-highest border border-outline-variant/60 flex items-center justify-center text-outline">
+<span class="material-symbols-outlined text-xs" data-icon="hourglass_empty">hourglass_empty</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant font-medium">Physical Handover &amp; Code Verification</span>
+<span class="font-label-sm text-label-sm text-outline">Awaiting courier arrival &amp; item inspection</span>
+</div>
+</div>
+<!-- Step 5: Pending -->
+<div class="relative opacity-50">
+<div class="absolute -left-7 top-0.5 w-6 h-6 rounded-full bg-surface-container-highest border border-outline-variant/60 flex items-center justify-center text-outline">
+<span class="material-symbols-outlined text-xs" data-icon="account_balance_wallet">account_balance_wallet</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant font-medium">Vault Custody Release to Vendor (<span class="num-tabular">₦420,000.00</span>)</span>
+<span class="font-label-sm text-label-sm text-outline">Funds securely disbursed upon validated OTP</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Merchant & Dispatch Details Card -->
+<section class="bg-surface-container rounded-xl border border-outline-variant/40 p-space-md shadow-md flex flex-col gap-space-sm">
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider font-semibold">Vendor &amp; Destination</h3>
+<!-- Vendor Row -->
+<div class="flex items-center justify-between py-1 border-b border-outline-variant/20 pb-2">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container-high border border-outline-variant/40 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="storefront">storefront</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Alaba GreenTech Solutions</span>
+<span class="material-symbols-outlined text-primary text-sm" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">Merchant Partner • Order ID: #PAS-8821</span>
+</div>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-high text-on-surface font-label-sm text-label-sm hover:bg-outline-variant/30 transition-colors border border-outline-variant/40 active:scale-95">
+            Contact
+          </button>
+</div>
+<!-- Address Row -->
+<div class="flex items-start gap-space-sm pt-1">
+<div class="w-10 h-10 rounded-full bg-surface-container-high border border-outline-variant/40 flex items-center justify-center text-outline shrink-0 mt-0.5">
+<span class="material-symbols-outlined" data-icon="location_on">location_on</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline font-medium">Delivery Address</span>
+<p class="font-body-md text-body-md text-on-surface font-medium leading-snug">
+              14 Admiralty Way, Lekki Phase 1, Lagos, Nigeria
+            </p>
+</div>
+</div>
+</section>
+<!-- Action Buttons -->
+<section class="flex flex-col gap-space-sm pt-space-xs">
+<button class="h-[52px] w-full rounded-xl bg-surface-container hover:bg-surface-container-high border border-outline-variant/50 text-on-surface font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 active:scale-98 transition-all">
+<span class="material-symbols-outlined" data-icon="phone_in_talk">phone_in_talk</span>
+          Call Dispatch Courier (Ibrahim)
+        </button>
+<a class="h-10 w-full flex items-center justify-center gap-1 text-center font-label-md text-label-md text-outline hover:text-error transition-colors" href="#report-problem">
+<span>Report an Order Problem</span>
+<span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</section>
+</main>
+<!-- Docked Bottom Navigation (Shared Component Anchor) -->
+<!-- 'Save & Borrow' active as this is a Pay Am Small (savings vault / credit product) order tracking -->
+<nav aria-label="Bottom Navigation" class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-margin h-16 max-w-[560px] mx-auto pb-safe bg-surface-container-lowest dark:bg-surface-container border-t border-outline-variant/40 dark:border-outline-variant/20 shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)]">
+<!-- Home -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-caption text-caption text-label-sm">Home</span>
+</button>
+<!-- Payments -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95">
+<span class="material-symbols-outlined" data-icon="send">send</span>
+<span class="font-caption text-caption text-label-sm">Payments</span>
+</button>
+<!-- Cards -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95">
+<span class="material-symbols-outlined" data-icon="credit_card">credit_card</span>
+<span class="font-caption text-caption text-label-sm">Cards</span>
+</button>
+<!-- Save & Borrow (Active) -->
+<button class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed font-semibold min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95">
+<span class="material-symbols-outlined text-primary-container" data-icon="savings" style="font-variation-settings: 'FILL' 1;">savings</span>
+<span class="font-caption text-caption text-label-sm text-primary">Save &amp; Borrow</span>
+</button>
+<!-- More -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95">
+<span class="material-symbols-outlined" data-icon="more_horiz">more_horiz</span>
+<span class="font-caption text-caption text-label-sm">More</span>
+</button>
+</nav>
+</div>
+<script>
+    // Lightweight micro-interaction for copying the delivery unlock code
+    document.getElementById('copy-code-btn')?.addEventListener('click', function() {
+      const button = this;
+      const originalHTML = button.innerHTML;
+      navigator.clipboard?.writeText('749201');
+      button.innerHTML = '<span class="material-symbols-outlined text-sm text-[#4CC38A]" data-icon="check">check</span><span class="text-[#4CC38A]">Passcode Copied!</span>';
+      setTimeout(() => {
+        button.innerHTML = originalHTML;
+      }, 2000);
+    });
+  </script>
+</body></html>

@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Rewards &amp; Perks - YourApp</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Inter Google Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-tint": "#a8315d",
+            "primary-fixed-dim": "#ffb1c5",
+            "primary": "#6d0033",
+            "tertiary-fixed": "#eedee4",
+            "error-container": "#ffdad6",
+            "on-error": "#ffffff",
+            "surface-dim": "#e1d8d9",
+            "on-primary-fixed-variant": "#881646",
+            "surface-container-high": "#efe6e7",
+            "surface": "#fff8f8",
+            "on-primary": "#ffffff",
+            "on-error-container": "#93000a",
+            "surface-container-lowest": "#ffffff",
+            "surface-container": "#f5eced",
+            "on-background": "#1f1b1c",
+            "on-secondary": "#ffffff",
+            "error": "#ba1a1a",
+            "secondary-container": "#fc6955",
+            "on-tertiary-container": "#c6b7bd",
+            "tertiary-container": "#53484d",
+            "surface-container-highest": "#e9e0e1",
+            "secondary-fixed-dim": "#ffb4a8",
+            "on-secondary-container": "#690000",
+            "on-primary-container": "#ffa0ba",
+            "background": "#fff8f8",
+            "on-tertiary-fixed": "#21191e",
+            "primary-container": "#8e1b4a",
+            "on-surface-variant": "#564146",
+            "outline-variant": "#dcbfc5",
+            "primary-fixed": "#ffd9e1",
+            "on-secondary-fixed-variant": "#8c170e",
+            "secondary": "#ae3123",
+            "inverse-surface": "#342f30",
+            "secondary-fixed": "#ffdad4",
+            "tertiary": "#3b3236",
+            "surface-bright": "#fff8f8",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "inverse-on-surface": "#f8eeef",
+            "inverse-primary": "#ffb1c5",
+            "surface-variant": "#e9e0e1",
+            "on-primary-fixed": "#3f001b",
+            "on-surface": "#1f1b1c",
+            "surface-container-low": "#fbf1f2",
+            "on-tertiary": "#ffffff",
+            "on-secondary-fixed": "#410000",
+            "outline": "#897176",
+            "on-tertiary-fixed-variant": "#4e4449"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-md": "0.75rem",
+            "space-sm": "0.5rem",
+            "gutter": "1rem",
+            "margin": "1rem",
+            "space-xl": "1.5rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1rem",
+            "space-3xl": "3rem",
+            "space-2xl": "2rem"
+          },
+          "fontFamily": {
+            "title": ["Inter"],
+            "caption": ["Inter"],
+            "body-medium": ["Inter"],
+            "display": ["Inter"],
+            "label": ["Inter"],
+            "subtitle": ["Inter"],
+            "body": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "amount-lg": ["Inter"]
+          },
+          "fontSize": {
+            "title": [
+              "24px",
+              {
+                "lineHeight": "32px",
+                "letterSpacing": "-0.015em",
+                "fontWeight": "700"
+              }
+            ],
+            "caption": [
+              "13px",
+              {
+                "lineHeight": "18px",
+                "letterSpacing": "0.01em",
+                "fontWeight": "400"
+              }
+            ],
+            "body-medium": [
+              "16px",
+              {
+                "lineHeight": "24px",
+                "letterSpacing": "0em",
+                "fontWeight": "500"
+              }
+            ],
+            "display": [
+              "32px",
+              {
+                "lineHeight": "40px",
+                "letterSpacing": "-0.02em",
+                "fontWeight": "700"
+              }
+            ],
+            "label": [
+              "14px",
+              {
+                "lineHeight": "20px",
+                "letterSpacing": "0.01em",
+                "fontWeight": "600"
+              }
+            ],
+            "subtitle": [
+              "20px",
+              {
+                "lineHeight": "28px",
+                "letterSpacing": "-0.01em",
+                "fontWeight": "600"
+              }
+            ],
+            "body": [
+              "16px",
+              {
+                "lineHeight": "24px",
+                "letterSpacing": "0em",
+                "fontWeight": "400"
+              }
+            ],
+            "amount-lg-mobile": [
+              "32px",
+              {
+                "lineHeight": "40px",
+                "letterSpacing": "-0.02em",
+                "fontWeight": "700"
+              }
+            ],
+            "amount-lg": [
+              "36px",
+              {
+                "lineHeight": "44px",
+                "letterSpacing": "-0.03em",
+                "fontWeight": "700"
+              }
+            ]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex justify-center selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Mobile Viewport Shell (390px max target) -->
+<div class="w-full max-w-[390px] min-h-[844px] flex flex-col bg-background relative shadow-2xl">
+<!-- Top App Bar (Shared Components standard header layout) -->
+<header class="bg-surface sticky top-0 z-40 w-full px-margin py-space-sm flex justify-between items-center min-h-[56px] shadow-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary-container font-subtitle text-subtitle">
+<span class="material-symbols-outlined text-primary-container" data-icon="account_circle">account_circle</span>
+</div>
+<div>
+<div class="font-caption text-caption text-on-surface-variant leading-tight">YourApp Rewards</div>
+<h1 class="font-subtitle text-subtitle text-on-surface font-bold">Rewards &amp; Perks</h1>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<button aria-label="Points Information" class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="info">info</span>
+</button>
+<button aria-label="Points History" class="h-10 px-space-md rounded-xl bg-surface-container-lowest border border-outline-variant/40 flex items-center gap-space-xs text-primary font-label text-label hover:bg-surface-container active:scale-95 transition-all shadow-sm">
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="history">history</span>
+<span>History</span>
+</button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 px-margin pt-space-md pb-space-3xl flex flex-col gap-space-xl overflow-y-auto no-scrollbar">
+<!-- Points Balance Hero Card (Rich Berry Container) -->
+<section class="w-full bg-primary-container rounded-[16px] p-space-lg text-on-primary shadow-lg relative overflow-hidden flex flex-col justify-between">
+<!-- Subtle Warm Ambient Background Decorator -->
+<div class="absolute -right-8 -top-8 w-40 h-40 bg-surface-tint/20 rounded-full blur-2xl pointer-events-none"></div>
+<div class="absolute -left-10 -bottom-10 w-36 h-36 bg-secondary-container/10 rounded-full blur-xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col gap-space-sm">
+<div class="flex justify-between items-center">
+<span class="font-caption text-caption text-primary-fixed uppercase tracking-wider font-semibold">Available Reward Points</span>
+<span class="inline-flex items-center gap-1 bg-on-primary/10 px-space-sm py-1 rounded-full text-primary-fixed font-caption text-caption">
+<span class="material-symbols-outlined text-[14px]" data-icon="verified_user">verified_user</span>
+              Instant Redeem
+            </span>
+</div>
+<div class="mt-space-xs">
+<div class="flex items-baseline gap-space-xs">
+<span class="font-amount-lg-mobile text-amount-lg-mobile font-bold tracking-tight text-white tabular-nums">4,850</span>
+<span class="font-title text-title text-primary-fixed font-medium">pts</span>
+</div>
+<p class="font-caption text-caption text-surface-container-high/90 mt-0.5">
+              Equivalent to <span class="font-semibold text-white tabular-nums">₦4,850.00</span> in cash or bills credit
+            </p>
+</div>
+<!-- Divider line within hero -->
+<div class="w-full h-px bg-outline-variant/30 my-space-xs"></div>
+<!-- Lifetime & Expiry Stats -->
+<div class="grid grid-cols-2 gap-space-sm pt-space-xs font-caption text-caption text-primary-fixed-dim">
+<div class="flex flex-col">
+<span class="text-surface-container-high/70 text-[11px] uppercase tracking-wide">Lifetime Earned</span>
+<span class="text-white font-medium text-[14px] tabular-nums mt-0.5">12,400 pts</span>
+</div>
+<div class="flex flex-col text-right">
+<span class="text-surface-container-high/70 text-[11px] uppercase tracking-wide">Expiring Soon</span>
+<span class="text-white font-medium text-[14px] tabular-nums mt-0.5">0 pts (Protected)</span>
+</div>
+</div>
+</div>
+<!-- Primary Trigger Standard Button: 52px height -->
+<div class="mt-space-lg relative z-10">
+<button class="w-full h-[52px] rounded-xl bg-surface text-primary-container font-label text-label flex items-center justify-center gap-space-sm shadow-md hover:bg-surface-bright active:scale-[0.98] transition-transform">
+<span class="material-symbols-outlined text-primary-container text-[20px]" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span>Redeem Points</span>
+</button>
+</div>
+</section>
+<!-- Quick Stats / Earning Boosters Row -->
+<section class="w-full bg-surface-container-lowest border border-outline-variant/50 rounded-xl p-space-md shadow-sm">
+<div class="flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined" data-icon="workspace_premium">workspace_premium</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-label text-label font-bold text-on-surface">Silver Member</span>
+<span class="bg-primary-fixed text-on-primary-fixed text-[11px] font-semibold px-2 py-0.5 rounded-full tabular-nums">1.5x Multiplier</span>
+</div>
+<span class="font-caption text-caption text-on-surface-variant">Next: Gold at <span class="font-semibold text-on-surface tabular-nums">7,500 pts</span></span>
+</div>
+</div>
+<div class="w-12 h-12 flex items-center justify-center">
+<div class="relative w-9 h-9 flex items-center justify-center">
+<svg class="w-9 h-9 transform -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-container" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3"></path>
+<path class="text-primary-container" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="65, 100" stroke-linecap="round" stroke-width="3"></path>
+</svg>
+<span class="absolute font-caption text-[10px] font-bold text-on-surface tabular-nums">65%</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Active Perks & Challenges Section -->
+<section class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<h2 class="font-title text-title font-bold text-on-surface text-[18px]">Active Perks &amp; Challenges</h2>
+<span class="bg-surface-container text-on-surface-variant font-caption text-caption font-semibold px-2 py-0.5 rounded-full tabular-nums">3 Active</span>
+</div>
+<a class="font-label text-label text-primary hover:underline" href="#">View All</a>
+</div>
+<div class="flex flex-col gap-space-sm">
+<!-- Perk 1: Supermarket Cashback -->
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded-xl p-space-md flex flex-col gap-space-sm shadow-sm hover:border-outline-variant transition-colors">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined" data-icon="storefront">storefront</span>
+</div>
+<div>
+<h3 class="font-body-medium text-body-medium font-bold text-on-surface">Supermarket Cashback</h3>
+<p class="font-caption text-caption text-on-surface-variant">Earn 2% back on all card payments at grocery stores</p>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-space-xs border-t border-surface-container-high/60">
+<span class="inline-flex items-center gap-1 text-[12px] font-medium text-on-surface bg-surface-container px-2 py-1 rounded">
+<span class="material-symbols-outlined text-[14px] text-primary" data-icon="check_circle">check_circle</span>
+<span>Active Perk</span>
+</span>
+<span class="font-caption text-caption text-on-surface font-semibold tabular-nums">
+                ₦1,420 earned this month
+              </span>
+</div>
+</div>
+<!-- Perk 2: Weekend Bill Buster -->
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded-xl p-space-md flex flex-col gap-space-sm shadow-sm hover:border-outline-variant transition-colors">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-icon="bolt">bolt</span>
+</div>
+<div>
+<h3 class="font-body-medium text-body-medium font-bold text-on-surface">Weekend Bill Buster</h3>
+<p class="font-caption text-caption text-on-surface-variant">Pay electricity before Sunday to unlock bonus points</p>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-space-xs border-t border-surface-container-high/60">
+<span class="inline-flex items-center gap-1 text-[12px] font-medium text-secondary bg-surface-container-low px-2 py-1 rounded">
+<span class="material-symbols-outlined text-[14px]" data-icon="schedule">schedule</span>
+<span>1 day left</span>
+</span>
+<span class="font-label text-label text-primary font-bold tabular-nums">
+                +250 bonus pts
+              </span>
+</div>
+</div>
+<!-- Perk 3: Smart Saver Streak -->
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded-xl p-space-md flex flex-col gap-space-sm shadow-sm hover:border-outline-variant transition-colors">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined" data-icon="savings">savings</span>
+</div>
+<div>
+<h3 class="font-body-medium text-body-medium font-bold text-on-surface">Smart Saver Streak</h3>
+<p class="font-caption text-caption text-on-surface-variant">Save ₦5,000 for 4 consecutive weeks</p>
+</div>
+</div>
+</div>
+<!-- Progress Bar -->
+<div class="w-full flex flex-col gap-1 mt-1">
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full rounded-full" style="width: 75%"></div>
+</div>
+<div class="flex items-center justify-between pt-space-xs">
+<span class="inline-flex items-center gap-1 text-[12px] font-medium text-on-surface-variant tabular-nums">
+<span class="material-symbols-outlined text-[14px] text-primary" data-icon="flag">flag</span>
+                  3 of 4 weeks completed
+                </span>
+<span class="font-label text-label text-primary font-bold tabular-nums">
+                  +500 pts reward
+                </span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Featured Redemptions Bento Grid -->
+<section class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<h2 class="font-title text-title font-bold text-on-surface text-[18px]">Featured Redemptions</h2>
+<span class="font-caption text-caption text-on-surface-variant">Instant Settlement</span>
+</div>
+<div class="grid grid-cols-2 gap-space-md">
+<!-- Item 1: Airtime -->
+<div class="bg-surface-container-lowest border border-outline-variant/50 rounded-xl p-space-md flex flex-col justify-between shadow-sm min-h-[140px] hover:border-primary-container transition-all">
+<div>
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary-container mb-space-xs">
+<span class="material-symbols-outlined text-[18px]" data-icon="phone_iphone">phone_iphone</span>
+</div>
+<h4 class="font-body-medium text-body-medium font-bold text-on-surface text-[14px] leading-tight">Airtime Top-up</h4>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5 tabular-nums">₦1,000 credit</p>
+</div>
+<div class="pt-space-sm border-t border-surface-container flex items-center justify-between mt-space-sm">
+<span class="font-label text-label font-bold text-primary-container tabular-nums">1,000 pts</span>
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<!-- Item 2: Data Bundle -->
+<div class="bg-surface-container-lowest border border-outline-variant/50 rounded-xl p-space-md flex flex-col justify-between shadow-sm min-h-[140px] hover:border-primary-container transition-all">
+<div>
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary-container mb-space-xs">
+<span class="material-symbols-outlined text-[18px]" data-icon="wifi">wifi</span>
+</div>
+<h4 class="font-body-medium text-body-medium font-bold text-on-surface text-[14px] leading-tight">Data Bundle 5GB</h4>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">30-day validity</p>
+</div>
+<div class="pt-space-sm border-t border-surface-container flex items-center justify-between mt-space-sm">
+<span class="font-label text-label font-bold text-primary-container tabular-nums">2,500 pts</span>
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<!-- Item 3: Transfer Fee Waiver -->
+<div class="bg-surface-container-lowest border border-outline-variant/50 rounded-xl p-space-md flex flex-col justify-between shadow-sm min-h-[140px] hover:border-primary-container transition-all">
+<div>
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary-container mb-space-xs">
+<span class="material-symbols-outlined text-[18px]" data-icon="sync_alt">sync_alt</span>
+</div>
+<h4 class="font-body-medium text-body-medium font-bold text-on-surface text-[14px] leading-tight">Fee Waiver</h4>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">10 NIP Transfers</p>
+</div>
+<div class="pt-space-sm border-t border-surface-container flex items-center justify-between mt-space-sm">
+<span class="font-label text-label font-bold text-primary-container tabular-nums">500 pts</span>
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<!-- Item 4: Direct Cash -->
+<div class="bg-surface-container-lowest border border-outline-variant/50 rounded-xl p-space-md flex flex-col justify-between shadow-sm min-h-[140px] hover:border-primary-container transition-all">
+<div>
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary-container mb-space-xs">
+<span class="material-symbols-outlined text-[18px]" data-icon="account_balance_wallet">account_balance_wallet</span>
+</div>
+<h4 class="font-body-medium text-body-medium font-bold text-on-surface text-[14px] leading-tight">Direct Cash</h4>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5 tabular-nums">₦2,000 to balance</p>
+</div>
+<div class="pt-space-sm border-t border-surface-container flex items-center justify-between mt-space-sm">
+<span class="font-label text-label font-bold text-primary-container tabular-nums">2,000 pts</span>
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Referral Banner: "Invite Friends & Earn" -->
+<section class="w-full bg-surface-container-low border border-outline-variant/60 rounded-xl p-space-md relative overflow-hidden flex flex-col gap-space-sm shadow-sm">
+<div class="flex items-start gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed flex-shrink-0">
+<span class="material-symbols-outlined" data-icon="group_add">group_add</span>
+</div>
+<div>
+<h3 class="font-subtitle text-subtitle text-[16px] font-bold text-on-surface">Invite Friends &amp; Earn</h3>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">
+              Earn <span class="font-semibold text-on-surface tabular-nums">₦1,000</span> + <span class="font-semibold text-on-surface tabular-nums">500 points</span> for every friend who signs up and completes their first transaction.
+            </p>
+</div>
+</div>
+<div class="mt-space-xs">
+<button class="w-full h-[52px] rounded-xl bg-primary text-on-primary font-label text-label flex items-center justify-center gap-space-xs hover:bg-primary-container active:scale-[0.98] transition-transform shadow-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="share">share</span>
+<span>Invite Now</span>
+</button>
+</div>
+</section>
+<!-- Bottom Padding buffer for fixed navigation bar -->
+<div class="h-6"></div>
+</main>
+<!-- Docked Standard 5-tab BottomNavBar (Shared Component Strict Compliance) -->
+<!-- Destination Rule: Top level hub -> Render nav bar. Semantic Lock: "Save & Borrow" / Rewards category mapped. -->
+<nav class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-margin h-16 max-w-[560px] mx-auto pb-safe bg-surface-container-lowest dark:bg-surface-container shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)]">
+<!-- Tab 1: Home -->
+<button aria-label="Home" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs active:scale-95 transition-transform duration-150 hover:text-primary dark:hover:text-inverse-primary">
+<span class="material-symbols-outlined text-[24px]" data-icon="home">home</span>
+<span class="font-caption text-caption font-medium">Home</span>
+</button>
+<!-- Tab 2: Payments -->
+<button aria-label="Payments" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs active:scale-95 transition-transform duration-150 hover:text-primary dark:hover:text-inverse-primary">
+<span class="material-symbols-outlined text-[24px]" data-icon="send">send</span>
+<span class="font-caption text-caption font-medium">Payments</span>
+</button>
+<!-- Tab 3: Cards -->
+<button aria-label="Cards" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs active:scale-95 transition-transform duration-150 hover:text-primary dark:hover:text-inverse-primary">
+<span class="material-symbols-outlined text-[24px]" data-icon="credit_card">credit_card</span>
+<span class="font-caption text-caption font-medium">Cards</span>
+</button>
+<!-- Tab 4: Save & Borrow (Active tab for Spending Insights & Rewards hub) -->
+<button aria-label="Save &amp; Borrow" class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed font-semibold min-w-[48px] py-space-xs gap-space-xs active:scale-95 transition-transform duration-150 hover:text-primary dark:hover:text-inverse-primary">
+<span class="material-symbols-outlined text-[24px]" data-icon="savings" data-weight="fill" style="font-variation-settings: 'FILL' 1;">savings</span>
+<span class="font-caption text-caption font-medium">Save &amp; Borrow</span>
+</button>
+<!-- Tab 5: More -->
+<button aria-label="More" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs active:scale-95 transition-transform duration-150 hover:text-primary dark:hover:text-inverse-primary">
+<span class="material-symbols-outlined text-[24px]" data-icon="more_horiz">more_horiz</span>
+<span class="font-caption text-caption font-medium">More</span>
+</button>
+</nav>
+</div>
+</body></html>

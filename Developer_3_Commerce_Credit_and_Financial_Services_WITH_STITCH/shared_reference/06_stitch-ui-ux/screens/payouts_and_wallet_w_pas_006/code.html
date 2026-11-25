@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Merchant Payouts &amp; Escrow Settlement Wallet (W-PAS-006) - Pay Am Small</title>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-bright": "#fff8f8",
+            "on-primary-container": "#ffa0ba",
+            "surface-container-low": "#fbf1f2",
+            "surface-variant": "#e9e0e1",
+            "inverse-primary": "#ffb1c5",
+            "on-tertiary": "#ffffff",
+            "on-primary-fixed": "#3f001b",
+            "primary-fixed-dim": "#ffb1c5",
+            "on-tertiary-fixed": "#21191e",
+            "surface": "#fff8f8",
+            "on-primary-fixed-variant": "#881646",
+            "on-surface": "#1f1b1c",
+            "on-background": "#1f1b1c",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "outline-variant": "#dcbfc5",
+            "primary-container": "#8e1b4a",
+            "secondary-container": "#fc6955",
+            "tertiary-fixed": "#eedee4",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "on-secondary-fixed-variant": "#8c170e",
+            "on-error": "#ffffff",
+            "error-container": "#ffdad6",
+            "secondary": "#ae3123",
+            "tertiary": "#3b3236",
+            "secondary-fixed": "#ffdad4",
+            "inverse-on-surface": "#f8eeef",
+            "outline": "#897176",
+            "on-tertiary-container": "#c6b7bd",
+            "on-secondary-fixed": "#410000",
+            "inverse-surface": "#342f30",
+            "on-secondary-container": "#690000",
+            "surface-dim": "#e1d8d9",
+            "surface-container": "#f5eced",
+            "tertiary-container": "#53484d",
+            "surface-container-lowest": "#ffffff",
+            "error": "#ba1a1a",
+            "surface-container-highest": "#e9e0e1",
+            "primary-fixed": "#ffd9e1",
+            "surface-tint": "#a8315d",
+            "on-secondary": "#ffffff",
+            "background": "#fff8f8",
+            "surface-container-high": "#efe6e7",
+            "primary": "#6d0033",
+            "on-primary": "#ffffff",
+            "on-surface-variant": "#564146",
+            "on-error-container": "#93000a",
+            "secondary-fixed-dim": "#ffb4a8"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "space-md": "0.75rem",
+            "space-lg": "1rem",
+            "space-xl": "1.5rem",
+            "space-2xl": "2rem",
+            "space-3xl": "3rem",
+            "gutter": "1rem",
+            "margin": "1rem"
+          },
+          "fontFamily": {
+            "body": ["Inter"],
+            "title": ["Inter"],
+            "amount-lg": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "display": ["Inter"],
+            "body-medium": ["Inter"],
+            "label": ["Inter"],
+            "caption": ["Inter"],
+            "subtitle": ["Inter"]
+          },
+          "fontSize": {
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #dcbfc5;
+      border-radius: 9999px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb:hover {
+      background: #897176;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased flex h-screen w-screen overflow-hidden font-body text-body selection:bg-primary-fixed selection:text-primary">
+<!-- LEFT NAVIGATION SIDEBAR (w-72, docked) -->
+<aside class="fixed left-0 top-0 h-full w-72 flex flex-col justify-between py-space-xl px-space-lg overflow-y-auto bg-surface-container-lowest border-r border-surface-variant z-30 shadow-sm custom-scroll">
+<div class="flex flex-col gap-space-xl">
+<!-- Tenant Brand Card / Crest -->
+<div class="flex items-center gap-space-md pb-space-lg border-b border-surface-variant">
+<div class="w-12 h-12 rounded-xl bg-primary flex items-center justify-center text-on-primary shadow-sm flex-shrink-0">
+<span class="material-symbols-outlined text-2xl" data-icon="account_balance_wallet" data-weight="fill" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+</div>
+<div class="overflow-hidden">
+<h2 class="font-subtitle text-subtitle text-primary tracking-tight truncate leading-tight">Pay Am Small</h2>
+<p class="font-caption text-caption text-on-surface-variant truncate">Slot Systems Nigeria</p>
+<span class="inline-flex items-center gap-1 font-caption text-xs text-outline px-1.5 py-0.5 rounded bg-surface-container mt-0.5">
+            #VEN-SLOT-041
+          </span>
+</div>
+</div>
+<!-- Main Navigation Items -->
+<nav class="flex flex-col gap-1">
+<div class="px-space-md py-1">
+<span class="font-caption text-xs uppercase tracking-wider text-outline font-semibold">Vendor Operations</span>
+</div>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="inventory_2">inventory_2</span>
+<span>Products &amp; Prices</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="local_shipping">local_shipping</span>
+<span>Orders &amp; Fulfilment</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="group">group</span>
+<span>Plans &amp; Customers</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="loyalty">loyalty</span>
+<span>Credit Offers</span>
+</a>
+<!-- Active Navigation Item: Payouts & Wallet -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg bg-surface-container-low text-primary font-label text-label shadow-sm border border-outline-variant/30" href="#">
+<span class="material-symbols-outlined text-xl text-primary" data-icon="account_balance_wallet" data-weight="fill" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+<span class="font-bold flex-1">Payouts &amp; Wallet</span>
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="verified_user">verified_user</span>
+<span>Team &amp; Verification</span>
+</a>
+<div class="px-space-md pt-3 pb-1">
+<span class="font-caption text-xs uppercase tracking-wider text-outline font-semibold">Account &amp; System</span>
+</div>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="tune">tune</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="help_outline">help_outline</span>
+<span>Help &amp; Support</span>
+</a>
+</nav>
+</div>
+<!-- Sidebar Footer -->
+<div class="pt-space-lg border-t border-surface-variant flex flex-col gap-2">
+<div class="bg-surface-container rounded-xl p-3 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="shield">shield</span>
+<div class="text-xs">
+<p class="font-label text-on-surface font-semibold">CBN Escrow Protected</p>
+<p class="font-caption text-outline text-[11px]">Audit Active #2027-SEC</p>
+</div>
+</div>
+<a class="flex items-center gap-space-md px-space-lg py-2.5 rounded-lg text-error font-label text-label hover:bg-error-container/40 transition-colors duration-150 mt-1" href="#">
+<span class="material-symbols-outlined text-xl text-error" data-icon="logout">logout</span>
+<span>Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- MAIN VIEWPORT CONTAINER -->
+<div class="flex-1 flex flex-col pl-72 h-screen overflow-hidden bg-background">
+<!-- TOP NAVIGATION BAR -->
+<header class="sticky top-0 right-0 h-16 flex items-center justify-between px-space-xl bg-surface-container-lowest border-b border-surface-variant z-20 flex-shrink-0">
+<div class="flex items-center gap-space-lg w-1/2 max-w-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-xl" data-icon="search">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container rounded-xl text-xs sm:text-label font-body text-on-surface placeholder:text-outline border border-transparent focus:border-primary focus:bg-surface-container-lowest focus:outline-none transition-all duration-150" placeholder="Search transaction reference, payout batch, settlement ID..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-space-lg">
+<!-- Live Status Pill -->
+<div class="hidden xl:flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-low border border-outline-variant/60">
+<span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+<span class="font-caption text-xs text-on-surface-variant font-medium">Settlement Account Verified • Automated Daily Sweep 18:00 WAT</span>
+</div>
+<!-- Dual Authorization Badge -->
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-surface-container text-primary font-label text-xs">
+<span class="material-symbols-outlined text-sm" data-icon="admin_panel_settings">admin_panel_settings</span>
+<span>Dual Authorization Active</span>
+</div>
+<!-- Notification Bell -->
+<button class="relative p-2 rounded-xl text-on-surface-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-xl" data-icon="notifications">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-secondary"></span>
+</button>
+<div class="h-6 w-px bg-surface-variant"></div>
+<!-- User Profile Pill -->
+<div class="flex items-center gap-3 pl-1">
+<img class="w-9 h-9 rounded-full object-cover border border-outline-variant" data-alt="A dignified close-up corporate portrait of a senior Nigerian male banking executive with a confident, welcoming demeanor, wearing crisp professional attire within a softly lit modern commercial executive suite with warm berry and muted neutral architectural tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2dSBbOdTkByvTT-oLsW45bPeQ46YIf6fg0C2CpXBbHqHGdUz4j8uidMDC86CXpCUdr4MU_Uz-VDykWAC0SsWvG_JJXDm-hpZbCsIYove1m2JOq8kpPksKlPlj8qxlfZYTjJA4x_bcrYrl2OsR8YHeauK_6sy0dgdEBIMtFWyv_B2EcKYZlShgD-DyRu22oZEPS5Wf5iz9BJCA2QWldgiElmhgdjjYDJwQ-M-j4r0Y"/>
+<div class="hidden sm:block text-left">
+<h4 class="font-label text-xs font-semibold text-on-surface leading-tight">Nnamdi Eze</h4>
+<p class="font-caption text-[11px] text-outline truncate max-w-[130px]">Managing Merchant Director</p>
+</div>
+</div>
+</div>
+</header>
+<!-- WORKSPACE CANVAS (SCROLLABLE) -->
+<main class="flex-1 overflow-y-auto p-space-xl space-y-space-xl custom-scroll">
+<!-- Screen Header with Metadata & Actions -->
+<section class="flex flex-col md:flex-row md:items-center md:justify-between gap-space-lg pb-space-xs">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-primary-fixed text-on-primary-fixed">W-PAS-006</span>
+<span class="font-caption text-xs text-outline font-medium">Lagos Island Main Branch (012)</span>
+</div>
+<h1 class="font-title text-title text-primary tracking-tight">Merchant Payouts &amp; Escrow Settlement Wallet</h1>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5 max-w-3xl">
+            Real-time ledger of completed vault payouts, BNPL installment sweeps, regulatory holdbacks, and automated daily bank remittances.
+          </p>
+</div>
+<div class="flex items-center flex-wrap gap-2.5">
+<button class="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl border border-surface-variant bg-surface-container-lowest text-on-surface font-label text-xs hover:bg-surface-container transition-colors shadow-sm">
+<span class="material-symbols-outlined text-base" data-icon="picture_as_pdf">picture_as_pdf</span>
+<span>Download Statement (PDF)</span>
+</button>
+<button class="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl border border-surface-variant bg-surface-container-lowest text-on-surface font-label text-xs hover:bg-surface-container transition-colors shadow-sm">
+<span class="material-symbols-outlined text-base" data-icon="table_view">table_view</span>
+<span>Export Full Settlement Ledger (CSV)</span>
+</button>
+<button class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-primary text-on-primary font-label text-xs hover:bg-primary/90 transition-all shadow-sm">
+<span class="material-symbols-outlined text-base" data-icon="bolt">bolt</span>
+<span>Request Instant On-Demand Settlement Sweep</span>
+</button>
+</div>
+</section>
+<!-- TOP FINANCIAL KPI TILES (4 CARDS) -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-lg">
+<!-- Tile 1: Available Wallet Balance -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl border border-surface-variant shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="absolute -right-3 -top-3 w-16 h-16 bg-surface-container-low rounded-full opacity-50 pointer-events-none"></div>
+<div>
+<div class="flex items-center justify-between text-on-surface-variant mb-2">
+<span class="font-caption text-xs font-medium text-outline">Available Wallet Balance</span>
+<span class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-lg" data-icon="payments">payments</span>
+</span>
+</div>
+<div class="font-amount-lg text-2xl lg:text-3xl text-primary font-bold tracking-tight">₦18,450,000.00</div>
+</div>
+<div class="mt-3 pt-3 border-t border-surface-container flex items-center gap-1.5 font-caption text-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-sm text-emerald-600" data-icon="check_circle">check_circle</span>
+<span class="truncate">Ready for instant sweep or 18:00 WAT payout</span>
+</div>
+</div>
+<!-- Tile 2: Pending Escrow Holdback -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl border border-surface-variant shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div>
+<div class="flex items-center justify-between text-on-surface-variant mb-2">
+<span class="font-caption text-xs font-medium text-outline">Pending Escrow Holdback</span>
+<span class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-lg" data-icon="lock_clock">lock_clock</span>
+</span>
+</div>
+<div class="font-amount-lg text-2xl lg:text-3xl text-on-surface font-bold tracking-tight">₦4,250,000.00</div>
+</div>
+<div class="mt-3 pt-3 border-t border-surface-container flex items-center gap-1.5 font-caption text-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-sm text-secondary" data-icon="schedule">schedule</span>
+<span class="truncate">3 orders delivered today; 24-hr CBN holdback</span>
+</div>
+</div>
+<!-- Tile 3: Total Settled YTD -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl border border-surface-variant shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div>
+<div class="flex items-center justify-between text-on-surface-variant mb-2">
+<span class="font-caption text-xs font-medium text-outline">Total Settled YTD</span>
+<span class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-lg" data-icon="account_balance">account_balance</span>
+</span>
+</div>
+<div class="font-amount-lg text-2xl lg:text-3xl text-on-surface font-bold tracking-tight">₦118,500,000.00</div>
+</div>
+<div class="mt-3 pt-3 border-t border-surface-container flex items-center gap-1.5 font-caption text-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-sm text-emerald-600" data-icon="task_alt">task_alt</span>
+<span class="truncate">284 orders • 100% automated reconciliation</span>
+</div>
+</div>
+<!-- Tile 4: Merchant Payout Account -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl border border-surface-variant shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div>
+<div class="flex items-center justify-between text-on-surface-variant mb-2">
+<span class="font-caption text-xs font-medium text-outline">Merchant Payout Account</span>
+<span class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-lg" data-icon="domain_verification">domain_verification</span>
+</span>
+</div>
+<div class="font-subtitle text-lg text-on-surface font-bold truncate">Zenith Bank Plc</div>
+<div class="font-caption text-xs text-outline mt-0.5">Acc: ••••••••8812</div>
+</div>
+<div class="mt-3 pt-3 border-t border-surface-container flex items-center gap-1.5 font-caption text-xs text-emerald-700 font-medium">
+<span class="material-symbols-outlined text-sm text-emerald-600" data-icon="verified">verified</span>
+<span class="truncate">Primary Corporate Account (Active &amp; Verified)</span>
+</div>
+</div>
+</section>
+<!-- SETTLEMENT ASSURANCE BANNER -->
+<section class="bg-surface-container-low border border-outline-variant/60 rounded-xl p-space-lg flex items-start gap-space-md shadow-sm">
+<div class="p-2 rounded-lg bg-primary-fixed text-primary flex-shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-xl" data-icon="policy">policy</span>
+</div>
+<div class="flex-1">
+<h3 class="font-label text-sm text-primary font-bold">CBN Tier-1 Escrow Protocol</h3>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">
+            Funds from 100% funded vaults and completed delivery code handovers are held in protected CBN partner escrow. Automatic daily sweep transmits net merchant credit directly to your primary Zenith Bank account at 18:00 WAT daily with zero interbank fees.
+          </p>
+</div>
+<span class="hidden sm:inline-flex items-center gap-1 px-2.5 py-1 rounded bg-surface-container-lowest text-xs font-label text-on-surface-variant border border-surface-variant">
+<span class="material-symbols-outlined text-sm text-emerald-600" data-icon="verified_user">verified_user</span>
+          Secured by Interswitch &amp; NIBSS
+        </span>
+</section>
+<!-- SPLIT SCREEN LAYOUT: Main Table (65%) & Inspection Drawer (35%) -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-start">
+<!-- LEFT / MAIN TABLE (w-[65%] -> 8 of 12 cols) -->
+<div class="lg:col-span-8 bg-surface-container-lowest rounded-xl border border-surface-variant shadow-sm overflow-hidden flex flex-col">
+<!-- Table Header / Tabs -->
+<div class="px-space-lg pt-space-lg pb-space-md border-b border-surface-variant flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div>
+<h2 class="font-subtitle text-subtitle text-on-surface font-bold">Payouts &amp; Settlement Transactions Ledger</h2>
+<p class="font-caption text-caption text-outline">Real-time status of commercial settlements, batches, and escrow releases</p>
+</div>
+<!-- Ledger Tabs -->
+<div class="flex items-center gap-1 bg-surface-container p-1 rounded-xl">
+<button class="px-2.5 py-1.5 rounded-lg text-xs font-label bg-surface-container-lowest text-primary shadow-xs font-semibold">
+                All (148)
+              </button>
+<button class="px-2.5 py-1.5 rounded-lg text-xs font-label text-on-surface-variant hover:text-on-surface">
+                Cleared (138)
+              </button>
+<button class="px-2.5 py-1.5 rounded-lg text-xs font-label text-on-surface-variant hover:text-on-surface">
+                Holdback (7)
+              </button>
+<button class="px-2.5 py-1.5 rounded-lg text-xs font-label text-on-surface-variant hover:text-on-surface">
+                Processing (3)
+              </button>
+</div>
+</div>
+<!-- Table Container -->
+<div class="overflow-x-auto custom-scroll">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container/60 border-b border-surface-variant text-outline font-label text-xs uppercase tracking-wider">
+<th class="py-3 px-4">Ref &amp; Date</th>
+<th class="py-3 px-3">Order / Vault</th>
+<th class="py-3 px-3">Customer &amp; Item</th>
+<th class="py-3 px-3 text-right">Gross</th>
+<th class="py-3 px-3 text-right">Fee (1.5%)</th>
+<th class="py-3 px-3 text-right">Net Disbursed</th>
+<th class="py-3 px-3">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-variant font-caption text-xs">
+<!-- ROW 1 (SELECTED ROW) -->
+<tr class="bg-surface-container-low/70 border-l-4 border-l-primary hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="py-3.5 px-4 font-medium text-on-surface">
+<div class="font-label text-xs font-bold text-primary">#SET-2027-891</div>
+<div class="text-[11px] text-outline">24 Feb 2027, 14:15 WAT</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-mono text-[11px]">#ORD-2027-8491</span>
+</td>
+<td class="py-3.5 px-3">
+<div class="font-medium text-on-surface truncate max-w-[130px]">Kelechi Okonkwo</div>
+<div class="text-[11px] text-outline truncate max-w-[130px]">Apple iPhone 15 Pro</div>
+</td>
+<td class="py-3.5 px-3 text-right font-medium text-on-surface">
+                    ₦1,250,000.00
+                  </td>
+<td class="py-3.5 px-3 text-right text-secondary font-medium">
+                    -₦18,750.00
+                  </td>
+<td class="py-3.5 px-3 text-right font-bold text-primary text-xs">
+                    ₦1,231,250.00
+                  </td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-100 text-emerald-800">
+<span class="material-symbols-outlined text-xs" data-icon="check_circle">check_circle</span>
+                      Cleared (Instant)
+                    </span>
+</td>
+</tr>
+<!-- ROW 2 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors cursor-pointer">
+<td class="py-3.5 px-4 font-medium text-on-surface">
+<div class="font-label text-xs font-bold text-on-surface">#SET-2027-889</div>
+<div class="text-[11px] text-outline">24 Feb 2027, 11:30 WAT</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-mono text-[11px]">#ORD-2027-8488</span>
+</td>
+<td class="py-3.5 px-3">
+<div class="font-medium text-on-surface truncate max-w-[130px]">Amina Bello</div>
+<div class="text-[11px] text-outline truncate max-w-[130px]">Samsung S24 Ultra</div>
+</td>
+<td class="py-3.5 px-3 text-right font-medium text-on-surface">
+                    ₦1,450,000.00
+                  </td>
+<td class="py-3.5 px-3 text-right text-secondary font-medium">
+                    -₦21,750.00
+                  </td>
+<td class="py-3.5 px-3 text-right font-bold text-on-surface text-xs">
+                    ₦1,428,250.00
+                  </td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-semibold bg-amber-100 text-amber-900">
+<span class="material-symbols-outlined text-xs" data-icon="schedule">schedule</span>
+                      Holdback (18:00)
+                    </span>
+</td>
+</tr>
+<!-- ROW 3 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors cursor-pointer">
+<td class="py-3.5 px-4 font-medium text-on-surface">
+<div class="font-label text-xs font-bold text-on-surface">#SET-2027-884</div>
+<div class="text-[11px] text-outline">23 Feb 2027, 18:00 WAT</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-mono text-[11px]">#BATCH-SWP-104</span>
+</td>
+<td class="py-3.5 px-3">
+<div class="font-medium text-on-surface truncate max-w-[130px]">Scheduled Batch</div>
+<div class="text-[11px] text-outline truncate max-w-[130px]">12 Orders Cleared</div>
+</td>
+<td class="py-3.5 px-3 text-right font-medium text-on-surface">
+                    ₦14,850,000.00
+                  </td>
+<td class="py-3.5 px-3 text-right text-secondary font-medium">
+                    -₦222,750.00
+                  </td>
+<td class="py-3.5 px-3 text-right font-bold text-on-surface text-xs">
+                    ₦14,627,250.00
+                  </td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-100 text-emerald-800">
+<span class="material-symbols-outlined text-xs" data-icon="check_circle">check_circle</span>
+                      Cleared
+                    </span>
+</td>
+</tr>
+<!-- ROW 4 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors cursor-pointer">
+<td class="py-3.5 px-4 font-medium text-on-surface">
+<div class="font-label text-xs font-bold text-on-surface">#SET-2027-880</div>
+<div class="text-[11px] text-outline">22 Feb 2027, 15:45 WAT</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-mono text-[11px]">#CRD-INS-022</span>
+</td>
+<td class="py-3.5 px-3">
+<div class="font-medium text-on-surface truncate max-w-[130px]">Folashade Coker</div>
+<div class="text-[11px] text-outline truncate max-w-[130px]">BNPL Installment 2/4</div>
+</td>
+<td class="py-3.5 px-3 text-right font-medium text-on-surface">
+                    ₦170,000.00
+                  </td>
+<td class="py-3.5 px-3 text-right text-secondary font-medium">
+                    -₦2,550.00
+                  </td>
+<td class="py-3.5 px-3 text-right font-bold text-on-surface text-xs">
+                    ₦167,450.00
+                  </td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-100 text-emerald-800">
+<span class="material-symbols-outlined text-xs" data-icon="check_circle">check_circle</span>
+                      Cleared
+                    </span>
+</td>
+</tr>
+<!-- ROW 5 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors cursor-pointer">
+<td class="py-3.5 px-4 font-medium text-on-surface">
+<div class="font-label text-xs font-bold text-on-surface">#SET-2027-876</div>
+<div class="text-[11px] text-outline">21 Feb 2027, 18:00 WAT</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-mono text-[11px]">#BATCH-SWP-103</span>
+</td>
+<td class="py-3.5 px-3">
+<div class="font-medium text-on-surface truncate max-w-[130px]">Scheduled Batch</div>
+<div class="text-[11px] text-outline truncate max-w-[130px]">8 Orders Cleared</div>
+</td>
+<td class="py-3.5 px-3 text-right font-medium text-on-surface">
+                    ₦9,600,000.00
+                  </td>
+<td class="py-3.5 px-3 text-right text-secondary font-medium">
+                    -₦144,000.00
+                  </td>
+<td class="py-3.5 px-3 text-right font-bold text-on-surface text-xs">
+                    ₦9,456,000.00
+                  </td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-100 text-emerald-800">
+<span class="material-symbols-outlined text-xs" data-icon="check_circle">check_circle</span>
+                      Cleared
+                    </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Ledger Table Footer / Pagination -->
+<div class="px-space-lg py-3 border-t border-surface-variant bg-surface-container/30 flex items-center justify-between text-xs text-outline">
+<span>Showing 1 to 5 of 148 settlement entries</span>
+<div class="flex items-center gap-1">
+<button class="px-2.5 py-1 rounded bg-surface-container-lowest border border-surface-variant text-on-surface disabled:opacity-50" disabled="">Previous</button>
+<button class="px-2.5 py-1 rounded bg-primary text-on-primary font-bold">1</button>
+<button class="px-2.5 py-1 rounded bg-surface-container-lowest border border-surface-variant text-on-surface hover:bg-surface-container">2</button>
+<button class="px-2.5 py-1 rounded bg-surface-container-lowest border border-surface-variant text-on-surface hover:bg-surface-container">3</button>
+<button class="px-2.5 py-1 rounded bg-surface-container-lowest border border-surface-variant text-on-surface hover:bg-surface-container">Next</button>
+</div>
+</div>
+</div>
+<!-- RIGHT INSPECTION DRAWER (w-[35%] -> 4 of 12 cols) -->
+<aside class="lg:col-span-4 bg-surface-container-lowest rounded-xl border border-surface-variant shadow-sm p-space-lg flex flex-col gap-space-lg">
+<!-- Inspection Header -->
+<div class="flex items-start justify-between pb-3 border-b border-surface-variant">
+<div>
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-primary-fixed text-primary">SELECTED DOSSIER</span>
+<span class="font-caption text-xs text-outline">#SET-2027-891</span>
+</div>
+<h3 class="font-subtitle text-lg font-bold text-on-surface mt-1">Settlement Breakdown</h3>
+</div>
+<span class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center">
+<span class="material-symbols-outlined text-base" data-icon="check" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check</span>
+</span>
+</div>
+<!-- Payout Status & Timestamp -->
+<div class="bg-surface-container-low rounded-xl p-3 border border-outline-variant/50 space-y-1.5">
+<div class="flex items-center justify-between">
+<span class="font-label text-xs font-semibold text-emerald-800 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="verified">verified</span>
+                Cleared &amp; Verified
+              </span>
+<span class="font-caption text-[11px] text-outline">24 Feb 2027 14:15 WAT</span>
+</div>
+<p class="font-caption text-xs text-on-surface-variant">
+              NIBSS Instant Transaction Ref: <code class="font-mono font-bold text-primary">#NIP-990281-SLOT</code>
+</p>
+</div>
+<!-- Settlement Breakdown Card -->
+<div class="space-y-2.5 bg-surface-container/40 p-3.5 rounded-xl border border-surface-variant">
+<div class="flex justify-between items-center text-xs">
+<span class="text-outline">Gross Order Total</span>
+<span class="font-semibold text-on-surface">₦1,250,000.00</span>
+</div>
+<div class="flex justify-between items-center text-xs">
+<span class="text-outline">Pay Am Small Service Fee (1.5%)</span>
+<span class="font-semibold text-secondary">-₦18,750.00</span>
+</div>
+<div class="flex justify-between items-center text-xs">
+<span class="text-outline">Withholding Tax (WHT)</span>
+<span class="font-semibold text-emerald-700">₦0.00 (Exempt)</span>
+</div>
+<div class="pt-2 border-t border-surface-variant flex justify-between items-center">
+<div>
+<span class="font-label text-xs font-bold text-on-surface">Net Merchant Credit</span>
+<p class="text-[10px] text-outline">Disbursed to Zenith Bank</p>
+</div>
+<span class="font-amount-lg text-lg font-bold text-primary">₦1,231,250.00</span>
+</div>
+</div>
+<!-- Linked Commercial Order Details -->
+<div class="space-y-2">
+<h4 class="font-label text-xs font-bold uppercase tracking-wider text-outline">Linked Commercial Order</h4>
+<div class="p-3 rounded-xl border border-surface-variant bg-surface-container-lowest space-y-2">
+<div class="flex justify-between items-start">
+<div>
+<span class="font-mono text-xs font-bold text-primary">#ORD-2027-8491</span>
+<p class="font-medium text-xs text-on-surface">Apple iPhone 15 Pro 128GB</p>
+</div>
+<span class="px-2 py-0.5 rounded text-[10px] bg-surface-container font-semibold text-on-surface-variant">Handover OK</span>
+</div>
+<div class="text-[11px] text-outline flex items-center justify-between pt-1 border-t border-surface-container">
+<span>Customer: <strong class="text-on-surface">Kelechi Okonkwo</strong> (0803***192)</span>
+</div>
+<div class="bg-surface-container-low p-2 rounded-lg text-[11px] text-on-surface-variant flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-primary" data-icon="qr_code_scanner">qr_code_scanner</span>
+<span>Delivery Code Auth: <strong class="font-mono text-primary font-bold">'849-201'</strong> (Ikeja Flagship)</span>
+</div>
+</div>
+</div>
+<!-- Receiving Commercial Account -->
+<div class="space-y-2">
+<h4 class="font-label text-xs font-bold uppercase tracking-wider text-outline">Destination Account</h4>
+<div class="p-3 rounded-xl border border-surface-variant bg-surface-container-lowest text-xs space-y-1">
+<div class="flex justify-between">
+<span class="text-outline">Bank:</span>
+<span class="font-semibold text-on-surface">Zenith Bank Plc</span>
+</div>
+<div class="flex justify-between">
+<span class="text-outline">Account Name:</span>
+<span class="font-semibold text-on-surface">Slot Systems Nigeria Ltd</span>
+</div>
+<div class="flex justify-between">
+<span class="text-outline">Account Number:</span>
+<span class="font-mono font-bold text-on-surface">1019283741</span>
+</div>
+<div class="flex justify-between">
+<span class="text-outline">NIP Session ID:</span>
+<span class="font-mono text-emerald-700 text-[11px]">990281092837190209</span>
+</div>
+</div>
+</div>
+<!-- Action Stack -->
+<div class="flex flex-col gap-2 pt-2 border-t border-surface-variant">
+<button class="w-full h-11 rounded-xl bg-primary text-on-primary font-label text-xs font-semibold flex items-center justify-center gap-2 hover:bg-primary/90 transition-all shadow-sm">
+<span class="material-symbols-outlined text-base" data-icon="download">download</span>
+<span>Download Settlement Receipt (PDF)</span>
+</button>
+<button class="w-full h-11 rounded-xl bg-surface-container-low text-primary font-label text-xs font-semibold flex items-center justify-center gap-2 hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-base" data-icon="verified">verified</span>
+<span>View Delivery Authentication Stamp</span>
+</button>
+<button class="w-full py-2 rounded-xl text-outline font-label text-xs hover:text-secondary hover:bg-error-container/30 transition-colors flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-sm" data-icon="contact_support">contact_support</span>
+<span>Raise Settlement Query</span>
+</button>
+</div>
+</aside>
+</section>
+<!-- BOTTOM SYSTEM REGULATORY STRIP -->
+<footer class="pt-space-md pb-space-lg border-t border-surface-variant flex flex-col sm:flex-row items-center justify-between text-xs text-outline gap-3">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+<span>Automated NIP Settlement Clearing • ISO 20022 Compliant • Verified Escrow Partner</span>
+</div>
+<div class="flex items-center gap-4 text-xs font-label">
+<span class="text-on-surface-variant">YourApp Institutional Banking Services</span>
+<span class="text-outline">•</span>
+<span class="text-on-surface-variant">Central Bank of Nigeria (CBN) Regulated</span>
+<span class="text-outline">•</span>
+<span>System Status: 100% Operational</span>
+</div>
+</footer>
+</main>
+</div>
+</body></html>

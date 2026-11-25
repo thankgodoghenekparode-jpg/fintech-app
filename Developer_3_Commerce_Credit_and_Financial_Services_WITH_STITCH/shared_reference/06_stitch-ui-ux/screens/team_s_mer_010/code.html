@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YourApp - Team & Staff Roles</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration verbatim -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-tertiary-fixed": "#21191e",
+            "on-background": "#1f1b1c",
+            "error": "#ba1a1a",
+            "on-primary-fixed-variant": "#881646",
+            "primary-fixed": "#ffd9e1",
+            "surface-container-high": "#efe6e7",
+            "primary-fixed-dim": "#ffb1c5",
+            "on-secondary-fixed-variant": "#8c170e",
+            "tertiary": "#3b3236",
+            "surface-variant": "#e9e0e1",
+            "on-primary-fixed": "#3f001b",
+            "on-error-container": "#93000a",
+            "surface-bright": "#fff8f8",
+            "tertiary-container": "#53484d",
+            "on-surface": "#1f1b1c",
+            "surface-container-low": "#fbf1f2",
+            "primary": "#6d0033",
+            "tertiary-fixed": "#eedee4",
+            "surface-container-lowest": "#ffffff",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "on-secondary-container": "#690000",
+            "surface-tint": "#a8315d",
+            "secondary-fixed": "#ffdad4",
+            "on-tertiary": "#ffffff",
+            "on-primary-container": "#ffa0ba",
+            "inverse-on-surface": "#f8eeef",
+            "surface-dim": "#e1d8d9",
+            "surface": "#fff8f8",
+            "on-error": "#ffffff",
+            "inverse-primary": "#ffb1c5",
+            "inverse-surface": "#342f30",
+            "secondary": "#ae3123",
+            "outline": "#897176",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "surface-container-highest": "#e9e0e1",
+            "on-secondary": "#ffffff",
+            "on-surface-variant": "#564146",
+            "surface-container": "#f5eced",
+            "primary-container": "#8e1b4a",
+            "secondary-fixed-dim": "#ffb4a8",
+            "on-primary": "#ffffff",
+            "on-secondary-fixed": "#410000",
+            "background": "#fff8f8",
+            "secondary-container": "#fc6955",
+            "outline-variant": "#dcbfc5",
+            "error-container": "#ffdad6",
+            "on-tertiary-container": "#c6b7bd"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-3xl": "3rem",
+            "gutter": "1rem",
+            "space-xs": "0.25rem",
+            "space-xl": "1.5rem",
+            "margin": "1rem",
+            "space-md": "0.75rem",
+            "space-2xl": "2rem",
+            "space-sm": "0.5rem",
+            "space-lg": "1rem"
+          },
+          "fontFamily": {
+            "label": ["Inter"],
+            "caption": ["Inter"],
+            "amount-lg": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "body": ["Inter"],
+            "body-medium": ["Inter"],
+            "display": ["Inter"],
+            "subtitle": ["Inter"],
+            "title": ["Inter"]
+          },
+          "fontSize": {
+            "label": [
+              "14px",
+              {
+                "lineHeight": "20px",
+                "letterSpacing": "0.01em",
+                "fontWeight": "600"
+              }
+            ],
+            "caption": [
+              "13px",
+              {
+                "lineHeight": "18px",
+                "letterSpacing": "0.01em",
+                "fontWeight": "400"
+              }
+            ],
+            "amount-lg": [
+              "36px",
+              {
+                "lineHeight": "44px",
+                "letterSpacing": "-0.03em",
+                "fontWeight": "700"
+              }
+            ],
+            "amount-lg-mobile": [
+              "32px",
+              {
+                "lineHeight": "40px",
+                "letterSpacing": "-0.02em",
+                "fontWeight": "700"
+              }
+            ],
+            "body": [
+              "16px",
+              {
+                "lineHeight": "24px",
+                "letterSpacing": "0em",
+                "fontWeight": "400"
+              }
+            ],
+            "body-medium": [
+              "16px",
+              {
+                "lineHeight": "24px",
+                "letterSpacing": "0em",
+                "fontWeight": "500"
+              }
+            ],
+            "display": [
+              "32px",
+              {
+                "lineHeight": "40px",
+                "letterSpacing": "-0.02em",
+                "fontWeight": "700"
+              }
+            ],
+            "subtitle": [
+              "20px",
+              {
+                "lineHeight": "28px",
+                "letterSpacing": "-0.01em",
+                "fontWeight": "600"
+              }
+            ],
+            "title": [
+              "24px",
+              {
+                "lineHeight": "32px",
+                "letterSpacing": "-0.015em",
+                "fontWeight": "700"
+              }
+            ]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .pb-safe {
+      padding-bottom: env(safe-area-inset-bottom, 16px);
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body min-h-screen antialiased flex flex-col justify-between selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Main Container (Bounded 560px for Tablet/Desktop, 390px Fluid on Mobile) -->
+<div class="w-full max-w-[560px] mx-auto min-h-screen flex flex-col bg-background pb-32">
+<!-- Top App Navigation Bar (Screen Header: S-MER-010 Team & Staff Roles) -->
+<header class="sticky top-0 z-40 bg-surface/95 backdrop-blur-md px-margin py-space-sm flex items-center justify-between min-h-[56px] border-b border-outline-variant/40">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Go Back" class="w-10 h-10 -ml-1 rounded-xl flex items-center justify-center text-on-surface hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<div>
+<span class="block font-caption text-caption text-on-surface-variant font-medium">Merchant Tools • S-MER-010</span>
+<h1 class="font-subtitle text-subtitle text-on-surface tracking-tight leading-tight">Team & Staff Roles</h1>
+</div>
+</div>
+<!-- Primary Action "+ Add Staff" -->
+<button class="h-10 px-space-md rounded-xl bg-primary-container text-on-primary font-label text-label flex items-center gap-space-xs shadow-sm hover:opacity-95 active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+<span>+ Add Staff</span>
+</button>
+</header>
+<main class="px-margin pt-space-md flex flex-col gap-space-lg">
+<!-- Store & Team Capacity Bento Banner -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant/50 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] flex flex-col gap-space-md relative overflow-hidden">
+<div class="absolute -right-6 -bottom-6 w-32 h-32 bg-primary-fixed/20 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-start justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-xl bg-primary-fixed flex items-center justify-center text-primary-container font-title text-title shrink-0">
+<span class="material-symbols-outlined text-[26px]">storefront</span>
+</div>
+<div>
+<span class="inline-flex items-center gap-1 font-caption text-caption text-primary font-semibold">
+<span class="material-symbols-outlined text-[14px]">verified</span> Retail Merchant Account
+              </span>
+<h2 class="font-title text-title text-on-surface tracking-tight">Ade Supermarket & Stores</h2>
+</div>
+</div>
+</div>
+<!-- Metric Details Pill Array -->
+<div class="grid grid-cols-2 gap-space-sm pt-space-xs border-t border-surface-variant/70">
+<div class="p-space-sm bg-surface-container-low rounded-lg flex flex-col">
+<span class="font-caption text-caption text-on-surface-variant">Active Workforce</span>
+<span class="font-subtitle text-subtitle text-on-surface font-bold">5 Members</span>
+<span class="font-caption text-caption text-on-surface-variant/90 text-xs">2 Branches linked</span>
+</div>
+<div class="p-space-sm bg-surface-container-low rounded-lg flex flex-col">
+<span class="font-caption text-caption text-on-surface-variant">Assigned Locations</span>
+<span class="font-label text-label text-on-surface truncate">Ikeja Main, VI Branch</span>
+<span class="font-caption text-caption text-primary font-medium text-xs">Lagos State</span>
+</div>
+</div>
+<!-- RBAC Protection Badge -->
+<div class="flex items-center justify-between bg-surface-container/60 rounded-lg px-space-md py-space-sm border border-outline-variant/30">
+<div class="flex items-center gap-space-xs text-on-surface font-caption text-caption">
+<span class="material-symbols-outlined text-[18px] text-primary" style="font-variation-settings: 'FILL' 1;">security</span>
+<span class="font-label text-label text-on-surface text-xs">Role-Based Access Active</span>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-lowest text-xs font-caption text-on-surface-variant border border-outline-variant/40">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse"></span>
+            Enforced
+          </span>
+</div>
+</section>
+<!-- Filter / Role Tabs (Horizontal Scrollable Tabs) -->
+<nav aria-label="Role Filters" class="flex items-center gap-space-xs overflow-x-auto no-scrollbar py-0.5">
+<button class="h-10 px-space-md rounded-xl bg-primary-container text-on-primary font-label text-label flex items-center gap-1.5 whitespace-nowrap shadow-sm" type="button">
+<span>All Staff</span>
+<span class="w-5 h-5 rounded-full bg-primary-fixed text-primary font-label text-xs flex items-center justify-center">5</span>
+</button>
+<button class="h-10 px-space-md rounded-xl bg-surface-container-lowest text-on-surface-variant font-label text-label border border-outline-variant/60 flex items-center gap-1.5 whitespace-nowrap hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span>Cashiers</span>
+<span class="w-5 h-5 rounded-full bg-surface-container text-on-surface-variant font-label text-xs flex items-center justify-center">3</span>
+</button>
+<button class="h-10 px-space-md rounded-xl bg-surface-container-lowest text-on-surface-variant font-label text-label border border-outline-variant/60 flex items-center gap-1.5 whitespace-nowrap hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span>Managers</span>
+<span class="w-5 h-5 rounded-full bg-surface-container text-on-surface-variant font-label text-xs flex items-center justify-center">1</span>
+</button>
+<button class="h-10 px-space-md rounded-xl bg-surface-container-lowest text-on-surface-variant font-label text-label border border-outline-variant/60 flex items-center gap-1.5 whitespace-nowrap hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span>Accountants</span>
+<span class="w-5 h-5 rounded-full bg-surface-container text-on-surface-variant font-label text-xs flex items-center justify-center">1</span>
+</button>
+</nav>
+<!-- Staff Members Section -->
+<section class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<h3 class="font-subtitle text-subtitle text-on-surface font-semibold tracking-tight">Staff Members</h3>
+<span class="font-caption text-caption text-on-surface-variant">Showing 4 of 5</span>
+</div>
+<div class="flex flex-col gap-space-md">
+<!-- Member 1: Tunde Bakare (Cashier) -->
+<article class="bg-surface-container-lowest rounded-xl p-space-md border border-outline-variant/50 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] hover:border-outline-variant transition-all">
+<div class="flex items-start justify-between gap-space-sm mb-space-sm">
+<div class="flex items-center gap-space-md">
+<!-- Avatar TB -->
+<div class="w-12 h-12 rounded-xl bg-primary-fixed text-primary font-title text-title flex items-center justify-center font-bold shrink-0">
+                  TB
+                </div>
+<div>
+<div class="flex items-center gap-space-xs">
+<h4 class="font-body-medium text-body-medium text-on-surface font-semibold">Tunde Bakare</h4>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 text-[11px] font-caption border border-emerald-200">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                      Online
+                    </span>
+</div>
+<div class="flex items-center gap-1 font-caption text-caption text-on-surface-variant mt-0.5">
+<span class="font-medium text-primary">Cashier</span>
+<span>•</span>
+<span>Shift: Active (Register 02, Ikeja Main)</span>
+</div>
+</div>
+</div>
+<!-- Trailing menu / edit action (48x48 min touch standard) -->
+<button aria-label="Options for Tunde Bakare" class="w-10 h-10 rounded-xl flex items-center justify-center text-on-surface-variant hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[22px]">more_vert</span>
+</button>
+</div>
+<!-- Permissions summary -->
+<div class="bg-surface-container-low/70 rounded-lg p-space-sm flex items-start gap-space-xs text-xs font-caption text-on-surface-variant border border-surface-variant/40">
+<span class="material-symbols-outlined text-[16px] text-tertiary-container mt-0.5 shrink-0">key</span>
+<span>Can initiate checkout, show QR, and record cash. No access to balance or payouts.</span>
+</div>
+<!-- Quick Action bar -->
+<div class="mt-space-sm pt-space-xs flex items-center justify-between border-t border-surface-container text-xs font-label">
+<span class="text-on-surface-variant font-caption">Last active: Just now</span>
+<button class="text-primary font-semibold hover:underline flex items-center gap-0.5" type="button">
+<span>Edit permissions</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+</button>
+</div>
+</article>
+<!-- Member 2: Amaka Eze (Manager) -->
+<article class="bg-surface-container-lowest rounded-xl p-space-md border border-outline-variant/50 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] hover:border-outline-variant transition-all">
+<div class="flex items-start justify-between gap-space-sm mb-space-sm">
+<div class="flex items-center gap-space-md">
+<!-- Avatar AE -->
+<div class="w-12 h-12 rounded-xl bg-tertiary-fixed text-tertiary font-title text-title flex items-center justify-center font-bold shrink-0">
+                  AE
+                </div>
+<div>
+<div class="flex items-center gap-space-xs">
+<h4 class="font-body-medium text-body-medium text-on-surface font-semibold">Amaka Eze</h4>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 text-[11px] font-caption border border-emerald-200">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                      Active
+                    </span>
+</div>
+<div class="flex items-center gap-1 font-caption text-caption text-on-surface-variant mt-0.5">
+<span class="font-medium text-primary-container">Manager</span>
+<span>•</span>
+<span>Ikeja Main</span>
+</div>
+</div>
+</div>
+<button aria-label="Options for Amaka Eze" class="w-10 h-10 rounded-xl flex items-center justify-center text-on-surface-variant hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[22px]">more_vert</span>
+</button>
+</div>
+<!-- Permissions summary -->
+<div class="bg-surface-container-low/70 rounded-lg p-space-sm flex items-start gap-space-xs text-xs font-caption text-on-surface-variant border border-surface-variant/40">
+<span class="material-symbols-outlined text-[16px] text-tertiary-container mt-0.5 shrink-0">verified_user</span>
+<span>Can authorize refunds up to ₦50,000, view daily till, and manage cashiers.</span>
+</div>
+<div class="mt-space-sm pt-space-xs flex items-center justify-between border-t border-surface-container text-xs font-label">
+<span class="text-on-surface-variant font-caption">Device: POS Terminal #01</span>
+<button class="text-primary font-semibold hover:underline flex items-center gap-0.5" type="button">
+<span>Manage limits</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+</button>
+</div>
+</article>
+<!-- Member 3: Femi Adeleke (Accountant) -->
+<article class="bg-surface-container-lowest rounded-xl p-space-md border border-outline-variant/50 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] hover:border-outline-variant transition-all">
+<div class="flex items-start justify-between gap-space-sm mb-space-sm">
+<div class="flex items-center gap-space-md">
+<!-- Avatar FA -->
+<div class="w-12 h-12 rounded-xl bg-secondary-fixed text-on-secondary-fixed font-title text-title flex items-center justify-center font-bold shrink-0">
+                  FA
+                </div>
+<div>
+<div class="flex items-center gap-space-xs">
+<h4 class="font-body-medium text-body-medium text-on-surface font-semibold">Femi Adeleke</h4>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 text-[11px] font-caption border border-emerald-200">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                      Active
+                    </span>
+</div>
+<div class="flex items-center gap-1 font-caption text-caption text-on-surface-variant mt-0.5">
+<span class="font-medium text-primary">Accountant</span>
+<span>•</span>
+<span>All Branches</span>
+</div>
+</div>
+</div>
+<button aria-label="Options for Femi Adeleke" class="w-10 h-10 rounded-xl flex items-center justify-center text-on-surface-variant hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[22px]">more_vert</span>
+</button>
+</div>
+<!-- Permissions summary -->
+<div class="bg-surface-container-low/70 rounded-lg p-space-sm flex items-start gap-space-xs text-xs font-caption text-on-surface-variant border border-surface-variant/40">
+<span class="material-symbols-outlined text-[16px] text-tertiary-container mt-0.5 shrink-0">query_stats</span>
+<span>Can view financial reports, download statements, and review invoices. Read-only.</span>
+</div>
+<div class="mt-space-sm pt-space-xs flex items-center justify-between border-t border-surface-container text-xs font-label">
+<span class="text-on-surface-variant font-caption">Portal login only</span>
+<button class="text-primary font-semibold hover:underline flex items-center gap-0.5" type="button">
+<span>Audit trail</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+</button>
+</div>
+</article>
+<!-- Member 4: Ibrahim Danladi (Cashier - Shift Ended) -->
+<article class="bg-surface-container-lowest rounded-xl p-space-md border border-outline-variant/50 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] opacity-90 hover:opacity-100 transition-all">
+<div class="flex items-start justify-between gap-space-sm mb-space-sm">
+<div class="flex items-center gap-space-md">
+<!-- Avatar ID -->
+<div class="w-12 h-12 rounded-xl bg-surface-container-high text-on-surface-variant font-title text-title flex items-center justify-center font-bold shrink-0">
+                  ID
+                </div>
+<div>
+<div class="flex items-center gap-space-xs">
+<h4 class="font-body-medium text-body-medium text-on-surface font-semibold">Ibrahim Danladi</h4>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant text-[11px] font-caption border border-outline-variant/40">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+                      Shift Ended
+                    </span>
+</div>
+<div class="flex items-center gap-1 font-caption text-caption text-on-surface-variant mt-0.5">
+<span class="font-medium text-on-surface">Cashier</span>
+<span>•</span>
+<span>Victoria Island Branch</span>
+</div>
+</div>
+</div>
+<button aria-label="Options for Ibrahim Danladi" class="w-10 h-10 rounded-xl flex items-center justify-center text-on-surface-variant hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[22px]">more_vert</span>
+</button>
+</div>
+<!-- Permissions summary -->
+<div class="bg-surface-container-low/70 rounded-lg p-space-sm flex items-start gap-space-xs text-xs font-caption text-on-surface-variant border border-surface-variant/40">
+<span class="material-symbols-outlined text-[16px] text-tertiary-container mt-0.5 shrink-0">lock_clock</span>
+<span>Checkout locked until next scheduled shift opening. Cash reconciliation pending.</span>
+</div>
+<div class="mt-space-sm pt-space-xs flex items-center justify-between border-t border-surface-container text-xs font-label">
+<span class="text-on-surface-variant font-caption">Last active: 4 hrs ago</span>
+<button class="text-primary font-semibold hover:underline flex items-center gap-0.5" type="button">
+<span>View register log</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+</button>
+</div>
+</article>
+</div>
+</section>
+<!-- Role Definitions & Security Permissions Card -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant/50 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] flex flex-col gap-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-primary-fixed/60 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">admin_panel_settings</span>
+</div>
+<h3 class="font-subtitle text-subtitle text-on-surface font-semibold tracking-tight">Role Definitions & Security</h3>
+</div>
+<p class="font-caption text-caption text-on-surface-variant">
+          Strict access policies preserve transactional integrity across cash counters and branch POS devices.
+        </p>
+<!-- Role matrix breakdown -->
+<div class="grid grid-cols-1 gap-space-xs">
+<div class="p-space-sm bg-surface-container-low/60 rounded-lg flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-[18px] text-primary mt-0.5">crown</span>
+<div>
+<div class="font-label text-label text-on-surface">Owner</div>
+<p class="font-caption text-caption text-on-surface-variant">Full control: payouts, branch provisioning, and master team roles.</p>
+</div>
+</div>
+<div class="p-space-sm bg-surface-container-low/60 rounded-lg flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-[18px] text-primary mt-0.5">supervisor_account</span>
+<div>
+<div class="font-label text-label text-on-surface">Manager</div>
+<p class="font-caption text-caption text-on-surface-variant">Supervision & Refunds: till opening, cashier shifts, authorizations up to ₦50,000.</p>
+</div>
+</div>
+<div class="p-space-sm bg-surface-container-low/60 rounded-lg flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-[18px] text-primary mt-0.5">point_of_sale</span>
+<div>
+<div class="font-label text-label text-on-surface">Cashier</div>
+<p class="font-caption text-caption text-on-surface-variant">POS & Sales only: initiate transactions, QR collection, terminal print receipts.</p>
+</div>
+</div>
+<div class="p-space-sm bg-surface-container-low/60 rounded-lg flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-[18px] text-primary mt-0.5">receipt_long</span>
+<div>
+<div class="font-label text-label text-on-surface">Accountant</div>
+<p class="font-caption text-caption text-on-surface-variant">Reports & Tax: generate statement exports, daily batch audit, view only.</p>
+</div>
+</div>
+</div>
+<!-- Dual Control Notice -->
+<div class="p-space-sm bg-error-container/40 rounded-lg border border-error-container flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-error mt-0.5">verified</span>
+<p class="font-caption text-caption text-on-surface font-medium">
+<span class="font-semibold text-error">Dual Control Notice:</span> Adding or removing Managers requires Owner PIN verification.
+          </p>
+</div>
+</section>
+<!-- Primary Action CTA Button (Rigid 52px Touch Height) -->
+<section class="pt-space-xs">
+<button class="w-full h-[52px] rounded-xl bg-primary-container text-on-primary font-label text-label font-semibold flex items-center justify-center gap-space-xs shadow-md hover:bg-primary active:scale-[0.99] transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]">person_add</span>
+<span>Invite New Staff Member</span>
+</button>
+<p class="text-center font-caption text-caption text-on-surface-variant mt-2">
+          Invitations are sent via SMS & Official Staff Email.
+        </p>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Shared Component Blueprint execution) -->
+<!-- Destination count: 5. Labels: Home, Payments, Cards, Save & Borrow, More -->
+<!-- Active State: 'More' / Merchant Tools -->
+<nav aria-label="Main Navigation" class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-margin h-16 max-w-[560px] mx-auto pb-safe bg-surface-container-lowest border-t border-outline-variant/40 shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)]">
+<!-- Tab 1: Home (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="font-caption text-[11px] leading-tight font-medium">Home</span>
+</a>
+<!-- Tab 2: Payments (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[24px]">send</span>
+<span class="font-caption text-[11px] leading-tight font-medium">Payments</span>
+</a>
+<!-- Tab 3: Cards (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[24px]">credit_card</span>
+<span class="font-caption text-[11px] leading-tight font-medium">Cards</span>
+</a>
+<!-- Tab 4: Save & Borrow (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[24px]">savings</span>
+<span class="font-caption text-[11px] leading-tight font-medium">Save & Borrow</span>
+</a>
+<!-- Tab 5: More (Active - Context: Merchant Tools & Management) -->
+<a aria-current="page" class="flex flex-col items-center justify-center text-primary font-semibold min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">more_horiz</span>
+<span class="font-caption text-[11px] leading-tight font-semibold">More</span>
+</a>
+</nav>
+</div>
+</body></html>

@@ -1,0 +1,20 @@
+flowchart TD
+  a(["Business creates link or shows QR"])
+  b["Customer opens link or scans"]
+  c{"Pay method"}
+  d["In app: confirm amount, PIN"]
+  e["Bank transfer to link-specific account"]
+  f["Card (later)"]
+  g["Post to business account less fee"]
+  h["Receipts and notifications to both"]
+  i(["Paid"])
+  a --> b
+  b --> c
+  c -->|app| d
+  c -->|transfer| e
+  c -->|card| f
+  d --> g
+  e --> g
+  f --> g
+  g --> h
+  h --> i

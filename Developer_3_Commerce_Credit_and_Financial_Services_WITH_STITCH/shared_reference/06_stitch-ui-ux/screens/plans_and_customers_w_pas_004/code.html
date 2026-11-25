@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pay Am Small - Plans and Customers Dashboard</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-bright": "#fff8f8",
+            "primary": "#6d0033",
+            "inverse-primary": "#ffb1c5",
+            "on-surface-variant": "#564146",
+            "error-container": "#ffdad6",
+            "outline-variant": "#dcbfc5",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "primary-container": "#8e1b4a",
+            "surface": "#fff8f8",
+            "on-primary": "#ffffff",
+            "secondary": "#ae3123",
+            "primary-fixed-dim": "#ffb1c5",
+            "on-secondary-container": "#690000",
+            "surface-container-low": "#fbf1f2",
+            "surface-container": "#f5eced",
+            "outline": "#897176",
+            "primary-fixed": "#ffd9e1",
+            "tertiary-container": "#53484d",
+            "on-primary-fixed": "#3f001b",
+            "surface-tint": "#a8315d",
+            "tertiary-fixed": "#eedee4",
+            "on-primary-fixed-variant": "#881646",
+            "on-secondary-fixed": "#410000",
+            "on-tertiary": "#ffffff",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "inverse-on-surface": "#f8eeef",
+            "surface-container-highest": "#e9e0e1",
+            "on-error": "#ffffff",
+            "secondary-fixed-dim": "#ffb4a8",
+            "on-secondary-fixed-variant": "#8c170e",
+            "surface-dim": "#e1d8d9",
+            "inverse-surface": "#342f30",
+            "surface-variant": "#e9e0e1",
+            "tertiary": "#3b3236",
+            "on-tertiary-container": "#c6b7bd",
+            "on-error-container": "#93000a",
+            "error": "#ba1a1a",
+            "secondary-fixed": "#ffdad4",
+            "on-secondary": "#ffffff",
+            "on-primary-container": "#ffa0ba",
+            "on-background": "#1f1b1c",
+            "on-tertiary-fixed": "#21191e",
+            "on-surface": "#1f1b1c",
+            "secondary-container": "#fc6955",
+            "background": "#fff8f8",
+            "surface-container-high": "#efe6e7",
+            "surface-container-lowest": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "margin": "1rem",
+            "space-3xl": "3rem",
+            "space-lg": "1rem",
+            "space-md": "0.75rem",
+            "gutter": "1rem",
+            "space-2xl": "2rem",
+            "space-xl": "1.5rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "body": ["Inter"],
+            "label": ["Inter"],
+            "caption": ["Inter"],
+            "subtitle": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "body-medium": ["Inter"],
+            "title": ["Inter"],
+            "display": ["Inter"],
+            "amount-lg": ["Inter"]
+          },
+          "fontSize": {
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .tabular-nums { font-variant-numeric: tabular-nums; }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scroll::-webkit-scrollbar { width: 5px; height: 5px; }
+    .custom-scroll::-webkit-scrollbar-track { background: transparent; }
+    .custom-scroll::-webkit-scrollbar-thumb { background: #dcbfc5; border-radius: 4px; }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased font-body flex min-h-screen overflow-x-hidden selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- ==================== LEFT NAVIGATION (w-72) ==================== -->
+<aside class="fixed left-0 top-0 h-screen w-72 flex flex-col justify-between py-space-xl px-space-lg bg-surface-container-lowest border-r border-surface-variant z-30 overflow-y-auto custom-scroll shadow-sm">
+<!-- Top Brand & Store Credentials -->
+<div class="flex flex-col gap-space-xl">
+<div class="flex flex-col gap-space-xs px-space-xs">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-xl bg-primary-container flex items-center justify-center text-on-primary shadow-sm">
+<span class="material-symbols-outlined text-title" data-icon="lock_open_right">lock_open_right</span>
+</div>
+<div>
+<h1 class="text-subtitle font-subtitle text-primary tracking-tight leading-none">YourApp Merchant Ops</h1>
+<span class="text-caption font-caption text-on-surface-variant">Pay Am Small Vaults</span>
+</div>
+</div>
+<!-- Store Tag Card -->
+<div class="mt-space-md p-space-sm rounded-lg bg-surface-container-low border border-surface-variant flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[18px] mt-0.5" data-icon="store">store</span>
+<div class="flex flex-col">
+<span class="text-caption font-caption font-semibold text-on-surface leading-tight">Slot Systems Nigeria</span>
+<span class="text-[11px] font-caption text-on-surface-variant">Ikeja Flagship (#VEN-SLOT-041)</span>
+</div>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav aria-label="Main Navigation" class="flex flex-col gap-1">
+<!-- Dashboard -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<!-- Products & Prices -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="inventory_2">inventory_2</span>
+<span>Products &amp; Prices</span>
+</a>
+<!-- Orders & Fulfilment -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="local_shipping">local_shipping</span>
+<span>Orders &amp; Fulfilment</span>
+</a>
+<!-- Plans & Customers (ACTIVE) -->
+<a class="flex items-center justify-between px-space-lg py-space-md rounded-lg bg-surface-container-low text-primary font-label text-label shadow-sm" href="#">
+<div class="flex items-center gap-space-md">
+<span class="material-symbols-outlined text-[20px] text-primary" data-icon="account_balance_wallet" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+<span>Plans &amp; Customers</span>
+</div>
+<span class="px-2 py-0.5 text-[11px] font-caption font-bold bg-primary text-on-primary rounded-full">184</span>
+</a>
+<!-- Credit Offers -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="credit_score">credit_score</span>
+<span>Credit Offers</span>
+</a>
+<!-- Payouts & Wallet -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="payments">payments</span>
+<span>Payouts &amp; Wallet</span>
+</a>
+<!-- Team & Verification -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="verified_user">verified_user</span>
+<span>Team &amp; Verification</span>
+</a>
+</nav>
+</div>
+<!-- Navigation Footer -->
+<div class="pt-space-md border-t border-surface-variant flex flex-col gap-1">
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="admin_panel_settings">admin_panel_settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="help_outline">help_outline</span>
+<span>Help &amp; Support</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-secondary font-label text-label hover:bg-error-container hover:text-error transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="logout">logout</span>
+<span>Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- ==================== MAIN CONTENT WRAPPER (ml-72) ==================== -->
+<div class="ml-72 flex-1 flex flex-col min-h-screen bg-background">
+<!-- Top Bar Component -->
+<header class="sticky top-0 h-16 w-full flex items-center justify-between px-space-xl bg-surface-container-lowest border-b border-surface-variant z-20 shadow-none">
+<!-- Search on Left -->
+<div class="flex items-center gap-space-md w-96">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]" data-icon="search">search</span>
+<input class="w-full h-10 pl-10 pr-4 rounded-xl border border-surface-variant bg-surface-bright text-caption font-body placeholder:text-outline text-on-surface focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-all duration-150" placeholder="Search buyer name, BVN, vault reference, phone number..." type="text"/>
+</div>
+</div>
+<!-- Center-Right Sync Indicator & Trailing Actions -->
+<div class="flex items-center gap-space-lg">
+<!-- Plan sync badge -->
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container border border-surface-variant text-primary font-caption font-medium">
+<span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+<span class="text-caption font-caption text-primary">Active Vault Monitor (184 Plans in Progress)</span>
+</div>
+<!-- Trailing actions -->
+<div class="flex items-center gap-space-sm pl-space-md border-l border-surface-variant">
+<button aria-label="Notifications" class="w-10 h-10 rounded-xl flex items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-colors duration-150 relative">
+<span class="material-symbols-outlined text-[22px]" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-secondary rounded-full"></span>
+</button>
+<button aria-label="Help Center" class="w-10 h-10 rounded-xl flex items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-colors duration-150">
+<span class="material-symbols-outlined text-[22px]" data-icon="help_outline">help_outline</span>
+</button>
+<!-- Staff Officer Profile -->
+<div class="flex items-center gap-space-sm ml-2 pl-space-sm">
+<div class="relative">
+<img class="w-10 h-10 rounded-xl object-cover border border-surface-variant shadow-sm" data-alt="A distinguished Nigerian male banking operations manager in Lagos wearing a sharp charcoal blazer with clean indoor lighting. He looks confident and approachable against an architectural background with deep berry red corporate brand accents in a modern, pristine office environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFu34ZKt2p55_pgglTbEKLZsp7t7LPGyzF-3RDpUSsrQpAU0wsJPm8Y0nuNp49GBJDxXbejhi_HR6tl5soGnL8-101H1Pn2xoBOCY5otPf8JYq5D5q-_yl7qruKp7H5X19r77jZGF_PEgM7FiirWalQvROc9kuxHai3zWiG2-RvAtdrzhgA3sVv_DqQm5jGnweyfUGLYdsbfh9JPK-4QhO-hfBViXcW38b3hiBDPi8"/>
+<span class="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-emerald-500 rounded-full border-2 border-surface-container-lowest"></span>
+</div>
+<div class="flex flex-col text-left">
+<span class="text-label font-label text-on-surface leading-tight">Nnamdi Eze</span>
+<span class="text-[11px] font-caption text-on-surface-variant">Senior Operations Lead</span>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Working Canvas -->
+<main class="p-space-xl flex flex-col gap-space-xl">
+<!-- View Title & Primary Action Ribbon -->
+<section class="flex flex-col md:flex-row md:items-center justify-between gap-space-lg">
+<div>
+<div class="flex items-center gap-space-sm">
+<h2 class="text-title font-title text-on-surface tracking-tight">Buyer Vaults &amp; Installment Plans Directory</h2>
+<span class="px-2 py-0.5 rounded text-[11px] font-caption font-bold bg-surface-container-high text-primary border border-surface-variant">W-PAS-004</span>
+</div>
+<p class="text-body font-body text-on-surface-variant mt-1 max-w-3xl">
+            Monitor customer price-lock accumulation progress, auto-debit sweep performance, deadline horizons, and BNPL credit repayment standing.
+          </p>
+</div>
+<!-- Action Bar Buttons -->
+<div class="flex items-center gap-space-md shrink-0">
+<button class="h-[52px] px-space-lg rounded-xl border border-outline-variant bg-surface-container-lowest hover:bg-surface-container text-on-surface font-label text-label flex items-center gap-2 transition-colors duration-150 shadow-sm">
+<span class="material-symbols-outlined text-[20px]" data-icon="file_download">file_download</span>
+<span>Export Customer Ledger (CSV)</span>
+</button>
+<button class="h-[52px] px-space-xl rounded-xl bg-primary-container hover:bg-primary text-on-primary font-label text-label flex items-center gap-2 transition-colors duration-150 shadow-sm">
+<span class="material-symbols-outlined text-[20px]" data-icon="send">send</span>
+<span>Batch Send Savings Reminders</span>
+</button>
+</div>
+</section>
+<!-- KPI Metrics Strip (4 Tiles) -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-lg">
+<!-- Tile 1: Active Vaults Count -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl border border-surface-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption font-medium text-on-surface-variant">Active Vaults Count</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]" data-icon="account_balance_wallet">account_balance_wallet</span>
+</div>
+</div>
+<div class="mt-space-md">
+<div class="text-title font-title text-on-surface tabular-nums">184 Active</div>
+<p class="text-[12px] font-caption text-on-surface-variant mt-1 flex items-center gap-1">
+<span class="font-semibold text-primary">152 Price-Lock</span> • 32 Vendor BNPL Credit
+            </p>
+</div>
+</div>
+<!-- Tile 2: Total Accumulated Savings -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl border border-surface-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption font-medium text-on-surface-variant">Total Accumulated Savings</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]" data-icon="savings">savings</span>
+</div>
+</div>
+<div class="mt-space-md">
+<div class="text-title font-title text-primary tabular-nums">₦28,450,000.00</div>
+<p class="text-[12px] font-caption text-on-surface-variant mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-emerald-600" data-icon="verified">verified</span>
+              Held in safe partner bank escrow
+            </p>
+</div>
+</div>
+<!-- Tile 3: Average Target Completion -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl border border-surface-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption font-medium text-on-surface-variant">Average Target Completion</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]" data-icon="donut_large">donut_large</span>
+</div>
+</div>
+<div class="mt-space-md">
+<div class="text-title font-title text-on-surface tabular-nums">68.4%</div>
+<p class="text-[12px] font-caption text-on-surface-variant mt-1">
+              High intent; 88% on payday auto-debit
+            </p>
+</div>
+</div>
+<!-- Tile 4: Expiring in <7 Days -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl border border-surface-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption font-medium text-on-surface-variant">Expiring in &lt;7 Days</span>
+<div class="w-8 h-8 rounded-lg bg-error-container flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[18px]" data-icon="alarm">alarm</span>
+</div>
+</div>
+<div class="mt-space-md">
+<div class="text-title font-title text-error tabular-nums">5 Vaults</div>
+<p class="text-[12px] font-caption text-on-surface-variant mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-secondary" data-icon="error">error</span>
+              Deadline decision pending for buyers
+            </p>
+</div>
+</div>
+</section>
+<!-- Escrow Assurance Banner -->
+<section class="bg-surface-container-low border border-outline-variant p-space-lg rounded-xl flex items-center gap-space-lg relative overflow-hidden">
+<div class="w-12 h-12 rounded-xl bg-primary-container text-on-primary flex items-center justify-center shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[24px]" data-icon="shield">shield</span>
+</div>
+<div class="flex-1">
+<h3 class="text-label font-label text-primary flex items-center gap-2">
+<span>Escrow Vault Assurance</span>
+<span class="text-[11px] px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface-variant uppercase tracking-wider font-semibold">Regulated Safeguard</span>
+</h3>
+<p class="text-caption font-caption text-on-surface-variant mt-0.5">
+            All customer savings accumulated under Price-Lock plans are held in CBN-regulated escrow until full amount is reached. Vendors receive guaranteed automated settlement upon buyer fulfillment or 100% completion.
+          </p>
+</div>
+<div class="hidden lg:flex items-center gap-3 pr-2">
+<div class="flex -space-x-2">
+<div class="w-7 h-7 rounded-full bg-surface-container border-2 border-surface-container-lowest flex items-center justify-center text-[10px] font-bold text-primary">CBN</div>
+<div class="w-7 h-7 rounded-full bg-surface-container-high border-2 border-surface-container-lowest flex items-center justify-center text-[10px] font-bold text-on-surface">NDIC</div>
+</div>
+<span class="text-[11px] font-caption font-medium text-outline">Partner Escrow Certified</span>
+</div>
+</section>
+<!-- Filter Toolbar -->
+<section class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-space-md">
+<!-- Segmented Tab Cluster -->
+<div class="flex items-center p-1 rounded-xl bg-surface-container border border-surface-variant">
+<button class="px-4 py-2 rounded-lg bg-surface-container-lowest text-primary font-label text-caption shadow-sm flex items-center gap-1.5 transition-all">
+<span>All Plans</span>
+<span class="px-1.5 py-0.2 rounded-full bg-surface-container-low text-[11px] font-bold">184</span>
+</button>
+<button class="px-4 py-2 rounded-lg text-on-surface-variant hover:text-on-surface font-label text-caption flex items-center gap-1.5 transition-all">
+<span>Price-Lock Vaults</span>
+<span class="text-[11px] text-outline font-medium">152</span>
+</button>
+<button class="px-4 py-2 rounded-lg text-on-surface-variant hover:text-on-surface font-label text-caption flex items-center gap-1.5 transition-all">
+<span>Active Vendor Credit</span>
+<span class="text-[11px] text-outline font-medium">32</span>
+</button>
+<button class="px-4 py-2 rounded-lg text-on-surface-variant hover:text-on-surface font-label text-caption flex items-center gap-1.5 transition-all">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span>Expiring Soon</span>
+<span class="text-[11px] text-secondary font-bold">5</span>
+</button>
+</div>
+<!-- Secondary Filters -->
+<div class="flex items-center gap-space-md w-full lg:w-auto">
+<div class="flex items-center gap-2">
+<span class="text-caption font-caption text-on-surface-variant">Completion:</span>
+<select class="h-10 px-3 rounded-xl border border-surface-variant bg-surface-container-lowest text-caption font-label text-on-surface focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary">
+<option>All Completion Ranges</option>
+<option>&gt; 75% Funded</option>
+<option>50% - 75% Funded</option>
+<option>&lt; 50% Funded</option>
+</select>
+</div>
+<div class="flex items-center gap-2">
+<select class="h-10 px-3 rounded-xl border border-surface-variant bg-surface-container-lowest text-caption font-label text-on-surface focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary">
+<option>Sort by: Imminent Deadline</option>
+<option>Highest Target Amount</option>
+<option>Highest Accumulated</option>
+<option>Customer Tier Rating</option>
+</select>
+</div>
+<button class="h-10 w-10 rounded-xl border border-surface-variant bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container flex items-center justify-center" title="Refresh records">
+<span class="material-symbols-outlined text-[18px]" data-icon="refresh">refresh</span>
+</button>
+</div>
+</section>
+<!-- Main Split View (2/3 Directory Table & 1/3 Buyer Profile Drawer) -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-start">
+<!-- ==================== LEFT TABLE (8 Cols / 2/3 Width) ==================== -->
+<div class="lg:col-span-8 bg-surface-container-lowest rounded-xl border border-surface-variant shadow-sm overflow-hidden flex flex-col">
+<div class="p-space-lg border-b border-surface-variant flex items-center justify-between bg-surface-bright">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="table_chart">table_chart</span>
+<h3 class="text-subtitle font-subtitle text-on-surface text-base">Active Customer Plans Directory</h3>
+</div>
+<span class="text-caption font-caption text-on-surface-variant">Showing 5 of 184 records</span>
+</div>
+<div class="overflow-x-auto custom-scroll">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container text-caption font-label text-on-surface-variant border-b border-surface-variant">
+<th class="py-3 px-4 font-semibold">Plan ID</th>
+<th class="py-3 px-4 font-semibold">Customer &amp; Tier</th>
+<th class="py-3 px-4 font-semibold">Target Product</th>
+<th class="py-3 px-4 font-semibold text-right">Total Target</th>
+<th class="py-3 px-4 font-semibold">Saved &amp; Progress</th>
+<th class="py-3 px-4 font-semibold">Auto-Debit Status</th>
+<th class="py-3 px-4 font-semibold">Deadline</th>
+<th class="py-3 px-4 font-semibold text-center">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-variant text-caption font-body">
+<!-- Row 1 (Chioma Adeleke - Selected State) -->
+<tr class="bg-surface-container-low/60 hover:bg-surface-container-low transition-colors duration-100">
+<td class="py-4 px-4 font-mono font-medium text-primary whitespace-nowrap">
+                    #PLN-VLT-4019
+                    <div class="text-[10px] text-outline">Price-Lock</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<div class="font-semibold text-on-surface">Chioma Adeleke</div>
+<div class="text-[11px] text-on-surface-variant flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                      Tier 3 • #MEM-042
+                    </div>
+</td>
+<td class="py-4 px-4">
+<div class="font-medium text-on-surface max-w-[150px] truncate" title="Apple iPhone 15 Pro 128GB">Apple iPhone 15 Pro 128GB</div>
+<div class="text-[11px] text-outline">IMEI Ring-Fenced</div>
+</td>
+<td class="py-4 px-4 text-right font-medium tabular-nums whitespace-nowrap">
+                    ₦1,250,000.00
+                  </td>
+<td class="py-4 px-4 whitespace-nowrap">
+<div class="flex items-center justify-between text-[12px] mb-1">
+<span class="font-semibold text-primary tabular-nums">₦1,000,000</span>
+<span class="font-bold text-primary">80%</span>
+</div>
+<div class="w-28 h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-primary-container rounded-full" style="width: 80%;"></div>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 text-[11px] font-medium border border-emerald-200">
+<span class="material-symbols-outlined text-[13px] text-emerald-700" data-icon="check_circle">check_circle</span>
+                      Active (₦50k/wk)
+                    </div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<div class="font-medium text-on-surface tabular-nums">12 Mar 2027</div>
+<div class="text-[11px] text-secondary font-semibold">16d left</div>
+</td>
+<td class="py-4 px-4 text-center whitespace-nowrap">
+<button class="h-8 px-3 rounded-lg bg-primary-container text-on-primary font-label text-[12px] hover:bg-primary transition-colors shadow-xs">
+                      Inspect Vault
+                    </button>
+</td>
+</tr>
+<!-- Row 2 (Alhaji Mustapha) -->
+<tr class="hover:bg-surface-container-low transition-colors duration-100">
+<td class="py-4 px-4 font-mono font-medium text-on-surface whitespace-nowrap">
+                    #PLN-VLT-4012
+                    <div class="text-[10px] text-outline">Price-Lock</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<div class="font-semibold text-on-surface">Alhaji Mustapha</div>
+<div class="text-[11px] text-on-surface-variant flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                      Tier 3 • #MEM-003
+                    </div>
+</td>
+<td class="py-4 px-4">
+<div class="font-medium text-on-surface max-w-[150px] truncate" title="Samsung S24 Ultra 256GB">Samsung S24 Ultra 256GB</div>
+<div class="text-[11px] text-outline">Stock Allocated</div>
+</td>
+<td class="py-4 px-4 text-right font-medium tabular-nums whitespace-nowrap">
+                    ₦1,450,000.00
+                  </td>
+<td class="py-4 px-4 whitespace-nowrap">
+<div class="flex items-center justify-between text-[12px] mb-1">
+<span class="font-semibold text-on-surface tabular-nums">₦1,160,000</span>
+<span class="font-bold text-on-surface">80%</span>
+</div>
+<div class="w-28 h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 80%;"></div>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 text-[11px] font-medium border border-emerald-200">
+<span class="material-symbols-outlined text-[13px] text-emerald-700" data-icon="check_circle">check_circle</span>
+                      Active (₦100k/wk)
+                    </div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<div class="font-medium text-on-surface tabular-nums">28 Mar 2027</div>
+<div class="text-[11px] text-outline">32d left</div>
+</td>
+<td class="py-4 px-4 text-center whitespace-nowrap">
+<button class="h-8 px-3 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface font-label text-[12px] hover:bg-surface-container-low transition-colors">
+                      Inspect Vault
+                    </button>
+</td>
+</tr>
+<!-- Row 3 (Emeka Okafor) -->
+<tr class="hover:bg-surface-container-low transition-colors duration-100">
+<td class="py-4 px-4 font-mono font-medium text-on-surface whitespace-nowrap">
+                    #PLN-VLT-3988
+                    <div class="text-[10px] text-outline">Price-Lock</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<div class="font-semibold text-on-surface">Emeka Okafor</div>
+<div class="text-[11px] text-on-surface-variant flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                      Tier 3 • #MEM-108
+                    </div>
+</td>
+<td class="py-4 px-4">
+<div class="font-medium text-on-surface max-w-[150px] truncate" title="MacBook Air M2 16GB">MacBook Air M2 16GB</div>
+<div class="text-[11px] text-outline">Stock Allocated</div>
+</td>
+<td class="py-4 px-4 text-right font-medium tabular-nums whitespace-nowrap">
+                    ₦1,600,000.00
+                  </td>
+<td class="py-4 px-4 whitespace-nowrap">
+<div class="flex items-center justify-between text-[12px] mb-1">
+<span class="font-semibold text-on-surface tabular-nums">₦800,000</span>
+<span class="font-bold text-on-surface">50%</span>
+</div>
+<div class="w-28 h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-secondary-container rounded-full" style="width: 50%;"></div>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-amber-50 text-amber-900 text-[11px] font-medium border border-amber-200">
+<span class="material-symbols-outlined text-[13px] text-amber-700" data-icon="schedule">schedule</span>
+                      1 Failed (Retry 28 Feb)
+                    </div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<div class="font-medium text-on-surface tabular-nums">15 Apr 2027</div>
+<div class="text-[11px] text-outline">50d left</div>
+</td>
+<td class="py-4 px-4 text-center whitespace-nowrap">
+<button class="h-8 px-3 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface font-label text-[12px] hover:bg-surface-container-low transition-colors">
+                      Inspect Vault
+                    </button>
+</td>
+</tr>
+<!-- Row 4 (Folashade Coker - BNPL Credit) -->
+<tr class="hover:bg-surface-container-low transition-colors duration-100">
+<td class="py-4 px-4 font-mono font-medium text-secondary whitespace-nowrap">
+                    #PLN-CRD-1022
+                    <div class="text-[10px] text-secondary font-bold">BNPL Credit</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<div class="font-semibold text-on-surface">Folashade Coker</div>
+<div class="text-[11px] text-on-surface-variant flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-600"></span>
+                      Tier 2 • #MEM-078
+                    </div>
+</td>
+<td class="py-4 px-4">
+<div class="font-medium text-on-surface max-w-[150px] truncate" title="Sony PS5 Slim Digital">Sony PS5 Slim Digital</div>
+<div class="text-[11px] text-outline">Dispatched Unit</div>
+</td>
+<td class="py-4 px-4 text-right font-medium tabular-nums whitespace-nowrap">
+                    ₦680,000.00
+                  </td>
+<td class="py-4 px-4 whitespace-nowrap">
+<div class="flex items-center justify-between text-[12px] mb-1">
+<span class="font-semibold text-on-surface tabular-nums">₦476,000</span>
+<span class="font-bold text-on-surface">70%</span>
+</div>
+<div class="w-28 h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 70%;"></div>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-blue-50 text-blue-900 text-[11px] font-medium border border-blue-200">
+<span class="material-symbols-outlined text-[13px] text-blue-700" data-icon="check_circle">check_circle</span>
+                      On-Time (Instalment 3/4)
+                    </div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<div class="font-medium text-on-surface tabular-nums">10 Mar 2027</div>
+<div class="text-[11px] text-secondary font-semibold">14d left</div>
+</td>
+<td class="py-4 px-4 text-center whitespace-nowrap">
+<button class="h-8 px-3 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface font-label text-[12px] hover:bg-surface-container-low transition-colors">
+                      Credit Record
+                    </button>
+</td>
+</tr>
+<!-- Row 5 (Ibrahim Tanko) -->
+<tr class="hover:bg-surface-container-low transition-colors duration-100">
+<td class="py-4 px-4 font-mono font-medium text-on-surface whitespace-nowrap">
+                    #PLN-VLT-3890
+                    <div class="text-[10px] text-outline">Price-Lock</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<div class="font-semibold text-on-surface">Ibrahim Tanko</div>
+<div class="text-[11px] text-on-surface-variant flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-600"></span>
+                      Tier 2 • #MEM-104
+                    </div>
+</td>
+<td class="py-4 px-4">
+<div class="font-medium text-on-surface max-w-[150px] truncate" title="LG 55-inch C3 OLED TV">LG 55-inch C3 OLED TV</div>
+<div class="text-[11px] text-outline">Lock Pending</div>
+</td>
+<td class="py-4 px-4 text-right font-medium tabular-nums whitespace-nowrap">
+                    ₦1,100,000.00
+                  </td>
+<td class="py-4 px-4 whitespace-nowrap">
+<div class="flex items-center justify-between text-[12px] mb-1">
+<span class="font-semibold text-on-surface tabular-nums">₦220,000</span>
+<span class="font-bold text-on-surface">20%</span>
+</div>
+<div class="w-28 h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-outline rounded-full" style="width: 20%;"></div>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant text-[11px] font-medium border border-surface-variant">
+<span class="material-symbols-outlined text-[13px] text-outline" data-icon="sync_problem">sync_problem</span>
+                      Manual Top-ups
+                    </div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<div class="font-medium text-on-surface tabular-nums">05 May 2027</div>
+<div class="text-[11px] text-outline">70d left</div>
+</td>
+<td class="py-4 px-4 text-center whitespace-nowrap">
+<button class="h-8 px-3 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface font-label text-[12px] hover:bg-surface-container-low transition-colors">
+                      Inspect Vault
+                    </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer Pagination -->
+<div class="p-space-md border-t border-surface-variant flex items-center justify-between bg-surface-container-lowest text-caption">
+<span class="text-on-surface-variant">Showing 1 to 5 of 184 active customer vaults</span>
+<div class="flex items-center gap-1">
+<button class="h-8 px-2 rounded-lg border border-surface-variant text-on-surface-variant disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-[16px]" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="h-8 px-3 rounded-lg bg-primary-container text-on-primary font-bold text-xs">1</button>
+<button class="h-8 px-3 rounded-lg border border-surface-variant text-on-surface font-medium text-xs hover:bg-surface-container-low">2</button>
+<button class="h-8 px-3 rounded-lg border border-surface-variant text-on-surface font-medium text-xs hover:bg-surface-container-low">3</button>
+<span class="px-2 text-outline">...</span>
+<button class="h-8 px-3 rounded-lg border border-surface-variant text-on-surface font-medium text-xs hover:bg-surface-container-low">37</button>
+<button class="h-8 px-2 rounded-lg border border-surface-variant text-on-surface-variant hover:bg-surface-container-low">
+<span class="material-symbols-outlined text-[16px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- ==================== RIGHT PANEL (4 Cols / 1/3 Width) ==================== -->
+<!-- Buyer Profile & Vault Health Drawer for #PLN-VLT-4019 - Chioma Adeleke -->
+<div class="lg:col-span-4 bg-surface-container-lowest rounded-xl border border-surface-variant shadow-sm p-space-lg flex flex-col gap-space-lg">
+<!-- Drawer Header / Selected Plan Reference -->
+<div class="flex items-center justify-between pb-space-md border-b border-surface-variant">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container"></span>
+<span class="text-caption font-caption font-bold text-primary uppercase tracking-wider">Vault Inspector</span>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container text-xs font-mono font-semibold text-on-surface">#PLN-VLT-4019</span>
+</div>
+<!-- Customer Identity Card -->
+<div class="flex items-start gap-space-md">
+<div class="relative shrink-0">
+<img class="w-14 h-14 rounded-xl object-cover border border-surface-variant" data-alt="Close up photographic portrait of Chioma Adeleke, a professional Nigerian woman in her late twenties with neat braids smiling softly in high-key natural Lagos studio lighting. Elegant minimal clothing with subtle tones of rose and berry, reflecting an affluent, reliable retail banking customer." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-i1FP9tHuCa1JHd370DBYGyMNG8yVIjIBIncB_HSNr_TMutroBAWa3wygaOM97239g2nWK_48aSyvOwQlDN2xRr3J2b48GeCmUGUN8stsE606qlBVPkaRbIkQbeKPbxrtTsAre6j_vd3YOj-LHBCkECGpvsWO1lxmd3pt-s_LMJujlWKsCZiP8QQq_t_eeAQTIEpSaHup5ZyYWA1D1xsSNNXNkVRKG37m5gI962jP"/>
+<span class="absolute -bottom-1 -right-1 w-4 h-4 bg-emerald-500 rounded-full border-2 border-surface-container-lowest flex items-center justify-center text-white text-[9px]">
+<span class="material-symbols-outlined text-[10px]" data-icon="check">check</span>
+</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<h4 class="text-subtitle font-subtitle text-base text-on-surface leading-snug">Chioma Adeleke</h4>
+</div>
+<span class="text-caption font-caption text-primary font-semibold flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[14px]" data-icon="verified">verified</span>
+                Verified Tier 3 Customer
+              </span>
+<p class="text-[12px] font-caption text-on-surface-variant mt-1">
+                Lekki Phase 1 Resident • 0 defaults across 4 previous Pay Am Small orders
+              </p>
+</div>
+</div>
+<!-- Circular Savings Ring Widget Card -->
+<div class="p-space-lg rounded-xl bg-surface-container-low border border-surface-variant flex flex-col items-center text-center">
+<!-- Circular Progress SVG -->
+<div class="relative w-36 h-36 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90" viewbox="0 0 120 120">
+<!-- Background track -->
+<circle cx="60" cy="60" fill="none" r="50" stroke="#e9e0e1" stroke-width="10"></circle>
+<!-- 80% arc (Circumference = 2 * PI * 50 = ~314.16. 80% = 251.3, dashoffset = 314.16 - 251.3 = ~62.8) -->
+<circle cx="60" cy="60" fill="none" r="50" stroke="#8e1b4a" stroke-dasharray="314.16" stroke-dashoffset="62.83" stroke-linecap="round" stroke-width="10"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-display font-display text-primary leading-none tabular-nums">80%</span>
+<span class="text-[11px] font-caption text-on-surface-variant font-semibold mt-1">FUNDED</span>
+</div>
+</div>
+<!-- Ring Legend Details -->
+<div class="mt-space-md w-full pt-space-md border-t border-surface-variant flex items-center justify-between text-left">
+<div>
+<span class="text-[11px] font-caption text-on-surface-variant">Accumulated to Date</span>
+<div class="text-label font-label text-primary tabular-nums">₦1,000,000.00</div>
+</div>
+<div class="text-right">
+<span class="text-[11px] font-caption text-on-surface-variant">Target Target</span>
+<div class="text-label font-label text-on-surface tabular-nums">₦1,250,000.00</div>
+</div>
+</div>
+<div class="mt-2 w-full text-center">
+<span class="inline-block px-2.5 py-1 rounded-full bg-primary-fixed text-on-primary-fixed text-[12px] font-caption font-semibold">
+                ₦250,000.00 remaining to complete vault
+              </span>
+</div>
+</div>
+<!-- Structured Info Modules -->
+<div class="flex flex-col gap-space-sm text-caption">
+<!-- Next Scheduled Sweep -->
+<div class="p-3 rounded-lg bg-surface-bright border border-surface-variant flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-[20px] mt-0.5" data-icon="event_repeat">event_repeat</span>
+<div>
+<span class="text-[11px] font-caption text-on-surface-variant uppercase font-semibold">Next Scheduled Auto-Debit</span>
+<div class="text-label font-label text-on-surface mt-0.5">₦50,000.00 due Friday, 27 Feb 2027</div>
+<span class="text-[11px] text-outline">Mandate: Zenith Bank Salary Sweep (Direct Payday)</span>
+</div>
+</div>
+<!-- Ring-Fenced Unit Status -->
+<div class="p-3 rounded-lg bg-surface-bright border border-surface-variant flex items-start gap-3">
+<span class="material-symbols-outlined text-emerald-700 text-[20px] mt-0.5" data-icon="inventory">inventory</span>
+<div>
+<span class="text-[11px] font-caption text-on-surface-variant uppercase font-semibold">Ring-Fenced Unit Safeguard</span>
+<div class="text-label font-label text-on-surface mt-0.5">IMEI #358291048291048</div>
+<span class="text-[11px] text-outline">Allocated &amp; locked in Ikeja Store Vault Cage</span>
+</div>
+</div>
+<!-- Projected Horizon -->
+<div class="p-3 rounded-lg bg-surface-bright border border-surface-variant flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-[20px] mt-0.5" data-icon="timeline">timeline</span>
+<div>
+<span class="text-[11px] font-caption text-on-surface-variant uppercase font-semibold">Projected Full Settlement</span>
+<div class="text-label font-label text-on-surface mt-0.5">05 March 2027</div>
+<span class="text-[11px] text-emerald-700 font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]" data-icon="fast_forward">fast_forward</span>
+                  Trending 7 days ahead of official deadline
+                </span>
+</div>
+</div>
+</div>
+<!-- Quick Actions Cluster -->
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<span class="text-[11px] font-caption uppercase tracking-wider text-outline font-semibold">Direct Vendor Actions</span>
+<!-- WhatsApp Action -->
+<button class="h-11 w-full px-4 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-800 font-label text-caption flex items-center justify-between border border-emerald-200 transition-colors">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-emerald-700" data-icon="chat">chat</span>
+<span>Send WhatsApp Progress Nudge</span>
+</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<!-- 5% Settlement Offer -->
+<button class="h-11 w-full px-4 rounded-xl bg-primary-fixed hover:bg-primary-fixed-dim text-on-primary-fixed font-label text-caption flex items-center justify-between transition-colors">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary" data-icon="local_offer">local_offer</span>
+<span>Offer 5% Early Settlement Voucher</span>
+</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<!-- Download Audit PDF -->
+<button class="h-11 w-full px-4 rounded-xl border border-surface-variant bg-surface-container-lowest hover:bg-surface-container-low text-on-surface-variant font-label text-caption flex items-center justify-between transition-colors">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="picture_as_pdf">picture_as_pdf</span>
+<span>Download Vault Audit History (PDF)</span>
+</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="download">download</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+</div>
+</body></html>

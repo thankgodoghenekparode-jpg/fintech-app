@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YourApp Credit Ops - Product Configuration (W-LOAN-003)</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary-container": "#8e1b4a",
+            "surface-variant": "#e9e0e1",
+            "surface-bright": "#fff8f8",
+            "tertiary": "#3b3236",
+            "primary-fixed": "#ffd9e1",
+            "on-secondary-fixed-variant": "#8c170e",
+            "surface-tint": "#a8315d",
+            "on-surface": "#1f1b1c",
+            "on-primary-fixed": "#3f001b",
+            "surface-dim": "#e1d8d9",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "primary": "#6d0033",
+            "on-primary-fixed-variant": "#881646",
+            "on-surface-variant": "#564146",
+            "on-tertiary-fixed": "#21191e",
+            "inverse-primary": "#ffb1c5",
+            "background": "#fff8f8",
+            "on-secondary-container": "#690000",
+            "on-tertiary": "#ffffff",
+            "tertiary-container": "#53484d",
+            "inverse-surface": "#342f30",
+            "surface-container": "#f5eced",
+            "outline": "#897176",
+            "outline-variant": "#dcbfc5",
+            "surface": "#fff8f8",
+            "surface-container-lowest": "#ffffff",
+            "secondary": "#ae3123",
+            "secondary-fixed": "#ffdad4",
+            "on-secondary-fixed": "#410000",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "surface-container-low": "#fbf1f2",
+            "surface-container-high": "#efe6e7",
+            "on-primary": "#ffffff",
+            "on-tertiary-container": "#c6b7bd",
+            "tertiary-fixed": "#eedee4",
+            "on-error": "#ffffff",
+            "on-secondary": "#ffffff",
+            "secondary-fixed-dim": "#ffb4a8",
+            "inverse-on-surface": "#f8eeef",
+            "on-background": "#1f1b1c",
+            "error-container": "#ffdad6",
+            "on-primary-container": "#ffa0ba",
+            "error": "#ba1a1a",
+            "secondary-container": "#fc6955",
+            "surface-container-highest": "#e9e0e1",
+            "primary-fixed-dim": "#ffb1c5",
+            "on-error-container": "#93000a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-lg": "1rem",
+            "space-sm": "0.5rem",
+            "space-xl": "1.5rem",
+            "space-2xl": "2rem",
+            "space-3xl": "3rem",
+            "margin": "1rem",
+            "gutter": "1rem",
+            "space-md": "0.75rem",
+            "space-xs": "0.25rem"
+          },
+          "fontFamily": {
+            "amount-lg": ["Inter"],
+            "label": ["Inter"],
+            "subtitle": ["Inter"],
+            "body": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "display": ["Inter"],
+            "title": ["Inter"],
+            "caption": ["Inter"],
+            "body-medium": ["Inter"]
+          },
+          "fontSize": {
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-shadow-card {
+      box-shadow: 0 2px 8px -2px rgba(30, 26, 27, 0.05), 0 1px 3px 0 rgba(30, 26, 27, 0.03);
+    }
+    .custom-shadow-float {
+      box-shadow: 0 8px 24px -4px rgba(30, 26, 27, 0.08), 0 4px 12px -2px rgba(30, 26, 27, 0.04);
+    }
+  </style>
+</head>
+<body class="bg-[#FAF8F7] text-on-surface antialiased min-h-screen flex selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- SideNavBar Component -->
+<aside class="docked left-0 top-0 h-screen w-72 flex flex-col z-30 fixed border-r border-surface-variant bg-surface-container-lowest shadow-sm overflow-y-auto justify-between py-space-xl px-space-lg">
+<div class="flex flex-col gap-space-xl">
+<!-- Crest Brand Header -->
+<div class="flex items-center gap-space-md px-space-sm">
+<div class="w-10 h-10 rounded-xl bg-primary-container flex items-center justify-center text-on-primary shadow-sm flex-shrink-0">
+<span class="material-symbols-outlined text-[24px]">account_balance</span>
+</div>
+<div class="flex flex-col">
+<span class="text-subtitle font-subtitle text-primary tracking-tight">YourApp Credit Ops</span>
+<span class="text-caption font-caption text-on-surface-variant">Enterprise Portal</span>
+</div>
+</div>
+<!-- Navigation Tabs -->
+<nav aria-label="Main Navigation" class="flex flex-col gap-1.5">
+<!-- Dashboard -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span>Dashboard</span>
+</a>
+<!-- Applications Queue -->
+<a class="flex items-center justify-between px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<div class="flex items-center gap-space-md">
+<span class="material-symbols-outlined text-[20px]">pending_actions</span>
+<span>Applications Queue</span>
+</div>
+<span class="bg-surface-container text-on-surface-variant px-2 py-0.5 rounded-full text-caption font-caption">14</span>
+</a>
+<!-- Credit Portfolio & Collections -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">account_balance_wallet</span>
+<span>Credit Portfolio &amp; Collections</span>
+</a>
+<!-- Product Configuration (ACTIVE) -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg bg-surface-container-low text-primary font-label text-label transition-colors duration-150 border-l-4 border-primary" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">tune</span>
+<span>Product Configuration</span>
+</a>
+<!-- Partner Settlement -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">handshake</span>
+<span>Partner Settlement</span>
+</a>
+<!-- Audit Log -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">history</span>
+<span>Audit Log</span>
+</a>
+</nav>
+</div>
+<!-- Navigation Footer Area -->
+<div class="flex flex-col gap-1 border-t border-surface-variant pt-space-lg">
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">admin_panel_settings</span>
+<span>Security &amp; Settings</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-secondary font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">logout</span>
+<span>Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- Shell Wrapper -->
+<div class="flex-1 ml-72 flex flex-col min-w-0">
+<!-- TopNavBar Component -->
+<header class="sticky top-0 h-16 w-full flex items-center justify-between px-space-xl bg-surface-container-lowest border-b border-surface-variant z-20">
+<!-- Search & Branch Location Info -->
+<div class="flex items-center gap-space-xl flex-1 max-w-2xl">
+<div class="relative w-80">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-[18px]">search</span>
+<input class="w-full h-10 pl-10 pr-4 bg-surface-container-low rounded-lg border border-transparent focus:border-primary focus:bg-surface-container-lowest focus:ring-0 text-caption font-caption placeholder:text-on-surface-variant transition-all outline-none" placeholder="Search parameter, facility code, or audit ID..." type="text"/>
+</div>
+<div class="flex items-center gap-space-xs text-on-surface-variant border-l border-surface-variant pl-space-lg">
+<span class="material-symbols-outlined text-[18px] text-primary">location_city</span>
+<span class="text-label font-label text-on-surface">Lagos Island Main Branch (012)</span>
+</div>
+</div>
+<!-- Trailing Action Badges & Avatar Profile -->
+<div class="flex items-center gap-space-lg">
+<!-- Dual Authorization Pending Badge Indicator -->
+<div class="flex items-center gap-space-xs bg-surface-container-high px-space-md py-1.5 rounded-full border border-surface-variant">
+<span class="inline-block w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="text-caption font-caption font-medium text-on-surface">Dual Authorization:</span>
+<span class="text-caption font-label text-primary">2-Eyes Armed</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<button class="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-surface-container-low transition-colors" title="Notifications" type="button">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+<button class="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-surface-container-low transition-colors" title="Help &amp; Policy Docs" type="button">
+<span class="material-symbols-outlined text-[20px]">help_outline</span>
+</button>
+</div>
+<!-- Staff Officer Profile -->
+<div class="flex items-center gap-space-md border-l border-surface-variant pl-space-md">
+<img class="w-9 h-9 rounded-full object-cover border border-surface-variant" data-alt="Close-up professional passport style portrait of a Nigerian banking staff credit officer in smart executive business suit with warm ambient daylight, dignified and sharp focus in institutional setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDt0gxOaBiE9oiYZ_ZgeZHfcXuCJzqsYuJZs3QHFkG5YLd5h67EZvAbjTioITG6LZBbXbE0gMjwfUh9tkMu3eNxl3_Kfr6murAvOUPlsSfIzRVjXqQCGcY1PGL00JXBZYMwjpuvasBkocbrR7CfZDl_8tsIR8PTzQrlYon9Ivon7IhPrbr9GjNIaDTXpoxelMmMjbq-toqHdO27ZmvHF0bppo6p40h_e8VXOHT5U7zjuQVmHTQwWGHvuQ"/>
+<div class="flex flex-col text-left">
+<span class="text-label font-label text-on-surface leading-tight">Segun Adeyemi</span>
+<span class="text-caption font-caption text-on-surface-variant text-[11px]">Senior Underwriting PM</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 p-space-xl max-w-7xl w-full mx-auto flex flex-col gap-space-xl pb-32">
+<!-- Breadcrumbs & Header Level -->
+<div class="flex flex-col gap-space-sm">
+<nav aria-label="Breadcrumb" class="flex items-center gap-space-xs text-caption font-caption text-on-surface-variant">
+<span>Credit Operations</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-primary font-medium">Product Configuration</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-on-surface">W-LOAN-003 (Instant Loan)</span>
+</nav>
+<div class="flex flex-wrap items-center justify-between gap-space-lg pt-1">
+<div class="flex items-center gap-space-md">
+<h1 class="text-title font-title text-on-surface tracking-tight">Loan Products &amp; Underwriting Policy Configuration</h1>
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-low border border-outline-variant text-primary text-caption font-label">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span>Policy v3.4 (Active)</span>
+</div>
+</div>
+<div class="flex items-center gap-space-md">
+<button class="h-10 px-space-lg rounded-xl border border-surface-variant bg-surface-container-lowest text-on-surface hover:bg-surface-container-low text-label font-label transition-colors flex items-center gap-2" type="button">
+<span class="material-symbols-outlined text-[18px]">history</span>
+<span>Compare Versions</span>
+</button>
+<button class="h-10 px-space-lg rounded-xl bg-primary text-on-primary hover:bg-primary-container text-label font-label shadow-sm transition-all flex items-center gap-2" type="button">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+<span>Submit Policy Changes for Dual Signoff</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Policy Dual-Control Notice Banner -->
+<div class="rounded-xl bg-[#FFF5F6] border border-outline-variant p-space-lg flex items-start gap-space-md">
+<div class="w-8 h-8 rounded-lg bg-surface-container-lowest border border-outline-variant flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">gavel</span>
+</div>
+<div class="flex-1 flex flex-col gap-0.5">
+<div class="flex items-center gap-2">
+<span class="text-label font-label text-primary">CBN Prudential &amp; Dual-Control Mandate</span>
+<span class="text-[11px] font-caption px-2 py-0.2 rounded bg-surface-container text-on-surface-variant font-medium">Policy Rule SEC-04</span>
+</div>
+<p class="text-body font-body text-on-surface-variant text-[14px] leading-relaxed">
+            Any modifications to interest rates, DSR ceilings, or maximum facility sizes require Level 4 Dual-Control authorization by Head of Credit Risk and Compliance Officer before taking effect in production disbursement engines.
+          </p>
+</div>
+<div class="flex items-center gap-1 text-primary text-caption font-label self-center flex-shrink-0 cursor-pointer hover:underline">
+<span>Read Operational Manual</span>
+<span class="material-symbols-outlined text-[16px]">arrow_outward</span>
+</div>
+</div>
+<!-- Product Matrix Tabs -->
+<div class="border-b border-surface-variant flex items-center gap-space-lg overflow-x-auto">
+<button class="pb-3 border-b-2 border-primary text-primary font-label text-label flex items-center gap-2 whitespace-nowrap">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+<span>Salary Advance (Tier 1)</span>
+<span class="text-xs px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-semibold">Active Matrix</span>
+</button>
+<button class="pb-3 border-b-2 border-transparent text-on-surface-variant hover:text-on-surface font-label text-label flex items-center gap-2 whitespace-nowrap transition-colors">
+<span class="material-symbols-outlined text-[18px]">person</span>
+<span>Personal Term Loan (Tier 2)</span>
+</button>
+<button class="pb-3 border-b-2 border-transparent text-on-surface-variant hover:text-on-surface font-label text-label flex items-center gap-2 whitespace-nowrap transition-colors">
+<span class="material-symbols-outlined text-[18px]">store</span>
+<span>SME Float Facility (Tier 3)</span>
+</button>
+<button class="pb-3 border-b-2 border-transparent text-on-surface-variant hover:text-on-surface font-label text-label flex items-center gap-2 whitespace-nowrap transition-colors">
+<span class="material-symbols-outlined text-[18px]">payments</span>
+<span>Merchant Working Capital</span>
+</button>
+</div>
+<!-- Bento Grid Configuration Matrix -->
+<div class="grid grid-cols-12 gap-space-xl">
+<!-- Panel 1: Facility Limits & Tenors (Span 7) -->
+<div class="col-span-12 lg:col-span-7 bg-surface-container-lowest rounded-xl border border-surface-variant p-space-xl custom-shadow-card flex flex-col gap-space-lg">
+<div class="flex items-center justify-between border-b border-surface-variant pb-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="w-8 h-8 rounded-lg bg-surface-container-low text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">account_balance_wallet</span>
+</span>
+<div>
+<h2 class="text-subtitle font-subtitle text-on-surface">1. Facility Limits &amp; Tenors</h2>
+<p class="text-caption font-caption text-on-surface-variant">Principal thresholds and permissible borrowing windows</p>
+</div>
+</div>
+<span class="text-caption font-label text-on-surface-variant bg-surface-container px-2.5 py-1 rounded">Code: PAR-FAC-01</span>
+</div>
+<!-- Principal Inputs -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-lg">
+<div class="flex flex-col gap-1.5">
+<label class="text-caption font-caption text-[#5E5557] flex items-center justify-between">
+<span>Minimum Principal (Floor)</span>
+<span class="text-primary font-medium">Mandatory Floor</span>
+</label>
+<div class="relative">
+<span class="absolute left-3.5 top-1/2 -translate-y-1/2 font-body font-semibold text-on-surface-variant">₦</span>
+<input class="w-full h-[52px] pl-9 pr-4 rounded-xl border border-surface-variant bg-surface-container-lowest focus:border-primary focus:ring-0 font-body text-body font-medium tabular-nums text-on-surface" type="text" value="10,000.00"/>
+</div>
+<span class="text-[11px] font-caption text-on-surface-variant">Minimum permitted disbursement per ticket</span>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-caption font-caption text-[#5E5557] flex items-center justify-between">
+<span>Maximum Principal (Ceiling)</span>
+<span class="text-secondary font-medium">Dual-Control Controlled</span>
+</label>
+<div class="relative">
+<span class="absolute left-3.5 top-1/2 -translate-y-1/2 font-body font-semibold text-on-surface-variant">₦</span>
+<input class="w-full h-[52px] pl-9 pr-4 rounded-xl border border-surface-variant bg-surface-container-lowest focus:border-primary focus:ring-0 font-body text-body font-medium tabular-nums text-on-surface" type="text" value="1,500,000.00"/>
+</div>
+<span class="text-[11px] font-caption text-on-surface-variant">Capped per current tier risk exposure policy</span>
+</div>
+</div>
+<!-- Tenor Checkboxes Selection -->
+<div class="flex flex-col gap-space-sm pt-2">
+<span class="text-caption font-caption text-[#5E5557]">Allowable Tenors</span>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-space-md">
+<!-- 1 Month -->
+<label class="flex items-center gap-3 p-3 rounded-xl border border-surface-variant hover:bg-surface-container-low cursor-pointer transition-colors">
+<input checked="" class="w-5 h-5 rounded text-primary focus:ring-0 focus:ring-offset-0 border-outline-variant" type="checkbox"/>
+<div class="flex flex-col">
+<span class="text-label font-label text-on-surface">1 Month</span>
+<span class="text-[11px] font-caption text-on-surface-variant">Bullet / 30d</span>
+</div>
+</label>
+<!-- 3 Months (Selected & Default) -->
+<label class="flex items-center gap-3 p-3 rounded-xl border-2 border-primary bg-surface-container-low cursor-pointer transition-colors relative">
+<input checked="" class="w-5 h-5 rounded text-primary focus:ring-0 focus:ring-offset-0 border-outline-variant" type="checkbox"/>
+<div class="flex flex-col">
+<span class="text-label font-label text-primary font-bold">3 Months</span>
+<span class="text-[11px] font-caption text-primary">Default Tenor</span>
+</div>
+</label>
+<!-- 6 Months -->
+<label class="flex items-center gap-3 p-3 rounded-xl border border-surface-variant hover:bg-surface-container-low cursor-pointer transition-colors">
+<input checked="" class="w-5 h-5 rounded text-primary focus:ring-0 focus:ring-offset-0 border-outline-variant" type="checkbox"/>
+<div class="flex flex-col">
+<span class="text-label font-label text-on-surface">6 Months</span>
+<span class="text-[11px] font-caption text-on-surface-variant">Amortized</span>
+</div>
+</label>
+<!-- 12 Months -->
+<label class="flex items-center gap-3 p-3 rounded-xl border border-surface-variant hover:bg-surface-container-low cursor-pointer transition-colors">
+<input checked="" class="w-5 h-5 rounded text-primary focus:ring-0 focus:ring-offset-0 border-outline-variant" type="checkbox"/>
+<div class="flex flex-col">
+<span class="text-label font-label text-on-surface">12 Months</span>
+<span class="text-[11px] font-caption text-on-surface-variant">High Tenor</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Tenor Selection Selector Dropdown -->
+<div class="flex items-center justify-between p-3.5 bg-surface-container-low rounded-xl border border-surface-variant">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary">info</span>
+<span class="text-label font-label text-on-surface">System Default Tenor on Customer App:</span>
+</div>
+<select class="h-9 px-3 bg-surface-container-lowest border border-surface-variant rounded-lg text-label font-label text-on-surface focus:border-primary focus:ring-0">
+<option selected="">3 Months (Recommended)</option>
+<option>1 Month</option>
+<option>6 Months</option>
+<option>12 Months</option>
+</select>
+</div>
+</div>
+<!-- Panel 2: Interest & Tariff Structure (Span 5) -->
+<div class="col-span-12 lg:col-span-5 bg-surface-container-lowest rounded-xl border border-surface-variant p-space-xl custom-shadow-card flex flex-col gap-space-lg">
+<div class="flex items-center justify-between border-b border-surface-variant pb-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="w-8 h-8 rounded-lg bg-surface-container-low text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">percent</span>
+</span>
+<div>
+<h2 class="text-subtitle font-subtitle text-on-surface">2. Interest &amp; Tariff Structure</h2>
+<p class="text-caption font-caption text-on-surface-variant">Cost of funds, fees, and regulatory statutory caps</p>
+</div>
+</div>
+<span class="text-caption font-label text-on-surface-variant bg-surface-container px-2.5 py-1 rounded">PAR-FEE-02</span>
+</div>
+<div class="flex flex-col gap-space-md">
+<!-- Flat Monthly Interest -->
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-[#5E5557]">Flat Monthly Interest</span>
+<span class="text-caption font-caption text-primary font-semibold">Annualized APR: 42.0%</span>
+</div>
+<div class="relative">
+<input class="w-full h-[52px] pl-4 pr-12 rounded-xl border border-surface-variant bg-surface-container-lowest focus:border-primary focus:ring-0 font-body text-body font-medium tabular-nums text-on-surface" type="text" value="3.50"/>
+<span class="absolute right-4 top-1/2 -translate-y-1/2 font-label text-on-surface-variant">% / month</span>
+</div>
+</div>
+<!-- Processing Fee & Cap -->
+<div class="grid grid-cols-2 gap-space-md">
+<div class="flex flex-col gap-1">
+<span class="text-caption font-caption text-[#5E5557]">Processing Fee</span>
+<div class="relative">
+<input class="w-full h-[52px] pl-4 pr-10 rounded-xl border border-surface-variant bg-surface-container-lowest focus:border-primary focus:ring-0 font-body text-body font-medium tabular-nums" type="text" value="1.0"/>
+<span class="absolute right-3.5 top-1/2 -translate-y-1/2 font-label text-on-surface-variant">%</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<span class="text-caption font-caption text-[#5E5557]">Fee Max Cap</span>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 font-body font-medium text-on-surface-variant">₦</span>
+<input class="w-full h-[52px] pl-8 pr-3 rounded-xl border border-surface-variant bg-surface-container-lowest focus:border-primary focus:ring-0 font-body text-body font-medium tabular-nums" type="text" value="5,000.00"/>
+</div>
+</div>
+</div>
+<!-- Insurance & Late Penalty -->
+<div class="grid grid-cols-2 gap-space-md">
+<div class="flex flex-col gap-1">
+<span class="text-caption font-caption text-[#5E5557]">Credit Life Levy</span>
+<div class="relative">
+<input class="w-full h-[52px] pl-4 pr-10 rounded-xl border border-surface-variant bg-surface-container-lowest focus:border-primary focus:ring-0 font-body text-body font-medium tabular-nums" type="text" value="0.50"/>
+<span class="absolute right-3.5 top-1/2 -translate-y-1/2 font-label text-on-surface-variant">%</span>
+</div>
+<span class="text-[10px] font-caption text-on-surface-variant">Mandatory statutory protection</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="text-caption font-caption text-[#5E5557]">Late Penalty / mo</span>
+<div class="relative">
+<input class="w-full h-[52px] pl-4 pr-10 rounded-xl border border-surface-variant bg-surface-container-lowest focus:border-primary focus:ring-0 font-body text-body font-medium tabular-nums" type="text" value="1.00"/>
+<span class="absolute right-3.5 top-1/2 -translate-y-1/2 font-label text-on-surface-variant">%</span>
+</div>
+<span class="text-[10px] font-caption text-on-surface-variant">Capped per CBN guidelines</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Panel 3: Underwriting & Risk Engine Rules (Span 7) -->
+<div class="col-span-12 lg:col-span-7 bg-surface-container-lowest rounded-xl border border-surface-variant p-space-xl custom-shadow-card flex flex-col gap-space-lg">
+<div class="flex items-center justify-between border-b border-surface-variant pb-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="w-8 h-8 rounded-lg bg-surface-container-low text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">shield</span>
+</span>
+<div>
+<h2 class="text-subtitle font-subtitle text-on-surface">3. Underwriting &amp; Risk Engine Rules</h2>
+<p class="text-caption font-caption text-on-surface-variant">Hard stop constraints and financial health parameters</p>
+</div>
+</div>
+<span class="text-caption font-label text-on-surface-variant bg-surface-container px-2.5 py-1 rounded">RULE-SET-03</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-lg">
+<!-- Maximum Debt Service Ratio -->
+<div class="flex flex-col gap-1.5 p-space-md bg-surface-container-low rounded-xl border border-surface-variant">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-[#5E5557]">Max Debt Service Ratio (DSR)</span>
+<span class="text-xs px-2 py-0.5 rounded bg-primary-fixed text-on-primary-fixed font-semibold">Strict Cap</span>
+</div>
+<div class="relative mt-1">
+<input class="w-full h-11 pl-4 pr-10 rounded-lg border border-surface-variant bg-surface-container-lowest font-body text-body font-bold text-primary tabular-nums" type="text" value="33.3"/>
+<span class="absolute right-3.5 top-1/2 -translate-y-1/2 font-label text-on-surface-variant">%</span>
+</div>
+<span class="text-[11px] font-caption text-on-surface-variant">Of verifiable net monthly payroll inflow</span>
+</div>
+<!-- Minimum Credit Bureau Score -->
+<div class="flex flex-col gap-1.5 p-space-md bg-surface-container-low rounded-xl border border-surface-variant">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-[#5E5557]">Min Credit Bureau Score</span>
+<span class="text-xs text-on-surface-variant">CreditRegistry / CRC</span>
+</div>
+<div class="relative mt-1">
+<input class="w-full h-11 pl-4 pr-12 rounded-lg border border-surface-variant bg-surface-container-lowest font-body text-body font-bold text-on-surface tabular-nums" type="text" value="620"/>
+<span class="absolute right-3.5 top-1/2 -translate-y-1/2 font-caption text-on-surface-variant">/ 850</span>
+</div>
+<span class="text-[11px] font-caption text-on-surface-variant">Minimum blended score requirement</span>
+</div>
+</div>
+<!-- Additional Rules & Verification Toggles -->
+<div class="flex flex-col gap-space-md">
+<!-- Salary Tenure -->
+<div class="flex items-center justify-between p-space-md rounded-xl border border-surface-variant bg-surface-container-lowest">
+<div class="flex items-center gap-space-md">
+<span class="material-symbols-outlined text-primary text-[22px]">calendar_month</span>
+<div class="flex flex-col">
+<span class="text-label font-label text-on-surface">Minimum Salary Banking Tenure</span>
+<span class="text-caption font-caption text-on-surface-variant">Continuous payroll cycles with YourApp or verified NIP sweep</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<input class="w-16 h-10 text-center font-bold text-on-surface rounded-lg border border-surface-variant bg-surface-container-low" type="number" value="3"/>
+<span class="text-caption font-caption text-on-surface-variant">Cycles</span>
+</div>
+</div>
+<!-- BVN & NIN Lock Requirement -->
+<div class="flex items-center justify-between p-space-md rounded-xl border border-surface-variant bg-surface-container-lowest">
+<div class="flex items-center gap-space-md">
+<span class="material-symbols-outlined text-primary text-[22px]" style="font-variation-settings: 'FILL' 1;">fingerprint</span>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="text-label font-label text-on-surface">Tier 3 BVN &amp; NIN Identity Verification</span>
+<span class="px-2 py-0.5 rounded bg-error-container text-on-error-container text-[11px] font-semibold">Locked</span>
+</div>
+<span class="text-caption font-caption text-on-surface-variant">Synchronous NIBSS/NIMC cross-reference check required before disbursement</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-12 h-6 bg-primary rounded-full relative cursor-not-allowed opacity-90 p-0.5" disabled="" type="button">
+<span class="w-5 h-5 bg-white rounded-full block ml-auto shadow-sm"></span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Panel 4: Auto-Approval Triggers & Fallbacks (Span 5) -->
+<div class="col-span-12 lg:col-span-5 bg-surface-container-lowest rounded-xl border border-surface-variant p-space-xl custom-shadow-card flex flex-col gap-space-lg">
+<div class="flex items-center justify-between border-b border-surface-variant pb-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="w-8 h-8 rounded-lg bg-surface-container-low text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">dynamic_form</span>
+</span>
+<div>
+<h2 class="text-subtitle font-subtitle text-on-surface">4. Auto-Approval Triggers</h2>
+<p class="text-caption font-caption text-on-surface-variant">Straight-through processing (STP) rules</p>
+</div>
+</div>
+<span class="text-caption font-label text-on-surface-variant bg-surface-container px-2.5 py-1 rounded">STP-CFG-04</span>
+</div>
+<div class="flex flex-col gap-space-lg">
+<!-- Auto Disburse Card -->
+<div class="p-space-md rounded-xl border border-surface-variant bg-[#F9FDFC] flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-[20px] text-emerald-700">task_alt</span>
+<span class="text-label font-label">Instant Auto-Disburse Threshold</span>
+</div>
+<span class="text-caption font-caption font-semibold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded">STP Enabled</span>
+</div>
+<div class="relative mt-1">
+<span class="absolute left-3.5 top-1/2 -translate-y-1/2 font-body font-semibold text-on-surface-variant">₦</span>
+<input class="w-full h-11 pl-9 pr-4 rounded-lg border border-surface-variant bg-surface-container-lowest font-body text-body font-medium tabular-nums" type="text" value="100,000.00"/>
+</div>
+<p class="text-[11px] font-caption text-on-surface-variant">
+                Pre-qualified salary earners with DSR &lt; 25% bypass underwriter queue directly to automated NIP disbursement.
+              </p>
+</div>
+<!-- Underwriter Escalation Trigger -->
+<div class="p-space-md rounded-xl border border-surface-variant bg-[#FFFBF7] flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-[20px] text-amber-700">supervisor_account</span>
+<span class="text-label font-label">Escalate to Human Underwriter</span>
+</div>
+<span class="text-caption font-caption font-semibold text-amber-900 bg-amber-100 px-2 py-0.5 rounded">Manual Queue</span>
+</div>
+<div class="grid grid-cols-2 gap-space-sm mt-1">
+<div>
+<span class="text-[11px] font-caption text-on-surface-variant block mb-1">Trigger Principal (&gt;)</span>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-xs font-semibold text-on-surface-variant">₦</span>
+<input class="w-full h-10 pl-7 pr-2 rounded-lg border border-surface-variant bg-surface-container-lowest text-label font-medium tabular-nums" type="text" value="250,000.00"/>
+</div>
+</div>
+<div>
+<span class="text-[11px] font-caption text-on-surface-variant block mb-1">Score Borderline</span>
+<input class="w-full h-10 px-3 rounded-lg border border-surface-variant bg-surface-container-lowest text-label font-medium text-center" type="text" value="600 - 640"/>
+</div>
+</div>
+<p class="text-[11px] font-caption text-on-surface-variant">
+                Applications exceeding this limit or falling in borderline score band require Senior Risk Analyst review.
+              </p>
+</div>
+</div>
+</div>
+<!-- Audit & Version History Panel (Span 12) -->
+<div class="col-span-12 bg-surface-container-lowest rounded-xl border border-surface-variant p-space-xl custom-shadow-card flex flex-col gap-space-lg">
+<div class="flex items-center justify-between border-b border-surface-variant pb-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="w-8 h-8 rounded-lg bg-surface-container-low text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">manage_history</span>
+</span>
+<div>
+<h2 class="text-subtitle font-subtitle text-on-surface">Audit Trail &amp; Governance Version History</h2>
+<p class="text-caption font-caption text-on-surface-variant">Immutable record of policy changes and dual sign-offs</p>
+</div>
+</div>
+<button class="text-label font-label text-primary hover:underline flex items-center gap-1" type="button">
+<span>View Full Audit Vault</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-lg">
+<!-- Version 3.4 (Current Active) -->
+<div class="p-space-md rounded-xl border-l-4 border-l-primary border border-surface-variant bg-surface-container-low flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="font-label text-label text-primary font-bold">Policy Version 3.4</span>
+<span class="px-2 py-0.5 rounded-full bg-primary text-white text-[11px] font-semibold">Current Active</span>
+</div>
+<span class="text-caption font-caption text-on-surface-variant">20 Jan 2027 • 14:22 WAT</span>
+</div>
+<p class="text-body font-body text-on-surface text-[14px]">
+                Updated DSR ceiling to 33.3% from 30.0% to reflect new CBN personal lending circular parameters.
+              </p>
+<div class="flex items-center gap-space-lg pt-1 border-t border-surface-variant text-caption font-caption text-on-surface-variant">
+<span>Proposed: <strong class="text-on-surface">Segun Adeyemi (PM)</strong></span>
+<span>Approved: <strong class="text-primary">Chidi Eze (Head of Risk)</strong></span>
+</div>
+</div>
+<!-- Version 3.3 (Archived) -->
+<div class="p-space-md rounded-xl border border-surface-variant bg-surface-container-lowest flex flex-col gap-2 opacity-85">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="font-label text-label text-on-surface">Policy Version 3.3</span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant text-[11px] font-medium">Superseded</span>
+</div>
+<span class="text-caption font-caption text-on-surface-variant">05 Dec 2026 • 09:41 WAT</span>
+</div>
+<p class="text-body font-body text-on-surface text-[14px]">
+                Adjusted Tier 2 maximum principal limit to ₦1,500,000.00 following end-of-year portfolio stress tests.
+              </p>
+<div class="flex items-center gap-space-lg pt-1 border-t border-surface-variant text-caption font-caption text-on-surface-variant">
+<span>Proposed: <strong class="text-on-surface">Segun Adeyemi (PM)</strong></span>
+<span>Approved: <strong class="text-on-surface">Compliance Committee</strong></span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Sticky Action Footer Container -->
+<footer class="fixed bottom-0 right-0 w-[calc(100%-18rem)] ml-72 bg-surface-container-lowest border-t border-surface-variant px-space-xl py-3 z-30 custom-shadow-float flex items-center justify-between">
+<div class="flex items-center gap-space-md text-caption font-caption text-on-surface-variant">
+<span class="flex items-center gap-1.5 text-secondary font-medium">
+<span class="material-symbols-outlined text-[16px]">edit_note</span>
+<span>Draft configuration pending Level-4 signoff review</span>
+</span>
+<span class="hidden xl:inline text-surface-variant">|</span>
+<span class="hidden xl:inline">Dual sign-off will automatically notify Risk Officer via encrypted push.</span>
+</div>
+<div class="flex items-center gap-space-md">
+<!-- Discard Draft Button -->
+<button class="h-[52px] px-space-lg rounded-xl border border-surface-variant bg-transparent text-on-surface hover:bg-surface-container-low font-label text-label transition-colors" type="button">
+          Discard Draft
+        </button>
+<!-- Save Draft Button -->
+<button class="h-[52px] px-space-xl rounded-xl bg-surface-container-high text-primary hover:bg-surface-variant font-label text-label transition-colors" type="button">
+          Save Configuration Draft
+        </button>
+<!-- Primary 52px Berry CTA Button -->
+<button class="h-[52px] px-space-2xl rounded-xl bg-primary-container hover:bg-[#731540] text-white font-label text-label shadow-md flex items-center gap-2 transition-all active:scale-[0.99]" type="button">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">lock</span>
+<span>Submit for Dual Approval</span>
+</button>
+</div>
+</footer>
+</div>
+</body></html>

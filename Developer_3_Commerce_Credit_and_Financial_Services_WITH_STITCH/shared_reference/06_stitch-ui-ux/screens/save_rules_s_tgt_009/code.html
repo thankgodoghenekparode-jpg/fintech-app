@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Automated Save Rules - YourApp</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-tint": "#a8315d",
+            "on-tertiary": "#ffffff",
+            "on-error-container": "#93000a",
+            "on-primary-container": "#ffa0ba",
+            "background": "#fff8f8",
+            "error-container": "#ffdad6",
+            "on-surface": "#1f1b1c",
+            "primary": "#6d0033",
+            "inverse-surface": "#342f30",
+            "on-tertiary-fixed": "#21191e",
+            "on-secondary-fixed-variant": "#8c170e",
+            "primary-container": "#8e1b4a",
+            "surface-container-high": "#efe6e7",
+            "on-secondary": "#ffffff",
+            "surface-container-lowest": "#ffffff",
+            "outline-variant": "#dcbfc5",
+            "surface-container-highest": "#e9e0e1",
+            "on-error": "#ffffff",
+            "primary-fixed": "#ffd9e1",
+            "on-primary-fixed-variant": "#881646",
+            "surface-container": "#f5eced",
+            "tertiary-container": "#53484d",
+            "secondary-fixed": "#ffdad4",
+            "surface-container-low": "#fbf1f2",
+            "surface": "#fff8f8",
+            "primary-fixed-dim": "#ffb1c5",
+            "on-tertiary-container": "#c6b7bd",
+            "on-primary-fixed": "#3f001b",
+            "surface-dim": "#e1d8d9",
+            "on-surface-variant": "#564146",
+            "on-primary": "#ffffff",
+            "tertiary": "#3b3236",
+            "on-secondary-container": "#690000",
+            "surface-variant": "#e9e0e1",
+            "secondary-fixed-dim": "#ffb4a8",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "surface-bright": "#fff8f8",
+            "secondary-container": "#fc6955",
+            "error": "#ba1a1a",
+            "outline": "#897176",
+            "secondary": "#ae3123",
+            "inverse-on-surface": "#f8eeef",
+            "inverse-primary": "#ffb1c5",
+            "on-background": "#1f1b1c",
+            "on-secondary-fixed": "#410000",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "tertiary-fixed": "#eedee4"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "gutter": "1rem",
+            "space-xl": "1.5rem",
+            "space-2xl": "2rem",
+            "space-3xl": "3rem",
+            "space-lg": "1rem",
+            "space-md": "0.75rem",
+            "space-xs": "0.25rem",
+            "margin": "1rem"
+          },
+          "fontFamily": {
+            "body": ["Inter"],
+            "amount-lg": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "label": ["Inter"],
+            "body-medium": ["Inter"],
+            "subtitle": ["Inter"],
+            "display": ["Inter"],
+            "title": ["Inter"],
+            "caption": ["Inter"]
+          },
+          "fontSize": {
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }]
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body antialiased min-h-screen flex justify-center selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Mobile Frame Container (Max 560px for tablet, 390px mobile native feel) -->
+<div class="w-full max-w-[560px] min-h-screen bg-surface flex flex-col relative pb-space-3xl shadow-[0_4px_30px_rgba(30,26,27,0.04)]">
+<!-- Top Bar Component -->
+<header class="sticky top-0 z-40 bg-surface/90 backdrop-blur-md px-margin py-space-sm flex justify-between items-center min-h-[56px] border-b border-outline-variant/30">
+<button aria-label="Go back" class="w-12 h-12 flex items-center justify-center rounded-full hover:bg-surface-container active:scale-95 transition-all text-on-surface" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<h1 class="font-subtitle text-subtitle font-bold text-on-surface tracking-tight text-center truncate">
+        Automated Save Rules
+      </h1>
+<button aria-label="Rule information" class="w-12 h-12 flex items-center justify-center rounded-full hover:bg-surface-container active:scale-95 transition-all text-on-surface-variant" type="button">
+<span class="material-symbols-outlined text-[24px]">info</span>
+</button>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 px-margin pt-space-lg pb-space-2xl flex flex-col gap-space-xl">
+<!-- Hero Overview Block -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] relative overflow-hidden">
+<div class="absolute -right-4 -top-4 w-28 h-28 bg-primary-fixed/30 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-start gap-space-md">
+<div class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-primary-container shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[22px]">auto_mode</span>
+</div>
+<div class="flex-1">
+<h2 class="font-subtitle text-subtitle text-on-surface font-bold leading-tight">
+              Save Without Thinking About It
+            </h2>
+<p class="font-caption text-caption text-on-surface-variant mt-space-xs leading-relaxed">
+              Set automated rules that save a percentage of incoming money or transfer spare change straight into your goals.
+            </p>
+</div>
+</div>
+</section>
+<!-- Active Rules Section -->
+<section class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between px-0.5">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[20px]">bolt</span>
+<h3 class="font-label text-label font-bold text-on-surface">
+              Active Rules
+            </h3>
+</div>
+<span class="font-caption text-caption text-on-surface-variant tabular-nums">2 Running</span>
+</div>
+<!-- Rule Card 1 (Active) -->
+<article class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant/50 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] transition-all flex flex-col gap-space-md">
+<!-- Card Top: Title, Badge & Switch -->
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex-1">
+<div class="flex items-center gap-space-xs flex-wrap mb-1">
+<h4 class="font-body-medium text-body-medium font-bold text-on-surface">
+                  10% of Any Salary Inflow
+                </h4>
+</div>
+<!-- Status Badge (Icon + Label Mandate) -->
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-[#EBF7EE] text-[#1E7E34] font-caption text-[11px] font-semibold tracking-wide">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                Active
+              </span>
+</div>
+<!-- Custom Accessible Toggle ON -->
+<label class="relative inline-flex items-center cursor-pointer select-none">
+<input aria-label="Toggle 10% of Any Salary Inflow rule" checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-7 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-5 peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-outline-variant after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-primary-container shadow-inner"></div>
+</label>
+</div>
+<!-- Allocation & Target Goal Pill -->
+<div class="bg-surface-container-low rounded-lg p-space-sm flex items-center justify-between border border-outline-variant/30">
+<div class="flex items-center gap-space-xs text-on-surface-variant min-w-0">
+<span class="material-symbols-outlined text-[18px] text-primary-container shrink-0">flag</span>
+<span class="font-caption text-caption truncate text-on-surface">
+                Target: <span class="font-semibold text-primary">December Rent in Lekki</span>
+</span>
+</div>
+<span class="material-symbols-outlined text-outline text-[18px]">chevron_right</span>
+</div>
+<!-- Trigger Details -->
+<div class="flex items-start gap-space-xs text-on-surface-variant pt-1 border-t border-outline-variant/20">
+<span class="material-symbols-outlined text-[16px] text-outline shrink-0 mt-0.5">tune</span>
+<p class="font-caption text-caption text-on-surface-variant">
+              Applies to any inbound credit over <span class="font-medium text-on-surface tabular-nums">₦50,000.00</span>
+</p>
+</div>
+<!-- Savings Progress Stats -->
+<div class="flex items-center justify-between pt-1">
+<span class="font-caption text-caption text-on-surface-variant">Total saved via this rule</span>
+<span class="font-body-medium text-body-medium font-bold text-primary-container tabular-nums">
+              ₦70,000.00 saved so far
+            </span>
+</div>
+</article>
+<!-- Rule Card 2 (Active) -->
+<article class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant/50 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] transition-all flex flex-col gap-space-md">
+<!-- Card Top: Title, Badge & Switch -->
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex-1">
+<div class="flex items-center gap-space-xs flex-wrap mb-1">
+<h4 class="font-body-medium text-body-medium font-bold text-on-surface">
+                  Spare Change Round-Up
+                </h4>
+</div>
+<!-- Status Badge (Icon + Label Mandate) -->
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-[#EBF7EE] text-[#1E7E34] font-caption text-[11px] font-semibold tracking-wide">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                Active
+              </span>
+</div>
+<!-- Custom Accessible Toggle ON -->
+<label class="relative inline-flex items-center cursor-pointer select-none">
+<input aria-label="Toggle Spare Change Round-Up rule" checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-7 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-5 peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-outline-variant after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-primary-container shadow-inner"></div>
+</label>
+</div>
+<!-- Allocation & Target Goal Pill -->
+<div class="bg-surface-container-low rounded-lg p-space-sm flex items-center justify-between border border-outline-variant/30">
+<div class="flex items-center gap-space-xs text-on-surface-variant min-w-0">
+<span class="material-symbols-outlined text-[18px] text-primary-container shrink-0">shield</span>
+<span class="font-caption text-caption truncate text-on-surface">
+                Target: <span class="font-semibold text-primary">Emergency Buffer Fund</span>
+</span>
+</div>
+<span class="material-symbols-outlined text-outline text-[18px]">chevron_right</span>
+</div>
+<!-- Trigger Details -->
+<div class="flex items-start gap-space-xs text-on-surface-variant pt-1 border-t border-outline-variant/20">
+<span class="material-symbols-outlined text-[16px] text-outline shrink-0 mt-0.5">currency_exchange</span>
+<p class="font-caption text-caption text-on-surface-variant">
+              Rounds up card transactions to the nearest <span class="font-medium text-on-surface tabular-nums">₦100</span> and transfers spare change
+            </p>
+</div>
+<!-- Savings Progress Stats -->
+<div class="flex items-center justify-between pt-1">
+<span class="font-caption text-caption text-on-surface-variant">Total saved via this rule</span>
+<span class="font-body-medium text-body-medium font-bold text-primary-container tabular-nums">
+              ₦14,350.00 saved so far
+            </span>
+</div>
+</article>
+</section>
+<!-- Available Rule Templates (Create New Rule) -->
+<section class="flex flex-col gap-space-md">
+<div class="flex items-center gap-space-xs px-0.5">
+<span class="material-symbols-outlined text-primary-container text-[20px]">explore</span>
+<h3 class="font-label text-label font-bold text-on-surface">
+            Available Rule Templates
+          </h3>
+</div>
+<div class="flex flex-col gap-space-sm">
+<!-- Template 1: Payday Sweep -->
+<button class="w-full text-left bg-surface-container-lowest hover:bg-surface-container-low active:scale-[0.99] p-space-md rounded-xl border border-outline-variant/40 transition-all flex items-center justify-between gap-space-md group" type="button">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-primary-container shrink-0 group-hover:bg-primary-fixed/50 transition-colors">
+<span class="material-symbols-outlined text-[20px]">calendar_month</span>
+</div>
+<div class="flex flex-col min-w-0">
+<h4 class="font-label text-label text-on-surface font-semibold truncate">
+                  Payday Sweep
+                </h4>
+<p class="font-caption text-caption text-on-surface-variant">
+                  Save fixed ₦ amount on the 25th of every month
+                </p>
+</div>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant group-hover:text-primary shrink-0">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</div>
+</button>
+<!-- Template 2: Percent-of-Credit -->
+<button class="w-full text-left bg-surface-container-lowest hover:bg-surface-container-low active:scale-[0.99] p-space-md rounded-xl border border-outline-variant/40 transition-all flex items-center justify-between gap-space-md group" type="button">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-primary-container shrink-0 group-hover:bg-primary-fixed/50 transition-colors">
+<span class="material-symbols-outlined text-[20px]">percent</span>
+</div>
+<div class="flex flex-col min-w-0">
+<h4 class="font-label text-label text-on-surface font-semibold truncate">
+                  Percent-of-Credit
+                </h4>
+<p class="font-caption text-caption text-on-surface-variant">
+                  Save 5% to 20% on all incoming interbank transfers
+                </p>
+</div>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant group-hover:text-primary shrink-0">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</div>
+</button>
+<!-- Template 3: Cashback & Reward Stashing -->
+<button class="w-full text-left bg-surface-container-lowest hover:bg-surface-container-low active:scale-[0.99] p-space-md rounded-xl border border-outline-variant/40 transition-all flex items-center justify-between gap-space-md group" type="button">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-primary-container shrink-0 group-hover:bg-primary-fixed/50 transition-colors">
+<span class="material-symbols-outlined text-[20px]">savings</span>
+</div>
+<div class="flex flex-col min-w-0">
+<h4 class="font-label text-label text-on-surface font-semibold truncate">
+                  Cashback &amp; Reward Stashing
+                </h4>
+<p class="font-caption text-caption text-on-surface-variant">
+                  Auto-save referral bonuses &amp; refunds
+                </p>
+</div>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant group-hover:text-primary shrink-0">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</div>
+</button>
+</div>
+</section>
+<!-- Add Custom Rule Button (Outline Button Token: 52px, radius 12px) -->
+<button class="w-full h-[52px] rounded-xl border-[1.5px] border-outline-variant/80 hover:border-primary text-on-surface hover:text-primary font-label text-label font-semibold flex items-center justify-center gap-space-xs bg-transparent active:scale-[0.98] transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+        + Create Custom Save Rule
+      </button>
+<!-- Regulatory & Safety Disclosure -->
+<section class="rounded-xl p-space-md bg-surface-container-low border border-outline-variant/30 flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-outline text-[20px] shrink-0 mt-0.5">verified_user</span>
+<p class="font-caption text-caption text-on-surface-variant leading-relaxed">
+<strong class="font-semibold text-on-surface">Rule Protection Cap:</strong> Automatic savings will never execute if your available balance falls below <span class="tabular-nums font-medium text-on-surface">₦10,000.00</span>. You maintain 100% control and can pause rules anytime.
+        </p>
+</section>
+</main>
+<!-- Bottom Navigation Bar (From Shared Components JSON) -->
+<!-- Destination count: 5 | Active: Save & Borrow -->
+<nav aria-label="Bottom Navigation" class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-margin h-16 max-w-[560px] mx-auto pb-safe bg-surface-container-lowest shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)] border-t border-outline-variant/40">
+<!-- Home -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="font-caption text-caption font-medium">Home</span>
+</button>
+<!-- Payments -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[24px]">send</span>
+<span class="font-caption text-caption font-medium">Payments</span>
+</button>
+<!-- Cards -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[24px]">credit_card</span>
+<span class="font-caption text-caption font-medium">Cards</span>
+</button>
+<!-- Save & Borrow (Active) -->
+<button aria-current="page" class="flex flex-col items-center justify-center text-primary font-semibold min-w-[48px] py-space-xs gap-space-xs active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">savings</span>
+<span class="font-caption text-caption font-medium">Save &amp; Borrow</span>
+</button>
+<!-- More -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[24px]">more_horiz</span>
+<span class="font-caption text-caption font-medium">More</span>
+</button>
+</nav>
+</div>
+</body></html>

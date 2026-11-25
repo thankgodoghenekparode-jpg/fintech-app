@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YourApp Escrow - Confirm Delivery &amp; Inspection</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "secondary": "#ffb4a8",
+            "error": "#ffb4ab",
+            "on-tertiary-fixed": "#001945",
+            "inverse-on-surface": "#323031",
+            "on-primary": "#620735",
+            "outline": "#a28b91",
+            "tertiary": "#b0c6ff",
+            "on-primary-fixed-variant": "#7f234b",
+            "inverse-primary": "#9e3b63",
+            "on-secondary": "#61130a",
+            "on-secondary-fixed-variant": "#7f291e",
+            "primary-container": "#e0709a",
+            "tertiary-fixed": "#d9e2ff",
+            "on-tertiary-container": "#002a69",
+            "on-background": "#e7e1e2",
+            "surface-bright": "#3b3839",
+            "outline-variant": "#544247",
+            "on-surface": "#e7e1e2",
+            "secondary-fixed-dim": "#ffb4a8",
+            "inverse-surface": "#e7e1e2",
+            "on-error-container": "#ffdad6",
+            "primary-fixed-dim": "#ffb0ca",
+            "on-primary-container": "#5d0331",
+            "surface": "#151314",
+            "tertiary-container": "#6a92ee",
+            "background": "#151314",
+            "surface-container-highest": "#373435",
+            "surface-dim": "#151314",
+            "surface-variant": "#373435",
+            "on-tertiary": "#002d6f",
+            "on-tertiary-fixed-variant": "#06429a",
+            "on-surface-variant": "#dac0c6",
+            "secondary-fixed": "#ffdad4",
+            "error-container": "#93000a",
+            "primary": "#ffb0ca",
+            "on-secondary-container": "#ff9f90",
+            "surface-container": "#211f20",
+            "on-error": "#690005",
+            "surface-container-high": "#2c292a",
+            "on-primary-fixed": "#3e001f",
+            "secondary-container": "#822c20",
+            "primary-fixed": "#ffd9e3",
+            "surface-container-lowest": "#100e0f",
+            "surface-container-low": "#1d1b1c",
+            "on-secondary-fixed": "#410000",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "surface-tint": "#ffb0ca"
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          spacing: {
+            "space-sm": "0.5rem",
+            "margin-mobile": "1rem",
+            "space-lg": "1.5rem",
+            "space-xs": "0.25rem",
+            "margin": "1rem",
+            "gutter-mobile": "0.75rem",
+            "gutter": "1rem",
+            "space-xl": "2rem",
+            "space-md": "1rem"
+          },
+          fontFamily: {
+            "display-currency": ["Inter"],
+            "label-lg": ["Inter"],
+            "headline-sm": ["Inter"],
+            "headline-md": ["Inter"],
+            "body-lg": ["Inter"],
+            "label-sm": ["Inter"],
+            "body-md": ["Inter"],
+            "headline-lg": ["Inter"],
+            "label-md": ["Inter"],
+            "title-currency": ["Inter"]
+          },
+          fontSize: {
+            "display-currency": ["36px", { lineHeight: "44px", letterSpacing: "-0.02em", fontWeight: "700" }],
+            "label-lg": ["15px", { lineHeight: "20px", fontWeight: "600" }],
+            "headline-sm": ["18px", { lineHeight: "24px", fontWeight: "600" }],
+            "headline-md": ["22px", { lineHeight: "28px", letterSpacing: "-0.01em", fontWeight: "600" }],
+            "body-lg": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+            "label-sm": ["11px", { lineHeight: "14px", letterSpacing: "0.02em", fontWeight: "500" }],
+            "body-md": ["14px", { lineHeight: "20px", fontWeight: "400" }],
+            "headline-lg": ["28px", { lineHeight: "34px", letterSpacing: "-0.01em", fontWeight: "700" }],
+            "label-md": ["13px", { lineHeight: "18px", fontWeight: "500" }],
+            "title-currency": ["20px", { lineHeight: "26px", letterSpacing: "-0.01em", fontWeight: "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-[#121011] text-on-surface antialiased font-body-md text-body-md selection:bg-primary-container selection:text-on-primary">
+<div class="relative mx-auto min-h-screen w-full max-w-[390px] bg-[#121011] flex flex-col justify-between shadow-2xl">
+<!-- Top Bar with Back Arrow, Title, Deal ID & Info -->
+<header class="sticky top-0 z-40 bg-[#1C1819] border-b border-outline-variant/40 px-margin py-3 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<button aria-label="Go back" class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container active:scale-95 text-on-surface transition-transform" type="button">
+<span class="material-symbols-outlined text-[20px]">arrow_back</span>
+</button>
+<div>
+<h1 class="font-headline-sm text-headline-sm text-[#F5F1F0] tracking-tight leading-tight">Confirm Delivery &amp; Inspection</h1>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="font-label-sm text-label-sm text-[#8C8285]">Deal ID:</span>
+<span class="font-label-sm text-label-sm text-primary font-mono font-medium tracking-wide">#ESC-8921-FX3</span>
+</div>
+</div>
+</div>
+<button aria-label="Inspection details" class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container text-[#C4BBBD] active:scale-95 transition-transform hover:text-[#F5F1F0]" type="button">
+<span class="material-symbols-outlined text-[20px]">info</span>
+</button>
+</header>
+<!-- Main Scrollable Canvas -->
+<main class="flex-1 px-margin py-4 space-y-4 pb-28">
+<!-- Inspection Timer Alert Banner -->
+<section class="rounded-xl p-3.5 bg-[#2D2311] border border-[#E3B341]/40 flex flex-col gap-2">
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[#E3B341] text-[20px] mt-0.5" style="font-variation-settings: 'FILL' 1;">timer</span>
+<div class="flex-1">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#E3B341]/20 text-[#E3B341] font-label-md text-label-md font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-[#E3B341] animate-ping"></span>
+              46h 18m remaining
+            </div>
+<p class="font-label-md text-label-md text-[#F5F1F0] font-medium mt-1">
+              Physical inspection window active (72h total).
+            </p>
+</div>
+</div>
+<p class="font-label-sm text-label-sm text-[#C4BBBD] border-t border-[#E3B341]/20 pt-2 leading-relaxed">
+          Funds will auto-release to seller on <span class="text-[#F5F1F0] font-semibold">28 Feb 2026, 10:28 AM WAT</span> if no dispute is lodged.
+        </p>
+</section>
+<!-- Deal & Seller Card -->
+<section class="rounded-xl p-4 bg-[#262122] border border-[#3A3335] space-y-3">
+<div class="flex items-start justify-between gap-3">
+<div class="space-y-1">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#4CC38A]/15 text-[#4CC38A] font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+              Funds in Custody
+            </span>
+<h2 class="font-label-lg text-label-lg text-[#F5F1F0] font-semibold pt-0.5">
+              Brand New Sony FX3 Cinema Camera Bundle
+            </h2>
+</div>
+</div>
+<div class="flex items-center justify-between border-y border-[#3A3335] py-2.5">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-[#1C1819] flex items-center justify-center border border-[#3A3335] text-[#C4BBBD]">
+<span class="material-symbols-outlined text-[16px]">storefront</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-[#8C8285]">Seller</p>
+<p class="font-label-md text-label-md text-[#F5F1F0] font-medium flex items-center gap-1">
+                Emeka Alaba Electronics
+                <span class="text-primary text-[14px] material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</p>
+</div>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container text-[#C4BBBD] border border-[#3A3335]">
+            Tier 2 Merchant
+          </span>
+</div>
+<div class="flex items-center justify-between pt-1">
+<div>
+<span class="font-label-sm text-label-sm text-[#8C8285] block">Locked Escrow Principal</span>
+<span class="font-display-currency text-title-currency text-primary-container font-mono tabular-nums tracking-tight">
+              ₦1,200,000.00
+            </span>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm text-[#8C8285] block">Release Target</span>
+<span class="font-label-md text-label-md text-[#F5F1F0]">Direct NIP Transfer</span>
+</div>
+</div>
+</section>
+<!-- Evidence & Waybill Drawer View -->
+<section class="rounded-xl p-4 bg-[#262122] border border-[#3A3335] space-y-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]">local_shipping</span>
+<h3 class="font-label-lg text-label-lg text-[#F5F1F0] font-semibold">Courier &amp; Proof of Delivery</h3>
+</div>
+<button class="text-primary hover:text-primary-fixed-dim font-label-sm text-label-sm font-medium flex items-center gap-0.5" type="button">
+            View Full Documents
+            <span class="material-symbols-outlined text-[14px]">open_in_new</span>
+</button>
+</div>
+<div class="p-2.5 rounded-lg bg-[#1C1819] border border-[#3A3335] space-y-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-[#8C8285]">Dispatch Partner</span>
+<span class="font-label-md text-label-md text-[#F5F1F0] font-semibold">GIG Logistics</span>
+</div>
+<p class="font-label-sm text-label-sm text-[#C4BBBD]">
+            Waybill <span class="font-mono text-[#F5F1F0]">#GIG-LOS-992014-X</span> • Delivered to Lekki Phase 1
+          </p>
+</div>
+<!-- Thumbnails Gallery -->
+<div class="grid grid-cols-2 gap-2.5 pt-1">
+<div class="group relative rounded-lg overflow-hidden border border-[#3A3335] bg-[#1C1819] flex flex-col">
+<div class="h-24 w-full bg-[#151314] relative overflow-hidden flex items-center justify-center">
+<img class="w-full h-full object-cover opacity-85 group-hover:opacity-100 transition-opacity" data-alt="A close-up documentary photograph of a stamped delivery waybill manifest from a West African courier service resting on a dark rustic surface under moody interior lighting, with official green confirmation stamps, signatures, and tracking barcode clearly legible." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiowd55QItP69I_GnJ2jgeghwSYa_Pz1MEjAVnCz9npfHLOfhk3xCmaTMA3n8m8wtgBU0HzsEVRJwAxlbiukUeCnxuP1eLfMoToDfqxBA8XQMHiz33C_q0aNZYfSzo1eGJAL6BYoaA-p4rlAE5lxm0HBXMgnDPAZvk3u0zXibD_2h9FQGbUicu_kAFS9U8SrP-kMGEBKdFRJ8nJ0HvduCFCeuEBF8ZJC1LGspIwY8v"/>
+<span class="absolute bottom-1.5 left-1.5 bg-[#121011]/80 backdrop-blur-sm text-[10px] text-[#F5F1F0] px-1.5 py-0.5 rounded font-mono">
+                waybill_signed.jpg
+              </span>
+</div>
+<div class="p-1.5 flex items-center justify-between text-[#8C8285]">
+<span class="font-label-sm text-[10px]">Signed on dispatch</span>
+<span class="material-symbols-outlined text-[14px]">visibility</span>
+</div>
+</div>
+<div class="group relative rounded-lg overflow-hidden border border-[#3A3335] bg-[#1C1819] flex flex-col">
+<div class="h-24 w-full bg-[#151314] relative overflow-hidden flex items-center justify-center">
+<img class="w-full h-full object-cover opacity-85 group-hover:opacity-100 transition-opacity" data-alt="A clean top-down inspection photograph of an opened high-end cinema camera box showing the black camera body, wrapped accessories, and security tape seals under crisp focused studio lights with dark charcoal background tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtGsKxAfWMaYyherDSKbLwrhfiifdbyPHBJm1wf8QKdTDkcv2SaJFkN9t8NFXr0WpYKpaoqX4909JDx-2jhLsEzckzp1FSUPuL4WvPlQqu2WKgdJv3rqw4y9pUJ3hfiM0AlD0uHepRZX5wDtGMByZScfmfw9hndU0zWxdJ0JTWgt2Jgxjh13eZeLuWBaPujg5cTh5SDYhfKctdKWoynXMN1ihiJ8PUV5PQ-FAyTvr8"/>
+<span class="absolute bottom-1.5 left-1.5 bg-[#121011]/80 backdrop-blur-sm text-[10px] text-[#F5F1F0] px-1.5 py-0.5 rounded font-mono">
+                package_unboxing.jpg
+              </span>
+</div>
+<div class="p-1.5 flex items-center justify-between text-[#8C8285]">
+<span class="font-label-sm text-[10px]">Physical state verification</span>
+<span class="material-symbols-outlined text-[14px]">visibility</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Delivery Handover / OTP entry section -->
+<section class="rounded-xl p-4 bg-[#262122] border border-[#3A3335] space-y-3">
+<div class="flex items-center justify-between">
+<label class="font-label-lg text-label-lg text-[#F5F1F0] font-semibold flex items-center gap-1.5" for="otp-1">
+<span class="material-symbols-outlined text-[18px] text-primary">pin</span>
+            6-Digit Inspection Code
+          </label>
+<span class="font-label-sm text-label-sm text-[#8C8285]">From courier SMS / seller</span>
+</div>
+<p class="font-body-md text-body-md text-[#C4BBBD]">
+          Enter code provided by dispatcher upon handoff to unlock settlement.
+        </p>
+<!-- 6 Rounded Digit Boxes -->
+<div class="grid grid-cols-6 gap-2 pt-1">
+<input class="w-full h-[52px] rounded-xl text-center font-display-currency text-headline-sm font-bold bg-[#1C1819] border border-[#3A3335] text-[#F5F1F0] focus:border-primary-container focus:outline-none transition-colors" id="otp-1" maxlength="1" type="text" value="7"/>
+<input class="w-full h-[52px] rounded-xl text-center font-display-currency text-headline-sm font-bold bg-[#1C1819] border border-[#3A3335] text-[#F5F1F0] focus:border-primary-container focus:outline-none transition-colors" maxlength="1" type="text" value="4"/>
+<input class="w-full h-[52px] rounded-xl text-center font-display-currency text-headline-sm font-bold bg-[#1C1819] border border-[#3A3335] text-[#F5F1F0] focus:border-primary-container focus:outline-none transition-colors" maxlength="1" type="text" value="2"/>
+<input class="w-full h-[52px] rounded-xl text-center font-display-currency text-headline-sm font-bold bg-[#1C1819] border border-[#3A3335] text-[#F5F1F0] focus:border-primary-container focus:outline-none transition-colors" maxlength="1" type="text" value="9"/>
+<input class="w-full h-[52px] rounded-xl text-center font-display-currency text-headline-sm font-bold bg-[#1C1819] border border-primary-container text-[#F5F1F0] focus:border-primary-container focus:outline-none transition-colors" maxlength="1" placeholder="•" type="text"/>
+<input class="w-full h-[52px] rounded-xl text-center font-display-currency text-headline-sm font-bold bg-[#1C1819] border border-[#3A3335] text-[#8C8285] focus:border-primary-container focus:outline-none transition-colors" maxlength="1" placeholder="•" type="text"/>
+</div>
+</section>
+<!-- Inspection Checklist Verification Toggles / Checkboxes -->
+<section class="rounded-xl p-4 bg-[#262122] border border-[#3A3335] space-y-3">
+<div class="flex items-center justify-between border-b border-[#3A3335] pb-2">
+<h3 class="font-label-lg text-label-lg text-[#F5F1F0] font-semibold">Physical Checklist</h3>
+<span class="font-label-sm text-label-sm text-[#4CC38A] font-medium">3 Checks Required</span>
+</div>
+<div class="space-y-2.5">
+<!-- Check item 1 -->
+<label class="flex items-start gap-3 p-2.5 rounded-lg bg-[#1C1819] border border-[#3A3335] cursor-pointer hover:border-outline-variant transition-colors">
+<input checked="" class="mt-0.5 w-5 h-5 rounded border-[#3A3335] bg-[#262122] text-primary-container focus:ring-0 focus:ring-offset-0" type="checkbox"/>
+<div class="flex-1">
+<p class="font-label-md text-label-md text-[#F5F1F0] font-medium leading-snug">
+                Serial number matches invoice (FX3-NG-04)
+              </p>
+<p class="font-label-sm text-label-sm text-[#8C8285] mt-0.5">Matched with Sony warranty certificate</p>
+</div>
+</label>
+<!-- Check item 2 -->
+<label class="flex items-start gap-3 p-2.5 rounded-lg bg-[#1C1819] border border-[#3A3335] cursor-pointer hover:border-outline-variant transition-colors">
+<input checked="" class="mt-0.5 w-5 h-5 rounded border-[#3A3335] bg-[#262122] text-primary-container focus:ring-0 focus:ring-offset-0" type="checkbox"/>
+<div class="flex-1">
+<p class="font-label-md text-label-md text-[#F5F1F0] font-medium leading-snug">
+                No physical transit damage; seals intact
+              </p>
+<p class="font-label-sm text-label-sm text-[#8C8285] mt-0.5">Tamper hologram unbroken</p>
+</div>
+</label>
+<!-- Check item 3 -->
+<label class="flex items-start gap-3 p-2.5 rounded-lg bg-[#1C1819] border border-[#3A3335] cursor-pointer hover:border-outline-variant transition-colors">
+<input checked="" class="mt-0.5 w-5 h-5 rounded border-[#3A3335] bg-[#262122] text-primary-container focus:ring-0 focus:ring-offset-0" type="checkbox"/>
+<div class="flex-1">
+<p class="font-label-md text-label-md text-[#F5F1F0] font-medium leading-snug">
+                All accessories included (2x batteries, 24-70mm GM lens)
+              </p>
+<p class="font-label-sm text-label-sm text-[#8C8285] mt-0.5">Lens elements clear and unblemished</p>
+</div>
+</label>
+</div>
+</section>
+<!-- Action Buttons Container -->
+<section class="pt-2 space-y-3">
+<!-- Primary Button -->
+<button class="w-full h-[52px] rounded-xl bg-primary-container text-[#121011] font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 active:bg-[#C4557F] active:scale-[0.99] transition-all shadow-md" type="button">
+<span>Confirm Inspection &amp; Release Funds (PIN)</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<!-- Secondary Dispute Button -->
+<button class="w-full h-[52px] rounded-xl bg-[#262122] border border-[#FF8A78]/40 text-[#FF8A78] hover:bg-[#3A3335] font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 active:scale-[0.99] transition-all" type="button">
+<span class="material-symbols-outlined text-[18px]">gavel</span>
+<span>Report a Problem / Open Dispute</span>
+</button>
+</section>
+<!-- Statutory Notice -->
+<footer class="pt-1 px-1 text-center">
+<p class="font-label-sm text-label-sm text-[#8C8285] leading-relaxed">
+          Funds released cannot be reversed once your 4-digit PIN is authorized under CBN Escrow Guidelines.
+        </p>
+<p class="font-label-sm text-label-sm text-[#8C8285]/60 mt-1">
+          Licensed &amp; Supervised by the Central Bank of Nigeria • NDIC Insured
+        </p>
+</footer>
+</main>
+</div>
+</body></html>

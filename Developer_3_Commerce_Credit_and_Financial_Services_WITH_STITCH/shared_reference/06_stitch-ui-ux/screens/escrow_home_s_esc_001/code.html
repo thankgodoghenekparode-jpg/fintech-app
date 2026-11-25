@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Escrow home (S-ESC-001)</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary-fixed-dim": "#d1c3c8",
+            "background": "#fff8f8",
+            "primary-fixed": "#ffd9e1",
+            "inverse-surface": "#342f30",
+            "tertiary": "#3b3236",
+            "on-surface": "#1f1b1c",
+            "surface-tint": "#a8315d",
+            "surface-variant": "#e9e0e1",
+            "tertiary-container": "#53484d",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#fbf1f2",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "on-primary-container": "#ffa0ba",
+            "secondary-container": "#fc6955",
+            "inverse-primary": "#ffb1c5",
+            "on-secondary-fixed-variant": "#8c170e",
+            "on-tertiary-fixed": "#21191e",
+            "primary-fixed-dim": "#ffb1c5",
+            "surface-container": "#f5eced",
+            "secondary": "#ae3123",
+            "error": "#ba1a1a",
+            "surface-container-highest": "#e9e0e1",
+            "tertiary-fixed": "#eedee4",
+            "on-secondary": "#ffffff",
+            "primary": "#6d0033",
+            "outline-variant": "#dcbfc5",
+            "on-primary": "#ffffff",
+            "surface-container-high": "#efe6e7",
+            "on-error-container": "#93000a",
+            "primary-container": "#8e1b4a",
+            "on-secondary-fixed": "#410000",
+            "inverse-on-surface": "#f8eeef",
+            "error-container": "#ffdad6",
+            "surface-dim": "#e1d8d9",
+            "secondary-fixed": "#ffdad4",
+            "on-primary-fixed-variant": "#881646",
+            "on-background": "#1f1b1c",
+            "on-tertiary": "#ffffff",
+            "on-error": "#ffffff",
+            "on-tertiary-container": "#c6b7bd",
+            "secondary-fixed-dim": "#ffb4a8",
+            "surface-bright": "#fff8f8",
+            "surface": "#fff8f8",
+            "on-secondary-container": "#690000",
+            "outline": "#897176",
+            "on-primary-fixed": "#3f001b",
+            "on-surface-variant": "#564146"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-md": "0.75rem",
+            "margin": "1rem",
+            "gutter": "1rem",
+            "space-sm": "0.5rem",
+            "space-2xl": "2rem",
+            "space-lg": "1rem",
+            "space-xs": "0.25rem",
+            "space-3xl": "3rem",
+            "space-xl": "1.5rem"
+          },
+          "fontFamily": {
+            "caption": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "subtitle": ["Inter"],
+            "title": ["Inter"],
+            "label": ["Inter"],
+            "amount-lg": ["Inter"],
+            "body": ["Inter"],
+            "display": ["Inter"],
+            "body-medium": ["Inter"]
+          },
+          "fontSize": {
+            "caption": ["13px", {"lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+            "amount-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "subtitle": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "title": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700"}],
+            "label": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+            "amount-lg": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700"}],
+            "body": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400"}],
+            "display": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "body-medium": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased selection:bg-primary-fixed selection:text-on-primary-fixed min-h-screen flex justify-center">
+<!-- Mobile Viewport Canvas Container (390 x 844 target reflow) -->
+<div class="w-full max-w-[560px] bg-surface min-h-screen flex flex-col relative pb-28 shadow-[0_4px_32px_rgba(30,26,27,0.06)]">
+<!-- TopAppBar Component Anchor -->
+<header class="sticky top-0 z-40 bg-surface/95 backdrop-blur-md">
+<div class="flex justify-between items-center w-full px-margin py-space-sm max-w-[560px] mx-auto min-h-[56px]">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-primary-container flex items-center justify-center text-on-primary shadow-sm">
+<span class="material-symbols-outlined text-[20px]" data-icon="shield">shield</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-title text-title font-bold text-primary tracking-tight">YourApp</span>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+</div>
+<span class="font-caption text-caption text-on-surface-variant leading-none">SafeEscrow</span>
+</div>
+</div>
+<!-- Trailing actions: Search & Notifications -->
+<div class="flex items-center gap-1">
+<button aria-label="Search Escrow Deals" class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button aria-label="Notifications" class="relative w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-secondary ring-2 ring-surface"></span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Flow -->
+<main class="flex-1 px-margin pt-space-xs flex flex-col gap-space-xl">
+<!-- Escrow Protection Summary Card (Berry Gradient Bento) -->
+<section class="relative overflow-hidden rounded-xl bg-gradient-to-br from-primary via-primary-container to-surface-tint p-space-lg text-on-primary shadow-[0_8px_24px_-4px_rgba(110,0,51,0.22)]">
+<!-- Abstract Watermark Motif -->
+<div class="absolute -right-6 -bottom-6 opacity-10 pointer-events-none">
+<span class="material-symbols-outlined text-[140px] leading-none" data-icon="verified_user">verified_user</span>
+</div>
+<div class="relative z-10 flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label text-label text-primary-fixed tracking-wide">Total Protected Value</span>
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-lowest/15 backdrop-blur-sm border border-surface-container-lowest/20">
+<span class="material-symbols-outlined text-[14px] text-primary-fixed" data-icon="lock">lock</span>
+<span class="font-caption text-caption text-primary-fixed">Vault Custody</span>
+</div>
+</div>
+<div class="flex items-baseline gap-1">
+<span class="font-amount-lg-mobile text-amount-lg-mobile tabular-nums font-bold tracking-tight text-on-primary">₦1,850,000.00</span>
+</div>
+<!-- Sub-metrics Grid -->
+<div class="grid grid-cols-3 gap-space-sm pt-space-xs border-t border-surface-container-lowest/15">
+<div class="flex flex-col">
+<span class="font-caption text-caption text-primary-fixed opacity-90">Active</span>
+<span class="font-title text-title text-on-primary tabular-nums font-bold">3</span>
+</div>
+<div class="flex flex-col border-x border-surface-container-lowest/15 px-space-sm">
+<span class="font-caption text-caption text-primary-fixed opacity-90">Awaiting Action</span>
+<div class="flex items-center gap-1">
+<span class="font-title text-title text-on-primary tabular-nums font-bold">1</span>
+<span class="w-2 h-2 rounded-full bg-secondary-fixed animate-pulse"></span>
+</div>
+</div>
+<div class="flex flex-col pl-space-sm">
+<span class="font-caption text-caption text-primary-fixed opacity-90">Completed</span>
+<span class="font-title text-title text-on-primary tabular-nums font-bold">8</span>
+</div>
+</div>
+<!-- Trust Badge Footer -->
+<div class="mt-space-xs inline-flex items-center gap-1.5 px-space-sm py-1 rounded-lg bg-surface-container-lowest/10 border border-surface-container-lowest/10">
+<span class="material-symbols-outlined text-[16px] text-primary-fixed-dim" data-icon="verified">verified</span>
+<span class="font-caption text-caption text-primary-fixed-dim">Protected by CBN Licensed Escrow Custody</span>
+</div>
+</div>
+</section>
+<!-- Quick Action Buttons -->
+<section class="flex flex-col gap-space-sm">
+<a class="h-[52px] w-full rounded-xl bg-primary-container hover:bg-primary active:scale-[0.99] text-on-primary font-label text-label flex items-center justify-center gap-2 shadow-[0_2px_8px_-2px_rgba(110,0,51,0.18)] transition-all" href="#new-deal">
+<span class="material-symbols-outlined text-[20px]" data-icon="add_circle">add_circle</span>
+<span>Start New Escrow Deal</span>
+</a>
+<button class="h-[52px] w-full rounded-xl bg-surface-container-low hover:bg-surface-container text-primary active:scale-[0.99] font-label text-label flex items-center justify-center gap-2 border border-outline-variant/30 transition-all" type="button">
+<span class="material-symbols-outlined text-[20px] text-surface-tint" data-icon="help_outline">help_outline</span>
+<span>How SafeEscrow Works</span>
+</button>
+</section>
+<!-- Deal Status Tabs (Segmented Control) -->
+<section class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<h2 class="font-subtitle text-subtitle text-on-surface">Escrow Deals</h2>
+<span class="font-caption text-caption text-on-surface-variant">Live updates</span>
+</div>
+<!-- Scrollable tab container -->
+<div class="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar -mx-margin px-margin">
+<!-- Active Tab -->
+<button class="whitespace-nowrap px-4 py-2 rounded-full bg-primary-container text-on-primary font-label text-label shadow-sm flex items-center gap-1.5" type="button">
+<span>Active</span>
+<span class="w-5 h-5 rounded-full bg-on-primary/20 text-on-primary text-[11px] font-bold flex items-center justify-center">3</span>
+</button>
+<!-- Waiting Tab -->
+<button class="whitespace-nowrap px-4 py-2 rounded-full bg-surface-container text-on-surface-variant font-label text-label hover:bg-surface-container-high transition-colors flex items-center gap-1.5" type="button">
+<span>Waiting for me</span>
+<span class="w-5 h-5 rounded-full bg-secondary/15 text-secondary text-[11px] font-bold flex items-center justify-center">1</span>
+</button>
+<!-- Completed Tab -->
+<button class="whitespace-nowrap px-4 py-2 rounded-full bg-surface-container text-on-surface-variant font-label text-label hover:bg-surface-container-high transition-colors flex items-center gap-1.5" type="button">
+<span>Completed</span>
+<span class="w-5 h-5 rounded-full bg-surface-variant text-on-surface-variant text-[11px] font-bold flex items-center justify-center">8</span>
+</button>
+<!-- Disputes Tab -->
+<button class="whitespace-nowrap px-4 py-2 rounded-full bg-surface-container text-on-surface-variant font-label text-label hover:bg-surface-container-high transition-colors flex items-center gap-1.5" type="button">
+<span>Disputes</span>
+<span class="w-5 h-5 rounded-full bg-surface-variant text-on-surface-variant text-[11px] font-bold flex items-center justify-center">0</span>
+</button>
+</div>
+</section>
+<!-- Active Deal Cards List -->
+<section class="flex flex-col gap-space-md">
+<!-- Deal Card 1 -->
+<article class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] hover:border-outline-variant transition-colors flex flex-col gap-space-md">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]" data-icon="directions_car">directions_car</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-medium text-body-medium text-on-surface line-clamp-1">2018 Toyota Corolla LE Inspection &amp; Purchase</span>
+<span class="font-caption text-caption text-on-surface-variant">Deal #ESC-90412</span>
+</div>
+</div>
+<!-- Role Badge -->
+<span class="px-2 py-0.5 rounded-lg bg-surface-container text-on-surface font-caption text-caption font-medium border border-outline-variant/30">Buyer</span>
+</div>
+<div class="flex items-baseline justify-between pt-1">
+<span class="font-caption text-caption text-on-surface-variant">Locked in Escrow</span>
+<span class="font-title text-title text-on-surface tabular-nums">₦5,200,000.00</span>
+</div>
+<!-- Status Indicator Chip: Amber Warning -->
+<div class="flex items-center gap-1.5 px-space-sm py-1 rounded-lg bg-[#FFF4E5] border border-[#FFE0B2] text-[#9A5B00]">
+<span class="material-symbols-outlined text-[16px]" data-icon="schedule">schedule</span>
+<span class="font-caption text-caption font-medium">Inspection Period (24h left)</span>
+</div>
+<!-- Next Action Callout -->
+<div class="p-space-sm rounded-lg bg-surface-container-low border border-outline-variant/30 flex items-center justify-between gap-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-secondary" data-icon="priority_high">priority_high</span>
+<p class="font-caption text-caption text-on-surface font-medium leading-tight">Inspect vehicle &amp; release funds or open dispute</p>
+</div>
+<button class="shrink-0 px-3 py-1.5 rounded-lg bg-primary text-on-primary font-label text-label hover:bg-primary-container transition-colors" type="button">
+              Review
+            </button>
+</div>
+</article>
+<!-- Deal Card 2 -->
+<article class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] hover:border-outline-variant transition-colors flex flex-col gap-space-md">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]" data-icon="handyman">handyman</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-medium text-body-medium text-on-surface line-clamp-1">Commercial Office Interior Fit-out &amp; Partitioning</span>
+<span class="font-caption text-caption text-on-surface-variant">Deal #ESC-88231</span>
+</div>
+</div>
+<!-- Role Badge -->
+<span class="px-2 py-0.5 rounded-lg bg-surface-container text-on-surface font-caption text-caption font-medium border border-outline-variant/30">Client / Buyer</span>
+</div>
+<div class="flex items-baseline justify-between pt-1">
+<div class="flex flex-col">
+<span class="font-caption text-caption text-on-surface-variant">Milestone 2 of 3</span>
+<span class="font-caption text-caption text-primary font-medium">Aluminum Glass Frames</span>
+</div>
+<span class="font-title text-title text-on-surface tabular-nums">₦1,200,000.00</span>
+</div>
+<!-- Status Indicator Chip: Blue Info -->
+<div class="flex items-center gap-1.5 px-space-sm py-1 rounded-lg bg-[#EBF3FE] border border-[#BFDBFE] text-[#1D4ED8]">
+<span class="material-symbols-outlined text-[16px]" data-icon="pending_actions">pending_actions</span>
+<span class="font-caption text-caption font-medium">Milestone Submitted</span>
+</div>
+<!-- Next Action Callout -->
+<div class="p-space-sm rounded-lg bg-surface-container-low border border-outline-variant/30 flex items-center justify-between gap-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-surface-tint" data-icon="fact_check">fact_check</span>
+<p class="font-caption text-caption text-on-surface font-medium leading-tight">Review Contractor Milestone Proof</p>
+</div>
+<button class="shrink-0 px-3 py-1.5 rounded-lg bg-surface-container hover:bg-surface-variant text-on-surface font-label text-label transition-colors" type="button">
+              Inspect
+            </button>
+</div>
+</article>
+<!-- Deal Card 3 -->
+<article class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] hover:border-outline-variant transition-colors flex flex-col gap-space-md">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]" data-icon="local_shipping">local_shipping</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-medium text-body-medium text-on-surface line-clamp-1">Supply of 500 Bags of Foreign Rice (Wholesale)</span>
+<span class="font-caption text-caption text-on-surface-variant">Deal #ESC-77340</span>
+</div>
+</div>
+<!-- Role Badge -->
+<span class="px-2 py-0.5 rounded-lg bg-surface-container text-on-surface font-caption text-caption font-medium border border-outline-variant/30">Seller / Supplier</span>
+</div>
+<div class="flex items-baseline justify-between pt-1">
+<span class="font-caption text-caption text-on-surface-variant">Held in Custody</span>
+<span class="font-title text-title text-on-surface tabular-nums">₦450,000.00</span>
+</div>
+<!-- Status Indicator Chip: Green Success -->
+<div class="flex items-center gap-1.5 px-space-sm py-1 rounded-lg bg-[#EDF7ED] border border-[#C8E6C9] text-[#1E4620]">
+<span class="material-symbols-outlined text-[16px]" data-icon="check_circle">check_circle</span>
+<span class="font-caption text-caption font-medium">Waybill in Transit</span>
+</div>
+<!-- Next Action Callout -->
+<div class="p-space-sm rounded-lg bg-surface-container-low border border-outline-variant/30 flex items-center justify-between gap-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-outline" data-icon="hourglass_top">hourglass_top</span>
+<p class="font-caption text-caption text-on-surface-variant leading-tight">Waiting for Buyer delivery confirmation</p>
+</div>
+<button class="shrink-0 px-3 py-1.5 rounded-lg bg-transparent text-primary font-label text-label hover:underline" type="button">
+              Track
+            </button>
+</div>
+</article>
+</section>
+<!-- Security Guarantee Card -->
+<section class="rounded-xl p-space-lg bg-surface-container border border-outline-variant/40 flex items-start gap-space-md mb-space-lg">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]" data-icon="verified_user">verified_user</span>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="font-label text-label text-primary">Two-Way Protection Promise</h3>
+<p class="font-caption text-caption text-on-surface-variant leading-relaxed">
+            Funds are never paid to the seller until the buyer inspects and approves. Sellers are guaranteed payment upon verified milestone completion.
+          </p>
+</div>
+</section>
+</main>
+<!-- BottomNavBar Component Anchor -->
+<nav class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-margin h-16 max-w-[560px] mx-auto pb-safe bg-surface-container-lowest dark:bg-surface-container shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)]">
+<!-- Tab 1: Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#home">
+<span class="material-symbols-outlined text-[22px]" data-icon="home">home</span>
+<span class="font-caption text-caption font-medium">Home</span>
+</a>
+<!-- Tab 2: Payments -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#payments">
+<span class="material-symbols-outlined text-[22px]" data-icon="send">send</span>
+<span class="font-caption text-caption font-medium">Payments</span>
+</a>
+<!-- Tab 3: Cards -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#cards">
+<span class="material-symbols-outlined text-[22px]" data-icon="credit_card">credit_card</span>
+<span class="font-caption text-caption font-medium">Cards</span>
+</a>
+<!-- Tab 4: Save & Borrow (Active tab representing Escrow & Savings Products) -->
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed font-semibold min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#save-borrow">
+<span class="material-symbols-outlined text-[22px]" data-icon="savings" data-weight="fill" style="font-variation-settings: 'FILL' 1;">savings</span>
+<span class="font-caption text-caption font-medium">Save &amp; Borrow</span>
+</a>
+<!-- Tab 5: More -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#more">
+<span class="material-symbols-outlined text-[22px]" data-icon="more_horiz">more_horiz</span>
+<span class="font-caption text-caption font-medium">More</span>
+</a>
+</nav>
+</div>
+</body></html>
