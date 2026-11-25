@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Society General Ledger &amp; Statutory Reports - YourApp Cooperative</title>
+<!-- Inter Google Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary-fixed": "#3f001b",
+            "surface-container-highest": "#e9e0e1",
+            "outline": "#897176",
+            "on-primary-container": "#ffa0ba",
+            "on-primary": "#ffffff",
+            "on-background": "#1f1b1c",
+            "on-secondary-fixed": "#410000",
+            "surface-bright": "#fff8f8",
+            "surface-variant": "#e9e0e1",
+            "on-tertiary-container": "#c6b7bd",
+            "on-secondary-container": "#690000",
+            "tertiary-container": "#53484d",
+            "surface": "#fff8f8",
+            "secondary-container": "#fc6955",
+            "tertiary-fixed": "#eedee4",
+            "on-surface-variant": "#564146",
+            "surface-dim": "#e1d8d9",
+            "secondary": "#ae3123",
+            "background": "#fff8f8",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "primary": "#6d0033",
+            "on-error-container": "#93000a",
+            "on-tertiary": "#ffffff",
+            "on-error": "#ffffff",
+            "surface-container-lowest": "#ffffff",
+            "tertiary": "#3b3236",
+            "on-secondary-fixed-variant": "#8c170e",
+            "surface-tint": "#a8315d",
+            "primary-container": "#8e1b4a",
+            "surface-container-high": "#efe6e7",
+            "inverse-on-surface": "#f8eeef",
+            "on-primary-fixed-variant": "#881646",
+            "on-surface": "#1f1b1c",
+            "inverse-primary": "#ffb1c5",
+            "primary-fixed": "#ffd9e1",
+            "on-tertiary-fixed": "#21191e",
+            "inverse-surface": "#342f30",
+            "secondary-fixed-dim": "#ffb4a8",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "error": "#ba1a1a",
+            "primary-fixed-dim": "#ffb1c5",
+            "outline-variant": "#dcbfc5",
+            "error-container": "#ffdad6",
+            "surface-container-low": "#fbf1f2",
+            "on-secondary": "#ffffff",
+            "secondary-fixed": "#ffdad4",
+            "surface-container": "#f5eced"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-3xl": "3rem",
+            "space-sm": "0.5rem",
+            "space-xl": "1.5rem",
+            "space-lg": "1rem",
+            "space-2xl": "2rem",
+            "gutter": "1rem",
+            "space-xs": "0.25rem",
+            "space-md": "0.75rem",
+            "margin": "1rem"
+          },
+          "fontFamily": {
+            "amount-lg": ["Inter", "sans-serif"],
+            "body-medium": ["Inter", "sans-serif"],
+            "subtitle": ["Inter", "sans-serif"],
+            "label": ["Inter", "sans-serif"],
+            "display": ["Inter", "sans-serif"],
+            "amount-lg-mobile": ["Inter", "sans-serif"],
+            "caption": ["Inter", "sans-serif"],
+            "body": ["Inter", "sans-serif"],
+            "title": ["Inter", "sans-serif"]
+          },
+          "fontSize": {
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+    /* Subtle warm elevation tokens */
+    .card-shadow {
+      box-shadow: 0 2px 8px -2px rgba(30, 26, 27, 0.05), 0 1px 3px 0 rgba(30, 26, 27, 0.03);
+    }
+    .float-shadow {
+      box-shadow: 0 8px 24px -4px rgba(30, 26, 27, 0.08), 0 4px 12px -2px rgba(30, 26, 27, 0.04);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased flex min-h-screen overflow-x-hidden selection:bg-primary-container selection:text-on-primary">
+<!-- ========================================================================= -->
+<!-- LEFT ROLE-BASED NAVIGATION (SideNavBar: w-72 docked)                       -->
+<!-- ========================================================================= -->
+<aside class="fixed left-0 top-0 h-full w-72 flex flex-col justify-between py-space-xl px-space-lg overflow-y-auto bg-surface-container-lowest border-r border-surface-variant z-30 shadow-sm">
+<!-- Header / Brand & Cooperative Crest -->
+<div class="flex flex-col gap-space-lg">
+<div class="flex items-center gap-space-md px-space-sm pb-space-md border-b border-surface-container-high">
+<div class="w-10 h-10 rounded-xl bg-primary-container text-on-primary flex items-center justify-center font-title text-title flex-shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[24px]">account_balance</span>
+</div>
+<div class="flex flex-col overflow-hidden">
+<span class="font-subtitle text-subtitle text-primary tracking-tight truncate leading-tight">YourApp Cooperative</span>
+<span class="font-caption text-caption text-on-surface-variant truncate">Enterprise Portal</span>
+</div>
+</div>
+<!-- Cooperative Entity Badge -->
+<div class="px-space-md py-space-sm bg-surface-container-low rounded-lg border border-outline-variant/60">
+<div class="flex items-center gap-space-xs text-primary font-label text-caption font-semibold">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+<span class="truncate">Lekki Phase 1 Multipurpose</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant/80 truncate">#LA-COOP-901 • Lagos State</p>
+</div>
+<!-- Navigation Links Cluster -->
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-space-md px-space-lg py-space-sm rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-sm rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">group</span>
+<span>Members</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-sm rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">person_add</span>
+<span>Join Requests</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-sm rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">savings</span>
+<span>Plans &amp; Arrears</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-sm rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">assignment_turned_in</span>
+<span>Loan Applications</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-sm rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">monetization_on</span>
+<span>Loans Portfolio</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-sm rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">pie_chart</span>
+<span>Shares &amp; Dividends</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-sm rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+<span>Rules &amp; Settings</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-sm rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">manage_accounts</span>
+<span>Admins &amp; Roles</span>
+</a>
+<!-- ACTIVE NAVIGATION: Ledger & Reports -->
+<a class="flex items-center gap-space-md px-space-lg py-space-sm rounded-lg bg-surface-container-low text-primary font-label text-label border-l-4 border-primary-container shadow-xs" href="#">
+<span class="material-symbols-outlined text-[20px] text-primary-container" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+<span>Ledger &amp; Reports</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-sm rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">handshake</span>
+<span>Withdrawals &amp; Dual Signoff</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-sm rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">campaign</span>
+<span>Announcements</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-sm rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">history</span>
+<span>Audit Trail</span>
+</a>
+</nav>
+</div>
+<!-- Footer Controls -->
+<div class="pt-space-md border-t border-surface-container-high flex flex-col gap-1">
+<a class="flex items-center gap-space-md px-space-lg py-space-sm rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">admin_panel_settings</span>
+<span>Security &amp; Settings</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-sm rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">logout</span>
+<span>Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- ========================================================================= -->
+<!-- MAIN WORKSPACE CONTAINER (Offset by 72 = 18rem)                           -->
+<!-- ========================================================================= -->
+<div class="ml-72 flex-1 flex flex-col min-w-0">
+<!-- TopNavBar -->
+<header class="sticky top-0 z-20 h-16 bg-surface-container-lowest border-b border-surface-variant px-space-xl flex items-center justify-between">
+<!-- Search Input Area -->
+<div class="flex items-center gap-space-md w-96">
+<div class="relative w-full">
+<span class="material-symbols-outlined text-outline absolute left-3 top-1/2 -translate-y-1/2 text-[20px]">search</span>
+<input class="w-full h-10 pl-10 pr-4 rounded-lg bg-surface-container-low border border-surface-variant text-body font-body placeholder:text-outline text-on-surface focus:outline-none focus:border-primary-container focus:bg-surface-container-lowest transition-all" placeholder="Search accounts, ledger codes (e.g. 1010), or journal entries..." type="text"/>
+</div>
+</div>
+<!-- Trust Badges & Trailing Actions -->
+<div class="flex items-center gap-space-lg">
+<!-- Quorum Status -->
+<div class="flex items-center gap-space-xs px-space-md py-1 bg-surface-container-low rounded-full border border-outline-variant/50">
+<span class="w-2.5 h-2.5 rounded-full bg-[#1b803a]"></span>
+<span class="font-caption text-caption text-on-surface font-medium">Quorum Active (4/5 Trustees)</span>
+</div>
+<!-- Dual Authorization Armed Badge -->
+<div class="flex items-center gap-space-xs px-space-md py-1 bg-error-container/40 rounded-full border border-secondary-container/40">
+<span class="material-symbols-outlined text-secondary text-[16px]">shield_lock</span>
+<span class="font-caption text-caption text-secondary font-semibold">Dual-Authorization Armed</span>
+</div>
+<!-- Trailing Action Icons -->
+<div class="flex items-center gap-space-xs border-l border-surface-container-high pl-space-md">
+<button class="w-10 h-10 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-colors duration-150 relative" title="Notifications">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-secondary"></span>
+</button>
+<button class="w-10 h-10 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-colors duration-150" title="System Help">
+<span class="material-symbols-outlined text-[20px]">help_outline</span>
+</button>
+</div>
+<!-- User Profile Pill -->
+<div class="flex items-center gap-space-md pl-space-sm border-l border-surface-container-high">
+<img class="w-10 h-10 rounded-full object-cover border border-outline-variant" data-alt="Distinguished senior Nigerian executive portrait of Dr Adebayo Ogunlesi dressed in clean boardroom professional attire, shot in soft corporate lighting with gentle warm background tones consistent with a dignified banking interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDquXuFTXSF_3_q49HoWzmqGs01xpIc1TMdn5mZHHu89Va8izjtU4rc_n9Ra3VFxTgE_1kaxXi2l-VPy-wcNCqCXIElPm8DOVvRdrTbFL8UXu90DqtLGslpFfbeQwjrjl9nfakbQSmFuynKwD2BtmFjyZ7bvFFjGn5Y7jnycbbQfyNLqm5RO3YdTwnpzPBifJmkye7ngcbjZrLemFESh_c2ergEK0pvZBuIL1jTkdJC"/>
+<div class="flex flex-col text-left">
+<span class="font-label text-label text-on-surface truncate leading-tight">Dr. Adebayo Ogunlesi</span>
+<span class="font-caption text-caption text-primary-container font-semibold">President &amp; Lead Signatory</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Canvas Scroll Area -->
+<main class="p-space-xl flex flex-col gap-space-xl max-w-[1440px]">
+<!-- ===================================================================== -->
+<!-- PAGE HEADER & ACTION CONTROLS                                         -->
+<!-- ===================================================================== -->
+<section class="flex flex-col md:flex-row md:items-center justify-between gap-space-lg">
+<div>
+<div class="flex items-center gap-space-sm">
+<h1 class="font-title text-title text-on-surface tracking-tight">Society General Ledger &amp; Statutory Reports</h1>
+<span class="px-space-sm py-0.5 rounded-full bg-primary-fixed text-primary font-caption text-caption font-semibold">FY2027</span>
+</div>
+<p class="font-body text-body text-on-surface-variant mt-1 max-w-3xl">
+            Immutable double-entry ledger accounts, quarterly trial balance, and automated Lagos State regulatory AGM reporting.
+          </p>
+</div>
+<div class="flex items-center gap-space-md flex-shrink-0">
+<!-- Secondary Action Button -->
+<button class="h-[52px] px-space-lg rounded-xl border border-outline-variant bg-surface-container-lowest text-on-surface font-label text-label flex items-center gap-space-sm hover:bg-surface-container-low transition-colors duration-150 card-shadow">
+<span class="material-symbols-outlined text-outline text-[20px]">security_update_good</span>
+<span>Run Integrity Check (SHA-256)</span>
+</button>
+<!-- Primary Berry Action Button -->
+<button class="h-[52px] px-space-xl rounded-xl bg-primary-container text-on-primary font-label text-label flex items-center gap-space-sm hover:bg-[#731540] transition-colors duration-150 float-shadow">
+<span class="material-symbols-outlined text-[20px]">receipt_long</span>
+<span>Generate AGM Audit Pack (PDF/CSV)</span>
+</button>
+</div>
+</section>
+<!-- ===================================================================== -->
+<!-- FINANCIAL POSITION SUMMARY STRIP (4 KPI Cards Bento)                 -->
+<!-- ===================================================================== -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-lg">
+<!-- KPI Card 1: Net Liquid Assets -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl border border-surface-variant card-shadow flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label text-caption text-on-surface-variant">Net Liquid Assets</span>
+<span class="p-1.5 rounded-lg bg-surface-container-low text-primary-container">
+<span class="material-symbols-outlined text-[18px]">account_balance</span>
+</span>
+</div>
+<div class="font-amount-lg text-amount-lg text-on-surface tabular-nums tracking-tight">
+              ₦84,250,000.00
+            </div>
+</div>
+<div class="mt-space-md pt-space-sm border-t border-surface-container-high flex items-center justify-between">
+<span class="font-caption text-caption text-on-surface-variant">NIBSS Escrow backed</span>
+<div class="flex items-center gap-1 font-caption text-caption text-[#1b803a] font-semibold">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span>+8.4% YoY</span>
+</div>
+</div>
+</div>
+<!-- KPI Card 2: Total Member Liabilities -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl border border-surface-variant card-shadow flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label text-caption text-on-surface-variant">Total Member Liabilities</span>
+<span class="p-1.5 rounded-lg bg-surface-container-low text-primary-container">
+<span class="material-symbols-outlined text-[18px]">groups</span>
+</span>
+</div>
+<div class="font-amount-lg text-amount-lg text-on-surface tabular-nums tracking-tight">
+              ₦72,600,000.00
+            </div>
+</div>
+<div class="mt-space-md pt-space-sm border-t border-surface-container-high flex items-center justify-between">
+<span class="font-caption text-caption text-on-surface-variant truncate">Savings ₦58.4M + Capital ₦14.2M</span>
+<span class="px-1.5 py-0.5 rounded text-[11px] font-semibold bg-surface-container-high text-on-surface-variant">142 Members</span>
+</div>
+</div>
+<!-- KPI Card 3: Net Loan Portfolio Asset -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl border border-surface-variant card-shadow flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label text-caption text-on-surface-variant">Net Loan Portfolio Asset</span>
+<span class="p-1.5 rounded-lg bg-surface-container-low text-primary-container">
+<span class="material-symbols-outlined text-[18px]">payments</span>
+</span>
+</div>
+<div class="font-amount-lg text-amount-lg text-on-surface tabular-nums tracking-tight">
+              ₦38,450,000.00
+            </div>
+</div>
+<div class="mt-space-md pt-space-sm border-t border-surface-container-high flex items-center justify-between">
+<span class="font-caption text-caption text-on-surface-variant truncate">Less ₦769k Loss Reserve</span>
+<div class="flex items-center gap-1 font-caption text-caption text-[#1b803a] font-semibold">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+<span>PAR 1.8%</span>
+</div>
+</div>
+</div>
+<!-- KPI Card 4: Net Operating Surplus -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl border border-surface-variant card-shadow flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label text-caption text-on-surface-variant">Net Operating Surplus (FY27 YTD)</span>
+<span class="p-1.5 rounded-lg bg-secondary-fixed/40 text-secondary">
+<span class="material-symbols-outlined text-[18px]">pie_chart</span>
+</span>
+</div>
+<div class="font-amount-lg text-amount-lg text-primary tabular-nums tracking-tight">
+              ₦4,812,500.00
+            </div>
+</div>
+<div class="mt-space-md pt-space-sm border-t border-surface-container-high flex items-center justify-between">
+<span class="font-caption text-caption text-on-surface-variant">8.2% Return on member assets</span>
+<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-surface-container-low text-primary-container">Audited YTD</span>
+</div>
+</div>
+</section>
+<!-- ===================================================================== -->
+<!-- MODULE SEGMENTED TABS                                                 -->
+<!-- ===================================================================== -->
+<section class="border-b border-surface-variant">
+<div class="flex items-center gap-space-lg overflow-x-auto">
+<!-- Active Tab -->
+<button class="pb-space-md font-label text-label text-primary-container border-b-2 border-primary-container flex items-center gap-space-xs whitespace-nowrap">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">table_rows</span>
+<span>Double-Entry Trial Balance</span>
+<span class="ml-1 px-2 py-0.2 rounded-full text-caption text-[11px] bg-primary-fixed text-primary font-bold">Live</span>
+</button>
+<!-- Inactive Tabs -->
+<button class="pb-space-md font-label text-label text-on-surface-variant hover:text-on-surface border-b-2 border-transparent hover:border-surface-variant flex items-center gap-space-xs whitespace-nowrap transition-colors">
+<span class="material-symbols-outlined text-[20px]">waterfall_chart</span>
+<span>Income &amp; Expenditure Statement</span>
+</button>
+<button class="pb-space-md font-label text-label text-on-surface-variant hover:text-on-surface border-b-2 border-transparent hover:border-surface-variant flex items-center gap-space-xs whitespace-nowrap transition-colors">
+<span class="material-symbols-outlined text-[20px]">balance</span>
+<span>Balance Sheet</span>
+</button>
+<button class="pb-space-md font-label text-label text-on-surface-variant hover:text-on-surface border-b-2 border-transparent hover:border-surface-variant flex items-center gap-space-xs whitespace-nowrap transition-colors">
+<span class="material-symbols-outlined text-[20px]">folder_special</span>
+<span>Statutory AGM Pack</span>
+</button>
+<button class="pb-space-md font-label text-label text-on-surface-variant hover:text-on-surface border-b-2 border-transparent hover:border-surface-variant flex items-center gap-space-xs whitespace-nowrap transition-colors">
+<span class="material-symbols-outlined text-[20px]">contact_page</span>
+<span>Member Statements Batch</span>
+</button>
+</div>
+</section>
+<!-- ===================================================================== -->
+<!-- MAIN SPLIT WORKSPACE: 65% Trial Balance / 35% AGM Hub                  -->
+<!-- ===================================================================== -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-start">
+<!-- LEFT 65% (8 COLS) - VERIFIED TRIAL BALANCE TABLE                      -->
+<div class="lg:col-span-8 bg-surface-container-lowest rounded-xl border border-surface-variant card-shadow flex flex-col overflow-hidden">
+<!-- Table Toolbar -->
+<div class="p-space-lg border-b border-surface-container-high flex flex-col md:flex-row md:items-center justify-between gap-space-md bg-surface-container-lowest">
+<div>
+<h2 class="font-subtitle text-subtitle text-on-surface">Verified Trial Balance</h2>
+<p class="font-caption text-caption text-on-surface-variant">Active Period: 01 Jan 2027 – 28 Feb 2027 (Q1 Consolidated)</p>
+</div>
+<!-- Controls Filter Cluster -->
+<div class="flex items-center gap-space-sm flex-wrap">
+<!-- Date Range Filter -->
+<div class="flex items-center gap-space-xs px-space-md h-10 rounded-lg bg-surface-container-low border border-surface-variant text-on-surface font-caption text-caption">
+<span class="material-symbols-outlined text-outline text-[18px]">calendar_today</span>
+<span class="font-medium">01 Jan 2027 – 28 Feb 2027</span>
+</div>
+<!-- Account Filter -->
+<div class="flex items-center gap-space-xs px-space-md h-10 rounded-lg bg-surface-container-low border border-surface-variant text-on-surface font-caption text-caption">
+<span class="material-symbols-outlined text-outline text-[18px]">filter_list</span>
+<span>All Codes (1000 - 5000)</span>
+</div>
+<!-- Export Excel / CSV -->
+<button class="h-10 px-space-md rounded-lg border border-outline-variant bg-surface-container-lowest text-primary-container font-label text-caption flex items-center gap-space-xs hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>Export CSV</span>
+</button>
+</div>
+</div>
+<!-- The Double-Entry Trial Balance Data Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label text-caption border-b border-surface-variant uppercase tracking-wider text-[11px]">
+<th class="py-space-md px-space-lg">Code</th>
+<th class="py-space-md px-space-md">Account Description</th>
+<th class="py-space-md px-space-md">Category</th>
+<th class="py-space-md px-space-md text-right">Debit Balance (₦)</th>
+<th class="py-space-md px-space-md text-right">Credit Balance (₦)</th>
+<th class="py-space-md px-space-lg text-center">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-high font-body-medium text-body">
+<!-- Row 1: Escrow Asset -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-space-md px-space-lg font-mono text-label text-primary-container font-bold">1010</td>
+<td class="py-space-md px-space-md">
+<span class="font-medium text-on-surface block">Primary Partner Bank Escrow</span>
+<span class="font-caption text-caption text-on-surface-variant">NIBSS Automated Settlement Account</span>
+</td>
+<td class="py-space-md px-space-md">
+<span class="px-2 py-0.5 rounded text-[12px] bg-surface-container font-medium text-on-surface-variant">Current Asset</span>
+</td>
+<td class="py-space-md px-space-md text-right font-mono tabular-nums font-semibold text-on-surface">84,250,000.00</td>
+<td class="py-space-md px-space-md text-right font-mono tabular-nums text-outline">—</td>
+<td class="py-space-md px-space-lg text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[12px] font-medium bg-[#e6f4ea] text-[#137333]">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Reconciled Today
+                    </span>
+</td>
+</tr>
+<!-- Row 2: Loans Asset -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-space-md px-space-lg font-mono text-label text-primary-container font-bold">1020</td>
+<td class="py-space-md px-space-md">
+<span class="font-medium text-on-surface block">Loans to Members Outstanding</span>
+<span class="font-caption text-caption text-on-surface-variant">Short &amp; Medium Term Cooperative Advances</span>
+</td>
+<td class="py-space-md px-space-md">
+<span class="px-2 py-0.5 rounded text-[12px] bg-surface-container font-medium text-on-surface-variant">Loan Asset</span>
+</td>
+<td class="py-space-md px-space-md text-right font-mono tabular-nums font-semibold text-on-surface">38,450,000.00</td>
+<td class="py-space-md px-space-md text-right font-mono tabular-nums text-outline">—</td>
+<td class="py-space-md px-space-lg text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[12px] font-medium bg-[#e6f4ea] text-[#137333]">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Reconciled
+                    </span>
+</td>
+</tr>
+<!-- Row 3: Loan Loss Provision -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-space-md px-space-lg font-mono text-label text-primary-container font-bold">1025</td>
+<td class="py-space-md px-space-md">
+<span class="font-medium text-on-surface block">Statutory Loan Loss Provision (2%)</span>
+<span class="font-caption text-caption text-on-surface-variant">Lagos State Cooperative By-Law Mandatory Reserve</span>
+</td>
+<td class="py-space-md px-space-md">
+<span class="px-2 py-0.5 rounded text-[12px] bg-secondary-fixed/40 font-medium text-secondary">Contra-Asset</span>
+</td>
+<td class="py-space-md px-space-md text-right font-mono tabular-nums text-outline">—</td>
+<td class="py-space-md px-space-md text-right font-mono tabular-nums font-semibold text-on-surface">769,000.00</td>
+<td class="py-space-md px-space-lg text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[12px] font-medium bg-[#e6f4ea] text-[#137333]">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Computed
+                    </span>
+</td>
+</tr>
+<!-- Row 4: Member Thrift Savings -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-space-md px-space-lg font-mono text-label text-primary-container font-bold">2010</td>
+<td class="py-space-md px-space-md">
+<span class="font-medium text-on-surface block">Member Cumulative Thrift Savings</span>
+<span class="font-caption text-caption text-on-surface-variant">Ordinary voluntary savings liabilities</span>
+</td>
+<td class="py-space-md px-space-md">
+<span class="px-2 py-0.5 rounded text-[12px] bg-surface-container font-medium text-on-surface-variant">Liability</span>
+</td>
+<td class="py-space-md px-space-md text-right font-mono tabular-nums text-outline">—</td>
+<td class="py-space-md px-space-md text-right font-mono tabular-nums font-semibold text-on-surface">58,400,000.00</td>
+<td class="py-space-md px-space-lg text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[12px] font-medium bg-[#e6f4ea] text-[#137333]">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> 142 Accounts
+                    </span>
+</td>
+</tr>
+<!-- Row 5: Member Share Capital -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-space-md px-space-lg font-mono text-label text-primary-container font-bold">3010</td>
+<td class="py-space-md px-space-md">
+<span class="font-medium text-on-surface block">Ordinary Member Share Capital</span>
+<span class="font-caption text-caption text-on-surface-variant">8,500 units fully paid up at par</span>
+</td>
+<td class="py-space-md px-space-md">
+<span class="px-2 py-0.5 rounded text-[12px] bg-surface-container font-medium text-on-surface-variant">Equity</span>
+</td>
+<td class="py-space-md px-space-md text-right font-mono tabular-nums text-outline">—</td>
+<td class="py-space-md px-space-md text-right font-mono tabular-nums font-semibold text-on-surface">14,200,000.00</td>
+<td class="py-space-md px-space-lg text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[12px] font-medium bg-[#e6f4ea] text-[#137333]">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Fully Vested
+                    </span>
+</td>
+</tr>
+<!-- Row 6: Statutory Reserve Fund -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-space-md px-space-lg font-mono text-label text-primary-container font-bold">3020</td>
+<td class="py-space-md px-space-md">
+<span class="font-medium text-on-surface block">Statutory Reserve Fund</span>
+<span class="font-caption text-caption text-on-surface-variant">Compulsory statutory transfer (20% of net surplus)</span>
+</td>
+<td class="py-space-md px-space-md">
+<span class="px-2 py-0.5 rounded text-[12px] bg-surface-container font-medium text-on-surface-variant">Equity</span>
+</td>
+<td class="py-space-md px-space-md text-right font-mono tabular-nums text-outline">—</td>
+<td class="py-space-md px-space-md text-right font-mono tabular-nums font-semibold text-on-surface">4,518,500.00</td>
+<td class="py-space-md px-space-lg text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[12px] font-medium bg-[#e6f4ea] text-[#137333]">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Audited
+                    </span>
+</td>
+</tr>
+<!-- Row 7: Loan Interest Revenue -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-space-md px-space-lg font-mono text-label text-primary-container font-bold">4010</td>
+<td class="py-space-md px-space-md">
+<span class="font-medium text-on-surface block">Loan Interest Revenue</span>
+<span class="font-caption text-caption text-on-surface-variant">8% Flat annual cooperative service fee</span>
+</td>
+<td class="py-space-md px-space-md">
+<span class="px-2 py-0.5 rounded text-[12px] bg-[#e6f4ea] font-medium text-[#137333]">Income</span>
+</td>
+<td class="py-space-md px-space-md text-right font-mono tabular-nums text-outline">—</td>
+<td class="py-space-md px-space-md text-right font-mono tabular-nums font-semibold text-on-surface">3,076,000.00</td>
+<td class="py-space-md px-space-lg text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[12px] font-medium bg-[#e6f4ea] text-[#137333]">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Accrued
+                    </span>
+</td>
+</tr>
+<!-- Row 8: Bank Charges & Levies -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-space-md px-space-lg font-mono text-label text-primary-container font-bold">5010</td>
+<td class="py-space-md px-space-md">
+<span class="font-medium text-on-surface block">Bank Charges &amp; Transaction Levies</span>
+<span class="font-caption text-caption text-on-surface-variant">NIP sweep, SMS charges &amp; stamp duty</span>
+</td>
+<td class="py-space-md px-space-md">
+<span class="px-2 py-0.5 rounded text-[12px] bg-secondary-fixed/40 font-medium text-secondary">Expense</span>
+</td>
+<td class="py-space-md px-space-md text-right font-mono tabular-nums font-semibold text-on-surface">125,000.00</td>
+<td class="py-space-md px-space-md text-right font-mono tabular-nums text-outline">—</td>
+<td class="py-space-md px-space-lg text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[12px] font-medium bg-[#e6f4ea] text-[#137333]">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> NIP Sweeps
+                    </span>
+</td>
+</tr>
+<!-- Row 9: Secretariat & AGM Expenses -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-space-md px-space-lg font-mono text-label text-primary-container font-bold">5020</td>
+<td class="py-space-md px-space-md">
+<span class="font-medium text-on-surface block">Cooperative Secretariat &amp; AGM Expenses</span>
+<span class="font-caption text-caption text-on-surface-variant">Annual audit printing &amp; venue pre-booking</span>
+</td>
+<td class="py-space-md px-space-md">
+<span class="px-2 py-0.5 rounded text-[12px] bg-secondary-fixed/40 font-medium text-secondary">Expense</span>
+</td>
+<td class="py-space-md px-space-md text-right font-mono tabular-nums font-semibold text-on-surface">620,000.00</td>
+<td class="py-space-md px-space-md text-right font-mono tabular-nums text-outline">—</td>
+<td class="py-space-md px-space-lg text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[12px] font-medium bg-[#e6f4ea] text-[#137333]">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Approved
+                    </span>
+</td>
+</tr>
+</tbody>
+<!-- Totals Row: Balanced with zero variance -->
+<tfoot>
+<tr class="bg-surface-container-low font-bold text-on-surface border-t-2 border-primary-container">
+<td class="py-space-md px-space-lg font-subtitle text-body-medium" colspan="3">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary-container text-[20px]">check_circle</span>
+<span>Consolidated Total Balances (Perfect Zero Variance)</span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-right font-mono text-body-medium tabular-nums text-primary-container">
+                    ₦123,445,000.00
+                  </td>
+<td class="py-space-md px-space-md text-right font-mono text-body-medium tabular-nums text-primary-container">
+                    ₦123,445,000.00
+                  </td>
+<td class="py-space-md px-space-lg text-center">
+<span class="px-2.5 py-1 rounded bg-[#137333] text-on-primary font-label text-[11px] uppercase tracking-wide">
+                      Balanced ✓
+                    </span>
+</td>
+</tr>
+</tfoot>
+</table>
+</div>
+<!-- Bottom Reconciliation Digest -->
+<div class="p-space-md bg-surface-container-lowest border-t border-surface-container-high flex items-center justify-between font-caption text-caption text-on-surface-variant">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[18px]">gavel</span>
+<span>Complies with Section 36(1) Lagos State Cooperative Societies Law 2015.</span>
+</div>
+<span>Calculated automatically via real-time dual-entry double journal</span>
+</div>
+</div>
+<!-- RIGHT 35% (4 COLS) - STATUTORY AGM PACK & AUDIT EXPORT HUB           -->
+<div class="lg:col-span-4 flex flex-col gap-space-lg">
+<!-- Regulatory Certified Card -->
+<div class="bg-surface-container-lowest rounded-xl border border-surface-variant p-space-lg card-shadow flex flex-col gap-space-md">
+<!-- Card Header & Badge -->
+<div class="flex flex-col gap-space-xs pb-space-md border-b border-surface-container-high">
+<div class="flex items-center justify-between">
+<span class="font-subtitle text-subtitle text-on-surface">Statutory AGM Pack Hub</span>
+<span class="material-symbols-outlined text-primary-container text-[22px]">verified_user</span>
+</div>
+<div class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded-md bg-surface-container-low text-primary-container border border-outline-variant/60 font-label text-[12px] w-fit">
+<span class="material-symbols-outlined text-[16px]">account_balance</span>
+<span>LASCOFED Approved Reporting Format</span>
+</div>
+</div>
+<!-- Reporting Bundle Files List -->
+<div>
+<span class="font-label text-caption text-on-surface-variant uppercase tracking-wider block mb-space-sm">FY2026/2027 Certified Bundle</span>
+<div class="flex flex-col gap-space-sm">
+<!-- Item 1: Audited Statement -->
+<div class="p-space-md rounded-lg bg-surface-container-low border border-surface-variant flex items-center justify-between hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-space-sm">
+<span class="p-2 rounded bg-surface-container-lowest text-primary">
+<span class="material-symbols-outlined text-[20px]">picture_as_pdf</span>
+</span>
+<div class="flex flex-col">
+<span class="font-label text-label text-on-surface">Statement of Financial Position</span>
+<span class="font-caption text-caption text-on-surface-variant">Lagos Ministry Form Coop-04 (PDF)</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-[#e6f4ea] text-[#137333] flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">done</span> Ready
+                  </span>
+</div>
+<!-- Item 2: Member Ledger -->
+<div class="p-space-md rounded-lg bg-surface-container-low border border-surface-variant flex items-center justify-between hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-space-sm">
+<span class="p-2 rounded bg-surface-container-lowest text-primary">
+<span class="material-symbols-outlined text-[20px]">description</span>
+</span>
+<div class="flex flex-col">
+<span class="font-label text-label text-on-surface">Comprehensive Member Ledger</span>
+<span class="font-caption text-caption text-on-surface-variant">All 142 Active Member Passbooks</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-[#e6f4ea] text-[#137333] flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">done</span> Ready
+                  </span>
+</div>
+<!-- Item 3: Delinquency Schedule -->
+<div class="p-space-md rounded-lg bg-surface-container-low border border-surface-variant flex items-center justify-between hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-space-sm">
+<span class="p-2 rounded bg-surface-container-lowest text-primary">
+<span class="material-symbols-outlined text-[20px]">analytics</span>
+</span>
+<div class="flex flex-col">
+<span class="font-label text-label text-on-surface">Defaulter &amp; Delinquency Schedule</span>
+<span class="font-caption text-caption text-on-surface-variant">PAR-30 / PAR-90 Risk Analysis</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-[#e6f4ea] text-[#137333] flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">done</span> Ready
+                  </span>
+</div>
+<!-- Item 4: Dividend Distribution -->
+<div class="p-space-md rounded-lg bg-surface-container-low border border-surface-variant flex items-center justify-between hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-space-sm">
+<span class="p-2 rounded bg-surface-container-lowest text-primary">
+<span class="material-symbols-outlined text-[20px]">savings</span>
+</span>
+<div class="flex flex-col">
+<span class="font-label text-label text-on-surface">Dividend &amp; Share Register</span>
+<span class="font-caption text-caption text-on-surface-variant">Patronage Refund Calculations</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-surface-container-highest text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">lock</span> Sealed
+                  </span>
+</div>
+</div>
+</div>
+<!-- Cryptographic Seal Box -->
+<div class="p-space-md rounded-xl bg-surface-container border border-outline-variant/50 flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs text-primary-container font-label text-caption font-semibold">
+<span class="material-symbols-outlined text-[18px]">fingerprint</span>
+<span>Ledger State Hash (SHA-256)</span>
+</div>
+<p class="font-mono text-[11px] text-on-surface-variant break-all select-all bg-surface-container-lowest p-2 rounded border border-surface-variant">
+                sha256:7f8b9e4a1c028dfbc76023ea91054a88bcfe2310dc89025170f0312cb0c01a
+              </p>
+<div class="flex items-center gap-1 text-[11px] text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px] text-[#137333]">lock_clock</span>
+<span>Anchored to CBN/NIBSS settlement ledger block #491,092</span>
+</div>
+</div>
+<!-- Call-to-Action Group -->
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<!-- Primary Berry Action -->
+<button class="w-full h-[52px] rounded-xl bg-primary-container text-on-primary font-label text-label flex items-center justify-center gap-space-sm hover:bg-[#731540] transition-colors float-shadow">
+<span class="material-symbols-outlined text-[20px]">folder_zip</span>
+<span>Download Complete AGM Pack (ZIP)</span>
+</button>
+<!-- Secondary Action -->
+<button class="w-full h-[52px] rounded-xl border border-outline-variant bg-surface-container-lowest text-on-surface font-label text-label flex items-center justify-center gap-space-sm hover:bg-surface-container-low transition-colors card-shadow">
+<span class="material-symbols-outlined text-outline text-[20px]">send_time_extension</span>
+<span>Schedule External Auditor Review</span>
+</button>
+</div>
+</div>
+<!-- Auditor Endorsement Banner -->
+<div class="bg-surface-container-low rounded-xl p-space-md border border-outline-variant/50 flex items-start gap-space-md">
+<span class="material-symbols-outlined text-primary-container text-[24px] mt-0.5">info</span>
+<div class="flex flex-col">
+<span class="font-label text-caption font-bold text-on-surface">Annual General Meeting Notice</span>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">
+                Statutory AGM must be held within 90 days after fiscal close. Pack includes mandatory pre-filled Lagos State Directorate of Cooperative Services compliance endorsements.
+              </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Bottom Spacer -->
+<div class="h-space-xl"></div>
+</main>
+</div>
+</body></html>

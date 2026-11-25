@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Agent Management (W-AGT-001) - YourApp Agent Ops</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-primary": "#ffb1c5",
+            "on-error-container": "#93000a",
+            "outline": "#897176",
+            "on-tertiary-fixed": "#21191e",
+            "on-primary-fixed-variant": "#881646",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "on-surface-variant": "#564146",
+            "outline-variant": "#dcbfc5",
+            "inverse-on-surface": "#f8eeef",
+            "on-background": "#1f1b1c",
+            "inverse-surface": "#342f30",
+            "surface-container-low": "#fbf1f2",
+            "on-tertiary": "#ffffff",
+            "primary": "#6d0033",
+            "on-secondary-container": "#690000",
+            "on-secondary-fixed-variant": "#8c170e",
+            "on-secondary": "#ffffff",
+            "surface-bright": "#fff8f8",
+            "error": "#ba1a1a",
+            "secondary-container": "#fc6955",
+            "surface": "#fff8f8",
+            "on-primary-fixed": "#3f001b",
+            "surface-container-highest": "#e9e0e1",
+            "on-primary-container": "#ffa0ba",
+            "primary-fixed-dim": "#ffb1c5",
+            "secondary-fixed-dim": "#ffb4a8",
+            "error-container": "#ffdad6",
+            "tertiary-fixed": "#eedee4",
+            "on-secondary-fixed": "#410000",
+            "on-primary": "#ffffff",
+            "secondary": "#ae3123",
+            "background": "#fff8f8",
+            "primary-fixed": "#ffd9e1",
+            "surface-container-high": "#efe6e7",
+            "on-surface": "#1f1b1c",
+            "tertiary": "#3b3236",
+            "tertiary-container": "#53484d",
+            "on-error": "#ffffff",
+            "surface-variant": "#e9e0e1",
+            "primary-container": "#8e1b4a",
+            "on-tertiary-container": "#c6b7bd",
+            "surface-container": "#f5eced",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "surface-dim": "#e1d8d9",
+            "secondary-fixed": "#ffdad4",
+            "surface-container-lowest": "#ffffff",
+            "surface-tint": "#a8315d"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "1rem",
+            "space-lg": "1rem",
+            "space-md": "0.75rem",
+            "space-3xl": "3rem",
+            "space-xs": "0.25rem",
+            "space-2xl": "2rem",
+            "margin": "1rem",
+            "space-sm": "0.5rem",
+            "space-xl": "1.5rem"
+          },
+          "fontFamily": {
+            "display": ["Inter"],
+            "body-medium": ["Inter"],
+            "caption": ["Inter"],
+            "body": ["Inter"],
+            "label": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "subtitle": ["Inter"],
+            "title": ["Inter"],
+            "amount-lg": ["Inter"]
+          },
+          "fontSize": {
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .num-tabular {
+      font-feature-settings: "tnum" 1;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex selection:bg-primary-fixed selection:text-primary">
+<!-- Left Docked Navigation (w-72 / 288px) adhering to SideNavBar blueprint -->
+<aside class="fixed left-0 top-0 h-screen w-72 flex flex-col justify-between py-space-xl px-space-lg overflow-y-auto bg-surface-container-lowest border-r border-surface-variant z-30 shadow-sm">
+<div class="flex flex-col gap-space-lg">
+<!-- Header / Brand Crest -->
+<div class="flex items-center gap-space-md pb-space-sm border-b border-surface-container-high">
+<div class="w-10 h-10 rounded-xl bg-primary-container flex items-center justify-center text-on-primary shadow-sm flex-shrink-0">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">assured_workload</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="text-subtitle font-subtitle text-primary tracking-tight truncate">YourApp Agent Ops</span>
+<span class="text-caption font-caption text-on-surface-variant truncate">Super-Agent Portal</span>
+</div>
+</div>
+<!-- Active Territory Cluster Card -->
+<div class="p-space-md rounded-xl bg-surface-container border border-surface-variant">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="text-caption font-caption text-on-surface-variant uppercase tracking-wider">Territory Node</span>
+<span class="flex items-center gap-1.5 text-caption font-caption text-primary font-medium">
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            Online
+          </span>
+</div>
+<div class="text-label font-label text-on-surface truncate">Lagos Island &amp; Lekki Zone</div>
+<div class="text-caption font-caption text-on-surface-variant flex items-center justify-between mt-1">
+<span>Cluster #014</span>
+<span class="font-medium text-on-surface">48 Active Agents</span>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav aria-label="Main Navigation" class="flex flex-col gap-1.5">
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span>Dashboard Overview</span>
+</a>
+<!-- Active Navigation Indicator: Agent Directory & Roster -->
+<a aria-current="page" class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg bg-surface-container-low text-primary font-label text-label shadow-sm transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">groups</span>
+<span class="flex-1">Agent Directory &amp; Roster</span>
+<span class="w-1.5 h-4 bg-primary-container rounded-full"></span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">account_balance_wallet</span>
+<span>Float &amp; Rebalancing (W-AGT-002)</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+<span>Commission &amp; Limits (W-AGT-003)</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">pending_actions</span>
+<span class="flex-1">Dispute &amp; Incident Queue</span>
+<span class="px-2 py-0.5 text-xs rounded-full bg-secondary text-on-secondary font-medium">3</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">explore</span>
+<span>Audit Log &amp; Geo-Tracking</span>
+</a>
+</nav>
+</div>
+<!-- Footer Links & Settings -->
+<div class="flex flex-col gap-1.5 pt-space-md border-t border-surface-container-high">
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">admin_panel_settings</span>
+<span>Security &amp; Node Settings</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-error font-label text-label hover:bg-error-container hover:text-on-error-container transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">logout</span>
+<span>Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- Right Canvas Workspace -->
+<div class="ml-72 flex-1 flex flex-col min-w-0">
+<!-- Top Sticky Header -->
+<header class="sticky top-0 right-0 h-16 flex items-center justify-between px-space-xl bg-surface-container-lowest border-b border-surface-variant z-20">
+<!-- Search Input on Left -->
+<div class="flex items-center flex-1 max-w-lg">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-[20px] pointer-events-none">search</span>
+<input class="w-full h-11 pl-10 pr-4 rounded-xl bg-surface-container-low border border-surface-variant text-body font-body text-on-surface placeholder:text-outline focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container text-sm" placeholder="Search agent by name, terminal ID, phone, or location..." type="search"/>
+</div>
+</div>
+<!-- Trailing Action Badges & Profile -->
+<div class="flex items-center gap-space-md ml-space-lg">
+<!-- Super-Agent Cluster pill -->
+<div class="hidden xl:flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container text-on-surface border border-surface-variant text-caption font-caption">
+<span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span>Lagos Island Hub (014) • CBN Licensed Super-Agent</span>
+</div>
+<!-- Network Health pill -->
+<div class="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-low border border-outline-variant text-caption font-caption text-primary font-medium">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<span>NIP Switch: 99.8% Online</span>
+</div>
+<!-- Action Button -->
+<button class="h-10 px-4 rounded-xl bg-primary-container text-on-primary font-label text-label flex items-center gap-2 hover:bg-primary transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+<span>+ Onboard New Agent</span>
+</button>
+<div class="h-6 w-px bg-surface-variant"></div>
+<!-- Trailing Icon Actions -->
+<button class="relative p-2 rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors" title="Notifications">
+<span class="material-symbols-outlined text-[22px]">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-secondary"></span>
+</button>
+<button class="p-2 rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors" title="Help &amp; Support">
+<span class="material-symbols-outlined text-[22px]">help_outline</span>
+</button>
+<!-- Profile Avatar & Director Details -->
+<div class="flex items-center gap-3 pl-2 border-l border-surface-variant">
+<div class="w-9 h-9 rounded-full bg-primary-fixed border border-primary-container/20 flex items-center justify-center text-primary font-label text-label overflow-hidden">
+<span class="material-symbols-outlined text-[20px]">account_circle</span>
+</div>
+<div class="hidden 2xl:flex flex-col text-left">
+<span class="text-label font-label text-on-surface text-xs leading-tight">Alhaji Bashir Dangambo</span>
+<span class="text-caption font-caption text-on-surface-variant text-[11px]">Regional Agent Director</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Workspace Area -->
+<main class="flex-1 p-space-xl overflow-x-hidden space-y-space-xl">
+<!-- Page Header & Action Controls -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div>
+<div class="flex items-center gap-2">
+<h1 class="text-title font-title text-on-surface tracking-tight">Agent Roster &amp; Territory Fleet Surveillance</h1>
+<span class="px-2.5 py-0.5 rounded-md bg-surface-container-high text-primary font-label text-xs">W-AGT-001</span>
+</div>
+<p class="text-body font-body text-on-surface-variant text-sm mt-1 max-w-3xl">
+            Real-time surveillance of certified POS agents, float depletion thresholds, geofenced terminal locations, and daily liquidity velocity.
+          </p>
+</div>
+<div class="flex items-center gap-3 self-start md:self-auto">
+<button class="h-11 px-4 rounded-xl border border-surface-variant bg-surface-container-lowest text-on-surface font-label text-label hover:bg-surface-container-low transition-colors flex items-center gap-2 text-sm shadow-sm">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>Export Agent Census (CSV)</span>
+</button>
+<button class="h-11 px-4 rounded-xl border border-primary-container text-primary-container bg-surface-container-low hover:bg-primary-container hover:text-on-primary transition-colors font-label text-label flex items-center gap-2 text-sm">
+<span class="material-symbols-outlined text-[18px]">local_shipping</span>
+<span>+ Deploy Field Support</span>
+</button>
+</div>
+</div>
+<!-- KPI Metric Cards (4 Equal Tiles) -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-lg">
+<!-- Card 1: Total Agents -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-surface-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="text-caption font-caption font-medium uppercase tracking-wide">Total Network Agents</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">badge</span>
+</div>
+</div>
+<div class="my-space-sm">
+<div class="text-title font-title text-on-surface">64 Agents</div>
+<div class="flex items-center gap-1.5 text-caption font-caption text-on-surface-variant mt-1">
+<span class="inline-block w-2 h-2 rounded-full bg-emerald-500"></span>
+<span class="text-on-surface font-medium">58 Active</span>
+<span class="text-outline">•</span>
+<span class="text-amber-600 font-medium">4 Low Float</span>
+<span class="text-outline">•</span>
+<span class="text-error font-medium">2 Suspended</span>
+</div>
+</div>
+<div class="text-[12px] text-on-surface-variant bg-surface-container-low px-2 py-1 rounded">
+            90.6% network mobilization rate
+          </div>
+</div>
+<!-- Card 2: Combined Agent Float -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-surface-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="text-caption font-caption font-medium uppercase tracking-wide">Combined Agent Float</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">account_balance</span>
+</div>
+</div>
+<div class="my-space-sm">
+<div class="text-title font-title text-on-surface num-tabular">₦28,450,000.00</div>
+<div class="text-caption font-caption text-on-surface-variant mt-1">
+<span class="font-medium text-on-surface">₦18.2M</span> Digital Wallet <span class="text-outline">/</span> <span class="font-medium text-on-surface">₦10.25M</span> Verified Cash
+            </div>
+</div>
+<div class="text-[12px] text-emerald-700 bg-emerald-50 px-2 py-1 rounded flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+            Float solvency index: 1.48x CBN safety benchmark
+          </div>
+</div>
+<!-- Card 3: Today's Volume -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-surface-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="text-caption font-caption font-medium uppercase tracking-wide">Today's Volume (Cash-In &amp; Out)</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">sync_alt</span>
+</div>
+</div>
+<div class="my-space-sm">
+<div class="text-title font-title text-on-surface num-tabular">₦46,800,000.00</div>
+<div class="flex items-center gap-2 text-caption font-caption text-on-surface-variant mt-1">
+<span>1,420 transactions</span>
+<span class="text-emerald-600 font-medium flex items-center">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> +14.8%
+              </span>
+</div>
+</div>
+<div class="text-[12px] text-on-surface-variant bg-surface-container-low px-2 py-1 rounded">
+            Peak velocity: 11:30 - 14:00 West Africa Time
+          </div>
+</div>
+<!-- Card 4: Network SLA & Uptime -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-surface-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="text-caption font-caption font-medium uppercase tracking-wide">Network SLA &amp; Uptime</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">speed</span>
+</div>
+</div>
+<div class="my-space-sm">
+<div class="text-title font-title text-on-surface">99.4% Fulfillment</div>
+<div class="text-caption font-caption text-on-surface-variant mt-1">
+              Avg cash-out completion: <span class="font-medium text-on-surface">42 seconds</span>
+</div>
+</div>
+<div class="text-[12px] text-emerald-700 bg-emerald-50 px-2 py-1 rounded flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">format_image_left</span>
+            99.98% POS terminal encryption integrity
+          </div>
+</div>
+</section>
+<!-- Critical Fleet Alert Banner -->
+<section class="p-space-md rounded-xl bg-amber-50 border border-amber-200 flex items-start sm:items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<div>
+<span class="text-label font-label text-amber-900 block sm:inline">Low Float Warning:</span>
+<span class="text-body font-body text-amber-800 text-sm ml-0 sm:ml-1">
+              4 agents have dropped below statutory minimum float of <strong class="num-tabular">₦150,000.00</strong>. Automatic cash-in routing throttled until rebalanced.
+            </span>
+</div>
+</div>
+<div class="flex items-center gap-2 flex-shrink-0">
+<button class="px-3 py-1.5 rounded-lg bg-amber-800 text-white font-label text-xs hover:bg-amber-900 transition-colors whitespace-nowrap">
+            Auto-Fund Pool (₦600k)
+          </button>
+<button class="p-1 rounded text-amber-800 hover:bg-amber-100 transition-colors" title="Dismiss">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+</section>
+<!-- Two-Column Operational View: Left Main Column + Right Inspector Drawer -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-lg items-start">
+<!-- Left / Main Column (Table & Filters) - 7.5/12 cols (span 7 or 8) -->
+<div class="xl:col-span-8 flex flex-col gap-space-md">
+<!-- Table Container Card -->
+<div class="bg-surface-container-lowest rounded-xl border border-surface-variant shadow-sm overflow-hidden flex flex-col">
+<!-- Filter Tabs & Quick Searches Header -->
+<div class="p-space-lg border-b border-surface-variant flex flex-col sm:flex-row sm:items-center justify-between gap-space-md bg-surface-bright">
+<!-- Segmented Status Tabs -->
+<div class="inline-flex p-1 bg-surface-container rounded-xl gap-1">
+<button class="px-3 py-1.5 rounded-lg text-xs font-label text-on-surface-variant hover:text-on-surface transition-colors">
+                  All Agents (64)
+                </button>
+<button class="px-3 py-1.5 rounded-lg text-xs font-label text-on-surface-variant hover:text-on-surface transition-colors">
+                  Active Now (58)
+                </button>
+<button class="px-3 py-1.5 rounded-lg text-xs font-label bg-surface-container-lowest text-primary shadow-sm">
+                  Low Float (4)
+                </button>
+<button class="px-3 py-1.5 rounded-lg text-xs font-label text-on-surface-variant hover:text-on-surface transition-colors">
+                  Suspended (2)
+                </button>
+</div>
+<!-- Territory Quick Dropdown Filter -->
+<div class="flex items-center gap-2">
+<span class="text-caption font-caption text-on-surface-variant whitespace-nowrap">Territory:</span>
+<select class="h-9 pl-3 pr-8 rounded-lg bg-surface-container-lowest border border-surface-variant text-caption font-caption text-on-surface focus:outline-none focus:border-primary">
+<option>All Lagos Island Hubs</option>
+<option selected="">Balogun Central Market</option>
+<option>Marina CMS Ferry Jetty</option>
+<option>Obalende Terminal</option>
+<option>Lekki Phase 1</option>
+</select>
+</div>
+</div>
+<!-- Agent Directory Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container text-caption font-caption text-on-surface-variant border-b border-surface-variant">
+<th class="py-3 px-4 font-semibold">Agent Name &amp; ID</th>
+<th class="py-3 px-3 font-semibold">Kiosk / Location</th>
+<th class="py-3 px-3 font-semibold">Terminal Model</th>
+<th class="py-3 px-3 font-semibold text-right">Digital Float</th>
+<th class="py-3 px-3 font-semibold text-right">Today In</th>
+<th class="py-3 px-3 font-semibold text-right">Today Out</th>
+<th class="py-3 px-4 font-semibold text-center">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-high text-sm font-body">
+<!-- Row 1: Ibrahim Haruna (SELECTED ACTIVE STATE) -->
+<tr class="bg-surface-container-low/70 border-l-4 border-l-primary-container hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-label text-xs font-semibold">
+                          IH
+                        </div>
+<div>
+<div class="font-label text-on-surface font-semibold flex items-center gap-1.5">
+                            Ibrahim Haruna
+                            <span class="material-symbols-outlined text-[15px] text-primary" title="Selected Inspector">arrow_forward</span>
+</div>
+<div class="text-caption font-caption text-on-surface-variant">#AGT-2041</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<div class="font-medium text-on-surface text-xs">Balogun Market Stall B14</div>
+<div class="text-caption font-caption text-outline text-[11px]">Lagos Island North</div>
+</td>
+<td class="py-3.5 px-3">
+<div class="text-xs text-on-surface">POS-NRG-9102</div>
+<div class="text-caption font-caption text-on-surface-variant text-[11px]">SmartPOS 4G LTE</div>
+</td>
+<td class="py-3.5 px-3 text-right">
+<div class="font-label text-amber-700 num-tabular font-semibold">₦84,500.00</div>
+<span class="inline-flex items-center gap-0.5 text-[10px] bg-amber-100 text-amber-800 px-1.5 py-0.5 rounded font-medium">
+                        LOW FLOAT
+                      </span>
+</td>
+<td class="py-3.5 px-3 text-right num-tabular text-on-surface text-xs font-medium">
+                      ₦850,000.00
+                    </td>
+<td class="py-3.5 px-3 text-right num-tabular text-on-surface text-xs font-medium">
+                      ₦1,240,000.00
+                    </td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-amber-50 text-amber-800 border border-amber-200">
+<span class="material-symbols-outlined text-[13px]">warning</span>
+                        Flagged Low
+                      </span>
+</td>
+</tr>
+<!-- Row 2: Grace Okafor -->
+<tr class="hover:bg-surface-container-lowest/80 transition-colors cursor-pointer">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center font-label text-xs font-semibold">
+                          GO
+                        </div>
+<div>
+<div class="font-label text-on-surface font-semibold">Grace Okafor</div>
+<div class="text-caption font-caption text-on-surface-variant">#AGT-2018</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<div class="font-medium text-on-surface text-xs">Obalende Bus Terminal Kiosk</div>
+<div class="text-caption font-caption text-outline text-[11px]">Under Bridge Transit</div>
+</td>
+<td class="py-3.5 px-3">
+<div class="text-xs text-on-surface">POS-NRG-8841</div>
+<div class="text-caption font-caption text-on-surface-variant text-[11px]">SmartPOS 4G</div>
+</td>
+<td class="py-3.5 px-3 text-right">
+<div class="font-label text-on-surface num-tabular font-semibold">₦620,000.00</div>
+<span class="inline-flex items-center gap-0.5 text-[10px] text-emerald-700">Healthy Buffer</span>
+</td>
+<td class="py-3.5 px-3 text-right num-tabular text-on-surface text-xs">
+                      ₦1,420,000.00
+                    </td>
+<td class="py-3.5 px-3 text-right num-tabular text-on-surface text-xs">
+                      ₦980,000.00
+                    </td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-50 text-emerald-800 border border-emerald-200">
+<span class="material-symbols-outlined text-[13px]">check_circle</span>
+                        Active
+                      </span>
+</td>
+</tr>
+<!-- Row 3: Suleiman Bello -->
+<tr class="hover:bg-surface-container-lowest/80 transition-colors cursor-pointer">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center font-label text-xs font-semibold">
+                          SB
+                        </div>
+<div>
+<div class="font-label text-on-surface font-semibold">Suleiman Bello</div>
+<div class="text-caption font-caption text-on-surface-variant">#AGT-2033</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<div class="font-medium text-on-surface text-xs">Marina CMS Ferry Jetty</div>
+<div class="text-caption font-caption text-outline text-[11px]">Coastal Pier Gate 1</div>
+</td>
+<td class="py-3.5 px-3">
+<div class="text-xs text-on-surface">POS-NRG-7712</div>
+<div class="text-caption font-caption text-on-surface-variant text-[11px]">Sunmi V2 PRO</div>
+</td>
+<td class="py-3.5 px-3 text-right">
+<div class="font-label text-on-surface num-tabular font-semibold">₦450,000.00</div>
+<span class="inline-flex items-center gap-0.5 text-[10px] text-emerald-700">Healthy Buffer</span>
+</td>
+<td class="py-3.5 px-3 text-right num-tabular text-on-surface text-xs">
+                      ₦740,000.00
+                    </td>
+<td class="py-3.5 px-3 text-right num-tabular text-on-surface text-xs">
+                      ₦620,000.00
+                    </td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-50 text-emerald-800 border border-emerald-200">
+<span class="material-symbols-outlined text-[13px]">check_circle</span>
+                        Active
+                      </span>
+</td>
+</tr>
+<!-- Row 4: Blessing Adebayo -->
+<tr class="hover:bg-surface-container-lowest/80 transition-colors cursor-pointer">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center font-label text-xs font-semibold">
+                          BA
+                        </div>
+<div>
+<div class="font-label text-on-surface font-semibold">Blessing Adebayo</div>
+<div class="text-caption font-caption text-on-surface-variant">#AGT-2009</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<div class="font-medium text-on-surface text-xs">Broad Street Commercial Arc</div>
+<div class="text-caption font-caption text-outline text-[11px]">Banking Sector Plaza</div>
+</td>
+<td class="py-3.5 px-3">
+<div class="text-xs text-on-surface">POS-NRG-9034</div>
+<div class="text-caption font-caption text-on-surface-variant text-[11px]">SmartPOS 4G</div>
+</td>
+<td class="py-3.5 px-3 text-right">
+<div class="font-label text-amber-700 num-tabular font-semibold">₦120,000.00</div>
+<span class="inline-flex items-center gap-0.5 text-[10px] bg-amber-100 text-amber-800 px-1.5 py-0.5 rounded font-medium">
+                        LOW FLOAT
+                      </span>
+</td>
+<td class="py-3.5 px-3 text-right num-tabular text-on-surface text-xs">
+                      ₦310,000.00
+                    </td>
+<td class="py-3.5 px-3 text-right num-tabular text-on-surface text-xs">
+                      ₦890,000.00
+                    </td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-amber-50 text-amber-800 border border-amber-200">
+<span class="material-symbols-outlined text-[13px]">warning</span>
+                        Flagged Low
+                      </span>
+</td>
+</tr>
+<!-- Row 5: Chukwuma Eze -->
+<tr class="hover:bg-surface-container-lowest/80 transition-colors cursor-pointer">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center font-label text-xs font-semibold">
+                          CE
+                        </div>
+<div>
+<div class="font-label text-on-surface font-semibold">Chukwuma Eze</div>
+<div class="text-caption font-caption text-on-surface-variant">#AGT-2055</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<div class="font-medium text-on-surface text-xs">Sandgrouse Market Gate 2</div>
+<div class="text-caption font-caption text-outline text-[11px]">Produce Exchange Wing</div>
+</td>
+<td class="py-3.5 px-3">
+<div class="text-xs text-on-surface">POS-NRG-8199</div>
+<div class="text-caption font-caption text-on-surface-variant text-[11px]">SmartPOS 4G LTE</div>
+</td>
+<td class="py-3.5 px-3 text-right">
+<div class="font-label text-on-surface num-tabular font-semibold">₦1,150,000.00</div>
+<span class="inline-flex items-center gap-0.5 text-[10px] text-primary font-medium">Super Agent Tier</span>
+</td>
+<td class="py-3.5 px-3 text-right num-tabular text-on-surface text-xs font-medium">
+                      ₦2,100,000.00
+                    </td>
+<td class="py-3.5 px-3 text-right num-tabular text-on-surface text-xs font-medium">
+                      ₦1,650,000.00
+                    </td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-50 text-emerald-800 border border-emerald-200">
+<span class="material-symbols-outlined text-[13px]">check_circle</span>
+                        Active
+                      </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Bar -->
+<div class="p-space-md border-t border-surface-variant flex items-center justify-between bg-surface-container-lowest text-caption font-caption text-on-surface-variant">
+<span>Showing <strong class="text-on-surface">1 to 5</strong> of <strong class="text-on-surface">64</strong> certified agents</span>
+<div class="flex items-center gap-1">
+<button class="px-2.5 py-1.5 rounded border border-surface-variant hover:bg-surface-container disabled:opacity-50 text-xs font-medium" disabled="">
+                  Previous
+                </button>
+<button class="px-3 py-1.5 rounded bg-primary-container text-on-primary text-xs font-medium">
+                  1
+                </button>
+<button class="px-3 py-1.5 rounded border border-surface-variant hover:bg-surface-container text-xs font-medium">
+                  2
+                </button>
+<button class="px-3 py-1.5 rounded border border-surface-variant hover:bg-surface-container text-xs font-medium">
+                  3
+                </button>
+<span class="px-1 text-xs">...</span>
+<button class="px-3 py-1.5 rounded border border-surface-variant hover:bg-surface-container text-xs font-medium">
+                  13
+                </button>
+<button class="px-2.5 py-1.5 rounded border border-surface-variant hover:bg-surface-container text-xs font-medium">
+                  Next
+                </button>
+</div>
+</div>
+</div>
+<!-- Bottom Micro Map / Cluster Coverage Preview -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-surface-variant flex flex-col md:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-[26px]">map</span>
+</div>
+<div>
+<h4 class="text-label font-label text-on-surface">Geofence Compliance: Balogun &amp; Marina Sub-Sectors</h4>
+<p class="text-caption font-caption text-on-surface-variant mt-0.5">
+                  100% of currently transmitting terminals are operating within their authorized 50-meter regulatory radius.
+                </p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-xs bg-emerald-50 text-emerald-800 border border-emerald-200 px-3 py-1 rounded-full font-medium flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> 0 Perimeter Violations
+              </span>
+</div>
+</div>
+</div>
+<!-- Right Column (Agent Inspector Drawer - Focused on Ibrahim Haruna) - 4/12 cols -->
+<aside class="xl:col-span-4 bg-surface-container-lowest rounded-xl border border-surface-variant shadow-sm overflow-hidden flex flex-col divide-y divide-surface-variant">
+<!-- Drawer Header & Identification -->
+<div class="p-space-lg bg-surface-bright">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-xl bg-primary-container text-on-primary flex items-center justify-center font-title text-base font-bold shadow-sm">
+                  IH
+                </div>
+<div>
+<div class="flex items-center gap-1.5">
+<h3 class="text-subtitle font-subtitle text-on-surface">Ibrahim Haruna</h3>
+<span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 1;" title="Verified Operator">verified</span>
+</div>
+<div class="text-caption font-caption text-on-surface-variant mt-0.5">
+                    Tier 2 Certified Agent • Badge <span class="font-mono font-medium text-on-surface">#AGT-2041</span>
+</div>
+</div>
+</div>
+<span class="px-2 py-1 rounded-lg text-xs font-medium bg-amber-100 text-amber-800 border border-amber-200">
+                Requires Float
+              </span>
+</div>
+<!-- Live Geolocation & Address -->
+<div class="mt-space-md p-3 rounded-lg bg-surface-container border border-surface-variant flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[20px] text-primary flex-shrink-0 mt-0.5">location_on</span>
+<div class="text-xs">
+<div class="font-semibold text-on-surface">Stall B14, Balogun Central Textiles Market</div>
+<div class="text-on-surface-variant mt-0.5">Lagos Island LGA, Lagos State</div>
+<div class="text-outline text-[11px] mt-1 flex items-center gap-2">
+<span>GPS: 6.4549° N, 3.3887° E</span>
+<span class="text-emerald-700 font-medium">✓ Geofenced Lock Active</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Current Liquidity Breakdown -->
+<div class="p-space-lg space-y-space-md">
+<div class="flex items-center justify-between">
+<span class="text-label font-label text-on-surface">Liquidity Breakdown</span>
+<span class="text-caption font-caption text-outline">Updated 1 min ago</span>
+</div>
+<!-- Digital Float Gauge -->
+<div class="p-3.5 rounded-xl bg-surface-container-low border border-outline-variant/60">
+<div class="flex items-center justify-between mb-1.5">
+<span class="text-caption font-caption text-on-surface-variant">Digital Wallet Float</span>
+<span class="text-subtitle font-subtitle text-amber-800 font-bold num-tabular">₦84,500.00</span>
+</div>
+<!-- Progress Bar in Amber -->
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-amber-600 h-2 rounded-full transition-all duration-300" style="width: 56.3%;"></div>
+</div>
+<div class="flex items-center justify-between mt-2 text-[11px] text-on-surface-variant">
+<span>Threshold: <strong class="num-tabular text-on-surface">₦150,000.00</strong></span>
+<span class="text-amber-700 font-semibold">56.3% of safe buffer</span>
+</div>
+</div>
+<!-- Cash Drawer & Net Position -->
+<div class="grid grid-cols-2 gap-space-sm pt-1">
+<div class="p-3 rounded-lg bg-surface-container">
+<span class="text-[11px] text-on-surface-variant uppercase font-medium">Drawer Cash (Est.)</span>
+<div class="text-label font-label text-on-surface mt-1 num-tabular">₦1,325,500.00</div>
+<span class="text-[10px] text-on-surface-variant mt-0.5 block">From Cash-In ops</span>
+</div>
+<div class="p-3 rounded-lg bg-surface-container">
+<span class="text-[11px] text-on-surface-variant uppercase font-medium">Net Kiosk Position</span>
+<div class="text-label font-label text-primary mt-1 num-tabular">₦1,410,000.00</div>
+<span class="text-[10px] text-emerald-700 font-medium mt-0.5 block">Liquid Solvent</span>
+</div>
+</div>
+</div>
+<!-- Hardware & Terminal Security Telemetry -->
+<div class="p-space-lg space-y-space-sm">
+<span class="text-label font-label text-on-surface block">Terminal Binding &amp; Telemetry</span>
+<div class="space-y-2 text-xs">
+<div class="flex items-center justify-between py-1.5 border-b border-surface-container">
+<span class="text-on-surface-variant">Assigned Hardware</span>
+<span class="font-medium text-on-surface">NRG 4G Smart Terminal</span>
+</div>
+<div class="flex items-center justify-between py-1.5 border-b border-surface-container">
+<span class="text-on-surface-variant">Terminal ID</span>
+<span class="font-mono text-on-surface font-semibold">POS-NRG-9102</span>
+</div>
+<div class="flex items-center justify-between py-1.5 border-b border-surface-container">
+<span class="text-on-surface-variant">Hardware IMEI</span>
+<span class="font-mono text-on-surface text-[11px]">864902194821094</span>
+</div>
+<div class="flex items-center justify-between py-1.5">
+<span class="text-on-surface-variant">Health &amp; Signal</span>
+<div class="flex items-center gap-3">
+<span class="flex items-center gap-1 text-emerald-700 font-medium">
+<span class="material-symbols-outlined text-[15px]">battery_5_bar</span> 88%
+                  </span>
+<span class="flex items-center gap-1 text-primary font-medium">
+<span class="material-symbols-outlined text-[15px]">signal_cellular_4_bar</span> 4G LTE
+                  </span>
+</div>
+</div>
+</div>
+</div>
+<!-- Today's Operations Performance -->
+<div class="p-space-lg space-y-space-sm">
+<div class="flex items-center justify-between">
+<span class="text-label font-label text-on-surface">Today's Performance</span>
+<span class="text-caption font-caption text-emerald-700 font-semibold num-tabular">+₦14,250.00 Comm.</span>
+</div>
+<div class="grid grid-cols-2 gap-2 text-center">
+<div class="p-2.5 rounded-lg bg-surface-container-low border border-surface-variant">
+<div class="text-caption font-caption text-on-surface-variant">Cash-Out Pulls</div>
+<div class="text-title font-title text-on-surface mt-0.5">68</div>
+<div class="text-[11px] text-outline num-tabular">₦1,240,000.00</div>
+</div>
+<div class="p-2.5 rounded-lg bg-surface-container-low border border-surface-variant">
+<div class="text-caption font-caption text-on-surface-variant">Cash-In Loads</div>
+<div class="text-title font-title text-on-surface mt-0.5">24</div>
+<div class="text-[11px] text-outline num-tabular">₦850,000.00</div>
+</div>
+</div>
+</div>
+<!-- Action Triggers according to Design System -->
+<div class="p-space-lg space-y-space-sm bg-surface-container-low/40">
+<!-- Primary CTA (52px standardized button height) -->
+<button class="w-full h-[52px] rounded-xl bg-primary-container text-on-primary font-label text-label hover:bg-primary transition-colors flex items-center justify-center gap-2 shadow-sm">
+<span class="material-symbols-outlined text-[20px]">bolt</span>
+<span>Push Instant Float Top-Up (₦250,000.00)</span>
+</button>
+<!-- Secondary Button (52px height) -->
+<button class="w-full h-[52px] rounded-xl bg-surface-container text-primary hover:bg-surface-container-high transition-colors font-label text-label flex items-center justify-center gap-2 border border-surface-variant">
+<span class="material-symbols-outlined text-[20px]">two_wheeler</span>
+<span>Dispatch Cash-to-Float Rider (CIT)</span>
+</button>
+<!-- Outline Button (52px height) -->
+<button class="w-full h-[52px] rounded-xl border border-outline-variant bg-transparent text-on-surface hover:bg-surface-container transition-colors font-label text-label flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">block</span>
+<span>Temporarily Throttle Cash-Outs</span>
+</button>
+<!-- Destructive Action Link -->
+<button class="w-full py-2 text-center text-error hover:underline text-xs font-label flex items-center justify-center gap-1 pt-2">
+<span class="material-symbols-outlined text-[16px]">lock_person</span>
+<span>Suspend Agent &amp; Lock Terminal Hardware</span>
+</button>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer Regulatory & Compliance Strip -->
+<footer class="h-12 border-t border-surface-variant bg-surface-container-lowest px-space-xl flex items-center justify-between text-[11px] text-on-surface-variant">
+<div class="flex items-center gap-3">
+<span class="flex items-center gap-1 font-medium text-on-surface">
+<span class="material-symbols-outlined text-[15px] text-primary" style="font-variation-settings: 'FILL' 1;">security</span>
+          Central Bank of Nigeria (CBN) Super-Agent Guidelines 2024
+        </span>
+<span class="text-outline">•</span>
+<span>NDIC Insured Float Custody</span>
+<span class="text-outline">•</span>
+<span>ISO/IEC 27001 Certified Infrastructure</span>
+</div>
+<div class="flex items-center gap-4">
+<span>Session ID: <span class="font-mono">AG-OPS-LAG-88912-TX</span></span>
+<span class="text-emerald-700 font-medium flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> NIBSS Direct Feed Synced
+        </span>
+</div>
+</footer>
+</div>
+</body></html>

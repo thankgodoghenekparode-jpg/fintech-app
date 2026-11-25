@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YourApp Cooperative - Shares and Certificate</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary-container": "#8e1b4a",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "outline": "#897176",
+            "surface": "#fff8f8",
+            "primary-fixed": "#ffd9e1",
+            "error": "#ba1a1a",
+            "secondary-container": "#fc6955",
+            "secondary-fixed-dim": "#ffb4a8",
+            "on-background": "#1f1b1c",
+            "surface-bright": "#fff8f8",
+            "secondary-fixed": "#ffdad4",
+            "background": "#fff8f8",
+            "on-primary": "#ffffff",
+            "tertiary-fixed": "#eedee4",
+            "surface-tint": "#a8315d",
+            "surface-container": "#f5eced",
+            "surface-variant": "#e9e0e1",
+            "on-primary-fixed": "#3f001b",
+            "surface-dim": "#e1d8d9",
+            "outline-variant": "#dcbfc5",
+            "inverse-surface": "#342f30",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "primary-fixed-dim": "#ffb1c5",
+            "on-surface": "#1f1b1c",
+            "on-tertiary-container": "#c6b7bd",
+            "on-tertiary": "#ffffff",
+            "on-error": "#ffffff",
+            "surface-container-high": "#efe6e7",
+            "tertiary-container": "#53484d",
+            "on-tertiary-fixed": "#21191e",
+            "surface-container-low": "#fbf1f2",
+            "secondary": "#ae3123",
+            "primary": "#6d0033",
+            "inverse-on-surface": "#f8eeef",
+            "on-secondary-container": "#690000",
+            "inverse-primary": "#ffb1c5",
+            "on-error-container": "#93000a",
+            "on-primary-container": "#ffa0ba",
+            "surface-container-highest": "#e9e0e1",
+            "on-secondary-fixed-variant": "#8c170e",
+            "surface-container-lowest": "#ffffff",
+            "on-secondary": "#ffffff",
+            "on-surface-variant": "#564146",
+            "tertiary": "#3b3236",
+            "on-primary-fixed-variant": "#881646",
+            "error-container": "#ffdad6",
+            "on-secondary-fixed": "#410000"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xl": "1.5rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "space-3xl": "3rem",
+            "space-md": "0.75rem",
+            "space-lg": "1rem",
+            "space-2xl": "2rem",
+            "gutter": "1rem",
+            "margin": "1rem"
+          },
+          "fontFamily": {
+            "body": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "title": ["Inter"],
+            "body-medium": ["Inter"],
+            "amount-lg": ["Inter"],
+            "display": ["Inter"],
+            "subtitle": ["Inter"],
+            "caption": ["Inter"],
+            "label": ["Inter"]
+          },
+          "fontSize": {
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      line-height: 1;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+    }
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+    .custom-certificate-border {
+      border: 2px double #dcbfc5;
+      background-image: radial-gradient(#dcbfc5 0.75px, transparent 0.75px);
+      background-size: 14px 14px;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex flex-col justify-between selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Mobile Wrapper Frame (390px to max 560px tablet support) -->
+<div class="w-full max-w-[560px] mx-auto min-h-screen bg-background flex flex-col relative pb-[84px] shadow-sm">
+<!-- Top Navigation Header -->
+<header class="sticky top-0 z-40 bg-surface/95 backdrop-blur-md px-margin py-space-sm flex items-center justify-between min-h-[56px] shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)]">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Go back" class="w-12 h-12 flex items-center justify-center rounded-xl text-on-surface hover:bg-surface-container active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<h1 class="font-subtitle text-subtitle text-on-surface font-bold">Shares &amp; Equity</h1>
+<span class="font-caption text-[11px] font-semibold px-1.5 py-0.5 rounded bg-surface-container-high text-primary tracking-wider">S-COOP-007</span>
+</div>
+<span class="font-caption text-caption text-on-surface-variant font-normal">Lekki Phase 1 Co-op • Member #042</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<button aria-label="Share or download equity statement" class="w-12 h-12 flex items-center justify-center rounded-xl text-primary hover:bg-surface-container active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined text-[24px]">share</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="px-margin pt-space-lg flex flex-col gap-space-xl">
+<!-- Summary Equity Card -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0rgba(30,26,27,0.03)] flex flex-col gap-space-md relative overflow-hidden">
+<div class="absolute -right-10 -bottom-10 w-36 h-36 bg-primary-fixed/20 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-caption text-caption text-on-surface-variant">Total Share Value</span>
+<div class="font-amount-lg-mobile text-amount-lg-mobile text-primary font-bold tabular-nums tracking-tight">
+              ₦100,000.00
+            </div>
+</div>
+<div class="inline-flex items-center gap-1 bg-surface-container px-2.5 py-1 rounded-lg border border-outline-variant/30">
+<span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-caption text-caption font-semibold text-primary">Fully Compliant</span>
+</div>
+</div>
+<!-- Metric Details Pill Grid -->
+<div class="grid grid-cols-2 gap-space-sm pt-space-xs">
+<div class="bg-surface-container-low rounded-lg p-space-sm flex flex-col">
+<span class="font-caption text-caption text-on-surface-variant">Units Owned</span>
+<span class="font-body-medium text-body-medium font-bold text-on-surface tabular-nums">20 Units</span>
+<span class="font-caption text-[11px] text-on-surface-variant mt-0.5">@ ₦5,000 / unit</span>
+</div>
+<div class="bg-surface-container-low rounded-lg p-space-sm flex flex-col">
+<span class="font-caption text-caption text-on-surface-variant">Statutory Minimum</span>
+<span class="font-body-medium text-body-medium font-bold text-on-surface tabular-nums">10 Units</span>
+<span class="font-caption text-[11px] text-on-surface-variant mt-0.5">(₦50,000.00 met)</span>
+</div>
+</div>
+<!-- Progress to Society Maximum -->
+<div class="flex flex-col gap-1.5 pt-space-xs">
+<div class="flex items-center justify-between font-caption text-caption">
+<span class="text-on-surface-variant">Society Ceiling Allowance (50 Units)</span>
+<span class="font-semibold text-primary tabular-nums">40% reached</span>
+</div>
+<div class="w-full bg-surface-variant h-2.5 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full rounded-full transition-all duration-500" style="width: 40%"></div>
+</div>
+<span class="font-caption text-[12px] text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary">info</span>
+            You can hold up to ₦250,000.00 maximum equity stake.
+          </span>
+</div>
+<!-- Dividend Yield Callout Banner -->
+<div class="mt-space-xs bg-surface-container-high/60 border border-outline-variant/50 rounded-lg p-space-md flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-surface-container-lowest flex items-center justify-center shrink-0 text-primary shadow-sm">
+<span class="material-symbols-outlined text-[22px]">trending_up</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-label text-label font-bold text-on-surface">Dividend Surplus:</span>
+<span class="font-body-medium text-body-medium font-bold text-primary tabular-nums">₦18,400.00</span>
+</div>
+<span class="font-caption text-caption text-on-surface-variant">2025/2026 fiscal cycle (~18.4% return yield)</span>
+</div>
+</div>
+</section>
+<!-- Shareholding Certificate Preview Card -->
+<section class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<h2 class="font-label text-label text-on-surface font-bold uppercase tracking-wider">Official Certificate</h2>
+<span class="font-caption text-caption text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary">verified_user</span>
+            Authentic &amp; Registered
+          </span>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-md border border-outline-variant/60 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] flex flex-col gap-space-md">
+<!-- Inner Styled Framed Certificate -->
+<div class="custom-certificate-border rounded-lg p-space-md bg-surface-container-lowest relative flex flex-col gap-space-sm">
+<!-- Certificate Header / Society Header -->
+<div class="text-center flex flex-col items-center gap-0.5 border-b border-outline-variant/40 pb-space-sm">
+<div class="w-10 h-10 rounded-full bg-primary-fixed/40 flex items-center justify-center text-primary mb-1">
+<span class="material-symbols-outlined text-[24px]">account_balance</span>
+</div>
+<span class="font-caption text-[11px] font-bold tracking-widest text-primary uppercase">LEKKI PHASE 1 MULTIPURPOSE COOPERATIVE SOCIETY LTD</span>
+<span class="font-caption text-[10px] text-on-surface-variant">Reg No: #LA/COOP/2022/901 • Lagos State Directorate of Cooperatives</span>
+<h3 class="font-label text-label font-bold text-on-surface mt-1 tracking-tight">COOPERATIVE MEMBERSHIP &amp; SHARE CERTIFICATE</h3>
+</div>
+<!-- Certificate Details Grid -->
+<div class="grid grid-cols-2 gap-x-space-md gap-y-space-sm pt-space-xs">
+<div class="flex flex-col">
+<span class="font-caption text-[11px] text-on-surface-variant uppercase font-medium">Certificate No</span>
+<span class="font-caption text-caption font-bold text-on-surface tabular-nums">CERT-LA-2022-0042</span>
+</div>
+<div class="flex flex-col">
+<span class="font-caption text-[11px] text-on-surface-variant uppercase font-medium">Date of Issue</span>
+<span class="font-caption text-caption font-bold text-on-surface">14 January 2023</span>
+</div>
+<div class="flex flex-col col-span-2">
+<span class="font-caption text-[11px] text-on-surface-variant uppercase font-medium">Issued To (Proprietor)</span>
+<span class="font-body-medium text-body-medium font-bold text-on-surface">Chioma Adeleke <span class="font-normal text-on-surface-variant text-[13px]">(Member #042)</span></span>
+</div>
+<div class="flex flex-col col-span-2 bg-surface-container-low p-2 rounded border border-outline-variant/30">
+<span class="font-caption text-[11px] text-on-surface-variant uppercase font-medium">Capital Allocation</span>
+<span class="font-body-medium text-body-medium font-bold text-primary">20 Fully Paid Ordinary Shares</span>
+<span class="font-caption text-[11px] text-on-surface-variant">Total Nominal Value: ₦100,000.00 @ ₦5,000.00 Par</span>
+</div>
+</div>
+<!-- Signatures Preview & Society Embossed Seal -->
+<div class="flex items-end justify-between pt-space-sm border-t border-outline-variant/40 mt-space-xs">
+<div class="flex flex-col items-start">
+<div class="h-6 flex items-center font-display italic text-[14px] text-tertiary">Adebayo O.</div>
+<div class="w-24 h-[1px] bg-outline-variant"></div>
+<span class="font-caption text-[10px] text-on-surface-variant mt-0.5">Dr. Adebayo O. (President)</span>
+</div>
+<!-- Embossed Badge / Seal -->
+<div class="flex flex-col items-center">
+<div class="w-12 h-12 rounded-full border-2 border-dashed border-primary-container bg-primary-fixed/20 flex flex-col items-center justify-center text-primary text-center px-0.5">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span class="text-[7px] font-bold leading-none uppercase">SEALED</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<div class="h-6 flex items-center font-display italic text-[14px] text-tertiary">Folashade B.</div>
+<div class="w-24 h-[1px] bg-outline-variant"></div>
+<span class="font-caption text-[10px] text-on-surface-variant mt-0.5">Folashade B. (Treasurer)</span>
+</div>
+</div>
+</div>
+<!-- Certificate Action Buttons -->
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<button class="w-full h-[52px] rounded-xl bg-primary text-on-primary font-label text-label font-semibold flex items-center justify-center gap-space-sm active:bg-primary-container hover:shadow-md transition-all active:scale-[0.99]" type="button">
+<span class="material-symbols-outlined text-[20px]">download</span>
+<span>Download Official PDF</span>
+</button>
+<button class="w-full h-[52px] rounded-xl bg-transparent border-[1.5px] border-outline-variant text-on-surface font-label text-label font-semibold flex items-center justify-center gap-space-sm hover:bg-surface-container active:scale-[0.99] transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]">share</span>
+<span>Share Certificate</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Buy More Shares Card -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] flex flex-col gap-space-md">
+<div class="flex items-start gap-space-md">
+<div class="w-12 h-12 rounded-xl bg-secondary-container/15 text-secondary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[26px]">add_chart</span>
+</div>
+<div class="flex flex-col">
+<h3 class="font-subtitle text-subtitle text-on-surface font-bold leading-tight">Increase Your Shareholding</h3>
+<p class="font-caption text-caption text-on-surface-variant mt-1 leading-normal">
+              Owning more units increases your voting quota at the Annual General Meeting (AGM) and your annual surplus dividend payout.
+            </p>
+</div>
+</div>
+<button class="w-full h-[52px] rounded-xl bg-surface-container-high text-primary font-label text-label font-bold flex items-center justify-center gap-space-sm hover:bg-primary-fixed/40 active:scale-[0.99] transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+<span>Purchase Additional Shares</span>
+</button>
+</section>
+<!-- Share Transaction History -->
+<section class="flex flex-col gap-space-sm pb-space-lg">
+<div class="flex items-center justify-between">
+<h2 class="font-label text-label text-on-surface font-bold uppercase tracking-wider">Share Transactions</h2>
+<button class="font-caption text-caption font-semibold text-primary hover:underline" type="button">View All</button>
+</div>
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] divide-y divide-outline-variant/30 overflow-hidden">
+<!-- Item 1: Dividend Reinvestment -->
+<div class="min-h-[64px] py-3 px-space-lg flex items-center justify-between gap-space-md hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center shrink-0 text-primary">
+<span class="material-symbols-outlined text-[20px]">autorenew</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-medium text-body-medium font-semibold text-on-surface leading-snug">Dividend Reinvestment</span>
+<span class="font-caption text-caption text-on-surface-variant leading-snug">30 Aug 2026 • +2 units</span>
+</div>
+</div>
+<div class="flex flex-col items-end shrink-0">
+<span class="font-body-medium text-body-medium font-bold text-on-surface tabular-nums leading-snug">+₦10,000.00</span>
+<div class="flex items-center gap-1 text-[11px] text-primary font-semibold leading-snug">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span>Successful</span>
+</div>
+</div>
+</div>
+<!-- Item 2: Additional Share Purchase -->
+<div class="min-h-[64px] py-3 px-space-lg flex items-center justify-between gap-space-md hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center shrink-0 text-primary">
+<span class="material-symbols-outlined text-[20px]">shopping_bag</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-medium text-body-medium font-semibold text-on-surface leading-snug">Additional Share Purchase</span>
+<span class="font-caption text-caption text-on-surface-variant leading-snug">12 Mar 2024 • +8 units</span>
+</div>
+</div>
+<div class="flex flex-col items-end shrink-0">
+<span class="font-body-medium text-body-medium font-bold text-on-surface tabular-nums leading-snug">+₦40,000.00</span>
+<div class="flex items-center gap-1 text-[11px] text-primary font-semibold leading-snug">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span>Successful</span>
+</div>
+</div>
+</div>
+<!-- Item 3: Initial Membership Shares -->
+<div class="min-h-[64px] py-3 px-space-lg flex items-center justify-between gap-space-md hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center shrink-0 text-primary">
+<span class="material-symbols-outlined text-[20px]">badge</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-medium text-body-medium font-semibold text-on-surface leading-snug">Initial Membership Shares</span>
+<span class="font-caption text-caption text-on-surface-variant leading-snug">14 Jan 2023 • 10 units</span>
+</div>
+</div>
+<div class="flex flex-col items-end shrink-0">
+<span class="font-body-medium text-body-medium font-bold text-on-surface tabular-nums leading-snug">₦50,000.00</span>
+<div class="flex items-center gap-1 text-[11px] text-primary font-semibold leading-snug">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span>Successful</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Docked, 5 Tabs, Save & Borrow is Active) -->
+<nav class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-margin h-16 max-w-[560px] mx-auto pb-safe bg-surface-container-lowest dark:bg-surface-container shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)]">
+<!-- Tab 1: Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="font-caption text-caption font-medium">Home</span>
+</a>
+<!-- Tab 2: Payments -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[24px]">send</span>
+<span class="font-caption text-caption font-medium">Payments</span>
+</a>
+<!-- Tab 3: Cards -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[24px]">credit_card</span>
+<span class="font-caption text-caption font-medium">Cards</span>
+</a>
+<!-- Tab 4: Save & Borrow (ACTIVE per requirements) -->
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed font-semibold min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">savings</span>
+<span class="font-caption text-caption font-medium">Save &amp; Borrow</span>
+</a>
+<!-- Tab 5: More -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[24px]">more_horiz</span>
+<span class="font-caption text-caption font-medium">More</span>
+</a>
+</nav>
+</div>
+</body></html>

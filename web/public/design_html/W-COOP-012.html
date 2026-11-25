@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cooperative Admin - Society Announcements &amp; General Meetings Hub</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-on-surface": "#f8eeef",
+            "surface-container-low": "#fbf1f2",
+            "inverse-surface": "#342f30",
+            "error": "#ba1a1a",
+            "on-tertiary-fixed": "#21191e",
+            "background": "#fff8f8",
+            "on-secondary-fixed-variant": "#8c170e",
+            "primary-fixed": "#ffd9e1",
+            "on-secondary-fixed": "#410000",
+            "on-error": "#ffffff",
+            "surface-tint": "#a8315d",
+            "outline-variant": "#dcbfc5",
+            "tertiary": "#3b3236",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "on-primary-fixed": "#3f001b",
+            "on-background": "#1f1b1c",
+            "secondary-container": "#fc6955",
+            "primary": "#6d0033",
+            "on-surface-variant": "#564146",
+            "on-surface": "#1f1b1c",
+            "surface-dim": "#e1d8d9",
+            "inverse-primary": "#ffb1c5",
+            "primary-container": "#8e1b4a",
+            "on-primary-fixed-variant": "#881646",
+            "on-secondary-container": "#690000",
+            "tertiary-fixed": "#eedee4",
+            "on-secondary": "#ffffff",
+            "secondary": "#ae3123",
+            "surface-container": "#f5eced",
+            "surface-variant": "#e9e0e1",
+            "on-error-container": "#93000a",
+            "tertiary-container": "#53484d",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "primary-fixed-dim": "#ffb1c5",
+            "error-container": "#ffdad6",
+            "outline": "#897176",
+            "on-primary-container": "#ffa0ba",
+            "surface-container-highest": "#e9e0e1",
+            "on-tertiary": "#ffffff",
+            "secondary-fixed-dim": "#ffb4a8",
+            "surface-container-high": "#efe6e7",
+            "surface-bright": "#fff8f8",
+            "secondary-fixed": "#ffdad4",
+            "surface": "#fff8f8",
+            "on-tertiary-container": "#c6b7bd",
+            "surface-container-lowest": "#ffffff",
+            "on-primary": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "margin": "1rem",
+            "space-xl": "1.5rem",
+            "space-lg": "1rem",
+            "space-3xl": "3rem",
+            "space-2xl": "2rem",
+            "space-sm": "0.5rem",
+            "space-md": "0.75rem",
+            "gutter": "1rem"
+          },
+          "fontFamily": {
+            "amount-lg": ["Inter"],
+            "title": ["Inter"],
+            "body": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "subtitle": ["Inter"],
+            "body-medium": ["Inter"],
+            "display": ["Inter"],
+            "caption": ["Inter"],
+            "label": ["Inter"]
+          },
+          "fontSize": {
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #dcbfc5;
+      border-radius: 9999px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased font-body min-h-screen overflow-x-hidden flex">
+<!-- LEFT SIDEBAR: Cooperative Admin Portal -->
+<aside class="fixed left-0 top-0 h-full w-72 flex flex-col justify-between py-space-xl px-space-lg overflow-y-auto bg-surface-container-lowest border-r border-surface-variant shadow-sm z-30">
+<div class="flex flex-col gap-space-xl">
+<!-- Tenant Brand Header -->
+<div class="flex items-center gap-space-md pb-space-lg border-b border-surface-variant">
+<div class="h-11 w-11 rounded-xl bg-primary-container text-on-primary flex items-center justify-center shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[24px]">corporate_fare</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1">
+<span class="text-caption font-caption text-primary font-semibold tracking-wide">COOPERATIVE PORTAL</span>
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+</div>
+<h2 class="text-label font-label text-on-surface truncate" title="Lekki Phase 1 Multipurpose Cooperative Society Limited">
+            Lekki Phase 1 Multipurpose
+          </h2>
+<span class="text-caption font-caption text-on-surface-variant truncate">Reg. RCS/LAGOS/2014/892</span>
+</div>
+</div>
+<!-- Navigation Tabs -->
+<nav class="flex flex-col gap-space-xs">
+<div class="px-space-md py-space-xs text-caption font-caption text-outline font-semibold uppercase tracking-wider">
+          Society Management
+        </div>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span>Dashboard Overview</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">group</span>
+<span>Member Register</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">savings</span>
+<span>Thrift &amp; Contributions</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">account_balance</span>
+<span>Credit &amp; Loan Ledger</span>
+</a>
+<!-- Active Tab: Announcements & Meetings -->
+<a class="flex items-center justify-between px-space-lg py-space-md rounded-lg bg-surface-container-low text-primary font-label text-label shadow-sm" href="#">
+<div class="flex items-center gap-space-md">
+<span class="material-symbols-outlined text-[20px] text-primary" style="font-variation-settings: 'FILL' 1;">campaign</span>
+<span>Announcements &amp; Meetings</span>
+</div>
+<span class="px-1.5 py-0.5 rounded text-[11px] font-bold bg-primary-container text-on-primary">1 Active</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">receipt_long</span>
+<span>Dividend &amp; Payouts</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">history_edu</span>
+<span>Audit &amp; Governance</span>
+</a>
+</nav>
+</div>
+<!-- Sidebar Footer -->
+<div class="flex flex-col gap-space-xs pt-space-lg border-t border-surface-variant">
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">admin_panel_settings</span>
+<span>Security &amp; Settings</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-error font-label text-label hover:bg-error-container hover:text-on-error-container transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">logout</span>
+<span>Sign Out</span>
+</a>
+<div class="mt-space-md p-space-md rounded-xl bg-surface-container flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[18px]">verified</span>
+<span class="text-caption font-caption text-on-surface-variant font-medium">State Registrar Sync</span>
+</div>
+<span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+</div>
+</div>
+</aside>
+<!-- MAIN VIEWPORT CONTAINER -->
+<div class="ml-72 flex-1 flex flex-col min-h-screen min-w-0">
+<!-- STICKY TOP NAVBAR -->
+<header class="sticky top-0 right-0 h-16 flex items-center justify-between px-space-xl bg-surface-container-lowest border-b border-surface-variant z-20 shadow-none">
+<!-- Search circulars / meetings -->
+<div class="flex items-center gap-space-md w-96">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+<input class="w-full h-10 pl-10 pr-4 text-caption font-body bg-surface-container-low border border-surface-variant rounded-xl text-on-surface placeholder:text-outline focus:outline-none focus:border-primary-container focus:bg-surface-container-lowest transition-colors" placeholder="Search circulars, statutory agendas, minutes..." type="text"/>
+</div>
+</div>
+<!-- Right Header Actions & Indicators -->
+<div class="flex items-center gap-space-lg">
+<!-- Statutory Quorum Met Pill -->
+<div class="hidden xl:flex items-center gap-space-xs px-3 py-1.5 rounded-full bg-surface-container border border-surface-variant">
+<span class="material-symbols-outlined text-emerald-700 text-[18px]">check_circle</span>
+<span class="text-caption font-caption font-medium text-on-surface">AGM 2027 Quorum:</span>
+<span class="text-caption font-caption font-bold text-emerald-800">78.8% Met</span>
+</div>
+<!-- Tenant Badge -->
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-container-low border border-outline-variant/60">
+<span class="material-symbols-outlined text-primary text-[18px]">account_balance</span>
+<span class="text-caption font-label text-primary font-semibold">Lekki Phase 1 Society</span>
+</div>
+<!-- Action Icons -->
+<div class="flex items-center gap-space-xs text-on-surface-variant">
+<button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-surface-container-low transition-colors relative" title="Notifications">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-secondary"></span>
+</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-surface-container-low transition-colors" title="Dual Authorization Queue">
+<span class="material-symbols-outlined text-[20px]">verified_user</span>
+</button>
+</div>
+<div class="h-6 w-px bg-surface-variant"></div>
+<!-- User Profile Pill -->
+<div class="flex items-center gap-space-sm pl-space-xs">
+<img class="w-10 h-10 rounded-full object-cover border border-outline-variant shadow-sm" data-alt="A dignified high-resolution portrait photograph of a Nigerian senior bank executive and cooperative general secretary, dressed in smart corporate attire with warm ambient studio lighting and a clean neutral background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBalfRlUnZh4Y53RJV9LpE71B21d5Y94-nxZvew-B6obIfBIMkWGlDo6V3Z0w7gp_KGYWZavXrkxAaGDPPgkziVENkoV6BIVl2o90fB6hSxp-pv2SswaIxh_nKibmpAeT2Yo9xoOeCB9OErawb9zzJ41mNWAujqN7dK4J9F5R1O_7mENwa5CMCmWgBqR5KERMWT5xhbbRv1Rx_RMqJQ9jMkqh2ZM9-W_q6cBNk-QvpF"/>
+<div class="flex flex-col text-left leading-tight">
+<span class="text-caption font-label text-on-surface font-semibold">Barr. O. Balogun</span>
+<span class="text-caption font-caption text-on-surface-variant">General Secretary</span>
+</div>
+<span class="material-symbols-outlined text-outline text-[18px]">expand_more</span>
+</div>
+</div>
+</header>
+<!-- MAIN SCROLLABLE CONTENT CANVAS -->
+<main class="flex-1 p-space-xl max-w-7xl w-full mx-auto flex flex-col gap-space-xl">
+<!-- Breadcrumb & Header Module -->
+<section class="flex flex-col md:flex-row md:items-end justify-between gap-space-lg pb-space-xs">
+<div>
+<!-- Breadcrumb -->
+<div class="flex items-center gap-space-xs text-caption font-caption text-outline mb-space-xs">
+<span>Cooperative Admin</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span>Member Engagement</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-primary font-medium">Announcements &amp; Meetings</span>
+</div>
+<!-- Page Title & Subtext -->
+<h1 class="text-title font-title text-on-surface tracking-tight">
+            Society Announcements &amp; General Meetings Hub
+          </h1>
+<p class="text-body font-body text-on-surface-variant mt-1 max-w-3xl">
+            Broadcast multi-channel administrative circulars, schedule statutory AGMs, track member RSVPs, and publish certified minutes of meeting.
+          </p>
+</div>
+<!-- Top Trigger Actions -->
+<div class="flex items-center gap-space-md shrink-0">
+<button class="h-[52px] px-space-xl rounded-xl border border-surface-variant hover:border-outline bg-surface-container-lowest text-on-surface font-label text-label flex items-center gap-space-sm shadow-sm hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined text-[20px] text-primary">post_add</span>
+<span>+ Compose Circular</span>
+</button>
+<button class="h-[52px] px-space-xl rounded-xl bg-primary-container hover:bg-[#731540] text-on-primary font-label text-label flex items-center gap-space-sm shadow-sm transition-all">
+<span class="material-symbols-outlined text-[20px]">calendar_month</span>
+<span>+ Schedule General Meeting</span>
+</button>
+</div>
+</section>
+<!-- 4 SUMMARY METRIC TILES (BENTO / STAT CARDS) -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-lg">
+<!-- Tile 1: Published Circulars -->
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest border border-surface-variant shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="text-caption font-caption text-on-surface-variant font-medium">Published Circulars</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-low text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">forward_to_inbox</span>
+</div>
+</div>
+<div>
+<div class="text-title font-title text-on-surface font-bold tracking-tight">24 Dispatches</div>
+<div class="flex items-center gap-1.5 mt-space-xs text-caption font-caption text-emerald-800">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span class="font-medium">98.4% delivery (In-App + SMS)</span>
+</div>
+</div>
+</div>
+<!-- Tile 2: Upcoming Statutory Meeting -->
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest border border-surface-variant shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="text-caption font-caption text-on-surface-variant font-medium">Upcoming Statutory Meeting</span>
+<div class="w-8 h-8 rounded-lg bg-primary-fixed text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">event</span>
+</div>
+</div>
+<div>
+<div class="text-title font-title text-primary font-bold tracking-tight">AGM 2027</div>
+<div class="flex items-center gap-1.5 mt-space-xs text-caption font-caption text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span>Sat, 27 Mar 2027 • <strong class="text-primary font-semibold">31 days away</strong></span>
+</div>
+</div>
+</div>
+<!-- Tile 3: RSVP Quorum Tracking -->
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest border border-surface-variant shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="text-caption font-caption text-on-surface-variant font-medium">RSVP Quorum Tracking</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-low text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">how_to_reg</span>
+</div>
+</div>
+<div>
+<div class="text-title font-title text-on-surface font-bold tracking-tight">112 / 142 (78.8%)</div>
+<div class="flex items-center gap-1.5 mt-space-xs text-caption font-caption text-emerald-800">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+<span class="font-medium">Statutory 50% quorum met</span>
+</div>
+</div>
+</div>
+<!-- Tile 4: Minutes Archive -->
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest border border-surface-variant shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="text-caption font-caption text-on-surface-variant font-medium">Minutes Archive</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-low text-on-surface flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">folder_special</span>
+</div>
+</div>
+<div>
+<div class="text-title font-title text-on-surface font-bold tracking-tight">12 Certified Deeds</div>
+<div class="flex items-center gap-1.5 mt-space-xs text-caption font-caption text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">cloud_done</span>
+<span>Signed &amp; state gazetted</span>
+</div>
+</div>
+</div>
+</section>
+<!-- TWO-COLUMN WORKSPACE -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-start">
+<!-- LEFT COLUMN (w-7/12 equivalent: lg:col-span-7) -->
+<div class="lg:col-span-7 flex flex-col gap-space-lg">
+<!-- Circulars Header & Filter Tabs -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-2xl p-space-lg shadow-sm">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-md mb-space-lg">
+<div>
+<h2 class="text-subtitle font-subtitle text-on-surface">Administrative Circulars &amp; Member Notices</h2>
+<p class="text-caption font-caption text-on-surface-variant mt-0.5">Authoritative gazettes, wallet sweep timetables, and society notices</p>
+</div>
+<span class="text-caption font-caption text-outline font-medium px-2.5 py-1 rounded bg-surface-container">24 Dispatches Total</span>
+</div>
+<!-- Segmented Pill Tabs -->
+<div class="flex items-center gap-1 p-1 bg-surface-container rounded-xl border border-surface-variant/50 max-w-fit">
+<button class="px-4 py-1.5 rounded-lg text-label font-label text-primary bg-surface-container-lowest shadow-sm transition-all">
+                Active Broadcasts (3)
+              </button>
+<button class="px-4 py-1.5 rounded-lg text-label font-label text-on-surface-variant hover:text-on-surface transition-all">
+                Drafts (1)
+              </button>
+<button class="px-4 py-1.5 rounded-lg text-label font-label text-on-surface-variant hover:text-on-surface transition-all">
+                Scheduled (2)
+              </button>
+<button class="px-4 py-1.5 rounded-lg text-label font-label text-on-surface-variant hover:text-on-surface transition-all">
+                Archived (18)
+              </button>
+</div>
+</div>
+<!-- CIRCULAR CARDS STACK -->
+<div class="flex flex-col gap-space-md">
+<!-- Circular Card 1: Primary Dividend Notice -->
+<article class="bg-surface-container-lowest border border-surface-variant hover:border-outline-variant rounded-2xl p-space-lg shadow-sm transition-all flex flex-col gap-space-md relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-primary"></div>
+<!-- Card Header -->
+<div class="flex items-start justify-between gap-space-md">
+<div class="flex flex-col gap-1">
+<div class="flex flex-wrap items-center gap-2">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-caption font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200">
+<span class="material-symbols-outlined text-[14px]">podcasts</span> Active Broadcast
+                    </span>
+<span class="text-caption font-caption text-outline">Ref: #2027-04</span>
+<span class="text-caption font-caption text-outline">•</span>
+<span class="text-caption font-caption text-on-surface-variant">22 Feb 2027</span>
+</div>
+<h3 class="text-subtitle font-subtitle text-on-surface mt-1 hover:text-primary transition-colors cursor-pointer">
+                    Circular #2027-04: FY2026 Dividend Distribution &amp; Wallet Credit Schedule
+                  </h3>
+</div>
+<button class="text-outline hover:text-on-surface p-1 rounded-lg hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+<!-- Metadata & Channel Pills -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-2 py-2 px-3 rounded-xl bg-surface-container-low text-caption font-caption">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-outline">groups</span>
+<span class="text-on-surface-variant">Audience: <strong>All Members (142)</strong></span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-outline">mark_email_read</span>
+<span class="text-on-surface-variant">Read Receipts: <strong class="text-primary">134/142 (94.3%)</strong></span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-outline">cell_tower</span>
+<span class="text-on-surface-variant">Push + SMS + In-App</span>
+</div>
+</div>
+<!-- Excerpt Body -->
+<p class="text-body font-body text-on-surface-variant line-clamp-2">
+                "Following executive committee signoff, audited dividend yields of ₦644.00 per share unit will be credited directly to registered YourApp wallets beginning Monday 1st March 2027. Members with unverified BVN must rectify KYC status."
+              </p>
+<!-- Footer with Secondary Triggers -->
+<div class="flex items-center justify-between pt-space-xs border-t border-surface-variant/60">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1 text-caption font-caption text-outline">
+<span class="material-symbols-outlined text-[15px]">verified_user</span> Dual-signed by President &amp; Treasurer
+                  </span>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="px-3 py-1.5 rounded-lg border border-surface-variant hover:bg-surface-container text-caption font-label text-on-surface flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-[16px]">analytics</span> View Analytics
+                  </button>
+<button class="px-3 py-1.5 rounded-lg border border-surface-variant hover:bg-surface-container text-caption font-label text-on-surface flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-[16px]">download</span> PDF Copy
+                  </button>
+<button class="px-3 py-1.5 rounded-lg text-caption font-label text-error hover:bg-error-container/30 transition-colors">
+                    Recall
+                  </button>
+</div>
+</div>
+</article>
+<!-- Circular Card 2: Thrift Sweep -->
+<article class="bg-surface-container-lowest border border-surface-variant hover:border-outline-variant rounded-2xl p-space-lg shadow-sm transition-all flex flex-col gap-space-md">
+<div class="flex items-start justify-between gap-space-md">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-caption font-semibold bg-surface-container text-on-surface-variant border border-surface-variant">
+<span class="material-symbols-outlined text-[14px]">done_all</span> Delivered (100%)
+                    </span>
+<span class="text-caption font-caption text-outline">Ref: #2027-03</span>
+<span class="text-caption font-caption text-outline">•</span>
+<span class="text-caption font-caption text-on-surface-variant">15 Feb 2027</span>
+</div>
+<h3 class="text-subtitle font-subtitle text-on-surface mt-1">
+                    Circular #2027-03: Payday Thrift Auto-Debit Sweep Timetable (Feb 2027)
+                  </h3>
+</div>
+<button class="text-outline hover:text-on-surface p-1 rounded-lg hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-2 py-2 px-3 rounded-xl bg-surface-container-low text-caption font-caption">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-outline">groups</span>
+<span class="text-on-surface-variant">Audience: <strong>Thrift Savers (128)</strong></span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-outline">send</span>
+<span class="text-on-surface-variant">128/128 Delivered (100%)</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-outline">devices</span>
+<span class="text-on-surface-variant">Channel: In-App Only</span>
+</div>
+</div>
+<p class="text-body font-body text-on-surface-variant">
+                "Monthly cooperative savings deduction sweeps commence Friday 26th Feb via automated Direct Debit mandate. Ensure salary clearing accounts are funded to avert late remittance levies."
+              </p>
+<div class="flex items-center justify-between pt-space-xs border-t border-surface-variant/60">
+<span class="text-caption font-caption text-outline">Archived in circular register</span>
+<div class="flex items-center gap-space-sm">
+<button class="px-3 py-1.5 rounded-lg border border-surface-variant hover:bg-surface-container text-caption font-label text-on-surface flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-[16px]">visibility</span> View Dispatch Record
+                  </button>
+<button class="px-3 py-1.5 rounded-lg border border-surface-variant hover:bg-surface-container text-caption font-label text-on-surface flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-[16px]">download</span> Download
+                  </button>
+</div>
+</div>
+</article>
+<!-- Circular Card 3: Draft State -->
+<article class="bg-surface-container-lowest border border-dashed border-outline-variant hover:border-primary rounded-2xl p-space-lg shadow-sm transition-all flex flex-col gap-space-md bg-opacity-80">
+<div class="flex items-start justify-between gap-space-md">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-caption font-semibold bg-amber-50 text-amber-900 border border-amber-200">
+<span class="material-symbols-outlined text-[14px]">edit_note</span> Draft Circular
+                    </span>
+<span class="text-caption font-caption text-amber-800 font-medium">Awaiting President Review</span>
+<span class="text-caption font-caption text-outline">•</span>
+<span class="text-caption font-caption text-outline">Created 24 Feb 2027</span>
+</div>
+<h3 class="text-subtitle font-subtitle text-on-surface mt-1">
+                    Draft Circular #2027-05: Notice of 2027 Annual General Meeting &amp; Proxy Forms
+                  </h3>
+</div>
+<div class="flex items-center gap-1">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-caption font-label text-on-surface transition-colors">
+                    Edit Content
+                  </button>
+</div>
+</div>
+<p class="text-body font-body text-on-surface-variant italic">
+                "Draft contents including formal 21-day statutory convening notice, agenda breakdown, and downloadable electronic proxy appointment credentials pending executive review..."
+              </p>
+<div class="flex items-center justify-between pt-space-xs border-t border-surface-variant/60">
+<div class="flex items-center gap-2 text-caption font-caption text-outline">
+<span class="material-symbols-outlined text-[16px]">pending_actions</span>
+<span>Pending 1 of 2 Signoffs (General Secretary signed; President pending)</span>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-primary-container text-on-primary text-caption font-label hover:bg-[#731540] transition-colors">
+                  Request Presidential Review
+                </button>
+</div>
+</article>
+</div>
+</div>
+<!-- RIGHT COLUMN (w-5/12 equivalent: lg:col-span-5) -->
+<div class="lg:col-span-5 flex flex-col gap-space-lg">
+<!-- Statutory General Meeting Planner Card -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-2xl p-space-xl shadow-sm flex flex-col gap-space-xl">
+<!-- Event Header -->
+<div class="flex flex-col gap-space-sm border-b border-surface-variant pb-space-lg">
+<div class="flex items-center justify-between">
+<span class="px-3 py-1 rounded-full text-caption font-bold bg-primary-fixed text-on-primary-fixed uppercase tracking-wider">
+                  Statutory Assembly
+                </span>
+<span class="flex items-center gap-1 text-caption font-caption text-emerald-800 font-semibold bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+<span class="material-symbols-outlined text-[14px]">gavel</span> Statutory Quorum Met
+                </span>
+</div>
+<h2 class="text-title font-title text-on-surface">
+                12th Annual General Meeting (AGM 2027)
+              </h2>
+<div class="flex flex-col gap-2 mt-space-xs text-caption font-body text-on-surface-variant">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]">calendar_today</span>
+<span><strong>Date &amp; Time:</strong> Saturday, 27 March 2027 • 10:00 AM WAT</span>
+</div>
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5">location_on</span>
+<span><strong>Venue:</strong> Civic Centre, Ozumba Mbadiwe, Victoria Island &amp; Virtual Stream</span>
+</div>
+</div>
+</div>
+<!-- Quorum Progress Meter Module -->
+<div class="p-space-lg rounded-xl bg-surface-container-low border border-surface-variant/80 flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div>
+<span class="text-label font-label text-on-surface">Member RSVP Quorum Progress</span>
+<div class="text-caption font-caption text-on-surface-variant">
+                    112 of 142 Members Confirmed
+                  </div>
+</div>
+<div class="text-right">
+<span class="text-subtitle font-subtitle text-primary font-bold">78.8%</span>
+<span class="text-caption font-caption block text-outline">Target: 50.0%</span>
+</div>
+</div>
+<!-- Visual Progress Bar with Threshold Indicator -->
+<div class="relative w-full h-4 bg-surface-variant rounded-full overflow-hidden">
+<!-- 50% Threshold marker line -->
+<div class="absolute top-0 bottom-0 left-1/2 w-0.5 bg-on-surface z-10 opacity-40" title="50% Legal Quorum Line"></div>
+<!-- Actual Fill -->
+<div class="h-full bg-primary-container rounded-full transition-all duration-500" style="width: 78.8%;"></div>
+</div>
+<div class="flex items-center justify-between text-caption font-caption pt-1 border-t border-surface-variant/50 text-on-surface-variant">
+<span class="flex items-center gap-1 text-emerald-800 font-medium">
+<span class="material-symbols-outlined text-[15px]">verified</span> 50% Statutory Quorum Surpassed
+                </span>
+<span>30 Members Pending RSVP</span>
+</div>
+</div>
+<!-- Statutory Agenda Checklist -->
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<h3 class="text-label font-label text-on-surface font-bold uppercase tracking-wider text-[13px]">
+                  Statutory Agenda Items Checklist
+                </h3>
+<span class="text-caption font-caption text-primary font-semibold">4 / 4 Prepared</span>
+</div>
+<ul class="flex flex-col gap-2">
+<li class="flex items-start gap-space-md p-space-md rounded-xl bg-surface-container border border-surface-variant/50">
+<span class="material-symbols-outlined text-emerald-700 text-[20px] shrink-0 mt-0.5" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div class="flex-1 text-caption">
+<strong class="font-label text-on-surface block">1. Presentation of Audited Accounts (FY2026)</strong>
+<span class="text-on-surface-variant">Pricewaterhouse audited financial book signed by committee.</span>
+</div>
+</li>
+<li class="flex items-start gap-space-md p-space-md rounded-xl bg-surface-container border border-surface-variant/50">
+<span class="material-symbols-outlined text-emerald-700 text-[20px] shrink-0 mt-0.5" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div class="flex-1 text-caption">
+<strong class="font-label text-on-surface block">2. Declaration of Dividends &amp; Surplus Allocation</strong>
+<span class="text-on-surface-variant">Resolution to disburse ₦91.4M surplus to active members.</span>
+</div>
+</li>
+<li class="flex items-start gap-space-md p-space-md rounded-xl bg-surface-container border border-surface-variant/50">
+<span class="material-symbols-outlined text-emerald-700 text-[20px] shrink-0 mt-0.5" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div class="flex-1 text-caption">
+<strong class="font-label text-on-surface block">3. Election of Executive Committee (Secretary succession)</strong>
+<span class="text-on-surface-variant">Vetting completed for 3 nominated secretarial candidates.</span>
+</div>
+</li>
+<li class="flex items-start gap-space-md p-space-md rounded-xl bg-surface-container border border-surface-variant/50">
+<span class="material-symbols-outlined text-emerald-700 text-[20px] shrink-0 mt-0.5" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div class="flex-1 text-caption">
+<strong class="font-label text-on-surface block">4. Ratification of Amendment v4.3 to Society Bylaws</strong>
+<span class="text-on-surface-variant">Modernization of digital proxy ballots and micro-thrift limits.</span>
+</div>
+</li>
+</ul>
+</div>
+<!-- Documents & Minutes Upload Section -->
+<div class="flex flex-col gap-space-md border-t border-surface-variant pt-space-lg">
+<h3 class="text-label font-label text-on-surface font-bold uppercase tracking-wider text-[13px]">
+                Statutory Documents &amp; Minutes Archive
+              </h3>
+<div class="flex flex-col gap-2">
+<!-- Document Item 1 -->
+<div class="flex items-center justify-between p-3 rounded-xl border border-surface-variant hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-10 h-10 rounded-lg bg-surface-container text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">picture_as_pdf</span>
+</div>
+<div class="flex flex-col min-w-0 text-caption">
+<span class="font-label text-on-surface truncate">Draft AGM Order of Business (2027)</span>
+<span class="text-outline">PDF • 4.2 MB • Updated Yesterday</span>
+</div>
+</div>
+<button class="p-2 text-outline hover:text-primary transition-colors" title="Download Document">
+<span class="material-symbols-outlined text-[20px]">download</span>
+</button>
+</div>
+<!-- Document Item 2 -->
+<div class="flex items-center justify-between p-3 rounded-xl border border-surface-variant hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-10 h-10 rounded-lg bg-surface-container text-emerald-800 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">verified</span>
+</div>
+<div class="flex flex-col min-w-0 text-caption">
+<span class="font-label text-on-surface truncate">Certified 2026 Minutes of Meeting</span>
+<span class="text-emerald-800 font-medium">Archived &amp; Gazetted with State Ministry</span>
+</div>
+</div>
+<button class="p-2 text-outline hover:text-primary transition-colors" title="Download Document">
+<span class="material-symbols-outlined text-[20px]">download</span>
+</button>
+</div>
+</div>
+<!-- Upload Drag & Drop Trigger -->
+<div class="border border-dashed border-outline-variant hover:border-primary rounded-xl p-space-md text-center bg-surface-container-low/50 cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-outline text-[24px]">upload_file</span>
+<p class="text-caption font-caption text-on-surface font-medium mt-1">
+                  Upload Signed Addendum or Gazetted Minutes
+                </p>
+<p class="text-caption font-caption text-outline text-[11px]">PDF, signed deed scans up to 25MB</p>
+</div>
+</div>
+<!-- Action Buttons Standardized 52px -->
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<button class="w-full h-[52px] rounded-xl bg-primary-container hover:bg-[#731540] text-on-primary font-label text-label flex items-center justify-center gap-space-sm shadow-sm transition-all">
+<span class="material-symbols-outlined text-[20px]">send_to_mobile</span>
+<span>Send Quorum Reminder (SMS/Push)</span>
+</button>
+<button class="w-full h-[52px] rounded-xl bg-surface-container hover:bg-surface-container-high text-primary font-label text-label flex items-center justify-center gap-space-sm transition-all border border-transparent">
+<span class="material-symbols-outlined text-[20px]">download</span>
+<span>Download AGM Pack PDF</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- FOOTER RECORD BAR -->
+<footer class="mt-auto px-space-xl py-space-md bg-surface-container-lowest border-t border-surface-variant flex flex-col sm:flex-row items-center justify-between text-caption font-caption text-outline gap-2">
+<div class="flex items-center gap-4">
+<span>Cooperative Module v4.8.2</span>
+<span>•</span>
+<span class="text-on-surface-variant">Lekki Phase 1 Multipurpose Cooperative Society Limited</span>
+<span>•</span>
+<span class="text-emerald-800 flex items-center gap-1 font-medium">
+<span class="inline-block w-2 h-2 rounded-full bg-emerald-600"></span> Registry Ledger Live
+        </span>
+</div>
+<div>
+<span>Statutory adherence to Lagos State Cooperative Societies Law Cap C15</span>
+</div>
+</footer>
+</div>
+</body></html>

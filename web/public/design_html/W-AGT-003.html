@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Commission and Limits (W-AGT-003) | YourApp Agent Ops</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-primary": "#ffb1c5",
+            "on-error-container": "#93000a",
+            "outline": "#897176",
+            "on-tertiary-fixed": "#21191e",
+            "on-primary-fixed-variant": "#881646",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "on-surface-variant": "#564146",
+            "outline-variant": "#dcbfc5",
+            "inverse-on-surface": "#f8eeef",
+            "on-background": "#1f1b1c",
+            "inverse-surface": "#342f30",
+            "surface-container-low": "#fbf1f2",
+            "on-tertiary": "#ffffff",
+            "primary": "#6d0033",
+            "on-secondary-container": "#690000",
+            "on-secondary-fixed-variant": "#8c170e",
+            "on-secondary": "#ffffff",
+            "surface-bright": "#fff8f8",
+            "error": "#ba1a1a",
+            "secondary-container": "#fc6955",
+            "surface": "#fff8f8",
+            "on-primary-fixed": "#3f001b",
+            "surface-container-highest": "#e9e0e1",
+            "on-primary-container": "#ffa0ba",
+            "primary-fixed-dim": "#ffb1c5",
+            "secondary-fixed-dim": "#ffb4a8",
+            "error-container": "#ffdad6",
+            "tertiary-fixed": "#eedee4",
+            "on-secondary-fixed": "#410000",
+            "on-primary": "#ffffff",
+            "secondary": "#ae3123",
+            "background": "#fff8f8",
+            "primary-fixed": "#ffd9e1",
+            "surface-container-high": "#efe6e7",
+            "on-surface": "#1f1b1c",
+            "tertiary": "#3b3236",
+            "tertiary-container": "#53484d",
+            "on-error": "#ffffff",
+            "surface-variant": "#e9e0e1",
+            "primary-container": "#8e1b4a",
+            "on-tertiary-container": "#c6b7bd",
+            "surface-container": "#f5eced",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "surface-dim": "#e1d8d9",
+            "secondary-fixed": "#ffdad4",
+            "surface-container-lowest": "#ffffff",
+            "surface-tint": "#a8315d"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "1rem",
+            "space-lg": "1rem",
+            "space-md": "0.75rem",
+            "space-3xl": "3rem",
+            "space-xs": "0.25rem",
+            "space-2xl": "2rem",
+            "margin": "1rem",
+            "space-sm": "0.5rem",
+            "space-xl": "1.5rem"
+          },
+          "fontFamily": {
+            "display": ["Inter"],
+            "body-medium": ["Inter"],
+            "caption": ["Inter"],
+            "body": ["Inter"],
+            "label": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "subtitle": ["Inter"],
+            "title": ["Inter"],
+            "amount-lg": ["Inter"]
+          },
+          "fontSize": {
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .num-tabular {
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body text-body antialiased min-h-screen flex selection:bg-primary-fixed selection:text-primary">
+<!-- Left Docked Side Navigation (Shared Component Specification Blueprint) -->
+<aside class="fixed left-0 top-0 h-screen w-72 flex flex-col justify-between py-space-xl px-space-lg overflow-y-auto bg-surface-container-lowest border-r border-surface-variant z-30 shadow-sm">
+<div class="flex flex-col gap-space-xl">
+<!-- Brand Crest & Header -->
+<div class="flex items-center gap-space-md px-space-xs">
+<div class="w-10 h-10 rounded-xl bg-primary-container flex items-center justify-center text-on-primary shadow-sm">
+<span class="material-symbols-outlined text-title" data-weight="fill" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+</div>
+<div>
+<h1 class="font-subtitle text-subtitle text-primary tracking-tight leading-none">YourApp Agent Ops</h1>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">Super-Agent Portal</p>
+</div>
+</div>
+<!-- Active Territory Cluster Card -->
+<div class="p-space-md rounded-xl bg-surface-container-low border border-outline-variant/60 flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<span class="font-caption text-caption text-on-surface-variant font-medium">Cluster Territory</span>
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-lg bg-surface-container-lowest text-primary text-caption font-label border border-outline-variant/40">
+<span class="w-2 h-2 rounded-full bg-emerald-600 inline-block"></span> Live
+          </span>
+</div>
+<p class="font-label text-label text-on-surface">Lagos Island Cluster #014</p>
+<div class="flex items-center gap-space-xs text-on-surface-variant font-caption text-caption mt-0.5">
+<span class="material-symbols-outlined text-[16px]">store</span>
+<span>48 Active Agents</span>
+<span class="mx-1">•</span>
+<span class="text-secondary-fixed-variant">Master Hub</span>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#dashboard">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span>Dashboard Overview</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#roster">
+<span class="material-symbols-outlined text-[20px]">badge</span>
+<span>Agent Directory &amp; Roster</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#rebalance">
+<span class="material-symbols-outlined text-[20px]">swap_horizontal_circle</span>
+<span>Float &amp; Rebalancing</span>
+</a>
+<!-- Active Tab: Commission & Limits -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg bg-surface-container-low text-primary font-label text-label shadow-sm" href="#commission">
+<span class="material-symbols-outlined text-[20px]" data-weight="fill" style="font-variation-settings: 'FILL' 1;">tune</span>
+<span>Commission &amp; Limits</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#disputes">
+<span class="material-symbols-outlined text-[20px]">pending_actions</span>
+<span>Dispute &amp; Incident Queue</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#audit">
+<span class="material-symbols-outlined text-[20px]">pin_drop</span>
+<span>Audit Log &amp; Geo-Tracking</span>
+</a>
+</nav>
+</div>
+<!-- Footer Navigation -->
+<div class="pt-space-md border-t border-surface-variant flex flex-col gap-1">
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#settings">
+<span class="material-symbols-outlined text-[20px]">admin_panel_settings</span>
+<span>Security &amp; Node Settings</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#signout">
+<span class="material-symbols-outlined text-[20px]">logout</span>
+<span>Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- Main Canvas Container -->
+<div class="ml-72 flex-1 flex flex-col min-w-0">
+<!-- Top Sticky Header -->
+<header class="sticky top-0 right-0 h-16 flex items-center justify-between px-space-xl bg-surface-container-lowest border-b border-surface-variant z-20">
+<!-- Search Input -->
+<div class="flex items-center w-96 relative">
+<span class="material-symbols-outlined absolute left-3 text-on-surface-variant text-[20px]">search</span>
+<input class="w-full h-10 pl-10 pr-4 rounded-xl bg-surface-container border border-surface-variant text-on-surface placeholder:text-on-surface-variant font-body text-caption focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all" placeholder="Search tariff rules, tier policy, agent KYC tier..." type="text"/>
+</div>
+<!-- Policy Version & Central Bank Approval -->
+<div class="flex items-center gap-space-lg">
+<div class="hidden xl:flex items-center gap-space-xs px-2.5 py-1 rounded-lg bg-surface-container text-caption font-label text-on-surface border border-outline-variant/40">
+<span class="material-symbols-outlined text-[16px] text-primary">verified</span>
+<span>Commission Schedule v3.2 (Active)</span>
+</div>
+<div class="hidden lg:flex items-center gap-space-xs px-2.5 py-1 rounded-lg bg-surface-container-low text-caption font-label text-primary border border-outline-variant/60">
+<span class="material-symbols-outlined text-[16px] text-secondary">gavel</span>
+<span>CBN Circular BPS/DIR/CIR/06 Approved</span>
+</div>
+<!-- Custom Action Button -->
+<button class="h-10 px-4 rounded-xl bg-primary text-on-primary font-label text-label flex items-center gap-1.5 shadow-sm hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+<span>Configure Custom Agent Tier</span>
+</button>
+<!-- Vertical Divider -->
+<div class="h-8 w-px bg-surface-variant"></div>
+<!-- Profile Cluster -->
+<div class="flex items-center gap-space-md pl-space-xs">
+<img alt="Alhaji Bashir Dangambo" class="w-10 h-10 rounded-full object-cover border border-outline-variant shadow-sm" data-alt="A dignified close-up portrait of Alhaji Bashir Dangambo, Regional Agent Director for Nigerian agency banking operations, dressed in high-status traditional attire with subtle corporate branding in a softly lit, modern warm-toned banking executive suite." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBydoc7llxenQvPs8Zg2NgbhGPCWRDD4TVPWgv0RBEyhG3v0Eg21fARIOIXjC_Omdce7aO-DmvmOeFNMPcsupx6XtQJyPATFu5RbMF_7c9QLFvsigTQOehTQj3wCblCr95jBov-KpTeTjaUvfoBvnBtFRtekqVXnw5eEkS5p3uYR6405V3-B4LNGhK-7xAghP7Y9sMzboztHLexj_MTW7rRcGoCxinuZTIKgr4fkRjq"/>
+<div class="text-left hidden sm:block">
+<p class="font-label text-label text-on-surface leading-tight">Alhaji Bashir Dangambo</p>
+<p class="font-caption text-caption text-on-surface-variant leading-tight">Regional Agent Director</p>
+</div>
+</div>
+</div>
+</header>
+<!-- Operational Viewport Canvas -->
+<main class="p-space-xl flex flex-col gap-space-xl pb-space-3xl">
+<!-- Page Header & Action Controls -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md border-b border-surface-variant pb-space-lg">
+<div>
+<div class="flex items-center gap-2">
+<span class="font-caption text-caption font-label px-2 py-0.5 rounded bg-surface-container text-primary">W-AGT-003</span>
+<h2 class="font-title text-title text-on-background tracking-tight">Commission Structure, Tariff Tiers &amp; Transaction Limits</h2>
+</div>
+<p class="font-caption text-caption text-on-surface-variant mt-1 max-w-3xl">
+            Configure agent earning splits, statutory transaction caps per KYC tier, bill payment margins, and monthly bonus payout schedules across the Lagos Island Cluster #014 network.
+          </p>
+</div>
+<div class="flex items-center gap-space-md shrink-0">
+<button class="h-11 px-4 rounded-xl border border-surface-variant bg-surface-container-lowest text-on-surface font-label text-label hover:bg-surface-container flex items-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">picture_as_pdf</span>
+<span>Download Tariff Charter (PDF)</span>
+</button>
+<button class="h-11 px-4 rounded-xl bg-surface-container-low text-primary border border-outline-variant/60 font-label text-label hover:bg-surface-container flex items-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-[18px]">calculate</span>
+<span>Simulate Revenue Impact</span>
+</button>
+</div>
+</div>
+<!-- KPI Metric Cards (Bento Tile Grid) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-lg">
+<!-- KPI 1 -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-outline-variant/40 shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-caption text-caption font-label">Total Commission Paid (MTD)</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">payments</span>
+</div>
+</div>
+<div class="mt-space-md">
+<h3 class="font-title text-title text-primary num-tabular">₦6,420,000.00</h3>
+<p class="font-caption text-caption text-on-surface-variant mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-emerald-600">check_circle</span>
+<span>Across 64 cluster agents (100% automated)</span>
+</p>
+</div>
+</div>
+<!-- KPI 2 -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-outline-variant/40 shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-caption text-caption font-label">Avg. Agent Monthly Earnings</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">trending_up</span>
+</div>
+</div>
+<div class="mt-space-md">
+<h3 class="font-title text-title text-on-surface num-tabular">₦100,312.50</h3>
+<p class="font-caption text-caption text-on-surface-variant mt-1 truncate">
+              Top earner: <strong class="text-on-surface font-label num-tabular">₦284,500.00</strong> (Balogun Mkt)
+            </p>
+</div>
+</div>
+<!-- KPI 3 -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-outline-variant/40 shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-caption text-caption font-label">Network Margin Share</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">pie_chart</span>
+</div>
+</div>
+<div class="mt-space-md">
+<h3 class="font-title text-title text-on-surface num-tabular">70% / 30%</h3>
+<p class="font-caption text-caption text-on-surface-variant mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-emerald-600">verified_user</span>
+<span>Agent vs Super-Agent compliant</span>
+</p>
+</div>
+</div>
+<!-- KPI 4 -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-outline-variant/40 shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-caption text-caption font-label">Daily Volume Compliance</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">shield</span>
+</div>
+</div>
+<div class="mt-space-md">
+<h3 class="font-title text-title text-emerald-700 num-tabular">99.8% Clean</h3>
+<p class="font-caption text-caption text-on-surface-variant mt-1">
+              Zero KYC cap breaches recorded MTD
+            </p>
+</div>
+</div>
+</div>
+<!-- Statutory Tariff Transparency Banner -->
+<div class="p-space-md rounded-xl bg-surface-container-low border border-primary-fixed flex items-start gap-space-md">
+<div class="w-8 h-8 rounded-lg bg-primary-container flex items-center justify-center text-on-primary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">policy</span>
+</div>
+<div class="flex-1">
+<h4 class="font-label text-label text-primary">Fair Pricing Covenant &amp; Statutory Cap Protection</h4>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">
+            Maximum fee chargeable to citizens for Cash-Out up to ₦10,000.00 is strictly capped at ₦100.00 pursuant to CBN Consumer Protection Directives. Arbitrary customer surcharging results in automated terminal de-registration and clawback.
+          </p>
+</div>
+</div>
+<!-- Main Operational Split Layout Grid -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-xl items-start">
+<!-- Main Operational Workspace (Left / Middle Column: 7 Cols) -->
+<div class="xl:col-span-7 flex flex-col gap-space-xl">
+<!-- Section 1: Tariffs Matrix -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-outline-variant/40 shadow-sm flex flex-col gap-space-lg">
+<!-- Table Subheader and Category Filter Tabs -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-md border-b border-surface-variant pb-space-md">
+<div class="flex items-center gap-space-sm overflow-x-auto">
+<button class="px-3 py-1.5 rounded-lg bg-primary-container text-on-primary font-label text-label text-caption transition-colors">
+                  Cash-Out Tariffs
+                </button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container text-on-surface-variant hover:text-on-surface font-label text-caption transition-colors">
+                  Cash-In Tariffs
+                </button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container text-on-surface-variant hover:text-on-surface font-label text-caption transition-colors">
+                  Bill Payments &amp; Airtime
+                </button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container text-on-surface-variant hover:text-on-surface font-label text-caption transition-colors">
+                  KYC Tier Limits
+                </button>
+</div>
+<div class="text-caption font-caption text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">sync</span>
+<span>Auto-synced across 48 POS Nodes</span>
+</div>
+</div>
+<!-- Commission Matrix Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-surface-variant font-label text-caption text-on-surface-variant">
+<th class="py-2.5 px-3">Transaction Band (₦)</th>
+<th class="py-2.5 px-3">Max Customer Fee</th>
+<th class="py-2.5 px-3">Agent Share</th>
+<th class="py-2.5 px-3">Super-Agent</th>
+<th class="py-2.5 px-3">Network Cost</th>
+<th class="py-2.5 px-3">Payout Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-variant/60 font-body text-caption">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="py-3 px-3 font-label text-on-surface num-tabular">₦1,000 – ₦5,000</td>
+<td class="py-3 px-3 num-tabular text-on-surface">₦50.00 flat</td>
+<td class="py-3 px-3 text-primary font-label num-tabular">70% (₦35.00)</td>
+<td class="py-3 px-3 num-tabular text-on-surface">20% (₦10.00)</td>
+<td class="py-3 px-3 text-on-surface-variant num-tabular">₦5.00 NIP</td>
+<td class="py-3 px-3">
+<span class="inline-flex items-center gap-1 text-emerald-700 font-label">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Instant
+                      </span>
+</td>
+</tr>
+<!-- Row 2 (Selected State) -->
+<tr class="bg-surface-container-low/80 border-l-4 border-l-primary-container shadow-inner">
+<td class="py-3 px-3 font-label text-primary num-tabular flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary">arrow_right</span>
+<span>₦5,001 – ₦10,000</span>
+</td>
+<td class="py-3 px-3 num-tabular font-label text-on-surface">₦100.00 flat</td>
+<td class="py-3 px-3 text-primary font-label num-tabular">70% (₦70.00)</td>
+<td class="py-3 px-3 num-tabular text-on-surface">20% (₦20.00)</td>
+<td class="py-3 px-3 text-on-surface-variant num-tabular">₦10.00 NIP</td>
+<td class="py-3 px-3">
+<span class="inline-flex items-center gap-1 text-emerald-700 font-label">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Instant
+                      </span>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="py-3 px-3 font-label text-on-surface num-tabular">₦10,001 – ₦20,000</td>
+<td class="py-3 px-3 num-tabular text-on-surface">₦150.00 flat</td>
+<td class="py-3 px-3 text-primary font-label num-tabular">72% (₦108.00)</td>
+<td class="py-3 px-3 num-tabular text-on-surface">18% (₦27.00)</td>
+<td class="py-3 px-3 text-on-surface-variant num-tabular">₦15.00 NIP</td>
+<td class="py-3 px-3">
+<span class="inline-flex items-center gap-1 text-emerald-700 font-label">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Instant
+                      </span>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="py-3 px-3 font-label text-on-surface num-tabular">₦20,001 – ₦50,000</td>
+<td class="py-3 px-3 num-tabular text-on-surface">₦250.00 flat</td>
+<td class="py-3 px-3 text-primary font-label num-tabular">72% (₦180.00)</td>
+<td class="py-3 px-3 num-tabular text-on-surface">18% (₦45.00)</td>
+<td class="py-3 px-3 text-on-surface-variant num-tabular">₦25.00 NIP</td>
+<td class="py-3 px-3">
+<span class="inline-flex items-center gap-1 text-emerald-700 font-label">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Instant
+                      </span>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="py-3 px-3 font-label text-on-surface num-tabular">₦50,001 – ₦100,000</td>
+<td class="py-3 px-3 num-tabular text-on-surface">₦400.00 flat</td>
+<td class="py-3 px-3 text-primary font-label num-tabular">75% (₦300.00)</td>
+<td class="py-3 px-3 num-tabular text-on-surface">15% (₦60.00)</td>
+<td class="py-3 px-3 text-on-surface-variant num-tabular">₦40.00 NIP</td>
+<td class="py-3 px-3">
+<span class="inline-flex items-center gap-1 text-emerald-700 font-label">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Instant
+                      </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Note -->
+<div class="flex items-center justify-between text-caption font-caption text-on-surface-variant pt-space-xs border-t border-surface-variant">
+<span>Showing 5 configured cash-out bands for Lagos Urban Retail profile</span>
+<button class="text-primary font-label hover:underline">Add New Band Rule</button>
+</div>
+</div>
+<!-- Section 2: Agent KYC Tier Ceilings Table -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-outline-variant/40 shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between border-b border-surface-variant pb-space-sm">
+<div>
+<h3 class="font-subtitle text-subtitle text-on-surface tracking-tight">Agent KYC Tier Ceilings &amp; Float Caps</h3>
+<p class="font-caption text-caption text-on-surface-variant">Statutory CBN single-ticket ceilings and maximum overnight float limits</p>
+</div>
+<span class="px-2.5 py-1 rounded bg-surface-container text-caption font-label text-on-surface">Circular Tier 1-3 Standard</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-surface-variant font-label text-caption text-on-surface-variant">
+<th class="py-2.5 px-3">KYC Classification</th>
+<th class="py-2.5 px-3">Single Txn Cap</th>
+<th class="py-2.5 px-3">Daily Cumulative Cap</th>
+<th class="py-2.5 px-3">Max Overnight Float</th>
+<th class="py-2.5 px-3">Verification Prerequisite</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-variant/60 font-body text-caption">
+<!-- Tier 1 -->
+<tr>
+<td class="py-3 px-3 font-label text-on-surface">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-amber-500"></span>
+<span>Tier 1 Agent</span>
+</div>
+</td>
+<td class="py-3 px-3 num-tabular text-on-surface">₦20,000.00</td>
+<td class="py-3 px-3 num-tabular text-on-surface">₦200,000.00</td>
+<td class="py-3 px-3 num-tabular font-label text-primary">₦500,000.00</td>
+<td class="py-3 px-3 text-on-surface-variant">BVN + NIN Verified</td>
+</tr>
+<!-- Tier 2 -->
+<tr>
+<td class="py-3 px-3 font-label text-on-surface">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-blue-500"></span>
+<span>Tier 2 Agent (Standard)</span>
+</div>
+</td>
+<td class="py-3 px-3 num-tabular text-on-surface">₦50,000.00</td>
+<td class="py-3 px-3 num-tabular text-on-surface">₦1,000,000.00</td>
+<td class="py-3 px-3 num-tabular font-label text-primary">₦2,000,000.00</td>
+<td class="py-3 px-3 text-on-surface-variant">Utility Bill + CAC Certificate</td>
+</tr>
+<!-- Tier 3 -->
+<tr>
+<td class="py-3 px-3 font-label text-on-surface">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+<span>Tier 3 Agent (Super Kiosk)</span>
+</div>
+</td>
+<td class="py-3 px-3 num-tabular text-on-surface">₦100,000.00</td>
+<td class="py-3 px-3 num-tabular text-on-surface">₦5,000,000.00</td>
+<td class="py-3 px-3 num-tabular font-label text-primary">₦10,000,000.00</td>
+<td class="py-3 px-3 text-on-surface-variant">Commercial Guarantor + Physical Audit</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container border border-surface-variant flex items-center justify-between text-caption font-caption">
+<span class="text-on-surface-variant">Need to elevate an agent to Tier 3 Super Kiosk status?</span>
+<a class="text-primary font-label hover:underline flex items-center gap-1" href="#compliance-portal">
+<span>Submit Field Audit Request</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Tariff Configuration Drawer / Focus Inspector (Right Column: 5 Cols) -->
+<div class="xl:col-span-5 flex flex-col gap-space-lg">
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-outline-variant/60 shadow-sm flex flex-col gap-space-lg sticky top-20">
+<!-- Inspector Header -->
+<div class="flex items-center justify-between border-b border-surface-variant pb-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">rule_settings</span>
+</div>
+<div>
+<h3 class="font-subtitle text-subtitle text-on-surface tracking-tight">Tariff Rule Dossier</h3>
+<p class="font-caption text-caption text-on-surface-variant">Band ₦5,001 – ₦10,000 Cash-Out</p>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 text-caption font-label border border-emerald-200">
+<span class="material-symbols-outlined text-[14px]">lock</span> CBN Locked
+              </span>
+</div>
+<!-- Customer Fee Setting Input -->
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<label class="font-caption text-caption text-on-surface-variant font-medium">Customer End-User Fee (₦)</label>
+<span class="text-caption font-caption text-secondary font-label">Max allowed: ₦100.00 (CBN Cap)</span>
+</div>
+<div class="relative">
+<span class="absolute left-3.5 top-3.5 text-on-surface-variant font-label text-body">₦</span>
+<input class="w-full h-[52px] pl-8 pr-4 rounded-xl bg-surface border border-outline-variant text-on-surface font-body-medium text-body num-tabular focus:border-primary-container focus:ring-1 focus:ring-primary-container" type="text" value="100.00"/>
+</div>
+<p class="text-caption font-caption text-on-surface-variant">Regulated transaction ceiling. Surcharging will trigger automated suspension.</p>
+</div>
+<!-- Margin Split Distribution Card -->
+<div class="p-space-md rounded-xl bg-surface-container-low border border-outline-variant/40 flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label text-label text-on-surface">Revenue Split Allocation</span>
+<span class="font-caption text-caption text-primary font-label">100% Disbursed</span>
+</div>
+<!-- Visual Split Bar -->
+<div class="w-full h-3 rounded-full bg-surface-container flex overflow-hidden">
+<div class="bg-primary-container h-full" style="width: 70%;" title="Agent Share (70%)"></div>
+<div class="bg-secondary h-full" style="width: 20%;" title="Super-Agent Share (20%)"></div>
+<div class="bg-outline h-full" style="width: 10%;" title="Network Clearing (10%)"></div>
+</div>
+<!-- Detailed Split Breakdown Rows -->
+<div class="flex flex-col gap-2 font-caption text-caption">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container"></span>
+<span class="text-on-surface font-medium">Agent Commission Share</span>
+</div>
+<span class="font-label text-on-surface num-tabular">70% (₦70.00)</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<span class="text-on-surface font-medium">Super-Agent Commission Share</span>
+</div>
+<span class="font-label text-on-surface num-tabular">20% (₦20.00)</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-outline"></span>
+<span class="text-on-surface font-medium">Switching &amp; Settlement (NIBSS)</span>
+</div>
+<span class="font-label text-on-surface num-tabular">10% (₦10.00)</span>
+</div>
+</div>
+</div>
+<!-- Milestone Incentive Box -->
+<div class="p-space-md rounded-xl bg-surface-container border border-surface-variant flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-[20px] text-primary shrink-0 mt-0.5">military_tech</span>
+<div>
+<span class="font-label text-label text-primary">Volume Accelerator Enabled</span>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">
+                  Agents exceeding 50 daily transactions earn an additional +5% bonus split funded directly from the Super-Agent incentive pool.
+                </p>
+</div>
+</div>
+<!-- Operational Safeguards Toggles -->
+<div class="flex flex-col gap-space-sm">
+<label class="font-caption text-caption text-on-surface-variant font-medium">Network Safeguards &amp; Execution Controls</label>
+<!-- Toggle 1 -->
+<label class="flex items-start gap-3 cursor-pointer p-2 rounded-lg hover:bg-surface-container-low transition-colors">
+<input checked="" class="mt-1 w-4 h-4 rounded text-primary-container focus:ring-primary-container border-outline-variant" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-label text-label text-on-surface text-caption">Enforce Geo-Fenced Tariff Display on POS Screen</span>
+<span class="font-caption text-caption text-on-surface-variant">Pushes statutory fee prompt to POS screen during customer confirmation</span>
+</div>
+</label>
+<!-- Toggle 2 -->
+<label class="flex items-start gap-3 cursor-pointer p-2 rounded-lg hover:bg-surface-container-low transition-colors">
+<input checked="" class="mt-1 w-4 h-4 rounded text-primary-container focus:ring-primary-container border-outline-variant" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-label text-label text-on-surface text-caption">Automated Zero-Fee Reversal on Failed Transfers</span>
+<span class="font-caption text-caption text-on-surface-variant">Reverses customer tariff instantly if NIP transaction drops</span>
+</div>
+</label>
+<!-- Toggle 3 -->
+<label class="flex items-start gap-3 cursor-pointer p-2 rounded-lg hover:bg-surface-container-low transition-colors">
+<input checked="" class="mt-1 w-4 h-4 rounded text-primary-container focus:ring-primary-container border-outline-variant" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-label text-label text-on-surface text-caption">Instant Commission Wallet Credit (T+0 Settlement)</span>
+<span class="font-caption text-caption text-on-surface-variant">Eliminates end-of-day float lag for agent field liquidity</span>
+</div>
+</label>
+</div>
+<!-- Dual-Control Policy Attestation -->
+<div class="p-space-sm rounded-lg bg-surface-container-low border border-outline-variant/60 flex items-center justify-between text-caption font-caption">
+<div>
+<p class="font-medium text-on-surface">Dual-Control Rule Active</p>
+<p class="text-on-surface-variant">Requires secondary cosigner: Chief Compliance Officer</p>
+</div>
+<span class="material-symbols-outlined text-[20px] text-primary">security</span>
+</div>
+<!-- Action CTAs -->
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<button class="w-full h-[52px] rounded-xl bg-primary-container text-on-primary font-label text-label shadow-sm hover:bg-primary transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">cell_tower</span>
+<span>Save Tariff Adjustments &amp; Publish to POS Network</span>
+</button>
+<button class="w-full h-[52px] rounded-xl bg-transparent border border-outline-variant text-on-surface font-label text-label hover:bg-surface-container transition-colors">
+                Reset to Default CBN Statutory Tariff
+              </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Compliance Disclaimer Footer -->
+<footer class="mt-space-lg pt-space-md border-t border-surface-variant flex flex-col sm:flex-row items-center justify-between gap-space-md text-on-surface-variant text-caption font-caption">
+<div class="flex items-center gap-space-md">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary">verified</span>
+<span>CBN Approved Agency Banking Fee Matrix</span>
+</span>
+<span>•</span>
+<span>Fair Pricing Monitored by FCCPC Nigeria</span>
+<span>•</span>
+<span>Real-Time Automated Commission Settlement via NIBSS</span>
+</div>
+<div class="num-tabular text-on-surface-variant">
+          Cluster ID: #AG-LAG-014-SYS • Node Security TLS 1.3
+        </div>
+</footer>
+</main>
+</div>
+</body></html>

@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Payers Registry &amp; Taxpayer Identification Directory (W-REV-003) | YourApp Revenue Ops</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with Forms and Container Queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-lowest": "#ffffff",
+            "on-error-container": "#93000a",
+            "on-surface": "#1f1b1c",
+            "on-primary": "#ffffff",
+            "on-secondary-fixed": "#410000",
+            "error": "#ba1a1a",
+            "on-background": "#1f1b1c",
+            "on-secondary": "#ffffff",
+            "outline": "#897176",
+            "on-error": "#ffffff",
+            "tertiary": "#3b3236",
+            "tertiary-container": "#53484d",
+            "surface-container-low": "#fbf1f2",
+            "on-tertiary": "#ffffff",
+            "surface-container": "#f5eced",
+            "outline-variant": "#dcbfc5",
+            "error-container": "#ffdad6",
+            "on-primary-container": "#ffa0ba",
+            "secondary-fixed-dim": "#ffb4a8",
+            "on-primary-fixed": "#3f001b",
+            "on-primary-fixed-variant": "#881646",
+            "surface-dim": "#e1d8d9",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "secondary-container": "#fc6955",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "on-secondary-container": "#690000",
+            "inverse-primary": "#ffb1c5",
+            "inverse-surface": "#342f30",
+            "secondary": "#ae3123",
+            "background": "#fff8f8",
+            "primary-fixed": "#ffd9e1",
+            "surface-container-highest": "#e9e0e1",
+            "inverse-on-surface": "#f8eeef",
+            "primary-fixed-dim": "#ffb1c5",
+            "secondary-fixed": "#ffdad4",
+            "primary-container": "#8e1b4a",
+            "on-tertiary-container": "#c6b7bd",
+            "surface-container-high": "#efe6e7",
+            "surface-tint": "#a8315d",
+            "primary": "#6d0033",
+            "surface-bright": "#fff8f8",
+            "on-secondary-fixed-variant": "#8c170e",
+            "surface-variant": "#e9e0e1",
+            "tertiary-fixed": "#eedee4",
+            "on-surface-variant": "#564146",
+            "on-tertiary-fixed": "#21191e",
+            "surface": "#fff8f8"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "1rem",
+            "space-sm": "0.5rem",
+            "gutter": "1rem",
+            "space-3xl": "3rem",
+            "space-2xl": "2rem",
+            "space-xl": "1.5rem",
+            "space-md": "0.75rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1rem"
+          },
+          "fontFamily": {
+            "body-medium": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "body": ["Inter"],
+            "caption": ["Inter"],
+            "amount-lg": ["Inter"],
+            "display": ["Inter"],
+            "label": ["Inter"],
+            "subtitle": ["Inter"],
+            "title": ["Inter"]
+          },
+          "fontSize": {
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: #fbf1f2;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #dcbfc5;
+      border-radius: 9999px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb:hover {
+      background: #897176;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased font-body min-h-screen flex flex-col selection:bg-primary selection:text-on-primary">
+<!-- Application Shell Wrapper -->
+<div class="flex flex-1 min-h-screen">
+<!-- LEFT SIDEBAR (Shared Component: SideNavBar execution) -->
+<aside class="fixed left-0 top-0 h-screen w-72 flex flex-col z-30 bg-surface-container-lowest border-r border-surface-variant shadow-sm justify-between py-space-xl px-space-lg overflow-y-auto custom-scroll">
+<!-- Sidebar Header / Institutional Crest -->
+<div class="flex flex-col gap-space-lg">
+<div class="flex items-center gap-space-md pb-space-md border-b border-surface-variant">
+<div class="w-12 h-12 rounded-xl bg-primary-container text-on-primary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-2xl" data-icon="account_balance">account_balance</span>
+</div>
+<div class="flex flex-col">
+<span class="text-subtitle font-subtitle text-primary tracking-tight">YourApp Revenue Ops</span>
+<span class="text-caption font-caption text-on-surface-variant">Enterprise Portal</span>
+</div>
+</div>
+<!-- Tenant Identification Tag -->
+<div class="bg-surface-container-low p-space-md rounded-xl border border-outline-variant flex flex-col gap-1">
+<div class="flex items-center gap-space-xs text-primary font-label text-caption">
+<span class="material-symbols-outlined text-base" data-icon="assured_workload">assured_workload</span>
+<span>LAGOS STATE IRS (LIRS)</span>
+</div>
+<div class="text-on-surface font-label text-label">Ikoyi-Obalende LCDA</div>
+<div class="text-on-surface-variant text-caption font-caption">Tax Zone #REV-TEN-008</div>
+</div>
+<!-- Main Navigation Tab Group -->
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="tune">tune</span>
+<span>Revenue Items</span>
+</a>
+<!-- ACTIVE ITEM: Payers Registry -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg bg-surface-container-low text-primary font-label text-label transition-all duration-150 ease-in-out shadow-sm border-l-4 border-primary" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="account_balance_wallet" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+<span>Payers Registry</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="pending_actions">pending_actions</span>
+<span>Collections &amp; Reconciliation</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="handshake">handshake</span>
+<span>Field Collectors &amp; Cash</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="payments">payments</span>
+<span>Settlement &amp; Fees</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="history">history</span>
+<span>Reports &amp; Audit Log</span>
+</a>
+</nav>
+</div>
+<!-- Navigation Footer Cluster -->
+<div class="pt-space-lg border-t border-surface-variant flex flex-col gap-1">
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="admin_panel_settings">admin_panel_settings</span>
+<span>Security &amp; Settings</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-secondary font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="logout">logout</span>
+<span>Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- MAIN RIGHT VIEWPORT (Includes TopNavBar execution and Workspace Canvas) -->
+<div class="ml-72 flex-1 flex flex-col min-w-0 bg-background">
+<!-- TOP NAVIGATION BAR (Shared Component: TopNavBar execution) -->
+<header class="sticky top-0 z-20 h-16 w-full bg-surface-container-lowest border-b border-surface-variant flex items-center justify-between px-space-xl">
+<!-- Search bar on left -->
+<div class="flex items-center gap-space-lg flex-1 max-w-xl">
+<div class="relative w-full">
+<span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-outline">
+<span class="material-symbols-outlined text-xl" data-icon="search">search</span>
+</span>
+<input class="w-full h-10 pl-10 pr-4 rounded-xl bg-surface-container-low border border-outline-variant text-on-surface text-body placeholder:text-outline focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container font-body text-label" placeholder="Search taxpayer ID, business name, phone, NIN/RC..." type="text"/>
+</div>
+</div>
+<!-- Tenant Badge & Dual Signoff Actions -->
+<div class="flex items-center gap-space-lg">
+<!-- Dual Authorization Indicator Badge -->
+<div class="hidden xl:flex items-center gap-space-xs px-3 py-1.5 rounded-full bg-surface-container-low border border-outline-variant text-primary font-label text-caption">
+<span class="material-symbols-outlined text-base" data-icon="verified_user">verified_user</span>
+<span>Dual Authorization: Armed</span>
+</div>
+<!-- Utility Icons -->
+<div class="flex items-center gap-space-xs">
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors" title="Notifications">
+<span class="material-symbols-outlined text-xl" data-icon="notifications">notifications</span>
+</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors" title="Support &amp; Guide">
+<span class="material-symbols-outlined text-xl" data-icon="help_outline">help_outline</span>
+</button>
+</div>
+<div class="h-6 w-px bg-surface-variant"></div>
+<!-- Staff Officer Profile / Collector Info -->
+<div class="flex items-center gap-space-md">
+<div class="flex flex-col text-right">
+<span class="text-label font-label text-on-surface">Hon. Babatunde Fowler-Adeleke</span>
+<span class="text-caption font-caption text-on-surface-variant">Executive Collector • Cadre IV</span>
+</div>
+<img alt="Staff Officer Passport Photo" class="w-10 h-10 rounded-full object-cover border-2 border-primary-container" data-alt="A distinguished Nigerian municipal revenue executive officer wearing modern corporate attire with subtle burgundy trim, captured in warm, high-key studio lighting with soft institutional depth and crisp professional clarity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBL_TC71dCrN5sg_00A1MKjUh7p8qmPICQ-2qGCbx3L_litfRtTLnDfS7RCYfeKqwg7i4tHUPdieRxE0qZOJq7XaLxqoJzLXgqixYB93m_My_Sgqe97-30G_jXaDMYfveVgixp3WeEMbMOSUne-b_KA72-_uCq4rMGsD6Bo3Z_RgyUyw2RRScyagxRn3wQ_jjb_Ep0ntby6Te2tm863x3VLgUQtcffYLOo-pasISP2Z"/>
+</div>
+</div>
+</header>
+<!-- MAIN CONTENT CANVAS -->
+<main class="flex-1 p-space-xl flex flex-col gap-space-xl">
+<!-- Page Header & Action Controls -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-lg">
+<div>
+<div class="flex items-center gap-space-sm mb-1">
+<span class="px-2.5 py-0.5 rounded text-xs font-label bg-surface-container-low text-primary border border-outline-variant">W-REV-003</span>
+<span class="text-caption font-caption text-on-surface-variant">Ikoyi-Obalende LCDA Directorate</span>
+</div>
+<h1 class="text-title font-title text-primary tracking-tight">Payers Registry &amp; Taxpayer Identification Directory</h1>
+<p class="text-caption font-caption text-on-surface-variant mt-0.5">Comprehensive database of registered corporate, commercial, and individual taxpayers, digital account linkage status, and batch import workflows.</p>
+</div>
+<div class="flex items-center gap-space-md shrink-0">
+<button class="h-[52px] px-space-xl rounded-xl border border-outline-variant bg-surface-container-lowest text-on-surface font-label text-label flex items-center gap-space-sm hover:bg-surface-container-low transition-colors shadow-sm">
+<span class="material-symbols-outlined text-lg" data-icon="file_download">file_download</span>
+<span>Export Registry (CSV/Excel)</span>
+</button>
+<button class="h-[52px] px-space-xl rounded-xl bg-primary-container text-on-primary font-label text-label flex items-center gap-space-sm hover:bg-primary transition-colors shadow-sm">
+<span class="material-symbols-outlined text-lg" data-icon="upload_file">upload_file</span>
+<span>+ Import Payers (CSV Wizard)</span>
+</button>
+</div>
+</div>
+<!-- Registry Health KPI Strip (4 Stat Cards) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-lg">
+<!-- KPI 1 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl border border-outline-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-on-surface-variant font-medium">Total Registered Payers</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-low text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-lg" data-icon="groups">groups</span>
+</div>
+</div>
+<div class="mt-space-md">
+<div class="text-title font-title text-on-surface">14,250 Payers</div>
+<p class="text-caption font-caption text-on-surface-variant mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-primary" data-icon="location_on">location_on</span>
+                Ikoyi, Obalende &amp; VI Zones
+              </p>
+</div>
+</div>
+<!-- KPI 2 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl border border-outline-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-on-surface-variant font-medium">Linked to YourApp Mobile</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-low text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-lg" data-icon="smartphone">smartphone</span>
+</div>
+</div>
+<div class="mt-space-md">
+<div class="text-title font-title text-on-surface">11,840 Accounts</div>
+<p class="text-caption font-caption text-primary font-medium mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="check_circle">check_circle</span>
+                83.1% Auto-pay or 1-tap debit enabled
+              </p>
+</div>
+</div>
+<!-- KPI 3 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl border border-outline-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-on-surface-variant font-medium">Unlinked / Physical Only</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-low text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-lg" data-icon="sms_failed">sms_failed</span>
+</div>
+</div>
+<div class="mt-space-md">
+<div class="text-title font-title text-on-surface">2,410 Payers</div>
+<p class="text-caption font-caption text-on-surface-variant mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-secondary" data-icon="schedule">schedule</span>
+                SMS / field collector visits pending
+              </p>
+</div>
+</div>
+<!-- KPI 4 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl border border-outline-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-on-surface-variant font-medium">Identity Verification Index</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-low text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-lg" data-icon="badge">badge</span>
+</div>
+</div>
+<div class="mt-space-md">
+<div class="text-title font-title text-on-surface">97.4% Matched</div>
+<p class="text-caption font-caption text-on-surface-variant mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-primary" data-icon="verified">verified</span>
+                JTB TIN, CAC RC &amp; BVN verified
+              </p>
+</div>
+</div>
+</div>
+<!-- Fast Batch Import Wizard Banner -->
+<div class="bg-surface-container-low border border-outline-variant rounded-2xl p-space-lg flex flex-col md:flex-row items-center justify-between gap-space-lg">
+<div class="flex items-center gap-space-lg">
+<div class="w-12 h-12 rounded-xl bg-surface-container-lowest border border-outline-variant flex items-center justify-center text-primary shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-2xl" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<div class="flex flex-col">
+<span class="text-subtitle font-subtitle text-primary">Fast Batch Taxpayer Onboarding Wizard</span>
+<p class="text-caption font-caption text-on-surface-variant">Import CSV/Excel rosters. Automatic column mapping to JTB Tax ID, Property Code, and Phone Number with duplicate conflict detection.</p>
+</div>
+</div>
+<div class="flex items-center gap-space-md shrink-0">
+<button class="px-4 py-2 rounded-xl bg-surface-container-lowest border border-outline-variant text-on-surface font-label text-caption hover:bg-surface-container transition-colors">
+              Download CSV Template
+            </button>
+<button class="px-4 py-2 rounded-xl bg-primary text-on-primary font-label text-caption hover:bg-primary-container transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-base" data-icon="upload">upload</span>
+              Launch Wizard
+            </button>
+</div>
+</div>
+<!-- Split View: Table (Left/Center) & Dossier Drawer (Right) -->
+<div class="grid grid-cols-12 gap-space-xl items-start">
+<!-- Main Table Section (Col 8) -->
+<div class="col-span-12 xl:col-span-8 bg-surface-container-lowest rounded-2xl border border-outline-variant shadow-sm flex flex-col overflow-hidden">
+<!-- Filters & Toolbar -->
+<div class="p-space-lg border-b border-surface-variant flex flex-col gap-space-md">
+<div class="flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="text-label font-label text-on-surface">Filter Payers:</span>
+<div class="flex items-center bg-surface-container-low p-1 rounded-xl border border-outline-variant text-caption font-label">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest text-primary shadow-sm font-semibold">All (14.2k)</button>
+<button class="px-3 py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface">Corporate Entity</button>
+<button class="px-3 py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface">SME Trader</button>
+<button class="px-3 py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface">Residential</button>
+<button class="px-3 py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface">Artisan</button>
+</div>
+</div>
+<div class="flex items-center gap-space-sm">
+<select class="h-9 px-3 rounded-xl bg-surface-container-low border border-outline-variant text-caption font-label text-on-surface focus:ring-primary focus:border-primary">
+<option>Linkage: All States</option>
+<option>Linked App Account</option>
+<option>Unlinked SMS Only</option>
+<option>Pending Invite</option>
+</select>
+<select class="h-9 px-3 rounded-xl bg-surface-container-low border border-outline-variant text-caption font-label text-on-surface focus:ring-primary focus:border-primary">
+<option>Arrears: All</option>
+<option>Up to Date</option>
+<option>Arrears &lt;30d</option>
+<option>Defaulter &gt;90d</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Taxpayers Directory Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-surface-variant text-caption font-label text-on-surface-variant">
+<th class="py-3 px-4 font-semibold">Taxpayer &amp; ID</th>
+<th class="py-3 px-4 font-semibold">Official Credentials</th>
+<th class="py-3 px-4 font-semibold">Location / Property</th>
+<th class="py-3 px-4 font-semibold text-right">Billed / Outstanding</th>
+<th class="py-3 px-4 font-semibold">Linkage Status</th>
+<th class="py-3 px-4 font-semibold text-center">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-variant text-label font-body">
+<!-- Row 1: Active Dossier Item -->
+<tr class="bg-surface-container-low/60 hover:bg-surface-container-low transition-colors cursor-pointer border-l-4 border-l-primary">
+<td class="py-4 px-4">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-lg bg-primary-container text-on-primary flex items-center justify-center font-bold text-caption shrink-0">
+                          EM
+                        </div>
+<div>
+<div class="font-label text-on-surface font-semibold">Eko Grand Marina Hotel</div>
+<div class="text-caption font-caption text-primary">#PAY-0941 • Tier 3 Corp</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="text-caption font-caption text-on-surface font-medium">CAC RC-419820</div>
+<div class="text-caption font-caption text-on-surface-variant">JTB TIN-992014</div>
+</td>
+<td class="py-4 px-4">
+<div class="text-caption font-caption text-on-surface">Admiralty Way, Lekki</div>
+<div class="text-caption font-caption text-on-surface-variant">3 Revenue Heads</div>
+</td>
+<td class="py-4 px-4 text-right">
+<div class="text-caption font-caption text-on-surface font-semibold">₦5,250,000.00</div>
+<div class="text-caption font-caption text-secondary font-medium">₦1,000,000.00 Due</div>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-label bg-surface-container text-primary border border-outline-variant">
+<span class="material-symbols-outlined text-xs" data-icon="check_circle">check_circle</span>
+                        Auto-Pay Armed
+                      </span>
+</td>
+<td class="py-4 px-4 text-center">
+<button class="p-1.5 rounded-lg text-primary hover:bg-surface-container-high transition-colors" title="Viewing Dossier">
+<span class="material-symbols-outlined text-xl" data-icon="visibility">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-4 px-4">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-lg bg-surface-container-high text-on-surface flex items-center justify-center font-bold text-caption shrink-0">
+                          VC
+                        </div>
+<div>
+<div class="font-label text-on-surface font-semibold">Victoria Crest Logistics Ltd</div>
+<div class="text-caption font-caption text-on-surface-variant">#PAY-0942 • Commercial</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="text-caption font-caption text-on-surface font-medium">CAC RC-881029</div>
+<div class="text-caption font-caption text-on-surface-variant">JTB TIN-409112</div>
+</td>
+<td class="py-4 px-4">
+<div class="text-caption font-caption text-on-surface">Awolowo Road, Ikoyi</div>
+<div class="text-caption font-caption text-on-surface-variant">2 Revenue Heads</div>
+</td>
+<td class="py-4 px-4 text-right">
+<div class="text-caption font-caption text-on-surface font-semibold">₦2,180,000.00</div>
+<div class="text-caption font-caption text-on-surface-variant">₦0.00 (Settled)</div>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-label bg-surface-container-low text-primary border border-outline-variant">
+<span class="material-symbols-outlined text-xs" data-icon="smartphone">smartphone</span>
+                        Linked • Mobile App
+                      </span>
+</td>
+<td class="py-4 px-4 text-center">
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors" title="View Dossier">
+<span class="material-symbols-outlined text-xl" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-4 px-4">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-lg bg-surface-container-high text-on-surface flex items-center justify-center font-bold text-caption shrink-0">
+                          AS
+                        </div>
+<div>
+<div class="font-label text-on-surface font-semibold">Alhaja Sinatu Stores</div>
+<div class="text-caption font-caption text-on-surface-variant">#PAY-0943 • SME Trader</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="text-caption font-caption text-on-surface font-medium">BN-294012</div>
+<div class="text-caption font-caption text-on-surface-variant">NIN-78019283110</div>
+</td>
+<td class="py-4 px-4">
+<div class="text-caption font-caption text-on-surface">Obalende Modern Market</div>
+<div class="text-caption font-caption text-on-surface-variant">1 Revenue Head</div>
+</td>
+<td class="py-4 px-4 text-right">
+<div class="text-caption font-caption text-on-surface font-semibold">₦320,000.00</div>
+<div class="text-caption font-caption text-secondary font-medium">₦140,000.00 Arrears</div>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-label bg-surface-container-low text-secondary border border-outline-variant">
+<span class="material-symbols-outlined text-xs" data-icon="sms">sms</span>
+                        Unlinked • SMS Sent
+                      </span>
+</td>
+<td class="py-4 px-4 text-center">
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors" title="View Dossier">
+<span class="material-symbols-outlined text-xl" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-4 px-4">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-lg bg-surface-container-high text-on-surface flex items-center justify-center font-bold text-caption shrink-0">
+                          FO
+                        </div>
+<div>
+<div class="font-label text-on-surface font-semibold">Engr. Femi Otedola Residence</div>
+<div class="text-caption font-caption text-on-surface-variant">#PAY-0944 • Residential Property</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="text-caption font-caption text-on-surface font-medium">LUC PROP-IK-0092</div>
+<div class="text-caption font-caption text-on-surface-variant">BVN-2219084410</div>
+</td>
+<td class="py-4 px-4">
+<div class="text-caption font-caption text-on-surface">Queen's Drive, Ikoyi</div>
+<div class="text-caption font-caption text-on-surface-variant">2 Revenue Heads</div>
+</td>
+<td class="py-4 px-4 text-right">
+<div class="text-caption font-caption text-on-surface font-semibold">₦1,850,000.00</div>
+<div class="text-caption font-caption text-on-surface-variant">₦0.00 (Settled)</div>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-label bg-surface-container-low text-primary border border-outline-variant">
+<span class="material-symbols-outlined text-xs" data-icon="smartphone">smartphone</span>
+                        Linked • Mobile App
+                      </span>
+</td>
+<td class="py-4 px-4 text-center">
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors" title="View Dossier">
+<span class="material-symbols-outlined text-xl" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-4 px-4">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-lg bg-surface-container-high text-on-surface flex items-center justify-center font-bold text-caption shrink-0">
+                          BT
+                        </div>
+<div>
+<div class="font-label text-on-surface font-semibold">Balogun Textile Merchants Assoc</div>
+<div class="text-caption font-caption text-on-surface-variant">#PAY-0945 • Trader Guild</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="text-caption font-caption text-on-surface font-medium">CAC IT-192083</div>
+<div class="text-caption font-caption text-on-surface-variant">JTB TIN-551029</div>
+</td>
+<td class="py-4 px-4">
+<div class="text-caption font-caption text-on-surface">Broad Street Commercial</div>
+<div class="text-caption font-caption text-on-surface-variant">3 Revenue Heads</div>
+</td>
+<td class="py-4 px-4 text-right">
+<div class="text-caption font-caption text-on-surface font-semibold">₦4,200,000.00</div>
+<div class="text-caption font-caption text-secondary font-medium">₦850,000.00 Arrears</div>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-label bg-surface-container-low text-secondary border border-outline-variant">
+<span class="material-symbols-outlined text-xs" data-icon="pending">pending</span>
+                        Invite Pending
+                      </span>
+</td>
+<td class="py-4 px-4 text-center">
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors" title="View Dossier">
+<span class="material-symbols-outlined text-xl" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Pagination Bar -->
+<div class="p-space-md border-t border-surface-variant flex items-center justify-between bg-surface-container-low/40">
+<span class="text-caption font-caption text-on-surface-variant">Showing 1 to 5 of 14,250 registered taxpayers</span>
+<div class="flex items-center gap-space-xs">
+<button class="px-3 py-1.5 rounded-lg border border-outline-variant bg-surface-container-lowest text-caption font-label text-on-surface-variant hover:bg-surface-container-high disabled:opacity-50" disabled="">Previous</button>
+<button class="w-8 h-8 rounded-lg bg-primary-container text-on-primary text-caption font-label">1</button>
+<button class="w-8 h-8 rounded-lg text-caption font-label text-on-surface hover:bg-surface-container-high">2</button>
+<button class="w-8 h-8 rounded-lg text-caption font-label text-on-surface hover:bg-surface-container-high">3</button>
+<span class="px-1 text-on-surface-variant">...</span>
+<button class="w-8 h-8 rounded-lg text-caption font-label text-on-surface hover:bg-surface-container-high">285</button>
+<button class="px-3 py-1.5 rounded-lg border border-outline-variant bg-surface-container-lowest text-caption font-label text-on-surface hover:bg-surface-container-high">Next</button>
+</div>
+</div>
+</div>
+<!-- Right Payer Dossier Drawer (Col 4) -->
+<div class="col-span-12 xl:col-span-4 bg-surface-container-lowest rounded-2xl border border-outline-variant shadow-sm flex flex-col p-space-lg gap-space-lg">
+<!-- Dossier Header -->
+<div class="flex items-start justify-between pb-space-md border-b border-surface-variant">
+<div>
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container animate-pulse"></span>
+<span class="text-caption font-caption text-primary font-semibold tracking-wide">ACTIVE DOSSIER PROFILE</span>
+</div>
+<h2 class="text-subtitle font-subtitle text-on-surface mt-1">Eko Grand Marina Hotel</h2>
+<span class="text-caption font-caption text-on-surface-variant">Tax ID: #PAY-0941 • Admiralty Way, Lekki</span>
+</div>
+<div class="px-2.5 py-1 rounded-full bg-surface-container text-primary font-label text-xs border border-outline-variant">
+                Tier 3 Corporate
+              </div>
+</div>
+<!-- Taxpayer Entity Profile & Contact -->
+<div class="bg-surface-container-low p-space-md rounded-xl border border-outline-variant flex flex-col gap-2">
+<span class="text-caption font-label text-on-surface font-semibold">Corporate Representative</span>
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-primary font-bold">
+                  AP
+                </div>
+<div class="flex flex-col">
+<span class="text-label font-label text-on-surface">Chief Accountant Adeola Philips</span>
+<span class="text-caption font-caption text-on-surface-variant">+234 803 411 9901 • accounts@ekograndmarina.ng</span>
+</div>
+</div>
+</div>
+<!-- Linked YourApp Account Card -->
+<div class="p-space-md rounded-xl border border-outline-variant bg-surface-container-lowest shadow-sm flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-on-surface-variant font-medium">Digital Account Linkage</span>
+<span class="inline-flex items-center gap-1 text-xs text-primary font-label">
+<span class="material-symbols-outlined text-sm" data-icon="check_circle">check_circle</span>
+                  Verified Auto-Pay
+                </span>
+</div>
+<div class="text-label font-label text-on-surface mt-1">Primary Settlement Account #0124892019</div>
+<div class="flex items-center justify-between text-caption font-caption text-on-surface-variant">
+<span>Zenith Bank Plc</span>
+<span>Auto-Debit on 1st of Quarter</span>
+</div>
+</div>
+<!-- Assessment Ledger & Dues Breakdown -->
+<div class="flex flex-col gap-space-sm">
+<span class="text-label font-label text-on-surface">2027 Assessment &amp; Levies Ledger</span>
+<!-- Item 1 -->
+<div class="p-space-md rounded-xl bg-surface-container-low border border-outline-variant flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="text-caption font-label text-on-surface">Commercial Premises Permit</span>
+<span class="text-caption font-label text-secondary">₦1,000,000.00 Due</span>
+</div>
+<div class="flex items-center justify-between text-caption font-caption text-on-surface-variant">
+<span>Total Billed: ₦4,500,000.00</span>
+<span class="text-primary font-medium">₦3,500,000.00 Paid</span>
+</div>
+<div class="w-full bg-surface-container-highest rounded-full h-1.5 mt-1 overflow-hidden">
+<div class="bg-primary h-1.5 rounded-full" style="width: 77.7%;"></div>
+</div>
+<div class="text-caption font-caption text-secondary mt-0.5">Due in 12 days (Grace period active)</div>
+</div>
+<!-- Item 2 -->
+<div class="p-space-md rounded-xl bg-surface-container-low border border-outline-variant flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="text-caption font-label text-on-surface">Waste Management Surcharge (LAWMA)</span>
+<span class="text-caption font-label text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-xs" data-icon="done_all">done_all</span>
+                    Paid in full
+                  </span>
+</div>
+<div class="flex items-center justify-between text-caption font-caption text-on-surface-variant">
+<span>Assessed: ₦750,000.00</span>
+<span class="text-on-surface font-medium">100% Remitted</span>
+</div>
+</div>
+</div>
+<!-- Compliance History Badge -->
+<div class="p-space-md rounded-xl bg-surface-container-low border border-outline-variant flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-xl bg-surface-container-lowest text-primary flex items-center justify-center shrink-0 border border-outline-variant">
+<span class="material-symbols-outlined text-2xl" data-icon="shield">shield</span>
+</div>
+<div class="flex flex-col">
+<span class="text-label font-label text-on-surface">Exemplary Compliance History</span>
+<span class="text-caption font-caption text-on-surface-variant">4 consecutive years 100% on-time settlement. Zero enforcement seals issued.</span>
+</div>
+</div>
+<!-- Quick Action Triggers (52px Touch Standard) -->
+<div class="pt-space-md border-t border-surface-variant flex flex-col gap-space-md">
+<button class="h-[52px] w-full rounded-xl bg-primary-container text-on-primary font-label text-label flex items-center justify-center gap-space-sm hover:bg-primary transition-colors shadow-sm">
+<span class="material-symbols-outlined text-lg" data-icon="send">send</span>
+<span>Send WhatsApp Link / Reminder</span>
+</button>
+<button class="h-[52px] w-full rounded-xl border border-outline-variant bg-surface-container-lowest text-on-surface font-label text-label flex items-center justify-center gap-space-sm hover:bg-surface-container-low transition-colors shadow-sm">
+<span class="material-symbols-outlined text-lg" data-icon="edit_note">edit_note</span>
+<span>Issue Re-assessment Notice</span>
+</button>
+<button class="h-[52px] w-full rounded-xl border border-outline-variant bg-surface-container-lowest text-primary font-label text-label flex items-center justify-center gap-space-sm hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="verified">verified</span>
+<span>Download Certified Clearance (TCC)</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- REGULATORY FOOTER -->
+<footer class="mt-auto border-t border-surface-variant bg-surface-container-lowest py-space-lg px-space-xl flex flex-col md:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md text-caption font-caption text-on-surface-variant">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-base text-primary" data-icon="balance">balance</span>
+            Regulated Municipal Tax &amp; Levies Framework
+          </span>
+<span>•</span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-base text-primary" data-icon="sync">sync</span>
+            JTB Unified Tax Registry Synchronized
+          </span>
+<span>•</span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-base text-primary" data-icon="lock">lock</span>
+            ISO 27001 Cryptographic Assurance
+          </span>
+</div>
+<div class="text-caption font-caption text-on-surface-variant">
+          YourApp Institutional Revenue Solutions • Lagos State LCDA Directorate
+        </div>
+</footer>
+</div>
+</div>
+</body></html>

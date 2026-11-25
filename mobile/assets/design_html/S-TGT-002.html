@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Create Goal - Target Savings</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary": "#3b3236",
+            "secondary-fixed-dim": "#ffb4a8",
+            "tertiary-container": "#53484d",
+            "secondary-container": "#fc6955",
+            "on-secondary": "#ffffff",
+            "surface": "#fff8f8",
+            "on-primary-fixed-variant": "#881646",
+            "on-primary": "#ffffff",
+            "on-tertiary": "#ffffff",
+            "surface-container-highest": "#e9e0e1",
+            "on-background": "#1f1b1c",
+            "primary-container": "#8e1b4a",
+            "on-tertiary-fixed": "#21191e",
+            "on-error": "#ffffff",
+            "secondary-fixed": "#ffdad4",
+            "on-surface-variant": "#564146",
+            "surface-container-low": "#fbf1f2",
+            "inverse-primary": "#ffb1c5",
+            "on-secondary-fixed-variant": "#8c170e",
+            "surface-bright": "#fff8f8",
+            "on-primary-fixed": "#3f001b",
+            "surface-container-high": "#efe6e7",
+            "primary-fixed": "#ffd9e1",
+            "outline": "#897176",
+            "error": "#ba1a1a",
+            "surface-variant": "#e9e0e1",
+            "inverse-on-surface": "#f8eeef",
+            "tertiary-fixed": "#eedee4",
+            "on-secondary-fixed": "#410000",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "on-tertiary-container": "#c6b7bd",
+            "surface-tint": "#a8315d",
+            "error-container": "#ffdad6",
+            "background": "#fff8f8",
+            "surface-dim": "#e1d8d9",
+            "on-primary-container": "#ffa0ba",
+            "on-surface": "#1f1b1c",
+            "on-error-container": "#93000a",
+            "on-secondary-container": "#690000",
+            "primary-fixed-dim": "#ffb1c5",
+            "outline-variant": "#dcbfc5",
+            "secondary": "#ae3123",
+            "surface-container-lowest": "#ffffff",
+            "inverse-surface": "#342f30",
+            "surface-container": "#f5eced",
+            "primary": "#6d0033"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "space-2xl": "2rem",
+            "space-3xl": "3rem",
+            "margin": "1rem",
+            "space-xl": "1.5rem",
+            "space-lg": "1rem",
+            "space-md": "0.75rem",
+            "gutter": "1rem",
+            "space-xs": "0.25rem"
+          },
+          "fontFamily": {
+            "caption": ["Inter"],
+            "title": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "amount-lg": ["Inter"],
+            "subtitle": ["Inter"],
+            "display": ["Inter"],
+            "body-medium": ["Inter"],
+            "body": ["Inter"],
+            "label": ["Inter"]
+          },
+          "fontSize": {
+            "caption": ["13px", {"lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+            "title": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700"}],
+            "amount-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "amount-lg": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700"}],
+            "subtitle": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "display": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "body-medium": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500"}],
+            "body": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400"}],
+            "label": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex justify-center selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Mobile Device Shell (390px x 844px context standard) -->
+<main class="w-full max-w-[560px] min-h-screen bg-surface flex flex-col justify-between shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08)] relative pb-28">
+<!-- Top App Bar & Flow Header -->
+<header class="sticky top-0 z-40 bg-surface/95 backdrop-blur-md px-margin py-space-sm">
+<div class="flex items-center justify-between min-h-[52px]">
+<button aria-label="Go back" class="w-12 h-12 flex items-center justify-center rounded-xl text-on-surface hover:bg-surface-container active:scale-95 transition-all duration-150" type="button">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="flex flex-col items-center">
+<span class="font-label text-caption text-on-surface-variant font-medium">Step 1 of 5</span>
+<h1 class="font-subtitle text-subtitle text-primary font-bold">Create Goal</h1>
+</div>
+<div class="w-12 h-12 flex items-center justify-center">
+<span class="font-label text-caption text-outline font-semibold">Cancel</span>
+</div>
+</div>
+<!-- Segmented Multi-Step Progress Tracker -->
+<nav aria-label="Creation Steps" class="pt-space-sm pb-space-xs">
+<div class="grid grid-cols-5 gap-1.5 items-center">
+<div class="h-1.5 rounded-full bg-primary-container"></div>
+<div class="h-1.5 rounded-full bg-outline-variant/50"></div>
+<div class="h-1.5 rounded-full bg-outline-variant/50"></div>
+<div class="h-1.5 rounded-full bg-outline-variant/50"></div>
+<div class="h-1.5 rounded-full bg-outline-variant/50"></div>
+</div>
+<div class="flex justify-between items-center mt-2 px-0.5">
+<span class="font-label text-[11px] font-semibold text-primary">Details</span>
+<span class="font-label text-[11px] font-medium text-on-surface-variant">Plan</span>
+<span class="font-label text-[11px] font-medium text-on-surface-variant">Mode</span>
+<span class="font-label text-[11px] font-medium text-on-surface-variant">Funding</span>
+<span class="font-label text-[11px] font-medium text-on-surface-variant">Review</span>
+</div>
+</nav>
+</header>
+<!-- Main Form Scroll Area -->
+<div class="px-margin flex-1 flex flex-col space-y-space-xl pt-space-xs">
+<!-- Section Headline & Hero Greeting -->
+<section class="space-y-1">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-surface-container text-primary text-caption font-semibold">
+<span class="material-symbols-outlined text-[16px]" data-icon="lock" style="font-variation-settings: 'FILL' 1;">lock</span>
+<span>Target Savings by YourApp</span>
+</div>
+<h2 class="font-title text-title text-on-surface">What are you saving towards?</h2>
+<p class="font-body text-body text-on-surface-variant">Set a clear milestone, personalize your pace, and automate discipline.</p>
+</section>
+<!-- Form Inputs Group -->
+<form class="space-y-space-xl" onsubmit="event.preventDefault();">
+<!-- Goal Name Field -->
+<div class="flex flex-col space-y-space-xs">
+<label class="font-caption text-caption text-on-surface-variant font-medium" for="goal-name">Goal Name</label>
+<div class="relative">
+<input class="w-full h-[52px] px-space-lg rounded-xl bg-surface-container-lowest border border-outline-variant focus:border-primary-container focus:ring-0 text-on-surface font-body text-body placeholder:text-outline transition-colors" id="goal-name" placeholder="e.g., House Rent, MBA Tuition, Detty December" type="text" value="House Rent 2026"/>
+<div class="absolute right-4 top-1/2 -translate-y-1/2 text-primary">
+<span class="material-symbols-outlined text-[20px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+</div>
+<!-- Target Amount Field & Tabular Input -->
+<div class="flex flex-col space-y-space-xs">
+<div class="flex justify-between items-baseline">
+<label class="font-caption text-caption text-on-surface-variant font-medium" for="target-amount">Target Amount</label>
+<span class="font-caption text-caption text-outline">Minimum target: ₦5,000.00</span>
+</div>
+<div class="relative flex items-center bg-surface-container-lowest border border-outline-variant rounded-xl focus-within:border-primary-container transition-all">
+<span class="pl-space-lg font-title text-title text-primary font-bold">₦</span>
+<input class="w-full h-[52px] pl-2 pr-space-lg bg-transparent border-0 text-on-surface font-title text-title tabular-nums font-bold focus:ring-0" id="target-amount" placeholder="0.00" type="text" value="350,000.00"/>
+</div>
+<!-- Quick Suggestion Chips -->
+<div class="pt-1.5 flex gap-2 overflow-x-auto no-scrollbar py-0.5">
+<button class="h-9 px-3.5 rounded-lg border border-outline-variant bg-surface-container-low text-on-surface font-label text-caption font-semibold tabular-nums hover:border-primary-container active:scale-95 transition-all" type="button">₦50,000</button>
+<button class="h-9 px-3.5 rounded-lg border border-outline-variant bg-surface-container-low text-on-surface font-label text-caption font-semibold tabular-nums hover:border-primary-container active:scale-95 transition-all" type="button">₦100,000</button>
+<button class="h-9 px-3.5 rounded-lg border border-outline-variant bg-surface-container-low text-on-surface font-label text-caption font-semibold tabular-nums hover:border-primary-container active:scale-95 transition-all" type="button">₦250,000</button>
+<button class="h-9 px-3.5 rounded-lg border-2 border-primary-container bg-surface-container-lowest text-primary font-label text-caption font-bold tabular-nums shadow-sm active:scale-95 transition-all" type="button">₦350,000</button>
+<button class="h-9 px-3.5 rounded-lg border border-outline-variant bg-surface-container-low text-on-surface font-label text-caption font-semibold tabular-nums hover:border-primary-container active:scale-95 transition-all" type="button">₦500,000</button>
+</div>
+</div>
+<!-- Category & Theme Selector (Bento / Grid) -->
+<div class="flex flex-col space-y-space-xs">
+<label class="font-caption text-caption text-on-surface-variant font-medium">Category Theme</label>
+<div class="grid grid-cols-3 gap-2.5">
+<!-- Category 1: Selected -->
+<button class="flex flex-col items-center justify-center p-3 rounded-xl border-2 border-primary-container bg-surface-container-lowest shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] relative text-center active:scale-95 transition-all" type="button">
+<span class="absolute top-1.5 right-1.5 text-primary">
+<span class="material-symbols-outlined text-[16px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</span>
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed mb-1.5">
+<span class="material-symbols-outlined text-[20px]" data-icon="home">home</span>
+</div>
+<span class="font-label text-[12px] font-bold text-primary leading-tight">Rent &amp; Housing</span>
+</button>
+<!-- Category 2 -->
+<button class="flex flex-col items-center justify-center p-3 rounded-xl border border-outline-variant bg-surface-container-lowest hover:border-primary-container/40 active:scale-95 transition-all text-center" type="button">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant mb-1.5">
+<span class="material-symbols-outlined text-[20px]" data-icon="storefront">storefront</span>
+</div>
+<span class="font-label text-[12px] font-medium text-on-surface leading-tight">Business Float</span>
+</button>
+<!-- Category 3 -->
+<button class="flex flex-col items-center justify-center p-3 rounded-xl border border-outline-variant bg-surface-container-lowest hover:border-primary-container/40 active:scale-95 transition-all text-center" type="button">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant mb-1.5">
+<span class="material-symbols-outlined text-[20px]" data-icon="devices">devices</span>
+</div>
+<span class="font-label text-[12px] font-medium text-on-surface leading-tight">Gadgets &amp; Tech</span>
+</button>
+<!-- Category 4 -->
+<button class="flex flex-col items-center justify-center p-3 rounded-xl border border-outline-variant bg-surface-container-lowest hover:border-primary-container/40 active:scale-95 transition-all text-center" type="button">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant mb-1.5">
+<span class="material-symbols-outlined text-[20px]" data-icon="flight_takeoff">flight_takeoff</span>
+</div>
+<span class="font-label text-[12px] font-medium text-on-surface leading-tight">Travel &amp; Holiday</span>
+</button>
+<!-- Category 5 -->
+<button class="flex flex-col items-center justify-center p-3 rounded-xl border border-outline-variant bg-surface-container-lowest hover:border-primary-container/40 active:scale-95 transition-all text-center" type="button">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant mb-1.5">
+<span class="material-symbols-outlined text-[20px]" data-icon="school">school</span>
+</div>
+<span class="font-label text-[12px] font-medium text-on-surface leading-tight">School &amp; Fees</span>
+</button>
+<!-- Category 6 -->
+<button class="flex flex-col items-center justify-center p-3 rounded-xl border border-outline-variant bg-surface-container-lowest hover:border-primary-container/40 active:scale-95 transition-all text-center" type="button">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant mb-1.5">
+<span class="material-symbols-outlined text-[20px]" data-icon="health_and_safety">health_and_safety</span>
+</div>
+<span class="font-label text-[12px] font-medium text-on-surface leading-tight">Emergency Fund</span>
+</button>
+</div>
+</div>
+<!-- Target Date Picker Card -->
+<div class="flex flex-col space-y-space-xs">
+<label class="font-caption text-caption text-on-surface-variant font-medium">Target Completion Date</label>
+<div class="h-[56px] px-space-lg rounded-xl border border-outline-variant bg-surface-container-lowest flex items-center justify-between shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] cursor-pointer active:scale-[0.99] transition-all">
+<div class="flex items-center space-x-3">
+<div class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]" data-icon="calendar_month">calendar_month</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-medium text-body-medium text-on-surface font-semibold tabular-nums">31 December 2026</span>
+<span class="font-caption text-[11px] text-on-surface-variant">In 68 weeks · 476 days away</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px]" data-icon="edit_calendar">edit_calendar</span>
+</div>
+</div>
+<!-- Live Contribution Calculation Preview (Bento Glass Card) -->
+<div class="rounded-xl border border-outline-variant/60 bg-surface-container-low p-space-lg space-y-3 shadow-sm">
+<div class="flex items-center justify-between border-b border-outline-variant/40 pb-2.5">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="trending_up">trending_up</span>
+<span class="font-subtitle text-[15px] font-bold text-on-surface">Target Pace Projection</span>
+</div>
+<span class="inline-flex items-center gap-1 font-caption text-xs font-semibold px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed">
+<span class="material-symbols-outlined text-[14px]" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+              11.5% p.a.
+            </span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant">
+            Based on your timeline and target of <strong class="text-on-surface tabular-nums">₦350,000.00</strong>, here is your estimated automated savings pace:
+          </p>
+<div class="grid grid-cols-2 gap-2.5 pt-1">
+<div class="p-3 bg-surface-container-lowest rounded-xl border border-outline-variant/40 flex flex-col">
+<span class="font-caption text-[11px] text-on-surface-variant font-medium uppercase tracking-wider">Weekly Pace</span>
+<span class="font-title text-[18px] font-bold text-primary tabular-nums mt-0.5">₦5,147.00</span>
+<span class="font-caption text-[11px] text-outline mt-0.5">Every Monday</span>
+</div>
+<div class="p-3 bg-surface-container-lowest rounded-xl border border-outline-variant/40 flex flex-col">
+<span class="font-caption text-[11px] text-on-surface-variant font-medium uppercase tracking-wider">Monthly Pace</span>
+<span class="font-title text-[18px] font-bold text-on-surface tabular-nums mt-0.5">₦22,058.00</span>
+<span class="font-caption text-[11px] text-outline mt-0.5">Every 28th</span>
+</div>
+</div>
+</div>
+</form>
+</div>
+<!-- Sticky Bottom Action Tray (No generic borders, elevation depth) -->
+<footer class="fixed bottom-0 left-0 right-0 max-w-[560px] mx-auto bg-surface/95 backdrop-blur-md px-margin pt-3 pb-6 shadow-[0_16px_36px_-6px_rgba(30,26,27,0.16)] z-50">
+<div class="flex flex-col space-y-2.5">
+<button class="w-full h-[52px] bg-primary text-on-primary rounded-xl font-label text-body-medium font-semibold flex items-center justify-center space-x-2 shadow-[0_8px_24px_-4px_rgba(110,0,51,0.24)] active:scale-[0.98] transition-all" type="button">
+<span>Continue to Plan &amp; Mode</span>
+<span class="material-symbols-outlined text-[20px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<p class="font-caption text-[12px] text-center text-on-surface-variant flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-outline" data-icon="info">info</span>
+          You can adjust your target pace and duration at any time.
+        </p>
+</div>
+</footer>
+</main>
+</body></html>

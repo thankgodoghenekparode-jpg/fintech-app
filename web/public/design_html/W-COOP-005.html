@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YourApp Cooperative Admin - Loan Applications</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary-fixed-dim": "#ffb4a8",
+            "surface": "#fff8f8",
+            "primary-fixed": "#ffd9e1",
+            "outline-variant": "#dcbfc5",
+            "surface-container-lowest": "#ffffff",
+            "outline": "#897176",
+            "inverse-primary": "#ffb1c5",
+            "surface-tint": "#a8315d",
+            "on-background": "#1f1b1c",
+            "on-secondary": "#ffffff",
+            "error-container": "#ffdad6",
+            "on-primary": "#ffffff",
+            "on-primary-fixed-variant": "#881646",
+            "on-error": "#ffffff",
+            "surface-container-low": "#fbf1f2",
+            "on-tertiary-fixed": "#21191e",
+            "surface-container-highest": "#e9e0e1",
+            "surface-dim": "#e1d8d9",
+            "on-error-container": "#93000a",
+            "on-primary-fixed": "#3f001b",
+            "surface-container": "#f5eced",
+            "on-tertiary": "#ffffff",
+            "secondary-container": "#fc6955",
+            "on-secondary-fixed-variant": "#8c170e",
+            "primary-container": "#8e1b4a",
+            "tertiary-fixed": "#eedee4",
+            "surface-container-high": "#efe6e7",
+            "tertiary": "#3b3236",
+            "surface-bright": "#fff8f8",
+            "on-surface-variant": "#564146",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "secondary": "#ae3123",
+            "on-primary-container": "#ffa0ba",
+            "on-secondary-container": "#690000",
+            "primary": "#6d0033",
+            "inverse-surface": "#342f30",
+            "tertiary-container": "#53484d",
+            "background": "#fff8f8",
+            "on-tertiary-container": "#c6b7bd",
+            "surface-variant": "#e9e0e1",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "primary-fixed-dim": "#ffb1c5",
+            "secondary-fixed": "#ffdad4",
+            "inverse-on-surface": "#f8eeef",
+            "error": "#ba1a1a",
+            "on-secondary-fixed": "#410000",
+            "on-surface": "#1f1b1c"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "space-md": "0.75rem",
+            "space-lg": "1rem",
+            "space-xl": "1.5rem",
+            "space-2xl": "2rem",
+            "space-3xl": "3rem",
+            "margin": "1rem",
+            "gutter": "1rem"
+          },
+          "fontFamily": {
+            "body-medium": ["Inter", "sans-serif"],
+            "label": ["Inter", "sans-serif"],
+            "caption": ["Inter", "sans-serif"],
+            "amount-lg-mobile": ["Inter", "sans-serif"],
+            "title": ["Inter", "sans-serif"],
+            "display": ["Inter", "sans-serif"],
+            "amount-lg": ["Inter", "sans-serif"],
+            "body": ["Inter", "sans-serif"],
+            "subtitle": ["Inter", "sans-serif"]
+          },
+          "fontSize": {
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #fbf1f2;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #dcbfc5;
+      border-radius: 9999px;
+    }
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body antialiased min-h-screen flex selection:bg-primary-fixed selection:text-primary">
+<!-- Left Sidebar Navigation -->
+<aside class="fixed left-0 top-0 h-screen w-72 flex flex-col z-30 bg-surface-container-lowest border-r border-surface-variant shadow-sm py-space-xl px-space-lg overflow-y-auto custom-scrollbar">
+<!-- Society Crest & Branding -->
+<div class="flex items-center gap-space-md pb-space-lg border-b border-surface-variant">
+<div class="w-11 h-11 rounded-xl bg-primary-container text-on-primary flex items-center justify-center font-title text-title shadow-sm">
+<span class="material-symbols-outlined text-[24px]">account_balance</span>
+</div>
+<div class="flex flex-col overflow-hidden">
+<span class="text-subtitle font-subtitle text-primary tracking-tight truncate">YourApp Cooperative</span>
+<span class="text-caption font-caption text-on-surface-variant truncate">Lekki Phase 1 Multipurpose</span>
+</div>
+</div>
+<!-- Active Tenant Pill -->
+<div class="mt-space-md py-space-xs px-space-sm rounded-lg bg-surface-container-low flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+<span class="text-caption font-caption text-on-surface font-medium truncate">Society ID: #COOP-LAG-042</span>
+</div>
+<!-- Nav Items -->
+<nav class="flex-1 mt-space-lg space-y-1">
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">group</span>
+<span>Members</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">person_add</span>
+<span>Join Requests</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">event_repeat</span>
+<span>Plans &amp; Arrears</span>
+</a>
+<!-- Active: Loan Applications (Badge 7) -->
+<a class="flex items-center justify-between px-space-lg py-space-md rounded-lg bg-surface-container-low text-primary font-label text-label transition-colors duration-150" href="#">
+<div class="flex items-center gap-space-md">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">pending_actions</span>
+<span>Loan Applications</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-primary-container text-on-primary font-label text-caption font-bold">7</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">account_balance_wallet</span>
+<span>Loans Portfolio</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">pie_chart</span>
+<span>Shares &amp; Dividends</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">gavel</span>
+<span>Governance &amp; Rules</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">receipt_long</span>
+<span>Ledger &amp; Reports</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">verified_user</span>
+<span>Withdrawals (Dual)</span>
+</a>
+</nav>
+<!-- Footer Controls -->
+<div class="pt-space-md mt-space-lg border-t border-surface-variant space-y-1">
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">admin_panel_settings</span>
+<span>Security &amp; Settings</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-secondary font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">logout</span>
+<span>Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- Main Canvas -->
+<div class="ml-72 flex-1 flex flex-col min-w-0 bg-background">
+<!-- Top Bar -->
+<header class="sticky top-0 h-16 bg-surface-container-lowest border-b border-surface-variant z-20 flex items-center justify-between px-space-xl">
+<!-- Search Input -->
+<div class="w-80">
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-on-surface-variant text-[20px]">search</span>
+<input class="w-full h-10 pl-10 pr-4 text-label font-body rounded-lg bg-surface-container-low border border-outline-variant text-on-surface placeholder:text-on-surface-variant focus:outline-none focus:border-primary-container transition-all" placeholder="Search Member, ID or Loan ref..." type="text"/>
+</div>
+</div>
+<!-- Trailing Action Hub -->
+<div class="flex items-center gap-space-lg">
+<!-- Dual Authorization Armed Status Badge -->
+<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-50 border border-amber-200">
+<span class="material-symbols-outlined text-[16px] text-amber-700" style="font-variation-settings: 'FILL' 1;">shield_with_heart</span>
+<span class="font-label text-[12px] font-semibold text-amber-800">Dual-Authorization Armed</span>
+</div>
+<button class="w-10 h-10 rounded-lg text-on-surface-variant hover:bg-surface-container-low flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[22px]">notifications</span>
+</button>
+<button class="w-10 h-10 rounded-lg text-on-surface-variant hover:bg-surface-container-low flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[22px]">help_outline</span>
+</button>
+<div class="h-6 w-px bg-surface-variant"></div>
+<!-- Admin Profile -->
+<div class="flex items-center gap-space-md">
+<img class="w-9 h-9 rounded-full object-cover border border-outline-variant" data-alt="Dignified Nigerian male banking executive wearing formal dark suit and crisp light shirt, warm corporate indoor office background with soft lighting, natural professional expression, ultra-sharp realistic portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAW8qldWCFQ-7Y7IhQF37s7DmbDzpZcYHcnbo9zearVUL1_Zga0daL9tzEektDtFDfLzRwStqZoftwOzWPCRELUV0hlJTiiW1fmrADGiL-Qml2eJxdSvJ9UhP6ZJt6tB-Q9zMVHmMDT3xGDBUvc9jkNqa-OYW_MuueIbbxnQ7RkwfOCWzFNj-Cp0yYOQGJHxJzn_qoQEM2FLwMrc1Xhe0JrlPRAc3p185fj-9jcnmga"/>
+<div class="flex flex-col text-left">
+<span class="font-label text-label text-on-surface leading-tight">Dr. Adebayo O.</span>
+<span class="font-caption text-caption text-on-surface-variant">President &amp; Credit Chair</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Container -->
+<main class="p-space-xl space-y-space-xl flex-1 overflow-y-auto custom-scrollbar">
+<!-- Breadcrumbs & Header -->
+<div class="space-y-1">
+<div class="flex items-center gap-2 font-caption text-caption text-on-surface-variant">
+<span>Cooperative Admin</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span>Credit Committee</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-primary font-medium">Loan Applications Queue</span>
+</div>
+<div class="flex items-center justify-between pt-1">
+<div>
+<h1 class="text-title font-title text-on-surface tracking-tight">Member Loan Applications &amp; Credit Vetting</h1>
+<p class="text-body font-body text-on-surface-variant mt-0.5">Review and adjudicate member credit requests against society bylaws and guarantor savings pledges.</p>
+</div>
+<button class="h-10 px-4 rounded-xl border border-outline-variant bg-surface-container-lowest text-on-surface font-label text-label flex items-center gap-2 hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>Batch Export CSV</span>
+</button>
+</div>
+</div>
+<!-- Quick KPI Metrics Bento Row -->
+<div class="grid grid-cols-4 gap-space-lg">
+<!-- KPI 1 -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-outline-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-caption text-caption text-on-surface-variant">Pending Adjudication</span>
+<span class="p-1.5 rounded-lg bg-surface-container-low text-primary material-symbols-outlined text-[18px]">hourglass_empty</span>
+</div>
+<div class="mt-3">
+<div class="text-subtitle font-subtitle text-on-surface font-bold">7 Applications</div>
+<div class="font-caption text-caption text-on-surface-variant tabular-nums mt-0.5">₦4,850,000.00 requested volume</div>
+</div>
+</div>
+<!-- KPI 2 -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-outline-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-caption text-caption text-on-surface-variant">Fully Guaranteed (Ready)</span>
+<span class="p-1.5 rounded-lg bg-emerald-50 text-emerald-700 material-symbols-outlined text-[18px]">verified</span>
+</div>
+<div class="mt-3">
+<div class="text-subtitle font-subtitle text-emerald-800 font-bold">5 Files</div>
+<div class="font-caption text-caption text-emerald-700 mt-0.5">3/3 Guarantors committed &amp; locked</div>
+</div>
+</div>
+<!-- KPI 3 -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-outline-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-caption text-caption text-on-surface-variant">Under-Guaranteed (Action Required)</span>
+<span class="p-1.5 rounded-lg bg-rose-50 text-rose-700 material-symbols-outlined text-[18px]">warning</span>
+</div>
+<div class="mt-3">
+<div class="text-subtitle font-subtitle text-rose-800 font-bold">2 Files</div>
+<div class="font-caption text-caption text-rose-700 tabular-nums mt-0.5">₦650,000.00 guarantor deficit</div>
+</div>
+</div>
+<!-- KPI 4 -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-outline-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-caption text-caption text-on-surface-variant">Avg Processing SLA</span>
+<span class="p-1.5 rounded-lg bg-surface-container-low text-primary material-symbols-outlined text-[18px]">speed</span>
+</div>
+<div class="mt-3">
+<div class="text-subtitle font-subtitle text-on-surface font-bold">1.4 Days</div>
+<div class="font-caption text-caption text-on-surface-variant mt-0.5">Well within 3-day society constitution SLA</div>
+</div>
+</div>
+</div>
+<!-- Dual-Control Signoff Alert Banner -->
+<div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant flex items-center justify-between gap-space-lg shadow-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-lg bg-primary-container text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[22px]">policy</span>
+</div>
+<div>
+<div class="font-label text-label text-primary font-bold">Credit Committee Approval Protocol</div>
+<p class="font-caption text-caption text-on-surface-variant">
+              Facilities exceeding ₦1,000,000.00 require Level 2 dual-control signoff from both the Credit Committee Chair and the General Treasurer before disbursement can be executed.
+            </p>
+</div>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-surface-container-lowest border border-outline-variant text-[12px] font-label text-primary">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+            Tier 2 Mandate
+          </span>
+</div>
+</div>
+<!-- Filter Toolbar -->
+<div class="flex items-center justify-between gap-4">
+<!-- Status Pills -->
+<div class="flex items-center gap-2 overflow-x-auto py-1">
+<button class="px-3.5 py-1.5 rounded-lg bg-primary-container text-on-primary font-label text-label shadow-sm">
+            All (7)
+          </button>
+<button class="px-3.5 py-1.5 rounded-lg bg-surface-container-lowest border border-outline-variant text-on-surface font-label text-label hover:bg-surface-container-low transition-colors">
+            Ready for Signoff (5)
+          </button>
+<button class="px-3.5 py-1.5 rounded-lg bg-surface-container-lowest border border-outline-variant text-on-surface font-label text-label hover:bg-surface-container-low transition-colors">
+            Awaiting Guarantors (2)
+          </button>
+<button class="px-3.5 py-1.5 rounded-lg bg-surface-container-lowest border border-outline-variant text-on-surface font-label text-label hover:bg-surface-container-low transition-colors">
+            Tier 1 Facilities
+          </button>
+<button class="px-3.5 py-1.5 rounded-lg bg-surface-container-lowest border border-outline-variant text-on-surface font-label text-label hover:bg-surface-container-low transition-colors">
+            Tier 2 Facilities
+          </button>
+</div>
+<div class="flex items-center gap-2">
+<button class="h-9 px-3 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface-variant font-label text-label flex items-center gap-1.5 hover:bg-surface-container-low">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+<span>October 2027</span>
+</button>
+<button class="h-9 px-3 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface-variant font-label text-label flex items-center gap-1.5 hover:bg-surface-container-low">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+<span>Filter</span>
+</button>
+</div>
+</div>
+<!-- Main Split View Layout (60% Table / 40% Card) -->
+<div class="grid grid-cols-12 gap-space-lg items-start">
+<!-- Left Table (60% ~ 7 cols) -->
+<div class="col-span-7 bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden flex flex-col">
+<div class="px-space-lg py-space-md border-b border-surface-variant flex items-center justify-between">
+<span class="font-subtitle text-[16px] text-on-surface font-semibold">Active Loan Queue</span>
+<span class="font-caption text-caption text-on-surface-variant">Showing 7 of 7 applications</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-surface-variant font-label text-[12px] text-on-surface-variant uppercase tracking-wider">
+<th class="py-3 px-4">Application &amp; Member</th>
+<th class="py-3 px-4 text-right">Principal</th>
+<th class="py-3 px-4">Tenor &amp; Rate</th>
+<th class="py-3 px-4">Guarantors</th>
+<th class="py-3 px-4">Decision</th>
+<th class="py-3 px-3 text-center">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-variant font-caption text-caption text-on-surface">
+<!-- Row 1 (Selected Row) -->
+<tr class="bg-surface-container-low/60 hover:bg-surface-container-low cursor-pointer transition-colors border-l-4 border-l-primary">
+<td class="py-3 px-4">
+<div class="font-label text-label text-primary font-bold">#LN-REQ-2027-088</div>
+<div class="text-on-surface font-medium">Chioma Adeleke</div>
+<div class="text-[11px] text-on-surface-variant">Member #042 • Tier 2</div>
+</td>
+<td class="py-3 px-4 text-right">
+<div class="font-label text-label font-bold tabular-nums text-on-surface">₦1,050,000.00</div>
+<div class="text-[11px] text-on-surface-variant">3x Multiplier</div>
+</td>
+<td class="py-3 px-4">
+<div class="font-medium text-on-surface">6 Months</div>
+<div class="text-[11px] text-on-surface-variant">8.0% p.a.</div>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-label text-[11px] font-semibold">
+<span class="material-symbols-outlined text-[13px]">check_circle</span>
+                      3/3 (100%)
+                    </span>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-emerald-50 text-emerald-700 font-label text-[11px] font-medium border border-emerald-200">
+                      Ready for Signoff
+                    </span>
+</td>
+<td class="py-3 px-3 text-center">
+<button class="p-1.5 rounded-lg text-primary hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low cursor-pointer transition-colors">
+<td class="py-3 px-4">
+<div class="font-label text-label text-on-surface font-semibold">#LN-REQ-2027-089</div>
+<div class="text-on-surface font-medium">Babatunde Sanwo</div>
+<div class="text-[11px] text-on-surface-variant">Member #019 • Tier 1</div>
+</td>
+<td class="py-3 px-4 text-right">
+<div class="font-label text-label font-bold tabular-nums text-on-surface">₦600,000.00</div>
+<div class="text-[11px] text-on-surface-variant">2x Multiplier</div>
+</td>
+<td class="py-3 px-4">
+<div class="font-medium text-on-surface">4 Months</div>
+<div class="text-[11px] text-on-surface-variant">7.5% p.a.</div>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-label text-[11px] font-semibold">
+<span class="material-symbols-outlined text-[13px]">check_circle</span>
+                      2/2 (100%)
+                    </span>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-emerald-50 text-emerald-700 font-label text-[11px] font-medium border border-emerald-200">
+                      Ready for Signoff
+                    </span>
+</td>
+<td class="py-3 px-3 text-center">
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low cursor-pointer transition-colors">
+<td class="py-3 px-4">
+<div class="font-label text-label text-on-surface font-semibold">#LN-REQ-2027-090</div>
+<div class="text-on-surface font-medium">Olufunke Daniels</div>
+<div class="text-[11px] text-on-surface-variant">Member #091 • Tier 2</div>
+</td>
+<td class="py-3 px-4 text-right">
+<div class="font-label text-label font-bold tabular-nums text-on-surface">₦1,200,000.00</div>
+<div class="text-[11px] text-on-surface-variant">3x Multiplier</div>
+</td>
+<td class="py-3 px-4">
+<div class="font-medium text-on-surface">12 Months</div>
+<div class="text-[11px] text-on-surface-variant">9.0% p.a.</div>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-100 text-amber-900 font-label text-[11px] font-semibold">
+<span class="material-symbols-outlined text-[13px]">timelapse</span>
+                      2/3 (66%)
+                    </span>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-amber-50 text-amber-800 font-label text-[11px] font-medium border border-amber-200">
+                      Guarantor Shortfall
+                    </span>
+</td>
+<td class="py-3 px-3 text-center">
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low cursor-pointer transition-colors">
+<td class="py-3 px-4">
+<div class="font-label text-label text-on-surface font-semibold">#LN-REQ-2027-091</div>
+<div class="text-on-surface font-medium">Chinedu Eze</div>
+<div class="text-[11px] text-on-surface-variant">Member #112 • Tier 1</div>
+</td>
+<td class="py-3 px-4 text-right">
+<div class="font-label text-label font-bold tabular-nums text-on-surface">₦450,000.00</div>
+<div class="text-[11px] text-on-surface-variant">2x Multiplier</div>
+</td>
+<td class="py-3 px-4">
+<div class="font-medium text-on-surface">3 Months</div>
+<div class="text-[11px] text-on-surface-variant">7.0% p.a.</div>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-label text-[11px] font-semibold">
+<span class="material-symbols-outlined text-[13px]">check_circle</span>
+                      2/2 (100%)
+                    </span>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-emerald-50 text-emerald-700 font-label text-[11px] font-medium border border-emerald-200">
+                      Ready for Signoff
+                    </span>
+</td>
+<td class="py-3 px-3 text-center">
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container-low cursor-pointer transition-colors">
+<td class="py-3 px-4">
+<div class="font-label text-label text-on-surface font-semibold">#LN-REQ-2027-092</div>
+<div class="text-on-surface font-medium">Amaka Nwachukwu</div>
+<div class="text-[11px] text-on-surface-variant">Member #055 • Tier 2</div>
+</td>
+<td class="py-3 px-4 text-right">
+<div class="font-label text-label font-bold tabular-nums text-on-surface">₦800,000.00</div>
+<div class="text-[11px] text-on-surface-variant">2.5x Multiplier</div>
+</td>
+<td class="py-3 px-4">
+<div class="font-medium text-on-surface">6 Months</div>
+<div class="text-[11px] text-on-surface-variant">8.0% p.a.</div>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-label text-[11px] font-semibold">
+<span class="material-symbols-outlined text-[13px]">check_circle</span>
+                      3/3 (100%)
+                    </span>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-emerald-50 text-emerald-700 font-label text-[11px] font-medium border border-emerald-200">
+                      Ready for Signoff
+                    </span>
+</td>
+<td class="py-3 px-3 text-center">
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</td>
+</tr>
+<!-- Row 6 -->
+<tr class="hover:bg-surface-container-low cursor-pointer transition-colors">
+<td class="py-3 px-4">
+<div class="font-label text-label text-on-surface font-semibold">#LN-REQ-2027-093</div>
+<div class="text-on-surface font-medium">Ibrahim Musa</div>
+<div class="text-[11px] text-on-surface-variant">Member #038 • Tier 1</div>
+</td>
+<td class="py-3 px-4 text-right">
+<div class="font-label text-label font-bold tabular-nums text-on-surface">₦500,000.00</div>
+<div class="text-[11px] text-on-surface-variant">2x Multiplier</div>
+</td>
+<td class="py-3 px-4">
+<div class="font-medium text-on-surface">6 Months</div>
+<div class="text-[11px] text-on-surface-variant">8.0% p.a.</div>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-rose-100 text-rose-900 font-label text-[11px] font-semibold">
+<span class="material-symbols-outlined text-[13px]">warning</span>
+                      1/2 (50%)
+                    </span>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-rose-50 text-rose-800 font-label text-[11px] font-medium border border-rose-200">
+                      Guarantor Shortfall
+                    </span>
+</td>
+<td class="py-3 px-3 text-center">
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</td>
+</tr>
+<!-- Row 7 -->
+<tr class="hover:bg-surface-container-low cursor-pointer transition-colors">
+<td class="py-3 px-4">
+<div class="font-label text-label text-on-surface font-semibold">#LN-REQ-2027-094</div>
+<div class="text-on-surface font-medium">Kemi Balogun</div>
+<div class="text-[11px] text-on-surface-variant">Member #067 • Tier 1</div>
+</td>
+<td class="py-3 px-4 text-right">
+<div class="font-label text-label font-bold tabular-nums text-on-surface">₦250,000.00</div>
+<div class="text-[11px] text-on-surface-variant">1.5x Multiplier</div>
+</td>
+<td class="py-3 px-4">
+<div class="font-medium text-on-surface">3 Months</div>
+<div class="text-[11px] text-on-surface-variant">6.5% p.a.</div>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-label text-[11px] font-semibold">
+<span class="material-symbols-outlined text-[13px]">check_circle</span>
+                      2/2 (100%)
+                    </span>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-emerald-50 text-emerald-700 font-label text-[11px] font-medium border border-emerald-200">
+                      Ready for Signoff
+                    </span>
+</td>
+<td class="py-3 px-3 text-center">
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer Pagination -->
+<div class="px-space-lg py-3 border-t border-surface-variant flex items-center justify-between text-caption font-caption text-on-surface-variant">
+<span>Showing all 7 pending committee requests</span>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1 rounded-lg border border-outline-variant disabled:opacity-40" disabled="">Previous</button>
+<button class="px-3 py-1 rounded-lg border border-outline-variant disabled:opacity-40" disabled="">Next</button>
+</div>
+</div>
+</div>
+<!-- Right Inspection Drawer / Card (40% ~ 5 cols) -->
+<div class="col-span-5 bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm p-space-lg space-y-space-lg sticky top-20">
+<!-- Inspection Card Header -->
+<div class="flex items-start justify-between pb-3 border-b border-surface-variant">
+<div>
+<div class="flex items-center gap-2">
+<span class="font-label text-[12px] px-2 py-0.5 rounded bg-surface-container-low text-primary font-bold">INSPECTION FILE</span>
+<span class="text-caption font-caption text-on-surface-variant">Submitted 18 Oct 2027</span>
+</div>
+<h2 class="text-subtitle font-subtitle text-on-surface mt-1">#LN-REQ-2027-088</h2>
+<div class="text-label font-body-medium text-on-surface">Chioma Adeleke (Member #042)</div>
+</div>
+<span class="p-2 rounded-lg bg-surface-container-low text-primary material-symbols-outlined text-[20px]">verified_user</span>
+</div>
+<!-- Section 1: Member Standing -->
+<div class="p-3.5 rounded-xl bg-surface-container-low border border-outline-variant space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-label text-caption font-bold text-on-surface">Member Standing &amp; Bylaw Qualification</span>
+<span class="inline-flex items-center gap-1 text-[11px] font-label text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-[12px]">check</span>
+                Fully Qualified
+              </span>
+</div>
+<div class="text-caption font-caption text-on-surface-variant leading-relaxed">
+              Tier 2 Member • 38 continuous months membership • Total Unencumbered Savings: <strong class="text-on-surface tabular-nums">₦350,000.00</strong>.
+              Permitted maximum 3x multiplier entitlement is <strong class="text-on-surface tabular-nums">₦1,050,000.00</strong>.
+            </div>
+<div class="pt-1 flex items-center gap-2 text-[12px] text-on-surface-variant">
+<span class="material-symbols-outlined text-[15px] text-emerald-700">task_alt</span>
+<span>100% on-time regular thrift contributions (Zero arrears history)</span>
+</div>
+</div>
+<!-- Section 2: Facility Parameters Bento -->
+<div class="space-y-2">
+<span class="font-label text-caption font-bold text-on-surface">Requested Facility Parameters</span>
+<div class="grid grid-cols-2 gap-2">
+<div class="p-2.5 rounded-lg border border-surface-variant bg-surface-bright">
+<div class="text-[11px] font-caption text-on-surface-variant">Facility Principal</div>
+<div class="text-subtitle font-subtitle text-primary tabular-nums mt-0.5">₦1,050,000.00</div>
+</div>
+<div class="p-2.5 rounded-lg border border-surface-variant bg-surface-bright">
+<div class="text-[11px] font-caption text-on-surface-variant">Interest Rate</div>
+<div class="text-subtitle font-subtitle text-on-surface tabular-nums mt-0.5">8.0% p.a.</div>
+</div>
+<div class="p-2.5 rounded-lg border border-surface-variant bg-surface-bright">
+<div class="text-[11px] font-caption text-on-surface-variant">Repayment Tenor</div>
+<div class="font-label text-label text-on-surface mt-0.5">6 Monthly Instalments</div>
+</div>
+<div class="p-2.5 rounded-lg border border-surface-variant bg-surface-bright">
+<div class="text-[11px] font-caption text-on-surface-variant">Monthly Instalment</div>
+<div class="font-label text-label text-on-surface tabular-nums mt-0.5">₦182,000.00</div>
+</div>
+</div>
+<div class="p-2 rounded-lg bg-surface-container-low text-[12px] font-caption text-on-surface-variant flex items-center justify-between">
+<span>Purpose: <strong>Working Capital for Boutique Restocking</strong></span>
+<span class="tabular-nums">Total Repayable: <strong>₦1,092,000.00</strong></span>
+</div>
+</div>
+<!-- Section 3: Verified Guarantors & Savings Lock Matrix -->
+<div class="space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-label text-caption font-bold text-on-surface">Guarantors &amp; Savings Lock Matrix</span>
+<span class="font-caption text-[12px] text-emerald-800 font-bold tabular-nums">Cover: 100% Backed</span>
+</div>
+<!-- Guarantor List -->
+<div class="space-y-1.5">
+<!-- Guarantor 1 -->
+<div class="p-2.5 rounded-lg border border-surface-variant bg-surface-container-lowest flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-surface-container-low text-primary font-bold text-[11px] flex items-center justify-center">
+                    TB
+                  </div>
+<div>
+<div class="font-label text-[13px] text-on-surface leading-tight">Tunde Bakare (#015)</div>
+<div class="text-[11px] text-on-surface-variant">Savings Lien Applied</div>
+</div>
+</div>
+<div class="text-right">
+<div class="font-label text-[13px] text-on-surface tabular-nums">₦350,000.00</div>
+<div class="inline-flex items-center gap-1 text-[11px] text-emerald-700 font-medium">
+<span class="material-symbols-outlined text-[12px]">lock</span>
+                    Locked &amp; Signed
+                  </div>
+</div>
+</div>
+<!-- Guarantor 2 -->
+<div class="p-2.5 rounded-lg border border-surface-variant bg-surface-container-lowest flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-surface-container-low text-primary font-bold text-[11px] flex items-center justify-center">
+                    FC
+                  </div>
+<div>
+<div class="font-label text-[13px] text-on-surface leading-tight">Folake Coker (#078)</div>
+<div class="text-[11px] text-on-surface-variant">Savings Lien Applied</div>
+</div>
+</div>
+<div class="text-right">
+<div class="font-label text-[13px] text-on-surface tabular-nums">₦400,000.00</div>
+<div class="inline-flex items-center gap-1 text-[11px] text-emerald-700 font-medium">
+<span class="material-symbols-outlined text-[12px]">lock</span>
+                    Locked &amp; Signed
+                  </div>
+</div>
+</div>
+<!-- Guarantor 3 -->
+<div class="p-2.5 rounded-lg border border-surface-variant bg-surface-container-lowest flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-surface-container-low text-primary font-bold text-[11px] flex items-center justify-center">
+                    EJ
+                  </div>
+<div>
+<div class="font-label text-[13px] text-on-surface leading-tight">Emeka Johnson (#104)</div>
+<div class="text-[11px] text-on-surface-variant">Savings Lien Applied</div>
+</div>
+</div>
+<div class="text-right">
+<div class="font-label text-[13px] text-on-surface tabular-nums">₦300,000.00</div>
+<div class="inline-flex items-center gap-1 text-[11px] text-emerald-700 font-medium">
+<span class="material-symbols-outlined text-[12px]">lock</span>
+                    Locked &amp; Signed
+                  </div>
+</div>
+</div>
+</div>
+<!-- Guarantee Totals Progress Bar -->
+<div class="pt-1">
+<div class="flex items-center justify-between text-[12px] font-caption text-on-surface mb-1">
+<span>Pledged Collateral: <strong class="tabular-nums">₦1,050,000.00</strong></span>
+<span class="text-emerald-700 font-bold">100% of Facility</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-emerald-600 rounded-full w-full"></div>
+</div>
+</div>
+</div>
+<!-- Section 4: Decision Actions (52px primary standard) -->
+<div class="pt-2 border-t border-surface-variant space-y-2">
+<!-- Primary Action 52px Button -->
+<button class="w-full h-[52px] rounded-xl bg-primary-container text-on-primary font-label text-label flex items-center justify-center gap-2 shadow-sm hover:bg-[#731540] active:scale-[0.99] transition-all">
+<span class="material-symbols-outlined text-[20px]">draw</span>
+<span>Approve &amp; Request Dual Signoff (PIN)</span>
+</button>
+<!-- Secondary Outline Buttons -->
+<div class="grid grid-cols-2 gap-2">
+<button class="h-[44px] rounded-xl border border-outline-variant bg-transparent text-secondary font-label text-[13px] flex items-center justify-center gap-1.5 hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[18px]">cancel</span>
+<span>Reject with Reason</span>
+</button>
+<button class="h-[44px] rounded-xl border border-outline-variant bg-transparent text-on-surface font-label text-[13px] flex items-center justify-center gap-1.5 hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[18px]">add_moderator</span>
+<span>Request Collateral</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cooperative Governance &amp; Executive Roles - YourApp Credit Ops</title>
+<!-- Material Symbols Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Inter Google Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary-fixed": "#3f001b",
+            "surface-container-highest": "#e9e0e1",
+            "outline": "#897176",
+            "on-primary-container": "#ffa0ba",
+            "on-primary": "#ffffff",
+            "on-background": "#1f1b1c",
+            "on-secondary-fixed": "#410000",
+            "surface-bright": "#fff8f8",
+            "surface-variant": "#e9e0e1",
+            "on-tertiary-container": "#c6b7bd",
+            "on-secondary-container": "#690000",
+            "tertiary-container": "#53484d",
+            "surface": "#fff8f8",
+            "secondary-container": "#fc6955",
+            "tertiary-fixed": "#eedee4",
+            "on-surface-variant": "#564146",
+            "surface-dim": "#e1d8d9",
+            "secondary": "#ae3123",
+            "background": "#fff8f8",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "primary": "#6d0033",
+            "on-error-container": "#93000a",
+            "on-tertiary": "#ffffff",
+            "on-error": "#ffffff",
+            "surface-container-lowest": "#ffffff",
+            "tertiary": "#3b3236",
+            "on-secondary-fixed-variant": "#8c170e",
+            "surface-tint": "#a8315d",
+            "primary-container": "#8e1b4a",
+            "surface-container-high": "#efe6e7",
+            "inverse-on-surface": "#f8eeef",
+            "on-primary-fixed-variant": "#881646",
+            "on-surface": "#1f1b1c",
+            "inverse-primary": "#ffb1c5",
+            "primary-fixed": "#ffd9e1",
+            "on-tertiary-fixed": "#21191e",
+            "inverse-surface": "#342f30",
+            "secondary-fixed-dim": "#ffb4a8",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "error": "#ba1a1a",
+            "primary-fixed-dim": "#ffb1c5",
+            "outline-variant": "#dcbfc5",
+            "error-container": "#ffdad6",
+            "surface-container-low": "#fbf1f2",
+            "on-secondary": "#ffffff",
+            "secondary-fixed": "#ffdad4",
+            "surface-container": "#f5eced"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-3xl": "3rem",
+            "space-sm": "0.5rem",
+            "space-xl": "1.5rem",
+            "space-lg": "1rem",
+            "space-2xl": "2rem",
+            "gutter": "1rem",
+            "space-xs": "0.25rem",
+            "space-md": "0.75rem",
+            "margin": "1rem"
+          },
+          "fontFamily": {
+            "amount-lg": ["Inter"],
+            "body-medium": ["Inter"],
+            "subtitle": ["Inter"],
+            "label": ["Inter"],
+            "display": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "caption": ["Inter"],
+            "body": ["Inter"],
+            "title": ["Inter"]
+          },
+          "fontSize": {
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      line-height: 1;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #dcbfc5;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface antialiased font-body min-h-screen flex selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- ========================================================================= -->
+<!-- LEFT SIDEBAR NAVIGATION: Brand Anchor (SideNavBar)                        -->
+<!-- ========================================================================= -->
+<aside class="fixed left-0 top-0 h-screen w-72 flex flex-col justify-between py-space-xl px-space-lg bg-surface-container-lowest border-r border-surface-variant z-30 shadow-sm custom-scrollbar overflow-y-auto">
+<!-- Header Section with crest & society details -->
+<div class="flex flex-col gap-space-lg">
+<div class="flex items-center gap-space-md pb-space-md border-b border-surface-variant">
+<div class="w-10 h-10 rounded-xl bg-primary-container flex items-center justify-center text-on-primary shadow-sm flex-shrink-0">
+<span class="material-symbols-outlined text-2xl" data-icon="account_balance">account_balance</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="text-subtitle font-subtitle text-primary tracking-tight leading-tight truncate">YourApp Credit Ops</span>
+<span class="text-caption font-caption text-on-surface-variant truncate">Enterprise Portal</span>
+</div>
+</div>
+<!-- Specific Cooperative Society Profile Box -->
+<div class="p-space-md rounded-xl bg-surface-container-low border border-outline-variant flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-on-surface-variant">Client Society</span>
+<span class="inline-flex items-center gap-1 text-[11px] font-label text-primary bg-primary-fixed px-1.5 py-0.5 rounded-full">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span> Certified
+          </span>
+</div>
+<p class="text-label font-label text-on-surface text-xs leading-tight line-clamp-2">Lekki Phase 1 Multipurpose Cooperative Society Limited</p>
+<span class="text-[11px] font-caption text-outline font-mono">Reg: #LA-COOP-901</span>
+</div>
+<!-- Navigation Tabs: Exact Semantic Mapping applied, Admins & Roles ACTIVE -->
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-space-md px-space-lg py-2.5 rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-2.5 rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="group">group</span>
+<span>Members</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-2.5 rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="person_add">person_add</span>
+<span>Join Requests</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-2.5 rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="pending_actions">pending_actions</span>
+<span>Plans &amp; Arrears</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-2.5 rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="request_quote">request_quote</span>
+<span>Loan Applications</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-2.5 rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span>Loans Portfolio</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-2.5 rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="pie_chart">pie_chart</span>
+<span>Shares &amp; Dividends</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-2.5 rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="tune">tune</span>
+<span>Rules &amp; Settings</span>
+</a>
+<!-- ACTIVE ITEM: style_active_navigation verbatim execution -->
+<a class="flex items-center gap-space-md px-space-lg py-2.5 rounded-lg bg-surface-container-low text-primary font-label text-label shadow-sm" href="#">
+<span class="material-symbols-outlined text-xl text-primary font-bold" data-icon="admin_panel_settings" data-weight="fill" style="font-variation-settings: 'FILL' 1;">admin_panel_settings</span>
+<span class="font-bold">Admins &amp; Roles</span>
+<span class="ml-auto w-2 h-2 rounded-full bg-primary"></span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-2.5 rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="menu_book">menu_book</span>
+<span>Ledger &amp; Reports</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-2.5 rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="verified_user">verified_user</span>
+<span>Withdrawals &amp; Dual Signoff</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-2.5 rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="campaign">campaign</span>
+<span>Announcements</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-2.5 rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="history">history</span>
+<span>Audit Trail</span>
+</a>
+</nav>
+</div>
+<!-- Footer Security & Actions -->
+<div class="pt-space-md border-t border-surface-variant flex flex-col gap-1 mt-6">
+<div class="flex items-center justify-between px-space-sm py-1.5 text-xs text-on-surface-variant">
+<span class="flex items-center gap-1 font-caption">
+<span class="material-symbols-outlined text-sm text-green-700" data-icon="lock" data-weight="fill" style="font-variation-settings: 'FILL' 1;">lock</span>
+          HSM Vault Secured
+        </span>
+<span class="font-mono text-[10px] bg-surface-container px-1 rounded">256-bit</span>
+</div>
+<a class="flex items-center gap-space-md px-space-lg py-2 rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="admin_panel_settings">admin_panel_settings</span>
+<span>Security &amp; Settings</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-2 rounded-lg text-error font-label text-label hover:bg-error-container transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="logout">logout</span>
+<span>Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- ========================================================================= -->
+<!-- MAIN VIEWPORT CONTAINER (Calculated margin for 72rem sidebar)             -->
+<!-- ========================================================================= -->
+<div class="flex-1 ml-72 flex flex-col min-w-0">
+<!-- TopNavBar Anchor Execution -->
+<header class="sticky top-0 right-0 h-16 flex items-center justify-between px-space-xl bg-surface-container-lowest border-b border-surface-variant z-20">
+<!-- Search Across Admin Officers -->
+<div class="flex items-center gap-space-md w-96">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-lg" data-icon="search">search</span>
+<input class="w-full h-10 pl-9 pr-3 rounded-xl bg-surface-container-low border border-outline-variant text-body text-xs text-on-surface focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-colors" placeholder="Search elected officers, trustees, keys, or roles..." type="text"/>
+</div>
+</div>
+<!-- Center & Trailing Clusters: Badges, Actions, & Profile -->
+<div class="flex items-center gap-space-md">
+<!-- Statutory Quorum indicator badge -->
+<div class="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-low border border-outline-variant text-xs">
+<span class="material-symbols-outlined text-base text-primary" data-icon="how_to_reg">how_to_reg</span>
+<span class="font-label text-on-surface">Quorum Status:</span>
+<span class="font-label text-primary font-bold">4/5 Active Trustees</span>
+<span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+</div>
+<!-- Dual Authorization Armed Badge -->
+<div class="hidden xl:flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary-fixed border border-outline-variant text-xs text-on-primary-fixed">
+<span class="material-symbols-outlined text-base text-primary" data-icon="verified_user">verified_user</span>
+<span class="font-label font-bold">Dual-Authorization Armed</span>
+</div>
+<!-- Trailing Icon Actions -->
+<button class="relative w-10 h-10 rounded-xl hover:bg-surface-container-low flex items-center justify-center text-on-surface-variant transition-colors" title="Notifications">
+<span class="material-symbols-outlined text-xl" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-secondary"></span>
+</button>
+<button class="w-10 h-10 rounded-xl hover:bg-surface-container-low flex items-center justify-center text-on-surface-variant transition-colors" title="Help &amp; Statutory Guidance">
+<span class="material-symbols-outlined text-xl" data-icon="help_outline">help_outline</span>
+</button>
+<div class="h-6 w-px bg-surface-variant"></div>
+<!-- Logged-in Executive User Chip -->
+<div class="flex items-center gap-3 pl-1">
+<img class="w-10 h-10 rounded-xl object-cover border border-outline-variant shadow-sm" data-alt="Dignified executive portrait photograph of a senior Nigerian male institutional bank trustee in professional navy suit with confident expression in a warm corporate boardroom setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD87WgVjzLPectL10sondg5TFKC-X0Uga-HbjvBpkW0X-CSjsefyVQhd5rRntNMzSvHPiG7PbEJCKEqzI3bSVs9YQzqpVju9scqMb_x3kg9A4ouxS8LXY_HRszvA2Za9qUy4UfPXkMiMv5IWqto7K3k_koIqz2nXWtFLCcnE3MkzBa0HsPNEL-DAVUDSKDQMlxISb3-KlVIrjeidCdFOEv6kcY7hIMc2ZEHvHTX72yj"/>
+<div class="flex flex-col text-left">
+<span class="text-label font-label text-on-surface text-xs leading-none">Dr. Adebayo Ogunlesi</span>
+<span class="text-caption font-caption text-primary text-[11px] leading-tight font-medium">President &amp; Executive Trustee</span>
+</div>
+<span class="material-symbols-outlined text-outline text-lg ml-1" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+</header>
+<!-- ========================================================================= -->
+<!-- MAIN WORKSPACE CONTENT                                                    -->
+<!-- ========================================================================= -->
+<main class="p-space-xl flex flex-col gap-space-xl max-w-[1360px] w-full mx-auto">
+<!-- Page Header Banner & Top CTAs -->
+<div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-space-lg">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="text-caption font-caption text-on-surface-variant">Lekki Phase 1 Cooperative</span>
+<span class="text-outline text-xs">/</span>
+<span class="text-caption font-caption text-primary font-medium">Statutory Governance</span>
+</div>
+<h1 class="text-title font-title text-on-surface text-2xl tracking-tight">Cooperative Governance, Executive Roles &amp; Succession</h1>
+<p class="text-body font-body text-on-surface-variant text-sm max-w-3xl">
+            Manage elected trustees, committee portfolios, dual-authorization cryptographic keys, and statutory succession protocols.
+          </p>
+</div>
+<div class="flex items-center gap-space-md flex-shrink-0">
+<!-- Secondary Action Button -->
+<button class="h-[52px] px-space-xl rounded-xl border-[1.5px] border-outline-variant bg-surface-container-lowest text-on-surface font-label text-label hover:bg-surface-container-low transition-colors duration-150 flex items-center gap-2 shadow-sm">
+<span class="material-symbols-outlined text-lg text-on-surface-variant" data-icon="picture_as_pdf">picture_as_pdf</span>
+<span>Export Exco Register (PDF)</span>
+</button>
+<!-- Primary Berry Action Button -->
+<button class="h-[52px] px-space-xl rounded-xl bg-primary-container text-on-primary font-label text-label hover:bg-primary transition-colors duration-150 flex items-center gap-2 shadow-sm">
+<span class="material-symbols-outlined text-lg" data-icon="person_add">person_add</span>
+<span>+ Appoint / Invite Officer</span>
+</button>
+</div>
+</div>
+<!-- ======================================================================= -->
+<!-- GOVERNANCE HEALTH & STATUTORY QUORUM METRIC STRIP (4 KPI Cards)         -->
+<!-- ======================================================================= -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-lg">
+<!-- KPI 1: Active Exco Trustees -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-outline-variant shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="flex items-start justify-between">
+<span class="text-caption font-caption text-on-surface-variant font-medium">Active Exco Trustees</span>
+<span class="p-2 rounded-lg bg-surface-container-low text-primary">
+<span class="material-symbols-outlined text-xl" data-icon="shield_person">shield_person</span>
+</span>
+</div>
+<div class="mt-2 flex flex-col">
+<span class="text-amount-lg font-amount-lg text-on-surface">5 Officers</span>
+<div class="flex items-center gap-1.5 mt-2">
+<span class="material-symbols-outlined text-sm text-emerald-700 font-bold" data-icon="check_circle">check_circle</span>
+<span class="text-caption font-caption text-emerald-800 font-medium">100% Statutory Quorum</span>
+</div>
+</div>
+<div class="mt-2 pt-2 border-t border-surface-variant text-[11px] font-caption text-on-surface-variant">
+            Lagos State Ministry of Comm. verified
+          </div>
+</div>
+<!-- KPI 2: Dual-Sign Mandates -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-outline-variant shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="flex items-start justify-between">
+<span class="text-caption font-caption text-on-surface-variant font-medium">Dual-Sign Mandates</span>
+<span class="p-2 rounded-lg bg-surface-container-low text-primary">
+<span class="material-symbols-outlined text-xl" data-icon="key">key</span>
+</span>
+</div>
+<div class="mt-2 flex flex-col">
+<span class="text-amount-lg font-amount-lg text-on-surface">3 Pairs</span>
+<div class="flex items-center gap-1.5 mt-2">
+<span class="material-symbols-outlined text-sm text-primary font-bold" data-icon="lock_open">lock_open</span>
+<span class="text-caption font-caption text-on-surface font-medium">Strict Split Authority</span>
+</div>
+</div>
+<div class="mt-2 pt-2 border-t border-surface-variant text-[11px] font-caption text-on-surface-variant truncate">
+            President + Treasurer, VP + Sec, Chair
+          </div>
+</div>
+<!-- KPI 3: Security Credentials -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-outline-variant shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="flex items-start justify-between">
+<span class="text-caption font-caption text-on-surface-variant font-medium">Security Credentials</span>
+<span class="p-2 rounded-lg bg-surface-container-low text-primary">
+<span class="material-symbols-outlined text-xl" data-icon="fingerprint">fingerprint</span>
+</span>
+</div>
+<div class="mt-2 flex flex-col">
+<span class="text-amount-lg font-amount-lg text-on-surface">5/5 Armed</span>
+<div class="flex items-center gap-1.5 mt-2">
+<span class="material-symbols-outlined text-sm text-emerald-700 font-bold" data-icon="verified">verified</span>
+<span class="text-caption font-caption text-emerald-800 font-medium">Hardware FIDO2 Active</span>
+</div>
+</div>
+<div class="mt-2 pt-2 border-t border-surface-variant text-[11px] font-caption text-on-surface-variant">
+            All keys attested within last 24h
+          </div>
+</div>
+<!-- KPI 4: Succession Protocol -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-outline-variant shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="flex items-start justify-between">
+<span class="text-caption font-caption text-on-surface-variant font-medium">Succession Protocol</span>
+<span class="p-2 rounded-lg bg-surface-container-low text-primary">
+<span class="material-symbols-outlined text-xl" data-icon="event_repeat">event_repeat</span>
+</span>
+</div>
+<div class="mt-2 flex flex-col">
+<span class="text-title font-title text-on-surface">Standard Active</span>
+<div class="flex items-center gap-1.5 mt-2">
+<span class="material-symbols-outlined text-sm text-secondary-container font-bold" data-icon="pending">pending</span>
+<span class="text-caption font-caption text-on-surface-variant">1 Transition in Review</span>
+</div>
+</div>
+<div class="mt-2 pt-2 border-t border-surface-variant text-[11px] font-caption text-on-surface-variant">
+            AGM scheduled: November 2027
+          </div>
+</div>
+</div>
+<!-- ======================================================================= -->
+<!-- MINIMUM ADMINS & GOVERNANCE COMPLIANCE BANNER                          -->
+<!-- ======================================================================= -->
+<div class="rounded-xl border border-secondary-fixed bg-secondary-fixed/20 p-space-lg flex items-start gap-space-md">
+<div class="w-10 h-10 rounded-xl bg-secondary text-on-secondary flex items-center justify-center flex-shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-2xl" data-icon="gavel">gavel</span>
+</div>
+<div class="flex-1 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-space-md">
+<div class="flex flex-col">
+<h2 class="text-label font-label text-on-secondary-fixed font-bold flex items-center gap-2">
+              Lagos State Cooperative Societies Law Compliance
+              <span class="inline-flex items-center gap-1 text-[11px] bg-secondary text-white font-medium px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-[13px]" data-icon="verified_user">verified_user</span> Cap C15 Sec 24
+              </span>
+</h2>
+<p class="text-caption font-caption text-on-surface-variant mt-1 leading-relaxed">
+              A minimum of 3 principal officers (President, Treasurer, Secretary) must maintain active hardware-backed credentials. Any revocation or transfer requires 14-day General Assembly notice and dual-trustee signoff.
+            </p>
+</div>
+<button class="h-9 px-4 rounded-lg bg-surface-container-lowest border border-outline-variant text-primary font-label text-xs hover:bg-surface-container-low transition-colors duration-150 flex items-center gap-1.5 flex-shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-base" data-icon="policy">policy</span>
+<span>View Statutory Mandate</span>
+</button>
+</div>
+</div>
+<!-- ======================================================================= -->
+<!-- MAIN SPLIT LAYOUT (2/3 TABLE + 1/3 SUCCESSION WIZARD)                   -->
+<!-- ======================================================================= -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-space-xl items-start">
+<!-- LEFT 2/3 COLUMN: Elected Officers Table -->
+<div class="lg:col-span-2 flex flex-col gap-space-lg">
+<div class="rounded-xl bg-surface-container-lowest border border-outline-variant shadow-sm overflow-hidden flex flex-col">
+<!-- Table Header & Filter Tabs -->
+<div class="p-space-lg border-b border-surface-variant flex flex-col sm:flex-row sm:items-center justify-between gap-space-md">
+<div class="flex flex-col">
+<h3 class="text-subtitle font-subtitle text-on-surface">Elected Officers &amp; Committee Portfolios</h3>
+<span class="text-caption font-caption text-on-surface-variant">Statutory signatory authority and cryptographic key attestation registry</span>
+</div>
+<!-- Filter tabs -->
+<div class="flex items-center p-1 rounded-xl bg-surface-container-low border border-outline-variant self-start sm:self-auto overflow-x-auto max-w-full">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest text-primary font-label text-xs shadow-sm font-semibold whitespace-nowrap">
+                  All Officers (5)
+                </button>
+<button class="px-3 py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface font-label text-xs whitespace-nowrap">
+                  Executive Trustees (3)
+                </button>
+<button class="px-3 py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface font-label text-xs whitespace-nowrap">
+                  Credit Committee (2)
+                </button>
+<button class="px-3 py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface font-label text-xs whitespace-nowrap">
+                  Supervisory / Audit (1)
+                </button>
+</div>
+</div>
+<!-- Officers Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/60 border-b border-surface-variant text-caption font-caption text-on-surface-variant">
+<th class="py-3 px-4 font-semibold">Officer Name &amp; ID</th>
+<th class="py-3 px-4 font-semibold">Portfolio / Title</th>
+<th class="py-3 px-4 font-semibold">Elected Date &amp; Term</th>
+<th class="py-3 px-4 font-semibold">Dual-Sign Tier &amp; Permissions</th>
+<th class="py-3 px-4 font-semibold">MFA &amp; Key Status</th>
+<th class="py-3 px-4 font-semibold text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-variant text-body text-xs">
+<!-- Officer 1 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-4 px-4">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-xl bg-primary-container text-on-primary font-label flex items-center justify-center font-bold text-xs flex-shrink-0">
+                          AO
+                        </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label text-on-surface font-semibold text-xs truncate">Dr. Adebayo Ogunlesi</span>
+<span class="font-caption text-outline font-mono text-[11px]">#MEM-007</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">President &amp; Chairman</span>
+<span class="text-caption text-primary font-medium">Board of Trustees</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="text-on-surface">Nov 2025</span>
+<span class="text-caption text-on-surface-variant">Term 2 of 3</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col gap-1">
+<span class="inline-flex items-center gap-1 text-[11px] font-label text-primary bg-primary-fixed px-2 py-0.5 rounded-full w-fit">
+<span class="material-symbols-outlined text-[13px]" data-icon="draw">draw</span> Tier 1 Primary
+                        </span>
+<span class="text-[11px] text-on-surface-variant font-mono">Disbursements &gt;₦1,000,000</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="inline-flex items-center gap-1.5 text-[11px] font-label text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 py-1 rounded-lg">
+<span class="material-symbols-outlined text-sm text-emerald-600" data-icon="security_key">security_key</span>
+<span>FIDO2 Active</span>
+</div>
+</td>
+<td class="py-4 px-4 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="h-8 px-2.5 rounded-lg border border-outline-variant text-on-surface font-label text-xs hover:bg-surface-container-low transition-colors">
+                          Manage Keys
+                        </button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container-low flex items-center justify-center text-outline transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Officer 2 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-4 px-4">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-xl bg-primary-container text-on-primary font-label flex items-center justify-center font-bold text-xs flex-shrink-0">
+                          FA
+                        </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label text-on-surface font-semibold text-xs truncate">Mrs. Funmi Alabi</span>
+<span class="font-caption text-outline font-mono text-[11px]">#MEM-003</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">General Treasurer</span>
+<span class="text-caption text-on-surface-variant">Statutory Financial Custody</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="text-on-surface">Nov 2025</span>
+<span class="text-caption text-on-surface-variant">Term 1 of 3</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col gap-1">
+<span class="inline-flex items-center gap-1 text-[11px] font-label text-primary bg-primary-fixed px-2 py-0.5 rounded-full w-fit">
+<span class="material-symbols-outlined text-[13px]" data-icon="verified_user">verified_user</span> Tier 1 Co-Signatory
+                        </span>
+<span class="text-[11px] text-on-surface-variant font-mono">Disbursements &amp; Dividends</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="inline-flex items-center gap-1.5 text-[11px] font-label text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 py-1 rounded-lg">
+<span class="material-symbols-outlined text-sm text-emerald-600" data-icon="security_key">security_key</span>
+<span>FIDO2 Active</span>
+</div>
+</td>
+<td class="py-4 px-4 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="h-8 px-2.5 rounded-lg border border-outline-variant text-on-surface font-label text-xs hover:bg-surface-container-low transition-colors">
+                          Manage Keys
+                        </button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container-low flex items-center justify-center text-outline transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Officer 3 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-4 px-4">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-xl bg-tertiary-container text-on-primary font-label flex items-center justify-center font-bold text-xs flex-shrink-0">
+                          CO
+                        </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label text-on-surface font-semibold text-xs truncate">Barrister Chinedu Obi</span>
+<span class="font-caption text-outline font-mono text-[11px]">#MEM-018</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">General Secretary</span>
+<span class="text-caption text-on-surface-variant">Legal &amp; Secretariat</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="text-on-surface">Nov 2024</span>
+<span class="text-caption text-on-surface-variant">Term 2 of 3</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col gap-1">
+<span class="inline-flex items-center gap-1 text-[11px] font-label text-on-surface bg-surface-container px-2 py-0.5 rounded-full w-fit">
+<span class="material-symbols-outlined text-[13px]" data-icon="description">description</span> Statutory Minutes
+                        </span>
+<span class="text-[11px] text-on-surface-variant">Member Vetting &amp; Deeds</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="inline-flex items-center gap-1.5 text-[11px] font-label text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 py-1 rounded-lg">
+<span class="material-symbols-outlined text-sm text-emerald-600" data-icon="password">password</span>
+<span>Hardware MFA</span>
+</div>
+</td>
+<td class="py-4 px-4 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="h-8 px-2.5 rounded-lg border border-outline-variant text-on-surface font-label text-xs hover:bg-surface-container-low transition-colors">
+                          Permissions
+                        </button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container-low flex items-center justify-center text-outline transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Officer 4 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-4 px-4">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-xl bg-tertiary-container text-on-primary font-label flex items-center justify-center font-bold text-xs flex-shrink-0">
+                          SA
+                        </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label text-on-surface font-semibold text-xs truncate">Segun Adeyemi</span>
+<span class="font-caption text-outline font-mono text-[11px]">#MEM-082</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">Credit Committee Chair</span>
+<span class="text-caption text-on-surface-variant">Loan Appraisal Desk</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="text-on-surface">Jan 2026</span>
+<span class="text-caption text-on-surface-variant">Term 1 of 3</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col gap-1">
+<span class="inline-flex items-center gap-1 text-[11px] font-label text-secondary bg-secondary-fixed/50 px-2 py-0.5 rounded-full w-fit">
+<span class="material-symbols-outlined text-[13px]" data-icon="credit_score">credit_score</span> Tier 2 Credit
+                        </span>
+<span class="text-[11px] text-on-surface-variant font-mono">Approve loans &lt;₦1,000,000</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="inline-flex items-center gap-1.5 text-[11px] font-label text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 py-1 rounded-lg">
+<span class="material-symbols-outlined text-sm text-emerald-600" data-icon="fingerprint">fingerprint</span>
+<span>Biometric Active</span>
+</div>
+</td>
+<td class="py-4 px-4 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="h-8 px-2.5 rounded-lg border border-outline-variant text-on-surface font-label text-xs hover:bg-surface-container-low transition-colors">
+                          Permissions
+                        </button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container-low flex items-center justify-center text-outline transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Officer 5 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-4 px-4">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-xl bg-tertiary-container text-on-primary font-label flex items-center justify-center font-bold text-xs flex-shrink-0">
+                          RB
+                        </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label text-on-surface font-semibold text-xs truncate">Alhaja Rukaiya Bello</span>
+<span class="font-caption text-outline font-mono text-[11px]">#MEM-034</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">Supervisory Committee Head</span>
+<span class="text-caption text-on-surface-variant">Independent Inspector</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="text-on-surface">Nov 2025</span>
+<span class="text-caption text-on-surface-variant">Term 1 of 3</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col gap-1">
+<span class="inline-flex items-center gap-1 text-[11px] font-label text-on-surface bg-surface-container px-2 py-0.5 rounded-full w-fit">
+<span class="material-symbols-outlined text-[13px]" data-icon="visibility">visibility</span> Audit &amp; Review
+                        </span>
+<span class="text-[11px] text-on-surface-variant">Read-all, Emergency Veto Alert</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="inline-flex items-center gap-1.5 text-[11px] font-label text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 py-1 rounded-lg">
+<span class="material-symbols-outlined text-sm text-emerald-600" data-icon="password">password</span>
+<span>Hardware MFA</span>
+</div>
+</td>
+<td class="py-4 px-4 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="h-8 px-2.5 rounded-lg border border-outline-variant text-on-surface font-label text-xs hover:bg-surface-container-low transition-colors">
+                          Permissions
+                        </button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container-low flex items-center justify-center text-outline transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Sub-footer Info -->
+<div class="p-space-md border-t border-surface-variant bg-surface-container-low/40 flex items-center justify-between text-xs text-on-surface-variant">
+<span class="font-caption">Showing 5 of 5 statutory executive trustee seats filled</span>
+<div class="flex items-center gap-4">
+<span class="flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-emerald-600"></span> Hardware Cryptographic Key Sync: 100%
+                </span>
+<a class="text-primary font-label hover:underline" href="#">Download Registry Audit (.CSV)</a>
+</div>
+</div>
+</div>
+<!-- Dual-Sign Authority Matrix Card (Bento Sub-Module) -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-outline-variant shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="hub">hub</span>
+<h4 class="text-label font-label text-on-surface font-bold">Configured Dual-Authorization Signoff Rules</h4>
+</div>
+<span class="text-caption font-caption text-outline">Real-Time Smart Contract Enforced</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<div class="p-3 rounded-lg bg-surface-container-low border border-outline-variant flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<span class="text-xs font-semibold text-primary">Pool Tier 1 (Capital)</span>
+<span class="text-[11px] font-mono text-outline">&gt;₦1,000,000</span>
+</div>
+<p class="text-[12px] text-on-surface-variant">Mandatory co-sign by <strong>President + Treasurer</strong>. Hardware challenge enforced.</p>
+<div class="mt-auto pt-1 flex items-center gap-1 text-[11px] text-emerald-800">
+<span class="material-symbols-outlined text-xs" data-icon="check">check</span> Dual HSM Attested
+                </div>
+</div>
+<div class="p-3 rounded-lg bg-surface-container-low border border-outline-variant flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<span class="text-xs font-semibold text-primary">Pool Tier 2 (Loans)</span>
+<span class="text-[11px] font-mono text-outline">≤₦1,000,000</span>
+</div>
+<p class="text-[12px] text-on-surface-variant">Signoff by <strong>Credit Chair + Secretary</strong>. Auto-disbursement upon dual approval.</p>
+<div class="mt-auto pt-1 flex items-center gap-1 text-[11px] text-emerald-800">
+<span class="material-symbols-outlined text-xs" data-icon="check">check</span> Active Mandate
+                </div>
+</div>
+<div class="p-3 rounded-lg bg-surface-container-low border border-outline-variant flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<span class="text-xs font-semibold text-secondary">Emergency Reserve</span>
+<span class="text-[11px] font-mono text-secondary">All Amounts</span>
+</div>
+<p class="text-[12px] text-on-surface-variant">Requires <strong>3 of 5 Trustees</strong> unanimous consensus plus Ministry notification.</p>
+<div class="mt-auto pt-1 flex items-center gap-1 text-[11px] text-on-surface-variant">
+<span class="material-symbols-outlined text-xs" data-icon="lock">lock</span> Locked Under Escrow
+                </div>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT 1/3 COLUMN: Executive Succession & Role Handover Wizard -->
+<div class="flex flex-col gap-space-lg">
+<div class="rounded-xl bg-surface-container-lowest border border-outline-variant shadow-sm p-space-lg flex flex-col gap-space-lg relative">
+<!-- Wizard Header -->
+<div class="flex flex-col gap-1 pb-space-md border-b border-surface-variant">
+<div class="flex items-center justify-between">
+<span class="inline-flex items-center gap-1 text-[11px] font-label text-primary bg-primary-fixed px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-xs" data-icon="policy">policy</span> AGM Mandate SEC-09
+                </span>
+<span class="text-[11px] font-mono text-outline">Phase 2 / 4</span>
+</div>
+<h3 class="text-subtitle font-subtitle text-on-surface mt-1">Succession &amp; Emergency Handover Engine</h3>
+<p class="text-caption font-caption text-on-surface-variant leading-relaxed">
+                Cryptographic stewardship and role transfers adhere strictly to statutory bylaws and general assembly ratification.
+              </p>
+</div>
+<!-- Active Handover Case Brief -->
+<div class="p-space-md rounded-xl bg-surface-container-low border border-outline-variant flex flex-col gap-2">
+<span class="text-[11px] font-semibold text-outline uppercase tracking-wider">Active Transition Case</span>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-lg" data-icon="published_with_changes">published_with_changes</span>
+<span class="font-label text-on-surface text-xs font-bold leading-tight">
+                  Outgoing Assistant Secretary → Incoming Officer Transition
+                </span>
+</div>
+</div>
+<!-- Step Progress Indicator -->
+<div class="flex flex-col gap-3">
+<div class="flex items-center justify-between text-xs">
+<span class="font-label text-on-surface">Transfer Verification Pipeline</span>
+<span class="font-bold text-primary font-mono text-xs">Step 2 of 4</span>
+</div>
+<!-- Stepper Vertical Chain -->
+<div class="space-y-3 relative pl-6 before:content-[''] before:absolute before:left-2 before:top-2 before:bottom-2 before:w-0.5 before:bg-surface-variant">
+<!-- Step 1: Complete -->
+<div class="relative flex flex-col">
+<div class="absolute -left-6 top-0.5 w-4 h-4 rounded-full bg-emerald-700 text-white flex items-center justify-center text-[10px]">
+<span class="material-symbols-outlined text-[10px]" data-icon="check">check</span>
+</div>
+<span class="text-xs font-semibold text-on-surface">1. Nominee Vetting &amp; Due Diligence</span>
+<span class="text-[11px] text-emerald-800">Approved by Supervisory Panel</span>
+</div>
+<!-- Step 2: Active / In Progress -->
+<div class="relative flex flex-col">
+<div class="absolute -left-6 top-0.5 w-4 h-4 rounded-full bg-primary text-white flex items-center justify-center text-[10px] ring-4 ring-primary-fixed">
+<span class="w-1.5 h-1.5 rounded-full bg-white animate-ping"></span>
+</div>
+<span class="text-xs font-bold text-primary">2. Dual Trustee Signoff</span>
+<span class="text-[11px] text-on-surface-variant">Awaiting Co-signature from Treasurer</span>
+</div>
+<!-- Step 3: Pending -->
+<div class="relative flex flex-col opacity-60">
+<div class="absolute -left-6 top-0.5 w-4 h-4 rounded-full bg-surface-variant text-outline flex items-center justify-center text-[10px]">
+                    3
+                  </div>
+<span class="text-xs font-medium text-on-surface">3. 14-Day General Assembly Notice</span>
+<span class="text-[11px] text-on-surface-variant">Statutory window for member objections</span>
+</div>
+<!-- Step 4: Pending -->
+<div class="relative flex flex-col opacity-60">
+<div class="absolute -left-6 top-0.5 w-4 h-4 rounded-full bg-surface-variant text-outline flex items-center justify-center text-[10px]">
+                    4
+                  </div>
+<span class="text-xs font-medium text-on-surface">4. HSM Key Revocation &amp; Re-minting</span>
+<span class="text-[11px] text-on-surface-variant">Cryptographic key delegation on chain</span>
+</div>
+</div>
+</div>
+<!-- Nominee Details Card -->
+<div class="p-space-md rounded-xl bg-surface border border-outline-variant flex flex-col gap-2">
+<span class="text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider">Nominee Credentials</span>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container text-white flex items-center justify-center font-bold text-xs flex-shrink-0">
+                  FC
+                </div>
+<div class="flex flex-col min-w-0">
+<span class="text-xs font-bold text-on-surface truncate">Mrs. Folake Coker</span>
+<span class="text-[11px] font-mono text-outline">Member ID: #MEM-078</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-2 pt-2 border-t border-surface-variant text-[11px]">
+<div>
+<span class="text-on-surface-variant block">Standing:</span>
+<span class="font-semibold text-on-surface">42 Continuous Mos</span>
+</div>
+<div>
+<span class="text-on-surface-variant block">Credit History:</span>
+<span class="font-semibold text-emerald-800">100% Clean / Zero Defaults</span>
+</div>
+</div>
+</div>
+<!-- Signoff Approval Status Box -->
+<div class="p-3 rounded-lg bg-surface-container-low border border-outline-variant flex flex-col gap-2">
+<span class="text-[11px] font-semibold text-on-surface-variant">Trustee Signoff Consensus:</span>
+<div class="flex items-center justify-between text-xs">
+<span class="flex items-center gap-1.5 text-emerald-800 font-medium">
+<span class="material-symbols-outlined text-sm text-emerald-700" data-icon="check_circle">check_circle</span>
+                  President (Dr. Ogunlesi) Signed
+                </span>
+<span class="font-mono text-[10px] text-outline">Today, 10:14 AM</span>
+</div>
+<div class="flex items-center justify-between text-xs">
+<span class="flex items-center gap-1.5 text-secondary font-medium">
+<span class="material-symbols-outlined text-sm text-secondary animate-pulse" data-icon="hourglass_top">hourglass_top</span>
+                  Treasurer (Mrs. Alabi) Pending
+                </span>
+<span class="text-[10px] bg-secondary-fixed/50 text-secondary px-1.5 py-0.5 rounded font-medium">Awaiting Token</span>
+</div>
+</div>
+<!-- Action CTAs for Wizard -->
+<div class="flex flex-col gap-2 pt-2">
+<button class="h-[52px] w-full rounded-xl bg-primary-container text-on-primary font-label text-label hover:bg-primary transition-colors duration-150 flex items-center justify-center gap-2 shadow-sm font-semibold">
+<span class="material-symbols-outlined text-lg" data-icon="fact_check">fact_check</span>
+<span>Review &amp; Cosign Role Handover</span>
+</button>
+<button class="h-10 w-full rounded-xl border border-outline-variant bg-surface-container-lowest text-on-surface font-label text-xs hover:bg-surface-container-low transition-colors duration-150 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm text-outline" data-icon="download">download</span>
+<span>Download Governance Charter</span>
+</button>
+</div>
+</div>
+<!-- Quick Security Log Micro-widget -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest border border-outline-variant shadow-sm flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container-low text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-base" data-icon="lock_clock">lock_clock</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-on-surface">Emergency Key Revocation</span>
+<span class="text-[11px] text-on-surface-variant">Instant quorum freeze switch</span>
+</div>
+</div>
+<button class="px-2.5 py-1 text-[11px] font-label text-error hover:bg-error-container rounded-lg border border-error-container transition-colors">
+              Access Escrow
+            </button>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

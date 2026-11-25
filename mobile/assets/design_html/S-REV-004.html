@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Receipts (S-REV-004) - YourApp</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-tint": "#a8315d",
+            "secondary-container": "#fc6955",
+            "secondary-fixed-dim": "#ffb4a8",
+            "on-background": "#1f1b1c",
+            "tertiary": "#3b3236",
+            "on-secondary-container": "#690000",
+            "surface-bright": "#fff8f8",
+            "on-tertiary-fixed": "#21191e",
+            "error-container": "#ffdad6",
+            "on-error": "#ffffff",
+            "on-tertiary": "#ffffff",
+            "on-primary-fixed-variant": "#881646",
+            "surface-variant": "#e9e0e1",
+            "error": "#ba1a1a",
+            "inverse-primary": "#ffb1c5",
+            "outline-variant": "#dcbfc5",
+            "surface-container-lowest": "#ffffff",
+            "secondary": "#ae3123",
+            "inverse-surface": "#342f30",
+            "on-surface": "#1f1b1c",
+            "on-secondary-fixed-variant": "#8c170e",
+            "on-tertiary-container": "#c6b7bd",
+            "surface-container-low": "#fbf1f2",
+            "inverse-on-surface": "#f8eeef",
+            "primary": "#6d0033",
+            "on-secondary": "#ffffff",
+            "on-primary-container": "#ffa0ba",
+            "on-secondary-fixed": "#410000",
+            "secondary-fixed": "#ffdad4",
+            "surface": "#fff8f8",
+            "primary-container": "#8e1b4a",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "on-primary": "#ffffff",
+            "primary-fixed": "#ffd9e1",
+            "outline": "#897176",
+            "tertiary-fixed": "#eedee4",
+            "on-primary-fixed": "#3f001b",
+            "surface-container": "#f5eced",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "on-surface-variant": "#564146",
+            "primary-fixed-dim": "#ffb1c5",
+            "on-error-container": "#93000a",
+            "background": "#fff8f8",
+            "surface-container-high": "#efe6e7",
+            "surface-dim": "#e1d8d9",
+            "surface-container-highest": "#e9e0e1",
+            "tertiary-container": "#53484d"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xl": "1.5rem",
+            "space-2xl": "2rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "space-md": "0.75rem",
+            "space-lg": "1rem",
+            "gutter": "1rem",
+            "space-3xl": "3rem",
+            "margin": "1rem"
+          },
+          "fontFamily": {
+            "subtitle": ["Inter"],
+            "body-medium": ["Inter"],
+            "caption": ["Inter"],
+            "display": ["Inter"],
+            "body": ["Inter"],
+            "label": ["Inter"],
+            "amount-lg": ["Inter"],
+            "title": ["Inter"],
+            "amount-lg-mobile": ["Inter"]
+          },
+          "fontSize": {
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .tnum { font-variant-numeric: tabular-nums; }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex flex-col items-center justify-start selection:bg-primary-fixed selection:text-primary">
+<!-- Mobile Viewport Frame (390 x 844 aesthetic canvas) -->
+<div class="w-full max-w-[560px] bg-background min-h-screen flex flex-col relative pb-24 shadow-sm">
+<!-- Top Bar Component -->
+<header class="sticky top-0 z-40 bg-surface/95 backdrop-blur-md px-margin py-space-sm min-h-[56px] flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Go back" class="w-12 h-12 flex items-center justify-center rounded-full hover:bg-surface-container active:scale-95 transition-transform duration-150 text-on-surface" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-label text-label font-bold text-primary">YourApp</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="font-caption text-caption text-on-surface-variant font-medium">Revenue</span>
+</div>
+<h1 class="font-subtitle text-subtitle text-on-surface tracking-tight">Dues Receipts</h1>
+</div>
+</div>
+<div class="flex items-center">
+<button aria-label="Search receipts" class="w-12 h-12 flex items-center justify-center rounded-full hover:bg-surface-container active:scale-95 transition-transform duration-150 text-on-surface" type="button">
+<span class="material-symbols-outlined text-[24px]">search</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="px-margin flex flex-col gap-space-xl pt-space-xs">
+<!-- Search Input & Filter Chips Section -->
+<section class="flex flex-col gap-space-md">
+<!-- Search Field -->
+<div class="relative w-full">
+<label class="sr-only" for="receipt-search">Search by organisation, item, or receipt #</label>
+<div class="absolute inset-y-0 left-0 pl-space-md flex items-center pointer-events-none text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="w-full h-[52px] pl-11 pr-space-md rounded-xl bg-surface-container-lowest border border-outline-variant/60 focus:border-primary-container focus:ring-0 text-on-surface font-body text-body placeholder:text-on-surface-variant/70 shadow-sm transition-colors" id="receipt-search" placeholder="Search by organisation, item, or receipt #..." type="search"/>
+</div>
+<!-- Filter Chips Carousel -->
+<div aria-label="Receipt filters" class="flex items-center gap-space-xs overflow-x-auto no-scrollbar py-0.5" role="tablist">
+<button aria-selected="true" class="h-9 px-space-md rounded-full bg-primary text-on-primary font-label text-label whitespace-nowrap active:scale-95 transition-transform duration-150 flex items-center gap-1 shadow-sm" role="tab" type="button">
+<span>All (12)</span>
+</button>
+<button aria-selected="false" class="h-9 px-space-md rounded-full bg-surface-container-lowest border border-outline-variant/60 text-on-surface-variant hover:text-primary font-label text-label whitespace-nowrap active:scale-95 transition-transform duration-150 flex items-center gap-1" role="tab" type="button">
+<span>2027</span>
+</button>
+<button aria-selected="false" class="h-9 px-space-md rounded-full bg-surface-container-lowest border border-outline-variant/60 text-on-surface-variant hover:text-primary font-label text-label whitespace-nowrap active:scale-95 transition-transform duration-150 flex items-center gap-1" role="tab" type="button">
+<span>2026</span>
+</button>
+<button aria-selected="false" class="h-9 px-space-md rounded-full bg-surface-container-lowest border border-outline-variant/60 text-on-surface-variant hover:text-primary font-label text-label whitespace-nowrap active:scale-95 transition-transform duration-150 flex items-center gap-1" role="tab" type="button">
+<span>Estates</span>
+</button>
+<button aria-selected="false" class="h-9 px-space-md rounded-full bg-surface-container-lowest border border-outline-variant/60 text-on-surface-variant hover:text-primary font-label text-label whitespace-nowrap active:scale-95 transition-transform duration-150 flex items-center gap-1" role="tab" type="button">
+<span>Associations</span>
+</button>
+</div>
+</section>
+<!-- Featured Latest Paid Receipt Card (Verifiable Certificate Style) -->
+<section aria-labelledby="latest-receipt-heading" class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<h2 class="font-caption text-caption uppercase tracking-wider font-semibold text-on-surface-variant" id="latest-receipt-heading">
+            Latest Generated Receipt
+          </h2>
+<span class="font-caption text-caption text-primary font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">verified_user</span>
+            Tamper-Proof
+          </span>
+</div>
+<div class="relative bg-surface-container-lowest rounded-xl border border-outline-variant/70 shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)] overflow-hidden">
+<!-- Institutional Certificate Accent Top -->
+<div class="h-1.5 w-full bg-gradient-to-r from-primary via-primary-container to-secondary-container"></div>
+<div class="p-space-lg flex flex-col gap-space-md">
+<!-- Header Row: Organisation & Official Seal -->
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex flex-col">
+<span class="font-caption text-caption text-on-surface-variant font-medium">Levy &amp; Dues Collector</span>
+<h3 class="font-subtitle text-subtitle text-on-surface leading-tight mt-0.5">
+                  Victoria Garden City Residents Association
+                </h3>
+</div>
+<!-- Official Settled & Verified Stamp -->
+<div class="shrink-0 flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-low border border-outline-variant text-primary">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span class="font-caption text-[11px] font-bold tracking-tight uppercase leading-none">OFFICIALLY SETTLED &amp; VERIFIED</span>
+</div>
+</div>
+<!-- Amount Showcase & Dues Description -->
+<div class="p-space-md bg-surface-container-low/70 rounded-xl border border-outline-variant/30 flex flex-col gap-1">
+<span class="font-caption text-caption text-on-surface-variant">Total Amount Remitted</span>
+<div class="flex items-baseline gap-1">
+<span class="font-amount-lg-mobile text-amount-lg-mobile text-primary tracking-tight tnum">₦36,500.00</span>
+<span class="font-caption text-caption text-on-surface-variant font-medium">(NGN)</span>
+</div>
+<p class="font-body-medium text-body-medium text-on-surface font-semibold pt-1">
+                Q1 2027 Estate Security &amp; Infrastructure Levy
+              </p>
+</div>
+<!-- Receipt Metadata Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-y-space-sm gap-x-space-md pt-1 border-t border-dashed border-outline-variant/50">
+<div class="flex flex-col">
+<span class="font-caption text-caption text-on-surface-variant">Receipt Number</span>
+<span class="font-body-medium text-body-medium text-on-surface font-semibold tracking-tight tnum">
+                  REC-REV-2027-99412
+                </span>
+</div>
+<div class="flex flex-col">
+<span class="font-caption text-caption text-on-surface-variant">Payment Timestamp</span>
+<span class="font-caption text-caption text-on-surface font-medium tnum">
+                  Today, 22 Feb 2027 • 11:42 AM WAT
+                </span>
+</div>
+<div class="sm:col-span-2 flex flex-col">
+<span class="font-caption text-caption text-on-surface-variant">Remitted By &amp; Payer ID</span>
+<span class="font-body text-body text-on-surface font-medium">
+                  Chioma Adeleke • <span class="text-on-surface-variant font-normal">Payer Ref:</span> <span class="font-semibold text-primary">VGC-Z2-PL14</span>
+</span>
+</div>
+</div>
+<!-- Quick Action Buttons -->
+<div class="grid grid-cols-2 gap-space-sm pt-space-xs">
+<button class="h-[52px] rounded-xl bg-primary text-on-primary font-label text-label flex items-center justify-center gap-space-xs hover:bg-primary-container active:scale-95 transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-[20px]">download</span>
+<span>Download PDF</span>
+</button>
+<button class="h-[52px] rounded-xl bg-primary-fixed text-primary font-label text-label flex items-center justify-center gap-space-xs hover:bg-outline-variant active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]">share</span>
+<span>Share Receipt</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Recent Dues History List -->
+<section aria-labelledby="history-heading" class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<h2 class="font-subtitle text-subtitle text-on-surface" id="history-heading">
+            Recent Dues History
+          </h2>
+<span class="font-caption text-caption text-on-surface-variant font-medium">
+            3 Past Transactions
+          </span>
+</div>
+<div class="flex flex-col gap-space-sm">
+<!-- Item 1: NBA -->
+<article class="bg-surface-container-lowest rounded-xl border border-outline-variant/60 p-space-md flex items-center justify-between gap-space-sm shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] hover:border-primary/40 transition-colors">
+<div class="flex items-start gap-space-md min-w-0">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center shrink-0 text-primary">
+<span class="material-symbols-outlined text-[20px]">gavel</span>
+</div>
+<div class="flex flex-col min-w-0">
+<h3 class="font-body-medium text-body-medium text-on-surface font-semibold truncate">
+                  Nigerian Bar Association (Lagos Branch)
+                </h3>
+<p class="font-caption text-caption text-on-surface-variant truncate">
+                  Annual Bar Practicing Dues 2026
+                </p>
+<div class="flex items-center gap-space-sm mt-1">
+<span class="font-caption text-caption text-on-surface-variant tnum">14 Jan 2027</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-full bg-surface-container text-primary font-caption text-[11px] font-semibold">
+<span class="material-symbols-outlined text-[13px]">check</span>
+<span>Settled</span>
+</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-space-sm shrink-0 pl-2">
+<div class="flex flex-col items-end">
+<span class="font-body-medium text-body-medium font-bold text-on-surface tnum">₦22,000.00</span>
+<span class="font-caption text-[11px] text-on-surface-variant">Cleared</span>
+</div>
+<button aria-label="Download Nigerian Bar Association receipt" class="w-10 h-10 rounded-full flex items-center justify-center text-primary hover:bg-surface-container active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[22px]">download</span>
+</button>
+</div>
+</article>
+<!-- Item 2: Lekki Phase 1 -->
+<article class="bg-surface-container-lowest rounded-xl border border-outline-variant/60 p-space-md flex items-center justify-between gap-space-sm shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] hover:border-primary/40 transition-colors">
+<div class="flex items-start gap-space-md min-w-0">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center shrink-0 text-primary">
+<span class="material-symbols-outlined text-[20px]">location_city</span>
+</div>
+<div class="flex flex-col min-w-0">
+<h3 class="font-body-medium text-body-medium text-on-surface font-semibold truncate">
+                  Lekki Phase 1 Central Residents Association
+                </h3>
+<p class="font-caption text-caption text-on-surface-variant truncate">
+                  Q4 2026 Road Resurfacing Special Levy
+                </p>
+<div class="flex items-center gap-space-sm mt-1">
+<span class="font-caption text-caption text-on-surface-variant tnum">28 Nov 2026</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-full bg-surface-container text-primary font-caption text-[11px] font-semibold">
+<span class="material-symbols-outlined text-[13px]">check</span>
+<span>Settled</span>
+</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-space-sm shrink-0 pl-2">
+<div class="flex flex-col items-end">
+<span class="font-body-medium text-body-medium font-bold text-on-surface tnum">₦15,000.00</span>
+<span class="font-caption text-[11px] text-on-surface-variant">Cleared</span>
+</div>
+<button aria-label="Download Lekki Phase 1 receipt" class="w-10 h-10 rounded-full flex items-center justify-center text-primary hover:bg-surface-container active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[22px]">download</span>
+</button>
+</div>
+</article>
+<!-- Item 3: Land Use Charge -->
+<article class="bg-surface-container-lowest rounded-xl border border-outline-variant/60 p-space-md flex items-center justify-between gap-space-sm shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] hover:border-primary/40 transition-colors">
+<div class="flex items-start gap-space-md min-w-0">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center shrink-0 text-primary">
+<span class="material-symbols-outlined text-[20px]">account_balance</span>
+</div>
+<div class="flex flex-col min-w-0">
+<h3 class="font-body-medium text-body-medium text-on-surface font-semibold truncate">
+                  Lagos State Land Use Charge (LUC)
+                </h3>
+<p class="font-caption text-caption text-on-surface-variant truncate">
+                  Assessment Year 2026 Clearance
+                </p>
+<div class="flex items-center gap-space-sm mt-1">
+<span class="font-caption text-caption text-on-surface-variant tnum">12 Oct 2026</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-full bg-surface-container text-primary font-caption text-[11px] font-semibold">
+<span class="material-symbols-outlined text-[13px]">check</span>
+<span>Settled</span>
+</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-space-sm shrink-0 pl-2">
+<div class="flex flex-col items-end">
+<span class="font-body-medium text-body-medium font-bold text-on-surface tnum">₦48,500.00</span>
+<span class="font-caption text-[11px] text-on-surface-variant">Cleared</span>
+</div>
+<button aria-label="Download Land Use Charge clearance receipt" class="w-10 h-10 rounded-full flex items-center justify-center text-primary hover:bg-surface-container active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[22px]">download</span>
+</button>
+</div>
+</article>
+</div>
+</section>
+<!-- Reassurance Banner -->
+<section class="rounded-xl bg-surface-container p-space-md border border-outline-variant/40 flex items-start gap-space-md">
+<div class="w-9 h-9 rounded-full bg-primary-container text-on-primary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[20px]">qr_code_2</span>
+</div>
+<div class="flex flex-col">
+<h4 class="font-body-medium text-body-medium font-semibold text-on-surface">Official Institutional Clearance</h4>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5 leading-relaxed">
+            All receipts bear a cryptographic QR code recognized by estate gates, local councils, and tax offices.
+          </p>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Shared Component strictly mapped, active: Payments) -->
+<nav aria-label="Bottom Navigation" class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-margin h-16 max-w-[560px] mx-auto pb-safe bg-surface-container-lowest shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)]">
+<!-- 1. Home (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="font-caption text-caption font-medium">Home</span>
+</a>
+<!-- 2. Payments (Active) -->
+<a aria-current="page" class="flex flex-col items-center justify-center text-primary font-semibold min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">send</span>
+<span class="font-caption text-caption font-medium">Payments</span>
+</a>
+<!-- 3. Cards (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[24px]">credit_card</span>
+<span class="font-caption text-caption font-medium">Cards</span>
+</a>
+<!-- 4. Save & Borrow (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[24px]">savings</span>
+<span class="font-caption text-caption font-medium">Save &amp; Borrow</span>
+</a>
+<!-- 5. More (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[24px]">more_horiz</span>
+<span class="font-caption text-caption font-medium">More</span>
+</a>
+</nav>
+</div>
+</body></html>

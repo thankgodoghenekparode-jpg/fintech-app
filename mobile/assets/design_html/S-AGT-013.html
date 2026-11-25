@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YourApp - Agent Experience &amp; Review</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "on-secondary": "#ffffff",
+          "surface-container-lowest": "#ffffff",
+          "on-primary-fixed-variant": "#881646",
+          "surface-tint": "#a8315d",
+          "tertiary": "#3b3236",
+          "surface-dim": "#e1d8d9",
+          "error": "#ba1a1a",
+          "surface-bright": "#fff8f8",
+          "secondary-fixed": "#ffdad4",
+          "secondary": "#ae3123",
+          "on-surface-variant": "#564146",
+          "error-container": "#ffdad6",
+          "on-background": "#1f1b1c",
+          "primary": "#6d0033",
+          "tertiary-fixed-dim": "#d1c3c8",
+          "on-primary-container": "#ffa0ba",
+          "on-tertiary": "#ffffff",
+          "inverse-surface": "#342f30",
+          "on-error-container": "#93000a",
+          "on-error": "#ffffff",
+          "surface": "#fff8f8",
+          "primary-container": "#8e1b4a",
+          "on-secondary-container": "#690000",
+          "outline": "#897176",
+          "surface-container-highest": "#e9e0e1",
+          "tertiary-fixed": "#eedee4",
+          "on-secondary-fixed": "#410000",
+          "background": "#fff8f8",
+          "surface-container": "#f5eced",
+          "inverse-primary": "#ffb1c5",
+          "on-tertiary-fixed-variant": "#4e4449",
+          "on-primary-fixed": "#3f001b",
+          "surface-container-low": "#fbf1f2",
+          "surface-variant": "#e9e0e1",
+          "surface-container-high": "#efe6e7",
+          "secondary-container": "#fc6955",
+          "on-secondary-fixed-variant": "#8c170e",
+          "primary-fixed-dim": "#ffb1c5",
+          "outline-variant": "#dcbfc5",
+          "primary-fixed": "#ffd9e1",
+          "on-primary": "#ffffff",
+          "inverse-on-surface": "#f8eeef",
+          "on-tertiary-fixed": "#21191e",
+          "secondary-fixed-dim": "#ffb4a8",
+          "on-tertiary-container": "#c6b7bd",
+          "on-surface": "#1f1b1c",
+          "tertiary-container": "#53484d"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "space-xs": "0.25rem",
+          "space-md": "0.75rem",
+          "margin": "1rem",
+          "space-2xl": "2rem",
+          "space-xl": "1.5rem",
+          "space-3xl": "3rem",
+          "gutter": "1rem",
+          "space-lg": "1rem",
+          "space-sm": "0.5rem"
+        },
+        "fontFamily": {
+          "display": ["Inter"],
+          "subtitle": ["Inter"],
+          "body": ["Inter"],
+          "body-medium": ["Inter"],
+          "amount-lg-mobile": ["Inter"],
+          "caption": ["Inter"],
+          "label": ["Inter"],
+          "title": ["Inter"],
+          "amount-lg": ["Inter"]
+        },
+        "fontSize": {
+          "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+          "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+          "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+          "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+          "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+          "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+          "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+          "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+          "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }]
+        }
+      }
+    }
+  }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-outlined.fill-icon {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    /* Tabular figures for strict financial numerals */
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased font-body min-h-screen flex justify-center selection:bg-primary-fixed selection:text-primary">
+<!-- Mobile Device Simulation Frame (390px - 560px responsive container) -->
+<div class="w-full max-w-[560px] min-h-screen bg-background flex flex-col relative pb-28 shadow-sm">
+<!-- Top App Bar (Task Screen Context with back navigation) -->
+<header class="sticky top-0 z-40 bg-surface/95 backdrop-blur-md px-margin py-space-sm min-h-[56px] flex items-center justify-between shadow-[0_1px_3px_0_rgba(30,26,27,0.03)]">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Go back" class="w-12 h-12 flex items-center justify-center rounded-full text-on-surface hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<div>
+<div class="flex items-center gap-space-xs">
+<span class="font-subtitle text-subtitle text-on-surface font-semibold">Agent Experience &amp; Review</span>
+</div>
+<span class="font-caption text-caption text-on-surface-variant">S-AGT-013 • Agent Network</span>
+</div>
+</div>
+<div class="flex items-center">
+<span class="font-caption text-caption px-space-sm py-0.5 rounded-full bg-surface-container-high text-primary font-medium">Verified Agent</span>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-margin pt-space-md space-y-space-xl">
+<!-- 1. Transaction Context Bento Card -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant/50 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] space-y-space-md">
+<!-- Agent Identity Header -->
+<div class="flex items-start justify-between border-b border-surface-container-high pb-space-md">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="store">store</span>
+</div>
+<div>
+<h2 class="font-body-medium text-body-medium text-on-surface font-semibold">Alaba Express Pay</h2>
+<p class="font-caption text-caption text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="location_on">location_on</span>
+                Admiralty Way, Lekki • #AG-4029
+              </p>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-surface-container text-on-surface font-caption text-caption font-medium border border-outline-variant/40">
+<span class="material-symbols-outlined text-[14px]" data-icon="verified_user">verified_user</span>
+            SANEF Certified
+          </span>
+</div>
+<!-- Transaction Details -->
+<div class="grid grid-cols-2 gap-space-md pt-space-xs">
+<div>
+<span class="font-caption text-caption text-on-surface-variant block">Transaction Type &amp; Sum</span>
+<span class="font-subtitle text-subtitle text-primary font-bold tabular-nums block tracking-tight">₦30,000.00</span>
+<span class="font-caption text-caption text-on-surface font-medium">Cash-Out (Debit Card)</span>
+</div>
+<div class="text-right flex flex-col justify-between items-end">
+<span class="font-caption text-caption text-on-surface-variant block">Date &amp; Timestamp</span>
+<span class="font-caption text-caption text-on-surface font-medium tabular-nums block">24 Feb 2027, 14:15</span>
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-surface-container text-on-surface-variant font-caption text-caption mt-1">
+<span class="material-symbols-outlined text-[14px] text-primary" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="tabular-nums">Completed • #CW-99214</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 2. Star Rating & Positive Experience Section -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant/50 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] space-y-space-lg">
+<div class="text-center space-y-space-xs">
+<h3 class="font-subtitle text-subtitle text-on-surface font-semibold">How was your booth experience?</h3>
+<p class="font-caption text-caption text-on-surface-variant">Your feedback helps enforce transparent fees across Nigerian agent networks.</p>
+</div>
+<!-- Interactive 5-Star Selector -->
+<div class="flex flex-col items-center justify-center space-y-space-xs">
+<div class="flex items-center justify-center gap-space-sm" id="star-rating-container">
+<button aria-label="1 star" class="p-1 text-primary-container hover:scale-110 active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[36px] fill-icon" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+</button>
+<button aria-label="2 stars" class="p-1 text-primary-container hover:scale-110 active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[36px] fill-icon" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+</button>
+<button aria-label="3 stars" class="p-1 text-primary-container hover:scale-110 active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[36px] fill-icon" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+</button>
+<button aria-label="4 stars" class="p-1 text-primary-container hover:scale-110 active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[36px] fill-icon" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+</button>
+<button aria-label="5 stars" class="p-1 text-outline-variant hover:scale-110 active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[36px]" data-icon="star">star</span>
+</button>
+</div>
+<span class="font-label text-label text-primary font-semibold tracking-tight">★ ★ ★ ★ ☆ (4.0 Very Good)</span>
+</div>
+<!-- Quick Positive Tags -->
+<div class="space-y-space-xs">
+<span class="font-caption text-caption text-on-surface-variant block font-medium">What went well? (Select all that apply)</span>
+<div class="flex flex-wrap gap-2 pt-1">
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-primary-container bg-surface-container-low text-primary font-caption text-caption font-medium active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="speed">speed</span>
+              Fast Service
+            </button>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-primary-container bg-surface-container-low text-primary font-caption text-caption font-medium active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="payments">payments</span>
+              Clean Cash Notes
+            </button>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-outline-variant bg-surface text-on-surface-variant font-caption text-caption font-medium hover:border-primary-container hover:text-primary active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[16px]" data-icon="sentiment_satisfied">sentiment_satisfied</span>
+              Polite Agent
+            </button>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-primary-container bg-surface-container-low text-primary font-caption text-caption font-medium active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="receipt_long">receipt_long</span>
+              Printed Receipt Issued
+            </button>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-outline-variant bg-surface text-on-surface-variant font-caption text-caption font-medium hover:border-primary-container hover:text-primary active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[16px]" data-icon="money_off">money_off</span>
+              No Extra Fees
+            </button>
+</div>
+</div>
+</section>
+<!-- 3. Report an Issue / Complaint Section (Expandable/Focused Card) -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant/60 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] space-y-space-md">
+<!-- Toggle Control with 48px Touch Target -->
+<label class="flex items-center justify-between cursor-pointer min-h-[48px] py-1 select-none">
+<div class="flex items-center gap-space-md">
+<div class="w-9 h-9 rounded-lg bg-error-container/60 text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="flag">flag</span>
+</div>
+<div>
+<span class="font-body-medium text-body-medium text-on-surface font-semibold block">Report an issue with this agent</span>
+<span class="font-caption text-caption text-on-surface-variant">Extortion, counterfeit bills, or terminal abuse</span>
+</div>
+</div>
+<input checked="" class="w-6 h-6 rounded text-primary focus:ring-primary border-outline-variant cursor-pointer accent-primary" id="report-toggle" type="checkbox"/>
+</label>
+<!-- Complaint Details Container (Active State) -->
+<div class="pt-space-sm space-y-space-lg border-t border-surface-container-high" id="complaint-details">
+<!-- Category Chips / Radio Options -->
+<div class="space-y-space-sm">
+<span class="font-caption text-caption text-on-surface-variant font-medium block">Issue Category (Select main grievance)</span>
+<div class="space-y-2">
+<!-- High-priority surcharge chip with warning state -->
+<label class="flex items-start gap-space-sm p-space-md rounded-xl border-2 border-secondary-container bg-surface-container-low cursor-pointer transition-colors">
+<input checked="" class="mt-0.5 text-secondary focus:ring-secondary accent-secondary w-5 h-5" name="complaint_reason" type="radio"/>
+<div class="flex-1">
+<div class="flex items-center gap-1.5 text-secondary font-label text-label font-semibold">
+<span class="material-symbols-outlined text-[18px]" data-icon="warning">warning</span>
+                    Overcharged / Demanded Cash Surcharge
+                  </div>
+<span class="font-caption text-caption text-on-surface-variant block mt-0.5">Agent requested illegal cash-in-hand above automated transaction fee.</span>
+</div>
+</label>
+<!-- Refused Receipt -->
+<label class="flex items-start gap-space-sm p-space-md rounded-xl border border-outline-variant bg-surface hover:border-outline cursor-pointer transition-colors">
+<input class="mt-0.5 text-primary focus:ring-primary accent-primary w-5 h-5" name="complaint_reason" type="radio"/>
+<div class="flex-1">
+<div class="flex items-center gap-1.5 text-on-surface font-label text-label font-medium">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant" data-icon="receipt">receipt</span>
+                    Refused to Issue Terminal Receipt
+                  </div>
+<span class="font-caption text-caption text-on-surface-variant block mt-0.5">POS paper receipt declined or claimed paper outage.</span>
+</div>
+</label>
+<!-- Delayed / Insufficient -->
+<label class="flex items-start gap-space-sm p-space-md rounded-xl border border-outline-variant bg-surface hover:border-outline cursor-pointer transition-colors">
+<input class="mt-0.5 text-primary focus:ring-primary accent-primary w-5 h-5" name="complaint_reason" type="radio"/>
+<div class="flex-1">
+<div class="flex items-center gap-1.5 text-on-surface font-label text-label font-medium">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant" data-icon="hourglass_empty">hourglass_empty</span>
+                    Insufficient Cash / Delayed Service
+                  </div>
+<span class="font-caption text-caption text-on-surface-variant block mt-0.5">Debited account with extensive delay in dispensing naira notes.</span>
+</div>
+</label>
+<!-- Counterfeit Notes -->
+<label class="flex items-start gap-space-sm p-space-md rounded-xl border border-outline-variant bg-surface hover:border-outline cursor-pointer transition-colors">
+<input class="mt-0.5 text-primary focus:ring-primary accent-primary w-5 h-5" name="complaint_reason" type="radio"/>
+<div class="flex-1">
+<div class="flex items-center gap-1.5 text-on-surface font-label text-label font-medium">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant" data-icon="money_off_cs">redeem</span>
+                    Suspicious / Counterfeit Currency
+                  </div>
+<span class="font-caption text-caption text-on-surface-variant block mt-0.5">Fake or mutilated naira banknotes issued during payout.</span>
+</div>
+</label>
+<!-- Unprofessional Behavior -->
+<label class="flex items-start gap-space-sm p-space-md rounded-xl border border-outline-variant bg-surface hover:border-outline cursor-pointer transition-colors">
+<input class="mt-0.5 text-primary focus:ring-primary accent-primary w-5 h-5" name="complaint_reason" type="radio"/>
+<div class="flex-1">
+<div class="flex items-center gap-1.5 text-on-surface font-label text-label font-medium">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant" data-icon="gavel">gavel</span>
+                    Unprofessional Behavior
+                  </div>
+<span class="font-caption text-caption text-on-surface-variant block mt-0.5">Hostile conduct, intimidation, or safety violations.</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Overcharge Amount Input Field -->
+<div class="space-y-space-xs">
+<label class="font-caption text-caption text-on-surface-variant font-medium block" for="extortion-amount">
+              Extorted surcharge (if applicable)
+            </label>
+<div class="relative flex items-center">
+<span class="absolute left-3.5 text-on-surface-variant font-body-medium font-semibold">₦</span>
+<input class="w-full h-[52px] pl-8 pr-4 rounded-xl border border-outline-variant bg-surface-container-lowest text-on-surface font-body tabular-nums focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-colors" id="extortion-amount" placeholder="e.g. 200" type="number" value="200"/>
+</div>
+<span class="font-caption text-caption text-secondary flex items-center gap-1 pt-0.5">
+<span class="material-symbols-outlined text-[14px]" data-icon="info">info</span>
+              Excess cash charges violate CBN Regulation Sec 4.12.
+            </span>
+</div>
+<!-- Free-text Description Box -->
+<div class="space-y-space-xs">
+<label class="font-caption text-caption text-on-surface-variant font-medium block" for="details-text">
+              Provide additional details (optional)
+            </label>
+<textarea class="w-full p-3 rounded-xl border border-outline-variant bg-surface-container-lowest text-on-surface font-body text-sm focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container resize-none transition-colors" id="details-text" placeholder="Briefly describe what happened at the agent counter..." rows="3">Agent insisted on taking an extra ₦200 cash before handing over the ₦30,000 cash withdrawal.</textarea>
+</div>
+<!-- File / Photo Attachment Trigger -->
+<div class="space-y-space-xs">
+<span class="font-caption text-caption text-on-surface-variant font-medium block">Evidence attachment (Optional)</span>
+<button class="w-full h-[52px] rounded-xl border border-dashed border-outline hover:border-primary-container bg-surface-container-low/60 flex items-center justify-center gap-space-sm text-on-surface-variant hover:text-primary active:scale-[0.99] transition-all" type="button">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="add_a_photo">add_a_photo</span>
+<span class="font-label text-label font-medium">Upload receipt photo or evidence</span>
+</button>
+</div>
+</div>
+</section>
+<!-- 4. CBN Fair Agency Protection Notice -->
+<section class="rounded-xl p-space-md bg-surface-container-low border border-outline-variant/40 flex items-start gap-space-sm">
+<div class="w-6 h-6 flex-shrink-0 text-primary pt-0.5">
+<span class="material-symbols-outlined text-[20px]" data-icon="verified">verified</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant leading-relaxed">
+<strong class="font-medium text-on-surface">CBN Fair Agency Protection:</strong> Your report is anonymous and directly monitored by <span class="font-medium text-primary">YourApp Risk</span> &amp; Central Bank of Nigeria Agency Compliance officers to stamp out predatory agent extortion.
+        </p>
+</section>
+<!-- 5. Action Buttons (52px Touch Standard) -->
+<div class="space-y-space-sm pt-space-xs pb-space-lg">
+<button class="w-full h-[52px] rounded-xl bg-primary-container text-on-secondary font-label text-label font-semibold flex items-center justify-center gap-space-sm shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] hover:bg-primary active:scale-[0.98] transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="send">send</span>
+          Submit Review &amp; Report
+        </button>
+<button class="w-full h-[52px] rounded-xl bg-transparent border border-outline-variant text-on-surface font-label text-label font-semibold flex items-center justify-center hover:bg-surface-container active:scale-[0.98] transition-all" type="button">
+          Skip &amp; Return Home
+        </button>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Docked Shared Component: 5 Tabs, "Payments" & "More" context) -->
+<nav class="fixed bottom-0 left-0 right-0 w-full z-50 bg-surface-container-lowest border-t border-outline-variant/40 shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)] pb-safe">
+<div class="max-w-[560px] mx-auto h-16 px-margin flex justify-around items-center">
+<!-- Tab 1: Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#home">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-caption text-caption font-medium">Home</span>
+</a>
+<!-- Tab 2: Payments (Active Destination for Cash & Agent Flow) -->
+<a class="flex flex-col items-center justify-center text-primary font-semibold min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#payments">
+<span class="material-symbols-outlined fill-icon" data-icon="send" data-weight="fill" style="font-variation-settings: 'FILL' 1;">send</span>
+<span class="font-caption text-caption font-medium">Payments</span>
+</a>
+<!-- Tab 3: Cards -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#cards">
+<span class="material-symbols-outlined" data-icon="credit_card">credit_card</span>
+<span class="font-caption text-caption font-medium">Cards</span>
+</a>
+<!-- Tab 4: Save & Borrow -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#save-borrow">
+<span class="material-symbols-outlined" data-icon="savings">savings</span>
+<span class="font-caption text-caption font-medium">Save &amp; Borrow</span>
+</a>
+<!-- Tab 5: More -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#more">
+<span class="material-symbols-outlined" data-icon="more_horiz">more_horiz</span>
+<span class="font-caption text-caption font-medium">More</span>
+</a>
+</div>
+</nav>
+</div>
+<!-- Micro-interactions Script -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Interactive Star Rating selection logic
+      const starContainer = document.getElementById('star-rating-container');
+      const stars = starContainer.querySelectorAll('button');
+      
+      stars.forEach((btn, index) => {
+        btn.addEventListener('click', () => {
+          stars.forEach((s, i) => {
+            const span = s.querySelector('.material-symbols-outlined');
+            if (i <= index) {
+              s.classList.remove('text-outline-variant');
+              s.classList.add('text-primary-container');
+              span.classList.add('fill-icon');
+              span.style.fontVariationSettings = "'FILL' 1";
+            } else {
+              s.classList.remove('text-primary-container');
+              s.classList.add('text-outline-variant');
+              span.classList.remove('fill-icon');
+              span.style.fontVariationSettings = "'FILL' 0";
+            }
+          });
+        });
+      });
+
+      // Expandable report section toggle
+      const reportToggle = document.getElementById('report-toggle');
+      const complaintDetails = document.getElementById('complaint-details');
+      
+      reportToggle.addEventListener('change', (e) => {
+        if (e.target.checked) {
+          complaintDetails.style.display = 'block';
+        } else {
+          complaintDetails.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</body></html>

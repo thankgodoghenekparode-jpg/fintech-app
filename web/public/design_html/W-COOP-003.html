@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Prospective Member Join Requests Queue | YourApp Cooperative Portal</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Inter Google Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-low": "#fbf1f2",
+            "tertiary-fixed": "#eedee4",
+            "on-primary": "#ffffff",
+            "surface-bright": "#fff8f8",
+            "secondary-fixed": "#ffdad4",
+            "on-error": "#ffffff",
+            "secondary-fixed-dim": "#ffb4a8",
+            "on-error-container": "#93000a",
+            "surface-container-lowest": "#ffffff",
+            "primary": "#6d0033",
+            "secondary-container": "#fc6955",
+            "surface-dim": "#e1d8d9",
+            "surface-container-highest": "#e9e0e1",
+            "on-primary-fixed-variant": "#881646",
+            "on-secondary-container": "#690000",
+            "primary-fixed-dim": "#ffb1c5",
+            "secondary": "#ae3123",
+            "inverse-surface": "#342f30",
+            "surface-container-high": "#efe6e7",
+            "on-tertiary": "#ffffff",
+            "on-secondary-fixed-variant": "#8c170e",
+            "surface-variant": "#e9e0e1",
+            "on-primary-container": "#ffa0ba",
+            "on-surface-variant": "#564146",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "tertiary": "#3b3236",
+            "background": "#fff8f8",
+            "tertiary-container": "#53484d",
+            "on-primary-fixed": "#3f001b",
+            "surface-tint": "#a8315d",
+            "error": "#ba1a1a",
+            "outline": "#897176",
+            "on-secondary": "#ffffff",
+            "on-tertiary-fixed": "#21191e",
+            "on-surface": "#1f1b1c",
+            "primary-fixed": "#ffd9e1",
+            "outline-variant": "#dcbfc5",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "inverse-primary": "#ffb1c5",
+            "surface-container": "#f5eced",
+            "on-background": "#1f1b1c",
+            "on-secondary-fixed": "#410000",
+            "error-container": "#ffdad6",
+            "inverse-on-surface": "#f8eeef",
+            "on-tertiary-container": "#c6b7bd",
+            "primary-container": "#8e1b4a",
+            "surface": "#fff8f8"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "1rem",
+            "space-sm": "0.5rem",
+            "space-lg": "1rem",
+            "space-xs": "0.25rem",
+            "space-xl": "1.5rem",
+            "margin": "1rem",
+            "space-3xl": "3rem",
+            "space-md": "0.75rem",
+            "space-2xl": "2rem"
+          },
+          "fontFamily": {
+            "display": ["Inter", "sans-serif"],
+            "body": ["Inter", "sans-serif"],
+            "amount-lg-mobile": ["Inter", "sans-serif"],
+            "amount-lg": ["Inter", "sans-serif"],
+            "caption": ["Inter", "sans-serif"],
+            "subtitle": ["Inter", "sans-serif"],
+            "body-medium": ["Inter", "sans-serif"],
+            "title": ["Inter", "sans-serif"],
+            "label": ["Inter", "sans-serif"]
+          },
+          "fontSize": {
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #FAF8F7;
+      color: #1F1B1C;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      font-size: 20px;
+      line-height: 1;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .warm-card-shadow {
+      box-shadow: 0 2px 8px -2px rgba(30, 26, 27, 0.05), 0 1px 3px 0 rgba(30, 26, 27, 0.03);
+    }
+    .warm-popover-shadow {
+      box-shadow: 0 8px 24px -4px rgba(30, 26, 27, 0.08), 0 4px 12px -2px rgba(30, 26, 27, 0.04);
+    }
+    /* Custom scrollbar for desktop queue table */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F1EDEB;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #DCBFC5;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="bg-[#FAF8F7] text-on-surface antialiased min-h-screen flex selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- ========================================================================= -->
+<!-- LEFT SIDEBAR NAVIGATION (docked w-72 h-screen fixed z-30)                 -->
+<!-- ========================================================================= -->
+<aside class="fixed left-0 top-0 h-screen w-72 flex flex-col justify-between py-space-xl px-space-lg bg-surface-container-lowest border-r border-surface-variant z-30 shadow-sm overflow-y-auto">
+<!-- Top Brand & Society Context -->
+<div class="flex flex-col gap-space-lg">
+<!-- Crest / Portal Identity -->
+<div class="flex items-center gap-space-md px-space-xs">
+<div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-on-primary shadow-sm shrink-0">
+<span class="material-symbols-outlined text-[22px]" data-icon="account_balance">account_balance</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-subtitle text-subtitle text-primary tracking-tight leading-tight truncate">YourApp Credit Ops</span>
+<span class="font-caption text-caption text-on-surface-variant truncate">Cooperative Portal</span>
+</div>
+</div>
+<!-- Society Switcher Card -->
+<div class="p-space-md rounded-xl bg-surface-container-low border border-outline-variant/50 flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-caption text-caption text-on-surface-variant font-medium">Active Society</span>
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-semibold bg-emerald-100 text-emerald-800">
+            Tier-1 Reg
+          </span>
+</div>
+<div class="flex items-center justify-between gap-space-xs cursor-pointer group pt-1">
+<p class="font-label text-label text-on-surface leading-tight font-semibold line-clamp-2">
+            Lekki Phase 1 Multipurpose Cooperative Society Limited
+          </p>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors duration-150 shrink-0" data-icon="unfold_more">unfold_more</span>
+</div>
+</div>
+<!-- Main Navigation Menu -->
+<nav aria-label="Main Navigation" class="flex flex-col gap-1 mt-space-xs">
+<!-- Dashboard -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<!-- Members Directory -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span>Members Directory</span>
+</a>
+<!-- Join Requests (Active Tab) -->
+<a class="flex items-center justify-between px-space-lg py-space-md rounded-lg bg-surface-container-low text-primary font-label text-label shadow-sm" href="#">
+<div class="flex items-center gap-space-md">
+<span class="material-symbols-outlined text-primary" data-icon="pending_actions" data-weight="fill" style="font-variation-settings: 'FILL' 1;">pending_actions</span>
+<span class="font-semibold text-primary">Join Requests</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-primary-container text-on-primary font-caption text-caption text-xs font-bold">5</span>
+</a>
+<!-- Contribution Plans & Arrears -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="savings">savings</span>
+<span>Contribution Plans &amp; Arrears</span>
+</a>
+<!-- Loan Applications -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="assignment">assignment</span>
+<span>Loan Applications</span>
+</a>
+<!-- Loans Portfolio -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span>Loans Portfolio</span>
+</a>
+<!-- Shares & Dividends -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="pie_chart">pie_chart</span>
+<span>Shares &amp; Dividends</span>
+</a>
+<!-- Rules & Settings -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="tune">tune</span>
+<span>Rules &amp; Settings</span>
+</a>
+<!-- Ledger & Reports -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span>Ledger &amp; Reports</span>
+</a>
+<!-- Dual Approvals -->
+<a class="flex items-center justify-between px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<div class="flex items-center gap-space-md">
+<span class="material-symbols-outlined" data-icon="handshake">handshake</span>
+<span>Dual Approvals</span>
+</div>
+<span class="px-1.5 py-0.5 rounded text-[11px] font-semibold bg-amber-100 text-amber-800">2</span>
+</a>
+</nav>
+</div>
+<!-- Sidebar Footer Actions -->
+<div class="pt-space-lg border-t border-surface-variant flex flex-col gap-1">
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="admin_panel_settings">admin_panel_settings</span>
+<span>Security &amp; Settings</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-secondary font-label text-label hover:bg-surface-container-low hover:text-secondary transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span>Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- ========================================================================= -->
+<!-- MAIN WORKSPACE CONTAINER (calc(100% - 18rem) with top navbar sticky)     -->
+<!-- ========================================================================= -->
+<div class="ml-72 flex-1 flex flex-col min-h-screen bg-[#FAF8F7]">
+<!-- TOP NAVIGATION BAR -->
+<header class="sticky top-0 right-0 h-16 w-full flex items-center justify-between px-space-xl bg-surface-container-lowest border-b border-surface-variant z-20">
+<!-- Search on Left -->
+<div class="flex items-center gap-space-md w-96">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input class="w-full h-10 pl-10 pr-4 rounded-xl bg-surface-container-low/50 border border-outline-variant focus:border-primary-container focus:ring-1 focus:ring-primary-container text-on-surface font-body text-label placeholder:text-on-surface-variant/70 text-sm transition-all" placeholder="Search applicants, BVN, phone, or endorsement..." type="text"/>
+</div>
+</div>
+<!-- Center / Contextual Meta -->
+<div class="hidden xl:flex items-center gap-space-md">
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-container border border-outline-variant/40">
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+<span class="font-caption text-caption text-on-surface font-medium">Board Quorum: <strong>4 of 5 Vetted Execs Active</strong></span>
+</div>
+</div>
+<!-- Right Trailing Actions & Officer Profile -->
+<div class="flex items-center gap-space-lg">
+<!-- Dual Authorization Action Trigger -->
+<button class="hidden sm:inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-surface-container-low text-primary border border-outline-variant hover:bg-surface-container font-label text-caption transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="verified_user">verified_user</span>
+<span>Dual Authorization Active</span>
+</button>
+<div class="flex items-center gap-1">
+<button class="w-10 h-10 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors relative" title="Notifications">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-secondary rounded-full"></span>
+</button>
+<button class="w-10 h-10 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors" title="Support &amp; Help">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+</div>
+<div class="h-6 w-px bg-outline-variant"></div>
+<!-- Staff Officer Profile -->
+<div class="flex items-center gap-space-md cursor-pointer group">
+<div class="w-10 h-10 rounded-full border-2 border-primary-container overflow-hidden bg-surface-container-high shrink-0">
+<img class="w-full h-full object-cover" data-alt="Distinguished mature Nigerian male cooperative executive officer wearing bespoke formal dark navy traditional attire with warm lighting in an executive boardroom setting, confident and warm dignified professional demeanor." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMF6Nx8zs_ca27OuYV9l3RsJVx_Np49INOWdyB9-Y2koJtHEaDHYBQnQHSoxhwKCtYfw6kIx05WdUIB6HdzreiGDJYZnp_Bk00tbBfHTuSKOkPqQGqJ8yaWhWe7gY1HhusDwKTOJhH01-WO7qBF05ZssERnf8VgUen4ryzemR16RI8Mm4sEkz3pgwrY2BwpDBMvES2LEk843ozYKVTxyuJsl_7SJkMydQLKEO9lfal"/>
+</div>
+<div class="flex flex-col text-left">
+<span class="font-label text-label text-on-surface font-semibold group-hover:text-primary transition-colors">Dr. Adebayo Ogunlesi</span>
+<span class="font-caption text-caption text-on-surface-variant text-xs">Board President (#007)</span>
+</div>
+</div>
+</div>
+</header>
+<!-- MAIN BODY CONTENT CANVAS -->
+<main class="p-space-xl flex flex-col gap-space-xl max-w-[1400px]">
+<!-- BREADCRUMB & PAGE HEADER -->
+<section class="flex flex-col gap-space-sm">
+<!-- Breadcrumb -->
+<nav aria-label="Breadcrumb" class="flex items-center gap-2 font-caption text-caption text-on-surface-variant">
+<a class="hover:text-primary transition-colors" href="#">Cooperative Administration</a>
+<span class="material-symbols-outlined text-[14px]" data-icon="chevron_right">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Membership Vetting</a>
+<span class="material-symbols-outlined text-[14px]" data-icon="chevron_right">chevron_right</span>
+<span class="font-medium text-on-surface">Join Requests Queue</span>
+</nav>
+<!-- Main Title & Action Bar -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md pt-1">
+<div class="flex items-center gap-space-md flex-wrap">
+<h1 class="font-title text-title text-on-surface tracking-tight font-bold">
+              Prospective Member Join Requests Queue
+            </h1>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container text-primary font-label text-caption font-semibold border border-outline-variant/60">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+              5 Applicants Awaiting Board Vetting
+            </span>
+</div>
+<div class="flex items-center gap-space-md">
+<!-- Secondary Batch Export Button -->
+<button class="h-[52px] px-5 rounded-xl border border-outline-variant bg-surface-container-lowest hover:bg-surface-container text-on-surface font-label text-label font-medium transition-colors inline-flex items-center gap-2 warm-card-shadow">
+<span class="material-symbols-outlined text-[20px]" data-icon="download">download</span>
+<span>Batch Export Dossiers</span>
+</button>
+<!-- Primary Bulk Approve Button (standardized 52px height) -->
+<button class="h-[52px] px-6 rounded-xl bg-primary-container hover:bg-[#731540] text-on-primary font-label text-label font-semibold transition-colors inline-flex items-center gap-2 shadow-sm disabled:opacity-50">
+<span class="material-symbols-outlined text-[20px]" data-icon="done_all">done_all</span>
+<span>Bulk Approve Selected (0)</span>
+</button>
+</div>
+</div>
+</section>
+<!-- STATUTORY BYE-LAWS PROTOCOL BANNER -->
+<section class="p-space-lg rounded-xl bg-surface-container-low border border-outline-variant/60 warm-card-shadow flex items-start gap-space-md">
+<div class="w-9 h-9 rounded-lg bg-primary-container/10 text-primary-container flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[22px]" data-icon="policy">policy</span>
+</div>
+<div class="flex-1 flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<p class="font-body text-caption text-on-surface-variant leading-relaxed">
+<strong class="text-on-surface font-semibold">Society Bye-law Rule 4.1:</strong> Prospective members must be residents or registered business owners in Lekki Phase 1, hold valid Tier 3 BVN/NIN verification, and be endorsed by at least 1 existing member in good standing before digital share certificate issuance and automated ledger creation.
+          </p>
+<a class="inline-flex items-center gap-1 font-label text-caption text-primary-container hover:underline font-semibold shrink-0" href="#">
+<span>Read 2027 Amended Bye-laws</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</section>
+<!-- QUEUE KPI CARDS (Bento Style 4 Cards) -->
+<section class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-space-lg">
+<!-- Card 1: Awaiting Review -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-[#E4DEDC] warm-card-shadow flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-caption text-caption text-on-surface-variant font-medium">Awaiting Review</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]" data-icon="hourglass_top">hourglass_top</span>
+</div>
+</div>
+<div>
+<div class="flex items-baseline gap-2">
+<span class="font-amount-lg text-amount-lg text-on-surface font-bold">5 dossiers</span>
+</div>
+<div class="flex items-center gap-1.5 mt-space-xs font-caption text-caption text-on-surface-variant">
+<span class="material-symbols-outlined text-emerald-700 text-[16px]" data-icon="schedule">schedule</span>
+<span>Avg review time: <strong class="text-on-surface font-semibold">1.4 days</strong></span>
+</div>
+</div>
+</div>
+<!-- Card 2: Endorsements Verified -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-[#E4DEDC] warm-card-shadow flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-caption text-caption text-on-surface-variant font-medium">Endorsements Verified</span>
+<div class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]" data-icon="verified">verified</span>
+</div>
+</div>
+<div>
+<div class="flex items-baseline gap-2">
+<span class="font-amount-lg text-amount-lg text-on-surface font-bold">4 of 5</span>
+<span class="font-caption text-caption text-emerald-700 font-semibold">(80%)</span>
+</div>
+<p class="mt-space-xs font-caption text-caption text-on-surface-variant">
+              Endorsed by active members in good standing
+            </p>
+</div>
+</div>
+<!-- Card 3: Initial Subscriptions Pledged -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-[#E4DEDC] warm-card-shadow flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-caption text-caption text-on-surface-variant font-medium">Subscriptions Pledged</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[18px]" data-icon="payments">payments</span>
+</div>
+</div>
+<div>
+<div class="flex items-baseline gap-2">
+<span class="font-amount-lg text-amount-lg text-on-surface font-bold">₦625,000.00</span>
+</div>
+<p class="mt-space-xs font-caption text-caption text-on-surface-variant">
+              Share capital + first month thrift commitment
+            </p>
+</div>
+</div>
+<!-- Card 4: Rejected This Quarter -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-[#E4DEDC] warm-card-shadow flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-caption text-caption text-on-surface-variant font-medium">Rejected (Q1 2027)</span>
+<div class="w-8 h-8 rounded-lg bg-secondary-fixed/50 text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]" data-icon="person_cancel">person_cancel</span>
+</div>
+</div>
+<div>
+<div class="flex items-baseline gap-2">
+<span class="font-amount-lg text-amount-lg text-on-surface font-bold">3 applicants</span>
+</div>
+<div class="flex items-center gap-1.5 mt-space-xs font-caption text-caption text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-[16px]" data-icon="info">info</span>
+<span>Non-resident or KYC mismatch</span>
+</div>
+</div>
+</div>
+</section>
+<!-- FILTER TOOLBAR -->
+<section class="p-space-md rounded-xl bg-surface-container-lowest border border-[#E4DEDC] warm-card-shadow flex flex-wrap items-center justify-between gap-space-md">
+<!-- Left Filter Chips & Dropdowns -->
+<div class="flex flex-wrap items-center gap-space-md">
+<!-- Endorsement Segment -->
+<div class="flex items-center p-1 rounded-lg bg-surface-container border border-outline-variant/40">
+<button class="px-3 py-1.5 rounded-md text-caption font-label font-semibold bg-surface-container-lowest text-primary shadow-xs">
+              All (5)
+            </button>
+<button class="px-3 py-1.5 rounded-md text-caption font-label font-medium text-on-surface-variant hover:text-on-surface transition-colors">
+              Endorsed (4)
+            </button>
+<button class="px-3 py-1.5 rounded-md text-caption font-label font-medium text-on-surface-variant hover:text-on-surface transition-colors">
+              Pending Endorsement (1)
+            </button>
+</div>
+<!-- Employment Category Select -->
+<div class="relative">
+<select class="h-10 pl-3 pr-8 rounded-lg bg-surface-container-lowest border border-outline-variant text-on-surface font-body text-caption focus:border-primary-container focus:ring-1 focus:ring-primary-container cursor-pointer">
+<option value="">All Employment Categories</option>
+<option value="healthcare">Healthcare &amp; Medicine</option>
+<option value="professional">Professional Services (Finance/Accounting)</option>
+<option value="logistics">Logistics &amp; Supply Chain</option>
+<option value="education">Education &amp; Academics</option>
+<option value="independent">Independent Contractor</option>
+</select>
+</div>
+<!-- Date Applied Filter -->
+<div class="relative">
+<button class="h-10 px-3 rounded-lg bg-surface-container-lowest border border-outline-variant text-on-surface font-body text-caption hover:bg-surface-container flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-outline" data-icon="calendar_month">calendar_month</span>
+<span>Date Applied: Last 30 Days</span>
+<span class="material-symbols-outlined text-[16px] text-outline" data-icon="expand_more">expand_more</span>
+</button>
+</div>
+</div>
+<!-- Right Quick Counter / Clear -->
+<div class="flex items-center gap-space-md">
+<span class="font-caption text-caption text-on-surface-variant">Showing <strong>5 of 5</strong> pending dossiers</span>
+<button class="font-label text-caption text-primary font-semibold hover:underline flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="restart_alt">restart_alt</span>
+<span>Reset Filters</span>
+</button>
+</div>
+</section>
+<!-- JOIN REQUESTS QUEUE TABLE WITH EXPANDED ACTIVE REVIEW PANEL -->
+<section class="rounded-xl bg-surface-container-lowest border border-[#E4DEDC] warm-card-shadow overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-[#E4DEDC] font-label text-caption text-on-surface-variant">
+<th class="py-3 px-4 w-12 text-center">
+<input class="rounded border-outline-variant text-primary-container focus:ring-primary-container w-4 h-4 cursor-pointer" type="checkbox"/>
+</th>
+<th class="py-3 px-4 font-semibold">Applicant Name &amp; Contact</th>
+<th class="py-3 px-4 font-semibold">Residence / Business Address</th>
+<th class="py-3 px-4 font-semibold">Profession / Employer</th>
+<th class="py-3 px-4 font-semibold">KYC &amp; BVN Status</th>
+<th class="py-3 px-4 font-semibold">Proposed Contribution Plan</th>
+<th class="py-3 px-4 font-semibold">Endorsing Member</th>
+<th class="py-3 px-4 font-semibold">Submitted</th>
+<th class="py-3 px-4 font-semibold text-right pr-6">Review Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#E4DEDC] text-sm font-body">
+<!-- ROW 1: Babatunde Lawal (ACTIVE / EXPANDED INLINE REVIEW STATE) -->
+<tr class="bg-surface-container-low/30 hover:bg-surface-container-low/60 transition-colors">
+<td class="py-4 px-4 text-center">
+<input class="rounded border-outline-variant text-primary-container focus:ring-primary-container w-4 h-4 cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-4 px-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container/15 text-primary-container flex items-center justify-center font-bold text-sm shrink-0">
+                      BL
+                    </div>
+<div class="flex flex-col">
+<span class="font-body-medium text-body-medium font-semibold text-on-surface">Babatunde Lawal</span>
+<span class="font-caption text-caption text-on-surface-variant">b.lawal@medplus.ng</span>
+<span class="font-caption text-caption text-on-surface-variant/80 text-[11px]">+234 803 492 8812</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">14 Admiralty Way</span>
+<span class="font-caption text-caption text-on-surface-variant">Lekki Phase 1, Lagos</span>
+<span class="inline-flex items-center gap-1 text-[11px] text-emerald-700 font-medium mt-0.5">
+<span class="material-symbols-outlined text-[13px]" data-icon="location_on">location_on</span>
+                      Resident Zone 1
+                    </span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">Lead Pharmacist</span>
+<span class="font-caption text-caption text-on-surface-variant">MedPlus Lekki Branch</span>
+<span class="font-caption text-[11px] text-on-surface-variant mt-0.5">Healthcare (11 yrs exp)</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col gap-1">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200 w-fit">
+<span class="material-symbols-outlined text-[14px]" data-icon="check_circle">check_circle</span>
+                      Tier 3 Verified
+                    </span>
+<span class="font-caption text-caption text-on-surface-variant text-[11px]">BVN &amp; NIN Matched</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">₦30,000 / month</span>
+<span class="font-caption text-caption text-on-surface-variant">10 Shares (₦50,000)</span>
+<span class="font-caption text-[11px] text-emerald-800 font-medium">₦80,000 ready for auto-debit</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">Chioma Adeleke</span>
+<span class="font-caption text-caption text-primary-container font-semibold">Member #042</span>
+<span class="inline-flex items-center gap-0.5 text-[11px] text-emerald-700">
+<span class="material-symbols-outlined text-[13px]" data-icon="thumb_up">thumb_up</span>
+                      Endorsement signed
+                    </span>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<span class="text-on-surface font-medium">23 Feb 2027</span>
+<div class="text-[11px] text-on-surface-variant">09:42 AM</div>
+</td>
+<td class="py-4 px-4 text-right pr-6 whitespace-nowrap">
+<div class="flex items-center justify-end gap-1.5">
+<button class="px-3 py-1.5 rounded-lg bg-primary-container hover:bg-[#731540] text-on-primary font-label text-caption font-semibold transition-colors flex items-center gap-1 shadow-xs">
+<span class="material-symbols-outlined text-[16px]" data-icon="draw">draw</span>
+<span>Approve (Sign 1/2)</span>
+</button>
+<button class="px-2.5 py-1.5 rounded-lg border border-outline-variant bg-surface-container-lowest hover:bg-surface-container text-on-surface font-label text-caption transition-colors" title="Request Interview">
+<span class="material-symbols-outlined text-[16px]" data-icon="forum">forum</span>
+</button>
+<button class="px-2.5 py-1.5 rounded-lg border border-outline-variant hover:bg-error-container/40 text-error font-label text-caption transition-colors" title="Reject Application">
+<span class="material-symbols-outlined text-[16px]" data-icon="close">close</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- INLINE QUICK DECISION / EXPANDED DOSSIER PREVIEW FOR BABATUNDE LAWAL -->
+<tr class="bg-surface-container-low/60 border-b-2 border-primary-container/30">
+<td class="p-0" colspan="9">
+<div class="p-space-lg mx-space-lg my-space-md rounded-xl bg-surface-container-lowest border border-outline-variant/80 warm-popover-shadow">
+<div class="flex flex-col lg:flex-row gap-space-xl">
+<!-- Left: Applicant Personal Motivation & Statements -->
+<div class="flex-1 flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-[20px]" data-icon="description">description</span>
+<h4 class="font-label text-label font-bold text-on-surface">Applicant Personal Motivation &amp; Statement of Intent</h4>
+</div>
+<span class="font-caption text-caption text-on-surface-variant bg-surface-container px-2.5 py-0.5 rounded-full">Application Ref: #REQ-2027-089</span>
+</div>
+<blockquote class="p-space-md rounded-lg bg-surface-container-low border-l-4 border-primary-container italic font-body text-body text-on-surface">
+                          “I am a community pharmacist on Admiralty Way seeking to participate in regular thrift savings and cooperative micro-investments. Having lived and practiced in Lekki Phase 1 for over 8 years, I wish to collaborate with fellow community professionals on collective real estate and asset acquisitions.”
+                        </blockquote>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md pt-space-xs">
+<div class="p-space-sm rounded-lg bg-surface-container border border-outline-variant/40 flex flex-col">
+<span class="font-caption text-caption text-on-surface-variant">Proof of Address Doc</span>
+<span class="font-medium text-sm text-on-surface truncate flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-primary text-[16px]" data-icon="picture_as_pdf">picture_as_pdf</span>
+                              Eko_Disco_Admiralty_Jan2027.pdf
+                            </span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container border border-outline-variant/40 flex flex-col">
+<span class="font-caption text-caption text-on-surface-variant">Employment Verification</span>
+<span class="font-medium text-sm text-on-surface truncate flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-primary text-[16px]" data-icon="verified">verified</span>
+                              MedPlus_HR_Confirmation.pdf
+                            </span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container border border-outline-variant/40 flex flex-col">
+<span class="font-caption text-caption text-on-surface-variant">NIN Verification Slip</span>
+<span class="font-medium text-sm text-on-surface truncate flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-emerald-700 text-[16px]" data-icon="task_alt">task_alt</span>
+                              NIMC-Verified-Match-99.2%
+                            </span>
+</div>
+</div>
+</div>
+<!-- Right: Mandatory Dual Approval Pipeline & Officer Signoff Action -->
+<div class="w-full lg:w-96 p-space-md rounded-xl bg-surface-container-low border border-outline-variant flex flex-col justify-between gap-space-md shrink-0">
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<h4 class="font-label text-label font-bold text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="lock">lock</span>
+                              Dual Approval Tracking
+                            </h4>
+<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-amber-100 text-amber-900">
+                              Stage 1 of 2
+                            </span>
+</div>
+<!-- Approval Stage Stepper -->
+<div class="space-y-3">
+<!-- Level 1: President -->
+<div class="flex items-start gap-3 p-2.5 rounded-lg bg-surface-container-lowest border border-outline-variant/60">
+<div class="w-6 h-6 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">
+                                1
+                              </div>
+<div class="flex-1 text-xs">
+<div class="flex items-center justify-between">
+<strong class="text-on-surface">Level 1: President Approval</strong>
+<span class="text-amber-800 font-semibold">[Pending You]</span>
+</div>
+<p class="text-on-surface-variant mt-0.5">Dr. Adebayo Ogunlesi (Logged In)</p>
+</div>
+</div>
+<!-- Level 2: General Secretary -->
+<div class="flex items-start gap-3 p-2.5 rounded-lg bg-surface-container-lowest border border-outline-variant/40 opacity-75">
+<div class="w-6 h-6 rounded-full bg-surface-container text-on-surface-variant flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">
+                                2
+                              </div>
+<div class="flex-1 text-xs">
+<div class="flex items-center justify-between">
+<strong class="text-on-surface">Level 2: General Secretary Signoff</strong>
+<span class="text-on-surface-variant">[Awaiting L1]</span>
+</div>
+<p class="text-on-surface-variant mt-0.5">Barrister (Mrs.) Folashade Coker</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Sign Action Button -->
+<div class="flex flex-col gap-2 pt-2 border-t border-outline-variant/60">
+<button class="w-full h-11 rounded-xl bg-primary-container hover:bg-[#731540] text-on-primary font-label text-label font-semibold transition-colors flex items-center justify-center gap-2 shadow-xs">
+<span class="material-symbols-outlined text-[18px]" data-icon="fingerprint">fingerprint</span>
+<span>Sign &amp; Authorize Admission (L1)</span>
+</button>
+<div class="flex items-center justify-center gap-2 text-[11px] text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]" data-icon="shield">shield</span>
+<span>Secured with Hardware Token / TOTP</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</td>
+</tr>
+<!-- ROW 2: Folake Adeyemi -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-4 px-4 text-center">
+<input class="rounded border-outline-variant text-primary-container focus:ring-primary-container w-4 h-4 cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-4 px-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed text-secondary flex items-center justify-center font-bold text-sm shrink-0">
+                      FA
+                    </div>
+<div class="flex flex-col">
+<span class="font-body-medium text-body-medium font-semibold text-on-surface">Folake Adeyemi</span>
+<span class="font-caption text-caption text-on-surface-variant">f.adeyemi@deloitte.com</span>
+<span class="font-caption text-caption text-on-surface-variant/80 text-[11px]">+234 802 884 1290</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">Block 4, Victoria Garden Estate</span>
+<span class="font-caption text-caption text-on-surface-variant">Lekki Expressway Corridor</span>
+<span class="inline-flex items-center gap-1 text-[11px] text-emerald-700 font-medium mt-0.5">
+<span class="material-symbols-outlined text-[13px]" data-icon="home_work">home_work</span>
+                      Home Owner Verified
+                    </span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">Senior Accountant</span>
+<span class="font-caption text-caption text-on-surface-variant">Deloitte Nigeria</span>
+<span class="font-caption text-[11px] text-on-surface-variant mt-0.5">Finance / Audit</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col gap-1">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200 w-fit">
+<span class="material-symbols-outlined text-[14px]" data-icon="check_circle">check_circle</span>
+                      Tier 3 Verified
+                    </span>
+<span class="font-caption text-caption text-on-surface-variant text-[11px]">BVN: 221908****</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">₦50,000 / month</span>
+<span class="font-caption text-caption text-on-surface-variant">20 Shares (₦100,000)</span>
+<span class="font-caption text-[11px] text-emerald-800 font-medium">₦150,000 first pledge</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">Dr. Adebayo Ogunlesi</span>
+<span class="font-caption text-caption text-primary-container font-semibold">Member #007 (President)</span>
+<span class="inline-flex items-center gap-0.5 text-[11px] text-emerald-700">
+<span class="material-symbols-outlined text-[13px]" data-icon="verified">verified</span>
+                      Co-sponsor
+                    </span>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<span class="text-on-surface font-medium">22 Feb 2027</span>
+<div class="text-[11px] text-on-surface-variant">14:15 PM</div>
+</td>
+<td class="py-4 px-4 text-right pr-6 whitespace-nowrap">
+<div class="flex items-center justify-end gap-1.5">
+<button class="px-3 py-1.5 rounded-lg bg-primary-container hover:bg-[#731540] text-on-primary font-label text-caption font-semibold transition-colors flex items-center gap-1 shadow-xs">
+<span class="material-symbols-outlined text-[16px]" data-icon="draw">draw</span>
+<span>Approve (Sign 1/2)</span>
+</button>
+<button class="px-2.5 py-1.5 rounded-lg border border-outline-variant bg-surface-container-lowest hover:bg-surface-container text-on-surface font-label text-caption transition-colors">
+                      Review
+                    </button>
+<button class="px-2.5 py-1.5 rounded-lg border border-outline-variant hover:bg-error-container/40 text-error font-label text-caption transition-colors">
+                      Reject
+                    </button>
+</div>
+</td>
+</tr>
+<!-- ROW 3: Emeka Okafor -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-4 px-4 text-center">
+<input class="rounded border-outline-variant text-primary-container focus:ring-primary-container w-4 h-4 cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-4 px-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest text-tertiary flex items-center justify-center font-bold text-sm shrink-0">
+                      EO
+                    </div>
+<div class="flex flex-col">
+<span class="font-body-medium text-body-medium font-semibold text-on-surface">Emeka Okafor</span>
+<span class="font-caption text-caption text-on-surface-variant">emeka@bluewavelogistics.ng</span>
+<span class="font-caption text-caption text-on-surface-variant/80 text-[11px]">+234 809 112 3445</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">28 Fola Osibo St, Lekki 1</span>
+<span class="font-caption text-caption text-on-surface-variant">Commercial Fleet Depot</span>
+<span class="inline-flex items-center gap-1 text-[11px] text-emerald-700 font-medium mt-0.5">
+<span class="material-symbols-outlined text-[13px]" data-icon="domain">domain</span>
+                      Registered Business Base
+                    </span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">Managing Director</span>
+<span class="font-caption text-caption text-on-surface-variant">BlueWave Logistics Ltd</span>
+<span class="font-caption text-[11px] text-on-surface-variant mt-0.5">Freight &amp; Supply Chain</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col gap-1">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200 w-fit">
+<span class="material-symbols-outlined text-[14px]" data-icon="check_circle">check_circle</span>
+                      Tier 3 Verified
+                    </span>
+<span class="font-caption text-caption text-on-surface-variant text-[11px]">CAC: RC-1492044</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">₦25,000 / month</span>
+<span class="font-caption text-caption text-on-surface-variant">10 Shares (₦50,000)</span>
+<span class="font-caption text-[11px] text-emerald-800 font-medium">₦75,000 initial transfer</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">Ibrahim Tanko</span>
+<span class="font-caption text-caption text-primary-container font-semibold">Member #104</span>
+<span class="inline-flex items-center gap-0.5 text-[11px] text-emerald-700">
+<span class="material-symbols-outlined text-[13px]" data-icon="thumb_up">thumb_up</span>
+                      Attested &amp; Signed
+                    </span>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<span class="text-on-surface font-medium">21 Feb 2027</span>
+<div class="text-[11px] text-on-surface-variant">11:05 AM</div>
+</td>
+<td class="py-4 px-4 text-right pr-6 whitespace-nowrap">
+<div class="flex items-center justify-end gap-1.5">
+<button class="px-3 py-1.5 rounded-lg bg-primary-container hover:bg-[#731540] text-on-primary font-label text-caption font-semibold transition-colors flex items-center gap-1 shadow-xs">
+<span class="material-symbols-outlined text-[16px]" data-icon="draw">draw</span>
+<span>Approve (Sign 1/2)</span>
+</button>
+<button class="px-2.5 py-1.5 rounded-lg border border-outline-variant bg-surface-container-lowest hover:bg-surface-container text-on-surface font-label text-caption transition-colors">
+                      Review
+                    </button>
+<button class="px-2.5 py-1.5 rounded-lg border border-outline-variant hover:bg-error-container/40 text-error font-label text-caption transition-colors">
+                      Reject
+                    </button>
+</div>
+</td>
+</tr>
+<!-- ROW 4: Zainab Aliyu -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-4 px-4 text-center">
+<input class="rounded border-outline-variant text-primary-container focus:ring-primary-container w-4 h-4 cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-4 px-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-sm shrink-0">
+                      ZA
+                    </div>
+<div class="flex flex-col">
+<span class="font-body-medium text-body-medium font-semibold text-on-surface">Zainab Aliyu</span>
+<span class="font-caption text-caption text-on-surface-variant">z.aliyu@lekkimontessori.sch.ng</span>
+<span class="font-caption text-caption text-on-surface-variant/80 text-[11px]">+234 818 200 9011</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">Plot 12, Phase 1 Strip</span>
+<span class="font-caption text-caption text-on-surface-variant">Commercial Area, Lekki</span>
+<span class="inline-flex items-center gap-1 text-[11px] text-emerald-700 font-medium mt-0.5">
+<span class="material-symbols-outlined text-[13px]" data-icon="school">school</span>
+                      Educational Institution Base
+                    </span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">Principal Educator</span>
+<span class="font-caption text-caption text-on-surface-variant">Lekki Montessori Academy</span>
+<span class="font-caption text-[11px] text-on-surface-variant mt-0.5">Education / Administration</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col gap-1">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200 w-fit">
+<span class="material-symbols-outlined text-[14px]" data-icon="check_circle">check_circle</span>
+                      Tier 3 Verified
+                    </span>
+<span class="font-caption text-caption text-on-surface-variant text-[11px]">NIN Authenticated</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">₦40,000 / month</span>
+<span class="font-caption text-caption text-on-surface-variant">15 Shares (₦75,000)</span>
+<span class="font-caption text-[11px] text-emerald-800 font-medium">₦115,000 pledge</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">Funmi Alabi</span>
+<span class="font-caption text-caption text-primary-container font-semibold">Member #003 (Treasurer)</span>
+<span class="inline-flex items-center gap-0.5 text-[11px] text-emerald-700">
+<span class="material-symbols-outlined text-[13px]" data-icon="thumb_up">thumb_up</span>
+                      Executive Endorsement
+                    </span>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<span class="text-on-surface font-medium">20 Feb 2027</span>
+<div class="text-[11px] text-on-surface-variant">16:40 PM</div>
+</td>
+<td class="py-4 px-4 text-right pr-6 whitespace-nowrap">
+<div class="flex items-center justify-end gap-1.5">
+<button class="px-3 py-1.5 rounded-lg bg-primary-container hover:bg-[#731540] text-on-primary font-label text-caption font-semibold transition-colors flex items-center gap-1 shadow-xs">
+<span class="material-symbols-outlined text-[16px]" data-icon="draw">draw</span>
+<span>Approve (Sign 1/2)</span>
+</button>
+<button class="px-2.5 py-1.5 rounded-lg border border-outline-variant bg-surface-container-lowest hover:bg-surface-container text-on-surface font-label text-caption transition-colors">
+                      Review
+                    </button>
+<button class="px-2.5 py-1.5 rounded-lg border border-outline-variant hover:bg-error-container/40 text-error font-label text-caption transition-colors">
+                      Reject
+                    </button>
+</div>
+</td>
+</tr>
+<!-- ROW 5: Kenneth Umeh (ATTENTION / PENDING ENDORSEMENT & UTILITY BILL) -->
+<tr class="bg-amber-50/40 hover:bg-amber-50/70 transition-colors">
+<td class="py-4 px-4 text-center">
+<input class="rounded border-outline-variant text-primary-container focus:ring-primary-container w-4 h-4 cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-4 px-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-amber-100 text-amber-900 flex items-center justify-center font-bold text-sm shrink-0">
+                      KU
+                    </div>
+<div class="flex flex-col">
+<span class="font-body-medium text-body-medium font-semibold text-on-surface">Kenneth Umeh</span>
+<span class="font-caption text-caption text-on-surface-variant">k.umeh.contracting@gmail.com</span>
+<span class="font-caption text-caption text-on-surface-variant/80 text-[11px]">+234 703 555 4902</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">8 Freedom Way, Lekki</span>
+<span class="font-caption text-caption text-on-surface-variant">Tenancy Claim (Unverified)</span>
+<span class="inline-flex items-center gap-1 text-[11px] text-amber-800 font-semibold mt-0.5">
+<span class="material-symbols-outlined text-[13px]" data-icon="warning">warning</span>
+                      Requires Physical Address Proof
+                    </span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">Independent Contractor</span>
+<span class="font-caption text-caption text-on-surface-variant">Self-Employed Civil Trades</span>
+<span class="font-caption text-[11px] text-on-surface-variant mt-0.5">Construction / Supplies</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col gap-1">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold bg-amber-100 text-amber-900 border border-amber-300 w-fit">
+<span class="material-symbols-outlined text-[14px]" data-icon="pending">pending</span>
+                      Tier 2 Verified
+                    </span>
+<span class="font-caption text-caption text-on-surface-variant text-[11px]">Pending Utility Bill review</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">₦20,000 / month</span>
+<span class="font-caption text-caption text-on-surface-variant">0 Initial Shares</span>
+<span class="font-caption text-[11px] text-on-surface-variant">Minimum threshold</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium bg-secondary-fixed/50 text-secondary w-fit">
+<span class="material-symbols-outlined text-[13px]" data-icon="hourglass_empty">hourglass_empty</span>
+                      Pending Endorsement
+                    </span>
+<span class="font-caption text-caption text-on-surface-variant text-[11px] mt-0.5">No member signature</span>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<span class="text-on-surface font-medium">19 Feb 2027</span>
+<div class="text-[11px] text-on-surface-variant">10:18 AM</div>
+</td>
+<td class="py-4 px-4 text-right pr-6 whitespace-nowrap">
+<div class="flex items-center justify-end gap-1.5">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container border border-outline-variant text-on-surface-variant hover:text-on-surface font-label text-caption font-semibold transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="contact_mail">contact_mail</span>
+<span>Request Proof</span>
+</button>
+<button class="px-2.5 py-1.5 rounded-lg border border-outline-variant bg-surface-container-lowest hover:bg-surface-container text-on-surface font-label text-caption transition-colors">
+                      Review
+                    </button>
+<button class="px-2.5 py-1.5 rounded-lg border border-outline-variant hover:bg-error-container/40 text-error font-label text-caption transition-colors">
+                      Reject
+                    </button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer / Pagination -->
+<div class="p-space-md bg-surface-container-low/40 border-t border-[#E4DEDC] flex flex-col sm:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-2 font-caption text-caption text-on-surface-variant">
+<span>Showing <strong>1 to 5</strong> of 5 prospective applicants</span>
+<span>•</span>
+<span>Batch ID: <strong>LK-2027-W08</strong></span>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="h-9 px-3 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface-variant opacity-50 cursor-not-allowed font-label text-caption flex items-center gap-1" disabled="">
+<span class="material-symbols-outlined text-[16px]" data-icon="chevron_left">chevron_left</span>
+<span>Previous</span>
+</button>
+<span class="px-3 py-1.5 rounded-lg bg-primary-container text-on-primary font-label text-caption font-semibold">1</span>
+<button class="h-9 px-3 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface-variant opacity-50 cursor-not-allowed font-label text-caption flex items-center gap-1" disabled="">
+<span>Next</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+<!-- AUDIT LOG & COMPLIANCE FOOTNOTE -->
+<footer class="pt-space-md pb-space-2xl flex flex-col sm:flex-row items-center justify-between text-on-surface-variant font-caption text-caption border-t border-surface-variant gap-space-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-emerald-700 text-[18px]" data-icon="encrypted">encrypted</span>
+<span>Regulated under Lagos State Cooperative Societies Law (Cap C15). Digital audit log maintained on immutable banking core.</span>
+</div>
+<div class="flex items-center gap-space-lg">
+<a class="hover:text-primary transition-colors" href="#">Export Statutory Report</a>
+<a class="hover:text-primary transition-colors" href="#">Dual Approval SLA Policy</a>
+<span class="text-on-surface-variant/70">Cooperative Core v4.12.8</span>
+</div>
+</footer>
+</main>
+</div>
+</body></html>

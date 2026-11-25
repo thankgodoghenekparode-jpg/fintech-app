@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pay on behalf (S-REV-006) - YourApp Revenue</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary-fixed-dim": "#ffb4a8",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "tertiary-fixed": "#eedee4",
+            "outline": "#897176",
+            "surface": "#fff8f8",
+            "surface-dim": "#e1d8d9",
+            "on-error-container": "#93000a",
+            "background": "#fff8f8",
+            "tertiary": "#3b3236",
+            "on-secondary-fixed": "#410000",
+            "on-secondary-fixed-variant": "#8c170e",
+            "inverse-primary": "#ffb1c5",
+            "on-surface-variant": "#564146",
+            "secondary-container": "#fc6955",
+            "on-primary-container": "#ffa0ba",
+            "primary": "#6d0033",
+            "surface-container-high": "#efe6e7",
+            "surface-variant": "#e9e0e1",
+            "error": "#ba1a1a",
+            "surface-bright": "#fff8f8",
+            "on-tertiary": "#ffffff",
+            "on-error": "#ffffff",
+            "surface-tint": "#a8315d",
+            "outline-variant": "#dcbfc5",
+            "on-primary-fixed": "#3f001b",
+            "primary-container": "#8e1b4a",
+            "on-surface": "#1f1b1c",
+            "primary-fixed": "#ffd9e1",
+            "on-secondary": "#ffffff",
+            "on-primary": "#ffffff",
+            "surface-container-highest": "#e9e0e1",
+            "inverse-on-surface": "#f8eeef",
+            "tertiary-container": "#53484d",
+            "surface-container": "#f5eced",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "surface-container-low": "#fbf1f2",
+            "secondary": "#ae3123",
+            "secondary-fixed": "#ffdad4",
+            "error-container": "#ffdad6",
+            "on-background": "#1f1b1c",
+            "on-primary-fixed-variant": "#881646",
+            "surface-container-lowest": "#ffffff",
+            "primary-fixed-dim": "#ffb1c5",
+            "on-tertiary-container": "#c6b7bd",
+            "inverse-surface": "#342f30",
+            "on-secondary-container": "#690000",
+            "on-tertiary-fixed": "#21191e"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "1rem",
+            "space-xs": "0.25rem",
+            "space-3xl": "3rem",
+            "space-md": "0.75rem",
+            "space-lg": "1rem",
+            "space-2xl": "2rem",
+            "space-sm": "0.5rem",
+            "space-xl": "1.5rem",
+            "gutter": "1rem"
+          },
+          "fontFamily": {
+            "caption": ["Inter"],
+            "body-medium": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "subtitle": ["Inter"],
+            "display": ["Inter"],
+            "body": ["Inter"],
+            "label": ["Inter"],
+            "amount-lg": ["Inter"],
+            "title": ["Inter"]
+          },
+          "fontSize": {
+            "caption": ["13px", {"lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+            "body-medium": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500"}],
+            "amount-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "subtitle": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "display": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "body": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400"}],
+            "label": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+            "amount-lg": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700"}],
+            "title": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700"}]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex justify-center selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Mobile Viewport Canvas Container (390px typical, capped at 560px for tablet ergonomics) -->
+<div class="w-full max-w-[560px] min-h-screen bg-background relative flex flex-col pb-28 shadow-xl">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-40 bg-surface/95 backdrop-blur-md px-margin py-space-sm flex justify-between items-center w-full min-h-[56px] shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)]">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Go back" class="w-12 h-12 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors duration-150 active:scale-95 text-on-surface" type="button">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<h1 class="font-subtitle text-subtitle font-bold text-on-surface leading-tight">Pay on Behalf</h1>
+<span class="font-caption text-caption px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-medium">Revenue</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant">S-REV-006</p>
+</div>
+</div>
+<button aria-label="Information regarding official levies" class="w-12 h-12 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors duration-150 active:scale-95 text-primary" type="button">
+<span class="material-symbols-outlined" data-icon="info">info</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-margin pt-space-md space-y-space-xl">
+<!-- Header Narrative Card -->
+<section class="bg-surface-container-low rounded-xl p-space-lg border border-outline-variant/30 flex items-start gap-space-md relative overflow-hidden">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-primary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[20px]" data-icon="verified_user">verified_user</span>
+</div>
+<div class="space-y-space-xs flex-1">
+<div class="flex items-center gap-1.5">
+<span class="font-label text-label text-primary font-bold">Third-Party Settlement Shield</span>
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="shield">shield</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant leading-relaxed">
+            Settle dues and official levies for family members, tenants, or elderly parents. An official stamped clearance certificate is issued in their registered name.
+          </p>
+</div>
+</section>
+<!-- Payer Lookup Selector Section -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] space-y-space-lg">
+<!-- Search Tabs / Modes -->
+<div>
+<span class="block font-caption text-caption text-on-surface-variant mb-space-xs font-medium">Lookup Method</span>
+<div class="grid grid-cols-3 p-1 bg-surface-container rounded-lg gap-1">
+<button class="h-10 rounded-md bg-surface-container-lowest text-primary shadow-sm font-label text-caption font-semibold flex items-center justify-center gap-1 transition-all" type="button">
+<span class="material-symbols-outlined text-[16px]" data-icon="badge">badge</span>
+<span>Payer ID</span>
+</button>
+<button class="h-10 rounded-md text-on-surface-variant hover:text-on-surface font-label text-caption font-medium flex items-center justify-center gap-1 transition-all" type="button">
+<span class="material-symbols-outlined text-[16px]" data-icon="call">call</span>
+<span>Phone</span>
+</button>
+<button class="h-10 rounded-md text-on-surface-variant hover:text-on-surface font-label text-caption font-medium flex items-center justify-center gap-1 transition-all" type="button">
+<span class="material-symbols-outlined text-[16px]" data-icon="qr_code_scanner">qr_code_scanner</span>
+<span>Scan QR</span>
+</button>
+</div>
+</div>
+<!-- Organization Selector Dropdown -->
+<div class="space-y-space-xs">
+<label class="block font-caption text-caption text-on-surface-variant font-medium">Collecting Entity / Council</label>
+<div class="relative">
+<div class="w-full min-h-[52px] px-space-md py-2 bg-surface-container-lowest rounded-xl border border-outline-variant/60 flex items-center justify-between text-on-surface cursor-pointer hover:border-primary-container transition-colors">
+<div class="flex items-center gap-space-sm overflow-hidden">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="apartment">apartment</span>
+<div class="flex flex-col truncate">
+<div class="flex items-center gap-1 truncate">
+<span class="font-body-medium text-[15px] font-semibold truncate">Lekki Phase 1 Residents Association</span>
+<span class="material-symbols-outlined text-primary text-[16px]" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<span class="font-caption text-[11px] text-on-surface-variant">Residential Zone IV • Lagos State LIRS Integrated</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant ml-2" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Input Field: Reference Code -->
+<div class="space-y-space-xs">
+<label class="block font-caption text-caption text-on-surface-variant font-medium" for="payerRef">Enter Payer Reference or Property Code</label>
+<div class="relative flex items-center">
+<span class="absolute left-3.5 text-on-surface-variant material-symbols-outlined text-[20px]" data-icon="tag">tag</span>
+<input class="w-full h-[52px] pl-10 pr-24 rounded-xl bg-surface-container-lowest border border-outline-variant/70 focus:border-primary-container focus:ring-1 focus:ring-primary-container font-body-medium text-[15px] text-on-surface tabular-nums tracking-wide outline-none transition-all" id="payerRef" placeholder="e.g. LEK-RES-0000-000" type="text" value="LEK-RES-0842-MOM"/>
+<div class="absolute right-2 flex items-center gap-1">
+<button class="h-8 px-2.5 rounded-lg bg-surface-container-high hover:bg-surface-variant text-primary font-label text-caption flex items-center gap-1 active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[14px]" data-icon="content_paste">content_paste</span>
+<span>Paste</span>
+</button>
+</div>
+</div>
+</div>
+<!-- 52px Secondary Lookup CTA -->
+<button class="w-full h-[52px] rounded-xl bg-surface-container-high text-primary hover:bg-surface-variant font-label text-label flex items-center justify-center gap-2 active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="search">search</span>
+<span>Find Pending Bills</span>
+</button>
+</section>
+<!-- Verified Resident Result Card -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] space-y-space-md">
+<div class="flex items-center justify-between pb-space-sm border-b border-outline-variant/20">
+<span class="font-caption text-caption text-on-surface-variant font-medium">Beneficiary Verified</span>
+<div class="inline-flex items-center gap-1 bg-surface-container px-2 py-0.5 rounded-md text-primary font-label text-caption font-semibold">
+<span class="material-symbols-outlined text-[16px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span>Verified Resident Payer</span>
+</div>
+</div>
+<div class="flex items-start gap-space-md">
+<div class="w-12 h-12 rounded-full bg-primary-fixed-dim/40 border border-primary-fixed flex items-center justify-center text-primary shrink-0 font-title text-[18px] font-bold">
+            FA
+          </div>
+<div class="space-y-1">
+<h2 class="font-title text-[17px] font-bold text-on-surface flex items-center gap-1.5">
+<span>Mrs. Folashade Adeleke</span>
+<span class="font-caption text-[11px] font-semibold text-primary px-1.5 py-0.5 rounded-full bg-primary-fixed">Mother</span>
+</h2>
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] shrink-0" data-icon="location_on">location_on</span>
+<p class="font-caption text-caption">Flat 4B, Palm Grove Avenue, Lekki Phase 1</p>
+</div>
+<div class="flex items-center gap-2 font-caption text-[12px] text-on-surface-variant pt-0.5">
+<span>ID: <strong class="text-on-surface">LEK-RES-0842</strong></span>
+<span>•</span>
+<span>Account: Active</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Pending Bills for this Payer Section -->
+<section class="space-y-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<h3 class="font-subtitle text-[18px] font-bold text-on-surface">Pending Bills (2)</h3>
+<span class="px-2 py-0.5 text-caption font-bold bg-primary text-on-primary rounded-full">Due Q1</span>
+</div>
+<span class="font-caption text-caption text-on-surface-variant">Select to settle</span>
+</div>
+<!-- Bill Selection Cards -->
+<div class="space-y-space-sm">
+<!-- Item 1 (Selected) -->
+<article class="bg-surface-container-lowest rounded-xl p-space-md border-2 border-primary-container shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] relative flex items-start gap-3 transition-colors">
+<div class="pt-0.5">
+<div class="w-6 h-6 rounded bg-primary-container flex items-center justify-center text-on-primary cursor-pointer">
+<span class="material-symbols-outlined text-[18px]" data-icon="check">check</span>
+</div>
+</div>
+<div class="flex-1 space-y-1">
+<div class="flex justify-between items-start">
+<h4 class="font-body-medium text-[15px] font-bold text-on-surface pr-2 leading-tight">Q1 2027 Estate Security &amp; Street Lighting</h4>
+<span class="font-body-medium text-[16px] font-bold text-on-surface tabular-nums whitespace-nowrap">₦20,000.00</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-caption text-caption pt-1">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-secondary" data-icon="calendar_clock">calendar_clock</span>
+<span>Due: 28 Feb 2027</span>
+</div>
+<div class="flex items-center gap-1 font-medium text-primary">
+<span class="material-symbols-outlined text-[14px]" data-icon="receipt_long">receipt_long</span>
+<span>Invoice #L1-8831</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Item 2 (Selected) -->
+<article class="bg-surface-container-lowest rounded-xl p-space-md border-2 border-primary-container shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] relative flex items-start gap-3 transition-colors">
+<div class="pt-0.5">
+<div class="w-6 h-6 rounded bg-primary-container flex items-center justify-center text-on-primary cursor-pointer">
+<span class="material-symbols-outlined text-[18px]" data-icon="check">check</span>
+</div>
+</div>
+<div class="flex-1 space-y-1">
+<div class="flex justify-between items-start">
+<h4 class="font-body-medium text-[15px] font-bold text-on-surface pr-2 leading-tight">Annual Community Development Levy 2027</h4>
+<span class="font-body-medium text-[16px] font-bold text-on-surface tabular-nums whitespace-nowrap">₦15,000.00</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-caption text-caption pt-1">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-on-surface-variant" data-icon="event">event</span>
+<span>Due: 31 Mar 2027</span>
+</div>
+<div class="flex items-center gap-1 font-medium text-primary">
+<span class="material-symbols-outlined text-[14px]" data-icon="receipt_long">receipt_long</span>
+<span>Invoice #L1-9042</span>
+</div>
+</div>
+</div>
+</article>
+</div>
+<!-- Total Callout Banner -->
+<div class="bg-surface-container p-space-md rounded-xl flex justify-between items-center border border-outline-variant/30">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="calculate">calculate</span>
+<span class="font-label text-label text-on-surface">Total to Settle (2 Bills)</span>
+</div>
+<span class="font-title text-[22px] font-bold text-primary tabular-nums tracking-tight">₦35,000.00</span>
+</div>
+</section>
+<!-- Payment Breakdown & Settlement Source -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] space-y-space-md">
+<h3 class="font-label text-label font-bold text-on-surface uppercase tracking-wider text-[12px]">Payment Breakdown</h3>
+<div class="space-y-space-sm text-caption divide-y divide-outline-variant/20">
+<div class="flex justify-between items-center pt-1 font-caption">
+<span class="text-on-surface-variant">Subtotal of dues</span>
+<span class="font-body-medium text-[14px] text-on-surface tabular-nums font-semibold">₦35,000.00</span>
+</div>
+<div class="flex justify-between items-center pt-2 font-caption">
+<div class="flex items-center gap-1.5">
+<span class="text-on-surface-variant">Platform Settlement Fee</span>
+<span class="material-symbols-outlined text-[15px] text-primary" data-icon="bolt">bolt</span>
+</div>
+<div class="flex items-center gap-1 text-primary font-medium">
+<span class="material-symbols-outlined text-[15px]" data-icon="check_circle">check_circle</span>
+<span class="tabular-nums">₦0.00 (Free in-app payment)</span>
+</div>
+</div>
+<!-- Payment Source Selector -->
+<div class="pt-3 space-y-1">
+<span class="block text-on-surface-variant font-medium">Debiting Account</span>
+<div class="p-3 bg-surface-container rounded-xl border border-outline-variant/50 flex items-center justify-between cursor-pointer hover:border-primary transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-primary-container text-on-primary flex items-center justify-center font-bold">
+<span class="material-symbols-outlined text-[20px]" data-icon="account_balance_wallet">account_balance_wallet</span>
+</div>
+<div>
+<p class="font-body-medium text-[14px] font-bold text-on-surface">YourApp Tier 2 Savings</p>
+<p class="font-caption text-[12px] text-on-surface-variant tabular-nums">Bal: <strong class="text-on-surface">₦142,850.00</strong> • 0148******31</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<!-- Receipt Destination Toggle Option -->
+<div class="pt-3">
+<label class="flex items-start gap-3 cursor-pointer group">
+<div class="pt-0.5">
+<input checked="" class="w-5 h-5 rounded text-primary focus:ring-primary border-outline-variant cursor-pointer" type="checkbox"/>
+</div>
+<div class="flex-1">
+<span class="font-body-medium text-[13px] font-semibold text-on-surface block leading-snug">
+                  Send duplicate digital certificate via SMS &amp; WhatsApp
+                </span>
+<span class="font-caption text-[12px] text-on-surface-variant block mt-0.5">
+                  Recipient phone: <strong class="text-on-surface">+234 802 333 4455</strong> (Mrs. Folashade Adeleke)
+                </span>
+</div>
+</label>
+</div>
+</div>
+</section>
+<!-- Bottom Sticky Action Area & Primary CTA Container -->
+<section class="pt-2 pb-6 space-y-3">
+<!-- 52px Primary Berry CTA Button -->
+<button class="w-full h-[52px] rounded-xl bg-primary-container text-on-primary hover:bg-[#731540] active:scale-[0.99] font-label text-label shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08)] flex items-center justify-center gap-2 transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="lock">lock</span>
+<span class="tracking-wide">Pay ₦35,000.00 for Folashade (PIN Required)</span>
+</button>
+<!-- Compliance / Trust Note -->
+<div class="flex items-center justify-center gap-1.5 text-center text-on-surface-variant px-4">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="verified">verified</span>
+<p class="font-caption text-[12px]">Official clearance receipt immediately accessible by both payer and beneficiary.</p>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Shared Component JSON Blueprint) -->
+<!-- Destination count: 5 | Active: Payments (Index 1) -->
+<nav class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-margin h-16 max-w-[560px] mx-auto pb-safe bg-surface-container-lowest shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)]">
+<!-- Tab 0: Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#home">
+<span class="material-symbols-outlined text-[22px]" data-icon="home">home</span>
+<span class="font-caption text-caption font-medium">Home</span>
+</a>
+<!-- Tab 1: Payments (ACTIVE MATCH for Revenue/Bill payments) -->
+<a class="flex flex-col items-center justify-center text-primary font-semibold min-w-[48px] py-space-xs gap-space-xs active:scale-95 transition-transform duration-150" href="#payments">
+<span class="material-symbols-outlined text-[22px]" data-icon="send" style="font-variation-settings: 'FILL' 1;">send</span>
+<span class="font-caption text-caption font-medium text-primary">Payments</span>
+</a>
+<!-- Tab 2: Cards -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#cards">
+<span class="material-symbols-outlined text-[22px]" data-icon="credit_card">credit_card</span>
+<span class="font-caption text-caption font-medium">Cards</span>
+</a>
+<!-- Tab 3: Save & Borrow -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#save-borrow">
+<span class="material-symbols-outlined text-[22px]" data-icon="savings">savings</span>
+<span class="font-caption text-caption font-medium">Save &amp; Borrow</span>
+</a>
+<!-- Tab 4: More -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#more">
+<span class="material-symbols-outlined text-[22px]" data-icon="more_horiz">more_horiz</span>
+<span class="font-caption text-caption font-medium">More</span>
+</a>
+</nav>
+</div>
+</body></html>

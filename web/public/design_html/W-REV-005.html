@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YourApp Credit Ops - Field Collectors &amp; Cash Surveillance</title>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-error": "#ffffff",
+            "outline-variant": "#dcbfc5",
+            "on-primary-container": "#ffa0ba",
+            "outline": "#897176",
+            "surface-container-lowest": "#ffffff",
+            "secondary-fixed": "#ffdad4",
+            "on-error-container": "#93000a",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "on-secondary-container": "#690000",
+            "error-container": "#ffdad6",
+            "surface-container-high": "#efe6e7",
+            "on-tertiary-container": "#c6b7bd",
+            "on-background": "#1f1b1c",
+            "primary-container": "#8e1b4a",
+            "inverse-primary": "#ffb1c5",
+            "tertiary-container": "#53484d",
+            "secondary-fixed-dim": "#ffb4a8",
+            "inverse-on-surface": "#f8eeef",
+            "surface-bright": "#fff8f8",
+            "background": "#fff8f8",
+            "on-secondary-fixed-variant": "#8c170e",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "surface-container": "#f5eced",
+            "secondary-container": "#fc6955",
+            "on-primary-fixed": "#3f001b",
+            "primary": "#6d0033",
+            "on-secondary": "#ffffff",
+            "surface-tint": "#a8315d",
+            "on-primary": "#ffffff",
+            "surface": "#fff8f8",
+            "surface-container-low": "#fbf1f2",
+            "on-secondary-fixed": "#410000",
+            "on-surface-variant": "#564146",
+            "on-tertiary-fixed": "#21191e",
+            "on-surface": "#1f1b1c",
+            "tertiary-fixed": "#eedee4",
+            "on-primary-fixed-variant": "#881646",
+            "error": "#ba1a1a",
+            "inverse-surface": "#342f30",
+            "secondary": "#ae3123",
+            "surface-dim": "#e1d8d9",
+            "tertiary": "#3b3236",
+            "primary-fixed-dim": "#ffb1c5",
+            "primary-fixed": "#ffd9e1",
+            "surface-variant": "#e9e0e1",
+            "surface-container-highest": "#e9e0e1",
+            "on-tertiary": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "margin": "1rem",
+            "space-xl": "1.5rem",
+            "space-md": "0.75rem",
+            "space-xs": "0.25rem",
+            "gutter": "1rem",
+            "space-lg": "1rem",
+            "space-3xl": "3rem",
+            "space-2xl": "2rem"
+          },
+          "fontFamily": {
+            "body-medium": ["Inter"],
+            "caption": ["Inter"],
+            "amount-lg": ["Inter"],
+            "label": ["Inter"],
+            "body": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "title": ["Inter"],
+            "display": ["Inter"],
+            "subtitle": ["Inter"]
+          },
+          "fontSize": {
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #FAF8F7;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #dcbfc5;
+      border-radius: 4px;
+    }
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body antialiased min-h-screen flex selection:bg-primary-fixed selection:text-primary">
+<!-- ============================================================== -->
+<!-- SIDE NAVIGATION (From Shared Components Blueprint)            -->
+<!-- ============================================================== -->
+<aside class="fixed left-0 top-0 h-screen w-72 flex flex-col justify-between py-space-xl px-space-lg bg-surface-container-lowest border-r border-surface-variant z-30 shadow-sm">
+<!-- Brand Crest & Tenant Context -->
+<div class="flex flex-col gap-space-lg">
+<div class="flex items-center gap-space-md px-space-xs pb-space-sm border-b border-surface-variant">
+<div class="w-10 h-10 rounded-xl bg-primary-container flex items-center justify-center text-on-primary shadow-sm">
+<span class="material-symbols-outlined text-[24px]">account_balance</span>
+</div>
+<div class="flex flex-col">
+<span class="text-subtitle font-subtitle text-primary tracking-tight">YourApp Credit Ops</span>
+<span class="text-caption font-caption text-on-surface-variant">Enterprise Portal</span>
+</div>
+</div>
+<!-- Institutional Sub-Pill -->
+<div class="bg-surface-container-low px-space-md py-space-sm rounded-lg border border-surface-variant flex items-center gap-space-sm">
+<span class="w-2.5 h-2.5 rounded-full bg-emerald-600 animate-pulse"></span>
+<div class="flex flex-col overflow-hidden">
+<span class="text-caption font-caption text-outline font-medium">Active Jurisdiction</span>
+<span class="text-label font-label text-on-surface truncate">Ikoyi-Obalende LCDA</span>
+</div>
+</div>
+<!-- Main Navigation Menu -->
+<nav class="flex flex-col gap-1.5 mt-space-xs">
+<!-- Dashboard -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span>Dashboard</span>
+</a>
+<!-- Revenue Items -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+<span>Revenue Items</span>
+</a>
+<!-- Payers Registry -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">badge</span>
+<span>Payers Registry</span>
+</a>
+<!-- Collections & Reconciliation -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">account_balance_wallet</span>
+<span>Collections &amp; Reconciliation</span>
+</a>
+<!-- Field Collectors & Cash (ACTIVE) -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg bg-surface-container-low text-primary font-label text-label shadow-sm relative" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">pending_actions</span>
+<span class="font-bold">Field Collectors &amp; Cash</span>
+<span class="ml-auto w-2 h-2 rounded-full bg-primary"></span>
+</a>
+<!-- Settlement & Fees -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">handshake</span>
+<span>Settlement &amp; Fees</span>
+</a>
+<!-- Reports -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">analytics</span>
+<span>Reports</span>
+</a>
+<!-- Audit Log -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">history</span>
+<span>Audit Log</span>
+</a>
+</nav>
+</div>
+<!-- Navigation Footer Cluster -->
+<div class="flex flex-col gap-1.5 pt-space-md border-t border-surface-variant">
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">admin_panel_settings</span>
+<span>Security &amp; Settings</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-secondary font-label text-label hover:bg-error-container/40 transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">logout</span>
+<span>Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- ============================================================== -->
+<!-- MAIN SHELL (Offset by w-72 Sidebar)                            -->
+<!-- ============================================================== -->
+<div class="ml-72 flex-1 flex flex-col min-w-0">
+<!-- TOP NAVIGATION BAR -->
+<header class="sticky top-0 right-0 h-16 w-full flex items-center justify-between px-space-xl bg-surface-container-lowest border-b border-surface-variant z-20 shadow-none">
+<!-- Left: Universal Search Bar & Branch / Tenant -->
+<div class="flex items-center gap-space-xl flex-1 max-w-2xl">
+<div class="relative w-96">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-[20px] text-outline">search</span>
+<input class="w-full h-10 pl-10 pr-4 rounded-xl bg-surface border border-surface-variant text-body font-body text-on-surface placeholder:text-on-surface-variant placeholder:text-caption focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all" placeholder="Search collectors by name, badge ID, market zone..." type="text"/>
+</div>
+<div class="hidden lg:flex items-center gap-space-sm px-space-md py-1.5 rounded-lg bg-surface-container-low border border-surface-variant">
+<span class="material-symbols-outlined text-[18px] text-primary">domain</span>
+<div class="flex flex-col">
+<span class="text-caption font-caption text-on-surface-variant text-[11px] leading-3">Tenant Directorate</span>
+<span class="text-label font-label text-on-surface text-xs font-semibold">Ikoyi-Obalende LCDA (#REV-TEN-008)</span>
+</div>
+</div>
+</div>
+<!-- Right: Armed Dual-Signoff, Action Icons, Profile -->
+<div class="flex items-center gap-space-lg">
+<!-- Dual-Signoff Armed Badge -->
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary-fixed/50 border border-secondary-container/40 text-on-secondary-container">
+<span class="material-symbols-outlined text-[16px] text-secondary">verified_user</span>
+<span class="text-label font-label text-xs tracking-wide uppercase font-bold">Dual-Signoff Armed</span>
+</div>
+<!-- Notification & Help Icons -->
+<div class="flex items-center gap-1">
+<button class="relative w-10 h-10 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[22px]">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-secondary ring-2 ring-surface-container-lowest"></span>
+</button>
+<button class="w-10 h-10 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[22px]">help_outline</span>
+</button>
+</div>
+<div class="h-6 w-px bg-surface-variant"></div>
+<!-- Staff Officer Profile -->
+<div class="flex items-center gap-space-md">
+<img class="w-10 h-10 rounded-full object-cover border border-outline-variant shadow-sm" data-alt="Dignified Nigerian executive tax official passport portrait wearing traditional formal navy attire with professional institutional lighting and sharp crisp clarity in high resolution." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhoYZ3mHK7AnZdZZdSnDIa21Z83XCdMwx2EULNuUKyVKJ443XUK1yiCtZGXJ9YdYt8NdZa6g4pkOzFn_R-iIHO3eNbJpQ6M3fBAtvCQ2zP79n9S6J-Vk6vAqbVrd2QrJDM8kZWJWc5fn_-WxT9FMT0oEJY_7IWDJE8x8SLY8Zm4YapPSTPkET_0VbUx-NC0-pUulkHCl38ztm4UqB3Q5D-xw85L-YcDiuA4ZAimP-G"/>
+<div class="flex flex-col text-left">
+<span class="text-label font-label text-on-surface text-xs font-bold leading-tight">Hon. B. Fowler-Adeleke</span>
+<span class="text-caption font-caption text-on-surface-variant text-[11px]">Executive Collector</span>
+</div>
+</div>
+</div>
+</header>
+<!-- MAIN SCROLLABLE CONTENT CANVAS -->
+<main class="flex-1 p-space-xl overflow-y-auto space-y-space-xl">
+<!-- HEADER BANNER & ACTIONS -->
+<section class="flex flex-col md:flex-row md:items-center justify-between gap-space-lg">
+<div>
+<div class="flex items-center gap-space-sm mb-1">
+<h1 class="text-title font-title text-on-background tracking-tight">Field Collectors &amp; Cash Surveillance</h1>
+<span class="px-2 py-0.5 rounded text-caption font-caption font-semibold bg-surface-container-high text-on-surface-variant border border-outline-variant/60">W-REV-005</span>
+</div>
+<p class="text-caption font-caption text-on-surface-variant max-w-3xl">
+            Monitor daily cash intake collected across markets and bus terminals, track vault deposit slips, enforce cash holding limits, and reconcile field agent floats in accordance with public treasury mandates.
+          </p>
+</div>
+<div class="flex items-center gap-space-md shrink-0">
+<button class="h-[44px] px-4 rounded-xl border border-surface-variant bg-surface-container-lowest text-on-surface font-label text-label flex items-center gap-2 hover:bg-surface-container-low transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>Export Cash Blotter (CSV)</span>
+</button>
+<button class="h-[44px] px-5 rounded-xl bg-primary-container text-on-primary font-label text-label flex items-center gap-2 hover:bg-primary transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+<span>+ Register New Collector</span>
+</button>
+</div>
+</section>
+<!-- KPI METRIC CARDS (4 BENTO CARDS) -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-lg">
+<!-- Card 1: Total Cash Collected Today -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-surface-variant shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between text-on-surface-variant mb-space-sm">
+<span class="text-label font-label text-xs">Total Cash Recorded Today</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">payments</span>
+</div>
+</div>
+<div class="text-subtitle font-subtitle text-on-surface tabular-nums tracking-tight font-bold">
+            ₦6,850,000.00
+          </div>
+<p class="text-caption font-caption text-on-surface-variant mt-1.5 flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+            Across 18 field collectors in Ikoyi &amp; Obalende
+          </p>
+</div>
+<!-- Card 2: Deposited into Vault -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-surface-variant shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between text-on-surface-variant mb-space-sm">
+<span class="text-label font-label text-xs">Deposited in Zenith Vault</span>
+<div class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">lock</span>
+</div>
+</div>
+<div class="text-subtitle font-subtitle text-emerald-900 tabular-nums tracking-tight font-bold">
+            ₦4,600,000.00
+          </div>
+<p class="text-caption font-caption text-on-surface-variant mt-1.5 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px] text-emerald-600">check_circle</span>
+            11 stamped bank teller vouchers cleared
+          </p>
+</div>
+<!-- Card 3: Undeposited Cash in Transit -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-surface-variant shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between text-on-surface-variant mb-space-sm">
+<span class="text-label font-label text-xs">Undeposited In Transit</span>
+<div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">warning</span>
+</div>
+</div>
+<div class="text-subtitle font-subtitle text-secondary tabular-nums tracking-tight font-bold">
+            ₦2,250,000.00
+          </div>
+<p class="text-caption font-caption text-secondary mt-1.5 flex items-center gap-1.5 font-medium">
+<span class="w-2 h-2 rounded-full bg-secondary animate-ping"></span>
+            7 holding physical cash (2 nearing cap)
+          </p>
+</div>
+<!-- Card 4: Cash Compliance Rate -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-surface-variant shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between text-on-surface-variant mb-space-sm">
+<span class="text-label font-label text-xs">Vault Compliance Rate</span>
+<div class="w-8 h-8 rounded-lg bg-primary-fixed text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+</div>
+</div>
+<div class="text-subtitle font-subtitle text-primary tabular-nums tracking-tight font-bold">
+            98.2%
+          </div>
+<p class="text-caption font-caption text-on-surface-variant mt-1.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-outline">schedule</span>
+            Avg handover: 3.4 hrs from market close
+          </p>
+</div>
+</section>
+<!-- STATUTORY HOLDING LIMIT COVENANT BANNER -->
+<section class="rounded-xl border border-secondary-fixed bg-surface-container-low p-space-lg flex items-start gap-space-md shadow-sm">
+<div class="w-10 h-10 rounded-lg bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed shrink-0">
+<span class="material-symbols-outlined text-[22px]">policy</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2">
+<span class="text-label font-label text-on-secondary-fixed text-sm uppercase tracking-wide">Statutory Holding Limit &amp; Anti-Theft Covenant</span>
+<span class="text-[11px] px-2 py-0.5 rounded bg-surface-container-lowest font-medium text-on-surface-variant border border-outline-variant">Lagos State Cap P14</span>
+</div>
+<p class="text-caption font-caption text-on-surface mt-1 leading-relaxed">
+            Public revenue officers cannot hold exceeding <strong class="font-semibold text-secondary">₦500,000.00</strong> in cash or retain revenue overnight under any circumstances. Mandatory daily bank vault deposit with Zenith Bank authorized teller counter-signature must occur before <strong class="font-semibold">17:00 WAT</strong> daily.
+          </p>
+</div>
+<div class="shrink-0 flex items-center gap-1 self-center text-secondary text-caption font-caption">
+<span class="material-symbols-outlined text-[16px]">alarm</span>
+<span class="font-semibold">Curfew: 1h 20m Left</span>
+</div>
+</section>
+<!-- MAIN CONTENT SPLIT LAYOUT (Table 2/3 + Dossier 1/3) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-start">
+<!-- LEFT COLUMN: Directory Table (w-8/12 = 2/3) -->
+<section class="lg:col-span-8 bg-surface-container-lowest border border-surface-variant rounded-xl shadow-sm overflow-hidden flex flex-col">
+<!-- Table Controls & Filter Tabs -->
+<div class="p-space-lg border-b border-surface-variant flex flex-col sm:flex-row sm:items-center justify-between gap-space-md">
+<!-- Tabs -->
+<div class="flex items-center gap-1 p-1 bg-surface-container rounded-lg">
+<button class="px-3 py-1.5 rounded-md text-label font-label text-xs bg-surface-container-lowest text-primary shadow-xs font-semibold">
+                All Collectors (18)
+              </button>
+<button class="px-3 py-1.5 rounded-md text-label font-label text-xs text-on-surface-variant hover:text-on-surface">
+                Pending Deposit (7)
+              </button>
+<button class="px-3 py-1.5 rounded-md text-label font-label text-xs text-on-surface-variant hover:text-on-surface">
+                Cleared (11)
+              </button>
+<button class="px-3 py-1.5 rounded-md text-label font-label text-xs text-secondary font-bold hover:bg-error-container/40 flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                Flagged Over-Limit (1)
+              </button>
+</div>
+<div class="flex items-center gap-2">
+<button class="h-8 px-2.5 rounded-lg border border-surface-variant text-caption font-caption text-on-surface flex items-center gap-1.5 hover:bg-surface-container-low">
+<span class="material-symbols-outlined text-[16px]">filter_list</span>
+<span>Market Zone</span>
+</button>
+<button class="h-8 px-2.5 rounded-lg border border-surface-variant text-caption font-caption text-on-surface flex items-center gap-1.5 hover:bg-surface-container-low">
+<span class="material-symbols-outlined text-[16px]">sort</span>
+<span>Float: High to Low</span>
+</button>
+</div>
+</div>
+<!-- The Table -->
+<div class="overflow-x-auto custom-scrollbar">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/60 border-b border-surface-variant text-[12px] font-label text-on-surface-variant uppercase tracking-wider">
+<th class="py-3 px-4">Collector &amp; Badge</th>
+<th class="py-3 px-4">Market Zone</th>
+<th class="py-3 px-4 text-right">Recorded</th>
+<th class="py-3 px-4 text-right">Deposited</th>
+<th class="py-3 px-4 text-right">Current Float</th>
+<th class="py-3 px-4">Holding Age</th>
+<th class="py-3 px-4 text-center">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-variant text-body-medium text-xs font-normal">
+<!-- Row 1: Idris Sanusi -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant font-bold text-xs">
+                        IS
+                      </div>
+<div>
+<div class="font-bold text-on-surface text-sm">Officer Idris Sanusi</div>
+<div class="text-[11px] text-outline font-mono">#COL-042</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4 text-on-surface-variant text-xs">
+                    Obalende Modern Produce
+                  </td>
+<td class="py-3.5 px-4 text-right tabular-nums text-on-surface font-medium">₦920,000.00</td>
+<td class="py-3.5 px-4 text-right tabular-nums text-on-surface-variant">₦450,000.00</td>
+<td class="py-3.5 px-4 text-right tabular-nums font-bold text-amber-800">₦470,000.00</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5 text-amber-900">
+<span class="material-symbols-outlined text-[15px] text-amber-600">timer</span>
+<span>4h 15m <span class="text-[11px] text-outline">(Due 45m)</span></span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-semibold bg-amber-50 text-amber-800 border border-amber-200">
+<span class="material-symbols-outlined text-[13px] text-amber-600">hourglass_top</span>
+                      Approaching Cap
+                    </span>
+</td>
+</tr>
+<!-- Row 2: Folake Coker -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-xs">
+                        FC
+                      </div>
+<div>
+<div class="font-bold text-on-surface text-sm">Officer Folake Coker</div>
+<div class="text-[11px] text-outline font-mono">#COL-019</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4 text-on-surface-variant text-xs">
+                    Ikoyi Commercial Enclave
+                  </td>
+<td class="py-3.5 px-4 text-right tabular-nums text-on-surface font-medium">₦1,450,000.00</td>
+<td class="py-3.5 px-4 text-right tabular-nums text-emerald-700 font-semibold">₦1,450,000.00</td>
+<td class="py-3.5 px-4 text-right tabular-nums font-medium text-outline">₦0.00</td>
+<td class="py-3.5 px-4">
+<span class="text-[11px] text-outline font-mono">Ref #ZNT-8812</span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+<span class="material-symbols-outlined text-[13px] text-emerald-600">check_circle</span>
+                      Reconciled
+                    </span>
+</td>
+</tr>
+<!-- Row 3: Babatunde Lawal (ACTIVE DOSSIER ROW / HIGHLIGHTED) -->
+<tr class="bg-error-container/20 border-l-4 border-l-secondary hover:bg-error-container/30 transition-colors">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center font-bold text-xs ring-1 ring-secondary">
+                        BL
+                      </div>
+<div>
+<div class="font-bold text-on-surface text-sm flex items-center gap-1.5">
+                          Officer Babatunde Lawal
+                          <span class="w-2 h-2 rounded-full bg-secondary"></span>
+</div>
+<div class="text-[11px] text-secondary font-mono font-bold">#COL-088 • Selected</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4 text-on-surface-variant text-xs">
+                    Sandgrouse Fish &amp; Meat
+                  </td>
+<td class="py-3.5 px-4 text-right tabular-nums text-on-surface font-medium">₦680,000.00</td>
+<td class="py-3.5 px-4 text-right tabular-nums text-outline">₦0.00</td>
+<td class="py-3.5 px-4 text-right tabular-nums font-bold text-secondary text-sm">₦680,000.00</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1 text-secondary font-semibold">
+<span class="material-symbols-outlined text-[15px]">error</span>
+<span>5h 40m <span class="text-[11px] font-bold text-secondary">(+40m Over)</span></span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-error-container text-on-error-container border border-secondary/30 animate-pulse">
+<span class="material-symbols-outlined text-[13px]">warning</span>
+                      OVER-LIMIT ALERT
+                    </span>
+</td>
+</tr>
+<!-- Row 4: Chioma Nnamdi -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-xs">
+                        CN
+                      </div>
+<div>
+<div class="font-bold text-on-surface text-sm">Officer Chioma Nnamdi</div>
+<div class="text-[11px] text-outline font-mono">#COL-031</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4 text-on-surface-variant text-xs">
+                    Falomo Transport Interchange
+                  </td>
+<td class="py-3.5 px-4 text-right tabular-nums text-on-surface font-medium">₦850,000.00</td>
+<td class="py-3.5 px-4 text-right tabular-nums text-emerald-700 font-semibold">₦850,000.00</td>
+<td class="py-3.5 px-4 text-right tabular-nums font-medium text-outline">₦0.00</td>
+<td class="py-3.5 px-4">
+<span class="text-[11px] text-outline font-mono">Ref #ZNT-8790</span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+<span class="material-symbols-outlined text-[13px] text-emerald-600">check_circle</span>
+                      Reconciled
+                    </span>
+</td>
+</tr>
+<!-- Row 5: Emmanuel Adebayo -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant font-bold text-xs">
+                        EA
+                      </div>
+<div>
+<div class="font-bold text-on-surface text-sm">Officer Emmanuel Adebayo</div>
+<div class="text-[11px] text-outline font-mono">#COL-055</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4 text-on-surface-variant text-xs">
+                    Awolowo Road Corridor
+                  </td>
+<td class="py-3.5 px-4 text-right tabular-nums text-on-surface font-medium">₦1,150,000.00</td>
+<td class="py-3.5 px-4 text-right tabular-nums text-on-surface-variant">₦850,000.00</td>
+<td class="py-3.5 px-4 text-right tabular-nums font-semibold text-on-surface">₦300,000.00</td>
+<td class="py-3.5 px-4">
+<span class="text-caption font-caption text-on-surface-variant">2h 10m (Active)</span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-semibold bg-surface-container text-on-surface-variant border border-surface-variant">
+<span class="material-symbols-outlined text-[13px] text-emerald-600">verified</span>
+                      Healthy
+                    </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer Pagination & Summary -->
+<div class="p-space-md border-t border-surface-variant bg-surface-container-low/30 flex items-center justify-between text-caption font-caption text-on-surface-variant">
+<span>Displaying 5 of 18 licensed revenue officers</span>
+<div class="flex items-center gap-1">
+<button class="px-2.5 py-1 rounded border border-surface-variant bg-surface-container-lowest text-on-surface text-xs disabled:opacity-40">Previous</button>
+<button class="px-2.5 py-1 rounded bg-primary-container text-on-primary text-xs font-bold">1</button>
+<button class="px-2.5 py-1 rounded border border-surface-variant bg-surface-container-lowest text-on-surface text-xs hover:bg-surface-container-low">2</button>
+<button class="px-2.5 py-1 rounded border border-surface-variant bg-surface-container-lowest text-on-surface text-xs hover:bg-surface-container-low">Next</button>
+</div>
+</div>
+</section>
+<!-- RIGHT COLUMN: Collector Cash Dossier & Vault Deposit Verification (w-4/12 = 1/3) -->
+<aside class="lg:col-span-4 bg-surface-container-lowest border border-surface-variant rounded-xl shadow-sm overflow-hidden flex flex-col">
+<!-- Dossier Header -->
+<div class="p-space-lg border-b border-surface-variant bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-primary">shield_person</span>
+<span class="text-label font-label text-on-surface font-bold">Collector Cash Dossier</span>
+</div>
+<span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-error-container text-on-error-container border border-secondary/20">
+              AUDIT PRIORITY
+            </span>
+</div>
+<div class="p-space-lg space-y-space-lg overflow-y-auto">
+<!-- Agent ID Card -->
+<div class="flex items-start gap-space-md pb-space-md border-b border-surface-variant">
+<img class="w-14 h-14 rounded-xl object-cover border border-outline-variant shadow-sm" data-alt="Close up realistic identification badge photo of Nigerian municipal field revenue officer Babatunde Lawal in crisp uniform with neutral clean backdrop." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjXkau5J5uc6350uQ6moPiJdGY03-AFlwjxE-B_Kd7w_8C1pg8YNfOczJYvJobKqO21q30vEapC2Yt79jCowvOzi3Y_nbmGGM8qQkgoGukKUVWG2hSvIOHNYHa0cWcfxrvOW0tuzTJyfA1VDZGJ2pTugjVrs4jx5f1ORe3dZpZLlqhot3x5lbuAgEVi9qgTciKj7DMsLMa8cp8rkWu6C0wsnZvMgJbLEpps3LhNduX"/>
+<div class="flex-1">
+<h3 class="text-label font-label text-on-surface font-bold text-base leading-snug">Officer Babatunde Lawal</h3>
+<div class="text-caption font-caption text-secondary font-mono font-semibold">Badge #COL-088</div>
+<div class="text-[12px] text-on-surface-variant mt-1">Sandgrouse Fish &amp; Meat Unit</div>
+<div class="text-[12px] text-outline flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[14px]">call</span>
+<span>+234 803 912 4490</span>
+</div>
+</div>
+</div>
+<!-- Terminal Info Mini Strip -->
+<div class="bg-surface-container-low px-3 py-2 rounded-lg border border-surface-variant flex items-center justify-between text-caption font-caption">
+<span class="text-on-surface-variant">Smart POS Terminal:</span>
+<span class="font-mono font-semibold text-on-surface">POS-IKY-094 (Online)</span>
+</div>
+<!-- Live Cash Exposure Box -->
+<div class="p-space-md rounded-xl bg-error-container/25 border border-secondary/30 flex flex-col gap-1">
+<div class="flex items-center justify-between text-secondary">
+<span class="text-label font-label text-xs uppercase tracking-wide font-bold">Live Physical Cash Float</span>
+<span class="material-symbols-outlined text-[18px]">local_police</span>
+</div>
+<div class="text-title font-title text-secondary tabular-nums tracking-tight font-bold">
+                ₦680,000.00
+              </div>
+<div class="text-[12px] text-secondary font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+<span>Exceeds statutory ₦500,000 cap by <strong>₦180,000.00</strong></span>
+</div>
+</div>
+<!-- Collection Breakdown List -->
+<div>
+<span class="text-caption font-caption text-outline font-semibold uppercase tracking-wider block mb-2">Today's Collections Breakdown</span>
+<div class="space-y-2">
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface border border-surface-variant text-caption font-caption">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">142 Market Stall Daily Tickets</span>
+<span class="text-[11px] text-outline font-mono">₦500.00 unit rate</span>
+</div>
+<span class="font-bold tabular-nums text-on-surface">₦71,000.00</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface border border-surface-variant text-caption font-caption">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">18 Artisan Permits</span>
+<span class="text-[11px] text-outline font-mono">₦25,000.00 unit rate</span>
+</div>
+<span class="font-bold tabular-nums text-on-surface">₦450,000.00</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface border border-surface-variant text-caption font-caption">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">2 Loading Bay Heavy Tickets</span>
+<span class="text-[11px] text-outline font-mono">Variable surcharge</span>
+</div>
+<span class="font-bold tabular-nums text-on-surface">₦159,000.00</span>
+</div>
+</div>
+</div>
+<!-- Bank Deposit Verification Section -->
+<div class="pt-space-sm border-t border-surface-variant">
+<span class="text-caption font-caption text-outline font-semibold uppercase tracking-wider block mb-2">Bank Vault Deposit Slip</span>
+<div class="flex items-start gap-space-md p-space-sm rounded-xl border border-surface-variant bg-surface">
+<!-- Voucher thumbnail -->
+<div class="relative w-20 h-24 rounded-lg overflow-hidden border border-outline-variant bg-surface-container shrink-0">
+<img class="w-full h-full object-cover" data-alt="Macro close-up documentary photograph of an official purple ink bank teller stamp voucher on crisp commercial bank deposit slip paper in bright daylight." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjjwFmAGZyIausoedQ5m0UvIwTLcpv-OA3j-pukwhsgvR7sELPC6Uwj0yBPb9PL5WWBGkmUSZmiUVz0kBgO2GqcTecjGqCNn9uKLIaiLwu7I0u9TU2no58Ov_ezzFq0XpyvZemwQHCF2-FFIE-VJq-XBW6_dmkmvqp3PLuz66FqhnkjIypDrqG76AE17S3Q6CVqYQFoxq7iX2bVAccdKHs50-xylhomEKnnDj0En8a"/>
+<div class="absolute inset-0 bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px] text-on-primary drop-shadow">zoom_in</span>
+</div>
+</div>
+<div class="flex-1 flex flex-col justify-between h-24 text-caption font-caption">
+<div>
+<span class="font-bold text-on-surface text-xs block">Zenith Bank Vault Slip</span>
+<span class="text-[11px] font-mono text-outline block">Slip #ZNT-DP-99214</span>
+<span class="text-[11px] text-amber-800 font-medium block mt-1">Status: Pending Teller Match</span>
+</div>
+<button class="text-primary text-xs font-semibold hover:underline flex items-center gap-1 self-start">
+<span>Inspect Raw Slip</span>
+<span class="material-symbols-outlined text-[13px]">open_in_new</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Emergency Actions CTA Cluster -->
+<div class="pt-space-sm space-y-2">
+<button class="w-full h-[48px] rounded-xl bg-primary-container text-on-primary font-label text-label flex items-center justify-center gap-2 hover:bg-primary transition-all shadow-sm">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span>Verify &amp; Confirm Vault Deposit</span>
+</button>
+<div class="grid grid-cols-2 gap-2">
+<button class="h-[44px] px-2 rounded-xl border border-surface-variant bg-surface-container-lowest text-secondary font-label text-xs font-semibold flex items-center justify-center gap-1 hover:bg-error-container/20 transition-colors">
+<span class="material-symbols-outlined text-[16px]">local_shipping</span>
+<span>Dispatch CIT</span>
+</button>
+<button class="h-[44px] px-2 rounded-xl border border-surface-variant bg-surface-container-lowest text-on-surface-variant font-label text-xs font-semibold flex items-center justify-center gap-1 hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[16px]">pause_circle</span>
+<span>Freeze POS</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Dossier Footer Note -->
+<div class="p-3 bg-surface-container-low/70 border-t border-surface-variant text-[11px] text-on-surface-variant text-center">
+            Dual Signoff Key: <span class="font-mono text-primary font-bold">DS-AUTH-882-IKY</span>
+</div>
+</aside>
+</div>
+<!-- FOOTER: REGULATORY BADGES & SYSTEM AUDIT METRICS -->
+<footer class="pt-space-lg border-t border-surface-variant flex flex-col sm:flex-row items-center justify-between text-caption font-caption text-on-surface-variant gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-1 text-on-surface font-semibold">
+<span class="material-symbols-outlined text-[18px] text-primary">gavel</span>
+<span>Lagos State Internal Revenue Service (LIRS) Interop</span>
+</div>
+<span class="text-outline-variant">•</span>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-emerald-700">lock</span>
+<span>ISO/IEC 27001 Certified System</span>
+</div>
+<span class="text-outline-variant">•</span>
+<span>Vault Protocol SLA 17:00 WAT</span>
+</div>
+<div class="flex items-center gap-space-sm text-outline">
+<span>System Version: v4.12-revops</span>
+<span>•</span>
+<span>Synced: Today, 15:40:12 WAT</span>
+</div>
+</footer>
+</main>
+</div>
+</body></html>

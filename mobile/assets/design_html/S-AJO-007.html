@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ajo Payment &amp; Auto-Debit - YourApp</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "secondary-fixed": "#ffdad4",
+            "tertiary-fixed": "#eedee4",
+            "on-secondary": "#ffffff",
+            "error-container": "#ffdad6",
+            "surface-tint": "#a8315d",
+            "surface": "#fff8f8",
+            "on-primary-container": "#ffa0ba",
+            "on-error": "#ffffff",
+            "secondary": "#ae3123",
+            "on-primary": "#ffffff",
+            "on-tertiary": "#ffffff",
+            "inverse-surface": "#342f30",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "on-secondary-fixed-variant": "#8c170e",
+            "surface-dim": "#e1d8d9",
+            "on-secondary-container": "#690000",
+            "surface-container-high": "#efe6e7",
+            "on-primary-fixed-variant": "#881646",
+            "on-background": "#1f1b1c",
+            "secondary-fixed-dim": "#ffb4a8",
+            "on-tertiary-fixed": "#21191e",
+            "inverse-on-surface": "#f8eeef",
+            "primary": "#6d0033",
+            "outline": "#897176",
+            "surface-container-low": "#fbf1f2",
+            "surface-container": "#f5eced",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "tertiary-container": "#53484d",
+            "on-secondary-fixed": "#410000",
+            "inverse-primary": "#ffb1c5",
+            "outline-variant": "#dcbfc5",
+            "secondary-container": "#fc6955",
+            "on-surface-variant": "#564146",
+            "primary-container": "#8e1b4a",
+            "on-error-container": "#93000a",
+            "surface-container-lowest": "#ffffff",
+            "on-tertiary-container": "#c6b7bd",
+            "on-surface": "#1f1b1c",
+            "surface-bright": "#fff8f8",
+            "tertiary": "#3b3236",
+            "primary-fixed": "#ffd9e1",
+            "error": "#ba1a1a",
+            "surface-container-highest": "#e9e0e1",
+            "surface-variant": "#e9e0e1",
+            "on-primary-fixed": "#3f001b",
+            "primary-fixed-dim": "#ffb1c5",
+            "background": "#fff8f8"
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          spacing: {
+            "space-xs": "0.25rem",
+            "space-xl": "1.5rem",
+            "space-md": "0.75rem",
+            "space-sm": "0.5rem",
+            "space-lg": "1rem",
+            "space-2xl": "2rem",
+            "margin": "1rem",
+            "gutter": "1rem",
+            "space-3xl": "3rem"
+          },
+          fontFamily: {
+            "subtitle": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "label": ["Inter"],
+            "body": ["Inter"],
+            "amount-lg": ["Inter"],
+            "caption": ["Inter"],
+            "display": ["Inter"],
+            "title": ["Inter"],
+            "body-medium": ["Inter"]
+          },
+          fontSize: {
+            "subtitle": ["20px", { lineHeight: "28px", letterSpacing: "-0.01em", fontWeight: "600" }],
+            "amount-lg-mobile": ["32px", { lineHeight: "40px", letterSpacing: "-0.02em", fontWeight: "700" }],
+            "label": ["14px", { lineHeight: "20px", letterSpacing: "0.01em", fontWeight: "600" }],
+            "body": ["16px", { lineHeight: "24px", letterSpacing: "0em", fontWeight: "400" }],
+            "amount-lg": ["36px", { lineHeight: "44px", letterSpacing: "-0.03em", fontWeight: "700" }],
+            "caption": ["13px", { lineHeight: "18px", letterSpacing: "0.01em", fontWeight: "400" }],
+            "display": ["32px", { lineHeight: "40px", letterSpacing: "-0.02em", fontWeight: "700" }],
+            "title": ["24px", { lineHeight: "32px", letterSpacing: "-0.015em", fontWeight: "700" }],
+            "body-medium": ["16px", { lineHeight: "24px", letterSpacing: "0em", fontWeight: "500" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex justify-center selection:bg-primary-fixed selection:text-primary">
+<!-- Mobile Frame Container (Max 560px for tablet, 390px default canvas) -->
+<div class="w-full max-w-[560px] bg-background min-h-screen flex flex-col relative pb-24 shadow-sm">
+<!-- Top Navigation Header -->
+<header class="sticky top-0 z-40 bg-surface/95 backdrop-blur-md px-margin py-space-sm min-h-[56px] flex items-center justify-between shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)]">
+<button aria-label="Go back" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container active:scale-95 transition-transform text-on-surface" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<div class="flex-1 text-center px-space-xs">
+<h1 class="font-subtitle text-subtitle text-on-surface truncate">Ajo Payment &amp; Auto-Debit</h1>
+</div>
+<button aria-label="Close" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container active:scale-95 transition-transform text-on-surface-variant" type="button">
+<span class="material-symbols-outlined text-[24px]">close</span>
+</button>
+</header>
+<!-- Main Scrollable Content -->
+<main class="flex-1 px-margin pt-space-md space-y-space-lg">
+<!-- Circle Context Banner -->
+<section class="rounded-xl p-space-lg bg-surface-container-low border border-outline-variant/40 flex items-start gap-space-md">
+<div class="w-12 h-12 rounded-xl bg-primary-container text-on-primary flex items-center justify-center shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[26px]">groups</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="font-label text-label text-primary-container font-semibold">Ajo Circle</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="font-caption text-caption text-on-surface-variant">Circle #0482</span>
+</div>
+<h2 class="font-subtitle text-subtitle text-on-surface truncate mt-0.5">Victoria Island Professionals Ajo</h2>
+<div class="flex items-center gap-space-xs mt-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-primary-container">event_repeat</span>
+<p class="font-caption text-caption">Round 5 Contribution • Due 1 December 2026</p>
+</div>
+</div>
+</section>
+<!-- Payment Amount Card -->
+<section class="rounded-xl p-space-lg bg-surface-container-lowest border border-outline-variant/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] space-y-space-md">
+<div class="flex justify-between items-center">
+<span class="font-caption text-caption text-on-surface-variant font-medium">Mandatory Round Contribution</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container text-primary font-caption text-caption font-semibold">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+            Fixed Tariff
+          </span>
+</div>
+<div>
+<div class="flex items-baseline gap-1">
+<span class="font-title text-title text-primary-container font-bold">₦</span>
+<span class="font-amount-lg-mobile text-amount-lg-mobile text-on-surface font-bold tracking-tight tabular-nums">50,000.00</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">Standard quota allocated per member turn</p>
+</div>
+<!-- Segmented Chip Selector -->
+<div class="space-y-space-xs pt-space-xs">
+<label class="font-caption text-caption text-on-surface-variant font-medium block">Select payment schedule</label>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+<!-- Chip 1: Active -->
+<button class="flex items-center justify-between sm:justify-center p-3 rounded-lg border-2 border-primary-container bg-surface-container-low text-primary-container transition-all text-left" type="button">
+<span class="font-label text-label font-semibold">Due Round (₦50,000)</span>
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+</button>
+<!-- Chip 2 -->
+<button class="flex items-center justify-between sm:justify-center p-3 rounded-lg border border-outline-variant/60 bg-surface-container-lowest text-on-surface hover:bg-surface-container transition-colors text-left" type="button">
+<span class="font-label text-label font-medium">Pay 2 Rounds (₦100k)</span>
+<span class="material-symbols-outlined text-[18px] text-outline">radio_button_unchecked</span>
+</button>
+<!-- Chip 3 -->
+<button class="flex items-center justify-between sm:justify-center p-3 rounded-lg border border-outline-variant/60 bg-surface-container-lowest text-on-surface hover:bg-surface-container transition-colors text-left" type="button">
+<span class="font-label text-label font-medium">Custom Amount</span>
+<span class="material-symbols-outlined text-[18px] text-outline">edit</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Funding Account Card -->
+<section class="rounded-xl p-space-lg bg-surface-container-lowest border border-outline-variant/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] space-y-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[20px]">account_balance_wallet</span>
+</div>
+<div>
+<p class="font-caption text-caption text-on-surface-variant">Pay from</p>
+<h3 class="font-body-medium text-body-medium text-on-surface font-semibold">YourApp Tier 2 Savings</h3>
+</div>
+</div>
+<button class="font-label text-label text-primary-container hover:underline font-semibold focus:outline-none" type="button">
+            Change account
+          </button>
+</div>
+<div class="pt-space-sm border-t border-outline-variant/30 flex items-center justify-between flex-wrap gap-2">
+<div>
+<span class="font-caption text-caption text-on-surface-variant">Available balance: </span>
+<span class="font-body-medium text-body-medium text-on-surface font-bold tabular-nums">₦142,850.00</span>
+</div>
+<!-- Status Tag with mandatory Icon + Label -->
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200">
+<span class="material-symbols-outlined text-[16px] text-emerald-700">check_circle</span>
+<span class="font-caption text-caption font-semibold">Sufficient Balance</span>
+</div>
+</div>
+</section>
+<!-- Auto-Debit Mandate Configuration Card -->
+<section class="rounded-xl p-space-lg bg-surface-container-lowest border border-outline-variant/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] space-y-space-md">
+<div class="flex items-start justify-between gap-space-md">
+<div class="space-y-1">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[20px] text-primary-container">autorenew</span>
+<h3 class="font-subtitle text-subtitle text-on-surface text-base sm:text-subtitle">Enable Automated Monthly Debit</h3>
+</div>
+<p class="font-caption text-caption text-on-surface-variant leading-relaxed">
+              Authorize YourApp to automatically debit your account on the 1st of every month at 06:00 AM WAT to prevent late penalties and protect your circle trust rating.
+            </p>
+</div>
+<!-- Active Toggle Switch (Checked State) -->
+<label aria-label="Toggle Automated Monthly Debit" class="relative inline-flex items-center cursor-pointer shrink-0 mt-1">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-7 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<!-- Policy Note Banner -->
+<div class="rounded-lg p-space-md bg-surface-container-low border border-outline-variant/30 flex items-start gap-space-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px] text-secondary mt-0.5 shrink-0">info</span>
+<p class="font-caption text-caption leading-relaxed">
+<strong class="font-semibold text-on-surface">Retry Policy:</strong> 3-day grace period with 24h retry attempts before circle protection collateral is impacted.
+          </p>
+</div>
+</section>
+<!-- Cost & Fee Breakdown -->
+<section class="rounded-xl p-space-lg bg-surface-container-lowest border border-outline-variant/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] space-y-space-sm">
+<h4 class="font-caption text-caption uppercase tracking-wider text-on-surface-variant font-semibold">Payment Summary</h4>
+<div class="flex justify-between items-center py-1">
+<span class="font-body text-body text-on-surface-variant">Contribution amount</span>
+<span class="font-body-medium text-body-medium text-on-surface tabular-nums">₦50,000.00</span>
+</div>
+<div class="flex justify-between items-center py-1">
+<div class="flex items-center gap-1.5">
+<span class="font-body text-body text-on-surface-variant">Processing fee</span>
+<span class="inline-flex items-center px-1.5 py-0.2 rounded text-[11px] font-semibold bg-emerald-100 text-emerald-800">Promo</span>
+</div>
+<span class="font-body-medium text-body-medium text-emerald-700 font-semibold tabular-nums">₦0.00 (Zero fee)</span>
+</div>
+<div class="pt-space-sm border-t border-outline-variant/40 flex justify-between items-center">
+<div>
+<span class="font-subtitle text-subtitle text-on-surface">Total debit today</span>
+<p class="font-caption text-caption text-on-surface-variant">Immediate settlement</p>
+</div>
+<span class="font-title text-title text-primary-container tabular-nums font-bold">₦50,000.00</span>
+</div>
+</section>
+<!-- Legal Consent Checkbox -->
+<div class="pt-space-xs">
+<label class="flex items-start gap-space-md cursor-pointer select-none group">
+<div class="min-w-[48px] min-h-[48px] flex items-center justify-center -ml-2 -mt-2">
+<input checked="" class="w-5 h-5 rounded text-primary-container focus:ring-primary border-outline-variant cursor-pointer" type="checkbox"/>
+</div>
+<span class="font-caption text-caption text-on-surface-variant leading-relaxed pt-1.5">
+            I authorize automatic recurring debits for the remaining 6 rounds of this circle under <strong class="text-on-surface font-medium">Central Bank of Nigeria</strong> direct debit guidelines.
+          </span>
+</label>
+</div>
+<!-- Primary Action CTA -->
+<div class="pt-space-xs space-y-space-md">
+<button class="w-full h-[52px] rounded-xl bg-primary-container hover:bg-[#731540] active:scale-[0.99] text-on-primary font-label text-label font-semibold flex items-center justify-center gap-2 shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08)] transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]">pin</span>
+<span>Confirm Payment &amp; Mandate (PIN Required)</span>
+</button>
+<!-- Security Badge -->
+<div class="flex items-center justify-center gap-space-xs text-on-surface-variant text-center pb-space-sm">
+<span class="material-symbols-outlined text-[16px] text-emerald-700">verified_user</span>
+<span class="font-caption text-caption font-medium">Secured with 256-bit encryption &amp; CBN direct debit mandate</span>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Shared Component Anchor) -->
+<!-- Destination count: 5 | Active: Save & Borrow -->
+<nav aria-label="Main Navigation" class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-margin h-16 max-w-[560px] mx-auto pb-safe bg-surface-container-lowest border-t border-outline-variant/40 shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)]">
+<!-- Home Tab -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="font-caption text-caption font-medium">Home</span>
+</a>
+<!-- Payments Tab -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined text-[24px]">send</span>
+<span class="font-caption text-caption font-medium">Payments</span>
+</a>
+<!-- Cards Tab -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined text-[24px]">credit_card</span>
+<span class="font-caption text-caption font-medium">Cards</span>
+</a>
+<!-- Save & Borrow Tab (ACTIVE) -->
+<a aria-current="page" class="flex flex-col items-center justify-center text-primary font-semibold min-w-[48px] py-space-xs gap-space-xs active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">savings</span>
+<span class="font-caption text-caption font-semibold">Save &amp; Borrow</span>
+</a>
+<!-- More Tab -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined text-[24px]">more_horiz</span>
+<span class="font-caption text-caption font-medium">More</span>
+</a>
+</nav>
+</div>
+</body></html>

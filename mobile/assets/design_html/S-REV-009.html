@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Field Collector: Find Payer (S-REV-009) - YourApp Revenue</title>
+<!-- Inter Google Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary-container": "#8e1b4a",
+            "secondary": "#ae3123",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "surface": "#fff8f8",
+            "on-tertiary": "#ffffff",
+            "inverse-surface": "#342f30",
+            "surface-container": "#f5eced",
+            "secondary-container": "#fc6955",
+            "primary-fixed": "#ffd9e1",
+            "error": "#ba1a1a",
+            "on-secondary-container": "#690000",
+            "secondary-fixed-dim": "#ffb4a8",
+            "surface-tint": "#a8315d",
+            "secondary-fixed": "#ffdad4",
+            "on-secondary": "#ffffff",
+            "on-secondary-fixed": "#410000",
+            "tertiary-fixed": "#eedee4",
+            "error-container": "#ffdad6",
+            "outline": "#897176",
+            "on-tertiary-container": "#c6b7bd",
+            "primary-fixed-dim": "#ffb1c5",
+            "surface-bright": "#fff8f8",
+            "background": "#fff8f8",
+            "surface-container-lowest": "#ffffff",
+            "on-primary-container": "#ffa0ba",
+            "on-surface": "#1f1b1c",
+            "surface-container-highest": "#e9e0e1",
+            "on-primary": "#ffffff",
+            "on-secondary-fixed-variant": "#8c170e",
+            "tertiary-container": "#53484d",
+            "on-tertiary-fixed": "#21191e",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "surface-container-high": "#efe6e7",
+            "surface-container-low": "#fbf1f2",
+            "on-error-container": "#93000a",
+            "surface-dim": "#e1d8d9",
+            "on-surface-variant": "#564146",
+            "inverse-primary": "#ffb1c5",
+            "on-primary-fixed": "#3f001b",
+            "primary": "#6d0033",
+            "inverse-on-surface": "#f8eeef",
+            "on-background": "#1f1b1c",
+            "on-error": "#ffffff",
+            "outline-variant": "#dcbfc5",
+            "on-primary-fixed-variant": "#881646",
+            "tertiary": "#3b3236",
+            "surface-variant": "#e9e0e1"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xl": "1.5rem",
+            "gutter": "1rem",
+            "space-md": "0.75rem",
+            "space-lg": "1rem",
+            "space-2xl": "2rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "margin": "1rem",
+            "space-3xl": "3rem"
+          },
+          "fontFamily": {
+            "display": ["Inter"],
+            "subtitle": ["Inter"],
+            "title": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "body-medium": ["Inter"],
+            "body": ["Inter"],
+            "caption": ["Inter"],
+            "amount-lg": ["Inter"],
+            "label": ["Inter"]
+          },
+          "fontSize": {
+            "display": [
+              "32px",
+              {
+                "lineHeight": "40px",
+                "letterSpacing": "-0.02em",
+                "fontWeight": "700"
+              }
+            ],
+            "subtitle": [
+              "20px",
+              {
+                "lineHeight": "28px",
+                "letterSpacing": "-0.01em",
+                "fontWeight": "600"
+              }
+            ],
+            "title": [
+              "24px",
+              {
+                "lineHeight": "32px",
+                "letterSpacing": "-0.015em",
+                "fontWeight": "700"
+              }
+            ],
+            "amount-lg-mobile": [
+              "32px",
+              {
+                "lineHeight": "40px",
+                "letterSpacing": "-0.02em",
+                "fontWeight": "700"
+              }
+            ],
+            "body-medium": [
+              "16px",
+              {
+                "lineHeight": "24px",
+                "letterSpacing": "0em",
+                "fontWeight": "500"
+              }
+            ],
+            "body": [
+              "16px",
+              {
+                "lineHeight": "24px",
+                "letterSpacing": "0em",
+                "fontWeight": "400"
+              }
+            ],
+            "caption": [
+              "13px",
+              {
+                "lineHeight": "18px",
+                "letterSpacing": "0.01em",
+                "fontWeight": "400"
+              }
+            ],
+            "amount-lg": [
+              "36px",
+              {
+                "lineHeight": "44px",
+                "letterSpacing": "-0.03em",
+                "fontWeight": "700"
+              }
+            ],
+            "label": [
+              "14px",
+              {
+                "lineHeight": "20px",
+                "letterSpacing": "0.01em",
+                "fontWeight": "600"
+              }
+            ]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+    /* Hide scrollbar for category pills on mobile */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex justify-center selection:bg-primary-fixed selection:text-primary">
+<!-- Mobile Device Container -->
+<main class="w-full max-w-[560px] min-h-screen bg-background relative flex flex-col pb-36 shadow-lg">
+<!-- Top App Bar & Sync Context -->
+<header class="sticky top-0 z-40 bg-surface-container-lowest/95 backdrop-blur-md px-margin py-space-sm shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)]">
+<div class="flex items-center justify-between min-h-[48px] gap-space-sm">
+<button aria-label="Back" class="w-10 h-10 -ml-2 rounded-xl flex items-center justify-center text-on-surface hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<div class="flex-1 min-w-0 pr-1">
+<h1 class="font-subtitle text-[18px] leading-6 font-semibold text-on-surface truncate">
+            Field Collector: Find Payer
+          </h1>
+<p class="font-caption text-caption text-on-surface-variant truncate">
+            S-REV-009 • Lekki Phase 1 Central
+          </p>
+</div>
+<div class="flex items-center">
+<button class="w-10 h-10 rounded-xl flex items-center justify-center text-primary-container hover:bg-surface-container active:scale-95 transition-all" title="Synchronize Terminal Data" type="button">
+<span class="material-symbols-outlined text-[22px]">sync</span>
+</button>
+</div>
+</div>
+<!-- Offline Mode Indicator Badge Strip -->
+<div class="mt-space-xs pt-space-xs pb-1 flex items-center justify-between">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container text-on-surface-variant text-[12px] font-medium border border-outline-variant/30">
+<span class="material-symbols-outlined text-[15px] text-primary-container" style="font-variation-settings: 'FILL' 1;">cloud_sync</span>
+<span>Offline sync ready • 142 records cached</span>
+</div>
+<span class="font-caption text-[11px] text-outline font-medium">Auto-sync: On</span>
+</div>
+</header>
+<!-- Canvas Scrollable Body -->
+<div class="px-margin flex flex-col gap-space-lg pt-space-md">
+<!-- Collector Shift & Float Status Card -->
+<section class="bg-surface-container-lowest rounded-xl p-space-md border border-outline-variant/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)]">
+<div class="flex items-start justify-between gap-space-sm mb-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-11 h-11 rounded-xl bg-primary-container text-on-primary flex items-center justify-center font-label text-base shadow-sm">
+              ID
+            </div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-label text-on-surface text-[15px] leading-5 font-semibold">Officer Ibrahim Danladi</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant">Badge #FC-8821</p>
+</div>
+</div>
+<!-- Verified Enforcement Agent Tag -->
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-surface-container text-primary-container font-caption text-[11px] font-semibold border border-outline-variant/40 shrink-0">
+<span class="material-symbols-outlined text-[14px]">verified_user</span>
+<span>Verified Agent</span>
+</div>
+</div>
+<!-- Shift Metrics Bento -->
+<div class="grid grid-cols-2 gap-space-sm pt-space-xs">
+<div class="bg-surface-container-low rounded-xl p-space-sm border border-outline-variant/30 flex flex-col justify-between">
+<span class="font-caption text-caption text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">receipt_long</span>
+              Today's Collections
+            </span>
+<div class="mt-1">
+<span class="font-label text-[17px] font-bold text-on-surface tabular-nums">₦185,000.00</span>
+<p class="font-caption text-[12px] text-outline">14 payers credited</p>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-xl p-space-sm border border-outline-variant/30 flex flex-col justify-between">
+<span class="font-caption text-caption text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">payments</span>
+              Cash in Float Handover
+            </span>
+<div class="mt-1">
+<span class="font-label text-[17px] font-bold text-on-surface tabular-nums">₦115,000.00</span>
+<p class="font-caption text-[12px] text-outline">In secure till wallet</p>
+</div>
+</div>
+</div>
+<!-- Bottom shift auxiliary action bar -->
+<div class="mt-space-md pt-space-sm border-t border-outline-variant/30 flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-on-surface-variant font-caption text-caption">
+<span class="material-symbols-outlined text-[15px] text-outline">schedule</span>
+<span>Last synced 12 mins ago</span>
+</div>
+<button class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-primary-container font-label text-caption hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[15px]">sync_alt</span>
+<span>Sync Terminal Data</span>
+</button>
+</div>
+</section>
+<!-- Fast Search & Lookup Bar Section -->
+<section class="flex flex-col gap-space-sm">
+<div class="flex items-center gap-space-xs">
+<!-- Text Input Container -->
+<div class="relative flex-1">
+<div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="w-full h-[52px] pl-10 pr-10 bg-surface-container-lowest border border-outline-variant/60 rounded-xl font-body text-[14px] text-on-surface placeholder:text-outline focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all shadow-sm" placeholder="Search by Name, Phone, or Unit / Payer Ref..." type="text" value="Zone B"/>
+<button aria-label="Clear Search" class="absolute inset-y-0 right-0 pr-3 flex items-center text-outline hover:text-on-surface" type="button">
+<span class="material-symbols-outlined text-[18px]">cancel</span>
+</button>
+</div>
+<!-- QR Barcode Scanner Trigger Button -->
+<button aria-label="Scan QR Code" class="h-[52px] w-[52px] bg-surface-container-lowest border border-outline-variant/60 rounded-xl flex items-center justify-center text-primary-container hover:bg-surface-container active:scale-95 transition-all shadow-sm shrink-0" title="Scan resident or meter QR" type="button">
+<span class="material-symbols-outlined text-[24px]">qr_code_scanner</span>
+</button>
+</div>
+<!-- Quick Category Filter Chips -->
+<div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-1 -mx-margin px-margin">
+<button class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-[13px] font-medium whitespace-nowrap bg-surface-container text-on-surface-variant hover:bg-surface-container-high transition-colors" type="button">
+            All (142)
+          </button>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[13px] font-semibold whitespace-nowrap bg-error-container text-on-error-container border border-error/20" type="button">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">warning</span>
+            Defaulters / Overdue (28)
+          </button>
+<button class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-[13px] font-semibold whitespace-nowrap bg-primary-container text-on-primary shadow-sm" type="button">
+<span class="material-symbols-outlined text-[15px]">location_on</span>
+            Zone B (Road 3-7)
+          </button>
+<button class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-[13px] font-medium whitespace-nowrap bg-surface-container text-on-surface-variant hover:bg-surface-container-high transition-colors" type="button">
+            Commercial Stores
+          </button>
+</div>
+</section>
+<!-- Payers List Section -->
+<section class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<h2 class="font-subtitle text-[17px] font-semibold text-on-surface">
+            Payers in Selected Zone (3 Results)
+          </h2>
+<span class="font-caption text-caption text-outline">Sorted by proximity</span>
+</div>
+<!-- Card 1: Defaulter / Overdue -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md border border-outline-variant/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] flex flex-col gap-space-sm hover:border-primary-container/40 transition-colors">
+<div class="flex items-start justify-between gap-space-xs">
+<div class="flex items-start gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-error-container text-on-error-container flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[20px]">person</span>
+</div>
+<div>
+<h3 class="font-label text-base font-bold text-on-surface">Chief Emeka Okafor</h3>
+<p class="font-caption text-caption text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[14px] text-outline">home_pin</span>
+                  Plot 14, Road 3, Zone B (Residential Unit 4)
+                </p>
+<p class="font-caption text-[12px] text-outline mt-0.5">
+                  +234 803 221 9081 • <span class="font-mono text-on-surface-variant font-medium">LEK-RES-0841</span>
+</p>
+</div>
+</div>
+<!-- Overdue Status Badge -->
+<div class="inline-flex items-center gap-1 px-2 py-1 rounded-lg bg-error-container text-on-error-container font-caption text-[11px] font-bold shrink-0 border border-error/20">
+<span class="material-symbols-outlined text-[14px]">error</span>
+<span>Overdue (15 Feb)</span>
+</div>
+</div>
+<!-- Levy Details & Due Amount -->
+<div class="bg-surface-container-low rounded-lg p-2.5 border border-outline-variant/30 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-caption text-[12px] text-on-surface-variant font-medium">Q1 2027 Security &amp; Maintenance Levy</span>
+<span class="font-caption text-[11px] text-outline">Bill Ref: BIL-2027-0104</span>
+</div>
+<div class="text-right">
+<span class="font-caption text-[11px] text-outline block">Outstanding</span>
+<span class="font-title text-[18px] font-bold text-secondary tabular-nums">₦35,000.00</span>
+</div>
+</div>
+<!-- Card Action Button -->
+<div class="pt-1 flex items-center justify-end">
+<button class="w-full h-11 px-4 rounded-xl bg-primary-container text-on-primary font-label text-[14px] flex items-center justify-center gap-2 hover:bg-primary-container/90 active:scale-95 transition-all shadow-sm" type="button">
+<span>Select Payer</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Card 2: Due in 3 days -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md border border-outline-variant/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] flex flex-col gap-space-sm hover:border-primary-container/40 transition-colors">
+<div class="flex items-start justify-between gap-space-xs">
+<div class="flex items-start gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[20px]">storefront</span>
+</div>
+<div>
+<h3 class="font-label text-base font-bold text-on-surface">Alhaji Bello Garba <span class="font-caption text-[13px] font-normal text-on-surface-variant">(Bello Provisions)</span></h3>
+<p class="font-caption text-caption text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[14px] text-outline">store</span>
+                  Shop 12B, Commercial Arcade, Gate 2
+                </p>
+<p class="font-caption text-[12px] text-outline mt-0.5">
+                  +234 802 119 4432 • <span class="font-mono text-on-surface-variant font-medium">LEK-COM-0199</span>
+</p>
+</div>
+</div>
+<!-- Due Pending Status Badge -->
+<div class="inline-flex items-center gap-1 px-2 py-1 rounded-lg bg-surface-container-high text-on-surface font-caption text-[11px] font-bold shrink-0 border border-outline-variant/40">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+<span>Due in 3 days</span>
+</div>
+</div>
+<!-- Levy Details & Due Amount -->
+<div class="bg-surface-container-low rounded-lg p-2.5 border border-outline-variant/30 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-caption text-[12px] text-on-surface-variant font-medium">Annual Waste &amp; Sanitation Levy</span>
+<span class="font-caption text-[11px] text-outline">Bill Ref: BIL-2027-0882</span>
+</div>
+<div class="text-right">
+<span class="font-caption text-[11px] text-outline block">Outstanding</span>
+<span class="font-title text-[18px] font-bold text-on-surface tabular-nums">₦15,000.00</span>
+</div>
+</div>
+<!-- Card Action Button -->
+<div class="pt-1 flex items-center justify-end">
+<button class="w-full h-11 px-4 rounded-xl bg-primary-container text-on-primary font-label text-[14px] flex items-center justify-center gap-2 hover:bg-primary-container/90 active:scale-95 transition-all shadow-sm" type="button">
+<span>Select Payer</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Card 3: Fully Cleared -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md border border-outline-variant/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] flex flex-col gap-space-sm opacity-95">
+<div class="flex items-start justify-between gap-space-xs">
+<div class="flex items-start gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container text-on-surface-variant flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[20px]">person</span>
+</div>
+<div>
+<h3 class="font-label text-base font-bold text-on-surface">Dr. Funke Adeyemi</h3>
+<p class="font-caption text-caption text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[14px] text-outline">home_pin</span>
+                  Plot 28, Admiralty Way, Zone A
+                </p>
+<p class="font-caption text-[12px] text-outline mt-0.5">
+                  +234 806 774 2100 • <span class="font-mono text-on-surface-variant font-medium">LEK-RES-1042</span>
+</p>
+</div>
+</div>
+<!-- Cleared Status Badge -->
+<div class="inline-flex items-center gap-1 px-2 py-1 rounded-lg bg-surface-container text-on-surface font-caption text-[11px] font-bold shrink-0 border border-outline-variant/40">
+<span class="material-symbols-outlined text-[14px] text-primary-container">check_circle</span>
+<span>Fully Cleared</span>
+</div>
+</div>
+<!-- Levy Details & Cleared Subtext -->
+<div class="bg-surface-container-low rounded-lg p-2.5 border border-outline-variant/30 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-caption text-[12px] text-on-surface font-medium">Paid on 18 Feb via Mobile App</span>
+<span class="font-caption text-[11px] text-outline">Transaction Rec #9921 • Instant Settled</span>
+</div>
+<div class="text-right">
+<span class="font-caption text-[11px] text-outline block">Outstanding</span>
+<span class="font-title text-[18px] font-bold text-on-surface-variant tabular-nums">₦0.00</span>
+</div>
+</div>
+<!-- Card Action Button -->
+<div class="pt-1 flex items-center justify-end">
+<button class="w-full h-11 px-4 rounded-xl border border-outline-variant/60 bg-transparent text-on-surface font-label text-[14px] flex items-center justify-center gap-2 hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[18px] text-outline">description</span>
+<span>View Receipts</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Offline Operation Guidance Box -->
+<section class="bg-surface-container-low rounded-xl p-space-md border border-outline-variant/30 flex items-start gap-space-sm mb-space-sm">
+<span class="material-symbols-outlined text-[20px] text-primary-container shrink-0 mt-0.5">offline_bolt</span>
+<div class="flex flex-col gap-0.5">
+<h4 class="font-label text-[13px] font-bold text-on-surface">Offline Enabled</h4>
+<p class="font-caption text-caption text-on-surface-variant leading-relaxed">
+            Field assessments and cash receipts can be recorded offline. Digital receipts will queue and dispatch automatically via SMS once cellular signal is restored.
+          </p>
+</div>
+</section>
+</div>
+<!-- Bottom Sticky Action Dock / Dual Trigger -->
+<div class="fixed bottom-16 left-0 right-0 z-40 bg-surface-container-lowest/95 backdrop-blur-md px-margin py-2.5 border-t border-outline-variant/30 max-w-[560px] mx-auto flex flex-col gap-2">
+<!-- 52px Primary Berry Button -->
+<button class="w-full h-[52px] rounded-xl bg-primary-container text-on-primary font-label text-[15px] flex items-center justify-center gap-2.5 active:bg-[#731540] active:scale-[0.99] transition-all shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08)]" type="button">
+<span class="material-symbols-outlined text-[22px]">barcode_scanner</span>
+<span>Scan Resident QR / Barcode Tag</span>
+</button>
+<!-- Secondary Outline Button -->
+<button class="w-full h-10 rounded-xl bg-surface-container-high text-primary-container font-label text-[13px] flex items-center justify-center gap-1.5 active:scale-[0.99] transition-all" type="button">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+<span>Manual Payer Registration (Unlisted)</span>
+</button>
+</div>
+<!-- Global Bottom Navigation Bar (Active: Payments) -->
+<nav class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-margin h-16 max-w-[560px] mx-auto bg-surface-container-lowest dark:bg-surface-container shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)]">
+<!-- Home (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#home">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="font-caption text-caption font-medium">Home</span>
+</a>
+<!-- Payments (Active) -->
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed font-semibold min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#payments">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">send</span>
+<span class="font-caption text-caption font-medium">Payments</span>
+</a>
+<!-- Cards (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#cards">
+<span class="material-symbols-outlined text-[24px]">credit_card</span>
+<span class="font-caption text-caption font-medium">Cards</span>
+</a>
+<!-- Save & Borrow (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#savings">
+<span class="material-symbols-outlined text-[24px]">savings</span>
+<span class="font-caption text-caption font-medium">Save &amp; Borrow</span>
+</a>
+<!-- More (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#more">
+<span class="material-symbols-outlined text-[24px]">more_horiz</span>
+<span class="font-caption text-caption font-medium">More</span>
+</a>
+</nav>
+</main>
+<script>
+    // Lightweight tactile feedback & UI search toggle demo interaction
+    document.addEventListener('DOMContentLoaded', () => {
+      const clearBtn = document.querySelector('button[aria-label="Clear Search"]');
+      const searchInput = document.querySelector('input[type="text"]');
+      
+      if (clearBtn && searchInput) {
+        clearBtn.addEventListener('click', () => {
+          searchInput.value = '';
+          searchInput.focus();
+        });
+      }
+    });
+  </script>
+</body></html>

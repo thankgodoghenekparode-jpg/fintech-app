@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Join Ajo Circle - YourApp</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-variant": "#e9e0e1",
+            "surface-bright": "#fff8f8",
+            "on-primary-fixed-variant": "#881646",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "outline-variant": "#dcbfc5",
+            "secondary-container": "#fc6955",
+            "tertiary-container": "#53484d",
+            "primary-container": "#8e1b4a",
+            "on-surface": "#1f1b1c",
+            "on-primary-fixed": "#3f001b",
+            "surface-container-low": "#fbf1f2",
+            "on-tertiary": "#ffffff",
+            "primary-fixed": "#ffd9e1",
+            "secondary-fixed": "#ffdad4",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "surface-tint": "#a8315d",
+            "on-primary": "#ffffff",
+            "inverse-surface": "#342f30",
+            "on-secondary-fixed-variant": "#8c170e",
+            "surface-container-highest": "#e9e0e1",
+            "primary": "#6d0033",
+            "on-secondary": "#ffffff",
+            "tertiary": "#3b3236",
+            "on-surface-variant": "#564146",
+            "outline": "#897176",
+            "primary-fixed-dim": "#ffb1c5",
+            "surface-dim": "#e1d8d9",
+            "surface-container": "#f5eced",
+            "on-error": "#ffffff",
+            "surface": "#fff8f8",
+            "surface-container-high": "#efe6e7",
+            "secondary": "#ae3123",
+            "error": "#ba1a1a",
+            "error-container": "#ffdad6",
+            "background": "#fff8f8",
+            "on-tertiary-fixed": "#21191e",
+            "on-primary-container": "#ffa0ba",
+            "inverse-on-surface": "#f8eeef",
+            "tertiary-fixed": "#eedee4",
+            "surface-container-lowest": "#ffffff",
+            "on-secondary-container": "#690000",
+            "on-secondary-fixed": "#410000",
+            "on-background": "#1f1b1c",
+            "on-error-container": "#93000a",
+            "on-tertiary-container": "#c6b7bd",
+            "secondary-fixed-dim": "#ffb4a8",
+            "inverse-primary": "#ffb1c5"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-md": "0.75rem",
+            "space-sm": "0.5rem",
+            "margin": "1rem",
+            "space-3xl": "3rem",
+            "space-xs": "0.25rem",
+            "space-xl": "1.5rem",
+            "space-2xl": "2rem",
+            "gutter": "1rem",
+            "space-lg": "1rem"
+          },
+          "fontFamily": {
+            "amount-lg-mobile": ["Inter"],
+            "title": ["Inter"],
+            "label": ["Inter"],
+            "display": ["Inter"],
+            "amount-lg": ["Inter"],
+            "body": ["Inter"],
+            "subtitle": ["Inter"],
+            "caption": ["Inter"],
+            "body-medium": ["Inter"]
+          },
+          "fontSize": {
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      line-height: 1;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-[#FAF8F7] text-on-surface antialiased min-h-screen flex justify-center selection:bg-primary-fixed selection:text-primary">
+<!-- Mobile Viewport Canvas Container (390 x 844 scaled/fluid mobile shell) -->
+<main class="w-full max-w-[430px] min-h-screen bg-[#FAF8F7] flex flex-col pb-10 shadow-[0_0_40px_rgba(30,26,27,0.06)] relative">
+<!-- Top App Bar (Task Flow: Contextual Back Navigation, Global Nav Suppressed per Destination Rule) -->
+<header class="sticky top-0 z-40 bg-surface-container-lowest/90 backdrop-blur-md px-margin py-space-sm flex items-center justify-between min-h-[56px] shadow-[0_2px_8px_-2px_rgba(30,26,27,0.04)]">
+<button aria-label="Go back" class="w-12 h-12 flex items-center justify-center -ml-2 rounded-full text-on-surface hover:bg-surface-container transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<div class="flex flex-col items-center">
+<h1 class="font-subtitle text-subtitle text-on-surface tracking-tight">Join Ajo Circle</h1>
+</div>
+<button aria-label="Information &amp; FAQ" class="w-12 h-12 flex items-center justify-center -mr-2 rounded-full text-on-surface-variant hover:bg-surface-container transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[24px]">info</span>
+</button>
+</header>
+<!-- Main Content Review Scroll Area -->
+<div class="px-margin flex flex-col gap-space-lg pt-space-md">
+<!-- Invite Code Validation Indicator Badge -->
+<div class="flex items-center justify-between bg-surface-container-lowest border border-outline-variant/50 rounded-xl px-space-md py-space-sm shadow-[0_1px_3px_0_rgba(30,26,27,0.03)]">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[18px]">verified</span>
+<span class="font-caption text-caption text-on-surface-variant">Code: <strong class="font-label text-label text-on-surface font-semibold tracking-wider">AJO-7729-VI</strong></span>
+</div>
+<div class="inline-flex items-center gap-1 bg-[#E8F5E9] text-[#1B5E20] px-2 py-0.5 rounded-lg font-caption text-[11px] font-semibold tracking-wide">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span>Validated</span>
+</div>
+</div>
+<!-- Circle Summary Hero Card (Bento Pattern with Warm Dignity Palette) -->
+<section class="bg-surface-container-lowest rounded-2xl border border-outline-variant/40 p-space-lg shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] flex flex-col gap-space-md">
+<!-- Header & Organizer -->
+<div class="flex items-start justify-between gap-space-sm border-b border-outline-variant/30 pb-space-md">
+<div class="flex flex-col gap-1">
+<span class="font-caption text-caption text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary-container">groups</span>
+              Rotating Savings &amp; Credit Circle
+            </span>
+<h2 class="font-title text-title text-on-surface">Victoria Island Professionals Ajo</h2>
+</div>
+<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center shrink-0 border border-outline-variant/40 text-primary-container">
+<span class="material-symbols-outlined text-[28px]">handshake</span>
+</div>
+</div>
+<!-- Organizer Detail Pill -->
+<div class="bg-surface-container/60 rounded-xl p-space-sm flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-primary font-bold text-sm shrink-0">
+              BA
+            </div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1">
+<span class="font-label text-label text-on-surface">Babatunde Adeleke</span>
+<span class="material-symbols-outlined text-[16px] text-[#2E7D32]" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<span class="font-caption text-[11px] text-on-surface-variant">Verified Tier 3 Member</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest px-2 py-1 rounded-lg border border-outline-variant/40 text-right">
+<span class="font-caption text-[10px] block text-on-surface-variant leading-tight">Thrift Score</span>
+<span class="font-label text-[12px] font-bold text-primary-container">100% Rating</span>
+</div>
+</div>
+<!-- Financial Metrics Grid -->
+<div class="grid grid-cols-2 gap-space-sm pt-1">
+<!-- Total Pot -->
+<div class="bg-surface-container-low rounded-xl p-space-md flex flex-col justify-between border border-outline-variant/20">
+<span class="font-caption text-caption text-on-surface-variant">Total Pot per Round</span>
+<span class="font-amount-lg-mobile text-amount-lg-mobile text-primary tracking-tight font-bold mt-1">₦500,000<span class="text-base font-normal">.00</span></span>
+<span class="font-caption text-[11px] text-on-surface-variant mt-1">Lump sum payout</span>
+</div>
+<!-- Contribution -->
+<div class="bg-surface-container-low rounded-xl p-space-md flex flex-col justify-between border border-outline-variant/20">
+<span class="font-caption text-caption text-on-surface-variant">Monthly Contribution</span>
+<span class="font-title text-title text-on-surface font-bold mt-1">₦50,000<span class="text-sm font-normal">.00</span></span>
+<span class="font-caption text-[11px] text-on-surface-variant mt-1">Due 1st of every month</span>
+</div>
+</div>
+<!-- Timeline & Slot Capacity Progress -->
+<div class="flex flex-col gap-space-xs bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-space-md">
+<div class="flex items-center justify-between text-on-surface-variant font-caption text-caption">
+<span class="flex items-center gap-1.5 text-on-surface font-medium">
+<span class="material-symbols-outlined text-[16px] text-primary">calendar_month</span>
+              Monthly • 10 Rounds
+            </span>
+<span>Dec 2026 – Sep 2027</span>
+</div>
+<div class="pt-space-sm flex flex-col gap-1.5">
+<div class="flex items-center justify-between font-caption text-caption">
+<span class="font-label text-label text-primary font-semibold">3 slots remaining</span>
+<span class="text-on-surface-variant">7 of 10 joined</span>
+</div>
+<!-- Progress Bar -->
+<div class="w-full bg-surface-container h-2.5 rounded-full overflow-hidden flex">
+<div class="bg-primary-container h-full rounded-full transition-all duration-500" style="width: 70%;"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Protection & Financial Rules Card -->
+<section class="bg-surface-container-lowest rounded-2xl border border-outline-variant/40 p-space-lg shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] flex flex-col gap-space-md">
+<!-- Card Title & Trust Badge -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-[#E8F5E9] text-[#1B5E20] flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">shield</span>
+</div>
+<h3 class="font-subtitle text-[17px] text-on-surface font-semibold">Protection &amp; Rules</h3>
+</div>
+<span class="inline-flex items-center gap-1 bg-primary-fixed text-primary px-2.5 py-1 rounded-full font-caption text-[11px] font-semibold">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+            Deposit Required
+          </span>
+</div>
+<!-- Rules Stack -->
+<div class="flex flex-col gap-space-md">
+<!-- Upfront Requirement -->
+<div class="flex items-start gap-space-md p-space-sm rounded-xl hover:bg-surface-container/40 transition-colors">
+<div class="w-8 h-8 rounded-full bg-surface-container text-on-surface-variant flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">account_balance_wallet</span>
+</div>
+<div class="flex flex-col gap-0.5">
+<span class="font-label text-label text-on-surface">Upfront Escrow Deposit</span>
+<p class="font-caption text-caption text-on-surface-variant leading-relaxed">
+                A <strong class="text-on-surface font-medium">₦50,000.00</strong> 1-round security deposit will be held in locked escrow until cycle completion.
+              </p>
+</div>
+</div>
+<!-- Release Condition -->
+<div class="flex items-start gap-space-md p-space-sm rounded-xl hover:bg-surface-container/40 transition-colors">
+<div class="w-8 h-8 rounded-full bg-surface-container text-on-surface-variant flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">published_with_changes</span>
+</div>
+<div class="flex flex-col gap-0.5">
+<span class="font-label text-label text-on-surface">Automated Return</span>
+<p class="font-caption text-caption text-on-surface-variant leading-relaxed">
+                Deposit returns to your YourApp account automatically at Round 10 provided all 10 monthly payments were made on time.
+              </p>
+</div>
+</div>
+<!-- Default Policy Alert -->
+<div class="bg-[#FFF5F5] border border-[#FFCDD2] rounded-xl p-space-md flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[20px] shrink-0 mt-0.5">warning</span>
+<div class="flex flex-col gap-0.5">
+<span class="font-label text-label text-secondary font-semibold">Strict Default Policy</span>
+<p class="font-caption text-[12px] text-on-surface-variant leading-normal">
+                In the event of a missed payment, the deposit is forfeited to fund the round pot, alongside default reporting to central credit bureaus.
+              </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Payout Slot Method Bento -->
+<section class="bg-surface-container-lowest rounded-2xl border border-outline-variant/40 p-space-lg shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] flex flex-col gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[20px]">casino</span>
+</div>
+<h3 class="font-subtitle text-[17px] text-on-surface font-semibold">Payout Slot Method</h3>
+</div>
+<div class="bg-surface-container-low rounded-xl p-space-md border border-outline-variant/20 flex flex-col gap-space-xs">
+<span class="font-label text-label text-on-surface font-semibold">Slot Assignment: Random Draw prior to Round 1 launch</span>
+<p class="font-caption text-caption text-on-surface-variant leading-relaxed flex items-center gap-1.5 mt-0.5">
+<span class="material-symbols-outlined text-[16px] text-primary">visibility</span>
+            All members will witness the verifiable draw before first deduction.
+          </p>
+</div>
+</section>
+<!-- Terms Acceptance & Mandatory Consents Form -->
+<section class="bg-surface-container-lowest rounded-2xl border border-outline-variant/40 p-space-lg shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] flex flex-col gap-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">assignment</span>
+<h3 class="font-subtitle text-[17px] text-on-surface font-semibold">Mandatory Acknowledgments</h3>
+</div>
+<div class="flex flex-col gap-space-lg">
+<!-- Checkbox 1 -->
+<label class="flex items-start gap-space-md cursor-pointer select-none group min-h-[48px]">
+<input checked="" class="w-5 h-5 mt-1 rounded border-outline-variant text-primary-container focus:ring-primary-container focus:ring-offset-0 focus:ring-2 cursor-pointer transition-colors" id="consent-debit" type="checkbox"/>
+<span class="font-caption text-caption text-on-surface leading-snug group-hover:text-primary transition-colors">
+              I agree to contribute <strong class="font-semibold text-on-surface">₦50,000.00</strong> monthly on the 1st of each month via automatic debit from my <strong class="font-semibold text-on-surface">YourApp Tier 2 Savings</strong>.
+            </span>
+</label>
+<!-- Checkbox 2 -->
+<label class="flex items-start gap-space-md cursor-pointer select-none group min-h-[48px]">
+<input checked="" class="w-5 h-5 mt-1 rounded border-outline-variant text-primary-container focus:ring-primary-container focus:ring-offset-0 focus:ring-2 cursor-pointer transition-colors" id="consent-escrow" type="checkbox"/>
+<span class="font-caption text-caption text-on-surface leading-snug group-hover:text-primary transition-colors">
+              I acknowledge the circle bye-laws and authorize a <strong class="font-semibold text-on-surface">₦50,000.00</strong> refundable security deposit hold upon joining.
+            </span>
+</label>
+</div>
+<!-- Master Bye-Laws Link -->
+<a class="pt-space-xs inline-flex items-center gap-1.5 font-label text-label text-primary font-semibold hover:underline w-fit" href="#byelaws">
+<span>Read Full Ajo Master Bye-Laws &amp; Dispute Policy</span>
+<span class="material-symbols-outlined text-[16px]">open_in_new</span>
+</a>
+</section>
+<!-- Sticky Action Trigger Tray -->
+<div class="flex flex-col gap-space-sm pt-space-md pb-space-lg">
+<!-- 52px Primary Action Button -->
+<button class="w-full h-[52px] bg-primary-container hover:bg-[#731540] active:scale-[0.98] text-on-primary rounded-xl font-label text-label font-semibold flex items-center justify-center gap-2 shadow-[0_4px_12px_-2px_rgba(142,27,74,0.3)] transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]">lock</span>
+<span>Join Circle &amp; Lock Deposit (₦50,000.00)</span>
+</button>
+<!-- 52px Secondary Outline Action Button -->
+<button class="w-full h-[52px] bg-transparent hover:bg-surface-container active:scale-[0.98] text-on-surface border-[1.5px] border-outline-variant/70 rounded-xl font-label text-label font-semibold flex items-center justify-center transition-all" type="button">
+          Decline Invitation
+        </button>
+</div>
+</div>
+<!-- Safe-Area Spacing Footer -->
+<footer class="h-6 w-full"></footer>
+</main>
+</body></html>

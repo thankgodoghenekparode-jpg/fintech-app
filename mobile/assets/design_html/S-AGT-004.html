@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Top Up Float Wallet - YourApp Agency Banking</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary-container": "#ffa0ba",
+            "outline": "#897176",
+            "on-secondary-fixed": "#410000",
+            "surface-container-lowest": "#ffffff",
+            "inverse-surface": "#342f30",
+            "on-secondary-fixed-variant": "#8c170e",
+            "outline-variant": "#dcbfc5",
+            "inverse-on-surface": "#f8eeef",
+            "on-primary": "#ffffff",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "surface-bright": "#fff8f8",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "tertiary": "#3b3236",
+            "on-primary-fixed-variant": "#881646",
+            "secondary-container": "#fc6955",
+            "on-tertiary-container": "#c6b7bd",
+            "on-background": "#1f1b1c",
+            "on-tertiary": "#ffffff",
+            "secondary-fixed": "#ffdad4",
+            "surface-variant": "#e9e0e1",
+            "inverse-primary": "#ffb1c5",
+            "on-tertiary-fixed": "#21191e",
+            "primary-container": "#8e1b4a",
+            "secondary-fixed-dim": "#ffb4a8",
+            "on-surface-variant": "#564146",
+            "background": "#fff8f8",
+            "surface-container-high": "#efe6e7",
+            "surface-dim": "#e1d8d9",
+            "surface-container-highest": "#e9e0e1",
+            "tertiary-container": "#53484d",
+            "on-secondary": "#ffffff",
+            "primary-fixed": "#ffd9e1",
+            "error-container": "#ffdad6",
+            "error": "#ba1a1a",
+            "secondary": "#ae3123",
+            "surface-container": "#f5eced",
+            "on-primary-fixed": "#3f001b",
+            "on-error-container": "#93000a",
+            "surface-container-low": "#fbf1f2",
+            "primary": "#6d0033",
+            "tertiary-fixed": "#eedee4",
+            "on-surface": "#1f1b1c",
+            "on-error": "#ffffff",
+            "surface": "#fff8f8",
+            "on-secondary-container": "#690000",
+            "surface-tint": "#a8315d",
+            "primary-fixed-dim": "#ffb1c5"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-lg": "1rem",
+            "space-3xl": "3rem",
+            "space-2xl": "2rem",
+            "margin": "1rem",
+            "gutter": "1rem",
+            "space-md": "0.75rem",
+            "space-xl": "1.5rem",
+            "space-sm": "0.5rem",
+            "space-xs": "0.25rem"
+          },
+          "fontFamily": {
+            "display": ["Inter"],
+            "caption": ["Inter"],
+            "amount-lg": ["Inter"],
+            "title": ["Inter"],
+            "label": ["Inter"],
+            "body": ["Inter"],
+            "subtitle": ["Inter"],
+            "body-medium": ["Inter"],
+            "amount-lg-mobile": ["Inter"]
+          },
+          "fontSize": {
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased flex justify-center min-h-screen">
+<!-- Mobile Container Context (390px - 560px) -->
+<div class="w-full max-w-[560px] bg-background flex flex-col min-h-screen relative pb-28">
+<!-- Top Bar Navigation -->
+<header class="sticky top-0 z-40 bg-surface/95 backdrop-blur-md px-margin py-space-sm flex items-center justify-between min-h-[56px] border-b border-outline-variant/30">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Go back" class="w-12 h-12 flex items-center justify-center rounded-full text-on-surface hover:bg-surface-container active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<h1 class="font-subtitle text-subtitle font-bold text-on-surface leading-tight">Top Up Float Wallet</h1>
+<span class="font-caption text-caption text-on-surface-variant font-medium">Terminal #AG-4029</span>
+</div>
+</div>
+<div class="flex items-center">
+<span class="font-title text-title font-bold text-primary tracking-tight">YourApp</span>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-margin pt-space-md flex flex-col gap-space-lg">
+<!-- Current Float Status Hero Card -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant/50 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] relative overflow-hidden">
+<div class="absolute -right-10 -top-10 w-32 h-32 bg-primary-fixed/30 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex justify-between items-start mb-space-xs">
+<div>
+<div class="flex items-center gap-space-xs mb-1">
+<span class="font-caption text-caption text-on-surface-variant font-medium">Available Float Wallet</span>
+<span class="material-symbols-outlined text-[16px] text-outline" data-icon="account_balance_wallet">account_balance_wallet</span>
+</div>
+<div class="font-amount-lg-mobile text-amount-lg-mobile md:font-amount-lg md:text-amount-lg text-primary font-bold tabular-nums tracking-tight">
+              ₦485,250.00
+            </div>
+</div>
+<div class="text-right">
+<span class="font-caption text-caption text-on-surface-variant block">Target Buffer</span>
+<span class="font-body-medium text-body-medium font-semibold text-on-surface tabular-nums">₦500,000.00</span>
+</div>
+</div>
+<!-- Float Adequacy Status Indicator -->
+<div class="mt-space-md pt-space-sm border-t border-outline-variant/30 flex items-center justify-between">
+<div class="inline-flex items-center gap-1.5 px-2 py-1 rounded-lg bg-surface-container-high/60 text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-caption text-caption font-medium">Float adequate for ~24 average transactions</span>
+</div>
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant" data-icon="insights">insights</span>
+</div>
+</section>
+<!-- Section Title -->
+<div>
+<h2 class="font-label text-label font-bold text-on-surface uppercase tracking-wide text-xs">Select Replenishment Method</h2>
+</div>
+<!-- Top-Up Method Selector (Bento Selection Style) -->
+<div aria-label="Top-Up Methods" class="flex flex-col gap-space-md" role="radiogroup">
+<!-- Method 1: Instant Debit from YourApp Account (Selected) -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md border-2 border-primary-container shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] cursor-pointer relative transition-all" tabindex="0">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-start gap-space-md">
+<div class="w-10 h-10 rounded-full bg-primary-fixed/50 flex items-center justify-center text-primary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[22px]" data-icon="bolt">bolt</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="font-body-medium text-body-medium font-bold text-on-surface">Instant Debit from YourApp Account</span>
+<span class="px-2 py-0.5 rounded-full text-xs font-semibold bg-primary-fixed text-on-primary-fixed">Recommended</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">
+                  YourApp Tier 2 Savings (Acct: 0124892019 • Bal: <span class="font-semibold text-on-surface tabular-nums">₦342,850.00</span>)
+                </p>
+<div class="flex items-center gap-space-sm mt-2 text-xs">
+<span class="inline-flex items-center text-primary font-medium gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="schedule">schedule</span>
+                    Instant 0-sec credit
+                  </span>
+<span class="text-outline-variant">•</span>
+<span class="inline-flex items-center text-on-surface-variant font-medium gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="verified">verified</span>
+                    Zero fee
+                  </span>
+</div>
+</div>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-primary-container flex items-center justify-center shrink-0 mt-1 bg-primary-container text-on-primary">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+</div>
+</div>
+<!-- Method 2: Dedicated Virtual Bank Transfer -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md border border-outline-variant/50 hover:border-outline transition-colors cursor-pointer" tabindex="0">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-start gap-space-md">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[22px]" data-icon="account_balance">account_balance</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-body-medium text-body-medium font-semibold text-on-surface">Dedicated Virtual Bank Transfer</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">
+                  Bank: <span class="font-medium text-on-surface">Zenith Bank / YourApp Agency</span>
+</p>
+<!-- Dedicated Account Snippet with Copy -->
+<div class="mt-2 flex items-center gap-2 bg-surface-container-low px-2.5 py-1.5 rounded-lg border border-outline-variant/40 max-w-fit">
+<span class="font-caption text-caption text-on-surface font-semibold tracking-wider tabular-nums">9940128471</span>
+<button aria-label="Copy account number" class="text-primary hover:text-primary-container flex items-center transition-transform active:scale-95" onclick="event.stopPropagation();" type="button">
+<span class="material-symbols-outlined text-[16px]" data-icon="content_copy">content_copy</span>
+</button>
+<span class="text-xs text-outline font-normal">NIBSS Instant</span>
+</div>
+</div>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-outline-variant flex items-center justify-center shrink-0 mt-1">
+</div>
+</div>
+</div>
+<!-- Method 3: Commercial Bank Branch / Cash Drop -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md border border-outline-variant/50 hover:border-outline transition-colors cursor-pointer" tabindex="0">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-start gap-space-md">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[22px]" data-icon="payments">payments</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-medium text-body-medium font-semibold text-on-surface">Commercial Bank Branch / Cash Drop</span>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">
+                  Generate teller deposit slip code for walk-in deposits at partner bank branches.
+                </p>
+<div class="mt-2 inline-flex items-center gap-1 text-xs text-primary font-medium">
+<span>Generate Teller Slip</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</div>
+</div>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-outline-variant flex items-center justify-center shrink-0 mt-1">
+</div>
+</div>
+</div>
+</div>
+<!-- Top-Up Amount Configuration Block (Method 1 Active State) -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant/50 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)]">
+<label class="block font-caption text-caption font-medium text-on-surface-variant mb-space-xs" for="topup-amount-input">
+          Top-Up Amount (Nigerian Naira)
+        </label>
+<!-- Standardized 52px Input with Currency Prefix -->
+<div class="relative flex items-center h-[52px] rounded-xl border border-primary-container bg-surface-container-lowest focus-within:ring-2 focus-within:ring-primary-container px-space-md">
+<span class="font-title text-title font-bold text-primary mr-1.5 select-none">₦</span>
+<input class="w-full h-full bg-transparent border-none p-0 font-title text-title font-bold text-on-surface tabular-nums focus:outline-none focus:ring-0" id="topup-amount-input" placeholder="0.00" type="text" value="150,000.00"/>
+<button aria-label="Clear or recalculate" class="w-8 h-8 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container" type="button">
+<span class="material-symbols-outlined text-[18px]">cancel</span>
+</button>
+</div>
+<!-- Quick Amount Chips -->
+<div class="mt-space-md">
+<span class="font-caption text-caption text-on-surface-variant font-medium block mb-2">Quick replenishment amounts:</span>
+<div class="flex flex-wrap gap-2">
+<button class="h-9 px-3 rounded-lg border border-outline-variant/60 bg-surface-container-low hover:bg-surface-container font-caption text-caption font-semibold text-on-surface tabular-nums transition-colors active:scale-95" type="button">
+              +₦50,000
+            </button>
+<button class="h-9 px-3 rounded-lg border border-outline-variant/60 bg-surface-container-low hover:bg-surface-container font-caption text-caption font-semibold text-on-surface tabular-nums transition-colors active:scale-95" type="button">
+              +₦100,000
+            </button>
+<button class="h-9 px-3 rounded-lg border border-outline-variant/60 bg-surface-container-low hover:bg-surface-container font-caption text-caption font-semibold text-on-surface tabular-nums transition-colors active:scale-95" type="button">
+              +₦200,000
+            </button>
+<button class="h-9 px-3 rounded-lg border border-primary/30 bg-primary-fixed/40 hover:bg-primary-fixed font-caption text-caption font-semibold text-primary tabular-nums transition-colors active:scale-95 flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[14px]">auto_fix_high</span>
+              Fill to Buffer (₦250,000)
+            </button>
+</div>
+</div>
+</section>
+<!-- Auto-Replenishment Rule (Optional Toggle Card) -->
+<section class="bg-surface-container-lowest rounded-xl p-space-md border border-outline-variant/50 flex items-center justify-between gap-space-md">
+<div class="flex items-start gap-3">
+<div class="w-9 h-9 rounded-lg bg-surface-container-high flex items-center justify-center text-on-surface shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[20px]" data-icon="autorenew">autorenew</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-body-medium text-body-medium font-semibold text-on-surface">Auto-Replenish Float</span>
+<span class="font-caption text-caption font-medium text-outline text-xs">(Smart Sweeps)</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant">Auto-sweep when float drops below ₦50,000</p>
+</div>
+</div>
+<!-- Toggle Switch -->
+<label class="relative inline-flex items-center cursor-pointer shrink-0">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-12 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</section>
+<!-- Transaction Summary & Impact Breakdown -->
+<section class="bg-surface-container-low rounded-xl p-space-lg border border-outline-variant/40 space-y-space-sm">
+<h3 class="font-label text-label font-bold text-on-surface mb- space-xs flex items-center justify-between">
+<span>Replenishment Summary</span>
+<span class="font-caption text-caption font-normal text-on-surface-variant">Instant Settlement</span>
+</h3>
+<div class="flex justify-between items-center py-1">
+<span class="font-body text-body text-on-surface-variant">Top-Up Amount</span>
+<span class="font-body-medium text-body-medium font-semibold text-on-surface tabular-nums">₦150,000.00</span>
+</div>
+<div class="flex justify-between items-center py-1">
+<div class="flex items-center gap-1">
+<span class="font-body text-body text-on-surface-variant">Processing Fee</span>
+<span class="material-symbols-outlined text-[16px] text-outline" data-icon="help_outline">help_outline</span>
+</div>
+<span class="font-body-medium text-body-medium font-semibold text-primary tabular-nums">₦0.00 (Free)</span>
+</div>
+<div class="flex justify-between items-center py-1 border-t border-outline-variant/30 pt-2">
+<span class="font-body-medium text-body-medium font-bold text-on-surface">Total Debited from Account</span>
+<span class="font-subtitle text-subtitle font-bold text-on-surface tabular-nums">₦150,000.00</span>
+</div>
+<!-- Impact Projection Pill -->
+<div class="mt-space-md p-space-sm rounded-lg bg-surface-container-lowest border border-outline-variant/50 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary" data-icon="trending_up">trending_up</span>
+<span class="font-caption text-caption text-on-surface-variant font-medium">Projected New Float Balance</span>
+</div>
+<span class="font-body-medium text-body-medium font-bold text-primary tabular-nums">₦635,250.00</span>
+</div>
+</section>
+<!-- Action Buttons -->
+<div class="flex flex-col gap-space-sm mt-space-sm mb-space-lg">
+<!-- 52px Primary Berry Button (#8E1B4A) -->
+<button class="w-full h-[52px] rounded-xl bg-primary-container hover:bg-[#731540] active:scale-[0.99] text-on-primary font-label text-label font-bold flex items-center justify-center gap-2 shadow-[0_4px_12px_-2px_rgba(142,27,74,0.3)] transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="lock">lock</span>
+<span>Confirm Float Top-Up (₦150,000.00)</span>
+</button>
+<!-- 52px Secondary / Cancel Button -->
+<button class="w-full h-[52px] rounded-xl bg-surface-container-high hover:bg-surface-container-highest active:scale-[0.99] text-primary font-label text-label font-semibold flex items-center justify-center transition-all" type="button">
+<span>Cancel</span>
+</button>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Mandatory Shared Component: 5 Tabs, Save & Borrow Active for Agent Float) -->
+<nav aria-label="Bottom Navigation" class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-margin h-16 max-w-[560px] mx-auto pb-safe bg-surface-container-lowest border-t border-outline-variant/40 shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)]">
+<!-- 1. Home -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" type="button">
+<span class="material-symbols-outlined text-[24px]" data-icon="home">home</span>
+<span class="font-caption text-caption font-medium">Home</span>
+</button>
+<!-- 2. Payments -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" type="button">
+<span class="material-symbols-outlined text-[24px]" data-icon="send">send</span>
+<span class="font-caption text-caption font-medium">Payments</span>
+</button>
+<!-- 3. Cards -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" type="button">
+<span class="material-symbols-outlined text-[24px]" data-icon="credit_card">credit_card</span>
+<span class="font-caption text-caption font-medium">Cards</span>
+</button>
+<!-- 4. Save & Borrow (Active Tab for Float & Agency Treasury Management) -->
+<button aria-current="page" class="flex flex-col items-center justify-center text-primary font-semibold min-w-[48px] py-space-xs gap-space-xs active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined text-[24px]" data-icon="savings" data-weight="fill" style="font-variation-settings: 'FILL' 1;">savings</span>
+<span class="font-caption text-caption font-medium">Save &amp; Borrow</span>
+</button>
+<!-- 5. More -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" type="button">
+<span class="material-symbols-outlined text-[24px]" data-icon="more_horiz">more_horiz</span>
+<span class="font-caption text-caption font-medium">More</span>
+</button>
+</nav>
+</div>
+</body></html>

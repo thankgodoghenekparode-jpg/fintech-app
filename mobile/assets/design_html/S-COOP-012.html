@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Loan detail (S-COOP-012)</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Inter Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary-fixed": "#3f001b",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "error": "#ba1a1a",
+            "on-secondary-fixed": "#410000",
+            "on-secondary-fixed-variant": "#8c170e",
+            "on-tertiary": "#ffffff",
+            "on-surface": "#1f1b1c",
+            "on-surface-variant": "#564146",
+            "secondary-container": "#fc6955",
+            "surface-tint": "#a8315d",
+            "primary-fixed-dim": "#ffb1c5",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#fbf1f2",
+            "on-secondary": "#ffffff",
+            "on-tertiary-fixed": "#21191e",
+            "outline-variant": "#dcbfc5",
+            "on-primary-container": "#ffa0ba",
+            "error-container": "#ffdad6",
+            "surface-bright": "#fff8f8",
+            "tertiary-container": "#53484d",
+            "on-tertiary-container": "#c6b7bd",
+            "surface": "#fff8f8",
+            "on-error-container": "#93000a",
+            "outline": "#897176",
+            "background": "#fff8f8",
+            "primary": "#6d0033",
+            "surface-container": "#f5eced",
+            "secondary-fixed": "#ffdad4",
+            "surface-variant": "#e9e0e1",
+            "inverse-surface": "#342f30",
+            "tertiary-fixed": "#eedee4",
+            "primary-container": "#8e1b4a",
+            "on-secondary-container": "#690000",
+            "surface-dim": "#e1d8d9",
+            "tertiary": "#3b3236",
+            "on-background": "#1f1b1c",
+            "secondary-fixed-dim": "#ffb4a8",
+            "surface-container-highest": "#e9e0e1",
+            "inverse-primary": "#ffb1c5",
+            "surface-container-high": "#efe6e7",
+            "on-error": "#ffffff",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "inverse-on-surface": "#f8eeef",
+            "secondary": "#ae3123",
+            "on-primary-fixed-variant": "#881646",
+            "primary-fixed": "#ffd9e1",
+            "on-primary": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "space-2xl": "2rem",
+            "space-3xl": "3rem",
+            "space-xl": "1.5rem",
+            "space-lg": "1rem",
+            "space-xs": "0.25rem",
+            "space-md": "0.75rem",
+            "margin": "1rem",
+            "gutter": "1rem"
+          },
+          "fontFamily": {
+            "body-medium": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "amount-lg": ["Inter"],
+            "subtitle": ["Inter"],
+            "caption": ["Inter"],
+            "display": ["Inter"],
+            "body": ["Inter"],
+            "title": ["Inter"],
+            "label": ["Inter"]
+          },
+          "fontSize": {
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex flex-col justify-between">
+<!-- Shell Container: 390px Mobile Canvas centered on larger viewports -->
+<div class="w-full max-w-[560px] mx-auto min-h-screen bg-background flex flex-col relative pb-[84px]">
+<!-- Top Navigation Header -->
+<header class="w-full bg-surface-container-lowest sticky top-0 z-40 px-margin py-space-sm flex items-center justify-between shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)]">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Go Back" class="w-10 h-10 -ml-1 rounded-full flex items-center justify-center text-on-surface hover:bg-surface-container transition-colors active:scale-95 duration-150" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<div>
+<div class="flex items-center gap-space-xs">
+<h1 class="font-subtitle text-subtitle text-on-surface leading-tight font-bold">Loan Details</h1>
+<span class="text-caption font-caption text-on-surface-variant font-medium">(S-COOP-012)</span>
+</div>
+<div class="flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">assured_workload</span>
+<span class="font-caption text-caption text-on-surface-variant font-medium">Lekki Phase 1 Thrift Society</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-1">
+<button aria-label="Share Statement" class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container transition-colors active:scale-95 duration-150" type="button">
+<span class="material-symbols-outlined text-[22px]">share</span>
+</button>
+<button aria-label="Receipts and Download" class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container transition-colors active:scale-95 duration-150" type="button">
+<span class="material-symbols-outlined text-[22px]">receipt_long</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="px-margin pt-space-lg flex-1 flex flex-col gap-space-xl">
+<!-- Hero Loan Status Card -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] flex flex-col gap-space-md">
+<!-- Facility Title & State Tag -->
+<div class="flex items-start justify-between gap-space-sm">
+<div>
+<span class="font-caption text-caption text-on-surface-variant block font-medium">Ref: #COOP-LN-4402</span>
+<h2 class="font-title text-title text-on-surface font-bold mt-0.5">Member Development Micro-Loan</h2>
+</div>
+</div>
+<div class="flex items-center justify-between flex-wrap gap-2 pt-1">
+<!-- Status Tag: Icon + Label mandate -->
+<div class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-[#E6F4EA] text-[#137333] border border-[#CEEAD6]">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-caption text-caption font-semibold">Active • In Repayment</span>
+</div>
+<!-- Society Tag Indicator -->
+<div class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-surface-container text-on-surface-variant text-caption font-caption font-medium">
+<span class="material-symbols-outlined text-[14px]">groups</span>
+<span>Cooperative Tier 1</span>
+</div>
+</div>
+<!-- Outstanding Balance Display -->
+<div class="bg-surface-container-low rounded-xl p-space-md mt-1 border border-outline-variant/20">
+<p class="font-caption text-caption text-on-surface-variant font-medium">Outstanding Balance</p>
+<div class="flex items-baseline gap-1 mt-0.5">
+<span class="font-amount-lg-mobile text-amount-lg-mobile text-primary font-bold tabular-nums">₦50,000.00</span>
+<span class="font-caption text-caption text-on-surface-variant">of ₦150,000.00 principal</span>
+</div>
+<!-- Progress Bar Component -->
+<div class="mt-space-md">
+<div class="flex justify-between items-center text-caption font-caption mb-1.5 font-medium">
+<span class="text-on-surface">67% Repaid</span>
+<span class="text-on-surface-variant">2 of 3 instalments settled</span>
+</div>
+<div class="w-full h-2.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="bg-primary-container h-full rounded-full transition-all duration-500 ease-out" style="width: 67%;"></div>
+</div>
+</div>
+</div>
+<!-- Next Due Milestone Banner -->
+<div class="flex items-center gap-space-sm p-space-md rounded-xl bg-primary-fixed/30 border border-primary-fixed-dim/60">
+<div class="w-9 h-9 rounded-lg bg-primary-container text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">calendar_clock</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-1">
+<span class="font-label text-label text-primary font-bold">Next Due: ₦50,000.00</span>
+<span class="px-1.5 py-0.2 rounded bg-secondary text-on-secondary font-caption text-[11px] font-bold">FINAL</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">Maturity date: 15 Nov 2026 (Final Instalment!)</p>
+</div>
+</div>
+</section>
+<!-- Quick Action Buttons -->
+<section class="flex flex-col gap-space-sm">
+<button class="w-full h-[52px] rounded-xl bg-primary-container hover:bg-primary text-on-primary font-label text-label font-semibold flex items-center justify-center gap-2 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] active:scale-[0.98] transition-all duration-150" type="button">
+<span class="material-symbols-outlined text-[20px]">payments</span>
+<span>Make Repayment (₦50,000.00)</span>
+</button>
+<button class="w-full h-[52px] rounded-xl bg-surface-container hover:bg-surface-container-high text-primary font-label text-label font-semibold border border-outline-variant/40 flex items-center justify-center gap-2 active:scale-[0.98] transition-all duration-150" type="button">
+<span class="material-symbols-outlined text-[20px]">file_download</span>
+<span>Download Schedule / Statement</span>
+</button>
+</section>
+<!-- Loan Overview Breakdown Card -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)]">
+<div class="flex items-center justify-between pb-space-md border-b border-outline-variant/30">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-primary">account_balance_wallet</span>
+<h3 class="font-subtitle text-[18px] text-on-surface font-bold">Loan Overview</h3>
+</div>
+<span class="text-caption font-caption px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-medium">Fixed 3 Months</span>
+</div>
+<div class="divide-y divide-outline-variant/20 pt-1">
+<div class="flex justify-between items-center py-2.5">
+<span class="font-caption text-caption text-on-surface-variant font-medium">Principal Amount</span>
+<span class="font-body-medium text-body-medium text-on-surface font-semibold tabular-nums">₦150,000.00</span>
+</div>
+<div class="flex justify-between items-center py-2.5">
+<div class="flex flex-col">
+<span class="font-caption text-caption text-on-surface-variant font-medium">Interest Charge</span>
+<span class="text-[11px] text-outline">1% monthly flat rate</span>
+</div>
+<span class="font-body-medium text-body-medium text-on-surface font-semibold tabular-nums">₦4,500.00</span>
+</div>
+<div class="flex justify-between items-center py-2.5">
+<span class="font-caption text-caption text-on-surface font-semibold">Total Repayable</span>
+<span class="font-body-medium text-body-medium text-primary font-bold tabular-nums">₦154,500.00</span>
+</div>
+<div class="flex justify-between items-center py-2.5">
+<span class="font-caption text-caption text-on-surface-variant font-medium">Disbursed Date</span>
+<span class="font-caption text-caption text-on-surface font-medium">15 August 2026</span>
+</div>
+<div class="pt-2.5 flex items-start justify-between">
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[18px] text-[#137333] mt-0.5" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div>
+<span class="font-caption text-caption text-on-surface font-semibold block">Auto-debit Enabled</span>
+<span class="text-[12px] text-on-surface-variant">Debits YourApp Tier 2 Savings on 15th monthly</span>
+</div>
+</div>
+<span class="text-caption font-caption text-primary font-semibold">Configured</span>
+</div>
+</div>
+</section>
+<!-- 3 Verified Guarantors Section -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-primary">verified_user</span>
+<h3 class="font-subtitle text-[18px] text-on-surface font-bold">Verified Guarantors (3)</h3>
+</div>
+<span class="inline-flex items-center gap-1 text-[12px] font-semibold text-[#137333] bg-[#E6F4EA] px-2 py-0.5 rounded-lg border border-[#CEEAD6]">
+<span class="material-symbols-outlined text-[14px]">shield</span> All Vouched
+          </span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant">
+          Pledged cooperative savings protecting facility risk:
+        </p>
+<!-- Guarantor Bento Grid / List -->
+<div class="space-y-space-sm">
+<!-- Guarantor 1 -->
+<div class="p-space-md rounded-xl bg-surface-container-low border border-outline-variant/20 flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center font-label text-primary font-bold">
+                  AB
+                </div>
+<div>
+<h4 class="font-label text-label text-on-surface font-bold">Amina K. Bello</h4>
+<span class="text-caption text-caption text-on-surface-variant block">Coop ID: #LK-0892</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-body-medium text-body-medium font-bold text-on-surface tabular-nums">₦50,000.00</span>
+<span class="block text-[11px] text-on-surface-variant font-medium">Pledged</span>
+</div>
+</div>
+<!-- Collateral Release Micro-progress -->
+<div class="pt-1 border-t border-outline-variant/20 flex items-center justify-between text-[12px]">
+<span class="text-[#137333] flex items-center gap-1 font-medium">
+<span class="material-symbols-outlined text-[14px]">lock_open</span> ₦33,333.33 unlocked
+              </span>
+<span class="text-on-surface-variant font-medium">₦16,666.67 remaining</span>
+</div>
+</div>
+<!-- Guarantor 2 -->
+<div class="p-space-md rounded-xl bg-surface-container-low border border-outline-variant/20 flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center font-label text-primary font-bold">
+                  EO
+                </div>
+<div>
+<h4 class="font-label text-label text-on-surface font-bold">Emeka Okafor</h4>
+<span class="text-caption text-caption text-on-surface-variant block">Coop ID: #LK-1044</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-body-medium text-body-medium font-bold text-on-surface tabular-nums">₦50,000.00</span>
+<span class="block text-[11px] text-on-surface-variant font-medium">Pledged</span>
+</div>
+</div>
+<div class="pt-1 border-t border-outline-variant/20 flex items-center justify-between text-[12px]">
+<span class="text-[#137333] flex items-center gap-1 font-medium">
+<span class="material-symbols-outlined text-[14px]">lock_open</span> ₦33,333.33 unlocked
+              </span>
+<span class="text-on-surface-variant font-medium">₦16,666.67 remaining</span>
+</div>
+</div>
+<!-- Guarantor 3 -->
+<div class="p-space-md rounded-xl bg-surface-container-low border border-outline-variant/20 flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center font-label text-primary font-bold">
+                  TB
+                </div>
+<div>
+<h4 class="font-label text-label text-on-surface font-bold">Tunde Bakare</h4>
+<span class="text-caption text-caption text-on-surface-variant block">Coop ID: #LK-0431</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-body-medium text-body-medium font-bold text-on-surface tabular-nums">₦50,000.00</span>
+<span class="block text-[11px] text-on-surface-variant font-medium">Pledged</span>
+</div>
+</div>
+<div class="pt-1 border-t border-outline-variant/20 flex items-center justify-between text-[12px]">
+<span class="text-[#137333] flex items-center gap-1 font-medium">
+<span class="material-symbols-outlined text-[14px]">lock_open</span> ₦33,333.33 unlocked
+              </span>
+<span class="text-on-surface-variant font-medium">₦16,666.67 remaining</span>
+</div>
+</div>
+</div>
+<!-- Release Policy Notice Note -->
+<div class="p-space-sm bg-surface-container rounded-lg flex items-start gap-2 border border-outline-variant/20">
+<span class="material-symbols-outlined text-[18px] text-primary shrink-0 mt-0.5">info</span>
+<p class="font-caption text-caption text-on-surface-variant leading-relaxed">
+            Guarantors' pledged savings are automatically released upon payment of the final instalment.
+          </p>
+</div>
+</section>
+<!-- Amortisation Schedule List -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] mb-space-lg flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-sm border-b border-outline-variant/30">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-primary">event_repeat</span>
+<h3 class="font-subtitle text-[18px] text-on-surface font-bold">Amortisation Schedule</h3>
+</div>
+<span class="font-caption text-caption text-on-surface-variant font-semibold">3 Total Payments</span>
+</div>
+<div class="divide-y divide-outline-variant/20">
+<!-- Instalment 1 -->
+<div class="py-space-md flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-[#E6F4EA] text-[#137333] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-label text-label text-on-surface font-bold">Instalment 1</span>
+<span class="inline-flex items-center gap-0.5 text-[11px] font-semibold text-[#137333] bg-[#E6F4EA] px-1.5 py-0.5 rounded">
+                    Paid
+                  </span>
+</div>
+<span class="font-caption text-caption text-on-surface-variant block mt-0.5">Due: 15 Sep 2026 • Paid on 15 Sep</span>
+</div>
+</div>
+<div class="text-right flex flex-col items-end">
+<span class="font-body-medium text-body-medium font-bold text-on-surface tabular-nums">₦50,000.00</span>
+<button class="mt-0.5 flex items-center gap-1 text-[12px] text-primary font-semibold hover:underline" type="button">
+<span>Receipt</span>
+<span class="material-symbols-outlined text-[13px]">open_in_new</span>
+</button>
+</div>
+</div>
+<!-- Instalment 2 -->
+<div class="py-space-md flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-[#E6F4EA] text-[#137333] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-label text-label text-on-surface font-bold">Instalment 2</span>
+<span class="inline-flex items-center gap-0.5 text-[11px] font-semibold text-[#137333] bg-[#E6F4EA] px-1.5 py-0.5 rounded">
+                    Paid
+                  </span>
+</div>
+<span class="font-caption text-caption text-on-surface-variant block mt-0.5">Due: 15 Oct 2026 • Paid on 15 Oct</span>
+</div>
+</div>
+<div class="text-right flex flex-col items-end">
+<span class="font-body-medium text-body-medium font-bold text-on-surface tabular-nums">₦50,000.00</span>
+<button class="mt-0.5 flex items-center gap-1 text-[12px] text-primary font-semibold hover:underline" type="button">
+<span>Receipt</span>
+<span class="material-symbols-outlined text-[13px]">open_in_new</span>
+</button>
+</div>
+</div>
+<!-- Instalment 3 -->
+<div class="py-space-md flex items-center justify-between bg-primary-fixed/20 -mx-space-lg px-space-lg rounded-lg border border-primary-container/20">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-secondary text-on-secondary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">hourglass_top</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-label text-label text-on-surface font-bold">Instalment 3</span>
+<span class="inline-flex items-center gap-0.5 text-[11px] font-bold text-secondary bg-secondary-fixed px-1.5 py-0.5 rounded">
+                    Due in 18 days
+                  </span>
+</div>
+<span class="font-caption text-caption text-on-surface font-medium block mt-0.5">15 Nov 2026 • Final Instalment</span>
+</div>
+</div>
+<div class="text-right flex flex-col items-end">
+<span class="font-body-medium text-body-medium font-bold text-primary tabular-nums">₦50,000.00</span>
+<span class="text-[12px] font-semibold text-secondary">Pay Now</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Shared Component JSON anchor) -->
+<!-- Destination 4: "Save & Borrow" active as this is a Cooperative loan management flow -->
+<nav class="fixed bottom-0 left-0 right-0 w-full z-50 bg-surface-container-lowest shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)]">
+<div class="flex justify-around items-center px-margin h-16 max-w-[560px] mx-auto pb-safe">
+<!-- Tab 1: Home (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" type="button">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="font-caption text-caption font-medium">Home</span>
+</button>
+<!-- Tab 2: Payments (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" type="button">
+<span class="material-symbols-outlined text-[24px]">send</span>
+<span class="font-caption text-caption font-medium">Payments</span>
+</button>
+<!-- Tab 3: Cards (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" type="button">
+<span class="material-symbols-outlined text-[24px]">credit_card</span>
+<span class="font-caption text-caption font-medium">Cards</span>
+</button>
+<!-- Tab 4: Save & Borrow (Active) -->
+<button class="flex flex-col items-center justify-center text-primary font-semibold min-w-[48px] py-space-xs gap-space-xs active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">savings</span>
+<span class="font-caption text-caption font-medium">Save &amp; Borrow</span>
+</button>
+<!-- Tab 5: More (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" type="button">
+<span class="material-symbols-outlined text-[24px]">more_horiz</span>
+<span class="font-caption text-caption font-medium">More</span>
+</button>
+</div>
+</nav>
+</div>
+</body></html>

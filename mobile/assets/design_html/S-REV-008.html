@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Report abuse (S-REV-008)</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary-fixed-dim": "#ffb4a8",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "tertiary-fixed": "#eedee4",
+            "outline": "#897176",
+            "surface": "#fff8f8",
+            "surface-dim": "#e1d8d9",
+            "on-error-container": "#93000a",
+            "background": "#fff8f8",
+            "tertiary": "#3b3236",
+            "on-secondary-fixed": "#410000",
+            "on-secondary-fixed-variant": "#8c170e",
+            "inverse-primary": "#ffb1c5",
+            "on-surface-variant": "#564146",
+            "secondary-container": "#fc6955",
+            "on-primary-container": "#ffa0ba",
+            "primary": "#6d0033",
+            "surface-container-high": "#efe6e7",
+            "surface-variant": "#e9e0e1",
+            "error": "#ba1a1a",
+            "surface-bright": "#fff8f8",
+            "on-tertiary": "#ffffff",
+            "on-error": "#ffffff",
+            "surface-tint": "#a8315d",
+            "outline-variant": "#dcbfc5",
+            "on-primary-fixed": "#3f001b",
+            "primary-container": "#8e1b4a",
+            "on-surface": "#1f1b1c",
+            "primary-fixed": "#ffd9e1",
+            "on-secondary": "#ffffff",
+            "on-primary": "#ffffff",
+            "surface-container-highest": "#e9e0e1",
+            "inverse-on-surface": "#f8eeef",
+            "tertiary-container": "#53484d",
+            "surface-container": "#f5eced",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "surface-container-low": "#fbf1f2",
+            "secondary": "#ae3123",
+            "secondary-fixed": "#ffdad4",
+            "error-container": "#ffdad6",
+            "on-background": "#1f1b1c",
+            "on-primary-fixed-variant": "#881646",
+            "surface-container-lowest": "#ffffff",
+            "primary-fixed-dim": "#ffb1c5",
+            "on-tertiary-container": "#c6b7bd",
+            "inverse-surface": "#342f30",
+            "on-secondary-container": "#690000",
+            "on-tertiary-fixed": "#21191e"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "1rem",
+            "space-xs": "0.25rem",
+            "space-3xl": "3rem",
+            "space-md": "0.75rem",
+            "space-lg": "1rem",
+            "space-2xl": "2rem",
+            "space-sm": "0.5rem",
+            "space-xl": "1.5rem",
+            "gutter": "1rem"
+          },
+          "fontFamily": {
+            "caption": ["Inter"],
+            "body-medium": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "subtitle": ["Inter"],
+            "display": ["Inter"],
+            "body": ["Inter"],
+            "label": ["Inter"],
+            "amount-lg": ["Inter"],
+            "title": ["Inter"]
+          },
+          "fontSize": {
+            "caption": ["13px", {"lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+            "body-medium": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500"}],
+            "amount-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "subtitle": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "display": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "body": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400"}],
+            "label": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+            "amount-lg": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700"}],
+            "title": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased flex justify-center min-h-screen">
+<!-- Mobile Canvas Container (Max 560px for tablet, 390px native mobile profile) -->
+<div class="w-full max-w-[560px] bg-surface flex flex-col min-h-screen relative pb-[88px]">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-40 bg-surface/95 backdrop-blur-md px-margin py-space-sm flex items-center justify-between min-h-[56px] shadow-[0_2px_8px_-2px_rgba(30,26,27,0.03)]">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Go back" class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<h1 class="font-subtitle text-subtitle text-on-surface leading-tight">Report Collector Abuse</h1>
+<div class="flex items-center gap-1.5">
+<span class="font-caption text-caption text-primary-container font-semibold">Revenue Protection</span>
+<span class="text-outline-variant text-[10px]">•</span>
+<span class="font-caption text-caption text-on-surface-variant font-medium">S-REV-008</span>
+</div>
+</div>
+</div>
+<div class="flex items-center">
+<div class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container text-primary hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+</div>
+</header>
+<!-- Main Scrollable Canvas Content -->
+<main class="flex-1 px-margin pt-space-md pb-space-2xl space-y-space-xl">
+<!-- Header Alert Card: Consumer Protection & Anti-Extortion Hub -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant/50 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] relative overflow-hidden">
+<div class="absolute -right-6 -bottom-6 w-24 h-24 bg-primary-fixed/30 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-start gap-space-md">
+<div class="w-10 h-10 rounded-lg bg-primary-container text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[24px]">security</span>
+</div>
+<div class="space-y-space-xs">
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-surface-container text-primary font-caption text-caption font-semibold">
+<span class="material-symbols-outlined text-[14px]">shield</span>
+<span>Consumer Protection &amp; Anti-Extortion Hub</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant pt-1 leading-relaxed">
+              YourApp maintains zero tolerance for unauthorized levying, double billing, or coercive collection practices. Reports are reviewed jointly by State Revenue Authorities and our Compliance Unit.
+            </p>
+</div>
+</div>
+</section>
+<!-- Suspect Organization / Collector Context -->
+<section class="space-y-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label text-label text-on-surface-variant font-semibold">Suspect Entity &amp; Assessment</span>
+<button class="font-caption text-caption text-primary font-semibold flex items-center gap-0.5 hover:underline" type="button">
+<span class="material-symbols-outlined text-[16px]">search</span>
+            Search unlisted
+          </button>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant/60 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.04)] space-y-space-md">
+<div class="flex items-start justify-between">
+<div class="space-y-0.5">
+<p class="font-caption text-caption text-on-surface-variant">Biller Name</p>
+<h2 class="font-subtitle text-subtitle text-on-surface font-semibold">Computer Village Traders Union</h2>
+</div>
+<span class="inline-flex items-center gap-1 bg-surface-container px-2 py-1 rounded-lg text-on-surface-variant font-caption text-caption">
+<span class="material-symbols-outlined text-[14px]">badge</span>
+              REV-BIL-88319-MKT
+            </span>
+</div>
+<div class="p-space-md rounded-lg bg-surface-container-low border border-outline-variant/40 flex items-center justify-between">
+<div class="space-y-0.5">
+<p class="font-caption text-caption text-on-surface-variant">Associated Assessment</p>
+<p class="font-body-medium text-body-medium text-on-surface font-medium">Annual Market Sanitation Levy 2027</p>
+</div>
+<div class="text-right">
+<span class="font-body-medium text-body-medium font-bold text-on-surface tabular-nums">₦7,500.00</span>
+<p class="font-caption text-caption text-secondary flex items-center justify-end gap-1 font-medium">
+<span class="material-symbols-outlined text-[14px]">flag</span>
+                Disputed
+              </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Step 1: Abuse Classification -->
+<section class="space-y-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="w-6 h-6 rounded-full bg-primary text-on-primary font-caption text-caption font-semibold flex items-center justify-center text-xs">1</span>
+<span class="font-label text-label text-on-surface font-semibold">Select Violation Type</span>
+</div>
+<span class="font-caption text-caption text-on-surface-variant">Required</span>
+</div>
+<div aria-label="Abuse Classification" class="space-y-space-sm" role="radiogroup">
+<!-- Option 1 -->
+<label class="group relative flex items-start gap-space-md p-space-md bg-surface-container-lowest rounded-xl border border-outline-variant/50 hover:border-outline cursor-pointer transition-all active:scale-[0.99]">
+<input class="mt-1 h-5 w-5 text-primary border-outline-variant focus:ring-primary focus:ring-offset-0" name="abuse_classification" type="radio"/>
+<div class="flex-1 space-y-1">
+<div class="flex items-center justify-between">
+<span class="font-body-medium text-body-medium text-on-surface font-semibold group-hover:text-primary transition-colors">Unauthorized / Bogus collector (Touting)</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-error-container text-on-error-container font-caption text-[11px] font-medium">
+<span class="material-symbols-outlined text-[12px]">gavel</span>
+                  Illegal
+                </span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant">Collector lacks statutory legal authority, gazette accreditation, or digital enforcement ID.</p>
+</div>
+</label>
+<!-- Option 2 (Selected) -->
+<label class="relative flex items-start gap-space-md p-space-md bg-surface-container-lowest rounded-xl border-2 border-primary-container shadow-[0_4px_12px_-2px_rgba(110,0,51,0.08)] cursor-pointer transition-all">
+<input checked="" class="mt-1 h-5 w-5 text-primary border-primary focus:ring-primary focus:ring-offset-0" name="abuse_classification" type="radio"/>
+<div class="flex-1 space-y-1">
+<div class="flex items-center justify-between">
+<span class="font-body-medium text-body-medium text-primary-container font-bold">Arbitrary or exorbitant fee hike without notice</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed font-caption text-[11px] font-bold">
+<span class="material-symbols-outlined text-[12px]">trending_up</span>
+                  Active Selection
+                </span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant">Unilateral levy increase exceeding registered council bye-laws or state benchmark tables.</p>
+</div>
+</label>
+<!-- Option 3 -->
+<label class="group relative flex items-start gap-space-md p-space-md bg-surface-container-lowest rounded-xl border border-outline-variant/50 hover:border-outline cursor-pointer transition-all active:scale-[0.99]">
+<input class="mt-1 h-5 w-5 text-primary border-outline-variant focus:ring-primary focus:ring-offset-0" name="abuse_classification" type="radio"/>
+<div class="flex-1 space-y-1">
+<div class="flex items-center justify-between">
+<span class="font-body-medium text-body-medium text-on-surface font-semibold group-hover:text-primary transition-colors">Coercive enforcement or harassment</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container-highest text-on-surface font-caption text-[11px] font-medium">
+<span class="material-symbols-outlined text-[12px]">warning</span>
+                  Hostile
+                </span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant">Threats of premises lock-up, illegal goods seizure, personal harassment, or physical intimidation.</p>
+</div>
+</label>
+<!-- Option 4 -->
+<label class="group relative flex items-start gap-space-md p-space-md bg-surface-container-lowest rounded-xl border border-outline-variant/50 hover:border-outline cursor-pointer transition-all active:scale-[0.99]">
+<input class="mt-1 h-5 w-5 text-primary border-outline-variant focus:ring-primary focus:ring-offset-0" name="abuse_classification" type="radio"/>
+<div class="flex-1 space-y-1">
+<div class="flex items-center justify-between">
+<span class="font-body-medium text-body-medium text-on-surface font-semibold group-hover:text-primary transition-colors">Double taxation / Multiple agency billing</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container-highest text-on-surface font-caption text-[11px] font-medium">
+<span class="material-symbols-outlined text-[12px]">content_copy</span>
+                  Duplicate
+                </span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant">Identical tariff category already remitted to Local Government Area (LGA) or State Treasury.</p>
+</div>
+</label>
+<!-- Option 5 -->
+<label class="group relative flex items-start gap-space-md p-space-md bg-surface-container-lowest rounded-xl border border-outline-variant/50 hover:border-outline cursor-pointer transition-all active:scale-[0.99]">
+<input class="mt-1 h-5 w-5 text-primary border-outline-variant focus:ring-primary focus:ring-offset-0" name="abuse_classification" type="radio"/>
+<div class="flex-1 space-y-1">
+<div class="flex items-center justify-between">
+<span class="font-body-medium text-body-medium text-on-surface font-semibold group-hover:text-primary transition-colors">Refusal to issue verifiable digital receipt</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container-highest text-on-surface font-caption text-[11px] font-medium">
+<span class="material-symbols-outlined text-[12px]">receipt_long</span>
+                  Audit Risk
+                </span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant">Insisting on unrecorded physical cash settlements without government QR code validation.</p>
+</div>
+</label>
+</div>
+</section>
+<!-- Step 2: Factual Narrative / Description -->
+<section class="space-y-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="w-6 h-6 rounded-full bg-primary text-on-primary font-caption text-caption font-semibold flex items-center justify-center text-xs">2</span>
+<label class="font-label text-label text-on-surface font-semibold" for="factual_narrative">Incident Details &amp; Summary</label>
+</div>
+<span class="font-caption text-caption text-outline font-medium tabular-nums">210 / 1000</span>
+</div>
+<div class="relative bg-surface-container-lowest rounded-xl border border-outline-variant/60 focus-within:border-primary-container focus-within:ring-1 focus-within:ring-primary-container p-space-md shadow-[0_2px_8px_-2px_rgba(30,26,27,0.03)]">
+<textarea class="w-full bg-transparent border-0 p-0 font-body text-body text-on-surface focus:ring-0 resize-none placeholder:text-outline-variant" id="factual_narrative" placeholder="Provide factual dates, staff badge names, vehicles used, or specific statements made..." rows="4">Collection taskforce threatened store lock-up unless paid cash on site, refusing to accept official YourApp e-clearance or recognize LGA sanitation receipt #LGA-2027-1102.</textarea>
+<div class="pt-2 flex items-center justify-between border-t border-surface-container mt-2">
+<div class="flex items-center gap-1.5 text-on-surface-variant font-caption text-caption">
+<span class="material-symbols-outlined text-[16px] text-primary">info</span>
+<span>Stick to verifiable times, badges, and demands</span>
+</div>
+<button class="text-xs font-semibold text-primary-container hover:underline" type="button">Format notes</button>
+</div>
+</div>
+</section>
+<!-- Step 3: Evidence & Attachments -->
+<section class="space-y-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="w-6 h-6 rounded-full bg-primary text-on-primary font-caption text-caption font-semibold flex items-center justify-center text-xs">3</span>
+<span class="font-label text-label text-on-surface font-semibold">Supporting Evidence (Optional)</span>
+</div>
+<span class="font-caption text-caption text-on-surface-variant font-medium">Max 15MB</span>
+</div>
+<!-- Dropzone -->
+<div class="border-2 border-dashed border-outline-variant/70 rounded-xl p-space-lg bg-surface-container-low/40 hover:bg-surface-container-low transition-colors text-center flex flex-col items-center justify-center cursor-pointer group">
+<div class="w-12 h-12 rounded-full bg-surface-container-high group-hover:bg-primary-fixed flex items-center justify-center text-primary transition-colors mb-2">
+<span class="material-symbols-outlined text-[24px]">cloud_upload</span>
+</div>
+<p class="font-label text-label text-on-surface font-semibold">Upload photos, videos, or paper demand notices</p>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">JPEG, PNG, or PDF counter-foils (Up to 3 files)</p>
+<button class="mt-3 px-3 py-1.5 bg-surface-container-lowest border border-outline-variant/60 rounded-lg font-caption text-caption text-on-surface font-medium hover:bg-surface-container active:scale-95 transition-all" type="button">
+            Browse files
+          </button>
+</div>
+<!-- Attached item chip -->
+<div class="flex items-center justify-between p-space-md rounded-xl bg-surface-container-lowest border border-outline-variant/60 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.03)]">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-10 h-10 rounded-lg bg-primary-fixed/40 text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">image</span>
+</div>
+<div class="min-w-0">
+<p class="font-label text-label text-on-surface font-medium truncate">demand_notice_threat_letter.jpg</p>
+<div class="flex items-center gap-1.5 font-caption text-caption text-on-surface-variant">
+<span>1.8 MB</span>
+<span>•</span>
+<span class="flex items-center gap-0.5 text-primary">
+<span class="material-symbols-outlined text-[12px]">schedule</span>
+                  Today, 11:42 AM
+                </span>
+</div>
+</div>
+</div>
+<button aria-label="Remove attached file" class="w-9 h-9 rounded-full flex items-center justify-center text-outline hover:text-error hover:bg-error-container/20 transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+<!-- Option: Anonymity Toggle -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md border border-outline-variant/60 flex items-center justify-between mt-2">
+<div class="space-y-0.5 pr-2">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-primary">visibility_off</span>
+<span class="font-body-medium text-body-medium text-on-surface font-semibold">Keep report anonymous from collector</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant">Your name and shop location will be withheld from the suspect party during investigation.</p>
+</div>
+<!-- Toggle active state -->
+<button aria-checked="true" class="w-12 h-7 bg-primary-container rounded-full relative inline-flex items-center p-0.5 transition-colors focus:outline-none" role="switch" type="button">
+<span class="w-6 h-6 bg-surface-container-lowest rounded-full shadow-md transform translate-x-5 transition-transform flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px] text-primary font-bold">check</span>
+</span>
+</button>
+</div>
+</section>
+<!-- Whistleblower Protection Disclosure -->
+<section class="rounded-xl p-space-md bg-surface-container border border-outline-variant/40 flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-[20px] text-primary shrink-0 mt-0.5">verified</span>
+<p class="font-caption text-caption text-on-surface-variant leading-relaxed">
+<strong class="font-semibold text-on-surface">Whistleblower Protection:</strong> Your identity and bank account details will remain strictly confidential under the State Revenue Ethics Charter. An encrypted ticket number will be generated immediately for tracking.
+        </p>
+</section>
+<!-- Bottom Form Actions -->
+<section class="space-y-space-sm pt-space-xs">
+<button class="w-full h-[52px] rounded-xl bg-primary-container hover:bg-primary active:scale-[0.98] text-on-primary font-label text-label font-bold flex items-center justify-center gap-2 shadow-[0_4px_16px_rgba(110,0,51,0.2)] transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]">report</span>
+          Submit Abuse Report &amp; Block Collector
+        </button>
+<button class="w-full h-[52px] rounded-xl bg-transparent border-[1.5px] border-outline-variant/80 hover:bg-surface-container text-on-surface font-label text-label font-semibold flex items-center justify-center transition-colors active:scale-[0.98]" type="button">
+          Cancel
+        </button>
+</section>
+</main>
+<!-- BottomNavBar (Docked 64px, 5 tabs, Payments active) -->
+<nav aria-label="Primary Navigation" class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-margin h-16 max-w-[560px] mx-auto pb-safe bg-surface-container-lowest shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)]">
+<!-- Home (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="font-caption text-caption font-medium">Home</span>
+</a>
+<!-- Payments (Active) -->
+<a class="flex flex-col items-center justify-center text-primary font-semibold min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">send</span>
+<span class="font-caption text-caption font-medium">Payments</span>
+</a>
+<!-- Cards (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[24px]">credit_card</span>
+<span class="font-caption text-caption font-medium">Cards</span>
+</a>
+<!-- Save & Borrow (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[24px]">savings</span>
+<span class="font-caption text-caption font-medium">Save &amp; Borrow</span>
+</a>
+<!-- More (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[24px]">more_horiz</span>
+<span class="font-caption text-caption font-medium">More</span>
+</a>
+</nav>
+</div>
+</body></html>

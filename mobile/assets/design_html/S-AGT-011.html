@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Deposit Cash at Agent - YourApp</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary": "#ffffff",
+            "surface-container-lowest": "#ffffff",
+            "on-primary-fixed-variant": "#881646",
+            "surface-tint": "#a8315d",
+            "tertiary": "#3b3236",
+            "surface-dim": "#e1d8d9",
+            "error": "#ba1a1a",
+            "surface-bright": "#fff8f8",
+            "secondary-fixed": "#ffdad4",
+            "secondary": "#ae3123",
+            "on-surface-variant": "#564146",
+            "error-container": "#ffdad6",
+            "on-background": "#1f1b1c",
+            "primary": "#6d0033",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "on-primary-container": "#ffa0ba",
+            "on-tertiary": "#ffffff",
+            "inverse-surface": "#342f30",
+            "on-error-container": "#93000a",
+            "on-error": "#ffffff",
+            "surface": "#fff8f8",
+            "primary-container": "#8e1b4a",
+            "on-secondary-container": "#690000",
+            "outline": "#897176",
+            "surface-container-highest": "#e9e0e1",
+            "tertiary-fixed": "#eedee4",
+            "on-secondary-fixed": "#410000",
+            "background": "#fff8f8",
+            "surface-container": "#f5eced",
+            "inverse-primary": "#ffb1c5",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "on-primary-fixed": "#3f001b",
+            "surface-container-low": "#fbf1f2",
+            "surface-variant": "#e9e0e1",
+            "surface-container-high": "#efe6e7",
+            "secondary-container": "#fc6955",
+            "on-secondary-fixed-variant": "#8c170e",
+            "primary-fixed-dim": "#ffb1c5",
+            "outline-variant": "#dcbfc5",
+            "primary-fixed": "#ffd9e1",
+            "on-primary": "#ffffff",
+            "inverse-on-surface": "#f8eeef",
+            "on-tertiary-fixed": "#21191e",
+            "secondary-fixed-dim": "#ffb4a8",
+            "on-tertiary-container": "#c6b7bd",
+            "on-surface": "#1f1b1c",
+            "tertiary-container": "#53484d"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "space-md": "0.75rem",
+            "margin": "1rem",
+            "space-2xl": "2rem",
+            "space-xl": "1.5rem",
+            "space-3xl": "3rem",
+            "gutter": "1rem",
+            "space-lg": "1rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "display": ["Inter"],
+            "subtitle": ["Inter"],
+            "body": ["Inter"],
+            "body-medium": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "caption": ["Inter"],
+            "label": ["Inter"],
+            "title": ["Inter"],
+            "amount-lg": ["Inter"]
+          },
+          "fontSize": {
+            "display": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "subtitle": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "body": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400"}],
+            "body-medium": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500"}],
+            "amount-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "caption": ["13px", {"lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+            "label": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+            "title": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700"}],
+            "amount-lg": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      font-size: 20px;
+      line-height: 1;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .pb-safe {
+      padding-bottom: env(safe-area-inset-bottom, 16px);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex flex-col justify-between selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Mobile Screen Container (390 x 844 layout container) -->
+<div class="w-full max-w-[560px] mx-auto min-h-screen flex flex-col bg-background relative shadow-sm">
+<!-- Top Bar Component with Back Arrow and Screen Identification (S-AGT-011) -->
+<header class="bg-surface sticky top-0 z-40 px-margin py-space-sm flex items-center justify-between min-h-[56px] border-b border-outline-variant/40">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Go back" class="w-10 h-10 -ml-2 rounded-full flex items-center justify-center text-primary hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<h1 class="font-subtitle text-subtitle text-on-surface font-semibold leading-tight">Deposit Cash at Agent</h1>
+<span class="font-caption text-[11px] px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-medium tracking-tight">S-AGT-011</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant">Quick QR Deposit</p>
+</div>
+</div>
+<div class="flex items-center gap-1">
+<button aria-label="Agent network help" class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+</div>
+</header>
+<!-- Main Scrollable Canvas Content -->
+<main class="flex-1 px-margin py-space-md space-y-space-lg pb-24">
+<!-- Agent Counter Context Card -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant/50 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)]">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-11 h-11 rounded-full bg-surface-container flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[22px]">storefront</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="font-caption text-caption text-on-surface-variant">You are at</span>
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-surface-container-high font-caption text-[11px] text-primary font-semibold">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+                  Super Agent
+                </span>
+</div>
+<h2 class="font-body-medium text-body-medium text-on-surface font-bold mt-0.5">Alaba Express Pay</h2>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 font-caption text-caption text-on-surface-variant bg-surface-container px-2 py-1 rounded-lg">
+<span class="material-symbols-outlined text-[14px]">location_on</span>
+            In Store
+          </span>
+</div>
+<div class="mt-space-md pt-space-sm border-t border-outline-variant/30 flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+<span class="font-caption text-caption text-on-surface font-medium">Ready to accept cash</span>
+</div>
+<span class="font-caption text-caption text-on-surface-variant">Booth terminal #NGA-4891</span>
+</div>
+</section>
+<!-- Account Selector & Dynamic QR Identification Card -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant/50 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] flex flex-col items-center text-center">
+<!-- Destination Account Section -->
+<div class="w-full text-left bg-surface-container-low p-space-md rounded-xl border border-outline-variant/40 flex items-center justify-between mb-space-lg">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="w-9 h-9 rounded-full bg-surface-container-lowest flex items-center justify-center text-primary shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[20px]">account_balance_wallet</span>
+</div>
+<div class="truncate">
+<span class="font-caption text-caption text-on-surface-variant block">Deposit Destination</span>
+<p class="font-label text-label text-on-surface font-semibold truncate">YourApp Tier 2 Savings</p>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="font-caption text-caption font-mono text-tertiary">0142859012</span>
+<span class="text-on-surface-variant text-[11px]">•</span>
+<span class="font-caption text-[12px] text-on-surface-variant flex items-center gap-1">
+                  Bal: <span class="tracking-widest">••••••</span>
+<span class="material-symbols-outlined text-[14px] cursor-pointer">visibility_off</span>
+</span>
+</div>
+</div>
+</div>
+<button class="w-8 h-8 rounded-full flex items-center justify-center text-primary hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[18px]">swap_horiz</span>
+</button>
+</div>
+<!-- Dynamic QR Code Card -->
+<div class="w-full max-w-[260px] bg-surface-container-lowest p- space-md p-4 rounded-xl border-2 border-dashed border-outline-variant/70 flex flex-col items-center mb-space-md">
+<div class="relative bg-white p-3 rounded-lg shadow-sm border border-outline-variant/20">
+<!-- Programmatic Crisp SVG Representation of Agent Fast QR -->
+<svg class="w-44 h-44" fill="none" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<!-- Background -->
+<rect fill="#FFFFFF" height="100" width="100"></rect>
+<!-- Corner Finder 1 -->
+<rect fill="#6d0033" height="28" rx="4" width="28" x="6" y="6"></rect>
+<rect fill="#FFFFFF" height="18" rx="2" width="18" x="11" y="11"></rect>
+<rect fill="#6d0033" height="10" rx="1" width="10" x="15" y="15"></rect>
+<!-- Corner Finder 2 -->
+<rect fill="#6d0033" height="28" rx="4" width="28" x="66" y="6"></rect>
+<rect fill="#FFFFFF" height="18" rx="2" width="18" x="71" y="11"></rect>
+<rect fill="#6d0033" height="10" rx="1" width="10" x="75" y="15"></rect>
+<!-- Corner Finder 3 -->
+<rect fill="#6d0033" height="28" rx="4" width="28" x="6" y="66"></rect>
+<rect fill="#FFFFFF" height="18" rx="2" width="18" x="11" y="71"></rect>
+<rect fill="#6d0033" height="10" rx="1" width="10" x="15" y="75"></rect>
+<!-- QR Data Matrix Grid Pattern -->
+<rect fill="#1f1b1c" height="5" width="5" x="38" y="8"></rect>
+<rect fill="#1f1b1c" height="5" width="5" x="48" y="8"></rect>
+<rect fill="#1f1b1c" height="5" width="5" x="56" y="8"></rect>
+<rect fill="#1f1b1c" height="5" width="5" x="38" y="18"></rect>
+<rect fill="#1f1b1c" height="5" width="5" x="50" y="18"></rect>
+<rect fill="#1f1b1c" height="5" width="5" x="38" y="28"></rect>
+<rect fill="#1f1b1c" height="5" width="8" x="44" y="28"></rect>
+<rect fill="#1f1b1c" height="5" width="5" x="56" y="28"></rect>
+<rect fill="#1f1b1c" height="5" width="5" x="8" y="38"></rect>
+<rect fill="#1f1b1c" height="5" width="8" x="18" y="38"></rect>
+<rect fill="#1f1b1c" height="5" width="5" x="28" y="44"></rect>
+<rect fill="#6d0033" height="6" width="6" x="38" y="38"></rect>
+<rect fill="#1f1b1c" height="5" width="5" x="48" y="38"></rect>
+<rect fill="#1f1b1c" height="6" width="6" x="58" y="38"></rect>
+<rect fill="#1f1b1c" height="5" width="5" x="68" y="38"></rect>
+<rect fill="#1f1b1c" height="5" width="8" x="78" y="38"></rect>
+<rect fill="#1f1b1c" height="5" width="5" x="88" y="38"></rect>
+<rect fill="#1f1b1c" height="5" width="5" x="14" y="48"></rect>
+<rect fill="#1f1b1c" height="5" width="5" x="22" y="48"></rect>
+<rect fill="#1f1b1c" height="5" width="5" x="38" y="48"></rect>
+<rect fill="#6d0033" height="5" width="5" x="48" y="48"></rect>
+<rect fill="#1f1b1c" height="5" width="5" x="58" y="48"></rect>
+<rect fill="#1f1b1c" height="6" width="6" x="68" y="48"></rect>
+<rect fill="#1f1b1c" height="5" width="5" x="80" y="48"></rect>
+<rect fill="#1f1b1c" height="5" width="5" x="38" y="58"></rect>
+<rect fill="#1f1b1c" height="5" width="5" x="48" y="58"></rect>
+<rect fill="#6d0033" height="5" width="5" x="58" y="58"></rect>
+<rect fill="#1f1b1c" height="5" width="5" x="70" y="58"></rect>
+<rect fill="#1f1b1c" height="5" width="5" x="82" y="58"></rect>
+<rect fill="#1f1b1c" height="5" width="5" x="38" y="68"></rect>
+<rect fill="#1f1b1c" height="5" width="5" x="48" y="68"></rect>
+<rect fill="#1f1b1c" height="5" width="5" x="56" y="68"></rect>
+<rect fill="#1f1b1c" height="5" width="5" x="66" y="68"></rect>
+<rect fill="#1f1b1c" height="6" width="6" x="76" y="68"></rect>
+<rect fill="#1f1b1c" height="5" width="5" x="88" y="68"></rect>
+<rect fill="#1f1b1c" height="5" width="8" x="38" y="78"></rect>
+<rect fill="#1f1b1c" height="5" width="5" x="50" y="78"></rect>
+<rect fill="#1f1b1c" height="5" width="5" x="60" y="78"></rect>
+<rect fill="#1f1b1c" height="5" width="5" x="72" y="78"></rect>
+<rect fill="#1f1b1c" height="5" width="5" x="82" y="78"></rect>
+<rect fill="#1f1b1c" height="5" width="5" x="38" y="88"></rect>
+<rect fill="#1f1b1c" height="5" width="5" x="46" y="88"></rect>
+<rect fill="#1f1b1c" height="5" width="8" x="56" y="88"></rect>
+<rect fill="#1f1b1c" height="5" width="5" x="70" y="88"></rect>
+<rect fill="#1f1b1c" height="5" width="5" x="80" y="88"></rect>
+<!-- Center Logo Stamp -->
+<circle cx="50" cy="50" fill="#6d0033" r="10"></circle>
+<circle cx="50" cy="50" fill="#FFFFFF" r="8"></circle>
+<text fill="#6d0033" font-family="Inter" font-size="7" font-weight="bold" text-anchor="middle" x="50" y="53">Y</text>
+</svg>
+</div>
+<span class="inline-flex items-center gap-1 font-caption text-caption text-tertiary mt-2">
+<span class="material-symbols-outlined text-[15px] text-primary">qr_code_scanner</span>
+            Show this QR code to the agent terminal for instant lookup
+          </span>
+</div>
+<!-- Quick Tap Action Controls -->
+<div class="grid grid-cols-2 gap-space-sm w-full">
+<button class="h-10 px-3 rounded-lg border border-outline-variant/60 bg-surface-container-low text-primary flex items-center justify-center gap-1.5 font-label text-[13px] hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[17px]">content_copy</span>
+<span>Copy Account</span>
+</button>
+<button class="h-10 px-3 rounded-lg border border-outline-variant/60 bg-surface-container-low text-primary flex items-center justify-center gap-1.5 font-label text-[13px] hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[17px]">share</span>
+<span>Share QR</span>
+</button>
+</div>
+</section>
+<!-- Cash Deposit Guide & Regulated CBN Tariff Card -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant/50 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] space-y-space-md">
+<div class="flex items-center justify-between">
+<h3 class="font-subtitle text-[18px] text-on-surface font-semibold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">payments</span>
+            Cash Deposit Guide
+          </h3>
+<span class="inline-flex items-center gap-1 text-[11px] font-caption px-2 py-0.5 rounded-full bg-surface-container text-tertiary">
+<span class="material-symbols-outlined text-[13px]">gavel</span>
+            CBN Regulated
+          </span>
+</div>
+<!-- Official Tariff Callout -->
+<div class="bg-surface-container-low rounded-lg p-space-md border-l-4 border-primary">
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-[18px] mt-0.5">policy</span>
+<div>
+<p class="font-caption text-caption text-on-surface font-semibold">Regulated CBN Agent Tariff</p>
+<p class="font-caption text-[12px] text-on-surface-variant leading-relaxed mt-0.5">
+                Official tariff: <span class="font-semibold text-on-surface">₦100</span> per deposit up to <span class="font-semibold text-on-surface">₦10,000</span>; <span class="font-semibold text-on-surface">₦150</span> for <span class="font-semibold text-on-surface">₦10,001–₦50,000</span>. <span class="text-secondary font-medium">Never pay extra cash surcharges.</span>
+</p>
+</div>
+</div>
+</div>
+<!-- Step-by-step checklist -->
+<div class="space-y-space-sm pt-space-xs">
+<p class="font-label text-label text-on-surface font-medium">Transaction Process</p>
+<div class="flex items-start gap-3">
+<div class="w-6 h-6 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-caption text-[12px] font-bold shrink-0">1</div>
+<div class="flex-1">
+<p class="font-body-medium text-[14px] text-on-surface">Show QR code to agent</p>
+<p class="font-caption text-caption text-on-surface-variant">The agent scans your code to load your account securely without manual typing.</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<div class="w-6 h-6 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-caption text-[12px] font-bold shrink-0">2</div>
+<div class="flex-1">
+<p class="font-body-medium text-[14px] text-on-surface">Hand over exact physical cash</p>
+<p class="font-caption text-caption text-on-surface-variant">Count cash notes directly on the counter in full view of booth staff.</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<div class="w-6 h-6 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-caption text-[12px] font-bold shrink-0">3</div>
+<div class="flex-1">
+<p class="font-body-medium text-[14px] text-on-surface">Wait for instant notification beep</p>
+<p class="font-caption text-caption text-on-surface-variant">YourApp alerts you via push notification and credit SMS within seconds.</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<div class="w-6 h-6 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-caption text-[12px] font-bold shrink-0">4</div>
+<div class="flex-1">
+<p class="font-body-medium text-[14px] text-on-surface">Collect printed POS receipt</p>
+<p class="font-caption text-caption text-on-surface-variant">Keep the terminal receipt with the agent's reference code as proof of deposit.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Safety & Anti-Fraud Banner -->
+<section class="bg-secondary-fixed/50 rounded-xl p-space-md border border-secondary/20 flex items-start gap-space-md">
+<div class="w-9 h-9 rounded-full bg-secondary-fixed flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">shield</span>
+</div>
+<div class="flex-1">
+<p class="font-label text-label text-secondary font-bold">Important Safety Rule</p>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5 leading-snug">
+            Do not leave the booth until your phone receives the credit SMS or in-app alert.
+          </p>
+</div>
+</section>
+<!-- Actions Stack -->
+<section class="space-y-space-sm pt-space-xs">
+<!-- Primary 52px Button -->
+<button class="w-full h-[52px] rounded-xl bg-primary-container text-white font-label text-label flex items-center justify-center gap-2 hover:bg-primary active:scale-[0.98] transition-all shadow-[0_4px_12px_-2px_rgba(110,0,51,0.2)]" type="button">
+<span class="material-symbols-outlined text-[20px]">task_alt</span>
+<span>I've Handed Over Cash - Check Credit Status</span>
+</button>
+<!-- Secondary 52px Button -->
+<button class="w-full h-[52px] rounded-xl bg-surface-container-low text-primary-container font-label text-label flex items-center justify-center gap-1.5 hover:bg-surface-container active:scale-[0.98] transition-all border border-outline-variant/40" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+<span>Cancel Deposit</span>
+</button>
+</section>
+</main>
+<!-- Shared Bottom Navigation Bar (Mandatory Shell Anchor) -->
+<!-- 5 destinations: Home, Payments, Cards, Save & Borrow, More. Active: Payments -->
+<nav aria-label="Primary Navigation" class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-margin h-16 max-w-[560px] mx-auto pb-safe bg-surface-container-lowest dark:bg-surface-container shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)] border-t border-outline-variant/40 dark:border-outline-variant/20">
+<!-- 1. Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#home">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="font-caption text-caption font-medium">Home</span>
+</a>
+<!-- 2. Payments (ACTIVE per layout brief) -->
+<a aria-current="page" class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed font-semibold min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#payments">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">send</span>
+<span class="font-caption text-caption font-medium">Payments</span>
+</a>
+<!-- 3. Cards -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#cards">
+<span class="material-symbols-outlined text-[24px]">credit_card</span>
+<span class="font-caption text-caption font-medium">Cards</span>
+</a>
+<!-- 4. Save & Borrow -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#save-borrow">
+<span class="material-symbols-outlined text-[24px]">savings</span>
+<span class="font-caption text-caption font-medium">Save &amp; Borrow</span>
+</a>
+<!-- 5. More -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#more">
+<span class="material-symbols-outlined text-[24px]">more_horiz</span>
+<span class="font-caption text-caption font-medium">More</span>
+</a>
+</nav>
+</div>
+</body></html>

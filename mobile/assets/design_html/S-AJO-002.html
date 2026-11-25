@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Create Ajo Circle - YourApp</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-variant": "#e9e0e1",
+            "surface-bright": "#fff8f8",
+            "on-primary-fixed-variant": "#881646",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "outline-variant": "#dcbfc5",
+            "secondary-container": "#fc6955",
+            "tertiary-container": "#53484d",
+            "primary-container": "#8e1b4a",
+            "on-surface": "#1f1b1c",
+            "on-primary-fixed": "#3f001b",
+            "surface-container-low": "#fbf1f2",
+            "on-tertiary": "#ffffff",
+            "primary-fixed": "#ffd9e1",
+            "secondary-fixed": "#ffdad4",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "surface-tint": "#a8315d",
+            "on-primary": "#ffffff",
+            "inverse-surface": "#342f30",
+            "on-secondary-fixed-variant": "#8c170e",
+            "surface-container-highest": "#e9e0e1",
+            "primary": "#6d0033",
+            "on-secondary": "#ffffff",
+            "tertiary": "#3b3236",
+            "on-surface-variant": "#564146",
+            "outline": "#897176",
+            "primary-fixed-dim": "#ffb1c5",
+            "surface-dim": "#e1d8d9",
+            "surface-container": "#f5eced",
+            "on-error": "#ffffff",
+            "surface": "#fff8f8",
+            "surface-container-high": "#efe6e7",
+            "secondary": "#ae3123",
+            "error": "#ba1a1a",
+            "error-container": "#ffdad6",
+            "background": "#fff8f8",
+            "on-tertiary-fixed": "#21191e",
+            "on-primary-container": "#ffa0ba",
+            "inverse-on-surface": "#f8eeef",
+            "tertiary-fixed": "#eedee4",
+            "surface-container-lowest": "#ffffff",
+            "on-secondary-container": "#690000",
+            "on-secondary-fixed": "#410000",
+            "on-background": "#1f1b1c",
+            "on-error-container": "#93000a",
+            "on-tertiary-container": "#c6b7bd",
+            "secondary-fixed-dim": "#ffb4a8",
+            "inverse-primary": "#ffb1c5"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-md": "0.75rem",
+            "space-sm": "0.5rem",
+            "margin": "1rem",
+            "space-3xl": "3rem",
+            "space-xs": "0.25rem",
+            "space-xl": "1.5rem",
+            "space-2xl": "2rem",
+            "gutter": "1rem",
+            "space-lg": "1rem"
+          },
+          "fontFamily": {
+            "amount-lg-mobile": ["Inter"],
+            "title": ["Inter"],
+            "label": ["Inter"],
+            "display": ["Inter"],
+            "amount-lg": ["Inter"],
+            "body": ["Inter"],
+            "subtitle": ["Inter"],
+            "caption": ["Inter"],
+            "body-medium": ["Inter"]
+          },
+          "fontSize": {
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    /* Tabular figures for precise Nigerian financial representation */
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+    /* Hide default scrollbar for sleek horizontal chip selectors */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface antialiased flex justify-center min-h-screen selection:bg-primary-fixed selection:text-primary">
+<!-- Mobile Device Shell (390px max canonical canvas) -->
+<main class="w-full max-w-[390px] min-h-screen bg-surface-container-low flex flex-col relative shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08)] pb-[112px]">
+<!-- Top App Bar / Header (Focused Linear Task Screen - No global BottomNavBar) -->
+<header class="sticky top-0 z-40 bg-surface-container-lowest/90 backdrop-blur-md px-margin py-space-sm flex items-center justify-between min-h-[56px] shadow-[0_2px_8px_-2px_rgba(30,26,27,0.04)]">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Go back" class="w-10 h-10 -ml-2 rounded-full flex items-center justify-center text-on-surface hover:bg-surface-container transition-colors duration-150 active:scale-95" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<h1 class="font-subtitle text-subtitle font-bold text-on-surface tracking-tight">Create Ajo Circle</h1>
+</div>
+<button class="font-label text-label text-primary font-semibold py-space-xs px-space-sm rounded-lg hover:bg-primary-fixed/30 transition-colors active:scale-95" type="button">
+        Cancel
+      </button>
+</header>
+<!-- 4-Step Linear Journey Stepper Indicator -->
+<section class="bg-surface-container-lowest px-margin pt-space-sm pb-space-md border-b border-outline-variant/30">
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="font-label text-label text-primary font-bold">Step 1</span>
+<span class="font-caption text-caption text-on-surface-variant font-normal">of 4: Circle Basics</span>
+</div>
+<span class="inline-flex items-center gap-1 bg-surface-container-high px-2 py-0.5 rounded-full font-caption text-caption text-primary font-semibold">
+<span class="material-symbols-outlined text-[14px]">shield</span> Verified Level 3
+        </span>
+</div>
+<!-- Segmented Step Bars -->
+<div class="grid grid-cols-4 gap-1.5">
+<div class="h-1.5 rounded-full bg-primary-container"></div>
+<div class="h-1.5 rounded-full bg-surface-variant"></div>
+<div class="h-1.5 rounded-full bg-surface-variant"></div>
+<div class="h-1.5 rounded-full bg-surface-variant"></div>
+</div>
+<div class="grid grid-cols-4 gap-1.5 mt-1.5 text-center">
+<span class="font-caption text-caption text-primary font-semibold truncate">1. Basics</span>
+<span class="font-caption text-caption text-on-surface-variant truncate">2. Protection</span>
+<span class="font-caption text-caption text-on-surface-variant truncate">3. Order</span>
+<span class="font-caption text-caption text-on-surface-variant truncate">4. Review</span>
+</div>
+</section>
+<!-- Scrollable Flow Canvas -->
+<div class="px-margin pt-space-lg flex flex-col gap-space-xl">
+<!-- Trust & Limit System Callout Banner -->
+<section class="bg-surface-container-lowest p-space-md rounded-xl border border-outline-variant/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] flex items-start gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center shrink-0 text-primary mt-0.5">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+</div>
+<div class="flex-1">
+<p class="font-caption text-caption text-on-surface-variant leading-relaxed">
+            As a <strong class="text-on-surface font-semibold">Level 3 member</strong>, your rotating circle creation limit is up to <span class="tabular-nums font-semibold text-primary">₦2,000,000.00</span> total pot.
+          </p>
+</div>
+</section>
+<!-- Step 1: Core Form Controls -->
+<section class="flex flex-col gap-space-lg">
+<div class="flex items-center justify-between">
+<h2 class="font-subtitle text-subtitle text-on-surface font-bold">1. Circle Details</h2>
+<span class="font-caption text-caption text-on-surface-variant">Mandatory</span>
+</div>
+<!-- Input: Circle Name -->
+<div class="flex flex-col gap-space-xs">
+<label class="font-caption text-caption text-on-surface-variant font-medium" for="circleName">Circle Name</label>
+<div class="relative">
+<input class="w-full h-[52px] px-space-md bg-surface-container-lowest rounded-xl border border-outline-variant/60 font-body text-body text-on-surface placeholder:text-outline focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all" id="circleName" placeholder="e.g. Lekki Tech Founders Monthly Pot" type="text" value="Victoria Island Professionals Ajo"/>
+</div>
+<span class="font-caption text-caption text-on-surface-variant">Visible to all invited rotating members.</span>
+</div>
+<!-- Input: Contribution Amount per Member -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex justify-between items-baseline">
+<label class="font-caption text-caption text-on-surface-variant font-medium" for="amountInput">Contribution Amount per Member</label>
+<span class="font-caption text-caption text-primary font-medium">Per turn contribution</span>
+</div>
+<div class="relative flex items-center">
+<span class="absolute left-4 font-subtitle text-subtitle text-on-surface-variant font-bold select-none">₦</span>
+<input class="w-full h-[52px] pl-10 pr-space-md bg-surface-container-lowest rounded-xl border border-outline-variant/60 font-amount-lg-mobile text-amount-lg-mobile text-primary font-bold tabular-nums tracking-tight focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all" id="amountInput" type="text" value="50,000.00"/>
+</div>
+<!-- Quick Chips -->
+<div class="flex items-center gap-2 mt-1 overflow-x-auto no-scrollbar py-0.5">
+<button class="h-9 px-3 rounded-lg border border-outline-variant/50 bg-surface-container-lowest font-caption text-caption text-on-surface hover:border-primary tabular-nums whitespace-nowrap active:scale-95 transition-all" type="button">
+              ₦10,000
+            </button>
+<button class="h-9 px-3 rounded-lg border border-outline-variant/50 bg-surface-container-lowest font-caption text-caption text-on-surface hover:border-primary tabular-nums whitespace-nowrap active:scale-95 transition-all" type="button">
+              ₦25,000
+            </button>
+<button class="h-9 px-3 rounded-lg bg-primary-fixed text-primary font-semibold border border-primary-container/30 tabular-nums whitespace-nowrap active:scale-95 transition-all shadow-sm" type="button">
+              ₦50,000
+            </button>
+<button class="h-9 px-3 rounded-lg border border-outline-variant/50 bg-surface-container-lowest font-caption text-caption text-on-surface hover:border-primary tabular-nums whitespace-nowrap active:scale-95 transition-all" type="button">
+              ₦100,000
+            </button>
+</div>
+</div>
+<!-- Frequency Selector (Pill Buttons) -->
+<div class="flex flex-col gap-space-xs">
+<label class="font-caption text-caption text-on-surface-variant font-medium">Rotation Frequency</label>
+<div class="grid grid-cols-3 gap-2 p-1 bg-surface-container-high rounded-xl">
+<button class="h-10 rounded-lg font-caption text-caption text-on-surface-variant font-medium hover:text-on-surface transition-colors" type="button">
+              Weekly
+            </button>
+<button class="h-10 rounded-lg font-caption text-caption text-on-surface-variant font-medium hover:text-on-surface transition-colors" type="button">
+              Bi-weekly
+            </button>
+<button class="h-10 rounded-lg bg-surface-container-lowest text-primary font-bold shadow-sm flex items-center justify-center gap-1 transition-all" type="button">
+<span class="material-symbols-outlined text-[16px]">check_circle</span> Monthly
+            </button>
+</div>
+</div>
+<!-- Members and Date Dual Row -->
+<div class="grid grid-cols-2 gap-3">
+<!-- Number of Members / Slots -->
+<div class="flex flex-col gap-space-xs">
+<label class="font-caption text-caption text-on-surface-variant font-medium">Members / Slots</label>
+<div class="h-[52px] px-3 bg-surface-container-lowest rounded-xl border border-outline-variant/60 flex items-center justify-between">
+<button class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-on-surface hover:bg-surface-variant active:scale-90 transition-all" type="button">
+<span class="material-symbols-outlined text-[18px]">remove</span>
+</button>
+<div class="flex flex-col items-center">
+<span class="font-body-medium text-body-medium text-on-surface font-bold tabular-nums">10</span>
+<span class="text-[10px] text-on-surface-variant -mt-1">Rounds</span>
+</div>
+<button class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-on-surface hover:bg-surface-variant active:scale-90 transition-all" type="button">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</button>
+</div>
+</div>
+<!-- Start Date Picker -->
+<div class="flex flex-col gap-space-xs">
+<label class="font-caption text-caption text-on-surface-variant font-medium">Start Date</label>
+<div class="h-[52px] px-3 bg-surface-container-lowest rounded-xl border border-outline-variant/60 flex items-center justify-between cursor-pointer hover:border-primary transition-all">
+<div class="flex flex-col">
+<span class="font-body-medium text-body-medium text-on-surface font-semibold text-xs leading-tight">1 Dec 2026</span>
+<span class="text-[10px] text-on-surface-variant">Round 1 payout</span>
+</div>
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant">calendar_today</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Computed Live Financial Summary Card (Bento Aesthetic) -->
+<section class="rounded-2xl bg-gradient-to-br from-surface-container-lowest to-surface-container-low p-space-lg border border-outline-variant/50 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] relative overflow-hidden">
+<div class="absolute -right-6 -bottom-6 w-24 h-24 rounded-full bg-primary-fixed/20 pointer-events-none blur-xl"></div>
+<div class="flex items-center justify-between pb-space-sm border-b border-outline-variant/30 mb-space-md">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[20px]">calculate</span>
+<span class="font-label text-label text-on-surface font-bold">Live Circle Metrics</span>
+</div>
+<span class="inline-flex items-center gap-1 bg-surface-container px-2 py-0.5 rounded-full font-caption text-caption text-on-surface-variant">
+            Auto-calculated
+          </span>
+</div>
+<div class="space-y-3">
+<!-- Total Pot per Round -->
+<div class="flex items-center justify-between">
+<div>
+<p class="font-caption text-caption text-on-surface-variant">Total Pot per Round</p>
+<p class="text-[11px] text-outline">₦50,000 × 10 members</p>
+</div>
+<div class="text-right">
+<span class="font-subtitle text-subtitle text-primary font-bold tabular-nums">₦500,000.00</span>
+<span class="block text-[11px] text-on-surface-variant">Paid to each recipient</span>
+</div>
+</div>
+<!-- Cycle Duration -->
+<div class="flex items-center justify-between pt-2 border-t border-outline-variant/20">
+<div>
+<p class="font-caption text-caption text-on-surface-variant">Cycle Duration</p>
+<p class="text-[11px] text-outline">Dec 2026 – Sep 2027</p>
+</div>
+<span class="font-body-medium text-body-medium text-on-surface font-semibold">10 Months</span>
+</div>
+<!-- Member Total Commitment -->
+<div class="flex items-center justify-between pt-2 border-t border-outline-variant/20">
+<div>
+<p class="font-caption text-caption text-on-surface-variant">Your Total Commitment</p>
+<p class="text-[11px] text-outline">10 regular contributions</p>
+</div>
+<span class="font-body-medium text-body-medium text-on-surface font-bold tabular-nums">₦500,000.00</span>
+</div>
+</div>
+</section>
+<!-- Step 2: Protection Mode Selection -->
+<section class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="font-subtitle text-subtitle text-on-surface font-bold">2. Protection Model</h2>
+<p class="font-caption text-caption text-on-surface-variant">Specify payout assurance and default recourse</p>
+</div>
+<span class="material-symbols-outlined text-primary text-[22px]">verified_user</span>
+</div>
+<!-- Radio Card 1 (Recommended - Protected Circle) -->
+<label class="cursor-pointer block">
+<input checked="" class="peer sr-only" name="protection_mode" type="radio" value="protected"/>
+<div class="p-space-md rounded-2xl bg-surface-container-lowest border-2 border-primary peer-checked:border-primary-container peer-checked:bg-surface-container-low/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.06)] transition-all relative">
+<div class="flex items-start justify-between gap-space-sm mb-2">
+<div class="flex items-center gap-space-sm">
+<div class="w-6 h-6 rounded-full bg-primary-container flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-body-medium text-body-medium text-on-surface font-bold">Protected Circle</span>
+<span class="bg-primary-fixed text-primary font-caption text-[11px] font-bold px-2 py-0.5 rounded-full">Recommended</span>
+</div>
+<span class="font-caption text-caption text-primary font-semibold">1 Round Collateral Hold</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary text-[20px]">security</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant leading-relaxed pl-8">
+              Requires 1 round security deposit (<span class="tabular-nums font-semibold text-on-surface">₦50,000</span>) or a verified institutional member guarantor before circle launch. Protects participants against mid-cycle defaults.
+            </p>
+<div class="mt-3 pl-8 flex items-center gap-1.5 text-[12px] font-medium text-primary">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+              Risk bearer: Covered by deposit &amp; guarantor reserve pool
+            </div>
+</div>
+</label>
+<!-- Radio Card 2 (Safeguards-Only Circle) -->
+<label class="cursor-pointer block">
+<input class="peer sr-only" name="protection_mode" type="radio" value="safeguards"/>
+<div class="p-space-md rounded-2xl bg-surface-container-lowest border border-outline-variant/60 peer-checked:border-primary-container peer-checked:bg-surface-container-low/40 hover:border-outline transition-all relative">
+<div class="flex items-start justify-between gap-space-sm mb-2">
+<div class="flex items-center gap-space-sm">
+<div class="w-6 h-6 rounded-full border border-outline-variant flex items-center justify-center text-transparent">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+<div>
+<span class="font-body-medium text-body-medium text-on-surface font-bold">Safeguards-Only Circle</span>
+<span class="block font-caption text-caption text-on-surface-variant">Peer Reputation Based</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">group</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant leading-relaxed pl-8">
+              No upfront collateral hold. Rely on peer trust, KYC Tier 2/3 verification, and strict platform credit penalties. Platform does not guarantee automatic payouts in default events.
+            </p>
+<div class="mt-3 pl-8 flex items-center gap-1.5 text-[12px] font-medium text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">warning_amber</span>
+              Risk bearer: Self-managed among circle members
+            </div>
+</div>
+</label>
+</section>
+<!-- Slot Assignment Order Method -->
+<section class="flex flex-col gap-space-sm">
+<div>
+<h2 class="font-subtitle text-subtitle text-on-surface font-bold">Slot Assignment Order</h2>
+<p class="font-caption text-caption text-on-surface-variant">How round payout positions are allocated</p>
+</div>
+<div class="grid grid-cols-3 gap-2 p-1.5 bg-surface-container-highest/60 rounded-xl">
+<!-- Option 1: Random Draw -->
+<button class="py-2.5 px-2 rounded-lg bg-surface-container-lowest shadow-sm flex flex-col items-center text-center transition-all" type="button">
+<span class="material-symbols-outlined text-primary text-[20px] mb-1">casino</span>
+<span class="font-label text-label text-primary font-bold leading-tight">Random Draw</span>
+<span class="text-[10px] text-outline mt-0.5">Fair algorithm</span>
+</button>
+<!-- Option 2: Members Choose -->
+<button class="py-2.5 px-2 rounded-lg hover:bg-surface-container-lowest/50 flex flex-col items-center text-center transition-all" type="button">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px] mb-1">touch_app</span>
+<span class="font-label text-label text-on-surface font-medium leading-tight">Members Pick</span>
+<span class="text-[10px] text-outline mt-0.5">First come basis</span>
+</button>
+<!-- Option 3: Organizer Set -->
+<button class="py-2.5 px-2 rounded-lg hover:bg-surface-container-lowest/50 flex flex-col items-center text-center transition-all" type="button">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px] mb-1">edit_calendar</span>
+<span class="font-label text-label text-on-surface font-medium leading-tight">Organizer Set</span>
+<span class="text-[10px] text-outline mt-0.5">Fixed by you</span>
+</button>
+</div>
+</section>
+<!-- Institutional Transparency Note -->
+<div class="p-space-md rounded-xl bg-surface-container-high/50 flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px] shrink-0">info</span>
+<p class="font-caption text-caption text-on-surface-variant">
+          Rotating savings are governed under Central Bank of Nigeria (CBN) retail cooperative framework guidelines.
+        </p>
+</div>
+</div>
+<!-- Fixed Bottom Action Bar (Level 2 Elevation Standard) -->
+<div class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[390px] bg-surface-container-lowest/95 backdrop-blur-md px-margin pt-3 pb-6 border-t border-outline-variant/30 shadow-[0_8px_24px_-4px_rgba(30,26,27,0.12),0_4px_12px_-2px_rgba(30,26,27,0.06)] z-50">
+<div class="flex flex-col gap-2">
+<button class="w-full h-[52px] rounded-xl bg-primary-container text-on-primary font-label text-label font-bold flex items-center justify-center gap-2 shadow-md hover:bg-primary active:scale-[0.98] transition-all" type="button">
+<span>Continue to Protection &amp; Invite</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+<p class="font-caption text-caption text-on-surface-variant text-center text-xs">
+          You can invite members and review rules before launching.
+        </p>
+</div>
+</div>
+</main>
+<!-- Interactive State Controller Script -->
+<script>
+    // Micro-interactions for chip selection and dynamic calculation mockup
+    document.addEventListener('DOMContentLoaded', () => {
+      const amountInput = document.getElementById('amountInput');
+      const chips = document.querySelectorAll('.no-scrollbar button');
+
+      chips.forEach(chip => {
+        chip.addEventListener('click', (e) => {
+          // Normalize chip active appearance
+          chips.forEach(c => {
+            c.className = 'h-9 px-3 rounded-lg border border-outline-variant/50 bg-surface-container-lowest font-caption text-caption text-on-surface hover:border-primary tabular-nums whitespace-nowrap active:scale-95 transition-all';
+          });
+          chip.className = 'h-9 px-3 rounded-lg bg-primary-fixed text-primary font-semibold border border-primary-container/30 tabular-nums whitespace-nowrap active:scale-95 transition-all shadow-sm';
+          
+          const val = chip.textContent.trim().replace('₦', '');
+          amountInput.value = val + '.00';
+        });
+      });
+    });
+  </script>
+</body></html>
