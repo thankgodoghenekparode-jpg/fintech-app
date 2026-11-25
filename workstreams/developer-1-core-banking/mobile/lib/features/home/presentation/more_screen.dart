@@ -154,7 +154,7 @@ class _MoreContent extends StatelessWidget {
               icon: Icons.security_outlined,
               title: text.moreSecurity,
               subtitle: text.moreSecuritySubtitle,
-              onTap: () => _explain(context, text.moreSecurityBlocked),
+              onTap: () => context.push('/more/security'),
             ),
             _MoreRow(
               icon: Icons.devices_outlined,

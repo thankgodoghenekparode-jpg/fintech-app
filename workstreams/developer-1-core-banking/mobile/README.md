@@ -50,6 +50,10 @@ S-CB-093 is available at `/lock`; the demo catalog links a preview at `/demo/loc
 
 S-CB-094 is reached when login receives the documented `AUTH_LOCKED`/423 response. `/account-locked` shows generic lockout guidance and a validated request reference when available. Authenticated users can open the Help Centre. Signed-out users are told that a public support route is not configured. The separate `/demo/account-locked` preview shows the self-lock recovery steps from F-09, but does not call an unlock operation. The API has no typed restriction details, OTP/selfie unlock flow, or public support channel; see `../ACCOUNT_RESTRICTION_API_UNBLOCKING_ADDENDUM.md`.
 
+## Security hub and account self-lock
+
+S-CB-073 is available from More at `/more/security`. The **Lock my account** action explains that debits and cards are restricted while credits remain available, asks for confirmation, collects the transaction PIN with an in-app keypad, verifies it with `POST /auth/pin/verify`, and calls the documented bodyless `POST /security/lock` with its one-use `X-Pin-Token`. On success it opens `/account-locked` with the self-lock reason. The `/demo/security` route is preview-only and never requests a PIN or calls the API. The supplied lock operation has no typed success body, and F-09 unlock OTP/selfie endpoints and a signed-out support channel are still absent; backend parity must be confirmed before production. See `../ACCOUNT_LOCK_API_UNBLOCKING_ADDENDUM.md` and `../ACCOUNT_RESTRICTION_API_UNBLOCKING_ADDENDUM.md`.
+
 To inspect card visuals without a backend, build with `--dart-define=ENABLE_CARD_UI_PREVIEW=true`. The Welcome screen then shows **Preview cards UI**, which opens two clearly labelled sample cards in read-only mode. This flag should be omitted from normal production builds.
 
 To show a wider, signed-in-style sample experience without credentials or a backend, run:

@@ -63,6 +63,11 @@ class DemoPreviewCatalogScreen extends StatelessWidget {
         'Screen preview; unlock and signed-out support paths need backend details',
         Icons.no_accounts_outlined,
         '/demo/account-locked'),
+    _DemoPreviewItem(
+        'Security hub',
+        'Preview only; account lock does not call the API',
+        Icons.security_outlined,
+        '/demo/security'),
   ];
 
   static const _backendRequired = <String>[
