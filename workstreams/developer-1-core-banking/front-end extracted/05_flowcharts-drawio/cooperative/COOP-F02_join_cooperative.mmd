@@ -1,0 +1,19 @@
+flowchart TD
+  a(["Customer opens invite link or enters code"])
+  b["Show cooperative summary and rules"]
+  c[/"Submit join request (with message)"/]
+  d["Admins notified"]
+  e{"Admin decision"}
+  f["Approved: create member record and number; notify"]
+  g["Rejected: notify with reason"]
+  h["Member sets contribution plan and auto-deduct (optional)"]
+  i(["Member active"])
+  a --> b
+  b --> c
+  c --> d
+  d --> e
+  e -->|approve| f
+  e -->|reject| g
+  f --> h
+  h --> i
+  g --> i

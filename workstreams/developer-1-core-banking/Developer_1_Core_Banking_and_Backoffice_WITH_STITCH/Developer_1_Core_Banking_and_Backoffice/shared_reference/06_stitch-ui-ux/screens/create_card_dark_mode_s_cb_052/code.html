@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Create Virtual Card | YourApp</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-lowest": "#100e0f",
+            "inverse-primary": "#9e3b63",
+            "surface-bright": "#3b3839",
+            "outline-variant": "#544247",
+            "on-primary-container": "#5d0331",
+            "on-secondary-fixed-variant": "#7f291e",
+            "inverse-on-surface": "#323031",
+            "surface-container-highest": "#373435",
+            "surface-container": "#211f20",
+            "on-error": "#690005",
+            "on-tertiary-container": "#002a69",
+            "surface": "#151314",
+            "on-secondary-fixed": "#410000",
+            "on-primary": "#620735",
+            "surface-tint": "#ffb0ca",
+            "error-container": "#93000a",
+            "primary-fixed-dim": "#ffb0ca",
+            "on-error-container": "#ffdad6",
+            "surface-container-low": "#1d1b1c",
+            "surface-dim": "#151314",
+            "on-primary-fixed-variant": "#7f234b",
+            "primary": "#ffb0ca",
+            "tertiary-fixed": "#d9e2ff",
+            "on-secondary": "#61130a",
+            "tertiary-container": "#6a92ee",
+            "surface-container-high": "#2c292a",
+            "on-background": "#e7e1e2",
+            "on-tertiary-fixed": "#001945",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "secondary-container": "#822c20",
+            "outline": "#a28b91",
+            "on-surface": "#e7e1e2",
+            "on-secondary-container": "#ff9f90",
+            "secondary-fixed-dim": "#ffb4a8",
+            "surface-variant": "#373435",
+            "secondary": "#ffb4a8",
+            "tertiary": "#b0c6ff",
+            "on-primary-fixed": "#3e001f",
+            "on-tertiary": "#002d6f",
+            "primary-container": "#e0709a",
+            "primary-fixed": "#ffd9e3",
+            "error": "#ffb4ab",
+            "background": "#151314",
+            "inverse-surface": "#e7e1e2",
+            "on-surface-variant": "#dac0c6",
+            "on-tertiary-fixed-variant": "#06429a",
+            "secondary-fixed": "#ffdad4"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "1rem",
+            "space-xl": "2rem",
+            "space-md": "1rem",
+            "margin-mobile": "1rem",
+            "gutter": "1rem",
+            "space-lg": "1.5rem",
+            "space-sm": "0.5rem",
+            "gutter-mobile": "0.75rem",
+            "space-xs": "0.25rem"
+          },
+          "fontFamily": {
+            "body-md": ["Inter"],
+            "headline-lg": ["Inter"],
+            "label-lg": ["Inter"],
+            "label-md": ["Inter"],
+            "label-sm": ["Inter"],
+            "display-currency": ["Inter"],
+            "headline-sm": ["Inter"],
+            "title-currency": ["Inter"],
+            "headline-md": ["Inter"],
+            "body-lg": ["Inter"]
+          },
+          "fontSize": {
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "label-lg": ["15px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "title-currency": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+    /* Smooth custom transitions */
+    .card-transition {
+      transition: background-color 0.35s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.35s ease;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-lowest text-on-surface antialiased min-h-screen flex justify-center selection:bg-primary-container selection:text-surface">
+<!-- Mobile Viewport Container (390px base, responsive max-w-[560px]) -->
+<div class="w-full max-w-[560px] min-h-screen bg-surface flex flex-col relative pb-32">
+<!-- Top App Bar / Navigation Header (Shared Token Rules: No shell border lines) -->
+<header class="sticky top-0 z-40 bg-surface/90 backdrop-blur-md px-margin py-space-sm flex items-center justify-between min-h-[56px]">
+<button aria-label="Go back" class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<div class="flex flex-col items-center">
+<h1 class="font-headline-sm text-headline-sm text-on-surface tracking-tight font-bold">Create Virtual Card</h1>
+<span class="font-label-sm text-label-sm text-on-surface-variant tabular-nums">S-CB-052</span>
+</div>
+<button aria-label="Help" class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[22px]">help_outline</span>
+</button>
+</header>
+<!-- Main Scrollable Content Canvas -->
+<main class="flex-1 px-margin space-y-space-md pt-space-xs">
+<!-- Subtitle / Value Proposition Banner (Level 1 Surface Card) -->
+<section class="bg-surface-container-low border border-outline-variant/30 rounded-xl p-space-md flex items-start gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-primary-container/20 flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-primary-container text-[18px]">verified_user</span>
+</div>
+<div class="space-y-0.5">
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm font-semibold text-primary uppercase tracking-wider">Instant Issuance</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500/15 text-emerald-400">Zero Fee</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Instantly issue a secure virtual debit card for online shopping, streaming, and subscriptions. Zero issuance fee.
+          </p>
+</div>
+</section>
+<!-- Step 1: Visual Preview & Live Theme -->
+<section class="space-y-space-sm">
+<div class="flex justify-between items-center px-1">
+<span class="font-label-sm text-label-sm text-primary uppercase font-bold tracking-wider">Step 1</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Choose Card Theme</span>
+</div>
+<!-- Live Card Preview (24px radius, 1.586:1 Nigerian sleek dark aesthetic) -->
+<div class="card-transition relative w-full aspect-[1.586/1] rounded-[24px] p-5 flex flex-col justify-between overflow-hidden shadow-2xl border border-white/10" id="virtualCard" style="background-color: #8E1B4A;">
+<!-- Card Decorative Texture Elements -->
+<div class="absolute -right-16 -top-16 w-52 h-52 bg-white/5 rounded-full blur-2xl pointer-events-none"></div>
+<div class="absolute -left-12 -bottom-12 w-44 h-44 bg-black/20 rounded-full blur-xl pointer-events-none"></div>
+<!-- Top Row: Bank Identity & Contactless Icon -->
+<div class="relative z-10 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm font-extrabold tracking-tight text-white">YourApp</span>
+<span class="px-2 py-0.5 text-[10px] font-bold uppercase rounded-md bg-white/15 text-white/90 backdrop-blur-sm">Virtual</span>
+</div>
+<div class="flex items-center gap-1.5 opacity-90 text-white">
+<span class="material-symbols-outlined text-[22px]">contactless</span>
+</div>
+</div>
+<!-- Middle Row: EMV Chip & Live Dynamic Card Nickname -->
+<div class="relative z-10 space-y-2">
+<!-- EMV Chip graphic -->
+<div class="w-10 h-7 rounded-md bg-gradient-to-tr from-amber-200/90 to-amber-400/90 border border-amber-500/40 flex items-center justify-center p-1 shadow-inner">
+<div class="w-full h-full border border-amber-700/30 rounded-sm opacity-60 grid grid-cols-2"></div>
+</div>
+<p class="font-label-lg text-label-lg font-semibold text-white tracking-wide truncate max-w-[240px]" id="cardNameDisplay">
+              Streaming &amp; Tech Subscriptions
+            </p>
+</div>
+<!-- Bottom Row: Masked PAN & Selected Network Logo -->
+<div class="relative z-10 flex items-end justify-between">
+<div>
+<p class="font-body-md text-body-md text-white/90 font-mono tracking-widest tabular-nums">
+                •••• •••• •••• 4920
+              </p>
+<div class="flex items-center gap-3 mt-1">
+<span class="text-[10px] text-white/70 uppercase tracking-wider">EXP 08/29</span>
+<span class="text-[10px] text-white/70 uppercase tracking-wider">CVV •••</span>
+</div>
+</div>
+<!-- Card Network Visual Badge (Dynamic) -->
+<div class="flex items-center justify-end" id="networkBadge">
+<!-- Default: Mastercard Overlapping Disks -->
+<div class="flex items-center">
+<div class="w-6 h-6 rounded-full bg-rose-500/90 -mr-2 shadow-sm"></div>
+<div class="w-6 h-6 rounded-full bg-amber-400/90 shadow-sm"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- 6 WCAG Contrast Color Swatches -->
+<div class="bg-surface-container-low border border-outline-variant/30 rounded-xl p-space-md space-y-space-xs">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-md text-label-md text-on-surface">Card Finish</span>
+<span class="font-label-sm text-label-sm text-primary font-medium" id="selectedThemeLabel">Berry</span>
+</div>
+<div aria-label="Card Color Selection" class="grid grid-cols-6 gap-2 pt-1" role="radiogroup">
+<!-- Berry -->
+<button aria-label="Berry Theme" class="theme-swatch group relative aspect-square rounded-full flex items-center justify-center transition-all ring-2 ring-primary-container ring-offset-2 ring-offset-surface scale-105" onclick="selectTheme('#8E1B4A', 'Berry', this)" style="background-color: #8E1B4A;" type="button">
+<span class="material-symbols-outlined text-white text-[18px]">check</span>
+</button>
+<!-- Midnight -->
+<button aria-label="Midnight Theme" class="theme-swatch group relative aspect-square rounded-full flex items-center justify-center transition-all hover:scale-105 ring-0 ring-offset-2 ring-offset-surface" onclick="selectTheme('#1E1A2E', 'Midnight', this)" style="background-color: #1E1A2E;" type="button">
+<span class="material-symbols-outlined text-white text-[18px] opacity-0">check</span>
+</button>
+<!-- Emerald Forest -->
+<button aria-label="Emerald Forest Theme" class="theme-swatch group relative aspect-square rounded-full flex items-center justify-center transition-all hover:scale-105 ring-0 ring-offset-2 ring-offset-surface" onclick="selectTheme('#133E2B', 'Emerald Forest', this)" style="background-color: #133E2B;" type="button">
+<span class="material-symbols-outlined text-white text-[18px] opacity-0">check</span>
+</button>
+<!-- Coral Sunset -->
+<button aria-label="Coral Sunset Theme" class="theme-swatch group relative aspect-square rounded-full flex items-center justify-center transition-all hover:scale-105 ring-0 ring-offset-2 ring-offset-surface" onclick="selectTheme('#B83A2E', 'Coral Sunset', this)" style="background-color: #B83A2E;" type="button">
+<span class="material-symbols-outlined text-white text-[18px] opacity-0">check</span>
+</button>
+<!-- Slate -->
+<button aria-label="Slate Theme" class="theme-swatch group relative aspect-square rounded-full flex items-center justify-center transition-all hover:scale-105 ring-0 ring-offset-2 ring-offset-surface" onclick="selectTheme('#2D3748', 'Slate', this)" style="background-color: #2D3748;" type="button">
+<span class="material-symbols-outlined text-white text-[18px] opacity-0">check</span>
+</button>
+<!-- Obsidian Black -->
+<button aria-label="Obsidian Black Theme" class="theme-swatch group relative aspect-square rounded-full flex items-center justify-center transition-all hover:scale-105 ring-0 ring-offset-2 ring-offset-surface" onclick="selectTheme('#0F0E11', 'Obsidian Black', this)" style="background-color: #0F0E11;" type="button">
+<span class="material-symbols-outlined text-white text-[18px] opacity-0">check</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Step 2: Card Customization -->
+<section class="space-y-space-sm">
+<div class="flex justify-between items-center px-1">
+<span class="font-label-sm text-label-sm text-primary uppercase font-bold tracking-wider">Step 2</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Card Customization</span>
+</div>
+<div class="bg-surface-container-low border border-outline-variant/30 rounded-xl p-space-md space-y-space-md">
+<!-- Card Nickname Input -->
+<div class="space-y-1.5">
+<label class="block font-label-md text-label-md text-on-surface" for="cardNickname">Card Nickname / Purpose</label>
+<div class="relative flex items-center">
+<input class="w-full h-[52px] bg-surface-container border border-outline-variant/40 rounded-xl px-4 pr-12 text-on-surface font-body-md text-body-md placeholder:text-outline focus:outline-none focus:border-primary-container focus:ring-0 transition-colors" id="cardNickname" maxlength="30" oninput="updateCardName(this.value)" placeholder="e.g. Shopping, Netflix, Work" type="text" value="Streaming &amp; Tech Subscriptions"/>
+<button aria-label="Clear nickname" class="absolute right-3 w-8 h-8 rounded-full flex items-center justify-center text-outline hover:text-on-surface transition-colors" onclick="clearCardName()" type="button">
+<span class="material-symbols-outlined text-[18px]">cancel</span>
+</button>
+</div>
+</div>
+<!-- Card Network Selection (Verve vs Mastercard) -->
+<div class="space-y-2">
+<label class="block font-label-md text-label-md text-on-surface">Card Network</label>
+<div class="grid grid-cols-2 gap-2.5">
+<!-- Mastercard Virtual -->
+<div class="cursor-pointer border-2 border-primary-container bg-surface-container p-3 rounded-xl flex flex-col justify-between space-y-2 transition-all" id="networkMastercard" onclick="selectNetwork('mastercard')">
+<div class="flex items-center justify-between">
+<div class="flex items-center">
+<div class="w-4 h-4 rounded-full bg-rose-500 -mr-1.5"></div>
+<div class="w-4 h-4 rounded-full bg-amber-400"></div>
+</div>
+<span class="material-symbols-outlined text-primary-container text-[18px]" id="mastercardCheck">check_circle</span>
+</div>
+<div>
+<p class="font-label-md text-label-md font-semibold text-on-surface">Mastercard</p>
+<p class="text-[11px] text-on-surface-variant">Global eCommerce &amp; Subscriptions</p>
+</div>
+</div>
+<!-- Verve Local -->
+<div class="cursor-pointer border border-outline-variant/40 bg-surface-container p-3 rounded-xl flex flex-col justify-between space-y-2 transition-all opacity-80" id="networkVerve" onclick="selectNetwork('verve')">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md font-bold tracking-tight text-teal-400">verve</span>
+<span class="material-symbols-outlined text-outline text-[18px] opacity-0" id="verveCheck">check_circle</span>
+</div>
+<div>
+<p class="font-label-md text-label-md font-semibold text-on-surface">Verve Card</p>
+<p class="text-[11px] text-on-surface-variant">Local Naira &amp; NIP Transfers</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Step 3: Spending Controls & Funding -->
+<section class="space-y-space-sm">
+<div class="flex justify-between items-center px-1">
+<span class="font-label-sm text-label-sm text-primary uppercase font-bold tracking-wider">Step 3</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Spending &amp; Funding</span>
+</div>
+<div class="bg-surface-container-low border border-outline-variant/30 rounded-xl p-space-md space-y-space-md">
+<!-- Monthly Spending Limit Toggle Header -->
+<div class="flex items-center justify-between">
+<div class="space-y-0.5">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Monthly Spending Limit</span>
+<p class="text-[12px] text-on-surface-variant">Cap recurring transactions on this card</p>
+</div>
+<!-- Custom Toggle Switch -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" id="limitToggle" onchange="toggleLimitControls(this.checked)" type="checkbox"/>
+<div class="w-12 h-6 bg-surface-container border border-outline-variant/60 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[3px] after:left-[3px] after:bg-white after:rounded-full after:h-4.5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<!-- Limit Input & Quick Select Chips Container -->
+<div class="space-y-space-sm transition-all duration-200" id="limitSection">
+<!-- Currency Input with tabular Naira sign -->
+<div class="relative flex items-center">
+<span class="absolute left-4 font-headline-sm text-headline-sm font-semibold text-primary pointer-events-none tabular-nums">₦</span>
+<input class="w-full h-[52px] bg-surface-container border border-outline-variant/40 rounded-xl pl-10 pr-4 text-on-surface font-headline-sm text-headline-sm tabular-nums focus:outline-none focus:border-primary-container transition-colors" id="limitInput" placeholder="0.00" type="text" value="200,000.00"/>
+</div>
+<!-- Quick Limit Preset Chips -->
+<div class="flex items-center gap-2 overflow-x-auto pb-1">
+<button class="px-3.5 py-1.5 rounded-full text-[12px] font-medium bg-surface-container border border-outline-variant/30 text-on-surface hover:border-primary-container active:scale-95 transition-all tabular-nums" onclick="setLimit('50,000.00')" type="button">
+                ₦50k
+              </button>
+<button class="px-3.5 py-1.5 rounded-full text-[12px] font-medium bg-surface-container border border-outline-variant/30 text-on-surface hover:border-primary-container active:scale-95 transition-all tabular-nums" onclick="setLimit('100,000.00')" type="button">
+                ₦100k
+              </button>
+<button class="px-3.5 py-1.5 rounded-full text-[12px] font-medium bg-primary-container/20 border border-primary-container text-primary active:scale-95 transition-all tabular-nums" onclick="setLimit('250,000.00')" type="button">
+                ₦250k
+              </button>
+<button class="px-3.5 py-1.5 rounded-full text-[12px] font-medium bg-surface-container border border-outline-variant/30 text-on-surface hover:border-primary-container active:scale-95 transition-all" onclick="disableLimit()" type="button">
+                No Limit
+              </button>
+</div>
+</div>
+<div class="h-[1px] bg-outline-variant/20"></div>
+<!-- Linked Funding Account Selector -->
+<div class="space-y-1.5">
+<span class="block font-label-md text-label-md text-on-surface">Linked Funding Account</span>
+<div class="h-[58px] bg-surface-container border border-outline-variant/40 rounded-xl px-3.5 flex items-center justify-between cursor-pointer hover:border-outline-variant active:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-surface-container-highest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">account_balance_wallet</span>
+</div>
+<div>
+<p class="font-label-md text-label-md font-semibold text-on-surface">YourApp Tier 2 Savings</p>
+<p class="text-[12px] text-on-surface-variant tabular-nums">₦142,850.40 available</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px]">unfold_more</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Security & Regulatory Note -->
+<section class="py-1 px-1 flex items-start gap-2.5">
+<span class="material-symbols-outlined text-outline text-[18px] shrink-0 mt-0.5">lock</span>
+<p class="text-[11px] leading-[16px] text-on-surface-variant">
+          Protected by 3D Secure &amp; NDPR compliance. Card credentials auto-delete upon disposal. Never share your card OTP or CVV.
+        </p>
+</section>
+<!-- Primary Action CTA Button (Fixed elevation container above dock) -->
+<div class="pt-2 pb-4">
+<button class="w-full h-[52px] bg-primary-container text-surface-container-lowest font-label-lg text-label-lg font-bold rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-primary-container/20 active:scale-[0.98] transition-all hover:brightness-105" onclick="handleCreateCard()" type="button">
+<span>Create Virtual Card (₦0.00 Fee)</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+</main>
+<!-- Docked 5-tab Bottom Navigation (JSON blueprint specification, Cards Active) -->
+<!-- Forbidden top border line, styled using subtle shadow & tonal shift -->
+<nav aria-label="Bottom Navigation" class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-margin h-16 max-w-[560px] mx-auto pb-safe bg-surface-container-lowest dark:bg-surface-container shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)] backdrop-blur-lg">
+<!-- Tab 1: Home (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</button>
+<!-- Tab 2: Payments (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[24px]">send</span>
+<span class="font-label-sm text-label-sm">Payments</span>
+</button>
+<!-- Tab 3: Cards (Active Target) -->
+<button aria-current="page" class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed font-semibold min-w-[48px] py-space-xs gap-space-xs active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">credit_card</span>
+<span class="font-label-sm text-label-sm font-semibold">Cards</span>
+</button>
+<!-- Tab 4: Save & Borrow (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[24px]">savings</span>
+<span class="font-label-sm text-label-sm">Save &amp; Borrow</span>
+</button>
+<!-- Tab 5: More (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[24px]">more_horiz</span>
+<span class="font-label-sm text-label-sm">More</span>
+</button>
+</nav>
+</div>
+<!-- Interactive JavaScript logic for dynamic visual preview updates -->
+<script>
+    // Theme swatch color selection
+    function selectTheme(hexColor, name, element) {
+      const card = document.getElementById('virtualCard');
+      const label = document.getElementById('selectedThemeLabel');
+      
+      card.style.backgroundColor = hexColor;
+      label.textContent = name;
+
+      // Update UI rings & checkmarks
+      const swatches = document.querySelectorAll('.theme-swatch');
+      swatches.forEach(swatch => {
+        swatch.classList.remove('ring-2', 'ring-primary-container', 'scale-105');
+        swatch.classList.add('ring-0');
+        const checkIcon = swatch.querySelector('span');
+        if (checkIcon) checkIcon.classList.add('opacity-0');
+      });
+
+      element.classList.add('ring-2', 'ring-primary-container', 'scale-105');
+      element.classList.remove('ring-0');
+      const activeCheck = element.querySelector('span');
+      if (activeCheck) activeCheck.classList.remove('opacity-0');
+    }
+
+    // Live update Card label on input
+    function updateCardName(text) {
+      const display = document.getElementById('cardNameDisplay');
+      display.textContent = text.trim().length > 0 ? text : 'Virtual Card';
+    }
+
+    function clearCardName() {
+      const input = document.getElementById('cardNickname');
+      input.value = '';
+      input.focus();
+      updateCardName('');
+    }
+
+    // Toggle Network (Mastercard vs Verve)
+    function selectNetwork(network) {
+      const mcCard = document.getElementById('networkMastercard');
+      const verveCard = document.getElementById('networkVerve');
+      const mcCheck = document.getElementById('mastercardCheck');
+      const verveCheck = document.getElementById('verveCheck');
+      const badgeContainer = document.getElementById('networkBadge');
+
+      if (network === 'mastercard') {
+        mcCard.className = "cursor-pointer border-2 border-primary-container bg-surface-container p-3 rounded-xl flex flex-col justify-between space-y-2 transition-all";
+        verveCard.className = "cursor-pointer border border-outline-variant/40 bg-surface-container p-3 rounded-xl flex flex-col justify-between space-y-2 transition-all opacity-80";
+        mcCheck.className = "material-symbols-outlined text-primary-container text-[18px]";
+        verveCheck.className = "material-symbols-outlined text-outline text-[18px] opacity-0";
+        badgeContainer.innerHTML = `
+          <div class="flex items-center">
+            <div class="w-6 h-6 rounded-full bg-rose-500/90 -mr-2 shadow-sm"></div>
+            <div class="w-6 h-6 rounded-full bg-amber-400/90 shadow-sm"></div>
+          </div>
+        `;
+      } else {
+        verveCard.className = "cursor-pointer border-2 border-primary-container bg-surface-container p-3 rounded-xl flex flex-col justify-between space-y-2 transition-all";
+        mcCard.className = "cursor-pointer border border-outline-variant/40 bg-surface-container p-3 rounded-xl flex flex-col justify-between space-y-2 transition-all opacity-80";
+        verveCheck.className = "material-symbols-outlined text-primary-container text-[18px]";
+        mcCheck.className = "material-symbols-outlined text-outline text-[18px] opacity-0";
+        badgeContainer.innerHTML = `
+          <span class="font-headline-sm text-headline-sm font-extrabold text-teal-300 tracking-tight">verve</span>
+        `;
+      }
+    }
+
+    // Spending limits quick chips
+    function setLimit(amount) {
+      const toggle = document.getElementById('limitToggle');
+      if (!toggle.checked) {
+        toggle.checked = true;
+        toggleLimitControls(true);
+      }
+      document.getElementById('limitInput').value = amount;
+    }
+
+    function disableLimit() {
+      const toggle = document.getElementById('limitToggle');
+      toggle.checked = false;
+      toggleLimitControls(false);
+    }
+
+    function toggleLimitControls(enabled) {
+      const limitSection = document.getElementById('limitSection');
+      if (enabled) {
+        limitSection.classList.remove('opacity-40', 'pointer-events-none');
+      } else {
+        limitSection.classList.add('opacity-40', 'pointer-events-none');
+      }
+    }
+
+    function handleCreateCard() {
+      const btn = event.currentTarget;
+      btn.innerHTML = `<span class="material-symbols-outlined animate-spin text-[20px]">sync</span><span>Issuing Card...</span>`;
+      setTimeout(() => {
+        btn.className = "w-full h-[52px] bg-emerald-500 text-white font-label-lg text-label-lg font-bold rounded-xl flex items-center justify-center gap-2 shadow-lg";
+        btn.innerHTML = `<span class="material-symbols-outlined text-[20px]">check</span><span>Card Created Successfully!</span>`;
+      }, 900);
+    }
+  </script>
+</body></html>

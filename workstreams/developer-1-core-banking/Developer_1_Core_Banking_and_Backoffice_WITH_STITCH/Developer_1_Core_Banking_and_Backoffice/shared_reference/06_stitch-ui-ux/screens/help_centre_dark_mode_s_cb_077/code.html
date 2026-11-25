@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YourApp - Help Centre &amp; FAQs</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-tint": "#ffb0ca",
+            "secondary-fixed": "#ffdad4",
+            "surface-variant": "#373435",
+            "error": "#ffb4ab",
+            "surface-container-lowest": "#100e0f",
+            "on-tertiary-fixed": "#001945",
+            "secondary": "#ffb4a8",
+            "tertiary-fixed": "#d9e2ff",
+            "primary-fixed-dim": "#ffb0ca",
+            "background": "#151314",
+            "on-tertiary-container": "#002a69",
+            "on-primary-fixed": "#3e001f",
+            "on-secondary-fixed": "#410000",
+            "secondary-container": "#822c20",
+            "surface-dim": "#151314",
+            "on-tertiary": "#002d6f",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "surface-container-highest": "#373435",
+            "surface-container-low": "#1d1b1c",
+            "primary": "#ffb0ca",
+            "on-secondary-fixed-variant": "#7f291e",
+            "error-container": "#93000a",
+            "on-error": "#690005",
+            "on-background": "#e7e1e2",
+            "surface-container-high": "#2c292a",
+            "on-primary": "#620735",
+            "surface-container": "#211f20",
+            "tertiary-container": "#6a92ee",
+            "on-secondary-container": "#ff9f90",
+            "primary-container": "#e0709a",
+            "on-secondary": "#61130a",
+            "inverse-surface": "#e7e1e2",
+            "outline": "#a28b91",
+            "tertiary": "#b0c6ff",
+            "inverse-primary": "#9e3b63",
+            "secondary-fixed-dim": "#ffb4a8",
+            "inverse-on-surface": "#323031",
+            "on-error-container": "#ffdad6",
+            "outline-variant": "#544247",
+            "on-surface": "#e7e1e2",
+            "on-primary-container": "#5d0331",
+            "on-surface-variant": "#dac0c6",
+            "on-primary-fixed-variant": "#7f234b",
+            "primary-fixed": "#ffd9e3",
+            "surface-bright": "#3b3839",
+            "on-tertiary-fixed-variant": "#06429a",
+            "surface": "#151314"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "gutter": "1rem",
+            "margin": "1rem",
+            "space-lg": "1.5rem",
+            "space-xl": "2rem",
+            "gutter-mobile": "0.75rem",
+            "space-md": "1rem",
+            "margin-mobile": "1rem",
+            "space-xs": "0.25rem"
+          },
+          "fontFamily": {
+            "label-lg": ["Inter"],
+            "headline-md": ["Inter"],
+            "title-currency": ["Inter"],
+            "headline-lg": ["Inter"],
+            "headline-sm": ["Inter"],
+            "body-md": ["Inter"],
+            "body-lg": ["Inter"],
+            "display-currency": ["Inter"],
+            "label-sm": ["Inter"],
+            "label-md": ["Inter"]
+          },
+          "fontSize": {
+            "label-lg": ["15px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "title-currency": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      font-size: 20px;
+    }
+    .material-symbols-outlined.fill-icon {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    /* Hide scrollbar for seamless mobile simulation */
+    ::-webkit-scrollbar {
+      width: 0px;
+      background: transparent;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased flex justify-center items-start min-h-screen">
+<!-- Mobile Viewport Canvas Container: 390px base fluid max 560px -->
+<div class="relative w-full max-w-[390px] min-h-screen bg-background flex flex-col shadow-2xl selection:bg-primary-container selection:text-on-primary-container pb-[96px]">
+<!-- Top App Bar / Navigation Header -->
+<header class="sticky top-0 z-40 bg-surface/95 backdrop-blur-md border-b border-outline-variant/40 px-margin h-14 flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Go Back" class="w-9 h-9 rounded-xl flex items-center justify-center text-on-surface hover:bg-surface-container active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="font-headline-sm text-headline-sm text-on-surface">Help Centre &amp; FAQs</h1>
+</div>
+<div class="flex items-center gap-space-xs">
+<button aria-label="Support Live Chat" class="w-9 h-9 rounded-xl flex items-center justify-center text-primary hover:bg-surface-container active:scale-95 transition-transform relative" type="button">
+<span class="material-symbols-outlined">chat</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+</button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 px-margin pt-space-md flex flex-col gap-space-md">
+<!-- Quick Search Bar (52px Touch Standard) -->
+<section aria-label="Search knowledge base">
+<div class="relative w-full h-[52px] bg-surface-container-low border border-outline-variant rounded-xl flex items-center px-space-md focus-within:border-primary-container transition-colors">
+<span class="material-symbols-outlined text-outline mr-space-sm" data-icon="search">search</span>
+<input class="w-full bg-transparent border-0 p-0 text-on-surface placeholder:text-outline font-body-md text-body-md focus:ring-0 focus:outline-none" placeholder="Search issues, questions, CBN guidelines..." type="search"/>
+</div>
+</section>
+<!-- Emergency / Quick Assistance Banner -->
+<section aria-label="Emergency security actions" class="bg-surface-container border border-outline-variant rounded-xl p-space-md relative overflow-hidden">
+<div class="flex items-start gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-error-container/20 border border-error/30 flex items-center justify-center shrink-0 text-error">
+<span class="material-symbols-outlined fill-icon" data-icon="shield_lock">shield_lock</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-space-xs mb-1">
+<span class="font-label-sm text-label-sm text-error bg-error-container/30 px-2 py-0.5 rounded-full uppercase tracking-wider font-semibold">Emergency</span>
+<span class="font-label-sm text-label-sm text-outline">Immediate Aid</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface font-medium leading-snug">
+              Experiencing an urgent issue? Stolen phone or unauthorized debit?
+            </p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-space-sm mt-space-md">
+<button class="h-[52px] rounded-xl bg-error-container/20 border border-error/40 text-error font-label-lg text-label-lg flex items-center justify-center gap-space-xs active:scale-95 transition-transform hover:bg-error-container/30" type="button">
+<span class="material-symbols-outlined text-error">lock_reset</span>
+<span>Freeze Account</span>
+</button>
+<button class="h-[52px] rounded-xl bg-surface-container-high border border-outline-variant text-on-surface font-label-lg text-label-lg flex items-center justify-center gap-space-xs active:scale-95 transition-transform hover:bg-surface-bright" type="button">
+<span class="material-symbols-outlined text-primary">call</span>
+<span>Call Hotline</span>
+</button>
+</div>
+</section>
+<!-- Popular Topics / FAQ Categories Grid (2x2 Bento Style) -->
+<section aria-label="FAQ Categories">
+<div class="flex items-center justify-between mb-space-sm">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Popular Topics</h2>
+<span class="font-label-sm text-label-sm text-primary">4 Core Modules</span>
+</div>
+<div class="grid grid-cols-2 gap-space-sm">
+<!-- Card 1 -->
+<button class="bg-surface-container-low border border-outline-variant p-space-md rounded-xl text-left flex flex-col justify-between hover:bg-surface-container transition-colors group active:scale-95" type="button">
+<div class="w-10 h-10 rounded-xl bg-surface-container-high flex items-center justify-center text-primary-container mb-space-sm group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined fill-icon" data-icon="sync_problem">sync_problem</span>
+</div>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface mb-0.5">Transfers &amp; Failed Debits</p>
+<p class="font-label-sm text-label-sm text-outline">Reversals, NIP delays, ledger auto-sync</p>
+</div>
+</button>
+<!-- Card 2 -->
+<button class="bg-surface-container-low border border-outline-variant p-space-md rounded-xl text-left flex flex-col justify-between hover:bg-surface-container transition-colors group active:scale-95" type="button">
+<div class="w-10 h-10 rounded-xl bg-surface-container-high flex items-center justify-center text-primary-container mb-space-sm group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined fill-icon" data-icon="credit_card">credit_card</span>
+</div>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface mb-0.5">Cards &amp; Security</p>
+<p class="font-label-sm text-label-sm text-outline">Virtual cards, 3D secure, ATM limits</p>
+</div>
+</button>
+<!-- Card 3 -->
+<button class="bg-surface-container-low border border-outline-variant p-space-md rounded-xl text-left flex flex-col justify-between hover:bg-surface-container transition-colors group active:scale-95" type="button">
+<div class="w-10 h-10 rounded-xl bg-surface-container-high flex items-center justify-center text-primary-container mb-space-sm group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined fill-icon" data-icon="badge">badge</span>
+</div>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface mb-0.5">Account &amp; Verification</p>
+<p class="font-label-sm text-label-sm text-outline">BVN/NIN, Tier upgrade, compliance</p>
+</div>
+</button>
+<!-- Card 4 -->
+<button class="bg-surface-container-low border border-outline-variant p-space-md rounded-xl text-left flex flex-col justify-between hover:bg-surface-container transition-colors group active:scale-95" type="button">
+<div class="w-10 h-10 rounded-xl bg-surface-container-high flex items-center justify-center text-primary-container mb-space-sm group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined fill-icon" data-icon="savings">savings</span>
+</div>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface mb-0.5">Savings, Loans &amp; Thrift</p>
+<p class="font-label-sm text-label-sm text-outline">Target vaults, cooperative, ajo rules</p>
+</div>
+</button>
+</div>
+</section>
+<!-- Frequently Asked Questions Accordion List -->
+<section aria-label="Frequently Asked Questions" class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between mb-space-xs">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Frequently Asked Questions</h2>
+<span class="font-label-sm text-label-sm text-outline">Official CBN Guidelines</span>
+</div>
+<div class="space-y-space-xs" id="faq-container">
+<!-- Accordion Item 1 (Expanded by default) -->
+<div class="bg-surface-container-low border border-outline-variant rounded-xl overflow-hidden">
+<button class="w-full p-space-md flex items-center justify-between text-left hover:bg-surface-container transition-colors" onclick="toggleFaq('faq-1')" type="button">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary-container" data-icon="help_center">help_center</span>
+<span class="font-label-lg text-label-lg text-on-surface pr-2">When will my failed bank transfer be reversed?</span>
+</div>
+<span class="material-symbols-outlined text-outline transition-transform duration-200 rotate-180" id="icon-faq-1">expand_more</span>
+</button>
+<div class="px-space-md pb-space-md pt-0 text-on-surface-variant font-body-md text-body-md border-t border-outline-variant/30 mt-2" id="faq-1">
+<p class="pt-2 text-outline leading-relaxed">
+                Under CBN regulatory framework and NIBSS Instant Payments (NIP) protocol, debited funds from failed interbank transfers auto-reverse within <span class="text-on-surface font-semibold">2 to 24 hours</span>. If unreversed past 24 hours, our system automatically initiates a Tier-1 Recall via the receiving bank's clearing switch.
+              </p>
+<div class="mt-space-sm p-space-sm bg-surface-container rounded-lg border border-outline-variant flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface">Reference format: NIP-REV-2025</span>
+<span class="font-label-sm text-label-sm text-primary underline cursor-pointer">Track Disputed Session</span>
+</div>
+</div>
+</div>
+<!-- Accordion Item 2 -->
+<div class="bg-surface-container-low border border-outline-variant rounded-xl overflow-hidden">
+<button class="w-full p-space-md flex items-center justify-between text-left hover:bg-surface-container transition-colors" onclick="toggleFaq('faq-2')" type="button">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary-container" data-icon="verified_user">verified_user</span>
+<span class="font-label-lg text-label-lg text-on-surface pr-2">How do I upgrade to Tier 3 without a utility bill?</span>
+</div>
+<span class="material-symbols-outlined text-outline transition-transform duration-200" id="icon-faq-2">expand_more</span>
+</button>
+<div class="hidden px-space-md pb-space-md pt-0 text-on-surface-variant font-body-md text-body-md border-t border-outline-variant/30 mt-2" id="faq-2">
+<p class="pt-2 text-outline leading-relaxed">
+                You can activate Tier 3 through digital address verification. Simply grant in-app GPS physical geotagging confirmation at your verified residential location or submit an official letter of residency certified by your local council or accredited employer.
+              </p>
+</div>
+</div>
+<!-- Accordion Item 3 -->
+<div class="bg-surface-container-low border border-outline-variant rounded-xl overflow-hidden">
+<button class="w-full p-space-md flex items-center justify-between text-left hover:bg-surface-container transition-colors" onclick="toggleFaq('faq-3')" type="button">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary-container" data-icon="policy">policy</span>
+<span class="font-label-lg text-label-lg text-on-surface pr-2">Is my money insured by NDIC?</span>
+</div>
+<span class="material-symbols-outlined text-outline transition-transform duration-200" id="icon-faq-3">expand_more</span>
+</button>
+<div class="hidden px-space-md pb-space-md pt-0 text-on-surface-variant font-body-md text-body-md border-t border-outline-variant/30 mt-2" id="faq-3">
+<p class="pt-2 text-outline leading-relaxed">
+                Yes. All Nigerian customer deposits held with YourApp are insured by the Nigeria Deposit Insurance Corporation (NDIC) up to <span class="text-on-surface font-semibold">₦5,000,000</span> per depositor under the revised deposit guarantee scheme, licensed under the Central Bank of Nigeria (CBN).
+              </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Still Need Help Section (Contact Channels) -->
+<section aria-label="Still need help contact channels" class="mb-space-md">
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-space-sm">Still Need Help?</h2>
+<div class="flex flex-col gap-space-sm">
+<!-- Channel 1: Live Chat -->
+<div class="min-h-[64px] bg-surface-container-low border border-outline-variant rounded-xl p-space-md flex items-center justify-between hover:bg-surface-container transition-colors cursor-pointer group active:scale-95">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined fill-icon" data-icon="support_agent">support_agent</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<p class="font-label-lg text-label-lg text-on-surface">Live Support Chat</p>
+<span class="font-label-sm text-label-sm text-primary bg-primary/10 px-2 py-0.5 rounded-full font-medium">Typical reply &lt; 2 mins</span>
+</div>
+<p class="font-label-sm text-label-sm text-outline">24/7 financial resolution desk</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-on-surface transition-colors">chevron_right</span>
+</div>
+<!-- Channel 2: Submit a Ticket -->
+<div class="min-h-[64px] bg-surface-container-low border border-outline-variant rounded-xl p-space-md flex items-center justify-between hover:bg-surface-container transition-colors cursor-pointer group active:scale-95">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined" data-icon="confirmation_number">confirmation_number</span>
+</div>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface">Submit a Ticket</p>
+<p class="font-label-sm text-label-sm text-outline">Formal dispute &amp; chargeback tracking</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-on-surface transition-colors">chevron_right</span>
+</div>
+<!-- Channel 3: WhatsApp Support -->
+<div class="min-h-[64px] bg-surface-container-low border border-outline-variant rounded-xl p-space-md flex items-center justify-between hover:bg-surface-container transition-colors cursor-pointer group active:scale-95">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<p class="font-label-lg text-label-lg text-on-surface">WhatsApp Support</p>
+<span class="material-symbols-outlined text-primary text-[16px] fill-icon" title="Verified business">verified</span>
+</div>
+<p class="font-label-sm text-label-sm text-outline">Verified official green badge channel</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-on-surface transition-colors">chevron_right</span>
+</div>
+</div>
+</section>
+<!-- Compliance & CBN Footer Notice -->
+<footer class="text-center py-space-sm border-t border-outline-variant/30">
+<p class="font-label-sm text-label-sm text-outline">Licensed by the Central Bank of Nigeria (CBN)</p>
+<p class="font-label-sm text-label-sm text-outline/70 mt-0.5">Insured by the NDIC • Product ID S-CB-077</p>
+</footer>
+</main>
+<!-- Docked 5-tab BottomNavBar (JSON Blueprint Alignment) -->
+<!-- Destination count: 5 | Labels: Home, Payments, Cards, Save & Borrow, More -->
+<!-- 'More' is autonomously locked as active because Help Centre is nested under 'More' services -->
+<nav aria-label="Bottom Navigation" class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-margin h-16 max-w-[560px] mx-auto pb-safe bg-surface-container border-t border-outline-variant/40 shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)]">
+<!-- Tab 1: Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-caption text-caption font-medium">Home</span>
+</a>
+<!-- Tab 2: Payments -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="send">send</span>
+<span class="font-caption text-caption font-medium">Payments</span>
+</a>
+<!-- Tab 3: Cards -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="credit_card">credit_card</span>
+<span class="font-caption text-caption font-medium">Cards</span>
+</a>
+<!-- Tab 4: Save & Borrow -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="savings">savings</span>
+<span class="font-caption text-caption font-medium">Save &amp; Borrow</span>
+</a>
+<!-- Tab 5: More (Active) -->
+<a class="flex flex-col items-center justify-center text-primary-fixed font-semibold min-w-[48px] py-space-xs gap-space-xs active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined fill-icon text-primary-container" data-icon="more_horiz">more_horiz</span>
+<span class="font-caption text-caption font-medium text-primary">More</span>
+</a>
+</nav>
+</div>
+<!-- Interactive Accordion Handler Script -->
+<script>
+    function toggleFaq(id) {
+      const target = document.getElementById(id);
+      const icon = document.getElementById('icon-' + id);
+      
+      if (!target) return;
+
+      const isHidden = target.classList.contains('hidden');
+      if (isHidden) {
+        target.classList.remove('hidden');
+        if (icon) icon.classList.add('rotate-180');
+      } else {
+        target.classList.add('hidden');
+        if (icon) icon.classList.remove('rotate-180');
+      }
+    }
+  </script>
+</body></html>

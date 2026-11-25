@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YourApp - Reset Passcode</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Inter font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container": "#211f20",
+            "outline-variant": "#544247",
+            "surface-tint": "#ffb0ca",
+            "secondary-fixed-dim": "#ffb4a8",
+            "primary-fixed-dim": "#ffb0ca",
+            "on-error": "#690005",
+            "on-tertiary-fixed": "#001945",
+            "outline": "#a28b91",
+            "inverse-surface": "#e7e1e2",
+            "error": "#ffb4ab",
+            "primary-fixed": "#ffd9e3",
+            "primary-container": "#e0709a",
+            "tertiary-fixed": "#d9e2ff",
+            "primary": "#ffb0ca",
+            "tertiary": "#b0c6ff",
+            "surface-container-lowest": "#100e0f",
+            "on-secondary": "#61130a",
+            "on-primary-container": "#5d0331",
+            "on-background": "#e7e1e2",
+            "on-secondary-fixed": "#410000",
+            "error-container": "#93000a",
+            "on-surface": "#e7e1e2",
+            "surface-dim": "#151314",
+            "surface-container-highest": "#373435",
+            "inverse-on-surface": "#323031",
+            "surface-bright": "#3b3839",
+            "background": "#151314",
+            "on-error-container": "#ffdad6",
+            "on-primary-fixed": "#3e001f",
+            "on-tertiary-fixed-variant": "#06429a",
+            "surface-variant": "#373435",
+            "surface-container-high": "#2c292a",
+            "on-primary": "#620735",
+            "on-tertiary-container": "#002a69",
+            "inverse-primary": "#9e3b63",
+            "on-secondary-fixed-variant": "#7f291e",
+            "secondary-container": "#822c20",
+            "on-secondary-container": "#ff9f90",
+            "surface": "#151314",
+            "tertiary-container": "#6a92ee",
+            "on-tertiary": "#002d6f",
+            "surface-container-low": "#1d1b1c",
+            "secondary-fixed": "#ffdad4",
+            "on-surface-variant": "#dac0c6",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "on-primary-fixed-variant": "#7f234b",
+            "secondary": "#ffb4a8"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "gutter": "1rem",
+            "margin": "1rem",
+            "space-xs": "0.25rem",
+            "margin-mobile": "1rem",
+            "space-md": "1rem",
+            "gutter-mobile": "0.75rem",
+            "space-xl": "2rem",
+            "space-lg": "1.5rem"
+          },
+          "fontFamily": {
+            "label-md": ["Inter"],
+            "headline-md": ["Inter"],
+            "label-lg": ["Inter"],
+            "title-currency": ["Inter"],
+            "headline-sm": ["Inter"],
+            "headline-lg": ["Inter"],
+            "body-md": ["Inter"],
+            "label-sm": ["Inter"],
+            "body-lg": ["Inter"],
+            "display-currency": ["Inter"]
+          },
+          "fontSize": {
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-lg": ["15px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "title-currency": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    input[type="password"] {
+      letter-spacing: 0.35em;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-lowest text-on-surface antialiased flex justify-center min-h-screen selection:bg-primary-container selection:text-on-primary-container">
+<!-- Mobile Canvas Frame: 390px x 844px context with responsive center container -->
+<div class="w-full max-w-[390px] min-h-[844px] bg-surface-container-lowest flex flex-col relative pb-safe">
+<!-- Top Navigation Bar (Linear / Account Recovery Subflow) -->
+<header class="sticky top-0 z-40 bg-surface-container-lowest/90 backdrop-blur-md px-margin py-space-sm flex items-center justify-between min-h-[56px] border-b border-surface-container-highest/20">
+<button aria-label="Go back" class="w-10 h-10 -ml-2 rounded-xl flex items-center justify-center text-on-surface hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[22px]">arrow_back</span>
+</button>
+<div class="flex flex-col items-center">
+<span class="font-label-sm text-label-sm text-outline tracking-wider">YourApp Recovery</span>
+<h1 class="font-headline-sm text-headline-sm text-on-surface">Passcode Recovery</h1>
+</div>
+<button aria-label="Customer Support" class="w-10 h-10 -mr-2 rounded-xl flex items-center justify-center text-on-surface-variant hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[22px]">support_agent</span>
+</button>
+</header>
+<!-- Main Scrollable Content -->
+<main class="flex-1 px-margin pt-space-md pb-28 space-y-space-md">
+<!-- Header Intro Module -->
+<section class="space-y-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-surface-container text-outline border border-surface-container-highest">S-CB-015</span>
+<span class="font-label-sm text-label-sm text-outline">Shield Level 2</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Reset your login passcode</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Verify your identity using your registered account information to create a new 6-digit passcode.
+        </p>
+</section>
+<!-- Stepper Module (3 Steps) -->
+<nav aria-label="Recovery Progress" class="bg-surface-container-low rounded-xl p-space-md border border-surface-container-highest">
+<div class="flex items-center justify-between relative">
+<!-- Stepper Track Underlay -->
+<div class="absolute left-6 right-6 top-4 h-[2px] bg-surface-container-highest -z-0"></div>
+<!-- Step 1: Completed -->
+<div class="flex flex-col items-center gap-1.5 relative z-10">
+<div class="w-8 h-8 rounded-full bg-[#1b3327] border border-[#2b5d43] text-[#4CC38A] flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<span class="font-label-sm text-label-sm text-[#4CC38A] font-semibold">1. Identity</span>
+</div>
+<!-- Step 2: Active (New Passcode) -->
+<div class="flex flex-col items-center gap-1.5 relative z-10">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-label-md text-label-md ring-4 ring-primary-container/20">
+<span>2</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-semibold">2. New Code</span>
+</div>
+<!-- Step 3: Upcoming -->
+<div class="flex flex-col items-center gap-1.5 relative z-10">
+<div class="w-8 h-8 rounded-full bg-surface-container-high border border-surface-container-highest text-outline flex items-center justify-center font-label-md text-label-md">
+<span>3</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline font-normal">3. Confirm</span>
+</div>
+</div>
+</nav>
+<!-- Form Inputs: New Passcode and Confirmation -->
+<form class="space-y-space-md" onsubmit="event.preventDefault();">
+<!-- Field 1: Enter New 6-Digit Passcode -->
+<div class="space-y-1.5">
+<label class="block font-label-md text-label-md text-on-surface" for="new-passcode">
+            Enter New 6-Digit Passcode
+          </label>
+<div class="relative flex items-center h-[52px] bg-surface-container-low rounded-xl border border-surface-container-highest focus-within:border-primary-container transition-colors">
+<div class="pl-space-md pr-2 text-outline flex items-center">
+<span class="material-symbols-outlined text-[20px]">lock_reset</span>
+</div>
+<input class="w-full bg-transparent text-on-surface font-headline-sm text-headline-sm focus:outline-none focus:ring-0 placeholder:text-outline/40 border-0 p-0 pr-12 font-mono tracking-[0.3em]" id="new-passcode" inputmode="numeric" maxlength="6" pattern="[0-9]*" placeholder="••••••" type="password" value="849201"/>
+<button aria-label="Toggle passcode visibility" class="absolute right-2 w-10 h-10 flex items-center justify-center text-outline hover:text-on-surface active:scale-95 transition-all" id="toggle-visibility" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+</div>
+<!-- Field 2: Confirm New Passcode -->
+<div class="space-y-1.5">
+<label class="block font-label-md text-label-md text-on-surface" for="confirm-passcode">
+            Confirm New Passcode
+          </label>
+<div class="relative flex items-center h-[52px] bg-surface-container-low rounded-xl border border-surface-container-highest focus-within:border-primary-container transition-colors">
+<div class="pl-space-md pr-2 text-outline flex items-center">
+<span class="material-symbols-outlined text-[20px]">pin</span>
+</div>
+<input class="w-full bg-transparent text-on-surface font-headline-sm text-headline-sm focus:outline-none focus:ring-0 placeholder:text-outline/40 border-0 p-0 pr-12 font-mono tracking-[0.3em]" id="confirm-passcode" inputmode="numeric" maxlength="6" pattern="[0-9]*" placeholder="••••••" type="password" value="849201"/>
+<div class="absolute right-3.5 flex items-center text-[#4CC38A]">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+</div>
+</form>
+<!-- Passcode Requirement Checklist Card (#262122 Raised) -->
+<section class="bg-surface-container rounded-xl p-4 border border-surface-container-highest space-y-3">
+<div class="flex items-center justify-between pb-1 border-b border-surface-container-highest/50">
+<span class="font-label-sm text-label-sm text-outline tracking-wide">SECURITY CRITERIA</span>
+<span class="font-label-sm text-label-sm text-[#4CC38A] font-medium flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-[#4CC38A]"></span> 4 of 4 Met
+          </span>
+</div>
+<ul class="space-y-2.5 text-on-surface">
+<!-- Row 1 -->
+<li class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-[#4CC38A] shrink-0 mt-0.5" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-body-md text-body-md text-on-surface">At least 6 digits long</span>
+</li>
+<!-- Row 2 -->
+<li class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-[#4CC38A] shrink-0 mt-0.5" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-body-md text-body-md text-on-surface">No sequential numbers <span class="text-outline text-label-sm">(e.g. 123456)</span></span>
+</li>
+<!-- Row 3 -->
+<li class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-[#4CC38A] shrink-0 mt-0.5" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-body-md text-body-md text-on-surface">No repeating numbers <span class="text-outline text-label-sm">(e.g. 111111)</span></span>
+</li>
+<!-- Row 4 -->
+<li class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-[#4CC38A] shrink-0 mt-0.5" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-body-md text-body-md text-on-surface">Cannot match your transaction PIN or date of birth</span>
+</li>
+</ul>
+</section>
+<!-- Security Notice Banner -->
+<aside class="rounded-xl p-3.5 bg-surface-container-low border border-surface-container-highest flex gap-3 items-start">
+<div class="w-8 h-8 rounded-lg bg-secondary-container/40 border border-secondary-container flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px] text-secondary">security_update_warning</span>
+</div>
+<div class="space-y-0.5">
+<h3 class="font-label-md text-label-md text-secondary font-semibold">NDIC &amp; CBN Cooling-Off Protocol</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-snug">
+            For your protection, major transfers over <span class="font-mono text-on-surface font-medium">₦100,000</span> will be subjected to a 2-hour cooling-off period following a passcode reset.
+          </p>
+</div>
+</aside>
+</main>
+<!-- Docked Bottom Primary Action (52px ergonomic button) -->
+<footer class="fixed bottom-0 left-0 right-0 max-w-[390px] mx-auto bg-surface-container-lowest/95 backdrop-blur-lg px-margin py-3 border-t border-surface-container-highest/30 z-50">
+<button class="w-full h-[52px] bg-primary-container text-on-primary-container font-label-lg text-label-lg rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-primary-container/20 active:bg-inverse-primary active:scale-[0.99] transition-all duration-150" id="submit-reset" type="button">
+<span>Update Passcode &amp; Sign In</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+<div class="mt-2 text-center">
+<span class="font-label-sm text-label-sm text-outline">Encrypted via RSA-4096 Hardware Key</span>
+</div>
+</footer>
+</div>
+<script>
+    // Micro-interaction for password toggle
+    const toggleBtn = document.getElementById('toggle-visibility');
+    const passInput = document.getElementById('new-passcode');
+    if (toggleBtn && passInput) {
+      toggleBtn.addEventListener('click', () => {
+        const isPassword = passInput.getAttribute('type') === 'password';
+        passInput.setAttribute('type', isPassword ? 'text' : 'password');
+        const iconSpan = toggleBtn.querySelector('.material-symbols-outlined');
+        if (iconSpan) {
+          iconSpan.textContent = isPassword ? 'visibility_off' : 'visibility';
+        }
+      });
+    }
+
+    // Button ripple / feedback state
+    const submitBtn = document.getElementById('submit-reset');
+    if (submitBtn) {
+      submitBtn.addEventListener('click', () => {
+        submitBtn.innerHTML = `
+          <span class="material-symbols-outlined animate-spin text-[20px]">progress_activity</span>
+          <span>Securing Account...</span>
+        `;
+        setTimeout(() => {
+          submitBtn.innerHTML = `
+            <span class="material-symbols-outlined text-[20px]">check</span>
+            <span>Passcode Updated!</span>
+          `;
+          submitBtn.classList.remove('bg-primary-container', 'text-on-primary-container');
+          submitBtn.classList.add('bg-[#1b3327]', 'text-[#4CC38A]', 'border', 'border-[#2b5d43]');
+        }, 900);
+      });
+    }
+  </script>
+</body></html>

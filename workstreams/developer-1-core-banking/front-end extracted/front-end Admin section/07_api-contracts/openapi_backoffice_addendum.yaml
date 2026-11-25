@@ -1,0 +1,667 @@
+openapi: 3.0.3
+info:
+  title: Back-office API addendum
+  version: 1.0.0
+  description: Additional staff-only endpoints for W-BO-021 to W-BO-030. Merge into
+    or keep beside openapi_backoffice.yaml. Role checks, masking, audit logging and
+    dual control apply.
+security:
+- bearerAuth: []
+paths:
+  /backoffice/me:
+    get:
+      tags:
+      - Staff self
+      summary: My profile and permissions
+      responses:
+        '200':
+          description: OK
+  /backoffice/me/password:
+    post:
+      tags:
+      - Staff self
+      summary: Change password
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                currentPassword:
+                  type: string
+                newPassword:
+                  type: string
+  /backoffice/me/mfa:
+    post:
+      tags:
+      - Staff self
+      summary: Enrol or re-enrol MFA (returns secret/QR once)
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  enum:
+                  - TOTP
+                  - HARDWARE_KEY
+    delete:
+      tags:
+      - Staff self
+      summary: Reset MFA (requires approval path for others)
+      responses:
+        '200':
+          description: OK
+  /backoffice/me/sessions:
+    get:
+      tags:
+      - Staff self
+      summary: List my sessions
+      responses:
+        '200':
+          description: OK
+  /backoffice/me/sessions/{id}:
+    delete:
+      tags:
+      - Staff self
+      summary: End a session
+      responses:
+        '200':
+          description: OK
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+  /backoffice/access-reviews:
+    get:
+      tags:
+      - Access reviews
+      summary: List reviews
+      responses:
+        '200':
+          description: OK
+    post:
+      tags:
+      - Access reviews
+      summary: Start a review
+      responses:
+        '201':
+          description: OK
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                period:
+                  type: string
+                dueAt:
+                  type: string
+                  format: date-time
+  /backoffice/access-reviews/{id}/items/{staffId}:
+    put:
+      tags:
+      - Access reviews
+      summary: Decide an item (KEEP, REDUCE, REVOKE)
+      responses:
+        '200':
+          description: OK
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: staffId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                decision:
+                  type: string
+                  enum:
+                  - KEEP
+                  - REDUCE
+                  - REVOKE
+                note:
+                  type: string
+  /backoffice/compliance/screening-hits:
+    get:
+      tags:
+      - Compliance
+      summary: Sanctions and PEP hits queue
+      responses:
+        '200':
+          description: OK
+  /backoffice/compliance/screening-hits/{id}/decision:
+    post:
+      tags:
+      - Compliance
+      summary: Decide a hit (true match, false positive, escalate)
+      responses:
+        '200':
+          description: OK
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                decision:
+                  type: string
+                  enum:
+                  - TRUE_MATCH
+                  - FALSE_POSITIVE
+                  - ESCALATE
+                rationale:
+                  type: string
+  /backoffice/compliance/str:
+    get:
+      tags:
+      - Compliance
+      summary: STR register (restricted; every read audited)
+      responses:
+        '200':
+          description: OK
+    post:
+      tags:
+      - Compliance
+      summary: Draft an STR
+      responses:
+        '201':
+          description: OK
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                caseId:
+                  type: string
+                  format: uuid
+                narrative:
+                  type: string
+  /backoffice/compliance/str/{id}/approve:
+    post:
+      tags:
+      - Compliance
+      summary: Approve STR (dual control)
+      responses:
+        '200':
+          description: OK
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+  /backoffice/compliance/str/{id}/file:
+    post:
+      tags:
+      - Compliance
+      summary: Mark STR filed with authority reference
+      responses:
+        '200':
+          description: OK
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                authorityRef:
+                  type: string
+  /backoffice/compliance/regulatory-reports:
+    get:
+      tags:
+      - Compliance
+      summary: Regulatory reporting calendar
+      responses:
+        '200':
+          description: OK
+  /backoffice/compliance/regulatory-reports/{id}/submit:
+    post:
+      tags:
+      - Compliance
+      summary: Record submission and evidence
+      responses:
+        '200':
+          description: OK
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                evidenceFileKey:
+                  type: string
+  /backoffice/finance/dashboard:
+    get:
+      tags:
+      - Finance
+      summary: Finance dashboard figures
+      responses:
+        '200':
+          description: OK
+  /backoffice/finance/statutory:
+    get:
+      tags:
+      - Finance
+      summary: Statutory payables and remittance status
+      responses:
+        '200':
+          description: OK
+  /backoffice/card-disputes:
+    get:
+      tags:
+      - Card disputes
+      summary: Dispute queue
+      responses:
+        '200':
+          description: OK
+  /backoffice/card-disputes/{id}/action:
+    post:
+      tags:
+      - Card disputes
+      summary: Request evidence, submit to issuer, mark won/lost, provisional credit
+        (dual control)
+      responses:
+        '200':
+          description: OK
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                action:
+                  type: string
+                note:
+                  type: string
+  /backoffice/privacy/requests:
+    get:
+      tags:
+      - Privacy
+      summary: Data subject requests queue
+      responses:
+        '200':
+          description: OK
+  /backoffice/privacy/requests/{id}/action:
+    post:
+      tags:
+      - Privacy
+      summary: Verify, fulfil, deny, extend
+      responses:
+        '200':
+          description: OK
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - VERIFY
+                  - FULFIL
+                  - DENY
+                  - EXTEND
+                note:
+                  type: string
+  /backoffice/service-notices:
+    get:
+      tags:
+      - Communications
+      summary: List notices
+      responses:
+        '200':
+          description: OK
+    post:
+      tags:
+      - Communications
+      summary: Create notice (draft)
+      responses:
+        '201':
+          description: OK
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                body:
+                  type: string
+                audience:
+                  type: object
+                channels:
+                  type: array
+                  items:
+                    type: string
+                scheduledAt:
+                  type: string
+                  format: date-time
+  /backoffice/service-notices/{id}/submit:
+    post:
+      tags:
+      - Communications
+      summary: Submit for approval
+      responses:
+        '200':
+          description: OK
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+  /backoffice/service-notices/{id}/approve:
+    post:
+      tags:
+      - Communications
+      summary: Approve (different user)
+      responses:
+        '200':
+          description: OK
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+  /backoffice/notification-templates:
+    get:
+      tags:
+      - Communications
+      summary: List templates
+      responses:
+        '200':
+          description: OK
+  /backoffice/notification-templates/{key}:
+    put:
+      tags:
+      - Communications
+      summary: Propose template version (creates approval)
+      responses:
+        '202':
+          description: OK
+      parameters:
+      - name: key
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                channel:
+                  type: string
+                body:
+                  type: string
+                subject:
+                  type: string
+  /backoffice/complaints:
+    get:
+      tags:
+      - Complaints
+      summary: Complaints register
+      responses:
+        '200':
+          description: OK
+  /backoffice/complaints/{id}:
+    get:
+      tags:
+      - Complaints
+      summary: Complaint detail
+      responses:
+        '200':
+          description: OK
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+    patch:
+      tags:
+      - Complaints
+      summary: Update root cause, status, reportable flag
+      responses:
+        '200':
+          description: OK
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                rootCause:
+                  type: string
+                status:
+                  type: string
+                regulatorReportable:
+                  type: boolean
+  /backoffice/risk/blocklist:
+    get:
+      tags:
+      - Risk
+      summary: List block entries
+      responses:
+        '200':
+          description: OK
+    post:
+      tags:
+      - Risk
+      summary: Add block entry
+      responses:
+        '201':
+          description: OK
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                listType:
+                  type: string
+                value:
+                  type: string
+                reason:
+                  type: string
+                expiresAt:
+                  type: string
+                  format: date-time
+  /backoffice/risk/blocklist/{id}:
+    delete:
+      tags:
+      - Risk
+      summary: Request removal (approval required)
+      responses:
+        '200':
+          description: OK
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+  /backoffice/reports/definitions:
+    get:
+      tags:
+      - Reports
+      summary: Available reports for my role
+      responses:
+        '200':
+          description: OK
+  /backoffice/reports/schedules:
+    get:
+      tags:
+      - Reports
+      summary: Scheduled reports
+      responses:
+        '200':
+          description: OK
+    post:
+      tags:
+      - Reports
+      summary: Create schedule
+      responses:
+        '201':
+          description: OK
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reportKey:
+                  type: string
+                cron:
+                  type: string
+                recipients:
+                  type: array
+                  items:
+                    type: string
+  /backoffice/saved-views:
+    get:
+      tags:
+      - Staff self
+      summary: My saved views
+      responses:
+        '200':
+          description: OK
+    post:
+      tags:
+      - Staff self
+      summary: Save a view
+      responses:
+        '201':
+          description: OK
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                screen:
+                  type: string
+                name:
+                  type: string
+                filters:
+                  type: object
+  /backoffice/notes:
+    post:
+      tags:
+      - Notes
+      summary: Add a note to an entity
+      responses:
+        '201':
+          description: OK
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                entityType:
+                  type: string
+                entityId:
+                  type: string
+                body:
+                  type: string
+                restricted:
+                  type: boolean
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YourApp - More &amp; Settings</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Inter font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-background": "#1f1b1c",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "on-primary-container": "#ffa0ba",
+            "secondary-container": "#fc6955",
+            "on-secondary": "#ffffff",
+            "on-surface": "#1f1b1c",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "inverse-on-surface": "#f8eeef",
+            "primary-fixed-dim": "#ffb1c5",
+            "on-surface-variant": "#564146",
+            "on-secondary-container": "#690000",
+            "primary": "#6d0033",
+            "on-tertiary": "#ffffff",
+            "outline-variant": "#dcbfc5",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-highest": "#e9e0e1",
+            "secondary": "#ae3123",
+            "on-primary-fixed-variant": "#881646",
+            "surface-dim": "#e1d8d9",
+            "surface-container": "#f5eced",
+            "surface-variant": "#e9e0e1",
+            "surface-bright": "#fff8f8",
+            "primary-fixed": "#ffd9e1",
+            "on-error": "#ffffff",
+            "on-primary-fixed": "#3f001b",
+            "inverse-primary": "#ffb1c5",
+            "error-container": "#ffdad6",
+            "outline": "#897176",
+            "surface-container-high": "#efe6e7",
+            "background": "#fff8f8",
+            "on-tertiary-container": "#c6b7bd",
+            "on-secondary-fixed": "#410000",
+            "surface": "#fff8f8",
+            "tertiary": "#3b3236",
+            "tertiary-fixed": "#eedee4",
+            "on-secondary-fixed-variant": "#8c170e",
+            "secondary-fixed-dim": "#ffb4a8",
+            "on-tertiary-fixed": "#21191e",
+            "tertiary-container": "#53484d",
+            "primary-container": "#8e1b4a",
+            "error": "#ba1a1a",
+            "on-error-container": "#93000a",
+            "on-primary": "#ffffff",
+            "secondary-fixed": "#ffdad4",
+            "surface-container-low": "#fbf1f2",
+            "surface-tint": "#a8315d",
+            "inverse-surface": "#342f30"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "space-md": "0.75rem",
+            "space-lg": "1rem",
+            "space-xl": "1.5rem",
+            "space-2xl": "2rem",
+            "space-3xl": "3rem",
+            "gutter": "1rem",
+            "margin": "1rem"
+          },
+          "fontFamily": {
+            "title": ["Inter"],
+            "label": ["Inter"],
+            "display": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "amount-lg": ["Inter"],
+            "body-medium": ["Inter"],
+            "body": ["Inter"],
+            "subtitle": ["Inter"],
+            "caption": ["Inter"]
+          },
+          "fontSize": {
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-outlined.filled {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    body {
+      background-color: #FAF8F7;
+      color: #1f1b1c;
+      font-family: 'Inter', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-[#FAF8F7] text-on-surface antialiased min-h-screen pb-24">
+<!-- Responsive Shell Container (Mobile First, centered up to 560px on tablet/web) -->
+<div class="max-w-[560px] mx-auto min-h-screen flex flex-col relative bg-[#FAF8F7]">
+<!-- TopAppBar (from Shared Components JSON) -->
+<header class="sticky top-0 z-40 bg-surface/95 backdrop-blur-md border-b border-outline-variant/40">
+<div class="flex justify-between items-center w-full px-margin py-space-sm max-w-[560px] mx-auto min-h-[56px]">
+<!-- Leading: App Wordmark Anchor -->
+<div class="flex items-center gap-space-sm">
+<span class="font-title text-title font-bold text-primary tracking-tight">YourApp</span>
+<span class="font-label text-label px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-medium text-xs">Settings</span>
+</div>
+<!-- Trailing: QR Share Shortcut & Notifications -->
+<div class="flex items-center gap-space-xs">
+<button aria-label="Share QR Code" class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container transition-colors active:scale-95 duration-150" type="button">
+<span class="material-symbols-outlined text-[22px]">qr_code_2</span>
+</button>
+<button aria-label="Notifications" class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container transition-colors active:scale-95 duration-150 relative" type="button">
+<span class="material-symbols-outlined text-[22px]">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-secondary ring-2 ring-surface"></span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-margin py-space-lg flex flex-col gap-space-xl">
+<!-- 1. User Profile Bento Hero Card -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg border border-[#E4DEDC] shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] relative overflow-hidden">
+<!-- Subtle warm accent glow top right -->
+<div class="absolute -right-10 -top-10 w-32 h-32 rounded-full bg-primary-fixed/30 pointer-events-none blur-2xl"></div>
+<div class="flex items-center justify-between gap-space-md relative z-10">
+<div class="flex items-center gap-space-md">
+<!-- Avatar with Initials -->
+<div class="w-14 h-14 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-subtitle text-subtitle tracking-wider ring-4 ring-primary-fixed/40 select-none shadow-sm">
+              TOA
+            </div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<h1 class="font-subtitle text-subtitle text-on-surface">Tunde O. Adeleke</h1>
+</div>
+<p class="font-caption text-caption text-on-surface-variant">+234 801 234 5678</p>
+<!-- Tier 2 Verified Badge -->
+<div class="mt-1.5 flex items-center gap-1.5">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-surface-container text-[#1F6E43] font-caption text-caption font-semibold">
+<span class="material-symbols-outlined text-[15px] filled">verified</span>
+                  Tier 2 Verified
+                </span>
+</div>
+</div>
+</div>
+<!-- View Profile Action -->
+<a aria-label="View Profile Details" class="flex flex-col items-center justify-center w-11 h-11 rounded-xl bg-surface-container hover:bg-surface-container-high transition-colors text-primary active:scale-95 duration-150" href="#profile-details">
+<span class="material-symbols-outlined text-[22px]">chevron_right</span>
+</a>
+</div>
+<div class="mt-4 pt-3 border-t border-[#E4DEDC]/60 flex items-center justify-between text-caption font-caption text-on-surface-variant">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary">account_balance</span>
+            Acct: 0124892019 • YourApp Retail
+          </span>
+<button class="text-primary font-medium flex items-center gap-0.5 hover:underline active:scale-95 transition-transform" type="button">
+            Copy
+            <span class="material-symbols-outlined text-[14px]">content_copy</span>
+</button>
+</div>
+</section>
+<!-- 2. Tenant Switcher Banner (Cooperative or Merchant Shop) -->
+<section>
+<div class="bg-gradient-to-r from-primary-container to-[#6d0033] rounded-xl p-space-md text-on-primary flex items-center justify-between shadow-[0_4px_16px_-2px_rgba(110,0,51,0.18)] relative overflow-hidden">
+<div class="flex items-center gap-space-md relative z-10">
+<div class="w-10 h-10 rounded-lg bg-white/10 backdrop-blur-sm flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[24px]">storefront</span>
+</div>
+<div>
+<p class="font-label text-label text-white">Switch to Cooperative Admin</p>
+<p class="font-caption text-caption text-primary-fixed/80">Ilupeju Dynamic Traders Union</p>
+</div>
+</div>
+<button class="relative z-10 px-3 py-1.5 rounded-lg bg-white text-primary font-label text-label hover:bg-primary-fixed transition-colors active:scale-95 duration-150 shadow-sm flex items-center gap-1" type="button">
+            Switch
+            <span class="material-symbols-outlined text-[16px]">sync_alt</span>
+</button>
+</div>
+</section>
+<!-- 3. Grouped Section: Account & Preferences -->
+<section class="flex flex-col gap-space-xs">
+<h2 class="font-label text-label text-on-surface-variant px-1 font-semibold uppercase tracking-wider text-[11px]">
+          Account &amp; Preferences
+        </h2>
+<div class="bg-surface-container-lowest rounded-xl border border-[#E4DEDC] divide-y divide-[#E4DEDC]/60 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] overflow-hidden">
+<!-- Item: Profile & KYC -->
+<a class="flex items-center justify-between p-space-md hover:bg-surface-container/60 transition-colors active:bg-surface-container min-h-[56px] group" href="#kyc">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary group-hover:bg-primary-fixed/50 transition-colors">
+<span class="material-symbols-outlined text-[20px]">badge</span>
+</div>
+<div>
+<p class="font-body-medium text-body-medium text-on-surface">Profile &amp; KYC</p>
+<p class="font-caption text-caption text-on-surface-variant">Tier 2, BVN/NIN linked, verified address</p>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-emerald-50 text-[#1F6E43] font-caption text-caption text-xs font-semibold">
+<span class="material-symbols-outlined text-[13px] filled">check_circle</span>
+                Valid
+              </span>
+<span class="material-symbols-outlined text-outline text-[20px]">chevron_right</span>
+</div>
+</a>
+<!-- Item: Account Limits & Allowances -->
+<a class="flex items-center justify-between p-space-md hover:bg-surface-container/60 transition-colors active:bg-surface-container min-h-[56px] group" href="#limits">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary group-hover:bg-primary-fixed/50 transition-colors">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+</div>
+<div>
+<p class="font-body-medium text-body-medium text-on-surface">Account Limits &amp; Allowances</p>
+<p class="font-caption text-caption text-on-surface-variant">Daily: ₦5,000,000 • Single: ₦1,000,000</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px]">chevron_right</span>
+</a>
+<!-- Item: Statements & Reports -->
+<a class="flex items-center justify-between p-space-md hover:bg-surface-container/60 transition-colors active:bg-surface-container min-h-[56px] group" href="#statements">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary group-hover:bg-primary-fixed/50 transition-colors">
+<span class="material-symbols-outlined text-[20px]">receipt_long</span>
+</div>
+<div>
+<p class="font-body-medium text-body-medium text-on-surface">Statements &amp; Reports</p>
+<p class="font-caption text-caption text-on-surface-variant">Generate stamped PDF/Excel reports</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px]">chevron_right</span>
+</a>
+</div>
+</section>
+<!-- 4. Grouped Section: Security & Control -->
+<section class="flex flex-col gap-space-xs">
+<h2 class="font-label text-label text-on-surface-variant px-1 font-semibold uppercase tracking-wider text-[11px]">
+          Security &amp; Control
+        </h2>
+<div class="bg-surface-container-lowest rounded-xl border border-[#E4DEDC] divide-y divide-[#E4DEDC]/60 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] overflow-hidden">
+<!-- Item: Security Hub -->
+<a class="flex items-center justify-between p-space-md hover:bg-surface-container/60 transition-colors active:bg-surface-container min-h-[56px] group" href="#security-hub">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary group-hover:bg-primary-fixed/50 transition-colors">
+<span class="material-symbols-outlined text-[20px]">shield</span>
+</div>
+<div>
+<p class="font-body-medium text-body-medium text-on-surface">Security Hub</p>
+<p class="font-caption text-caption text-on-surface-variant">PIN, Biometrics &amp; Hardware 2FA</p>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-[#1F6E43]" title="Security High"></span>
+<span class="material-symbols-outlined text-outline text-[20px]">chevron_right</span>
+</div>
+</a>
+<!-- Item: Linked Devices -->
+<a class="flex items-center justify-between p-space-md hover:bg-surface-container/60 transition-colors active:bg-surface-container min-h-[56px] group" href="#devices">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary group-hover:bg-primary-fixed/50 transition-colors">
+<span class="material-symbols-outlined text-[20px]">devices</span>
+</div>
+<div>
+<p class="font-body-medium text-body-medium text-on-surface">Linked Devices</p>
+<p class="font-caption text-caption text-on-surface-variant">iPhone 14 Pro • 1 Active Session</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px]">chevron_right</span>
+</a>
+<!-- Item: Card Management -->
+<a class="flex items-center justify-between p-space-md hover:bg-surface-container/60 transition-colors active:bg-surface-container min-h-[56px] group" href="#cards-jump">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary group-hover:bg-primary-fixed/50 transition-colors">
+<span class="material-symbols-outlined text-[20px]">credit_card</span>
+</div>
+<div>
+<p class="font-body-medium text-body-medium text-on-surface">Card Management</p>
+<p class="font-caption text-caption text-on-surface-variant">Freeze, online limits &amp; PIN reset</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px]">chevron_right</span>
+</a>
+</div>
+</section>
+<!-- 5. Grouped Section: Support & Legal -->
+<section class="flex flex-col gap-space-xs">
+<h2 class="font-label text-label text-on-surface-variant px-1 font-semibold uppercase tracking-wider text-[11px]">
+          Support &amp; Legal
+        </h2>
+<div class="bg-surface-container-lowest rounded-xl border border-[#E4DEDC] divide-y divide-[#E4DEDC]/60 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] overflow-hidden">
+<!-- Item: Help Centre & FAQ -->
+<a class="flex items-center justify-between p-space-md hover:bg-surface-container/60 transition-colors active:bg-surface-container min-h-[56px] group" href="#faq">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary group-hover:bg-primary-fixed/50 transition-colors">
+<span class="material-symbols-outlined text-[20px]">help_center</span>
+</div>
+<div>
+<p class="font-body-medium text-body-medium text-on-surface">Help Centre &amp; FAQ</p>
+<p class="font-caption text-caption text-on-surface-variant">Answers to disputes, transfers &amp; POS</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px]">chevron_right</span>
+</a>
+<!-- Item: Support Chat -->
+<a class="flex items-center justify-between p-space-md hover:bg-surface-container/60 transition-colors active:bg-surface-container min-h-[56px] group" href="#support-chat">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary group-hover:bg-primary-fixed/50 transition-colors">
+<span class="material-symbols-outlined text-[20px]">forum</span>
+</div>
+<div>
+<p class="font-body-medium text-body-medium text-on-surface">Support Chat</p>
+<p class="font-caption text-caption text-on-surface-variant">24/7 dedicated bank concierge</p>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-surface-container text-primary font-caption text-caption font-semibold">
+                Online
+              </span>
+<span class="material-symbols-outlined text-outline text-[20px]">chevron_right</span>
+</div>
+</a>
+<!-- Item: Branch & Agent Locator -->
+<a class="flex items-center justify-between p-space-md hover:bg-surface-container/60 transition-colors active:bg-surface-container min-h-[56px] group" href="#locator">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary group-hover:bg-primary-fixed/50 transition-colors">
+<span class="material-symbols-outlined text-[20px]">near_me</span>
+</div>
+<div>
+<p class="font-body-medium text-body-medium text-on-surface">Branch &amp; Agent Locator</p>
+<p class="font-caption text-caption text-on-surface-variant">Find cash points &amp; verified agents</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px]">chevron_right</span>
+</a>
+<!-- Item: Legal, Terms & Privacy -->
+<a class="flex items-center justify-between p-space-md hover:bg-surface-container/60 transition-colors active:bg-surface-container min-h-[56px] group" href="#legal">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary group-hover:bg-primary-fixed/50 transition-colors">
+<span class="material-symbols-outlined text-[20px]">description</span>
+</div>
+<div>
+<p class="font-body-medium text-body-medium text-on-surface">Legal, Terms &amp; Privacy Policy</p>
+<p class="font-caption text-caption text-on-surface-variant">NDPR compliance &amp; NDIC insured</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px]">chevron_right</span>
+</a>
+</div>
+</section>
+<!-- 6. Danger Zone & Session Signout -->
+<section class="flex flex-col gap-space-md pt-2">
+<button class="w-full h-[52px] rounded-xl bg-error-container text-on-error-container font-label text-label flex items-center justify-center gap-space-sm hover:bg-[#ffdad6]/80 active:scale-[0.98] transition-all duration-150" type="button">
+<span class="material-symbols-outlined text-[20px]">logout</span>
+          Log Out
+        </button>
+<div class="text-center pb-space-lg">
+<p class="font-caption text-caption text-on-surface-variant/70">
+            YourApp v2.4.1 (Build 412) • Licensed by CBN
+          </p>
+<p class="font-caption text-[11px] text-on-surface-variant/50 mt-0.5">
+            Deposits insured by the NDIC
+          </p>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (from Shared Components JSON: Destination Count = 5) -->
+<!-- Active Tab: "More" (5th item highlighted in berry #8E1B4A / primary-container) -->
+<nav class="fixed bottom-0 left-0 right-0 w-full z-50 bg-surface-container-lowest border-t border-outline-variant/40 shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)]">
+<div class="max-w-[560px] mx-auto h-16 flex justify-around items-center px-margin pb-safe">
+<!-- Tab 1: Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#home">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="font-caption text-caption font-medium">Home</span>
+</a>
+<!-- Tab 2: Payments -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#payments">
+<span class="material-symbols-outlined text-[24px]">send</span>
+<span class="font-caption text-caption font-medium">Payments</span>
+</a>
+<!-- Tab 3: Cards -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#cards">
+<span class="material-symbols-outlined text-[24px]">credit_card</span>
+<span class="font-caption text-caption font-medium">Cards</span>
+</a>
+<!-- Tab 4: Save & Borrow -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#save-borrow">
+<span class="material-symbols-outlined text-[24px]">savings</span>
+<span class="font-caption text-caption font-medium">Save &amp; Borrow</span>
+</a>
+<!-- Tab 5: More (ACTIVE) -->
+<a class="flex flex-col items-center justify-center text-primary-container font-semibold min-w-[48px] py-space-xs gap-space-xs active:scale-95 transition-transform duration-150" href="#more">
+<span class="material-symbols-outlined text-[24px] filled">more_horiz</span>
+<span class="font-caption text-caption font-semibold text-primary-container">More</span>
+</a>
+</div>
+</nav>
+</div>
+</body></html>

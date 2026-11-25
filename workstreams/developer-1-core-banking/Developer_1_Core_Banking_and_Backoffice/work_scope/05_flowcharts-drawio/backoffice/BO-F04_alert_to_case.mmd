@@ -1,0 +1,20 @@
+flowchart TD
+  a(["Rule raises alert"])
+  b["Triage within SLA"]
+  c{"Real concern?"}
+  d["Close as false positive; tune"]
+  e["Open case; investigate"]
+  f{"Outcome"}
+  g["Step-up or hold"]
+  h["Block and report per policy (restricted)"]
+  i(["Close with rationale"])
+  a --> b
+  b --> c
+  c -->|no| d
+  c -->|yes| e
+  e --> f
+  f -->|low| g
+  f -->|high| h
+  d --> i
+  g --> i
+  h --> i

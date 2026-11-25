@@ -1,0 +1,20 @@
+flowchart TD
+  a(["Transaction posted"])
+  b["Categorise by rules and merchant data"]
+  c{"Customer corrects category?"}
+  d["Store correction; learn per customer"]
+  e["Update category totals"]
+  f["Month end: build summary"]
+  g{"Consent for personalised tips?"}
+  h["Add gentle tips"]
+  i(["Notify summary ready"])
+  a --> b
+  b --> c
+  c -->|yes| d
+  c -->|no| e
+  d --> e
+  e --> f
+  f --> g
+  g -->|yes| h
+  g -->|no| i
+  h --> i

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YourApp - Verify OTP</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-low": "#1d1b1c",
+            "surface-bright": "#3b3839",
+            "surface-container": "#211f20",
+            "on-tertiary": "#002d6f",
+            "error": "#ffb4ab",
+            "surface": "#151314",
+            "background": "#151314",
+            "surface-variant": "#373435",
+            "on-tertiary-container": "#002a69",
+            "secondary-fixed": "#ffdad4",
+            "surface-container-lowest": "#100e0f",
+            "inverse-surface": "#e7e1e2",
+            "on-primary-container": "#5d0331",
+            "error-container": "#93000a",
+            "secondary": "#ffb4a8",
+            "on-primary-fixed": "#3e001f",
+            "on-surface-variant": "#dac0c6",
+            "on-tertiary-fixed-variant": "#06429a",
+            "on-secondary-fixed": "#410000",
+            "outline-variant": "#544247",
+            "inverse-on-surface": "#323031",
+            "surface-dim": "#151314",
+            "on-error": "#690005",
+            "on-secondary-container": "#ff9f90",
+            "on-surface": "#e7e1e2",
+            "tertiary": "#b0c6ff",
+            "primary-fixed": "#ffd9e3",
+            "secondary-container": "#822c20",
+            "primary-fixed-dim": "#ffb0ca",
+            "surface-container-highest": "#373435",
+            "primary": "#ffb0ca",
+            "on-secondary-fixed-variant": "#7f291e",
+            "on-background": "#e7e1e2",
+            "outline": "#a28b91",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "on-primary-fixed-variant": "#7f234b",
+            "secondary-fixed-dim": "#ffb4a8",
+            "primary-container": "#e0709a",
+            "inverse-primary": "#9e3b63",
+            "tertiary-fixed": "#d9e2ff",
+            "surface-tint": "#ffb0ca",
+            "surface-container-high": "#2c292a",
+            "on-secondary": "#61130a",
+            "tertiary-container": "#6a92ee",
+            "on-tertiary-fixed": "#001945",
+            "on-primary": "#620735",
+            "on-error-container": "#ffdad6"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "1rem",
+            "space-lg": "1.5rem",
+            "space-xl": "2rem",
+            "margin": "1rem",
+            "space-xs": "0.25rem",
+            "gutter-mobile": "0.75rem",
+            "space-md": "1rem",
+            "space-sm": "0.5rem",
+            "margin-mobile": "1rem"
+          },
+          "fontFamily": {
+            "display-currency": ["Inter"],
+            "label-lg": ["Inter"],
+            "headline-lg": ["Inter"],
+            "title-currency": ["Inter"],
+            "label-sm": ["Inter"],
+            "headline-md": ["Inter"],
+            "label-md": ["Inter"],
+            "body-lg": ["Inter"],
+            "body-md": ["Inter"],
+            "headline-sm": ["Inter"]
+          },
+          "fontSize": {
+            "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-lg": ["15px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "title-currency": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      line-height: 1;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+    }
+    @keyframes cursor-pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+    .animate-blink {
+      animation: cursor-pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    .tnum {
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-lowest text-on-surface antialiased flex justify-center items-center min-h-screen p-0 sm:p-4 select-none">
+<!-- Mobile Container Context (iPhone viewport reference: 390px x 844px) -->
+<main class="w-full max-w-[390px] h-[844px] bg-surface-container-lowest relative flex flex-col justify-between overflow-hidden shadow-2xl sm:rounded-[36px] border border-outline-variant/30">
+<!-- Top Bar & Content Container -->
+<div class="flex flex-col w-full px-margin pt-4 pb-2 z-10">
+<!-- Top Bar: Back, Step Pill, Security Indicator -->
+<header class="flex items-center justify-between h-[52px] w-full">
+<button aria-label="Go back" class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container border border-outline-variant/30 text-on-surface active:scale-95 transition-transform duration-150 hover:bg-surface-container-high">
+<span class="material-symbols-outlined text-[20px]" data-icon="arrow_back">arrow_back</span>
+</button>
+<!-- Step Indicator Badge -->
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container border border-outline-variant/40">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium tracking-wide tnum">Step 2 of 5</span>
+</div>
+<!-- Security Shield Icon -->
+<div class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container border border-outline-variant/30 text-primary-fixed-dim" title="Protected by 256-bit encryption">
+<span class="material-symbols-outlined text-[20px]" data-icon="shield" data-weight="fill" style="font-variation-settings: 'FILL' 1;">shield</span>
+</div>
+</header>
+<!-- Header Typography Cluster -->
+<section class="mt-4 flex flex-col">
+<!-- Eyebrow -->
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px] text-secondary" data-icon="lock">lock</span>
+<span class="font-label-sm text-label-sm font-semibold tracking-wider text-secondary">AUTHENTICATION</span>
+</div>
+<!-- Title -->
+<h1 class="mt-1 font-headline-md text-headline-md text-on-surface font-semibold tracking-tight">
+          Enter verification code
+        </h1>
+<!-- Subtext + Edit Destination Action -->
+<div class="mt-1.5 flex items-center gap-2 flex-wrap">
+<p class="font-body-md text-body-md text-on-surface-variant tnum">
+            Sent via SMS to <span class="font-body-md text-body-md font-medium text-on-surface">+234 801 ••• 5678</span>
+</p>
+<button class="inline-flex items-center text-primary-container font-label-md text-label-md font-semibold hover:underline active:opacity-80" type="button">
+            Edit
+          </button>
+</div>
+</section>
+<!-- 6-digit OTP Display Grid -->
+<section aria-label="One-Time Passcode Input" class="mt-6 w-full">
+<div class="grid grid-cols-6 gap-2 w-full">
+<!-- Slot 1: Entered '3' -->
+<div class="h-[56px] rounded-xl bg-surface-container border border-outline-variant/50 flex items-center justify-center text-center shadow-inner">
+<span class="font-headline-md text-headline-md font-bold text-on-surface tnum">3</span>
+</div>
+<!-- Slot 2: Entered '9' -->
+<div class="h-[56px] rounded-xl bg-surface-container border border-outline-variant/50 flex items-center justify-center text-center shadow-inner">
+<span class="font-headline-md text-headline-md font-bold text-on-surface tnum">9</span>
+</div>
+<!-- Slot 3: Entered '2' -->
+<div class="h-[56px] rounded-xl bg-surface-container border border-outline-variant/50 flex items-center justify-center text-center shadow-inner">
+<span class="font-headline-md text-headline-md font-bold text-on-surface tnum">2</span>
+</div>
+<!-- Slot 4: Active Focused with Cursor -->
+<div class="h-[56px] rounded-xl bg-surface-container-high border-2 border-primary-container flex items-center justify-center text-center shadow-[0_0_12px_rgba(224,112,154,0.15)] relative">
+<div class="w-[2px] h-6 bg-primary-container animate-blink rounded-full"></div>
+</div>
+<!-- Slot 5: Empty Slot (Dot placeholder) -->
+<div class="h-[56px] rounded-xl bg-surface-container border border-outline-variant/30 flex items-center justify-center text-center">
+<span class="w-2 h-2 rounded-full bg-outline-variant/60"></span>
+</div>
+<!-- Slot 6: Empty Slot (Dot placeholder) -->
+<div class="h-[56px] rounded-xl bg-surface-container border border-outline-variant/30 flex items-center justify-center text-center">
+<span class="w-2 h-2 rounded-full bg-outline-variant/60"></span>
+</div>
+</div>
+</section>
+<!-- Resend & Channel Switch Card -->
+<section class="mt-4 p-3 rounded-xl bg-surface-container border border-outline-variant/30 flex flex-col gap-2.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-outline" data-icon="timer">timer</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Resend code in</span>
+</div>
+<span class="font-label-lg text-label-lg font-bold text-secondary tnum bg-surface-container-lowest px-2 py-0.5 rounded border border-outline-variant/30">
+            0:43
+          </span>
+</div>
+<div class="h-[1px] w-full bg-outline-variant/20"></div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-md text-label-md">
+<span class="text-outline">Haven't received it?</span>
+<div class="flex items-center gap-3">
+<button class="inline-flex items-center gap-1 text-on-surface hover:text-primary-container font-medium transition-colors opacity-60 cursor-not-allowed">
+<span class="material-symbols-outlined text-[16px]" data-icon="sms">sms</span>
+              SMS
+            </button>
+<span class="text-outline-variant">|</span>
+<button class="inline-flex items-center gap-1 text-on-surface hover:text-primary-container font-medium transition-colors">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="chat">chat</span>
+              WhatsApp
+            </button>
+</div>
+</div>
+</section>
+<!-- Primary Action CTA -->
+<section class="mt-4 w-full">
+<button class="w-full h-[52px] rounded-xl bg-primary-container text-surface-container-lowest font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 shadow-lg active:scale-[0.98] transition-all hover:brightness-105" type="button">
+<span>Verify code</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</section>
+</div>
+<!-- Clean Numeric Keypad (Level 1 Surface #1C1819 Stacking) -->
+<footer class="w-full bg-surface-container-low border-t border-outline-variant/30 px-4 pt-2 pb-6 flex flex-col justify-end">
+<!-- 3x4 Grid -->
+<div class="grid grid-cols-3 gap-2 w-full max-w-[358px] mx-auto">
+<!-- Key 1 -->
+<button class="h-[52px] rounded-xl bg-surface-container border border-outline-variant/30 flex flex-col items-center justify-center text-on-surface active:bg-surface-bright active:scale-95 transition-all" type="button">
+<span class="font-headline-sm text-headline-sm font-semibold tnum leading-tight">1</span>
+<span class="text-[9px] tracking-widest text-outline -mt-0.5 opacity-40"> </span>
+</button>
+<!-- Key 2 -->
+<button class="h-[52px] rounded-xl bg-surface-container border border-outline-variant/30 flex flex-col items-center justify-center text-on-surface active:bg-surface-bright active:scale-95 transition-all" type="button">
+<span class="font-headline-sm text-headline-sm font-semibold tnum leading-tight">2</span>
+<span class="text-[9px] tracking-widest text-outline -mt-0.5">ABC</span>
+</button>
+<!-- Key 3 -->
+<button class="h-[52px] rounded-xl bg-surface-container border border-outline-variant/30 flex flex-col items-center justify-center text-on-surface active:bg-surface-bright active:scale-95 transition-all" type="button">
+<span class="font-headline-sm text-headline-sm font-semibold tnum leading-tight">3</span>
+<span class="text-[9px] tracking-widest text-outline -mt-0.5">DEF</span>
+</button>
+<!-- Key 4 -->
+<button class="h-[52px] rounded-xl bg-surface-container border border-outline-variant/30 flex flex-col items-center justify-center text-on-surface active:bg-surface-bright active:scale-95 transition-all" type="button">
+<span class="font-headline-sm text-headline-sm font-semibold tnum leading-tight">4</span>
+<span class="text-[9px] tracking-widest text-outline -mt-0.5">GHI</span>
+</button>
+<!-- Key 5 -->
+<button class="h-[52px] rounded-xl bg-surface-container border border-outline-variant/30 flex flex-col items-center justify-center text-on-surface active:bg-surface-bright active:scale-95 transition-all" type="button">
+<span class="font-headline-sm text-headline-sm font-semibold tnum leading-tight">5</span>
+<span class="text-[9px] tracking-widest text-outline -mt-0.5">JKL</span>
+</button>
+<!-- Key 6 -->
+<button class="h-[52px] rounded-xl bg-surface-container border border-outline-variant/30 flex flex-col items-center justify-center text-on-surface active:bg-surface-bright active:scale-95 transition-all" type="button">
+<span class="font-headline-sm text-headline-sm font-semibold tnum leading-tight">6</span>
+<span class="text-[9px] tracking-widest text-outline -mt-0.5">MNO</span>
+</button>
+<!-- Key 7 -->
+<button class="h-[52px] rounded-xl bg-surface-container border border-outline-variant/30 flex flex-col items-center justify-center text-on-surface active:bg-surface-bright active:scale-95 transition-all" type="button">
+<span class="font-headline-sm text-headline-sm font-semibold tnum leading-tight">7</span>
+<span class="text-[9px] tracking-widest text-outline -mt-0.5">PQRS</span>
+</button>
+<!-- Key 8 -->
+<button class="h-[52px] rounded-xl bg-surface-container border border-outline-variant/30 flex flex-col items-center justify-center text-on-surface active:bg-surface-bright active:scale-95 transition-all" type="button">
+<span class="font-headline-sm text-headline-sm font-semibold tnum leading-tight">8</span>
+<span class="text-[9px] tracking-widest text-outline -mt-0.5">TUV</span>
+</button>
+<!-- Key 9 -->
+<button class="h-[52px] rounded-xl bg-surface-container border border-outline-variant/30 flex flex-col items-center justify-center text-on-surface active:bg-surface-bright active:scale-95 transition-all" type="button">
+<span class="font-headline-sm text-headline-sm font-semibold tnum leading-tight">9</span>
+<span class="text-[9px] tracking-widest text-outline -mt-0.5">WXYZ</span>
+</button>
+<!-- Key: Empty / FaceID biometric fallback -->
+<button class="h-[52px] rounded-xl bg-transparent flex items-center justify-center text-outline hover:text-on-surface active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[22px]" data-icon="fingerprint">fingerprint</span>
+</button>
+<!-- Key 0 -->
+<button class="h-[52px] rounded-xl bg-surface-container border border-outline-variant/30 flex flex-col items-center justify-center text-on-surface active:bg-surface-bright active:scale-95 transition-all" type="button">
+<span class="font-headline-sm text-headline-sm font-semibold tnum leading-tight">0</span>
+<span class="text-[9px] tracking-widest text-outline -mt-0.5">+</span>
+</button>
+<!-- Key Backspace -->
+<button aria-label="Delete digit" class="h-[52px] rounded-xl bg-surface-container border border-outline-variant/30 flex items-center justify-center text-on-surface hover:text-error active:bg-surface-bright active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[22px]" data-icon="backspace">backspace</span>
+</button>
+</div>
+<!-- iOS Home Bar Indicator Safe Inset -->
+<div class="w-full flex justify-center pt-3">
+<div class="w-32 h-1 bg-outline-variant/40 rounded-full"></div>
+</div>
+</footer>
+</main>
+</body></html>

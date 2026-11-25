@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Close Account - YourApp</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary-fixed-dim": "#ffb0ca",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "tertiary-container": "#6a92ee",
+            "surface-container-low": "#1d1b1c",
+            "on-primary": "#620735",
+            "surface-bright": "#3b3839",
+            "on-tertiary-fixed": "#001945",
+            "primary-container": "#e0709a",
+            "surface-tint": "#ffb0ca",
+            "on-secondary": "#61130a",
+            "background": "#151314",
+            "on-error-container": "#ffdad6",
+            "outline": "#a28b91",
+            "outline-variant": "#544247",
+            "on-primary-container": "#5d0331",
+            "surface-dim": "#151314",
+            "surface-container": "#211f20",
+            "secondary-container": "#822c20",
+            "on-tertiary": "#002d6f",
+            "surface-container-high": "#2c292a",
+            "on-secondary-fixed-variant": "#7f291e",
+            "on-tertiary-fixed-variant": "#06429a",
+            "primary": "#ffb0ca",
+            "on-secondary-container": "#ff9f90",
+            "on-surface-variant": "#dac0c6",
+            "inverse-surface": "#e7e1e2",
+            "surface-variant": "#373435",
+            "inverse-primary": "#9e3b63",
+            "tertiary": "#b0c6ff",
+            "on-tertiary-container": "#002a69",
+            "secondary-fixed-dim": "#ffb4a8",
+            "surface-container-lowest": "#100e0f",
+            "secondary": "#ffb4a8",
+            "surface-container-highest": "#373435",
+            "on-error": "#690005",
+            "on-secondary-fixed": "#410000",
+            "on-primary-fixed-variant": "#7f234b",
+            "surface": "#151314",
+            "inverse-on-surface": "#323031",
+            "tertiary-fixed": "#d9e2ff",
+            "primary-fixed": "#ffd9e3",
+            "error-container": "#93000a",
+            "secondary-fixed": "#ffdad4",
+            "on-primary-fixed": "#3e001f",
+            "on-surface": "#e7e1e2",
+            "error": "#ffb4ab",
+            "on-background": "#e7e1e2"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "1rem",
+            "space-md": "1rem",
+            "space-sm": "0.5rem",
+            "space-xl": "2rem",
+            "space-lg": "1.5rem",
+            "gutter-mobile": "0.75rem",
+            "margin-mobile": "1rem",
+            "space-xs": "0.25rem",
+            "gutter": "1rem"
+          },
+          "fontFamily": {
+            "body-md": ["Inter"],
+            "label-lg": ["Inter"],
+            "label-md": ["Inter"],
+            "display-currency": ["Inter"],
+            "headline-md": ["Inter"],
+            "title-currency": ["Inter"],
+            "headline-lg": ["Inter"],
+            "body-lg": ["Inter"],
+            "headline-sm": ["Inter"],
+            "label-sm": ["Inter"]
+          },
+          "fontSize": {
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "label-lg": ["15px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "title-currency": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased flex justify-center min-h-screen selection:bg-primary-container selection:text-on-primary-container">
+<!-- Mobile Viewport Container: 390px base width, fluid maximum -->
+<main class="w-full max-w-[430px] min-h-screen bg-surface-container-lowest flex flex-col relative pb-safe">
+<!-- Top App Bar (Task Sub-Screen: Back + Title, navigation shell suppressed per mandate) -->
+<header class="sticky top-0 z-40 bg-surface/90 backdrop-blur-md px-margin py-space-sm flex items-center justify-between min-h-[56px] border-b border-outline-variant/30">
+<button aria-label="Go back" class="w-10 h-10 -ml-1 rounded-full flex items-center justify-center text-on-surface hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-headline-sm text-headline-sm text-on-surface font-semibold tracking-tight">Close Account</h1>
+<button aria-label="Help and Support" class="w-10 h-10 -mr-1 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+</header>
+<!-- Scrollable Content Canvas -->
+<div class="flex-1 px-margin py-space-md space-y-space-md pb-12">
+<!-- Critical Warning / Balance Status Banner -->
+<section aria-labelledby="status-banner-title" class="bg-surface-container rounded-xl border border-outline-variant p-space-md relative overflow-hidden shadow-lg">
+<div class="absolute -right-8 -top-8 w-28 h-28 bg-error/5 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-start gap-space-sm mb-space-sm">
+<div class="w-9 h-9 rounded-full bg-error-container/40 flex items-center justify-center shrink-0 border border-error/30 text-error">
+<span class="material-symbols-outlined" data-icon="warning">warning</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant tracking-wider uppercase">Active Account</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-error/15 text-error font-medium border border-error/30">Action Required</span>
+</div>
+<h2 class="font-label-lg text-label-lg text-on-surface mt-0.5" id="status-banner-title">YourApp Tier 2 Savings</h2>
+<p class="font-body-md text-body-md text-on-surface-variant font-mono text-xs">0124 892 019</p>
+</div>
+</div>
+<!-- Balance Metric Box -->
+<div class="mt-space-sm pt-space-sm border-t border-outline-variant/40 bg-surface-container-low/60 rounded-lg p-space-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant block mb-1">Remaining Available Balance</span>
+<div class="flex items-baseline gap-1">
+<span class="font-display-currency text-display-currency text-primary tracking-tight">₦142,850<span class="text-xl font-normal opacity-85">.40</span></span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2 text-xs leading-relaxed">
+            To close your account, your remaining balance must be <span class="font-semibold text-on-surface">₦0.00</span> and all pending obligations settled.
+          </p>
+</div>
+</section>
+<!-- Closure Prerequisites Checklist -->
+<section aria-labelledby="prerequisites-heading" class="space-y-space-sm">
+<div class="flex items-center justify-between px-0.5">
+<h3 class="font-headline-sm text-headline-sm text-on-surface" id="prerequisites-heading">Closure Checklist</h3>
+<span class="font-label-sm text-label-sm text-primary font-medium">1 Pending item</span>
+</div>
+<div class="space-y-2.5">
+<!-- Item 1: Requires Action (Balance Sweep) -->
+<article class="bg-surface-container rounded-xl border border-error/40 p-space-md relative overflow-hidden transition-colors">
+<div class="flex items-start gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-error-container/30 border border-error/40 flex items-center justify-center shrink-0 text-error">
+<span class="material-symbols-outlined text-[18px]" data-icon="account_balance_wallet">account_balance_wallet</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<h4 class="font-label-lg text-label-lg text-on-surface font-semibold">Zero Available Balance</h4>
+<span class="font-label-sm text-label-sm text-error bg-error/10 px-2 py-0.5 rounded-full border border-error/20">Requires Action</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant text-xs mt-1">
+                  You currently hold <strong class="text-on-surface font-medium">₦142,850.40</strong>. Transfer funds to another Nigerian commercial bank or microfinance institution.
+                </p>
+<!-- Action Button for Item 1 -->
+<button class="mt-space-sm w-full h-[46px] rounded-xl bg-primary-container text-on-primary-container font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 hover:brightness-110 active:scale-[0.98] transition-all shadow-md" type="button">
+<span>Transfer Full Balance</span>
+<span class="material-symbols-outlined text-lg" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Item 2: Cleared (Ajo / Obligations) -->
+<article class="bg-surface-container rounded-xl border border-outline-variant/50 p-space-md flex items-start gap-space-sm opacity-95">
+<div class="w-8 h-8 rounded-full bg-[#4CC38A]/15 border border-[#4CC38A]/30 flex items-center justify-center shrink-0 text-[#4CC38A]">
+<span class="material-symbols-outlined text-[18px]" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<h4 class="font-label-lg text-label-lg text-on-surface">Active Cooperative &amp; Ajo Obligations</h4>
+<span class="font-label-sm text-label-sm text-[#4CC38A] bg-[#4CC38A]/10 px-2 py-0.5 rounded-full border border-[#4CC38A]/20">Cleared</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant text-xs mt-0.5">
+                No active loans, guarantor commitments, or pending circle payouts.
+              </p>
+</div>
+</article>
+<!-- Item 3: Warning notice (Active Virtual Cards) -->
+<article class="bg-surface-container rounded-xl border border-outline-variant/50 p-space-md flex items-start gap-space-sm opacity-95">
+<div class="w-8 h-8 rounded-full bg-[#E3B341]/15 border border-[#E3B341]/30 flex items-center justify-center shrink-0 text-[#E3B341]">
+<span class="material-symbols-outlined text-[18px]" data-icon="credit_card">credit_card</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<h4 class="font-label-lg text-label-lg text-on-surface">Active Virtual Cards</h4>
+<span class="font-label-sm text-label-sm text-[#E3B341] bg-[#E3B341]/10 px-2 py-0.5 rounded-full border border-[#E3B341]/20">Will Deactivate</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant text-xs mt-0.5">
+                2 active cards will be permanently destroyed upon final execution.
+              </p>
+</div>
+</article>
+<!-- Item 4: Cleared (Escrow deals) -->
+<article class="bg-surface-container rounded-xl border border-outline-variant/50 p-space-md flex items-start gap-space-sm opacity-95">
+<div class="w-8 h-8 rounded-full bg-[#4CC38A]/15 border border-[#4CC38A]/30 flex items-center justify-center shrink-0 text-[#4CC38A]">
+<span class="material-symbols-outlined text-[18px]" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<h4 class="font-label-lg text-label-lg text-on-surface">SafeEscrow Deals</h4>
+<span class="font-label-sm text-label-sm text-[#4CC38A] bg-[#4CC38A]/10 px-2 py-0.5 rounded-full border border-[#4CC38A]/20">Cleared</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant text-xs mt-0.5">
+                0 active escrow transactions in progress or awaiting verification.
+              </p>
+</div>
+</article>
+</div>
+</section>
+<!-- Reason for Leaving Section -->
+<section aria-labelledby="reason-heading" class="bg-surface-container rounded-xl border border-outline-variant/60 p-space-md space-y-space-sm">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface" id="reason-heading">Why are you leaving?</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-xs mt-0.5">Your honest input helps us craft a more reliable financial platform.</p>
+</div>
+<!-- Selectable Reason Chips -->
+<fieldset class="grid grid-cols-2 gap-2 pt-1" id="reason-group">
+<legend class="sr-only">Select your primary reason for leaving</legend>
+<label class="cursor-pointer">
+<input checked="" class="peer sr-only" name="closure_reason" type="radio" value="fees"/>
+<div class="h-11 px-3 rounded-xl border border-outline-variant/60 bg-surface-container-low text-on-surface-variant peer-checked:border-primary-container peer-checked:bg-primary-container/10 peer-checked:text-primary font-label-md text-label-md flex items-center justify-center text-center transition-all">
+              High fees / Charges
+            </div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="closure_reason" type="radio" value="switching"/>
+<div class="h-11 px-3 rounded-xl border border-outline-variant/60 bg-surface-container-low text-on-surface-variant peer-checked:border-primary-container peer-checked:bg-primary-container/10 peer-checked:text-primary font-label-md text-label-md flex items-center justify-center text-center transition-all">
+              Switching bank
+            </div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="closure_reason" type="radio" value="hiatus"/>
+<div class="h-11 px-3 rounded-xl border border-outline-variant/60 bg-surface-container-low text-on-surface-variant peer-checked:border-primary-container peer-checked:bg-primary-container/10 peer-checked:text-primary font-label-md text-label-md flex items-center justify-center text-center transition-all">
+              Temporary hiatus
+            </div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="closure_reason" type="radio" value="other"/>
+<div class="h-11 px-3 rounded-xl border border-outline-variant/60 bg-surface-container-low text-on-surface-variant peer-checked:border-primary-container peer-checked:bg-primary-container/10 peer-checked:text-primary font-label-md text-label-md flex items-center justify-center text-center transition-all">
+              Other reason
+            </div>
+</label>
+</fieldset>
+<!-- Optional Feedback Input -->
+<div class="pt-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant block mb-1.5" for="feedback-input">Additional comments (Optional)</label>
+<textarea class="w-full bg-surface-container-low border border-outline-variant/50 rounded-xl px-3.5 py-2.5 font-body-md text-body-md text-on-surface placeholder:text-outline text-xs focus:outline-none focus:border-primary-container transition-colors resize-none" id="feedback-input" placeholder="Help us improve YourApp..." rows="2"></textarea>
+</div>
+</section>
+<!-- What Happens Next Regulatory & Informational Box -->
+<section aria-labelledby="next-steps-heading" class="bg-surface-container-high/60 rounded-xl border border-outline-variant/40 p-space-md space-y-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="policy">policy</span>
+<h3 class="font-label-lg text-label-lg text-on-surface font-semibold" id="next-steps-heading">What happens next?</h3>
+</div>
+<ul class="space-y-2.5 font-body-md text-body-md text-on-surface-variant text-xs">
+<li class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[16px] text-primary shrink-0 mt-0.5" data-icon="fiber_manual_record">fiber_manual_record</span>
+<span>Immediate termination of all active physical/virtual debit cards and payment links.</span>
+</li>
+<li class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[16px] text-primary shrink-0 mt-0.5" data-icon="fiber_manual_record">fiber_manual_record</span>
+<span>A final comprehensive, tax-compliant closure statement will be dispatched to your registered email address within 24 hours.</span>
+</li>
+<li class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[16px] text-primary shrink-0 mt-0.5" data-icon="fiber_manual_record">fiber_manual_record</span>
+<span>You retain full regulatory entitlement to re-open your account within <strong>30 days</strong> under standard Central Bank of Nigeria (CBN) cooling-off provisions.</span>
+</li>
+</ul>
+</section>
+<!-- Action Panel & Alternatives -->
+<div class="space-y-3 pt-2">
+<!-- Prominent Alternative Action: Freeze instead of Close -->
+<button class="w-full min-h-[52px] rounded-xl bg-surface-container-high border border-outline-variant hover:bg-surface-variant text-on-surface font-label-lg text-label-lg flex items-center justify-center gap-2 active:scale-[0.98] transition-all" type="button">
+<span class="material-symbols-outlined text-lg text-primary" data-icon="pause_circle">pause_circle</span>
+<span>Keep Account Open &amp; Freeze Transactions</span>
+</button>
+<!-- Destructive Action Button (Disabled state due to positive balance) -->
+<div class="relative group">
+<button aria-disabled="true" class="w-full min-h-[52px] rounded-xl bg-error-container/20 border border-error/30 text-error/60 font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 cursor-not-allowed" disabled="" type="button">
+<span class="material-symbols-outlined text-lg" data-icon="delete_forever">delete_forever</span>
+<span>Proceed to Account Closure</span>
+</button>
+<!-- Explanatory Tooltip / Helper Text for Disabled State -->
+<p class="text-center font-label-sm text-label-sm text-error/90 mt-2 flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]" data-icon="lock">lock</span>
+<span>Action locked: Sweep ₦142,850.40 balance to enable final closure</span>
+</p>
+</div>
+</div>
+<!-- Regulatory Footer note -->
+<footer class="pt-4 pb-2 text-center">
+<p class="font-label-sm text-label-sm text-outline text-[11px] leading-tight">
+          Licensed by the Central Bank of Nigeria (CBN). Insured by the NDIC.
+        </p>
+</footer>
+</div>
+</main>
+</body></html>

@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Reconciliation &amp; Clearing Console - YourApp Credit Ops</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-error-container": "#ffdad6",
+            "tertiary-fixed": "#d9e2ff",
+            "background": "#151314",
+            "surface-tint": "#ffb0ca",
+            "error": "#ffb4ab",
+            "surface": "#151314",
+            "inverse-primary": "#9e3b63",
+            "on-secondary-fixed": "#410000",
+            "primary": "#ffb0ca",
+            "secondary": "#ffb4a8",
+            "on-tertiary-container": "#002a69",
+            "on-background": "#e7e1e2",
+            "tertiary-container": "#6a92ee",
+            "outline-variant": "#544247",
+            "outline": "#a28b91",
+            "on-surface-variant": "#dac0c6",
+            "on-error": "#690005",
+            "tertiary": "#b0c6ff",
+            "on-secondary": "#61130a",
+            "secondary-fixed-dim": "#ffb4a8",
+            "surface-container": "#211f20",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "on-secondary-container": "#ff9f90",
+            "surface-container-lowest": "#100e0f",
+            "on-primary-fixed-variant": "#7f234b",
+            "on-tertiary-fixed": "#001945",
+            "primary-container": "#e0709a",
+            "error-container": "#93000a",
+            "surface-bright": "#3b3839",
+            "surface-container-highest": "#373435",
+            "primary-fixed": "#ffd9e3",
+            "primary-fixed-dim": "#ffb0ca",
+            "on-primary": "#620735",
+            "on-tertiary": "#002d6f",
+            "secondary-container": "#822c20",
+            "on-secondary-fixed-variant": "#7f291e",
+            "on-primary-fixed": "#3e001f",
+            "on-surface": "#e7e1e2",
+            "surface-container-low": "#1d1b1c",
+            "inverse-surface": "#e7e1e2",
+            "secondary-fixed": "#ffdad4",
+            "inverse-on-surface": "#323031",
+            "on-primary-container": "#5d0331",
+            "surface-dim": "#151314",
+            "surface-container-high": "#2c292a",
+            "on-tertiary-fixed-variant": "#06429a",
+            "surface-variant": "#373435"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-md": "1rem",
+            "space-sm": "0.5rem",
+            "space-xs": "0.25rem",
+            "margin": "1rem",
+            "space-lg": "1.5rem",
+            "space-xl": "2rem",
+            "gutter-mobile": "0.75rem",
+            "margin-mobile": "1rem",
+            "gutter": "1rem"
+          },
+          "fontFamily": {
+            "body-lg": ["Inter"],
+            "label-lg": ["Inter"],
+            "label-md": ["Inter"],
+            "headline-lg": ["Inter"],
+            "headline-sm": ["Inter"],
+            "display-currency": ["Inter"],
+            "label-sm": ["Inter"],
+            "headline-md": ["Inter"],
+            "title-currency": ["Inter"],
+            "body-md": ["Inter"]
+          },
+          "fontSize": {
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "label-lg": ["15px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "title-currency": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 20px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      -webkit-font-smoothing: antialiased;
+      vertical-align: middle;
+    }
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden min-h-screen">
+<!-- Side Navigation Bar (Anchored Component) -->
+<aside class="fixed left-0 top-0 h-full w-72 flex flex-col justify-between py-space-xl px-space-lg overflow-y-auto bg-surface-container-lowest border-r border-outline-variant z-30 shadow-none">
+<!-- Brand Crest & Header -->
+<div class="flex flex-col gap-space-lg">
+<div class="flex items-center gap-3 px-1">
+<div class="w-10 h-10 rounded-xl bg-surface-container-high border border-outline-variant flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl" data-icon="account_balance">account_balance</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-primary tracking-tight">YourApp Credit Ops</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Enterprise Portal</span>
+</div>
+</div>
+<!-- Navigation Tabs Cluster -->
+<nav class="flex flex-col gap-1.5 mt-2">
+<!-- Tab 1: Dashboard -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-container hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<!-- Tab 2: Applications Queue -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-container hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="pending_actions">pending_actions</span>
+<span>Applications Queue</span>
+</a>
+<!-- Tab 3: Credit Portfolio & Collections -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-container hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span>Credit Portfolio &amp; Collections</span>
+</a>
+<!-- Tab 4: Reconciliation & Clearing (Active Task) -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg bg-surface-container text-primary font-label-md text-label-md border border-outline-variant" href="#">
+<span class="material-symbols-outlined text-primary" data-icon="sync_alt" style="font-variation-settings: 'FILL' 1;">sync_alt</span>
+<span>Reconciliation &amp; Clearing</span>
+</a>
+<!-- Tab 5: Product Configuration -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-container hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="tune">tune</span>
+<span>Product Configuration</span>
+</a>
+<!-- Tab 6: Partner Settlement -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-container hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="handshake">handshake</span>
+<span>Partner Settlement</span>
+</a>
+<!-- Tab 7: Audit Log -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-container hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span>Audit Log</span>
+</a>
+</nav>
+</div>
+<!-- Footer Controls -->
+<div class="flex flex-col gap-1 border-t border-outline-variant pt-space-md">
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-container hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="admin_panel_settings">admin_panel_settings</span>
+<span>Security &amp; Settings</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-container hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span>Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- Main Viewport Canvas (Docked to SideNav) -->
+<div class="ml-72 min-h-screen flex flex-col bg-surface">
+<!-- TopNavBar (Anchored Component) -->
+<header class="sticky top-0 h-16 w-full flex items-center justify-between px-space-xl bg-surface-container-lowest border-b border-outline-variant z-20">
+<!-- Breadcrumbs & Scope Context -->
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-2 font-label-sm text-label-sm text-on-surface-variant">
+<span>Operations</span>
+<span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+<span>Financial Accounting</span>
+<span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+<span class="text-on-surface font-label-md text-label-md">Core Settlement &amp; Clearing Reconciliation</span>
+</div>
+</div>
+<!-- Trailing Controls: Date, Dual Quorum & Profile -->
+<div class="flex items-center gap-4">
+<!-- Clearing Date Selector -->
+<div class="flex items-center gap-2 bg-surface-container-low border border-outline-variant px-3 py-1.5 rounded-lg">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="calendar_today">calendar_today</span>
+<span class="font-label-md text-label-md text-on-surface">Clearing Date:</span>
+<span class="font-label-md text-label-md text-primary font-semibold">24 Feb 2026</span>
+<span class="material-symbols-outlined text-on-surface-variant text-base cursor-pointer" data-icon="arrow_drop_down">arrow_drop_down</span>
+</div>
+<!-- Dual Authorization Quorum Indicator -->
+<div class="flex items-center gap-2 bg-surface-container-low border border-outline-variant px-3 py-1.5 rounded-full">
+<div class="w-2.5 h-2.5 rounded-full bg-tertiary-container animate-pulse"></div>
+<span class="font-label-sm text-label-sm text-on-surface">Dual Authorization:</span>
+<span class="font-label-sm text-label-sm font-semibold text-tertiary">Quorum Met (2/2)</span>
+</div>
+<!-- Trailing Action Icons -->
+<div class="flex items-center gap-1 border-l border-outline-variant pl-3">
+<button class="w-9 h-9 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" title="Notifications">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="w-9 h-9 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" title="Help &amp; Guides">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+</div>
+<!-- Passport Identity Badge -->
+<div class="flex items-center gap-3 border-l border-outline-variant pl-3">
+<div class="w-9 h-9 rounded-full bg-surface-container-high border border-outline-variant flex items-center justify-center text-primary font-label-md text-label-md">
+            SO
+          </div>
+<div class="flex flex-col text-left">
+<span class="font-label-sm text-label-sm text-on-surface font-medium">Lagos Island Main (012)</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Chief Reconciler #8891</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Work Area -->
+<main class="flex-1 p-space-xl flex flex-col gap-6">
+<!-- Section: KPI Financial Integrity Cards (4 Columns) -->
+<section class="grid grid-cols-4 gap-4">
+<!-- Card 1: Settlement Pool Balance -->
+<div class="bg-surface-container-low border border-outline-variant rounded-xl p-space-lg flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-md text-label-md">Settlement Pool Balance</span>
+<span class="material-symbols-outlined text-primary text-xl" data-icon="account_balance">account_balance</span>
+</div>
+<div class="mt-3">
+<div class="font-headline-md text-headline-md text-on-surface tabular-nums">₦84,250,000.00</div>
+<div class="mt-1 flex items-center gap-1.5 font-label-sm text-label-sm text-on-surface-variant">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+<span>Zenith Bank Foundation Acct #1019283741</span>
+</div>
+</div>
+<div class="mt-3 pt-2.5 border-t border-outline-variant flex items-center justify-between text-label-sm font-label-sm">
+<span class="text-on-surface-variant">Reserve Status</span>
+<span class="text-primary font-semibold">100% Fully Funded</span>
+</div>
+</div>
+<!-- Card 2: Auto-Reconciled Matched Volume -->
+<div class="bg-surface-container-low border border-outline-variant rounded-xl p-space-lg flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-md text-label-md">Auto-Reconciled Volume</span>
+<span class="material-symbols-outlined text-tertiary-container text-xl" data-icon="task_alt">task_alt</span>
+</div>
+<div class="mt-3">
+<div class="font-headline-md text-headline-md text-on-surface tabular-nums">₦1,416,600,000.00</div>
+<div class="mt-1 flex items-center gap-1.5 font-label-sm text-label-sm text-tertiary">
+<span class="material-symbols-outlined text-sm" data-icon="verified">verified</span>
+<span>99.7% Matched (53,053 Txns)</span>
+</div>
+</div>
+<div class="mt-3 pt-2.5 border-t border-outline-variant flex items-center justify-between text-label-sm font-label-sm">
+<span class="text-on-surface-variant">Automated Ruleset</span>
+<span class="text-on-surface font-semibold">ISO 20022 Matcher v4.2</span>
+</div>
+</div>
+<!-- Card 3: Unreconciled Suspense Balance -->
+<div class="bg-surface-container-low border border-outline-variant rounded-xl p-space-lg flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-md text-label-md">Unreconciled Suspense</span>
+<span class="material-symbols-outlined text-secondary text-xl" data-icon="pending">pending</span>
+</div>
+<div class="mt-3">
+<div class="font-headline-md text-headline-md text-secondary tabular-nums">₦4,250,000.00</div>
+<div class="mt-1 flex items-center gap-1.5 font-label-sm text-label-sm text-secondary">
+<span class="material-symbols-outlined text-sm" data-icon="warning">warning</span>
+<span>7 Exceptions Pending Action</span>
+</div>
+</div>
+<div class="mt-3 pt-2.5 border-t border-outline-variant flex items-center justify-between text-label-sm font-label-sm">
+<span class="text-on-surface-variant">Target Ledger</span>
+<span class="text-on-surface font-semibold">Suspense Acct #9901</span>
+</div>
+</div>
+<!-- Card 4: Net Settlement Discrepancy -->
+<div class="bg-surface-container-low border border-outline-variant rounded-xl p-space-lg flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-md text-label-md">Net Settlement Discrepancy</span>
+<span class="material-symbols-outlined text-primary text-xl" data-icon="balance">balance</span>
+</div>
+<div class="mt-3">
+<div class="font-headline-md text-headline-md text-on-surface tabular-nums">₦0.00</div>
+<div class="mt-1 flex items-center gap-1.5 font-label-sm text-label-sm text-tertiary">
+<span class="material-symbols-outlined text-sm" data-icon="check_circle">check_circle</span>
+<span>Zero Variance Across All Switches</span>
+</div>
+</div>
+<div class="mt-3 pt-2.5 border-t border-outline-variant flex items-center justify-between text-label-sm font-label-sm">
+<span class="text-on-surface-variant">Cross-Check Audit</span>
+<span class="text-primary font-semibold">NIBSS • ISW • NQR Tied</span>
+</div>
+</div>
+</section>
+<!-- Section: Universal Filter & Switch Reconciler Toolbar -->
+<section class="bg-surface-container-low border border-outline-variant rounded-xl p-4 flex flex-col gap-4">
+<!-- Switch Tabs -->
+<div class="flex items-center justify-between border-b border-outline-variant pb-3">
+<div class="flex items-center gap-2">
+<button class="px-4 py-2 rounded-lg bg-surface-container text-primary font-label-md text-label-md border border-outline-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-base" data-icon="layers">layers</span>
+<span>All Clearing Switches</span>
+<span class="px-2 py-0.5 rounded-full bg-primary-container text-on-primary-container text-xs font-semibold">53,060</span>
+</button>
+<button class="px-4 py-2 rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-container hover:text-on-surface transition-colors flex items-center gap-2">
+<span>NIBSS NIP Settlement</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant text-xs font-semibold">41,202</span>
+</button>
+<button class="px-4 py-2 rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-container hover:text-on-surface transition-colors flex items-center gap-2">
+<span>Interswitch Card Network</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant text-xs font-semibold">9,410</span>
+</button>
+<button class="px-4 py-2 rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-container hover:text-on-surface transition-colors flex items-center gap-2">
+<span>NQR Clearing</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant text-xs font-semibold">2,448</span>
+</button>
+<button class="px-4 py-2 rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-container hover:text-on-surface transition-colors flex items-center gap-2">
+<span>Zenith Bank Internal Mirror</span>
+</button>
+</div>
+<!-- Quick Actions -->
+<div class="flex items-center gap-3">
+<button class="h-10 px-4 rounded-lg bg-surface-container-high border border-outline-variant text-on-surface font-label-md text-label-md hover:bg-surface-bright transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-base" data-icon="autorenew">autorenew</span>
+<span>Run Instant Auto-Matcher Cron</span>
+</button>
+<button class="h-10 px-4 rounded-lg bg-surface-container-high border border-outline-variant text-on-surface font-label-md text-label-md hover:bg-surface-bright transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-base" data-icon="file_download">file_download</span>
+<span>Export Daily CBN Clearing Pack (PDF/CSV)</span>
+</button>
+</div>
+</div>
+<!-- Filter Chips & Search -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mr-1">Triage Filters:</span>
+<!-- Chip 1: Unmatched Only -->
+<button class="h-8 px-3 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm flex items-center gap-1.5 border border-outline-variant">
+<span class="material-symbols-outlined text-sm" data-icon="filter_alt">filter_alt</span>
+<span>Unmatched Only (7)</span>
+<span class="material-symbols-outlined text-sm cursor-pointer" data-icon="close">close</span>
+</button>
+<!-- Chip 2: Aging > 24 Hours -->
+<button class="h-8 px-3 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm flex items-center gap-1.5 border border-outline-variant hover:bg-surface-bright transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="schedule">schedule</span>
+<span>Aging &gt; 24 Hours (2)</span>
+</button>
+<!-- Chip 3: Manual Adjustment Pending -->
+<button class="h-8 px-3 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm flex items-center gap-1.5 border border-outline-variant hover:bg-surface-bright transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="draw">draw</span>
+<span>Manual Adjustment Pending (3)</span>
+</button>
+</div>
+<!-- Search Input -->
+<div class="flex items-center gap-2 bg-surface-container border border-outline-variant rounded-lg px-3 py-1.5 w-80">
+<span class="material-symbols-outlined text-on-surface-variant text-base" data-icon="search">search</span>
+<input class="bg-transparent border-0 p-0 text-on-surface placeholder:text-on-surface-variant font-body-md text-body-md focus:ring-0 w-full outline-none" placeholder="Filter by Session ID, Stan, or Reference..." type="text"/>
+</div>
+</div>
+</section>
+<!-- Main Reconciliation Split Screen -->
+<section class="grid grid-cols-12 gap-6 items-start">
+<!-- Left/Center Column: Exception Investigation & Ledger Comparison Table (8 Cols) -->
+<div class="col-span-8 bg-surface-container-low border border-outline-variant rounded-xl overflow-hidden flex flex-col">
+<!-- Table Header Banner -->
+<div class="px-space-lg py-3 bg-surface-container border-b border-outline-variant flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="font-headline-sm text-headline-sm text-on-surface">Clearing Exceptions &amp; Discrepancy Queue</span>
+<span class="px-2.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold">3 Active Investigated</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-base" data-icon="sync">sync</span>
+<span>Live Switch Polling: 30s</span>
+</div>
+</div>
+<!-- Table Container -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-outline-variant bg-surface-container-lowest font-label-sm text-label-sm text-on-surface-variant">
+<th class="py-3 px-4">Cycle / Timestamp</th>
+<th class="py-3 px-4">Switch Reference</th>
+<th class="py-3 px-4">Channel</th>
+<th class="py-3 px-4 text-right">Internal Ledger</th>
+<th class="py-3 px-4 text-right">External Switch</th>
+<th class="py-3 px-4 text-right">Variance</th>
+<th class="py-3 px-4">Status &amp; Root Cause</th>
+<th class="py-3 px-4 text-center">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant font-body-md text-body-md">
+<!-- Row 1: High Discrepancy (Selected for Dossier) -->
+<tr class="bg-surface-container/60 hover:bg-surface-container transition-colors">
+<td class="py-3.5 px-4">
+<div class="font-label-md text-label-md text-on-surface font-semibold">Cycle #3 (14:00)</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">14:22:09 WAT</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-label-md text-label-md text-primary font-semibold">Ref #SW-40291</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Session: 9990142602</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-surface-container-high text-on-surface border border-outline-variant">
+                      NIBSS Outward
+                    </span>
+</td>
+<td class="py-3.5 px-4 text-right tabular-nums text-on-surface font-medium">₦2,500,000.00</td>
+<td class="py-3.5 px-4 text-right tabular-nums text-on-surface-variant">₦0.00</td>
+<td class="py-3.5 px-4 text-right tabular-nums text-secondary font-semibold">-₦2,500,000.00</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-secondary" data-icon="error">error</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">Pending Switch Conf.</span>
+</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant truncate max-w-[180px]" title="Timeout at NIBSS Gateway during peak window">
+                      Timeout at NIBSS Gateway peak
+                    </div>
+</td>
+<td class="py-3.5 px-4 text-center">
+<button class="px-3 py-1.5 rounded-lg bg-primary-container text-on-primary-container font-label-sm text-label-sm font-semibold hover:opacity-90 transition-opacity">
+                      Investigating
+                    </button>
+</td>
+</tr>
+<!-- Row 2: Auto-Cleared Matched Transaction -->
+<tr class="hover:bg-surface-container-high/40 transition-colors">
+<td class="py-3.5 px-4">
+<div class="font-label-md text-label-md text-on-surface font-semibold">Cycle #2 (11:00)</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">11:05:42 WAT</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-label-md text-label-md text-on-surface font-semibold">Ref #ISW-99120</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">STAN: 401823</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-surface-container-high text-on-surface border border-outline-variant">
+                      Interswitch ATM/POS
+                    </span>
+</td>
+<td class="py-3.5 px-4 text-right tabular-nums text-on-surface font-medium">₦150,000.00</td>
+<td class="py-3.5 px-4 text-right tabular-nums text-on-surface font-medium">₦150,000.00</td>
+<td class="py-3.5 px-4 text-right tabular-nums text-tertiary font-semibold">₦0.00</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-tertiary" data-icon="check_circle">check_circle</span>
+<span class="font-label-sm text-label-sm text-tertiary font-semibold">Matched (Auto-Cleared)</span>
+</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">
+                      Settled via Central Batch
+                    </div>
+</td>
+<td class="py-3.5 px-4 text-center">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm hover:text-on-surface transition-colors">
+                      View Audit
+                    </button>
+</td>
+</tr>
+<!-- Row 3: Stamp Duty Mismatch Discrepancy -->
+<tr class="hover:bg-surface-container-high/40 transition-colors">
+<td class="py-3.5 px-4">
+<div class="font-label-md text-label-md text-on-surface font-semibold">Cycle #1 (08:00)</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">08:44:17 WAT</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-label-md text-label-md text-on-surface font-semibold">Ref #NQR-10822</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Merchant: 881023</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-surface-container-high text-on-surface border border-outline-variant">
+                      NQR Inward
+                    </span>
+</td>
+<td class="py-3.5 px-4 text-right tabular-nums text-on-surface font-medium">₦45,000.00</td>
+<td class="py-3.5 px-4 text-right tabular-nums text-on-surface font-medium">₦44,950.00</td>
+<td class="py-3.5 px-4 text-right tabular-nums text-secondary font-semibold">-₦50.00</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-secondary" data-icon="schedule">schedule</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">Awaiting Ledger Adj.</span>
+</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">
+                      Stamp Duty fee deduction mismatch
+                    </div>
+</td>
+<td class="py-3.5 px-4 text-center">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-high text-on-surface font-label-sm text-label-sm hover:bg-surface-bright transition-colors">
+                      Adjust ₦50
+                    </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Bottom Pagination / Controls -->
+<div class="p-3 bg-surface-container-lowest border-t border-outline-variant flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span>Displaying 3 of 7 flagged exception records</span>
+<div class="flex items-center gap-2">
+<button class="px-2.5 py-1 rounded bg-surface-container border border-outline-variant text-on-surface-variant hover:text-on-surface disabled:opacity-50" disabled="">Previous</button>
+<span class="px-2 font-semibold text-on-surface">Page 1 of 3</span>
+<button class="px-2.5 py-1 rounded bg-surface-container border border-outline-variant text-on-surface-variant hover:text-on-surface">Next</button>
+</div>
+</div>
+</div>
+<!-- Right Column: Settlement Exception Resolution & Journal Entry Panel (4 Cols / w-96 equivalent) -->
+<div class="col-span-4 bg-surface-container-low border border-outline-variant rounded-xl p-space-lg flex flex-col gap-5">
+<!-- Exception Dossier Header -->
+<div class="flex items-center justify-between border-b border-outline-variant pb-3">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-primary font-semibold uppercase tracking-wider">Exception Dossier</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Ref #SW-40291</span>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Disputed Balance</span>
+<div class="font-headline-sm text-headline-sm text-secondary tabular-nums">₦2,500,000.00</div>
+</div>
+</div>
+<!-- Triangulation Ledger Comparison Card -->
+<div class="bg-surface-container border border-outline-variant rounded-lg p-3.5 flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-primary" data-icon="hub">hub</span>
+<span>Triangulation Audit Logs</span>
+</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Cycle 3 Match</span>
+</div>
+<!-- Ledger Step 1: Core Ledger -->
+<div class="flex items-center justify-between text-label-sm font-label-sm border-b border-outline-variant/60 pb-2">
+<div class="flex flex-col">
+<span class="text-on-surface font-medium">1. YourApp Core Ledger</span>
+<span class="text-on-surface-variant text-xs">Customer Dr #002919241</span>
+</div>
+<div class="text-right">
+<span class="text-on-surface font-semibold tabular-nums">₦2,500,000.00</span>
+<div class="text-tertiary text-xs flex items-center justify-end gap-1">
+<span class="material-symbols-outlined text-xs" data-icon="check">check</span> Debited
+                </div>
+</div>
+</div>
+<!-- Ledger Step 2: NIBSS NIP Raw Log -->
+<div class="flex items-center justify-between text-label-sm font-label-sm border-b border-outline-variant/60 pb-2">
+<div class="flex flex-col">
+<span class="text-on-surface font-medium">2. NIBSS NIP Raw Log</span>
+<span class="text-on-surface-variant text-xs">Session: 9990142602</span>
+</div>
+<div class="text-right">
+<span class="text-secondary font-semibold tabular-nums">₦0.00</span>
+<div class="text-secondary text-xs flex items-center justify-end gap-1">
+<span class="material-symbols-outlined text-xs" data-icon="close">close</span> Gateway 91 Timeout
+                </div>
+</div>
+</div>
+<!-- Ledger Step 3: Zenith Settlement Account -->
+<div class="flex items-center justify-between text-label-sm font-label-sm">
+<div class="flex flex-col">
+<span class="text-on-surface font-medium">3. Zenith Clearing Acct</span>
+<span class="text-on-surface-variant text-xs">Mirror Stmt Acct #1019283741</span>
+</div>
+<div class="text-right">
+<span class="text-on-surface-variant font-semibold tabular-nums">₦0.00</span>
+<div class="text-on-surface-variant text-xs">Unsettled at CBN Window</div>
+</div>
+</div>
+</div>
+<!-- Corrective Ledger Action Picker -->
+<div class="flex flex-col gap-2.5">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Select Corrective Ledger Action</span>
+<!-- Option 1: Credit Bank Suspense & Reverse -->
+<label class="flex items-start gap-3 p-3 rounded-lg border border-primary bg-surface-container cursor-pointer transition-colors">
+<input checked="" class="mt-1 text-primary focus:ring-primary bg-surface-container-highest border-outline-variant" name="reconciliation_action" type="radio"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Credit Bank Suspense &amp; Reverse to Payer</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">Post debit to Clearing Suspense #9901 and credit customer account immediately.</span>
+</div>
+</label>
+<!-- Option 2: Post Manual Clearing Credit -->
+<label class="flex items-start gap-3 p-3 rounded-lg border border-outline-variant bg-surface-container/50 hover:bg-surface-container cursor-pointer transition-colors">
+<input class="mt-1 text-primary focus:ring-primary bg-surface-container-highest border-outline-variant" name="reconciliation_action" type="radio"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Post Manual Clearing Credit to Customer Ledger</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">Acknowledge external switch lag and mark settled against buffer pool.</span>
+</div>
+</label>
+<!-- Option 3: Formal Dispute -->
+<label class="flex items-start gap-3 p-3 rounded-lg border border-outline-variant bg-surface-container/50 hover:bg-surface-container cursor-pointer transition-colors">
+<input class="mt-1 text-primary focus:ring-primary bg-surface-container-highest border-outline-variant" name="reconciliation_action" type="radio"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Lodge Formal NIBSS Switch Dispute (Form D)</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">Freeze item in suspense and dispatch automated portal ticket to NIBSS Ops.</span>
+</div>
+</label>
+</div>
+<!-- Maker-Checker Dual Control Signoff Reason -->
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<label class="font-label-sm text-label-sm text-on-surface font-semibold">Maker Audit Signoff Notes</label>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Mandatory</span>
+</div>
+<textarea class="w-full bg-surface-container-highest border border-outline-variant rounded-lg p-2.5 text-on-surface placeholder:text-on-surface-variant font-body-md text-body-md focus:border-primary-container focus:ring-0 outline-none" placeholder="Provide root cause justification for clearing reversal to customer..." rows="3">Confirmed Response 91 timeout on NIBSS Outward Gateway. Funds did not leave clearing account. Reversing ₦2,500,000.00 from suspense to customer account.</textarea>
+</div>
+<!-- Primary Submit Action Button (52px Touch Standard) -->
+<div class="flex flex-col gap-2 pt-2">
+<button class="h-[52px] w-full rounded-xl bg-primary-container text-on-primary font-label-lg text-label-lg font-semibold hover:opacity-95 active:bg-primary transition-all flex items-center justify-center gap-2 shadow-lg">
+<span>Post Settlement Adjustment (₦2,500,000.00)</span>
+<span class="material-symbols-outlined text-lg" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<div class="flex items-center justify-center gap-2 font-label-sm text-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-sm" data-icon="lock">lock</span>
+<span>Requires Level-2 Checker Authorization upon submission</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+</body></html>

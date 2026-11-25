@@ -1,0 +1,15 @@
+flowchart TD
+  a(["Principal admin leaves or is removed"])
+  b["Remaining admins nominate replacement"]
+  c["Nominee verifies identity (BVN, NIN, liveness)"]
+  d{"Approved by remaining principal admins or member vote?"}
+  e["Grant full admin role; revoke leaver's access immediately"]
+  f["Not approved: keep minimum admins; restrict risky actions"]
+  g(["Audit logged; members notified"])
+  a --> b
+  b --> c
+  c --> d
+  d -->|yes| e
+  d -->|no| f
+  e --> g
+  f --> g

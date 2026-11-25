@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YourApp - Live Support Chat</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-tint": "#ffb0ca",
+            "secondary-fixed": "#ffdad4",
+            "surface-variant": "#373435",
+            "error": "#ffb4ab",
+            "surface-container-lowest": "#100e0f",
+            "on-tertiary-fixed": "#001945",
+            "secondary": "#ffb4a8",
+            "tertiary-fixed": "#d9e2ff",
+            "primary-fixed-dim": "#ffb0ca",
+            "background": "#151314",
+            "on-tertiary-container": "#002a69",
+            "on-primary-fixed": "#3e001f",
+            "on-secondary-fixed": "#410000",
+            "secondary-container": "#822c20",
+            "surface-dim": "#151314",
+            "on-tertiary": "#002d6f",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "surface-container-highest": "#373435",
+            "surface-container-low": "#1d1b1c",
+            "primary": "#ffb0ca",
+            "on-secondary-fixed-variant": "#7f291e",
+            "error-container": "#93000a",
+            "on-error": "#690005",
+            "on-background": "#e7e1e2",
+            "surface-container-high": "#2c292a",
+            "on-primary": "#620735",
+            "surface-container": "#211f20",
+            "tertiary-container": "#6a92ee",
+            "on-secondary-container": "#ff9f90",
+            "primary-container": "#e0709a",
+            "on-secondary": "#61130a",
+            "inverse-surface": "#e7e1e2",
+            "outline": "#a28b91",
+            "tertiary": "#b0c6ff",
+            "inverse-primary": "#9e3b63",
+            "secondary-fixed-dim": "#ffb4a8",
+            "inverse-on-surface": "#323031",
+            "on-error-container": "#ffdad6",
+            "outline-variant": "#544247",
+            "on-surface": "#e7e1e2",
+            "on-primary-container": "#5d0331",
+            "on-surface-variant": "#dac0c6",
+            "on-primary-fixed-variant": "#7f234b",
+            "primary-fixed": "#ffd9e3",
+            "surface-bright": "#3b3839",
+            "on-tertiary-fixed-variant": "#06429a",
+            "surface": "#151314"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "gutter": "1rem",
+            "margin": "1rem",
+            "space-lg": "1.5rem",
+            "space-xl": "2rem",
+            "gutter-mobile": "0.75rem",
+            "space-md": "1rem",
+            "margin-mobile": "1rem",
+            "space-xs": "0.25rem"
+          },
+          "fontFamily": {
+            "label-lg": ["Inter"],
+            "headline-md": ["Inter"],
+            "title-currency": ["Inter"],
+            "headline-lg": ["Inter"],
+            "headline-sm": ["Inter"],
+            "body-md": ["Inter"],
+            "body-lg": ["Inter"],
+            "display-currency": ["Inter"],
+            "label-sm": ["Inter"],
+            "label-md": ["Inter"]
+          },
+          "fontSize": {
+            "label-lg": ["15px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "title-currency": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      line-height: 1;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+    }
+    /* Hide scrollbar for a sleek native app feel */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased flex justify-center items-start min-h-screen">
+<!-- Mobile Screen Frame (390px x 844px context) -->
+<main class="w-full max-w-[390px] h-[844px] max-h-[844px] flex flex-col relative bg-surface-container-lowest overflow-hidden shadow-2xl border border-outline-variant/30">
+<!-- Top Bar / Agent Profile Header -->
+<header class="flex items-center justify-between px-margin py-space-sm bg-surface-container border-b border-outline-variant/40 z-20 shrink-0 min-h-[64px]">
+<div class="flex items-center gap-space-sm flex-1 min-w-0">
+<!-- Back Navigation Button -->
+<button aria-label="Back" class="w-10 h-10 flex items-center justify-center rounded-xl bg-surface-container-high text-on-surface hover:bg-surface-bright active:scale-95 transition-all shrink-0" type="button">
+<span class="material-symbols-outlined text-body-lg">arrow_back</span>
+</button>
+<!-- Agent Details with Online Status Avatar -->
+<div class="relative shrink-0">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest border border-outline-variant/50 overflow-hidden flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="A refined and professional portrait of a customer support specialist in contemporary business-casual attire, illuminated by warm cinematic studio rim lighting against a subtle dark backdrop, exuding calm confidence, approachable warmth, and modern banking reliability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZOMfStwDEhgEhyseoRagtJoEZ923HEjSRydF45ZZFNuHDWER1nfLZkGeevBhL7hFyx4dpQS_isNrJn56sncdB5bEQWjoiWrFqTGgGZbuYRAJRE-0wr8LlfbyL9394aeee9lIJBsZZCBTRJu4JsLyrk4kNBKvjkmhqlBR6cuxN52Q7wf6isYQ8nUSonbZyvcvTWpLyF5xKPMLV1W1nwiD4vsadNhZQLK0A_xaLFOHx"/>
+</div>
+<!-- Green Pulse Live Status Dot -->
+<span class="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-emerald-400 border-2 border-surface-container">
+<span class="absolute inset-0 rounded-full bg-emerald-400 animate-ping opacity-75"></span>
+</span>
+</div>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center gap-1.5">
+<span class="font-label-lg text-label-md text-on-surface truncate font-semibold">Yinka (Support Specialist)</span>
+<span class="material-symbols-outlined text-[15px] text-primary" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant truncate">YourApp Premium Care • Avg reply 1m</p>
+</div>
+</div>
+<!-- Trailing Action Icons -->
+<div class="flex items-center gap-1 shrink-0 ml-1">
+<button aria-label="Voice Call" class="w-9 h-9 flex items-center justify-center rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-body-lg">call</span>
+</button>
+<button aria-label="More Options" class="w-9 h-9 flex items-center justify-center rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-body-lg">more_vert</span>
+</button>
+</div>
+</header>
+<!-- Safety & Privacy Notice Banner -->
+<div class="bg-surface-container px-margin py-2 border-b border-outline-variant/30 flex items-center gap-2.5 shrink-0">
+<div class="w-6 h-6 rounded-full bg-surface-container-high flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+</div>
+<p class="font-label-sm text-[11px] leading-tight text-on-surface-variant">
+        End-to-end encrypted session. YourApp will never ask for your 4-digit PIN or full card PAN.
+      </p>
+</div>
+<!-- Chat Message Scrollable Canvas -->
+<div class="flex-1 overflow-y-auto px-margin py-space-md flex flex-col gap-space-md no-scrollbar">
+<!-- Session Timestamp Indicator -->
+<div class="flex justify-center my-0.5">
+<span class="font-label-sm text-label-sm bg-surface-container px-3 py-1 rounded-full text-on-surface-variant/80 border border-outline-variant/20 tracking-wide">
+          Today, 10:14 AM
+        </span>
+</div>
+<!-- Inbound Automated System Greeting Card -->
+<div class="flex flex-col items-start max-w-[90%] gap-space-xs">
+<div class="flex items-center gap-1.5 mb-0.5">
+<span class="material-symbols-outlined text-[14px] text-primary">smart_toy</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">YourApp Virtual Assistant</span>
+</div>
+<div class="bg-surface-container border border-outline-variant/40 rounded-2xl rounded-tl-sm p-3.5 shadow-sm text-on-surface flex flex-col gap-2.5">
+<p class="font-body-md text-body-md leading-relaxed">
+            Welcome to YourApp Priority Help, Chioma. How can we assist with your account today?
+          </p>
+<!-- Quick Selection Interactive Pills -->
+<div class="flex flex-wrap gap-1.5 pt-1">
+<button class="font-label-sm text-label-sm px-2.5 py-1.5 rounded-full bg-surface-container-high border border-outline-variant/50 text-primary hover:bg-surface-bright active:scale-95 transition-all text-left" type="button">
+              Report Failed Transfer
+            </button>
+<button class="font-label-sm text-label-sm px-2.5 py-1.5 rounded-full bg-surface-container-high border border-outline-variant/50 text-on-surface hover:bg-surface-bright active:scale-95 transition-all text-left" type="button">
+              Virtual Card Query
+            </button>
+<button class="font-label-sm text-label-sm px-2.5 py-1.5 rounded-full bg-surface-container-high border border-outline-variant/50 text-on-surface hover:bg-surface-bright active:scale-95 transition-all text-left" type="button">
+              Tier 3 Upgrade
+            </button>
+</div>
+</div>
+<span class="font-label-sm text-[10px] text-on-surface-variant px-1">10:14 AM</span>
+</div>
+<!-- User Outbound Message Bubble -->
+<div class="flex flex-col items-end self-end max-w-[84%] gap-1">
+<div class="bg-primary-container text-surface-container-lowest font-body-md text-body-md leading-relaxed rounded-2xl rounded-tr-sm p-3.5 shadow-sm">
+          Good morning Yinka. My transfer of <span class="font-semibold tabular-nums">₦45,000</span> to GTBank this morning shows successful here but the recipient has not received credit.
+        </div>
+<div class="flex items-center gap-1 px-1">
+<span class="font-label-sm text-[10px] text-on-surface-variant">10:15 AM</span>
+<!-- Delivered Double Checkmark Indicator -->
+<span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">done_all</span>
+</div>
+</div>
+<!-- Agent Inbound Message Bubble -->
+<div class="flex flex-col items-start max-w-[88%] gap-1">
+<div class="flex items-center gap-1.5 mb-0.5">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Yinka</span>
+</div>
+<div class="bg-surface-container-high border border-outline-variant/40 rounded-2xl rounded-tl-sm p-3.5 text-on-surface shadow-sm font-body-md text-body-md leading-relaxed">
+          Hello Chioma, thank you for reaching out! I can see session <code class="font-mono text-[12px] bg-surface-container-highest px-1.5 py-0.5 rounded text-primary">NIP-992014812039-YAP</code>. The recipient bank (GTBank) had a brief gateway latency. The session has reconciled and value will reflect within 15 minutes.
+        </div>
+<span class="font-label-sm text-[10px] text-on-surface-variant px-1">10:16 AM</span>
+</div>
+<!-- Embedded Interactive Transaction Context Card -->
+<div class="self-start w-full max-w-[320px] bg-surface-container border border-outline-variant/50 rounded-2xl p-3.5 flex flex-col gap-3 shadow-md">
+<div class="flex items-center justify-between border-b border-outline-variant/30 pb-2.5">
+<div class="flex items-center gap-2.5">
+<!-- Bank Emblem Placeholder Indicator -->
+<div class="w-9 h-9 rounded-xl bg-surface-container-high border border-outline-variant/40 flex items-center justify-center font-bold text-xs text-primary">
+              GTB
+            </div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Adekunle Gold</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">GTBank • 0123984112</span>
+</div>
+</div>
+<!-- Reconciling Status Chip -->
+<div class="flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-amber-400/10 border border-amber-400/20 text-amber-300 font-label-sm text-[11px] font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+<span>Reconciling</span>
+</div>
+</div>
+<div class="flex justify-between items-baseline">
+<span class="font-body-md text-body-md text-on-surface-variant">Amount</span>
+<span class="font-title-currency text-title-currency text-on-surface font-bold tabular-nums">₦45,000.00</span>
+</div>
+<div class="flex justify-between items-center text-[12px] text-on-surface-variant border-t border-outline-variant/20 pt-2">
+<span>NIP Ref:</span>
+<span class="font-mono text-[11px] text-on-surface">992014812039</span>
+</div>
+<button class="w-full h-[40px] flex items-center justify-center gap-1.5 rounded-xl bg-surface-container-high hover:bg-surface-bright text-on-surface text-label-md font-label-md border border-outline-variant/40 active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[16px] text-primary">receipt_long</span>
+<span>View Full Receipt</span>
+</button>
+</div>
+<!-- Agent Subtle Typing Indicator (Micro-state) -->
+<div class="flex items-center gap-2 self-start py-1 px-1">
+<div class="bg-surface-container border border-outline-variant/30 rounded-full px-3 py-1.5 flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary/70 animate-bounce" style="animation-delay: 0ms;"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary/70 animate-bounce" style="animation-delay: 150ms;"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary/70 animate-bounce" style="animation-delay: 300ms;"></span>
+</div>
+<span class="font-label-sm text-[11px] text-on-surface-variant">Yinka is typing...</span>
+</div>
+</div>
+<!-- Bottom Docked Message Input Bar (Standard 52px Touch Targets) -->
+<footer class="bg-surface-container border-t border-outline-variant/40 p-margin-mobile flex items-center gap-2 shrink-0 z-20">
+<!-- Attachment / Screenshot Upload Button -->
+<button aria-label="Attach File or Screenshot" class="w-[48px] h-[52px] rounded-xl bg-surface-container-high border border-outline-variant/40 flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-surface-bright active:scale-95 transition-all shrink-0" type="button">
+<span class="material-symbols-outlined text-body-lg">attach_file</span>
+</button>
+<!-- Message Text Field Container -->
+<div class="flex-1 h-[52px] rounded-xl bg-surface-container-high border border-outline-variant/50 focus-within:border-primary-container px-3 flex items-center gap-2 transition-all">
+<input class="w-full bg-transparent border-0 text-on-surface placeholder:text-on-surface-variant font-body-md text-body-md focus:ring-0 focus:outline-none p-0" placeholder="Type your message..." type="text"/>
+<!-- Voice Note Microphone Trigger -->
+<button aria-label="Record voice note" class="w-8 h-8 rounded-lg flex items-center justify-center text-on-surface-variant hover:text-on-surface active:scale-90 transition-all shrink-0" type="button">
+<span class="material-symbols-outlined text-[20px]">mic</span>
+</button>
+</div>
+<!-- Primary Rose Send Button -->
+<button aria-label="Send message" class="w-[52px] h-[52px] rounded-full bg-primary-container text-surface-container-lowest flex items-center justify-center hover:opacity-90 active:scale-95 transition-all shadow-md shrink-0" type="button">
+<span class="material-symbols-outlined text-body-lg font-bold">send</span>
+</button>
+</footer>
+</main>
+</body></html>

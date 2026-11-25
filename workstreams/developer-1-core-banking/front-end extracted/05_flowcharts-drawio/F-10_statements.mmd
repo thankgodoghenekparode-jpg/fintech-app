@@ -1,0 +1,17 @@
+flowchart TD
+  a(["More > Statements"])
+  b[/"Select date range"/]
+  c["Request generation"]
+  d{"Range OK?"}
+  e["Ask to shorten range"]
+  f["Generate PDF in background"]
+  g["Download or email to user"]
+  h(["Done"])
+  a --> b
+  b --> c
+  c --> d
+  d -->|no| e
+  e --> b
+  d -->|yes| f
+  f --> g
+  g --> h

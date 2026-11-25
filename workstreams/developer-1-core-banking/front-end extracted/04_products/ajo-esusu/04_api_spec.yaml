@@ -1,0 +1,618 @@
+openapi: 3.0.3
+info:
+  title: Ajo / Esusu API
+  version: 1.0.0
+  description: Product API. Uses the core conventions (Idempotency-Key, X-Pin-Token,
+    X-Tenant-Id, error format). Amounts in kobo.
+security:
+- bearerAuth: []
+paths:
+  /ajo/circles:
+    post:
+      tags:
+      - Ajo
+      summary: Create circle
+      description: 'Roles: any authenticated customer'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                amountKobo:
+                  type: integer
+                  format: int64
+                  description: Amount in kobo
+                frequency:
+                  type: string
+                  enum:
+                  - DAILY
+                  - WEEKLY
+                  - MONTHLY
+                slots:
+                  type: integer
+                startDate:
+                  type: string
+                  format: date
+                orderMethod:
+                  type: string
+                  enum:
+                  - RANDOM
+                  - CHOSEN
+                  - ORGANIZER
+                protectionMode:
+                  type: string
+                  enum:
+                  - PROTECTED
+                  - SAFEGUARDS_ONLY
+                shortfallRule:
+                  type: string
+                  enum:
+                  - DELAY
+                  - PARTIAL
+                organizerFeeBps:
+                  type: integer
+              required:
+              - name
+              - amountKobo
+              - frequency
+              - slots
+              - startDate
+              - orderMethod
+              - protectionMode
+      responses:
+        '201':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+    get:
+      tags:
+      - Ajo
+      summary: List my circles
+      description: 'Roles: any authenticated customer'
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /ajo/circles/by-code/{code}:
+    get:
+      tags:
+      - Ajo
+      summary: Preview a circle by code
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: code
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /ajo/join:
+    post:
+      tags:
+      - Ajo
+      summary: Join a circle (accept terms)
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                inviteCode:
+                  type: string
+                termsVersion:
+                  type: string
+              required:
+              - inviteCode
+              - termsVersion
+      responses:
+        '201':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /ajo/circle:
+    get:
+      tags:
+      - Ajo
+      summary: Circle detail, rounds and tracker
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /ajo/circle/schedule:
+    get:
+      tags:
+      - Ajo
+      summary: My schedule and slot
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /ajo/circle/cancel:
+    post:
+      tags:
+      - Ajo
+      summary: Cancel before start (refund)
+      description: 'Roles: Organizer'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /ajo/circle/order/draw:
+    post:
+      tags:
+      - Ajo
+      summary: Run the random order draw
+      description: 'Roles: Organizer'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /ajo/circle/order/choice:
+    put:
+      tags:
+      - Ajo
+      summary: Choose or propose a slot
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                slotNo:
+                  type: integer
+              required:
+              - slotNo
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /ajo/circle/order/confirm:
+    post:
+      tags:
+      - Ajo
+      summary: Confirm and lock order
+      description: 'Roles: Organizer'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /ajo/circle/auto-debit:
+    put:
+      tags:
+      - Ajo
+      summary: Enable or disable auto-debit (consent)
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                enabled:
+                  type: boolean
+              required:
+              - enabled
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /ajo/circle/contributions:
+    post:
+      tags:
+      - Ajo
+      summary: Pay a contribution early
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                roundNo:
+                  type: integer
+              required:
+              - roundNo
+      responses:
+        '201':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /ajo/circle/cover/deposit:
+    post:
+      tags:
+      - Ajo
+      summary: Fund a security deposit
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amountKobo:
+                  type: integer
+                  format: int64
+                  description: Amount in kobo
+              required:
+              - amountKobo
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /ajo/circle/cover/guarantor:
+    post:
+      tags:
+      - Ajo
+      summary: Request a cover guarantor
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                guarantorCustomerId:
+                  type: string
+                  format: uuid
+                amountKobo:
+                  type: integer
+                  format: int64
+                  description: Amount in kobo
+              required:
+              - guarantorCustomerId
+              - amountKobo
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /ajo/guarantees:
+    get:
+      tags:
+      - Ajo
+      summary: My guarantee requests
+      description: 'Roles: any authenticated customer'
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /ajo/guarantees/{guaranteeId}/respond:
+    post:
+      tags:
+      - Ajo
+      summary: Accept or decline guarantee
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: guaranteeId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                decision:
+                  type: string
+                  enum:
+                  - ACCEPT
+                  - DECLINE
+              required:
+              - decision
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /ajo/circle/rounds/{roundNo}:
+    get:
+      tags:
+      - Ajo
+      summary: Round detail
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: roundNo
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /ajo/circle/members:
+    get:
+      tags:
+      - Ajo
+      summary: Roster with trust badges
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /ajo/circle/report:
+    post:
+      tags:
+      - Ajo
+      summary: Report a concern
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                category:
+                  type: string
+                description:
+                  type: string
+              required:
+              - category
+              - description
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /ajo/circle/summary:
+    get:
+      tags:
+      - Ajo
+      summary: Cycle summary
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /ajo/circle/renew:
+    post:
+      tags:
+      - Ajo
+      summary: Create next circle from this group
+      description: 'Roles: Organizer'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      responses:
+        '201':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  parameters:
+    IdempotencyKey:
+      name: Idempotency-Key
+      in: header
+      required: true
+      schema:
+        type: string
+        format: uuid
+    PinToken:
+      name: X-Pin-Token
+      in: header
+      required: true
+      schema:
+        type: string
+  responses:
+    Error:
+      description: Error (see core ERROR_CODES.md)
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+              details:
+                type: object
+              requestId:
+                type: string

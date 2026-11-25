@@ -1,0 +1,25 @@
+flowchart TD
+  a(["Admin creates plan (frequency, amount)"])
+  b["System schedules dues for each member"]
+  c["Reminder before due date"]
+  d{"Member pays manually?"}
+  e["Auto-deduct on due date (if enabled)"]
+  f{"Funds available?"}
+  g["Retry per rule; reminders"]
+  h{"Paid within grace period?"}
+  i["Post: member account to cooperative account; update savings"]
+  j["Mark overdue; apply penalty per rule; flag in arrears"]
+  k(["Due closed"])
+  a --> b
+  b --> c
+  c --> d
+  d -->|yes| i
+  d -->|no| e
+  e --> f
+  f -->|yes| i
+  f -->|no| g
+  g --> h
+  h -->|yes| i
+  h -->|no| j
+  i --> k
+  j --> k

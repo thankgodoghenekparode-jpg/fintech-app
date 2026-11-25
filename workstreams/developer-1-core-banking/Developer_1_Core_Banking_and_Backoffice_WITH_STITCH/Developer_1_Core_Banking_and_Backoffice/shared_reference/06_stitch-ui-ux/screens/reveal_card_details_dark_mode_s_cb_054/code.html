@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>Card Credentials - YourApp</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-lowest": "#100e0f",
+            "inverse-primary": "#9e3b63",
+            "surface-bright": "#3b3839",
+            "outline-variant": "#544247",
+            "on-primary-container": "#5d0331",
+            "on-secondary-fixed-variant": "#7f291e",
+            "inverse-on-surface": "#323031",
+            "surface-container-highest": "#373435",
+            "surface-container": "#211f20",
+            "on-error": "#690005",
+            "on-tertiary-container": "#002a69",
+            "surface": "#151314",
+            "on-secondary-fixed": "#410000",
+            "on-primary": "#620735",
+            "surface-tint": "#ffb0ca",
+            "error-container": "#93000a",
+            "primary-fixed-dim": "#ffb0ca",
+            "on-error-container": "#ffdad6",
+            "surface-container-low": "#1d1b1c",
+            "surface-dim": "#151314",
+            "on-primary-fixed-variant": "#7f234b",
+            "primary": "#ffb0ca",
+            "tertiary-fixed": "#d9e2ff",
+            "on-secondary": "#61130a",
+            "tertiary-container": "#6a92ee",
+            "surface-container-high": "#2c292a",
+            "on-background": "#e7e1e2",
+            "on-tertiary-fixed": "#001945",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "secondary-container": "#822c20",
+            "outline": "#a28b91",
+            "on-surface": "#e7e1e2",
+            "on-secondary-container": "#ff9f90",
+            "secondary-fixed-dim": "#ffb4a8",
+            "surface-variant": "#373435",
+            "secondary": "#ffb4a8",
+            "tertiary": "#b0c6ff",
+            "on-primary-fixed": "#3e001f",
+            "on-tertiary": "#002d6f",
+            "primary-container": "#e0709a",
+            "primary-fixed": "#ffd9e3",
+            "error": "#ffb4ab",
+            "background": "#151314",
+            "inverse-surface": "#e7e1e2",
+            "on-surface-variant": "#dac0c6",
+            "on-tertiary-fixed-variant": "#06429a",
+            "secondary-fixed": "#ffdad4"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "1rem",
+            "space-xl": "2rem",
+            "space-md": "1rem",
+            "margin-mobile": "1rem",
+            "gutter": "1rem",
+            "space-lg": "1.5rem",
+            "space-sm": "0.5rem",
+            "gutter-mobile": "0.75rem",
+            "space-xs": "0.25rem"
+          },
+          "fontFamily": {
+            "body-md": ["Inter"],
+            "headline-lg": ["Inter"],
+            "label-lg": ["Inter"],
+            "label-md": ["Inter"],
+            "label-sm": ["Inter"],
+            "display-currency": ["Inter"],
+            "headline-sm": ["Inter"],
+            "title-currency": ["Inter"],
+            "headline-md": ["Inter"],
+            "body-lg": ["Inter"]
+          },
+          "fontSize": {
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "label-lg": ["15px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "title-currency": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+    .pb-safe {
+      padding-bottom: env(safe-area-inset-bottom, 16px);
+    }
+    .pt-safe {
+      padding-top: env(safe-area-inset-top, 0px);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-lowest text-on-surface antialiased min-h-screen flex flex-col justify-between selection:bg-primary-container selection:text-surface-container-lowest">
+<!-- Mobile Viewport Container (Strictly 390px - 560px centered max) -->
+<div class="w-full max-w-[560px] mx-auto min-h-screen flex flex-col bg-surface relative shadow-2xl">
+<!-- Top Navigation Header (Focused Modal Architecture: suppresses standard tab shell) -->
+<header class="sticky top-0 z-40 bg-surface/90 backdrop-blur-md px-margin py-space-sm flex items-center justify-between min-h-[56px] border-b border-outline-variant/20 pt-safe">
+<button aria-label="Close" class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container-high text-on-surface hover:bg-surface-variant active:scale-95 transition-all" onclick="handleDismiss()">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+<div class="flex flex-col items-center">
+<h1 class="font-headline-sm text-headline-sm text-on-surface tracking-tight flex items-center gap-1.5">
+          Card Credentials
+        </h1>
+<span class="font-label-sm text-label-sm text-outline tracking-wider font-mono">S-CB-054</span>
+</div>
+<div class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container border border-outline-variant/30 text-primary-container" title="256-bit AES Encrypted">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">shield</span>
+</div>
+</header>
+<!-- Scrollable Content Canvas -->
+<main class="flex-1 px-margin pt-space-md pb-[120px] flex flex-col gap-space-md overflow-y-auto">
+<!-- Dynamic Security Countdown Banner -->
+<section class="rounded-xl p-space-sm bg-surface-container border border-secondary-container/40 flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-2.5">
+<div class="w-7 h-7 rounded-full bg-secondary-container/30 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[18px]">timer</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline">Temporary Session</span>
+<span class="font-label-md text-label-md text-on-surface">Auto-hiding for security in</span>
+</div>
+</div>
+<div class="flex items-center bg-surface-container-lowest px-2.5 py-1 rounded-lg border border-outline-variant/40">
+<span class="font-label-lg text-label-lg font-bold text-primary-container tabular-nums" id="countdown">0:28s</span>
+</div>
+</section>
+<!-- High-Fidelity 1.586:1 Virtual Card Section -->
+<section class="relative w-full aspect-[1.586/1] rounded-2xl p-5 flex flex-col justify-between overflow-hidden shadow-2xl border border-outline-variant/40 bg-gradient-to-br from-surface-container-high via-surface-container to-surface-container-low group">
+<!-- Holographic Sheen Overlay & Ambient Glow -->
+<div class="absolute -right-16 -top-16 w-56 h-56 rounded-full bg-primary-container/15 blur-3xl pointer-events-none"></div>
+<div class="absolute -left-12 -bottom-12 w-48 h-48 rounded-full bg-tertiary-container/10 blur-2xl pointer-events-none"></div>
+<!-- Card Top Bar: Chip & Contactless & Brand -->
+<div class="relative z-10 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<!-- Simulated EMV Chip -->
+<div class="w-10 h-7 rounded-md bg-gradient-to-tr from-amber-700 via-amber-400 to-amber-200 border border-amber-300/40 flex items-center justify-center relative overflow-hidden shadow-inner">
+<div class="w-full h-[1px] bg-amber-900/50 absolute top-2"></div>
+<div class="w-full h-[1px] bg-amber-900/50 absolute bottom-2"></div>
+<div class="h-full w-[1px] bg-amber-900/50 absolute left-3"></div>
+<div class="h-full w-[1px] bg-amber-900/50 absolute right-3"></div>
+</div>
+<!-- Contactless Icon -->
+<span class="material-symbols-outlined text-outline text-[22px] rotate-90">contactless</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm font-bold tracking-tighter text-on-surface">YourApp</span>
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container-highest text-primary-container uppercase font-mono tracking-widest text-[9px]">Virtual</span>
+</div>
+</div>
+<!-- Card Middle: Unmasked PAN with Spaced Groups -->
+<div class="relative z-10 my-auto py-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline tracking-wider uppercase">Card Number (PAN)</span>
+<button class="text-primary hover:text-primary-container active:scale-95 transition-transform flex items-center gap-1 text-[12px] font-medium" onclick="copyToClipboard('5399412880198824', 'Card Number Copied')">
+<span class="material-symbols-outlined text-[14px]">content_copy</span>
+<span>Copy</span>
+</button>
+</div>
+<div class="mt-1 flex items-center justify-between text-on-surface font-title-currency text-title-currency font-mono font-bold tracking-wider tabular-nums">
+<span>5399</span>
+<span>4128</span>
+<span>8019</span>
+<span>8824</span>
+</div>
+</div>
+<!-- Card Bottom Details: Holder, Expiry, CVV -->
+<div class="relative z-10 flex items-end justify-between pt-2 border-t border-outline-variant/30">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline text-[10px] uppercase">Cardholder</span>
+<span class="font-label-md text-label-md font-bold text-on-surface tracking-wide uppercase">CHIOMA BLESSING ADELEKE</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex flex-col text-right">
+<span class="font-label-sm text-label-sm text-outline text-[10px] uppercase">Expires</span>
+<span class="font-label-md text-label-md font-mono font-semibold text-on-surface tabular-nums">08/29</span>
+</div>
+<div class="flex flex-col text-right">
+<span class="font-label-sm text-label-sm text-outline text-[10px] uppercase">CVV</span>
+<span class="font-label-md text-label-md font-mono font-semibold text-primary-container tabular-nums">842</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid: Fast-Copy Field Cards -->
+<section class="grid grid-cols-2 gap-space-sm">
+<!-- Expiration Tile -->
+<div class="bg-surface-container rounded-xl p-space-sm border border-outline-variant/30 flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline">Expiry Date</span>
+<button aria-label="Copy expiry" class="p-1 rounded bg-surface-container-high text-primary hover:bg-surface-variant active:scale-95 transition-transform" onclick="copyToClipboard('08/29', 'Expiry Copied')">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+</div>
+<div class="mt-2 font-headline-sm text-headline-sm font-mono font-bold text-on-surface tabular-nums">
+            08/29
+          </div>
+<span class="font-label-sm text-label-sm text-outline mt-1 text-[11px]">Valid worldwide</span>
+</div>
+<!-- CVV Tile -->
+<div class="bg-surface-container rounded-xl p-space-sm border border-outline-variant/30 flex flex-col justify-between relative overflow-hidden">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1">
+<span class="font-label-sm text-label-sm text-outline">CVV Code</span>
+<span class="material-symbols-outlined text-[14px] text-secondary">info</span>
+</div>
+<button aria-label="Copy CVV" class="p-1 rounded bg-surface-container-high text-primary hover:bg-surface-variant active:scale-95 transition-transform" onclick="copyToClipboard('842', 'CVV Copied')">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+</div>
+<div class="mt-2 flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm font-mono font-bold text-primary-container tabular-nums">842</span>
+<span class="text-[10px] px-1.5 py-0.5 rounded bg-error-container/40 text-error font-medium">Secret</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline mt-1 text-[11px] truncate">Do not share CVV with anyone</span>
+</div>
+<!-- Billing Address Tile (Spans Full Width) -->
+<div class="col-span-2 bg-surface-container rounded-xl p-space-sm border border-outline-variant/30 flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-primary">location_on</span>
+<span class="font-label-md text-label-md font-semibold text-on-surface">Registered Billing Address</span>
+</div>
+<button class="flex items-center gap-1 text-[12px] font-medium text-primary hover:text-primary-container active:scale-95 transition-transform" onclick="copyToClipboard('14B Admiralty Way, Lekki Phase 1, Lagos, Nigeria • Postal Code: 105102', 'Billing Address Copied')">
+<span class="material-symbols-outlined text-[14px]">content_copy</span>
+<span>Copy</span>
+</button>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            14B Admiralty Way, Lekki Phase 1, Lagos, Nigeria
+          </p>
+<div class="flex items-center gap-3 pt-1 border-t border-outline-variant/20 font-label-sm text-label-sm text-outline">
+<span>Postal Code: <strong class="text-on-surface font-mono">105102</strong></span>
+<span>•</span>
+<span>Country: <strong class="text-on-surface">Nigeria (NG)</strong></span>
+</div>
+</div>
+</section>
+<!-- One-Tap Bulk Copy Action -->
+<button class="w-full h-[52px] rounded-xl bg-surface-container-high border border-outline-variant/40 hover:bg-surface-variant active:scale-[0.98] transition-all flex items-center justify-center gap-2 text-on-surface font-label-lg text-label-lg" onclick="copyToClipboard('Cardholder: CHIOMA BLESSING ADELEKE\nCard Number: 5399412880198824\nExpiry: 08/29\nCVV: 842\nBilling: 14B Admiralty Way, Lekki Phase 1, Lagos, Nigeria (105102)', 'All Card Credentials Copied')">
+<span class="material-symbols-outlined text-[20px] text-primary-container">file_copy</span>
+<span>Copy All Card Info</span>
+</button>
+<!-- Safe Usage Checklist Module -->
+<section class="bg-surface-container rounded-xl p-space-md border border-outline-variant/30 flex flex-col gap-3">
+<h3 class="font-label-md text-label-md font-semibold text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary">verified_user</span>
+<span>Safe Usage Checklist</span>
+</h3>
+<div class="flex items-start gap-3">
+<div class="w-5 h-5 rounded-full bg-secondary-container/40 text-secondary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            3D Secure OTP will be sent directly to <strong class="text-on-surface font-mono">+234 801 ••• 5678</strong>
+</p>
+</div>
+<div class="flex items-start gap-3">
+<div class="w-5 h-5 rounded-full bg-secondary-container/40 text-secondary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Accepted worldwide on Apple Pay, Google Pay, Netflix, Spotify &amp; Amazon.
+          </p>
+</div>
+<div class="mt-1 pt-2 border-t border-outline-variant/20 flex items-center justify-between text-outline font-label-sm text-label-sm">
+<span>PCI-DSS Tier 1 Certified</span>
+<span class="font-mono">256-Bit Encrypted</span>
+</div>
+</section>
+<!-- Instant Panic / Freeze Toggle Module -->
+<section class="bg-surface-container rounded-xl p-space-sm border border-outline-variant/30 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-surface-container-high flex items-center justify-center text-outline">
+<span class="material-symbols-outlined text-[20px]">lock_clock</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-medium">Need to freeze this card?</span>
+<span class="font-label-sm text-label-sm text-outline">Block all incoming debits instantly</span>
+</div>
+</div>
+<!-- Panic Freeze Switch -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" id="panicFreeze" onchange="handleFreezeToggle(this)" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</section>
+</main>
+<!-- Docked Bottom Floating Action Area (Fixed height 52px button requirement) -->
+<footer class="fixed bottom-0 left-0 right-0 z-50 bg-surface/95 backdrop-blur-md px-margin py-3 border-t border-outline-variant/30 pb-safe">
+<div class="max-w-[560px] mx-auto flex items-center gap-3">
+<button class="flex-1 h-[52px] rounded-xl bg-surface-container-high border border-outline-variant/50 text-on-surface font-label-lg text-label-lg font-semibold hover:bg-surface-variant active:scale-[0.98] transition-all flex items-center justify-center gap-2 shadow-lg" onclick="handleDismiss()">
+<span class="material-symbols-outlined text-[20px]">visibility_off</span>
+<span>Hide Details Now</span>
+</button>
+</div>
+</footer>
+<!-- Toast Notification Overlay -->
+<div class="fixed bottom-24 left-1/2 -translate-x-1/2 z-50 pointer-events-none transition-all duration-300 opacity-0 translate-y-3 px-4 py-2.5 rounded-full bg-surface-bright text-on-surface border border-outline-variant/40 shadow-2xl flex items-center gap-2 font-label-md text-label-md" id="toast">
+<span class="material-symbols-outlined text-[18px] text-primary" id="toastIcon">check_circle</span>
+<span id="toastMessage">Copied to clipboard</span>
+</div>
+</div>
+<script>
+    // Security Countdown Timer (Auto-Hide in 28s)
+    let timeLeft = 28;
+    const countdownEl = document.getElementById('countdown');
+    const timerInterval = setInterval(() => {
+      timeLeft--;
+      if (timeLeft <= 0) {
+        clearInterval(timerInterval);
+        countdownEl.innerText = "0:00s";
+        showToast("Session expired for your safety. Closing details...", "timer");
+        setTimeout(() => {
+          handleDismiss();
+        }, 1200);
+      } else {
+        const secs = timeLeft < 10 ? `0${timeLeft}` : timeLeft;
+        countdownEl.innerText = `0:${secs}s`;
+      }
+    }, 1000);
+
+    // Toast Manager
+    let toastTimeout;
+    function showToast(message, icon = "check_circle") {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toastMessage');
+      const toastIcon = document.getElementById('toastIcon');
+      
+      toastMsg.innerText = message;
+      toastIcon.innerText = icon;
+      
+      toast.classList.remove('opacity-0', 'translate-y-3');
+      toast.classList.add('opacity-100', 'translate-y-0');
+      
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.add('opacity-0', 'translate-y-3');
+        toast.classList.remove('opacity-100', 'translate-y-0');
+      }, 2200);
+    }
+
+    // Clipboard Copy Helper
+    function copyToClipboard(text, confirmationText) {
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(() => {
+          showToast(confirmationText, "content_copy");
+        }).catch(() => {
+          showToast(confirmationText, "content_copy");
+        });
+      } else {
+        // Fallback
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+          document.execCommand('copy');
+          showToast(confirmationText, "content_copy");
+        } catch (err) {
+          showToast("Copy error", "error");
+        }
+        document.body.removeChild(textarea);
+      }
+    }
+
+    // Panic Freeze Handler
+    function handleFreezeToggle(checkbox) {
+      if (checkbox.checked) {
+        showToast("Card frozen instantly. Recurring debits blocked.", "ac_unit");
+      } else {
+        showToast("Card un-frozen and active for spending.", "lock_open");
+      }
+    }
+
+    // Dismiss Screen Action
+    function handleDismiss() {
+      showToast("Shielding credentials...", "visibility_off");
+      setTimeout(() => {
+        window.history.length > 1 ? window.history.back() : window.close();
+      }, 400);
+    }
+  </script>
+</body></html>

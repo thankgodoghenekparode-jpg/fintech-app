@@ -1,0 +1,393 @@
+openapi: 3.0.3
+info:
+  title: Instant Loan API
+  version: 1.0.0
+  description: Product API. Uses the core conventions (Idempotency-Key, X-Pin-Token,
+    X-Tenant-Id, error format). Amounts in kobo.
+security:
+- bearerAuth: []
+paths:
+  /loans/eligibility:
+    get:
+      tags:
+      - Loans
+      summary: Eligibility, limit and lender identity
+      description: 'Roles: any authenticated customer'
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /loans/quote:
+    post:
+      tags:
+      - Loans
+      summary: Cost summary and affordability
+      description: 'Roles: any authenticated customer'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amountKobo:
+                  type: integer
+                  format: int64
+                  description: Amount in kobo
+                tenor:
+                  type: integer
+              required:
+              - amountKobo
+              - tenor
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /loans/applications:
+    post:
+      tags:
+      - Loans
+      summary: Submit application and accept agreement
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                quoteId:
+                  type: string
+                  format: uuid
+                agreementVersion:
+                  type: string
+              required:
+              - quoteId
+              - agreementVersion
+      responses:
+        '201':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /loans:
+    get:
+      tags:
+      - Loans
+      summary: My loans
+      description: 'Roles: any authenticated customer'
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /loans/{loanId}:
+    get:
+      tags:
+      - Loans
+      summary: Loan detail and schedule
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: loanId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /loans/{loanId}/repayments:
+    post:
+      tags:
+      - Loans
+      summary: Repay
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: loanId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amountKobo:
+                  type: integer
+                  format: int64
+                  description: Amount in kobo
+              required:
+              - amountKobo
+      responses:
+        '201':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /loans/{loanId}/auto-repay:
+    put:
+      tags:
+      - Loans
+      summary: Set auto-repay (consent)
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: loanId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                enabled:
+                  type: boolean
+              required:
+              - enabled
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /loans/{loanId}/hardship:
+    post:
+      tags:
+      - Loans
+      summary: Request hardship help
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: loanId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reason:
+                  type: string
+                message:
+                  type: string
+              required:
+              - reason
+      responses:
+        '201':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /backoffice/loans/applications:
+    get:
+      tags:
+      - Backoffice
+      summary: Referred applications
+      description: 'Roles: Credit analyst'
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /backoffice/loans/applications/{id}/decision:
+    post:
+      tags:
+      - Backoffice
+      summary: Decide referred application
+      description: 'Roles: Credit analyst'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                decision:
+                  type: string
+                  enum:
+                  - APPROVE
+                  - DECLINE
+                reason:
+                  type: string
+              required:
+              - decision
+              - reason
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /backoffice/loans/portfolio:
+    get:
+      tags:
+      - Backoffice
+      summary: Portfolio metrics and arrears
+      description: 'Roles: Collections officer'
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /backoffice/loans/products:
+    get:
+      tags:
+      - Backoffice
+      summary: Products and versions
+      description: 'Roles: Product admin'
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+    post:
+      tags:
+      - Backoffice
+      summary: Propose product version (dual control)
+      description: 'Roles: Product admin'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                config:
+                  type: object
+                  additionalProperties: true
+                effectiveFrom:
+                  type: string
+                  format: date-time
+              required:
+              - config
+              - effectiveFrom
+      responses:
+        '201':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /backoffice/loans/settlements:
+    get:
+      tags:
+      - Backoffice
+      summary: Partner settlements
+      description: 'Roles: Finance'
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /backoffice/loans/settlements/{id}/approve:
+    post:
+      tags:
+      - Backoffice
+      summary: Approve settlement (dual control)
+      description: 'Roles: Finance'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  parameters:
+    IdempotencyKey:
+      name: Idempotency-Key
+      in: header
+      required: true
+      schema:
+        type: string
+        format: uuid
+    PinToken:
+      name: X-Pin-Token
+      in: header
+      required: true
+      schema:
+        type: string
+  responses:
+    Error:
+      description: Error (see core ERROR_CODES.md)
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+              details:
+                type: object
+              requestId:
+                type: string

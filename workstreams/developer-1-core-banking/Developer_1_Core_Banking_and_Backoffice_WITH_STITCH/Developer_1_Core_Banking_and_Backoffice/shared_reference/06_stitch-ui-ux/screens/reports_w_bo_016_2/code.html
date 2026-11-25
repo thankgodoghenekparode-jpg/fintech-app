@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Agency Banking Terminal Surveillance &amp; Float Liquidity Desk (W-BO-015)</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-tertiary-fixed-variant": "#4e4449",
+            "surface-container": "#f5eced",
+            "on-primary-fixed": "#3f001b",
+            "surface-container-highest": "#e9e0e1",
+            "surface-container-high": "#efe6e7",
+            "inverse-primary": "#ffb1c5",
+            "secondary-container": "#fc6955",
+            "surface-container-lowest": "#ffffff",
+            "on-error-container": "#93000a",
+            "surface-variant": "#e9e0e1",
+            "primary-fixed-dim": "#ffb1c5",
+            "on-surface": "#1f1b1c",
+            "tertiary-fixed": "#eedee4",
+            "surface-dim": "#e1d8d9",
+            "surface-container-low": "#fbf1f2",
+            "on-secondary-fixed-variant": "#8c170e",
+            "on-tertiary-container": "#c6b7bd",
+            "inverse-on-surface": "#f8eeef",
+            "primary": "#6d0033",
+            "on-surface-variant": "#564146",
+            "on-background": "#1f1b1c",
+            "tertiary-container": "#53484d",
+            "on-primary": "#ffffff",
+            "error": "#ba1a1a",
+            "surface-tint": "#a8315d",
+            "on-primary-container": "#ffa0ba",
+            "surface-bright": "#fff8f8",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "surface": "#fff8f8",
+            "inverse-surface": "#342f30",
+            "on-secondary-container": "#690000",
+            "secondary-fixed-dim": "#ffb4a8",
+            "primary-fixed": "#ffd9e1",
+            "on-primary-fixed-variant": "#881646",
+            "primary-container": "#8e1b4a",
+            "on-tertiary": "#ffffff",
+            "outline-variant": "#dcbfc5",
+            "background": "#fff8f8",
+            "on-secondary": "#ffffff",
+            "on-error": "#ffffff",
+            "secondary-fixed": "#ffdad4",
+            "outline": "#897176",
+            "on-tertiary-fixed": "#21191e",
+            "error-container": "#ffdad6",
+            "secondary": "#ae3123",
+            "on-secondary-fixed": "#410000",
+            "tertiary": "#3b3236"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "space-2xl": "2rem",
+            "space-sm": "0.5rem",
+            "margin": "1rem",
+            "gutter": "1rem",
+            "space-3xl": "3rem",
+            "space-xl": "1.5rem",
+            "space-md": "0.75rem",
+            "space-lg": "1rem"
+          },
+          "fontFamily": {
+            "label": ["Inter"],
+            "caption": ["Inter"],
+            "body": ["Inter"],
+            "amount-lg": ["Inter"],
+            "display": ["Inter"],
+            "body-medium": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "subtitle": ["Inter"],
+            "title": ["Inter"]
+          },
+          "fontSize": {
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      line-height: 1;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: #FAF8F7;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #E4DEDC;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased overflow-x-hidden min-h-screen">
+<!-- SideNavBar Docked Left (w-72, 288px) -->
+<aside class="fixed left-0 top-0 h-full w-72 flex flex-col justify-between py-space-xl px-space-lg overflow-y-auto bg-surface-container-lowest border-r border-surface-variant z-30 shadow-sm custom-scroll">
+<div class="flex flex-col gap-space-xl">
+<!-- Header Crest & Subtitle -->
+<div class="flex items-center gap-space-md px-space-xs">
+<div class="w-10 h-10 rounded-xl bg-primary-container text-on-primary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[24px]" data-icon="account_balance">account_balance</span>
+</div>
+<div class="flex flex-col">
+<span class="text-subtitle font-subtitle text-primary tracking-tight">YourApp Credit Ops</span>
+<span class="text-caption font-caption text-on-surface-variant">Enterprise Portal</span>
+</div>
+</div>
+<!-- Navigation Tabs -->
+<nav class="flex flex-col gap-space-xs">
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="pending_actions">pending_actions</span>
+<span>Applications Queue</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span>Credit Portfolio &amp; Collections</span>
+</a>
+<!-- Active Agency Hub Section -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg bg-surface-container-low text-primary font-label text-label shadow-sm" href="#">
+<span class="material-symbols-outlined" data-icon="point_of_sale" style="font-variation-settings: 'FILL' 1;">point_of_sale</span>
+<span class="flex-1">Agent Network &amp; POS</span>
+<span class="inline-flex items-center justify-center px-1.5 py-0.5 rounded-full text-[11px] font-bold bg-primary text-on-primary">1.4k</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="tune">tune</span>
+<span>Product Configuration</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="handshake">handshake</span>
+<span>Partner Settlement</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span>Audit Log</span>
+</a>
+</nav>
+</div>
+<!-- Footer Controls -->
+<div class="flex flex-col gap-space-xs pt-space-lg border-t border-surface-variant">
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="admin_panel_settings">admin_panel_settings</span>
+<span>Security &amp; Settings</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span>Sign Out</span>
+</a>
+<div class="mt-space-sm px-space-lg py-space-sm rounded-lg bg-surface-container flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+<span class="text-caption font-caption text-on-surface-variant">CBN NIP Bridge v4.2</span>
+</div>
+<span class="text-caption font-caption text-primary font-bold">2026 Ready</span>
+</div>
+</div>
+</aside>
+<!-- Main Viewport Wrap (Offset left by 288px / w-72) -->
+<div class="ml-72 min-h-screen flex flex-col bg-background">
+<!-- TopNavBar -->
+<header class="sticky top-0 right-0 h-16 w-full flex items-center justify-between px-space-xl bg-surface-container-lowest border-b border-surface-variant z-20">
+<!-- Search & Branch Product Context -->
+<div class="flex items-center gap-space-xl flex-1 max-w-2xl">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="storefront">storefront</span>
+<span class="text-title font-title text-primary tracking-tight text-[18px]">Lagos Island Main Branch (012)</span>
+</div>
+<div class="relative w-80">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]" data-icon="search">search</span>
+<input class="w-full h-10 pl-9 pr-3 rounded-xl bg-surface-container-low border border-surface-variant text-caption font-caption text-on-surface placeholder:text-on-surface-variant focus:outline-none focus:border-primary-container" placeholder="Agent terminal ID, business, BVN..." type="text"/>
+</div>
+</div>
+<!-- Trailing Status Chips & Officer Profile -->
+<div class="flex items-center gap-space-lg">
+<div class="flex items-center gap-space-sm">
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-surface-container border border-surface-variant">
+<span class="material-symbols-outlined text-[15px] text-emerald-700" data-icon="hub">hub</span>
+<span class="text-caption font-caption font-medium text-on-surface">Agency Network: 1,420 Active Nodes</span>
+</div>
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-surface-container border border-surface-variant">
+<span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+<span class="text-caption font-caption font-medium text-on-surface">NIP Agency Bridge: Online</span>
+</div>
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-low border border-secondary-container text-secondary text-caption font-caption font-semibold hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[16px]" data-icon="verified_user">verified_user</span>
+<span>Dual Authorization (1 Pending)</span>
+</button>
+</div>
+<!-- Notification & Help Icons -->
+<div class="flex items-center gap-1 text-on-surface-variant border-l border-surface-variant pl-space-md">
+<button class="p-2 rounded-lg hover:bg-surface-container-low transition-colors relative" title="Notifications">
+<span class="material-symbols-outlined text-[20px]" data-icon="notifications">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="p-2 rounded-lg hover:bg-surface-container-low transition-colors" title="Support Desk">
+<span class="material-symbols-outlined text-[20px]" data-icon="help_outline">help_outline</span>
+</button>
+</div>
+<!-- Profile Avatar & Details -->
+<div class="flex items-center gap-space-md border-l border-surface-variant pl-space-md">
+<img class="w-9 h-9 rounded-full object-cover border border-outline-variant" data-alt="A distinguished senior Nigerian banking executive passport photo, wearing a sharp dark corporate blazer against an institutional ivory studio backdrop with soft diffused corporate lighting, epitomizing dignified African banking leadership." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmsif3vIWf6I-dRSN-SSMy6zmYsnC3BXqhGQ1V0nOJoAIMwOusPwelSn3XRb2aE-QS6wY4Wa0qmX-oxawoxlexNoi9OzXDm4VsrDDRgdp4N3ZrguSZtWnqQqMtchBKQFG5_vUCF7ArjvMpqzg4Gt2PQaiUHSuAsbDRt7WMF5FXDtWBcybjnjn_xPrGIfZAFuGhevEZ4s8MIAVRgHLfF0eSn_TstIm-6X4dVhDYLr8K"/>
+<div class="flex flex-col text-left">
+<span class="text-label font-label text-on-surface leading-tight text-[13px]">Engr. Mustapha Bello</span>
+<span class="text-caption font-caption text-on-surface-variant text-[11px]">Head of Agency Banking &amp; Field Ops</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Workspace Canvas -->
+<main class="p-space-xl flex flex-col gap-space-xl max-w-[1360px] mx-auto w-full">
+<!-- Breadcrumbs & Page Header Section -->
+<section class="flex flex-col md:flex-row md:items-center justify-between gap-space-lg">
+<div class="flex flex-col gap-space-xs">
+<nav class="flex items-center gap-2 text-caption font-caption text-on-surface-variant">
+<span>Back-Office</span>
+<span>/</span>
+<span>Operations</span>
+<span>/</span>
+<span class="text-primary font-semibold">Agency Banking &amp; Super-Agent Network (W-BO-015)</span>
+</nav>
+<h1 class="text-title font-title text-on-surface text-[26px] tracking-tight">Agency Banking Terminal Surveillance &amp; Float Liquidity Desk</h1>
+<p class="text-caption font-caption text-on-surface-variant max-w-3xl">
+            Supervision of nationwide retail POS agents, real-time float wallet balances, AML cash velocity, and CBN statutory cash-out compliance.
+          </p>
+</div>
+<!-- Header Action Triggers -->
+<div class="flex items-center gap-space-md flex-shrink-0">
+<button class="h-[52px] px-space-lg rounded-xl border border-surface-variant bg-surface-container-lowest text-on-surface font-label text-label hover:bg-surface-container-low transition-colors shadow-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="download">download</span>
+<span>Export Agent Network Census (CSV)</span>
+</button>
+<button class="h-[52px] px-space-xl rounded-xl bg-primary-container text-on-primary font-label text-label hover:bg-primary transition-colors shadow-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]" data-icon="add_circle">add_circle</span>
+<span>+ Onboard New Super-Agent Hub</span>
+</button>
+</div>
+</section>
+<!-- 4 KPI Summary Cards (Bento Style) -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-lg">
+<!-- KPI 1 -->
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest border border-surface-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant mb-2">
+<span class="text-caption font-caption font-medium">Total Active Agent Kiosks</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-low text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]" data-icon="storefront">storefront</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="text-title font-title text-on-surface text-[24px]">1,420 Agents</span>
+<span class="text-caption font-caption text-on-surface-variant mt-1">840 Super-Agents, 580 Direct Kiosks • 36 States</span>
+</div>
+<div class="mt-3 pt-2 border-t border-surface-variant flex items-center gap-1.5 text-caption font-caption text-emerald-700">
+<span class="material-symbols-outlined text-[14px]" data-icon="trending_up">trending_up</span>
+<span class="font-medium">+42 Onboarded this month</span>
+</div>
+</div>
+<!-- KPI 2 -->
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest border border-surface-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant mb-2">
+<span class="text-caption font-caption font-medium">Aggregated Float Pool</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-low text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]" data-icon="account_balance_wallet">account_balance_wallet</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="text-title font-title text-on-surface text-[24px]">₦184,500,000.00</span>
+<span class="text-caption font-caption text-on-surface-variant mt-1">Held across pre-funded settlement accounts</span>
+</div>
+<div class="mt-3 pt-2 border-t border-surface-variant flex items-center gap-1.5 text-caption font-caption text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px] text-emerald-700" data-icon="verified">verified</span>
+<span>NIP Settlement ratio: 100% fully collateralized</span>
+</div>
+</div>
+<!-- KPI 3 -->
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest border border-surface-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant mb-2">
+<span class="text-caption font-caption font-medium">Daily Cash-In/Out Volume</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-low text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]" data-icon="swap_horiz">swap_horiz</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="text-title font-title text-on-surface text-[24px]">₦74,250,000.00</span>
+<span class="text-caption font-caption text-on-surface-variant mt-1">Cash-in: ₦41.2M • Cash-out: ₦33.05M</span>
+</div>
+<div class="mt-3 pt-2 border-t border-surface-variant flex items-center gap-1.5 text-caption font-caption text-primary">
+<span class="material-symbols-outlined text-[14px]" data-icon="speed">speed</span>
+<span>Net Velocity Index: 1.18x Healthy Flow</span>
+</div>
+</div>
+<!-- KPI 4 -->
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest border border-error-container shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant mb-2">
+<span class="text-caption font-caption font-medium">Float Replenishment Alerts</span>
+<div class="w-8 h-8 rounded-lg bg-error-container text-error flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]" data-icon="notification_important">notification_important</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="text-title font-title text-error text-[24px]">12 Low Float</span>
+<span class="text-caption font-caption text-on-surface-variant mt-1">Float &lt;₦100,000 requiring emergency top-up</span>
+</div>
+<div class="mt-3 pt-2 border-t border-surface-variant flex items-center gap-1.5 text-caption font-caption text-error font-medium">
+<span class="material-symbols-outlined text-[14px]" data-icon="priority_high">priority_high</span>
+<span>4 Kiosks stalled in Bodija &amp; Oyingbo</span>
+</div>
+</div>
+</section>
+<!-- Regulatory Agency Protocol Banner -->
+<section class="rounded-xl border border-secondary-container bg-surface-container-low px-space-lg py-space-md flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-9 h-9 rounded-lg bg-secondary-container text-on-secondary flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]" data-icon="policy">policy</span>
+</div>
+<div class="flex flex-col">
+<span class="text-label font-label text-secondary font-bold tracking-wide text-[13px]">
+              CBN REGULATORY FRAMEWORK FOR AGENCY BANKING 2026
+            </span>
+<span class="text-caption font-caption text-on-surface-variant">
+              Daily cash-out per customer capped at ₦100,000.00. Mandatory biometric or OTP confirmation required for all withdrawals.
+            </span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-[12px] font-semibold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="check_circle">check_circle</span>
+            Enforcement Active
+          </span>
+<button class="text-primary font-label text-label hover:underline text-[13px] px-2 py-1">View Circular</button>
+</div>
+</section>
+<!-- Two-Column Surveillance & Control Desk Layout (~60% / ~40%) -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-start">
+<!-- Left Column: Agent Terminal Directory (lg:col-span-7, ~60%) -->
+<div class="lg:col-span-7 flex flex-col gap-space-md bg-surface-container-lowest border border-surface-variant rounded-2xl shadow-sm p-space-lg">
+<!-- Tabbed Bar -->
+<div class="flex items-center gap-1 overflow-x-auto border-b border-surface-variant pb-2 custom-scroll">
+<button class="px-3 py-1.5 rounded-lg text-label font-label text-primary bg-surface-container-low text-[13px] whitespace-nowrap">
+              All Agent Nodes (1,420)
+            </button>
+<button class="px-3 py-1.5 rounded-lg text-caption font-caption text-on-surface-variant hover:text-on-surface text-[13px] whitespace-nowrap">
+              Healthy Float (1,290)
+            </button>
+<button class="px-3 py-1.5 rounded-lg text-caption font-caption text-error font-medium hover:bg-surface-container-low text-[13px] whitespace-nowrap flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+              Low Float Alerts (12)
+            </button>
+<button class="px-3 py-1.5 rounded-lg text-caption font-caption text-amber-700 font-medium hover:bg-surface-container-low text-[13px] whitespace-nowrap flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-600"></span>
+              High AML Velocity (8)
+            </button>
+<button class="px-3 py-1.5 rounded-lg text-caption font-caption text-on-surface-variant hover:text-on-surface text-[13px] whitespace-nowrap">
+              Suspended / Inactive (110)
+            </button>
+</div>
+<!-- Geofence & Hardware Filter Row -->
+<div class="grid grid-cols-3 gap-space-md py-1">
+<select class="h-10 px-3 rounded-xl bg-surface-container-low border border-surface-variant text-caption font-caption text-on-surface focus:outline-none focus:border-primary-container">
+<option>Geofence: All Clusters</option>
+<option selected="">Lagos Island Cluster (240)</option>
+<option>Lagos Mainland Cluster (390)</option>
+<option>Kano City Cluster (180)</option>
+<option>Abuja Central Cluster (140)</option>
+<option>Port Harcourt Hub (110)</option>
+</select>
+<select class="h-10 px-3 rounded-xl bg-surface-container-low border border-surface-variant text-caption font-caption text-on-surface focus:outline-none focus:border-primary-container">
+<option>Terminal: All POS Types</option>
+<option>Android SmartPOS Pro</option>
+<option>Linux Biometric Terminal</option>
+<option>mPOS Bluetooth Dongle</option>
+</select>
+<select class="h-10 px-3 rounded-xl bg-surface-container-low border border-surface-variant text-caption font-caption text-on-surface focus:outline-none focus:border-primary-container">
+<option>Tier: All Credentials</option>
+<option>Super-Agent Hub (Tier 3)</option>
+<option>Direct Kiosk (Tier 2)</option>
+<option>Micro Retailer (Tier 1)</option>
+</select>
+</div>
+<!-- Terminal Directory Table -->
+<div class="overflow-x-auto border border-surface-variant rounded-xl custom-scroll">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-surface-variant text-caption font-caption text-on-surface-variant uppercase tracking-wider text-[11px]">
+<th class="py-3 px-3">Agent Node &amp; POS ID</th>
+<th class="py-3 px-3">Business / Location</th>
+<th class="py-3 px-3 text-right">Float Balance</th>
+<th class="py-3 px-3 text-right">Daily Vol</th>
+<th class="py-3 px-3 text-center">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-variant text-caption font-caption">
+<!-- Row 1: Selected -->
+<tr class="bg-surface-container-low/60 hover:bg-surface-container-low cursor-pointer transition-colors border-l-4 border-l-primary-container">
+<td class="py-3 px-3">
+<div class="flex flex-col">
+<span class="font-bold text-primary font-mono text-[12px]">#AGT-LAG-104</span>
+<span class="text-on-surface-variant text-[11px] font-mono">POS-NRG-9102</span>
+</div>
+</td>
+<td class="py-3 px-3">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface text-[13px]">Balogun Super-Kiosk Hub</span>
+<span class="text-on-surface-variant text-[11px]">Alhaji Danladi Textiles • Lagos Island</span>
+</div>
+</td>
+<td class="py-3 px-3 text-right">
+<span class="font-bold text-on-surface tabular-nums text-[13px]">₦4,850,000.00</span>
+<span class="block text-[10px] text-emerald-700">Healthy (Zenith)</span>
+</td>
+<td class="py-3 px-3 text-right">
+<span class="text-on-surface tabular-nums font-medium text-[13px]">₦12,450,000.00</span>
+<span class="block text-[10px] text-on-surface-variant">142 Txns</span>
+</td>
+<td class="py-3 px-3 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-100 text-emerald-800">
+<span class="material-symbols-outlined text-[13px]" data-icon="check_circle">check_circle</span>
+                      Active • Top
+                    </span>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low cursor-pointer transition-colors">
+<td class="py-3 px-3">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface font-mono text-[12px]">#AGT-LAG-105</span>
+<span class="text-on-surface-variant text-[11px] font-mono">POS-NRG-8841</span>
+</div>
+</td>
+<td class="py-3 px-3">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface text-[13px]">Mama Chinedu Provisions</span>
+<span class="text-on-surface-variant text-[11px]">Mrs. Chinedu Adeleke • Lekki Phase 1</span>
+</div>
+</td>
+<td class="py-3 px-3 text-right">
+<span class="font-medium text-on-surface tabular-nums text-[13px]">₦1,250,000.00</span>
+<span class="block text-[10px] text-emerald-700">Healthy</span>
+</td>
+<td class="py-3 px-3 text-right">
+<span class="text-on-surface tabular-nums text-[13px]">₦3,100,000.00</span>
+<span class="block text-[10px] text-on-surface-variant">48 Txns</span>
+</td>
+<td class="py-3 px-3 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-100 text-emerald-800">
+<span class="material-symbols-outlined text-[13px]" data-icon="verified">verified</span>
+                      Verified
+                    </span>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low cursor-pointer transition-colors">
+<td class="py-3 px-3">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface font-mono text-[12px]">#AGT-KAN-082</span>
+<span class="text-on-surface-variant text-[11px] font-mono">POS-NRG-7712</span>
+</div>
+</td>
+<td class="py-3 px-3">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface text-[13px]">Kano Sabon Gari Agency</span>
+<span class="text-on-surface-variant text-[11px]">Alhaji Mukhtar Bello • Kano Hub</span>
+</div>
+</td>
+<td class="py-3 px-3 text-right">
+<span class="font-bold text-on-surface tabular-nums text-[13px]">₦8,200,000.00</span>
+<span class="block text-[10px] text-emerald-700">Super-Float</span>
+</td>
+<td class="py-3 px-3 text-right">
+<span class="text-on-surface tabular-nums text-[13px]">₦18,900,000.00</span>
+<span class="block text-[10px] text-on-surface-variant">210 Txns</span>
+</td>
+<td class="py-3 px-3 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-semibold bg-purple-100 text-purple-800">
+<span class="material-symbols-outlined text-[13px]" data-icon="military_tech">military_tech</span>
+                      Super-Agent
+                    </span>
+</td>
+</tr>
+<!-- Row 4: Low Float Alert -->
+<tr class="hover:bg-error-container/20 cursor-pointer transition-colors bg-error-container/10">
+<td class="py-3 px-3">
+<div class="flex flex-col">
+<span class="font-bold text-error font-mono text-[12px]">#AGT-IBD-029</span>
+<span class="text-on-surface-variant text-[11px] font-mono">POS-NRG-4419</span>
+</div>
+</td>
+<td class="py-3 px-3">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface text-[13px]">Bodija Market Cash Hub</span>
+<span class="text-on-surface-variant text-[11px]">Tunde Bakare Enterprises • Ibadan</span>
+</div>
+</td>
+<td class="py-3 px-3 text-right">
+<span class="font-bold text-error tabular-nums text-[13px]">₦68,000.00</span>
+<span class="block text-[10px] text-error">Depleted (&lt;₦100k)</span>
+</td>
+<td class="py-3 px-3 text-right">
+<span class="text-on-surface tabular-nums text-[13px]">₦4,800,000.00</span>
+<span class="block text-[10px] text-on-surface-variant">86 Txns</span>
+</td>
+<td class="py-3 px-3 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold bg-error-container text-error">
+<span class="material-symbols-outlined text-[13px]" data-icon="warning">warning</span>
+                      Low Float
+                    </span>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container-low cursor-pointer transition-colors">
+<td class="py-3 px-3">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface font-mono text-[12px]">#AGT-ABJ-044</span>
+<span class="text-on-surface-variant text-[11px] font-mono">POS-NRG-3310</span>
+</div>
+</td>
+<td class="py-3 px-3">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface text-[13px]">Wuse 2 Financial Access</span>
+<span class="text-on-surface-variant text-[11px]">Fatima Garba Ventures • Abuja FCT</span>
+</div>
+</td>
+<td class="py-3 px-3 text-right">
+<span class="font-medium text-on-surface tabular-nums text-[13px]">₦2,450,000.00</span>
+<span class="block text-[10px] text-emerald-700">Healthy</span>
+</td>
+<td class="py-3 px-3 text-right">
+<span class="text-on-surface tabular-nums text-[13px]">₦6,200,000.00</span>
+<span class="block text-[10px] text-on-surface-variant">94 Txns</span>
+</td>
+<td class="py-3 px-3 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-100 text-emerald-800">
+<span class="material-symbols-outlined text-[13px]" data-icon="verified">verified</span>
+                      Verified
+                    </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination and Quick Batch Ops -->
+<div class="flex items-center justify-between pt-2 text-caption font-caption text-on-surface-variant">
+<span>Showing 1-5 of 1,420 POS Terminals</span>
+<div class="flex items-center gap-2">
+<button class="px-2.5 py-1 rounded-lg border border-surface-variant hover:bg-surface-container-low disabled:opacity-50" disabled="">Previous</button>
+<span class="text-on-surface font-semibold">1</span>
+<button class="px-2.5 py-1 rounded-lg border border-surface-variant hover:bg-surface-container-low">2</button>
+<button class="px-2.5 py-1 rounded-lg border border-surface-variant hover:bg-surface-container-low">3</button>
+<button class="px-2.5 py-1 rounded-lg border border-surface-variant hover:bg-surface-container-low">Next</button>
+</div>
+</div>
+</div>
+<!-- Right Column: Agent Terminal Dossier & Liquidity Controls (lg:col-span-5, ~40%) -->
+<div class="lg:col-span-5 flex flex-col gap-space-lg bg-surface-container-lowest border border-surface-variant rounded-2xl shadow-sm p-space-lg">
+<!-- Dossier Header -->
+<div class="flex items-center justify-between border-b border-surface-variant pb-space-md">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="text-title font-title text-on-surface text-[18px]">Terminal Dossier</span>
+<span class="px-2 py-0.5 rounded font-mono font-bold text-[12px] bg-surface-container text-primary">#AGT-LAG-104</span>
+</div>
+<span class="text-caption font-caption text-on-surface-variant">Terminal ID: POS-NRG-9102 (SmartPOS v3)</span>
+</div>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[12px] font-semibold bg-emerald-100 text-emerald-800">
+<span class="material-symbols-outlined text-[14px]" data-icon="security">security</span>
+              Super-Agent • Tier 3 Certified
+            </span>
+</div>
+<!-- Merchant Identity & Hardware Geofence -->
+<div class="p-space-md rounded-xl bg-surface-container-low border border-surface-variant flex flex-col gap-2">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="text-label font-label text-on-surface">Balogun Super-Kiosk Hub</span>
+<span class="text-caption font-caption text-on-surface-variant">Owner: Alhaji Danladi Textiles</span>
+</div>
+<div class="text-right">
+<span class="text-caption font-caption text-on-surface-variant block">Enclave BVN</span>
+<span class="font-mono font-bold text-on-surface text-[13px]">2219••••841</span>
+</div>
+</div>
+<div class="flex items-center gap-2 text-caption font-caption text-on-surface-variant pt-2 border-t border-surface-variant">
+<span class="material-symbols-outlined text-primary text-[16px]" data-icon="pin_drop">pin_drop</span>
+<span>14 Broad St, Lagos Island (lat: 6.4531, lon: 3.3958) • Geofence Locked (Radius: 35m)</span>
+</div>
+</div>
+<!-- Float Liquidity & Commission Ledger (Bento Micro) -->
+<div class="flex flex-col gap-space-xs">
+<span class="text-caption font-caption font-semibold text-on-surface-variant uppercase tracking-wider text-[11px]">Float Liquidity &amp; Settlement Balances</span>
+<div class="grid grid-cols-2 gap-space-md">
+<div class="p-space-md rounded-xl bg-surface-container-lowest border border-surface-variant">
+<span class="text-caption font-caption text-on-surface-variant block">Operating Float Wallet</span>
+<span class="text-title font-title text-primary text-[20px] font-bold tabular-nums">₦4,850,000.00</span>
+<span class="text-[11px] text-emerald-700 block mt-1 font-medium">Zenith Clearing Nostro (Prefunded)</span>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest border border-surface-variant">
+<span class="text-caption font-caption text-on-surface-variant block">Unsettled Commission</span>
+<span class="text-title font-title text-on-surface text-[20px] font-bold tabular-nums">₦142,500.00</span>
+<span class="text-[11px] text-on-surface-variant block mt-1">0.5% Cash-In / 0.75% Cash-Out</span>
+</div>
+</div>
+<div class="px-3 py-2 rounded-lg bg-surface-container flex items-center justify-between text-caption font-caption text-on-surface-variant mt-1">
+<span>Last Float Injection: ₦2,000,000.00 at 10:15 WAT</span>
+<span class="font-mono text-primary font-medium">Batch #FLT-9921</span>
+</div>
+</div>
+<!-- Risk & CBN Statutory Velocity Telemetry -->
+<div class="flex flex-col gap-space-xs">
+<span class="text-caption font-caption font-semibold text-on-surface-variant uppercase tracking-wider text-[11px]">CBN 2026 AML &amp; Velocity Compliance</span>
+<div class="p-space-md rounded-xl border border-surface-variant bg-surface-container-low flex flex-col gap-2.5">
+<div class="flex items-center justify-between text-caption font-caption">
+<span class="text-on-surface-variant flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-emerald-700" data-icon="fact_check">fact_check</span>
+                  Single Cash-Out Cap
+                </span>
+<span class="font-semibold text-emerald-800">₦100,000.00 Enforced</span>
+</div>
+<div class="flex items-center justify-between text-caption font-caption">
+<span class="text-on-surface-variant flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="fingerprint">fingerprint</span>
+                  Biometric Compliance Score
+                </span>
+<span class="font-semibold text-on-surface">99.4% Fingerprint Verified</span>
+</div>
+<div class="flex items-center justify-between text-caption font-caption">
+<span class="text-on-surface-variant flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-secondary" data-icon="radar">radar</span>
+                  Velocity Ring Anomaly Score
+                </span>
+<span class="font-semibold text-emerald-700">0.04 (Normal Low)</span>
+</div>
+</div>
+</div>
+<!-- Real-Time Liquidity Action Drawer -->
+<div class="flex flex-col gap-space-md pt-space-xs border-t border-surface-variant">
+<div class="flex flex-col gap-1.5">
+<label class="text-caption font-caption font-medium text-on-surface-variant">Emergency Float Injection (₦)</label>
+<div class="flex gap-2">
+<input class="flex-1 h-[52px] px-space-md rounded-xl bg-surface-container-lowest border border-surface-variant font-medium text-body font-body text-on-surface focus:outline-none focus:border-primary-container" type="text" value="1,000,000.00"/>
+<button class="h-[52px] px-4 rounded-xl bg-surface-container border border-surface-variant text-caption font-caption text-primary font-bold hover:bg-surface-container-high transition-colors">
+                  Check Reserve
+                </button>
+</div>
+<div class="flex items-center gap-2 mt-1">
+<button class="px-2.5 py-1 rounded-lg bg-surface-container text-[12px] font-semibold text-primary hover:bg-surface-container-high">+₦500k</button>
+<button class="px-2.5 py-1 rounded-lg bg-surface-container-low border border-primary-container text-[12px] font-bold text-primary">+₦1.0M</button>
+<button class="px-2.5 py-1 rounded-lg bg-surface-container text-[12px] font-semibold text-primary hover:bg-surface-container-high">+₦2.0M</button>
+<span class="text-[11px] text-on-surface-variant ml-auto">Clearing Bank: Zenith Nostro</span>
+</div>
+</div>
+<!-- Regulatory Toggles & Controls -->
+<div class="flex flex-col gap-2 pt-2 border-t border-surface-variant">
+<label class="flex items-center gap-3 cursor-pointer">
+<input checked="" class="w-5 h-5 rounded text-primary-container focus:ring-primary border-surface-variant" type="checkbox"/>
+<span class="text-caption font-caption text-on-surface">Allow Extended Super-Agent Quota (₦10M/day limit)</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer">
+<input class="w-5 h-5 rounded text-error focus:ring-error border-surface-variant" type="checkbox"/>
+<span class="text-caption font-caption text-error font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px]" data-icon="lock_reset">lock_reset</span>
+                  Emergency POS Remote Wipe &amp; Hardware Lockout
+                </span>
+</label>
+</div>
+<!-- Action Trigger CTAs -->
+<div class="flex flex-col gap-2 mt-2">
+<button class="w-full h-[52px] rounded-xl bg-primary-container text-on-primary font-label text-label hover:bg-primary transition-colors shadow-sm flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]" data-icon="bolt">bolt</span>
+<span>Authorize Float Injection &amp; Sync Terminal</span>
+</button>
+<div class="grid grid-cols-2 gap-2">
+<button class="h-[48px] px-3 rounded-xl border border-surface-variant bg-surface-container-lowest text-on-surface font-label text-label hover:bg-surface-container-low transition-colors text-[13px] flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]" data-icon="payments">payments</span>
+<span>Trigger Daily Settlement</span>
+</button>
+<button class="h-[48px] px-3 rounded-xl border border-surface-variant bg-surface-container-lowest text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors text-[13px] flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]" data-icon="receipt_long">receipt_long</span>
+<span>ISO-8583 Audit Log</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+</body></html>

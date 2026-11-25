@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Reset Passcode - YourApp</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Inter Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface": "#fff8f8",
+            "tertiary": "#3b3236",
+            "tertiary-container": "#53484d",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "on-surface": "#1f1b1c",
+            "error-container": "#ffdad6",
+            "surface-container-lowest": "#ffffff",
+            "on-primary-fixed-variant": "#881646",
+            "inverse-on-surface": "#f8eeef",
+            "primary-fixed": "#ffd9e1",
+            "on-secondary-fixed-variant": "#8c170e",
+            "on-secondary": "#ffffff",
+            "secondary-fixed": "#ffdad4",
+            "error": "#ba1a1a",
+            "on-primary": "#ffffff",
+            "background": "#fff8f8",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "surface-container": "#f5eced",
+            "surface-variant": "#e9e0e1",
+            "on-primary-container": "#ffa0ba",
+            "surface-container-highest": "#e9e0e1",
+            "on-error": "#ffffff",
+            "on-tertiary-container": "#c6b7bd",
+            "secondary-fixed-dim": "#ffb4a8",
+            "surface-tint": "#a8315d",
+            "surface-container-high": "#efe6e7",
+            "on-tertiary-fixed": "#21191e",
+            "primary": "#6d0033",
+            "inverse-primary": "#ffb1c5",
+            "surface-dim": "#e1d8d9",
+            "on-secondary-container": "#690000",
+            "on-primary-fixed": "#3f001b",
+            "tertiary-fixed": "#eedee4",
+            "on-secondary-fixed": "#410000",
+            "surface-bright": "#fff8f8",
+            "outline": "#897176",
+            "primary-container": "#8e1b4a",
+            "on-surface-variant": "#564146",
+            "on-background": "#1f1b1c",
+            "on-tertiary": "#ffffff",
+            "secondary": "#ae3123",
+            "outline-variant": "#dcbfc5",
+            "secondary-container": "#fc6955",
+            "primary-fixed-dim": "#ffb1c5",
+            "inverse-surface": "#342f30",
+            "surface-container-low": "#fbf1f2",
+            "on-error-container": "#93000a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "1rem",
+            "space-md": "0.75rem",
+            "space-xl": "1.5rem",
+            "space-3xl": "3rem",
+            "space-lg": "1rem",
+            "space-sm": "0.5rem",
+            "margin": "1rem",
+            "space-2xl": "2rem",
+            "space-xs": "0.25rem"
+          },
+          "fontFamily": {
+            "body-medium": ["Inter"],
+            "body": ["Inter"],
+            "label": ["Inter"],
+            "display": ["Inter"],
+            "caption": ["Inter"],
+            "subtitle": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "title": ["Inter"],
+            "amount-lg": ["Inter"]
+          },
+          "fontSize": {
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased font-body min-h-full flex flex-col justify-between items-center selection:bg-primary-fixed selection:text-primary">
+<!-- Mobile Container (Max width 560px for tablet, 390px native view) -->
+<div class="w-full max-w-[560px] min-h-screen flex flex-col bg-surface relative shadow-sm">
+<!-- Top Bar Header (Task-Focused with Back action, navigation shell suppressed per Semantic Shell Mandate) -->
+<header class="w-full px-margin py-space-sm flex items-center justify-between min-h-[56px] relative">
+<button aria-label="Go back" class="w-12 h-12 flex items-center justify-center rounded-xl text-on-surface hover:bg-surface-container active:scale-95 transition-all duration-150" type="button">
+<span class="material-symbols-outlined text-primary text-[24px]">arrow_back</span>
+</button>
+<div class="absolute left-1/2 -translate-x-1/2 flex items-center justify-center">
+<span class="font-title text-title font-bold text-primary tracking-tight">YourApp</span>
+</div>
+<div class="w-12 h-12 flex items-center justify-center">
+<!-- Security Shield Icon Indicator -->
+<span class="material-symbols-outlined text-outline text-[20px]" title="Secured channel">encrypted</span>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-margin pb-space-3xl flex flex-col">
+<!-- Security Badge Section -->
+<div class="flex items-center justify-center pt-space-md pb-space-md">
+<div class="w-16 h-16 rounded-full bg-primary-fixed/60 border border-outline-variant/30 flex items-center justify-center shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)]">
+<div class="w-12 h-12 rounded-full bg-primary-container text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[26px]">lock_reset</span>
+</div>
+</div>
+</div>
+<!-- Headline & Reassuring Guidance -->
+<div class="text-center px-space-xs space-y-space-xs mb-space-xl">
+<h1 class="font-title text-title text-on-surface tracking-tight font-bold">
+          Reset login passcode
+        </h1>
+<p class="font-caption text-caption text-on-surface-variant max-w-[320px] mx-auto leading-relaxed">
+          Verify your identity with your registered phone number or BVN to reset your login passcode.
+        </p>
+</div>
+<!-- Form Inputs Container -->
+<div class="space-y-space-lg flex-1">
+<!-- Field 1: Phone / Identification Input -->
+<div class="space-y-space-xs">
+<label class="block font-caption text-caption text-on-surface-variant font-medium">
+            Registered phone number or BVN
+          </label>
+<div class="relative flex items-center h-[52px] w-full rounded-xl bg-surface-container-lowest border border-outline-variant/60 focus-within:border-primary-container focus-within:ring-1 focus-within:ring-primary-container transition-all">
+<!-- Nigeria Prefix Badge -->
+<div class="flex items-center pl-space-md pr-space-sm border-r border-outline-variant/40 space-x-space-xs select-none">
+<span class="text-base leading-none">🇳🇬</span>
+<span class="font-body-medium text-body-medium text-on-surface font-semibold">+234</span>
+</div>
+<input autocomplete="tel" class="w-full h-full bg-transparent border-0 px-space-md font-body text-body text-on-surface placeholder:text-outline focus:ring-0 outline-none" inputmode="numeric" placeholder="801 234 5678" type="tel"/>
+<div class="pr-space-md text-outline">
+<span class="material-symbols-outlined text-[20px]">phone_iphone</span>
+</div>
+</div>
+</div>
+<!-- Field 2: Security Check - Transaction PIN Authentication Card -->
+<div class="rounded-xl border border-outline-variant/60 bg-surface-container-lowest p-space-md shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] space-y-space-sm">
+<div class="flex items-start justify-between">
+<div>
+<span class="block font-label text-label text-on-surface font-semibold">
+                Security check
+              </span>
+<p class="font-caption text-caption text-on-surface-variant">
+                Enter your 4-digit transaction PIN to authenticate
+              </p>
+</div>
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">password</span>
+</div>
+</div>
+<!-- 4-Digit Input Boxes -->
+<div class="grid grid-cols-4 gap-space-sm pt-space-xs">
+<input aria-label="Digit 1" class="h-[52px] text-center font-title text-title text-on-surface bg-surface-container-low border border-outline-variant/60 rounded-xl focus:border-primary-container focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary-container outline-none transition-all" inputmode="numeric" maxlength="1" pattern="[0-9]*" type="password"/>
+<input aria-label="Digit 2" class="h-[52px] text-center font-title text-title text-on-surface bg-surface-container-low border border-outline-variant/60 rounded-xl focus:border-primary-container focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary-container outline-none transition-all" inputmode="numeric" maxlength="1" pattern="[0-9]*" type="password"/>
+<input aria-label="Digit 3" class="h-[52px] text-center font-title text-title text-on-surface bg-surface-container-low border border-outline-variant/60 rounded-xl focus:border-primary-container focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary-container outline-none transition-all" inputmode="numeric" maxlength="1" pattern="[0-9]*" type="password"/>
+<input aria-label="Digit 4" class="h-[52px] text-center font-title text-title text-on-surface bg-surface-container-low border border-outline-variant/60 rounded-xl focus:border-primary-container focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary-container outline-none transition-all" inputmode="numeric" maxlength="1" pattern="[0-9]*" type="password"/>
+</div>
+<div class="pt-space-xs flex items-center space-x-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-primary">verified_user</span>
+<span class="font-caption text-caption text-on-surface-variant">Your transaction PIN is end-to-end encrypted</span>
+</div>
+</div>
+<!-- Anti-Fraud Information Banner (Strict semantic state pairing text label with iconography) -->
+<div class="rounded-xl border border-outline-variant/40 bg-surface-container-low p-space-md flex items-start space-x-space-md">
+<div class="w-7 h-7 rounded-full bg-surface-variant flex items-center justify-center flex-shrink-0 text-primary mt-0.5">
+<span class="material-symbols-outlined text-[18px]">security_update_warning</span>
+</div>
+<div class="space-y-space-xs">
+<span class="inline-flex items-center space-x-1 font-label text-label text-primary font-semibold">
+<span>Security notice</span>
+</span>
+<p class="font-caption text-caption text-on-surface-variant leading-relaxed">
+              A temporary verification code will be sent to your registered phone. For security reasons, high-value transfers will be held for 24 hours after a passcode reset.
+            </p>
+</div>
+</div>
+</div>
+<!-- Pinned Bottom Action Container -->
+<div class="mt-space-xl pt-space-md pb-space-lg flex flex-col space-y-space-md">
+<!-- Primary Action Trigger -->
+<button class="w-full h-[52px] rounded-xl bg-primary-container text-on-primary font-label text-label font-semibold flex items-center justify-center shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] active:bg-[#731540] active:scale-[0.99] transition-all duration-150" type="button">
+<span>Continue verification</span>
+<span class="material-symbols-outlined text-[20px] ml-space-xs">arrow_forward</span>
+</button>
+<!-- Secondary Support Link -->
+<button class="w-full h-10 flex items-center justify-center space-x-space-xs text-primary font-label text-label hover:text-on-primary-fixed-variant transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">support_agent</span>
+<span>Contact customer support</span>
+</button>
+</div>
+</main>
+</div>
+<!-- Inline Script for smooth 4-digit PIN auto-focus tab behavior -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const pinInputs = document.querySelectorAll('input[type="password"]');
+      pinInputs.forEach((input, index) => {
+        input.addEventListener('input', (e) => {
+          if (e.target.value.length === 1 && index < pinInputs.length - 1) {
+            pinInputs[index + 1].focus();
+          }
+        });
+        input.addEventListener('keydown', (e) => {
+          if (e.key === 'Backspace' && !e.target.value && index > 0) {
+            pinInputs[index - 1].focus();
+          }
+        });
+      });
+    });
+  </script>
+</body></html>

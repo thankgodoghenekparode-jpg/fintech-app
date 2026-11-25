@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>YourApp - Mandatory Security Update</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Inter Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration with Design Tokens -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-background": "#e7e1e2",
+            "primary-container": "#e0709a",
+            "on-error": "#690005",
+            "on-secondary-fixed-variant": "#7f291e",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "error-container": "#93000a",
+            "surface-tint": "#ffb0ca",
+            "primary-fixed-dim": "#ffb0ca",
+            "on-tertiary-fixed-variant": "#06429a",
+            "surface-variant": "#373435",
+            "surface-dim": "#151314",
+            "background": "#151314",
+            "surface-container-lowest": "#100e0f",
+            "tertiary-container": "#6a92ee",
+            "on-error-container": "#ffdad6",
+            "on-secondary-fixed": "#410000",
+            "surface-container-low": "#1d1b1c",
+            "on-tertiary": "#002d6f",
+            "on-primary": "#620735",
+            "surface-bright": "#3b3839",
+            "on-primary-container": "#5d0331",
+            "primary-fixed": "#ffd9e3",
+            "tertiary-fixed": "#d9e2ff",
+            "surface-container-high": "#2c292a",
+            "on-secondary-container": "#ff9f90",
+            "inverse-on-surface": "#323031",
+            "surface-container": "#211f20",
+            "surface-container-highest": "#373435",
+            "outline": "#a28b91",
+            "on-surface-variant": "#dac0c6",
+            "tertiary": "#b0c6ff",
+            "secondary": "#ffb4a8",
+            "on-primary-fixed-variant": "#7f234b",
+            "on-surface": "#e7e1e2",
+            "on-secondary": "#61130a",
+            "error": "#ffb4ab",
+            "secondary-container": "#822c20",
+            "on-primary-fixed": "#3e001f",
+            "surface": "#151314",
+            "secondary-fixed-dim": "#ffb4a8",
+            "on-tertiary-fixed": "#001945",
+            "outline-variant": "#544247",
+            "secondary-fixed": "#ffdad4",
+            "on-tertiary-container": "#002a69",
+            "inverse-primary": "#9e3b63",
+            "primary": "#ffb0ca",
+            "inverse-surface": "#e7e1e2"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "gutter": "1rem",
+            "space-xl": "2rem",
+            "margin-mobile": "1rem",
+            "margin": "1rem",
+            "space-lg": "1.5rem",
+            "space-md": "1rem",
+            "space-sm": "0.5rem",
+            "gutter-mobile": "0.75rem"
+          },
+          "fontFamily": {
+            "label-md": ["Inter"],
+            "title-currency": ["Inter"],
+            "headline-lg": ["Inter"],
+            "body-lg": ["Inter"],
+            "display-currency": ["Inter"],
+            "headline-sm": ["Inter"],
+            "body-md": ["Inter"],
+            "label-lg": ["Inter"],
+            "headline-md": ["Inter"],
+            "label-sm": ["Inter"]
+          },
+          "fontSize": {
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "title-currency": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "label-lg": ["15px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    /* Hardware glow utility */
+    .glow-rose {
+      box-shadow: 0 0 28px -4px rgba(224, 112, 154, 0.28);
+    }
+    .glow-ring {
+      box-shadow: 0 0 0 1px #544247, 0 10px 30px -5px rgba(0, 0, 0, 0.7);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex justify-center selection:bg-primary-container selection:text-surface-dim">
+<!-- Mobile Container viewport: 390px x 844px context with safe fluid handling -->
+<div class="w-full max-w-[420px] min-h-screen bg-background flex flex-col justify-between relative overflow-hidden border-x border-outline-variant/30">
+<!-- Ambient Security Radial Lighting -->
+<div class="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 w-80 h-80 bg-primary-container/10 rounded-full blur-3xl"></div>
+<div class="pointer-events-none absolute top-80 right-0 w-44 h-44 bg-surface-variant/20 rounded-full blur-2xl"></div>
+<!-- Main Content Container (Suppressed nav bar per Semantic Shell Mandate: Transactional/Mandatory Barrier) -->
+<div class="flex-1 flex flex-col px-margin pt-space-lg pb-space-md z-10 overflow-y-auto">
+<!-- Top Brand Anchor & Security Badge Bar -->
+<div class="flex items-center justify-between w-full pb-space-md">
+<div class="flex items-center space-x-2">
+<!-- Geometric Shield Icon -->
+<div class="w-7 h-7 rounded-lg bg-surface-container-high border border-outline-variant/50 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">shield_with_heart</span>
+</div>
+<!-- App Wordmark -->
+<span class="font-headline-sm text-headline-sm font-bold tracking-tight text-on-surface">YourApp</span>
+</div>
+<!-- Release Pill Badge -->
+<div class="flex items-center px-2.5 py-1 rounded-full bg-secondary-container/40 border border-secondary-container/80 text-secondary">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary mr-1.5 animate-pulse"></span>
+<span class="font-label-sm text-label-sm font-semibold tracking-wide">v4.9.0 Security Mandatory</span>
+</div>
+</div>
+<!-- Illustrated Cryptographic Security Graphic Card -->
+<div class="my-space-sm p-space-md rounded-xl bg-surface-container-low border border-outline-variant/40 flex flex-col items-center justify-center relative glow-ring overflow-hidden">
+<!-- Background Vector Grid Accent -->
+<div class="absolute inset-0 opacity-15 bg-[radial-gradient(#dac0c6_1px,transparent_1px)] [background-size:12px_12px]"></div>
+<div class="relative z-10 my-3 flex items-center justify-center">
+<!-- Outer Pulsing Halo -->
+<div class="w-24 h-24 rounded-full bg-surface-container-highest/60 border border-outline-variant/60 flex items-center justify-center relative">
+<div class="absolute inset-0 rounded-full border border-primary/30 animate-ping opacity-25"></div>
+<!-- Mid Hex Shield Layer -->
+<div class="w-16 h-16 rounded-full bg-surface-container-high border border-primary-container/40 flex items-center justify-center glow-rose">
+<!-- Central Cryptographic Lock Icon -->
+<span class="material-symbols-outlined text-primary text-[32px]" style="font-variation-settings: 'FILL' 1;">lock</span>
+</div>
+<!-- Regulatory Compliance Mini Chip Orbit -->
+<div class="absolute -bottom-1 -right-1 px-1.5 py-0.5 rounded bg-surface-dim border border-outline-variant/70 text-[9px] font-label-sm font-bold text-on-surface-variant flex items-center gap-1 shadow-md">
+<span class="material-symbols-outlined text-[11px] text-tertiary" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span>CBN NDPR</span>
+</div>
+</div>
+</div>
+<div class="flex items-center space-x-1.5 text-on-surface-variant/90 mt-1">
+<span class="material-symbols-outlined text-[15px] text-primary" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Protocol Ref: S-CB-092</span>
+</div>
+</div>
+<!-- Headline & Explanatory Context -->
+<div class="text-left mt-space-sm">
+<h1 class="font-headline-md text-headline-md font-bold text-on-surface tracking-tight">
+          Important Security Update Required
+        </h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2 leading-relaxed">
+          To protect your account against emerging vulnerabilities and ensure compatibility with the updated Central Bank of Nigeria (CBN) biometric authentication mandate, you must update YourApp to version 4.9.0.
+        </p>
+</div>
+<!-- Bento-style "What's New" Feature Matrix Card -->
+<div class="mt-space-md rounded-xl bg-surface-container-low border border-outline-variant/40 p-space-md space-y-3">
+<div class="flex items-center justify-between pb-1 border-b border-outline-variant/20">
+<span class="font-label-md text-label-md font-semibold text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary">published_with_changes</span>
+            What's new in this release
+          </span>
+<span class="font-label-sm text-label-sm text-outline font-medium">Patch 4.9.0-b2</span>
+</div>
+<!-- Item 1 -->
+<div class="flex items-start space-x-3 pt-0.5">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex-shrink-0 flex items-center justify-center border border-outline-variant/30 text-primary">
+<span class="material-symbols-outlined text-[18px]">key</span>
+</div>
+<div class="flex-1">
+<p class="font-label-md text-label-md text-on-surface font-medium leading-snug">
+              Tier-1 Hardware Enclave keys
+            </p>
+<p class="font-label-sm text-label-sm text-outline mt-0.5">
+              Upgraded hardware-isolated cryptographic key protection.
+            </p>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex items-start space-x-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex-shrink-0 flex items-center justify-center border border-outline-variant/30 text-tertiary">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+</div>
+<div class="flex-1">
+<p class="font-label-md text-label-md text-on-surface font-medium leading-snug">
+              Instant NIP settlement engine
+            </p>
+<p class="font-label-sm text-label-sm text-outline mt-0.5">
+              Sub-second interbank transfer confirmation routing.
+            </p>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="flex items-start space-x-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex-shrink-0 flex items-center justify-center border border-outline-variant/30 text-primary-container">
+<span class="material-symbols-outlined text-[18px]">fingerprint</span>
+</div>
+<div class="flex-1">
+<p class="font-label-md text-label-md text-on-surface font-medium leading-snug">
+              Enhanced card &amp; escrow biometrics
+            </p>
+<p class="font-label-sm text-label-sm text-outline mt-0.5">
+              Multi-factor liveness checks for virtual cards &amp; SafeEscrow.
+            </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Pinned Bottom Action Zone -->
+<div class="px-margin pt-space-xs pb-space-lg bg-surface-container-low/95 backdrop-blur-md border-t border-outline-variant/40 flex flex-col space-y-space-sm z-20">
+<!-- Primary 52px CTA Button -->
+<button class="w-full h-[52px] bg-primary-container hover:bg-surface-tint active:bg-primary text-surface-container-lowest font-label-lg text-label-lg rounded-xl flex items-center justify-center space-x-2 transition-all duration-150 active:scale-[0.98] shadow-md font-semibold cursor-pointer" type="button">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">system_update</span>
+<span>Update Now via Google Play / App Store</span>
+</button>
+<!-- Secondary Advisory Link (52px ergonomic height) -->
+<a class="w-full h-[52px] bg-surface-container border border-outline-variant/50 hover:bg-surface-container-high active:bg-surface-variant text-on-surface font-label-md text-label-md rounded-xl flex items-center justify-center space-x-1.5 transition-all duration-150 active:scale-[0.98]" href="#release-notes">
+<span class="material-symbols-outlined text-[18px] text-outline">description</span>
+<span>View Release Notes &amp; Security Advisory</span>
+</a>
+<!-- Fallback Connectivity Note -->
+<div class="pt-1 text-center">
+<p class="font-label-sm text-label-sm text-outline leading-tight">
+          Slow connection? <a class="text-primary hover:underline font-medium" href="#apk-download">Download lightweight APK (34MB)</a> or speak with <a class="text-primary hover:underline font-medium" href="#priority-care">Priority Care</a>.
+        </p>
+</div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YourApp - Card Settings &amp; Alerts</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary-fixed-dim": "#ffb4a8",
+            "secondary": "#ae3123",
+            "error-container": "#ffdad6",
+            "inverse-on-surface": "#f8eeef",
+            "surface-variant": "#e9e0e1",
+            "tertiary": "#3b3236",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "on-background": "#1f1b1c",
+            "tertiary-fixed": "#eedee4",
+            "error": "#ba1a1a",
+            "inverse-surface": "#342f30",
+            "on-error": "#ffffff",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "secondary-fixed": "#ffdad4",
+            "on-primary": "#ffffff",
+            "on-tertiary-fixed": "#21191e",
+            "on-primary-fixed-variant": "#881646",
+            "surface-tint": "#a8315d",
+            "outline": "#897176",
+            "on-tertiary-container": "#c6b7bd",
+            "surface-container-highest": "#e9e0e1",
+            "tertiary-container": "#53484d",
+            "outline-variant": "#dcbfc5",
+            "on-primary-fixed": "#3f001b",
+            "on-secondary": "#ffffff",
+            "on-error-container": "#93000a",
+            "surface-container-high": "#efe6e7",
+            "primary-fixed": "#ffd9e1",
+            "surface-dim": "#e1d8d9",
+            "surface-container": "#f5eced",
+            "surface-container-low": "#fbf1f2",
+            "on-secondary-container": "#690000",
+            "surface": "#fff8f8",
+            "primary": "#6d0033",
+            "on-tertiary": "#ffffff",
+            "on-secondary-fixed-variant": "#8c170e",
+            "surface-container-lowest": "#ffffff",
+            "on-secondary-fixed": "#410000",
+            "on-primary-container": "#ffa0ba",
+            "primary-fixed-dim": "#ffb1c5",
+            "on-surface-variant": "#564146",
+            "on-surface": "#1f1b1c",
+            "surface-bright": "#fff8f8",
+            "primary-container": "#8e1b4a",
+            "background": "#fff8f8",
+            "inverse-primary": "#ffb1c5",
+            "secondary-container": "#fc6955"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xl": "1.5rem",
+            "space-3xl": "3rem",
+            "margin": "1rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1rem",
+            "space-2xl": "2rem",
+            "space-sm": "0.5rem",
+            "space-md": "0.75rem",
+            "gutter": "1rem"
+          },
+          "fontFamily": {
+            "amount-lg-mobile": ["Inter"],
+            "subtitle": ["Inter"],
+            "label": ["Inter"],
+            "body": ["Inter"],
+            "amount-lg": ["Inter"],
+            "caption": ["Inter"],
+            "body-medium": ["Inter"],
+            "title": ["Inter"],
+            "display": ["Inter"]
+          },
+          "fontSize": {
+            "amount-lg-mobile": ["32px", { lineHeight: "40px", letterSpacing: "-0.02em", fontWeight: "700" }],
+            "subtitle": ["20px", { lineHeight: "28px", letterSpacing: "-0.01em", fontWeight: "600" }],
+            "label": ["14px", { lineHeight: "20px", letterSpacing: "0.01em", fontWeight: "600" }],
+            "body": ["16px", { lineHeight: "24px", letterSpacing: "0em", fontWeight: "400" }],
+            "amount-lg": ["36px", { lineHeight: "44px", letterSpacing: "-0.03em", fontWeight: "700" }],
+            "caption": ["13px", { lineHeight: "18px", letterSpacing: "0.01em", fontWeight: "400" }],
+            "body-medium": ["16px", { lineHeight: "24px", letterSpacing: "0em", fontWeight: "500" }],
+            "title": ["24px", { lineHeight: "32px", letterSpacing: "-0.015em", fontWeight: "700" }],
+            "display": ["32px", { lineHeight: "40px", letterSpacing: "-0.02em", fontWeight: "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 24px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      -webkit-font-feature-settings: 'liga';
+      -webkit-font-smoothing: antialiased;
+    }
+    /* Smooth toggle animation styles */
+    .toggle-checkbox:checked {
+      right: 2px;
+      border-color: #8E1B4A;
+    }
+    .toggle-checkbox:checked + .toggle-label {
+      background-color: #8E1B4A;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex justify-center selection:bg-primary-fixed selection:text-primary">
+<!-- Mobile Wrapper Frame: 390px x 844px context container -->
+<div class="w-full max-w-[420px] bg-background min-h-screen flex flex-col relative pb-32">
+<!-- Top Bar: Task-focused Header (suppressing global bottom shell per rules) -->
+<header class="sticky top-0 z-40 bg-surface/95 backdrop-blur-md px-margin py-space-sm flex items-center justify-between min-h-[56px] border-b border-outline-variant/30">
+<button aria-label="Go back" class="w-12 h-12 flex items-center justify-center rounded-full text-on-surface hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<h1 class="font-subtitle text-subtitle text-on-surface text-center font-bold tracking-tight">
+        Card Settings &amp; Alerts
+      </h1>
+<button aria-label="Support &amp; Help" class="w-12 h-12 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[24px]">help_outline</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-margin pt-space-md space-y-space-xl">
+<!-- Mini Card Summary Hero -->
+<section class="bg-surface-container-lowest rounded-xl p-space-md border border-outline-variant/50 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] flex items-center gap-space-md">
+<!-- Berry Card Thumbnail Graphic -->
+<div class="w-16 h-11 rounded-lg bg-gradient-to-br from-primary-container to-primary flex-shrink-0 p-1.5 flex flex-col justify-between shadow-sm relative overflow-hidden border border-primary/20">
+<div class="flex justify-between items-center">
+<span class="text-[7px] text-white/80 font-bold uppercase tracking-wider">YourApp</span>
+<span class="material-symbols-outlined text-white/90 text-[10px]">contactless</span>
+</div>
+<div class="flex justify-between items-end">
+<span class="text-[8px] font-mono font-medium text-white tracking-widest leading-none">•••• 4821</span>
+<div class="w-3.5 h-2 rounded-sm bg-secondary-fixed/40"></div>
+</div>
+</div>
+<!-- Card Identity Details -->
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between mb-0.5">
+<h2 class="font-body-medium text-body-medium text-on-surface font-semibold truncate">
+              Daily Shopping
+            </h2>
+<span class="text-caption font-caption text-on-surface-variant">•••• 4821</span>
+</div>
+<div class="flex items-center gap-space-xs mt-1">
+<span class="inline-flex items-center gap-1 bg-surface-container text-primary-container px-2 py-0.5 rounded-lg text-caption font-caption font-medium border border-outline-variant/40">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600 inline-block"></span>
+              Active • Tier 2
+            </span>
+</div>
+</div>
+</section>
+<!-- Section 1: Real-time Alerts -->
+<section class="space-y-space-sm">
+<div class="flex items-center justify-between px-1">
+<h3 class="font-label text-label text-on-surface-variant font-semibold uppercase tracking-wider">
+            Real-time Alerts
+          </h3>
+<span class="text-caption font-caption text-primary font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">notifications_active</span>
+            All Active
+          </span>
+</div>
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/50 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] divide-y divide-outline-variant/30 overflow-hidden">
+<!-- Instant Push Notifications -->
+<div class="p-space-md flex items-start justify-between min-h-[64px] gap-space-md">
+<div class="flex items-start gap-space-md">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center flex-shrink-0 text-primary-container mt-0.5">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</div>
+<div>
+<p class="font-body-medium text-body-medium text-on-surface font-semibold">Instant Push Notifications</p>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">Get notified immediately when a debit occurs.</p>
+</div>
+</div>
+<!-- Accessible Switch Toggle -->
+<label aria-label="Toggle Instant Push Notifications" class="relative inline-flex items-center cursor-pointer flex-shrink-0 w-12 h-7 mt-1.5">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-7 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<!-- SMS Alerts -->
+<div class="p-space-md flex items-start justify-between min-h-[64px] gap-space-md">
+<div class="flex items-start gap-space-md">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center flex-shrink-0 text-primary-container mt-0.5">
+<span class="material-symbols-outlined text-[20px]">sms</span>
+</div>
+<div>
+<p class="font-body-medium text-body-medium text-on-surface font-semibold">SMS Alerts</p>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">Backup SMS alerts for transactions above ₦10,000. Free of charge.</p>
+</div>
+</div>
+<label aria-label="Toggle SMS Alerts" class="relative inline-flex items-center cursor-pointer flex-shrink-0 w-12 h-7 mt-1.5">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-7 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<!-- Email Receipts -->
+<div class="p-space-md flex items-start justify-between min-h-[64px] gap-space-md">
+<div class="flex items-start gap-space-md">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center flex-shrink-0 text-primary-container mt-0.5">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+</div>
+<div>
+<p class="font-body-medium text-body-medium text-on-surface font-semibold">Email Receipts</p>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">Send e-receipts to <span class="font-medium text-on-surface">tunde.adeleke@example.com</span>.</p>
+</div>
+</div>
+<label aria-label="Toggle Email Receipts" class="relative inline-flex items-center cursor-pointer flex-shrink-0 w-12 h-7 mt-1.5">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-7 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</div>
+</section>
+<!-- Section 2: Fraud Safeguards -->
+<section class="space-y-space-sm">
+<div class="flex items-center justify-between px-1">
+<h3 class="font-label text-label text-on-surface-variant font-semibold uppercase tracking-wider">
+            Fraud Safeguards
+          </h3>
+<span class="inline-flex items-center gap-1 text-caption font-caption text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-lg border border-emerald-200">
+<span class="material-symbols-outlined text-[14px]">shield</span>
+            Protected
+          </span>
+</div>
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/50 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] divide-y divide-outline-variant/30 overflow-hidden">
+<!-- Location-based Security -->
+<div class="p-space-md flex items-start justify-between min-h-[64px] gap-space-md">
+<div class="flex items-start gap-space-md">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center flex-shrink-0 text-primary-container mt-0.5">
+<span class="material-symbols-outlined text-[20px]">near_me</span>
+</div>
+<div>
+<p class="font-body-medium text-body-medium text-on-surface font-semibold">Location-based Security</p>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">Flag debits originating outside Nigeria or anomalous IP addresses.</p>
+</div>
+</div>
+<label aria-label="Toggle Location-based Security" class="relative inline-flex items-center cursor-pointer flex-shrink-0 w-12 h-7 mt-1.5">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-7 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<!-- Merchant Category Lock -->
+<div class="p-space-md flex items-center justify-between min-h-[64px] gap-space-md hover:bg-surface-container transition-colors cursor-pointer">
+<div class="flex items-start gap-space-md">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center flex-shrink-0 text-primary-container mt-0.5">
+<span class="material-symbols-outlined text-[20px]">block</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<p class="font-body-medium text-body-medium text-on-surface font-semibold">Merchant Category Lock</p>
+<span class="px-2 py-0.5 bg-secondary-fixed text-on-secondary-fixed rounded-full text-caption font-caption font-semibold">3 Active</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">Blocking Gambling, Adult, Crypto merchants.</p>
+</div>
+</div>
+<button aria-label="Manage merchant categories" class="w-8 h-8 flex items-center justify-center text-on-surface-variant" type="button">
+<span class="material-symbols-outlined text-[22px]">chevron_right</span>
+</button>
+</div>
+<!-- Require 3D-Secure for All Amounts -->
+<div class="p-space-md flex items-start justify-between min-h-[64px] gap-space-md">
+<div class="flex items-start gap-space-md">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center flex-shrink-0 text-primary-container mt-0.5">
+<span class="material-symbols-outlined text-[20px]">lock</span>
+</div>
+<div>
+<p class="font-body-medium text-body-medium text-on-surface font-semibold">Require 3D-Secure for All Amounts</p>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">Enforce OTP authentication regardless of purchase size.</p>
+</div>
+</div>
+<label aria-label="Toggle 3D-Secure for All Amounts" class="relative inline-flex items-center cursor-pointer flex-shrink-0 w-12 h-7 mt-1.5">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-7 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</div>
+</section>
+<!-- Section 3: Customization -->
+<section class="space-y-space-sm">
+<h3 class="font-label text-label text-on-surface-variant font-semibold uppercase tracking-wider px-1">
+          Customization
+        </h3>
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/50 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] divide-y divide-outline-variant/30 overflow-hidden">
+<!-- Rename Card -->
+<div class="p-space-md flex items-center justify-between min-h-[64px] gap-space-md hover:bg-surface-container transition-colors cursor-pointer">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center flex-shrink-0 text-primary-container">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</div>
+<div>
+<p class="font-body-medium text-body-medium text-on-surface font-semibold">Rename Card</p>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">Current: <span class="font-medium text-on-surface">Daily Shopping</span></p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[22px]">chevron_right</span>
+</div>
+<!-- Change Theme -->
+<div class="p-space-md flex items-center justify-between min-h-[64px] gap-space-md hover:bg-surface-container transition-colors cursor-pointer">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center flex-shrink-0 text-primary-container">
+<span class="material-symbols-outlined text-[20px]">palette</span>
+</div>
+<div>
+<p class="font-body-medium text-body-medium text-on-surface font-semibold">Change Theme</p>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="w-3 h-3 rounded-full bg-[#8E1B4A] border border-outline-variant/50"></span>
+<p class="font-caption text-caption text-on-surface-variant font-medium">Berry (Default)</p>
+</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[22px]">chevron_right</span>
+</div>
+</div>
+</section>
+<!-- Section 4: Card Actions (Danger Zone) -->
+<section class="space-y-space-sm pb-space-lg">
+<h3 class="font-label text-label text-error font-semibold uppercase tracking-wider px-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">warning</span>
+          Card Actions
+        </h3>
+<div class="bg-surface-container-lowest rounded-xl border border-error/30 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] divide-y divide-outline-variant/30 overflow-hidden">
+<!-- Temporarily Freeze Card -->
+<div class="p-space-md flex items-start justify-between min-h-[64px] gap-space-md">
+<div class="flex items-start gap-space-md">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center flex-shrink-0 text-on-surface-variant mt-0.5">
+<span class="material-symbols-outlined text-[20px]">ac_unit</span>
+</div>
+<div>
+<p class="font-body-medium text-body-medium text-on-surface font-semibold">Temporarily Freeze Card</p>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">Block all online debits and ATM access instantly. You can unfreeze anytime.</p>
+</div>
+</div>
+<label aria-label="Toggle Temporarily Freeze Card" class="relative inline-flex items-center cursor-pointer flex-shrink-0 w-12 h-7 mt-1.5">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-7 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<!-- Permanently Terminate Card -->
+<button class="w-full p-space-md flex items-start justify-between min-h-[64px] gap-space-md text-left hover:bg-error-container/30 transition-colors" type="button">
+<div class="flex items-start gap-space-md">
+<div class="w-10 h-10 rounded-full bg-error-container flex items-center justify-center flex-shrink-0 text-error mt-0.5">
+<span class="material-symbols-outlined text-[20px]">delete_forever</span>
+</div>
+<div>
+<p class="font-body-medium text-body-medium text-error font-semibold">Permanently Terminate Card</p>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">Remaining limits will return to your primary account. This action cannot be reversed.</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-error text-[22px] mt-1">chevron_right</span>
+</button>
+</div>
+</section>
+</main>
+<!-- Sticky Bottom Action Footer (52px Primary Action trigger standard) -->
+<footer class="fixed bottom-0 left-0 right-0 max-w-[420px] mx-auto bg-surface/95 backdrop-blur-md px-margin py-3 border-t border-outline-variant/30 shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)] z-50">
+<button class="w-full h-[52px] bg-primary-container text-on-primary font-label text-label rounded-xl flex items-center justify-center gap-2 shadow-sm active:bg-[#731540] active:scale-[0.99] transition-all font-semibold" type="button">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+        Save Preferences
+      </button>
+</footer>
+</div>
+</body></html>

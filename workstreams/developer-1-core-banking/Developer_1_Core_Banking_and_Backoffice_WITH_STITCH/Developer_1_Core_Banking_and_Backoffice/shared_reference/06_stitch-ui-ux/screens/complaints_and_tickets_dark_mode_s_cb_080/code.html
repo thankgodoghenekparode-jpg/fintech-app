@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YourApp - Complaints &amp; Tickets</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-tint": "#ffb0ca",
+            "secondary-fixed": "#ffdad4",
+            "surface-variant": "#373435",
+            "error": "#ffb4ab",
+            "surface-container-lowest": "#100e0f",
+            "on-tertiary-fixed": "#001945",
+            "secondary": "#ffb4a8",
+            "tertiary-fixed": "#d9e2ff",
+            "primary-fixed-dim": "#ffb0ca",
+            "background": "#151314",
+            "on-tertiary-container": "#002a69",
+            "on-primary-fixed": "#3e001f",
+            "on-secondary-fixed": "#410000",
+            "secondary-container": "#822c20",
+            "surface-dim": "#151314",
+            "on-tertiary": "#002d6f",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "surface-container-highest": "#373435",
+            "surface-container-low": "#1d1b1c",
+            "primary": "#ffb0ca",
+            "on-secondary-fixed-variant": "#7f291e",
+            "error-container": "#93000a",
+            "on-error": "#690005",
+            "on-background": "#e7e1e2",
+            "surface-container-high": "#2c292a",
+            "on-primary": "#620735",
+            "surface-container": "#211f20",
+            "tertiary-container": "#6a92ee",
+            "on-secondary-container": "#ff9f90",
+            "primary-container": "#e0709a",
+            "on-secondary": "#61130a",
+            "inverse-surface": "#e7e1e2",
+            "outline": "#a28b91",
+            "tertiary": "#b0c6ff",
+            "inverse-primary": "#9e3b63",
+            "secondary-fixed-dim": "#ffb4a8",
+            "inverse-on-surface": "#323031",
+            "on-error-container": "#ffdad6",
+            "outline-variant": "#544247",
+            "on-surface": "#e7e1e2",
+            "on-primary-container": "#5d0331",
+            "on-surface-variant": "#dac0c6",
+            "on-primary-fixed-variant": "#7f234b",
+            "primary-fixed": "#ffd9e3",
+            "surface-bright": "#3b3839",
+            "on-tertiary-fixed-variant": "#06429a",
+            "surface": "#151314"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "gutter": "1rem",
+            "margin": "1rem",
+            "space-lg": "1.5rem",
+            "space-xl": "2rem",
+            "gutter-mobile": "0.75rem",
+            "space-md": "1rem",
+            "margin-mobile": "1rem",
+            "space-xs": "0.25rem"
+          },
+          "fontFamily": {
+            "label-lg": ["Inter"],
+            "headline-md": ["Inter"],
+            "title-currency": ["Inter"],
+            "headline-lg": ["Inter"],
+            "headline-sm": ["Inter"],
+            "body-md": ["Inter"],
+            "body-lg": ["Inter"],
+            "display-currency": ["Inter"],
+            "label-sm": ["Inter"],
+            "label-md": ["Inter"]
+          },
+          "fontSize": {
+            "label-lg": ["15px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "title-currency": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased font-body-md text-body-md selection:bg-primary-container selection:text-surface">
+<div class="min-h-screen flex flex-col justify-between max-w-[430px] mx-auto bg-surface relative shadow-2xl">
+<!-- Header / Top Bar -->
+<header class="sticky top-0 z-40 bg-surface/95 backdrop-blur-md px-margin py-space-sm flex items-center justify-between min-h-[56px] border-b border-outline-variant/30">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Go Back" class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-on-surface hover:bg-surface-container-high transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="arrow_back">arrow_back</span>
+</button>
+<div>
+<h1 class="font-headline-sm text-headline-sm text-on-surface font-semibold tracking-tight">Complaints &amp; Tickets</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant font-medium">Case ID: S-CB-080</p>
+</div>
+</div>
+<button class="h-[38px] px-3.5 rounded-xl bg-primary-container/15 text-primary border border-primary-container/30 flex items-center gap-1 font-label-md text-label-md font-semibold hover:bg-primary-container/25 transition-all active:scale-95" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+<span>New Ticket</span>
+</button>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 px-margin pt-space-md pb-28 flex flex-col gap-space-md overflow-y-auto">
+<!-- Ticket Segmented Tabs -->
+<section aria-label="Ticket Filter Options">
+<div class="p-1 bg-surface-container rounded-xl flex items-center border border-outline-variant/40">
+<button class="flex-1 py-2 text-center rounded-lg font-label-md text-label-md font-semibold text-on-surface-variant hover:text-on-surface transition-colors active:scale-98">
+            All (3)
+          </button>
+<button class="flex-1 py-2 text-center rounded-lg font-label-md text-label-md font-semibold bg-surface-container-highest text-primary shadow-sm active:scale-98">
+            Open (1)
+          </button>
+<button class="flex-1 py-2 text-center rounded-lg font-label-md text-label-md font-semibold text-on-surface-variant hover:text-on-surface transition-colors active:scale-98">
+            Resolved (2)
+          </button>
+</div>
+</section>
+<!-- Active / In-Progress Prominent Ticket Card -->
+<section aria-label="Active Dispute Progress" class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">Active Dispute</span>
+<span class="font-label-sm text-label-sm text-primary font-medium flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span> Live Sync
+          </span>
+</div>
+<article class="bg-surface-container rounded-xl p-space-md border border-outline-variant/50 relative overflow-hidden shadow-[0_8px_20px_-6px_rgba(0,0,0,0.5)]">
+<div class="absolute -right-8 -top-8 w-28 h-28 bg-primary-container/10 rounded-full blur-2xl pointer-events-none"></div>
+<!-- Card Header & Badge -->
+<div class="flex items-center justify-between pb-space-sm border-b border-outline-variant/30">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="confirmation_number">confirmation_number</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold tracking-wide">#TKT-2027-0941</span>
+</div>
+<!-- Status Badge: Amber Investigating -->
+<div class="h-[26px] px-2.5 rounded-full bg-[rgba(227,179,65,0.12)] border border-[rgba(227,179,65,0.25)] flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px] text-[#E3B341]" data-icon="schedule">schedule</span>
+<span class="font-label-sm text-label-sm text-[#E3B341] font-semibold">Investigating</span>
+</div>
+</div>
+<!-- Main Dispute Info -->
+<div class="pt-space-sm flex flex-col gap-1.5">
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-semibold">
+              NIP Interbank Transfer Delayed (GTBank)
+            </h2>
+<div class="flex items-baseline justify-between pt-1">
+<span class="font-body-md text-body-md text-on-surface-variant">Disputed Amount</span>
+<span class="font-title-currency text-title-currency text-on-surface font-bold tracking-tight font-mono">
+                ₦45,000.00
+              </span>
+</div>
+<p class="font-label-sm text-label-sm text-outline flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]" data-icon="event">event</span>
+              Logged: 24 Feb 2027, 10:15 AM
+            </p>
+</div>
+<!-- Resolution SLA Timer Callout -->
+<div class="mt-space-md p-space-sm rounded-lg bg-surface-container-high/80 border border-outline-variant/30 flex items-start gap-2.5">
+<span class="material-symbols-outlined text-primary text-[18px] mt-0.5" data-icon="timer">timer</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Expected resolution by</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Today, 04:00 PM <span class="text-primary font-medium">(CBN 24h SLA)</span></span>
+</div>
+</div>
+<!-- Vertical Stepper Progress Timeline -->
+<div class="mt-space-md pt-space-xs border-t border-outline-variant/30">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold block mb-space-sm">
+              Resolution Milestones
+            </span>
+<div class="relative pl-6 space-y-4 before:content-[''] before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-[2px] before:bg-outline-variant/40">
+<!-- Step 1: Done -->
+<div class="relative flex flex-col gap-0.5">
+<span class="absolute -left-6 top-0.5 w-[22px] h-[22px] rounded-full bg-[rgba(76,195,138,0.15)] border border-[#4CC38A] flex items-center justify-center text-[#4CC38A]">
+<span class="material-symbols-outlined text-[13px] font-bold" data-icon="check">check</span>
+</span>
+<p class="font-label-md text-label-md text-on-surface font-semibold leading-tight">Ticket Logged</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Validated by YourApp core banking</p>
+</div>
+<!-- Step 2: In Progress -->
+<div class="relative flex flex-col gap-0.5">
+<span class="absolute -left-6 top-0.5 w-[22px] h-[22px] rounded-full bg-[rgba(227,179,65,0.2)] border border-[#E3B341] flex items-center justify-center text-[#E3B341]">
+<span class="w-2 h-2 rounded-full bg-[#E3B341] animate-ping"></span>
+</span>
+<p class="font-label-md text-label-md text-[#E3B341] font-semibold leading-tight">Switch Interbank Trace</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">In Progress - Interswitch/NIBSS query active</p>
+</div>
+<!-- Step 3: Pending -->
+<div class="relative flex flex-col gap-0.5">
+<span class="absolute -left-6 top-0.5 w-[22px] h-[22px] rounded-full bg-surface-container-high border border-outline-variant/50 flex items-center justify-center text-outline">
+<span class="w-1.5 h-1.5 rounded-full bg-outline/60"></span>
+</span>
+<p class="font-label-md text-label-md text-outline font-semibold leading-tight">Final Settlement / Reversal</p>
+<p class="font-label-sm text-label-sm text-outline/80">Pending partner bank confirmation</p>
+</div>
+</div>
+</div>
+<!-- Action Button -->
+<div class="mt-space-md pt-space-xs">
+<button class="w-full h-[52px] rounded-xl bg-primary-container text-surface-container-lowest font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 hover:opacity-95 active:scale-[0.98] transition-all shadow-md" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="forum">forum</span>
+<span>View Ticket Thread &amp; Updates</span>
+</button>
+</div>
+</article>
+</section>
+<!-- Resolved Tickets List -->
+<section aria-label="Closed Tickets" class="flex flex-col gap-space-xs mt-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">Resolved Cases</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">2 Cases Total</span>
+</div>
+<div class="flex flex-col gap-space-sm">
+<!-- Card 1 -->
+<article class="bg-surface-container rounded-xl p-space-md border border-outline-variant/40 flex flex-col gap-2.5">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline font-mono">#TKT-2026-8812</span>
+<!-- Status: Resolved Green -->
+<div class="h-[26px] px-2.5 rounded-full bg-[rgba(76,195,138,0.12)] border border-[rgba(76,195,138,0.25)] flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-[#4CC38A]" data-icon="check_circle">check_circle</span>
+<span class="font-label-sm text-label-sm text-[#4CC38A] font-semibold">Resolved</span>
+</div>
+</div>
+<div>
+<h3 class="font-label-lg text-label-lg text-on-surface font-semibold">IKEDC Token vend delay</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1 leading-relaxed">
+                Token generated &amp; SMS re-sent: <span class="font-mono text-on-surface">4529-8120-****</span>. Refund fee <span class="font-mono">₦0.00</span>.
+              </p>
+</div>
+<div class="flex items-center justify-between pt-2 border-t border-outline-variant/20">
+<span class="font-label-sm text-label-sm text-outline">Closed on 12 Jan 2027</span>
+<button class="font-label-sm text-label-sm text-primary font-semibold hover:underline flex items-center gap-0.5">
+                Receipt Details
+                <span class="material-symbols-outlined text-[16px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="bg-surface-container rounded-xl p-space-md border border-outline-variant/40 flex flex-col gap-2.5">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline font-mono">#TKT-2026-7201</span>
+<!-- Status: Resolved Green -->
+<div class="h-[26px] px-2.5 rounded-full bg-[rgba(76,195,138,0.12)] border border-[rgba(76,195,138,0.25)] flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-[#4CC38A]" data-icon="check_circle">check_circle</span>
+<span class="font-label-sm text-label-sm text-[#4CC38A] font-semibold">Resolved</span>
+</div>
+</div>
+<div>
+<h3 class="font-label-lg text-label-lg text-on-surface font-semibold">POS Dispense Reversal - Palms Mall</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1 leading-relaxed">
+<span class="font-mono text-on-surface font-medium">₦8,500.00</span> credited back to Tier 2 Savings.
+              </p>
+</div>
+<div class="flex items-center justify-between pt-2 border-t border-outline-variant/20">
+<span class="font-label-sm text-label-sm text-outline">Closed on 05 Dec 2026</span>
+<button class="font-label-sm text-label-sm text-primary font-semibold hover:underline flex items-center gap-0.5">
+                Statement Audit
+                <span class="material-symbols-outlined text-[16px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</article>
+</div>
+</section>
+<!-- Escalation & CBN Ombudsman Notice Card -->
+<section aria-label="CBN Regulatory Notice" class="mt-1">
+<div class="bg-surface-container-high/60 rounded-xl p-space-md border border-outline-variant/30 flex items-start gap-3">
+<div class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center text-primary-container shrink-0 mt-0.5 border border-outline-variant/20">
+<span class="material-symbols-outlined text-[20px]" data-icon="gavel">gavel</span>
+</div>
+<div class="flex flex-col gap-1">
+<h4 class="font-label-md text-label-md text-on-surface font-semibold">CBN Consumer Protection Guarantee</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant leading-relaxed">
+              Unsatisfied with a closed resolution? You can escalate to the Central Bank of Nigeria Consumer Protection Department.
+            </p>
+<a class="inline-flex items-center gap-1 font-label-sm text-label-sm text-primary font-medium hover:underline pt-1" href="#escalate">
+<span>Initiate CBN Ombudsman Arbitration</span>
+<span class="material-symbols-outlined text-[14px]" data-icon="north_east">north_east</span>
+</a>
+</div>
+</div>
+</section>
+</main>
+<!-- Docked 5-tab BottomNavBar (JSON Shared Component: 'More' Active) -->
+<nav class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-margin h-16 max-w-[560px] mx-auto pb-safe bg-surface-container-lowest dark:bg-surface-container border-t border-outline-variant/40 dark:border-outline-variant/20 shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)]">
+<!-- Home -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" type="button">
+<span class="material-symbols-outlined text-[22px]" data-icon="home">home</span>
+<span class="font-caption text-caption font-medium text-[11px] leading-[14px]">Home</span>
+</button>
+<!-- Payments -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" type="button">
+<span class="material-symbols-outlined text-[22px]" data-icon="send">send</span>
+<span class="font-caption text-caption font-medium text-[11px] leading-[14px]">Payments</span>
+</button>
+<!-- Cards -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" type="button">
+<span class="material-symbols-outlined text-[22px]" data-icon="credit_card">credit_card</span>
+<span class="font-caption text-caption font-medium text-[11px] leading-[14px]">Cards</span>
+</button>
+<!-- Save & Borrow -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" type="button">
+<span class="material-symbols-outlined text-[22px]" data-icon="savings">savings</span>
+<span class="font-caption text-caption font-medium text-[11px] leading-[14px]">Save &amp; Borrow</span>
+</button>
+<!-- More (Active: Complaints & Support sits in More) -->
+<button class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed font-semibold min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" type="button">
+<span class="material-symbols-outlined text-[22px]" data-icon="more_horiz">more_horiz</span>
+<span class="font-caption text-caption font-medium text-[11px] leading-[14px]">More</span>
+</button>
+</nav>
+</div>
+</body></html>

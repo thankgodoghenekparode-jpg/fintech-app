@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Transaction Details - YourApp</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary": "#61130a",
+            "surface-tint": "#ffb0ca",
+            "error": "#ffb4ab",
+            "tertiary": "#b0c6ff",
+            "on-tertiary": "#002d6f",
+            "inverse-primary": "#9e3b63",
+            "on-surface-variant": "#dac0c6",
+            "on-secondary-container": "#ff9f90",
+            "on-secondary-fixed": "#410000",
+            "inverse-on-surface": "#323031",
+            "surface-container": "#211f20",
+            "primary": "#ffb0ca",
+            "secondary-container": "#822c20",
+            "tertiary-fixed": "#d9e2ff",
+            "on-primary-fixed-variant": "#7f234b",
+            "on-primary-fixed": "#3e001f",
+            "surface-container-highest": "#373435",
+            "on-primary": "#620735",
+            "secondary-fixed-dim": "#ffb4a8",
+            "surface-dim": "#151314",
+            "outline": "#a28b91",
+            "surface-bright": "#3b3839",
+            "on-primary-container": "#5d0331",
+            "primary-fixed": "#ffd9e3",
+            "primary-container": "#e0709a",
+            "surface-container-high": "#2c292a",
+            "secondary": "#ffb4a8",
+            "background": "#151314",
+            "on-background": "#e7e1e2",
+            "on-tertiary-fixed-variant": "#06429a",
+            "tertiary-container": "#6a92ee",
+            "primary-fixed-dim": "#ffb0ca",
+            "outline-variant": "#544247",
+            "on-tertiary-container": "#002a69",
+            "surface-container-low": "#1d1b1c",
+            "on-secondary-fixed-variant": "#7f291e",
+            "on-error-container": "#ffdad6",
+            "surface": "#151314",
+            "surface-container-lowest": "#100e0f",
+            "surface-variant": "#373435",
+            "on-tertiary-fixed": "#001945",
+            "secondary-fixed": "#ffdad4",
+            "inverse-surface": "#e7e1e2",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "error-container": "#93000a",
+            "on-surface": "#e7e1e2",
+            "on-error": "#690005"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xl": "2rem",
+            "margin-mobile": "1rem",
+            "space-lg": "1.5rem",
+            "margin": "1rem",
+            "gutter-mobile": "0.75rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "space-xs": "0.25rem",
+            "gutter": "1rem"
+          },
+          "fontFamily": {
+            "label-md": ["Inter"],
+            "label-sm": ["Inter"],
+            "body-md": ["Inter"],
+            "body-lg": ["Inter"],
+            "title-currency": ["Inter"],
+            "label-lg": ["Inter"],
+            "headline-md": ["Inter"],
+            "headline-lg": ["Inter"],
+            "display-currency": ["Inter"],
+            "headline-sm": ["Inter"]
+          },
+          "fontSize": {
+            "label-md": ["13px", {"lineHeight": "18px", "fontWeight": "500"}],
+            "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+            "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+            "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "title-currency": ["20px", {"lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "label-lg": ["15px", {"lineHeight": "20px", "fontWeight": "600"}],
+            "headline-md": ["22px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "headline-lg": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+            "display-currency": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .fill-icon {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen flex justify-center">
+<!-- Mobile Frame Container (390 x 844 target context) -->
+<main class="w-full max-w-[390px] min-h-screen bg-background flex flex-col relative pb-safe">
+<!-- Status / Top Bar -->
+<header class="sticky top-0 z-30 bg-surface/90 backdrop-blur-md px-margin-mobile py-space-sm flex items-center justify-between min-h-[56px]">
+<button aria-label="Go back" class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface hover:bg-surface-container active:scale-95 transition-all duration-150" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<div class="flex flex-col items-center">
+<span class="font-headline-sm text-headline-sm text-on-surface tracking-tight">Transaction Details</span>
+</div>
+<button aria-label="Support and Help" class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-surface-container active:scale-95 transition-all duration-150" type="button">
+<span class="material-symbols-outlined text-[24px]">help</span>
+</button>
+</header>
+<!-- Main Scrollable Content -->
+<div class="flex-1 px-margin-mobile pt-space-xs pb-space-lg flex flex-col gap-space-md">
+<!-- Hero Transaction Status Block (Bento Card Style) -->
+<section class="bg-surface-container-low rounded-xl p-space-lg border border-outline-variant/40 flex flex-col items-center text-center relative overflow-hidden">
+<!-- Subtle ambient radial highlight -->
+<div class="absolute -top-12 -right-12 w-32 h-32 bg-primary/5 rounded-full blur-2xl pointer-events-none"></div>
+<div class="absolute -bottom-12 -left-12 w-32 h-32 bg-tertiary/5 rounded-full blur-2xl pointer-events-none"></div>
+<!-- Transfer Category Icon with Settled Badge Indicator -->
+<div class="relative mb-space-sm">
+<div class="w-16 h-16 rounded-full bg-surface-container-high border border-outline-variant flex items-center justify-center text-primary shadow-inner">
+<span class="material-symbols-outlined text-[32px]">account_balance</span>
+</div>
+<div class="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-surface-container border-2 border-surface-container-low flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-tertiary-fixed-dim fill-icon" style="color: #4CC38A;">check_circle</span>
+</div>
+</div>
+<!-- Recipient & Bank Header -->
+<h1 class="font-headline-sm text-headline-sm text-on-surface tracking-tight mt-space-xs">
+          Babajide Sanwo-Olu
+        </h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5">
+          GTBank • <span class="tabular-nums">0123948576</span>
+</p>
+<!-- Transaction Debit Amount -->
+<div class="my-space-md flex items-baseline justify-center">
+<span class="font-display-currency text-display-currency text-on-surface tabular-nums tracking-tight">
+            -₦45,000.00
+          </span>
+</div>
+<!-- Settled Status Chip -->
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#4CC38A]/10 border border-[#4CC38A]/25">
+<span class="material-symbols-outlined text-[14px] fill-icon" style="color: #4CC38A;">verified</span>
+<span class="font-label-md text-label-md font-semibold text-[#4CC38A]">Transfer Successful</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-space-sm">
+          Today, 24 Feb 2027 • <span class="tabular-nums">14:32</span> WAT
+        </p>
+</section>
+<!-- Details List Container (Surface Card Level 1) -->
+<section class="bg-surface-container-low rounded-xl border border-outline-variant/40 divide-y divide-outline-variant/30 overflow-hidden">
+<!-- Transaction Type Row -->
+<div class="flex items-center justify-between px-space-md py-3.5">
+<span class="font-body-md text-body-md text-on-surface-variant">Transaction Type</span>
+<span class="font-label-lg text-label-lg text-on-surface text-right">Interbank Transfer (NIP)</span>
+</div>
+<!-- Status Row with Chip -->
+<div class="flex items-center justify-between px-space-md py-3.5">
+<span class="font-body-md text-body-md text-on-surface-variant">Payment Status</span>
+<div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#4CC38A]/10 text-[#4CC38A]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#4CC38A]"></span>
+<span class="font-label-sm text-label-sm font-semibold">Successful</span>
+</div>
+</div>
+<!-- Transfer Fee Row -->
+<div class="flex items-center justify-between px-space-md py-3.5">
+<span class="font-body-md text-body-md text-on-surface-variant">Bank Transfer Fee</span>
+<span class="font-label-lg text-label-lg text-on-surface tabular-nums">₦10.75</span>
+</div>
+<!-- VAT Row -->
+<div class="flex items-center justify-between px-space-md py-3.5">
+<span class="font-body-md text-body-md text-on-surface-variant">VAT</span>
+<span class="font-label-lg text-label-lg text-on-surface tabular-nums">₦0.81</span>
+</div>
+<!-- Total Debited Row -->
+<div class="flex items-center justify-between px-space-md py-3.5 bg-surface-container-high/30">
+<div>
+<span class="font-label-lg text-label-lg text-on-surface">Total Debited</span>
+<span class="block font-label-sm text-label-sm text-on-surface-variant">Principal + charges</span>
+</div>
+<span class="font-title-currency text-title-currency text-on-surface tabular-nums font-semibold">
+            ₦45,011.56
+          </span>
+</div>
+<!-- Reference ID with Interactive Copy Feature -->
+<div class="flex items-center justify-between px-space-md py-3.5">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface-variant">Session / Reference ID</span>
+<span class="font-label-md text-label-md text-on-surface tabular-nums mt-0.5 tracking-wider font-mono" id="ref-text">
+              TXN-20270224-89104812
+            </span>
+</div>
+<button aria-label="Copy reference ID" class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center text-primary hover:bg-surface-container-high active:scale-90 transition-transform duration-150" id="copy-btn" type="button">
+<span class="material-symbols-outlined text-[18px]" id="copy-icon">content_copy</span>
+</button>
+</div>
+<!-- Narration Row -->
+<div class="flex flex-col px-space-md py-3.5 gap-1">
+<span class="font-body-md text-body-md text-on-surface-variant">Narration</span>
+<p class="font-body-md text-body-md text-on-surface bg-surface-container-high/40 p-2.5 rounded-lg border border-outline-variant/30">
+            Office rent contribution Feb
+          </p>
+</div>
+</section>
+<!-- Trust & Settlement Verification Card -->
+<section class="bg-surface-container-low/60 rounded-xl p-space-md border border-outline-variant/30 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center shrink-0 text-outline">
+<span class="material-symbols-outlined text-[20px]">security</span>
+</div>
+<div class="flex flex-col flex-1">
+<span class="font-label-md text-label-md text-on-surface font-semibold">NIBSS Instant Payment</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Instant settlement verified by GTBank Nigeria PLC</span>
+</div>
+</section>
+<!-- Action Buttons Module -->
+<section class="flex flex-col gap-space-sm pt-space-xs mt-auto">
+<!-- Primary Action: View & Share Receipt -->
+<button class="w-full h-[52px] rounded-xl bg-primary-container text-on-primary-container font-label-lg text-label-lg flex items-center justify-center gap-2 font-semibold shadow-md active:bg-[#C4557F] active:scale-[0.98] transition-all duration-150" type="button">
+<span class="material-symbols-outlined text-[20px]">receipt_long</span>
+<span>View &amp; Share Receipt</span>
+</button>
+<!-- Secondary Action: Report a Problem -->
+<button class="w-full h-[52px] rounded-xl bg-surface-container border border-outline-variant/60 text-on-surface font-label-lg text-label-lg flex items-center justify-center gap-2 active:bg-surface-container-highest active:scale-[0.98] transition-all duration-150" type="button">
+<span class="material-symbols-outlined text-[20px] text-outline">flag</span>
+<span>Report a Problem with this Transfer</span>
+</button>
+</section>
+<!-- Bottom Sheet Close Handle Accent -->
+<div class="pt-space-xs flex justify-center pb-2">
+<button aria-label="Close details" class="flex flex-col items-center gap-1 group active:scale-95 transition-transform duration-150" type="button">
+<div class="w-12 h-1 rounded-full bg-outline-variant/60 group-hover:bg-outline transition-colors"></div>
+<span class="font-label-sm text-label-sm text-outline">Dismiss</span>
+</button>
+</div>
+</div>
+</main>
+<script>
+    // Lightweight micro-interaction for Reference ID copy button
+    const copyBtn = document.getElementById('copy-btn');
+    const copyIcon = document.getElementById('copy-icon');
+    const refText = document.getElementById('ref-text');
+
+    if (copyBtn && refText) {
+      copyBtn.addEventListener('click', () => {
+        navigator.clipboard?.writeText(refText.innerText.trim()).catch(() => {});
+        copyIcon.textContent = 'check';
+        copyIcon.classList.add('text-[#4CC38A]');
+        setTimeout(() => {
+          copyIcon.textContent = 'content_copy';
+          copyIcon.classList.remove('text-[#4CC38A]');
+        }, 1800);
+      });
+    }
+  </script>
+</body></html>

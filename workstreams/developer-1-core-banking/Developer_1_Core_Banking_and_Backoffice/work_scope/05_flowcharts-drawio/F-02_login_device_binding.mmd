@@ -1,0 +1,31 @@
+flowchart TD
+  a(["Open app"])
+  b{"Session still valid?"}
+  c["Show login (passcode or biometric)"]
+  d{"Credentials correct?"}
+  d1["Increment attempt counter"]
+  d2{"Attempts exceeded?"}
+  d3["Lock account; show S-CB-094"]
+  e{"Known trusted device?"}
+  f["OTP verification"]
+  g["Selfie liveness check"]
+  h{"Verified?"}
+  h1["Block and show help"]
+  i["Register device; issue tokens"]
+  j(["Home"])
+  a --> b
+  b -->|yes| j
+  b -->|no| c
+  c --> d
+  d -->|no| d1
+  d1 --> d2
+  d2 -->|yes| d3
+  d2 -->|no| c
+  d -->|yes| e
+  e -->|yes| i
+  e -->|no| f
+  f --> g
+  g --> h
+  h -->|no| h1
+  h -->|yes| i
+  i --> j

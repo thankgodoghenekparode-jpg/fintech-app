@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Beneficiaries - YourApp</title>
+<!-- Material Symbols Outlined font -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration verbatim from Design System -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-surface-variant": "#dac0c6",
+            "primary-fixed": "#ffd9e3",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "on-tertiary-container": "#002a69",
+            "outline-variant": "#544247",
+            "tertiary-container": "#6a92ee",
+            "primary": "#ffb0ca",
+            "on-primary-container": "#5d0331",
+            "secondary": "#ffb4a8",
+            "primary-container": "#e0709a",
+            "on-background": "#e7e1e2",
+            "on-surface": "#e7e1e2",
+            "inverse-surface": "#e7e1e2",
+            "on-tertiary-fixed": "#001945",
+            "surface-container-low": "#1d1b1c",
+            "on-error-container": "#ffdad6",
+            "surface-dim": "#151314",
+            "on-primary-fixed-variant": "#7f234b",
+            "primary-fixed-dim": "#ffb0ca",
+            "error-container": "#93000a",
+            "surface-container-highest": "#373435",
+            "outline": "#a28b91",
+            "secondary-fixed-dim": "#ffb4a8",
+            "surface-container": "#211f20",
+            "error": "#ffb4ab",
+            "surface": "#151314",
+            "on-error": "#690005",
+            "on-tertiary-fixed-variant": "#06429a",
+            "surface-variant": "#373435",
+            "surface-tint": "#ffb0ca",
+            "on-secondary-fixed": "#410000",
+            "on-primary": "#620735",
+            "secondary-container": "#822c20",
+            "surface-container-high": "#2c292a",
+            "inverse-on-surface": "#323031",
+            "inverse-primary": "#9e3b63",
+            "background": "#151314",
+            "on-secondary-fixed-variant": "#7f291e",
+            "secondary-fixed": "#ffdad4",
+            "tertiary": "#b0c6ff",
+            "on-primary-fixed": "#3e001f",
+            "tertiary-fixed": "#d9e2ff",
+            "surface-container-lowest": "#100e0f",
+            "surface-bright": "#3b3839",
+            "on-secondary-container": "#ff9f90",
+            "on-tertiary": "#002d6f",
+            "on-secondary": "#61130a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-md": "1rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "margin": "1rem",
+            "margin-mobile": "1rem",
+            "gutter": "1rem",
+            "gutter-mobile": "0.75rem",
+            "space-lg": "1.5rem",
+            "space-xl": "2rem"
+          },
+          "fontFamily": {
+            "label-sm": ["Inter"],
+            "display-currency": ["Inter"],
+            "body-lg": ["Inter"],
+            "body-md": ["Inter"],
+            "title-currency": ["Inter"],
+            "headline-lg": ["Inter"],
+            "headline-sm": ["Inter"],
+            "label-md": ["Inter"],
+            "headline-md": ["Inter"],
+            "label-lg": ["Inter"]
+          },
+          "fontSize": {
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "title-currency": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-lg": ["15px", { "lineHeight": "20px", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      line-height: 1;
+    }
+    .material-symbols-outlined[data-weight="fill"] {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    /* Hide scrollbar for category pills on mobile */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-lowest text-on-surface antialiased flex justify-center min-h-screen select-none">
+<!-- Mobile Viewport Wrapper (390px x 844px target standard, expanding cleanly) -->
+<div class="relative w-full max-w-[430px] min-h-screen bg-surface flex flex-col justify-between shadow-2xl">
+<!-- Sticky Top App Bar & Navigation Header -->
+<header class="sticky top-0 z-40 bg-surface/95 backdrop-blur-md px-margin py-space-sm flex flex-col gap-space-sm border-b border-outline-variant/30">
+<!-- Topmost Row: Brand identifier & Screen meta indicator -->
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm font-bold text-primary tracking-tight">YourApp</span>
+<span class="text-label-sm font-label-sm px-2 py-0.5 rounded-full bg-surface-container-highest text-outline">Retail Bank</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="text-label-sm font-label-sm text-outline tracking-wider">S-CB-036</span>
+<div class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></div>
+</div>
+</div>
+<!-- Functional Top Bar (Back, Title, Add Action) -->
+<div class="flex items-center justify-between min-h-[48px]">
+<div class="flex items-center gap-3">
+<button aria-label="Go back" class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-on-surface hover:bg-surface-container-high active:scale-95 transition-transform duration-150 border border-outline-variant/40" type="button">
+<span class="material-symbols-outlined text-[20px]">arrow_back</span>
+</button>
+<div>
+<h1 class="font-headline-sm text-headline-sm text-on-surface leading-tight">Beneficiaries</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Manage transfer recipients</p>
+</div>
+</div>
+<!-- Quick Add Header CTA -->
+<button aria-label="Add new beneficiary" class="h-10 px-3 rounded-xl bg-primary-container text-on-primary-container flex items-center gap-1 font-label-md text-label-md active:scale-95 transition-transform duration-150 hover:bg-primary-fixed shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span class="font-semibold">Add New</span>
+</button>
+</div>
+<!-- Live Search & Filter Bar -->
+<div class="relative w-full pt-1">
+<div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-outline">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="w-full h-[48px] pl-10 pr-10 bg-surface-container border border-outline-variant/40 rounded-xl font-body-md text-body-md text-on-surface placeholder:text-outline focus:outline-none focus:border-primary-container transition-all" placeholder="Search name, bank, or account number" type="text"/>
+<button aria-label="Voice or clear search" class="absolute inset-y-0 right-0 pr-3 flex items-center text-outline hover:text-on-surface" type="button">
+<span class="material-symbols-outlined text-[18px]">mic</span>
+</button>
+</div>
+<!-- Segmented Horizontal Filter Chips -->
+<div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-1">
+<button class="h-[32px] px-3.5 rounded-full bg-primary-container text-on-primary-container font-label-sm text-label-sm font-semibold flex items-center gap-1 shrink-0 active:scale-95 transition-transform">
+<span>All (28)</span>
+</button>
+<button class="h-[32px] px-3.5 rounded-full bg-surface-container border border-outline-variant/40 text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm flex items-center gap-1 shrink-0 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[14px] text-secondary" data-weight="fill">star</span>
+<span>Favourites (6)</span>
+</button>
+<button class="h-[32px] px-3.5 rounded-full bg-surface-container border border-outline-variant/40 text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm flex items-center gap-1 shrink-0 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[14px]">bolt</span>
+<span>Frequent (12)</span>
+</button>
+<button class="h-[32px] px-3.5 rounded-full bg-surface-container border border-outline-variant/40 text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm flex items-center gap-1 shrink-0 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[14px]">storefront</span>
+<span>Merchants (10)</span>
+</button>
+</div>
+</header>
+<!-- Main Content Area: Beneficiaries Grouping & List -->
+<main class="flex-1 px-margin py-space-md space-y-space-md pb-[120px]">
+<!-- Summary Bento Mini-Banner -->
+<div class="p-3.5 bg-surface-container rounded-xl border border-outline-variant/40 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">verified_user</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-medium">NIP Instant Verification Active</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Real-time recipient name resolution enabled</p>
+</div>
+</div>
+<span class="text-label-sm font-label-sm text-primary font-semibold">Active</span>
+</div>
+<!-- Group 1: Frequent / Favourites Section -->
+<section class="space-y-space-sm">
+<div class="flex items-center justify-between px-1">
+<div class="flex items-center gap-2">
+<h2 class="font-label-lg text-label-lg font-semibold text-on-surface tracking-tight">Recent & Favourites</h2>
+<span class="h-5 px-1.5 rounded bg-surface-container-high text-outline text-[11px] font-semibold flex items-center justify-center">2</span>
+</div>
+<span class="text-label-sm font-label-sm text-primary">Sort: Recent</span>
+</div>
+<div class="space-y-2.5">
+<!-- Beneficiary Row 1: Babajide Sanwo-Olu (GTBank) -->
+<article class="p-3.5 bg-surface-container rounded-xl border border-outline-variant/40 hover:border-outline transition-colors flex flex-col gap-3">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<!-- Bank Badge & Avatar -->
+<div class="relative">
+<div class="w-11 h-11 rounded-full bg-secondary-container/60 border border-outline-variant flex items-center justify-center text-on-secondary-container font-headline-sm text-headline-sm font-bold">
+                    BS
+                  </div>
+<span class="absolute -bottom-1 -right-1 px-1 rounded bg-[#E4532B] text-white text-[9px] font-bold tracking-tighter">GTB</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<h3 class="font-label-lg text-label-lg font-semibold text-on-surface">Babajide Sanwo-Olu</h3>
+<span class="material-symbols-outlined text-[16px] text-[#4CC38A]" title="NIP Verified">verified</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant font-mono text-[13px]">GTBank • 0123****76</p>
+<p class="font-label-sm text-label-sm text-outline mt-0.5">Last sent: ₦120,000.00 • Yesterday, 14:20</p>
+</div>
+</div>
+<!-- Top right actions (Fav toggle + menu) -->
+<div class="flex items-center gap-1 text-on-surface-variant">
+<button aria-label="Toggle favourite" class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-surface-container-high text-secondary transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]" data-weight="fill">star</span>
+</button>
+<button aria-label="More actions" class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-surface-container-high text-outline hover:text-on-surface transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Row Quick Action Bar -->
+<div class="pt-2 border-t border-outline-variant/20 flex items-center justify-between">
+<span class="text-label-sm font-label-sm text-outline">Schedule: Monthly rent</span>
+<button class="h-[36px] px-3.5 rounded-lg bg-surface-container-high hover:bg-primary-container hover:text-on-primary-container text-primary font-label-sm text-label-sm font-semibold flex items-center gap-1.5 transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[16px]">send</span>
+<span>Send Money</span>
+</button>
+</div>
+</article>
+<!-- Beneficiary Row 2: Chioma Adeleke (Zenith Bank) -->
+<article class="p-3.5 bg-surface-container rounded-xl border border-outline-variant/40 hover:border-outline transition-colors flex flex-col gap-3">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="relative">
+<div class="w-11 h-11 rounded-full bg-surface-container-highest border border-outline-variant flex items-center justify-center text-primary-fixed font-headline-sm text-headline-sm font-bold">
+                    CA
+                  </div>
+<span class="absolute -bottom-1 -right-1 px-1 rounded bg-[#BE123C] text-white text-[9px] font-bold tracking-tighter">ZEN</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<h3 class="font-label-lg text-label-lg font-semibold text-on-surface">Chioma Adeleke</h3>
+<span class="material-symbols-outlined text-[16px] text-[#4CC38A]">verified</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant font-mono text-[13px]">Zenith Bank • 2088****41</p>
+<p class="font-label-sm text-label-sm text-outline mt-0.5">Last sent: ₦45,500.00 • 3 days ago</p>
+</div>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<button aria-label="Toggle favourite" class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-surface-container-high text-secondary transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]" data-weight="fill">star</span>
+</button>
+<button aria-label="More actions" class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-surface-container-high text-outline hover:text-on-surface transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</div>
+<div class="pt-2 border-t border-outline-variant/20 flex items-center justify-between">
+<span class="text-label-sm font-label-sm text-outline">Category: Family & Care</span>
+<button class="h-[36px] px-3.5 rounded-lg bg-surface-container-high hover:bg-primary-container hover:text-on-primary-container text-primary font-label-sm text-label-sm font-semibold flex items-center gap-1.5 transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[16px]">send</span>
+<span>Send Money</span>
+</button>
+</div>
+</article>
+</div>
+</section>
+<!-- Group 2: All Saved Beneficiaries -->
+<section class="space-y-space-sm pt-2">
+<div class="flex items-center justify-between px-1">
+<div class="flex items-center gap-2">
+<h2 class="font-label-lg text-label-lg font-semibold text-on-surface tracking-tight">Other Beneficiaries</h2>
+<span class="h-5 px-1.5 rounded bg-surface-container-high text-outline text-[11px] font-semibold flex items-center justify-center">3</span>
+</div>
+<span class="text-label-sm font-label-sm text-outline">A–Z</span>
+</div>
+<div class="space-y-2.5">
+<!-- Beneficiary Row 3: Aliko Dangote (First Bank) -->
+<article class="p-3.5 bg-surface-container rounded-xl border border-outline-variant/40 hover:border-outline transition-colors flex flex-col gap-3">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="relative">
+<div class="w-11 h-11 rounded-full bg-surface-container-high border border-outline-variant flex items-center justify-center text-tertiary-fixed font-headline-sm text-headline-sm font-bold">
+                    AD
+                  </div>
+<span class="absolute -bottom-1 -right-1 px-1 rounded bg-[#0A3871] text-white text-[9px] font-bold tracking-tighter">FBN</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<h3 class="font-label-lg text-label-lg font-semibold text-on-surface">Aliko Dangote</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant font-mono text-[13px]">First Bank of Nigeria • 3012****90</p>
+<p class="font-label-sm text-label-sm text-outline mt-0.5">Last sent: ₦1,500,000.00 • 12 May 2024</p>
+</div>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<button aria-label="Toggle favourite" class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-surface-container-high text-outline hover:text-secondary transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">star</span>
+</button>
+<button aria-label="More actions" class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-surface-container-high text-outline hover:text-on-surface transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</div>
+<div class="pt-2 border-t border-outline-variant/20 flex items-center justify-between">
+<span class="text-label-sm font-label-sm text-outline">Invoice Tag: Supplies</span>
+<button class="h-[36px] px-3.5 rounded-lg bg-surface-container-high hover:bg-primary-container hover:text-on-primary-container text-primary font-label-sm text-label-sm font-semibold flex items-center gap-1.5 transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[16px]">send</span>
+<span>Send Money</span>
+</button>
+</div>
+</article>
+<!-- Beneficiary Row 4: Fola Eniola (Kuda MFB) -->
+<article class="p-3.5 bg-surface-container rounded-xl border border-outline-variant/40 hover:border-outline transition-colors flex flex-col gap-3">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="relative">
+<div class="w-11 h-11 rounded-full bg-surface-container-high border border-outline-variant flex items-center justify-center text-primary-fixed-dim font-headline-sm text-headline-sm font-bold">
+                    FE
+                  </div>
+<span class="absolute -bottom-1 -right-1 px-1 rounded bg-[#40196D] text-white text-[9px] font-bold tracking-tighter">KUDA</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<h3 class="font-label-lg text-label-lg font-semibold text-on-surface">Fola Eniola</h3>
+<span class="material-symbols-outlined text-[16px] text-[#4CC38A]">verified</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant font-mono text-[13px]">Kuda Microfinance Bank • 1109****12</p>
+<p class="font-label-sm text-label-sm text-outline mt-0.5">Last sent: ₦18,200.00 • 02 May 2024</p>
+</div>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<button aria-label="Toggle favourite" class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-surface-container-high text-secondary transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]" data-weight="fill">star</span>
+</button>
+<button aria-label="More actions" class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-surface-container-high text-outline hover:text-on-surface transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</div>
+<div class="pt-2 border-t border-outline-variant/20 flex items-center justify-between">
+<span class="text-label-sm font-label-sm text-outline">Category: Subscriptions</span>
+<button class="h-[36px] px-3.5 rounded-lg bg-surface-container-high hover:bg-primary-container hover:text-on-primary-container text-primary font-label-sm text-label-sm font-semibold flex items-center gap-1.5 transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[16px]">send</span>
+<span>Send Money</span>
+</button>
+</div>
+</article>
+<!-- Beneficiary Row 5: Tunde Bakare (Access Bank) -->
+<article class="p-3.5 bg-surface-container rounded-xl border border-outline-variant/40 hover:border-outline transition-colors flex flex-col gap-3">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="relative">
+<div class="w-11 h-11 rounded-full bg-surface-container-high border border-outline-variant flex items-center justify-center text-secondary font-headline-sm text-headline-sm font-bold">
+                    TB
+                  </div>
+<span class="absolute -bottom-1 -right-1 px-1 rounded bg-[#F58220] text-white text-[9px] font-bold tracking-tighter">ACC</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<h3 class="font-label-lg text-label-lg font-semibold text-on-surface">Tunde Bakare</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant font-mono text-[13px]">Access Bank • 0031****88</p>
+<p class="font-label-sm text-label-sm text-outline mt-0.5">Last sent: ₦6,000.00 • 28 Apr 2024</p>
+</div>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<button aria-label="Toggle favourite" class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-surface-container-high text-outline hover:text-secondary transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">star</span>
+</button>
+<button aria-label="More actions" class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-surface-container-high text-outline hover:text-on-surface transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</div>
+<div class="pt-2 border-t border-outline-variant/20 flex items-center justify-between">
+<span class="text-label-sm font-label-sm text-outline">Utility bill share</span>
+<button class="h-[36px] px-3.5 rounded-lg bg-surface-container-high hover:bg-primary-container hover:text-on-primary-container text-primary font-label-sm text-label-sm font-semibold flex items-center gap-1.5 transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[16px]">send</span>
+<span>Send Money</span>
+</button>
+</div>
+</article>
+</div>
+</section>
+<!-- Primary Floating Action Button Standard -->
+<div class="pt-2">
+<button class="w-full h-[52px] rounded-xl bg-primary-container hover:bg-primary text-on-primary-container font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 shadow-lg active:scale-[0.98] transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]">person_add</span>
+<span>Add New Beneficiary</span>
+</button>
+</div>
+</main>
+<!-- Docked 5-tab Bottom Navigation Shell (Built strictly from Shared Components JSON) -->
+<!-- Active Tab: Payments (highlighted in #E0709A / primary-container) -->
+<nav class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-margin h-16 max-w-[560px] mx-auto pb-safe bg-surface-container-lowest dark:bg-surface-container shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)] border-t border-outline-variant/40 dark:border-outline-variant/20">
+<!-- Tab 1: Home (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[22px]">home</span>
+<span class="font-caption text-caption text-[11px] font-medium leading-none">Home</span>
+</a>
+<!-- Tab 2: Payments (ACTIVE - Current Sub-Section Beneficiaries) -->
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed font-semibold min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[22px]" data-weight="fill">send</span>
+<span class="font-caption text-caption text-[11px] font-medium leading-none">Payments</span>
+</a>
+<!-- Tab 3: Cards (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[22px]">credit_card</span>
+<span class="font-caption text-caption text-[11px] font-medium leading-none">Cards</span>
+</a>
+<!-- Tab 4: Save & Borrow (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[22px]">savings</span>
+<span class="font-caption text-caption text-[11px] font-medium leading-none">Save & Borrow</span>
+</a>
+<!-- Tab 5: More (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[22px]">more_horiz</span>
+<span class="font-caption text-caption text-[11px] font-medium leading-none">More</span>
+</a>
+</nav>
+</div>
+</body></html>

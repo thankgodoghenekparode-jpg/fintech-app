@@ -1,0 +1,23 @@
+flowchart TD
+  a(["Tap Withdraw"])
+  b{"Mode and date"}
+  c["Flexible: show any fee and net amount"]
+  d["Locked and before date: show penalty and net amount; suggest alternatives (keep saving)"]
+  e["Locked and at maturity: no penalty"]
+  f{"Early withdrawal cooling-off enabled?"}
+  g["Wait period; reminder to reconsider"]
+  h["Confirm with PIN"]
+  i["Release pocket to main account; post penalty if any"]
+  j(["Goal updated or closed"])
+  a --> b
+  b -->|flexible| c
+  b -->|locked early| d
+  b -->|locked mature| e
+  c --> h
+  d --> f
+  f -->|yes| g
+  f -->|no| h
+  g --> h
+  e --> h
+  h --> i
+  i --> j

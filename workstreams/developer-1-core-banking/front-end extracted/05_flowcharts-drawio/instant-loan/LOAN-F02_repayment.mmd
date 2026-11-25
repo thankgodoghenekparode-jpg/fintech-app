@@ -1,0 +1,23 @@
+flowchart TD
+  a(["Instalment approaching"])
+  b["Reminder (push, SMS)"]
+  c{"Pay manually or auto-repay?"}
+  d["Auto-repay attempt on due date"]
+  e{"Funds available?"}
+  f["Post repayment; update schedule; receipt"]
+  g["Retry per rule; notify"]
+  h{"Fully repaid?"}
+  i["Close loan; offer higher limit"]
+  j(["Done"])
+  a --> b
+  b --> c
+  c -->|manual| f
+  c -->|auto| d
+  d --> e
+  e -->|yes| f
+  e -->|no| g
+  g -->|paid later| f
+  f --> h
+  h -->|yes| i
+  h -->|no| j
+  i --> j

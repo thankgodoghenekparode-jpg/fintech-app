@@ -1,0 +1,449 @@
+openapi: 3.0.3
+info:
+  title: Back-office API (core)
+  version: 1.0.0
+  description: Staff-only endpoints. Role checks
+  masking: null
+  audit logging and dual control apply. Product back-office endpoints live in each product spec.: null
+security:
+- bearerAuth: []
+paths:
+  /backoffice/customers:
+    get:
+      tags:
+      - Customers
+      summary: Search customers (masked)
+      parameters:
+      - name: q
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+  /backoffice/customers/{id}:
+    get:
+      tags:
+      - Customers
+      summary: Customer 360
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+  /backoffice/customers/{id}/unmask:
+    post:
+      tags:
+      - Customers
+      summary: Unmask a field with reason (audited)
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - field
+              - reason
+              properties:
+                field:
+                  type: string
+                reason:
+                  type: string
+      responses:
+        '200':
+          description: OK
+  /backoffice/customers/{id}/lock:
+    post:
+      tags:
+      - Customers
+      summary: Lock or unlock (dual control for unlock)
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - reason
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - LOCK
+                  - UNLOCK
+                reason:
+                  type: string
+      responses:
+        '200':
+          description: OK
+  /backoffice/kyc/queue:
+    get:
+      tags:
+      - KYC
+      summary: KYC review queue
+      responses:
+        '200':
+          description: OK
+  /backoffice/kyc/{id}/decision:
+    post:
+      tags:
+      - KYC
+      summary: Decide KYC case
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - decision
+              properties:
+                decision:
+                  type: string
+                  enum:
+                  - APPROVE
+                  - REJECT
+                  - REFER
+                tier:
+                  type: integer
+                reasonCode:
+                  type: string
+      responses:
+        '200':
+          description: OK
+  /backoffice/transactions:
+    get:
+      tags:
+      - Transactions
+      summary: Search transactions
+      responses:
+        '200':
+          description: OK
+  /backoffice/approvals:
+    get:
+      tags:
+      - Approvals
+      summary: Pending approvals for me
+      responses:
+        '200':
+          description: OK
+    post:
+      tags:
+      - Approvals
+      summary: Create approval request (reversal
+      limit: null
+      config: null
+      manual posting): null
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - payload
+              - reason
+              properties:
+                action:
+                  type: string
+                payload:
+                  type: object
+                reason:
+                  type: string
+      responses:
+        '201':
+          description: Created
+  /backoffice/approvals/{id}/decision:
+    post:
+      tags:
+      - Approvals
+      summary: Approve or reject (different user from requester)
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - decision
+              properties:
+                decision:
+                  type: string
+                  enum:
+                  - APPROVE
+                  - REJECT
+                reason:
+                  type: string
+      responses:
+        '200':
+          description: OK
+  /backoffice/config/{key}:
+    get:
+      tags:
+      - Config
+      summary: Config versions
+      parameters:
+      - name: key
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+    put:
+      tags:
+      - Config
+      summary: Propose new version (creates approval)
+      parameters:
+      - name: key
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - value
+              - effectiveFrom
+              properties:
+                value:
+                  type: object
+                effectiveFrom:
+                  type: string
+                  format: date-time
+      responses:
+        '202':
+          description: Pending approval
+  /backoffice/alerts:
+    get:
+      tags:
+      - Risk
+      summary: Alert queue
+      responses:
+        '200':
+          description: OK
+  /backoffice/cases:
+    post:
+      tags:
+      - Risk
+      summary: Open case
+      responses:
+        '201':
+          description: Created
+  /backoffice/cases/{id}/action:
+    post:
+      tags:
+      - Risk
+      summary: Case action (allow
+      step-up: null
+      hold: null
+      block: null
+      report): null
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+  /backoffice/tickets:
+    get:
+      tags:
+      - Support
+      summary: Ticket queue
+      responses:
+        '200':
+          description: OK
+  /backoffice/tickets/{id}/reply:
+    post:
+      tags:
+      - Support
+      summary: Reply or change status
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+  /backoffice/reconciliation/{date}:
+    get:
+      tags:
+      - Reconciliation
+      summary: Reconciliation result and exceptions
+      parameters:
+      - name: date
+        in: path
+        required: true
+        schema:
+          type: string
+          format: date
+      responses:
+        '200':
+          description: OK
+  /backoffice/reconciliation/exceptions/{id}/resolve:
+    post:
+      tags:
+      - Reconciliation
+      summary: Resolve exception (creates approval for postings)
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+  /backoffice/tenants:
+    get:
+      tags:
+      - Tenants
+      summary: List tenants by type and status
+      responses:
+        '200':
+          description: OK
+  /backoffice/tenants/{id}/action:
+    post:
+      tags:
+      - Tenants
+      summary: Verify
+      set trust level: null
+      freeze: null
+      unfreeze: null
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - VERIFY
+                  - SET_TRUST_LEVEL
+                  - FREEZE
+                  - UNFREEZE
+                trustLevel:
+                  type: string
+                reason:
+                  type: string
+      responses:
+        '200':
+          description: OK
+  /backoffice/audit:
+    get:
+      tags:
+      - Audit
+      summary: Audit log search
+      responses:
+        '200':
+          description: OK
+  /backoffice/staff:
+    get:
+      tags:
+      - Staff
+      summary: Staff users
+      responses:
+        '200':
+          description: OK
+    post:
+      tags:
+      - Staff
+      summary: Create staff user (Super Admin)
+      responses:
+        '201':
+          description: Created
+  /backoffice/reports/{type}:
+    get:
+      tags:
+      - Reports
+      summary: Run or download report
+      parameters:
+      - name: type
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+  /backoffice/feature-flags:
+    get:
+      tags:
+      - Flags
+      summary: List flags
+      responses:
+        '200':
+          description: OK
+    put:
+      tags:
+      - Flags
+      summary: Change flag (approval for production)
+      responses:
+        '202':
+          description: Pending approval
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

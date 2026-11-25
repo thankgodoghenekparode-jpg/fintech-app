@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YourApp - Send: Amount</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Inter Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-surface": "#e7e1e2",
+            "on-secondary": "#61130a",
+            "on-tertiary": "#002d6f",
+            "on-tertiary-fixed": "#001945",
+            "error-container": "#93000a",
+            "inverse-primary": "#9e3b63",
+            "surface-variant": "#373435",
+            "secondary-fixed-dim": "#ffb4a8",
+            "secondary-container": "#822c20",
+            "on-primary-fixed": "#3e001f",
+            "on-primary-container": "#5d0331",
+            "surface-container": "#211f20",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "primary-container": "#e0709a",
+            "secondary-fixed": "#ffdad4",
+            "tertiary": "#b0c6ff",
+            "surface-container-lowest": "#100e0f",
+            "on-primary-fixed-variant": "#7f234b",
+            "on-surface-variant": "#dac0c6",
+            "tertiary-fixed": "#d9e2ff",
+            "surface-tint": "#ffb0ca",
+            "surface-container-high": "#2c292a",
+            "error": "#ffb4ab",
+            "on-tertiary-fixed-variant": "#06429a",
+            "surface-container-low": "#1d1b1c",
+            "on-secondary-fixed": "#410000",
+            "primary-fixed-dim": "#ffb0ca",
+            "surface-bright": "#3b3839",
+            "on-secondary-container": "#ff9f90",
+            "on-surface": "#e7e1e2",
+            "on-error": "#690005",
+            "surface-container-highest": "#373435",
+            "on-tertiary-container": "#002a69",
+            "tertiary-container": "#6a92ee",
+            "inverse-on-surface": "#323031",
+            "outline": "#a28b91",
+            "background": "#151314",
+            "on-primary": "#620735",
+            "surface-dim": "#151314",
+            "on-secondary-fixed-variant": "#7f291e",
+            "secondary": "#ffb4a8",
+            "primary": "#ffb0ca",
+            "on-error-container": "#ffdad6",
+            "surface": "#151314",
+            "outline-variant": "#544247",
+            "primary-fixed": "#ffd9e3",
+            "on-background": "#e7e1e2"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin-mobile": "1rem",
+            "gutter": "1rem",
+            "space-lg": "1.5rem",
+            "margin": "1rem",
+            "space-sm": "0.5rem",
+            "space-xs": "0.25rem",
+            "space-xl": "2rem",
+            "gutter-mobile": "0.75rem",
+            "space-md": "1rem"
+          },
+          "fontFamily": {
+            "label-md": ["Inter"],
+            "display-currency": ["Inter"],
+            "headline-md": ["Inter"],
+            "headline-lg": ["Inter"],
+            "body-md": ["Inter"],
+            "label-lg": ["Inter"],
+            "body-lg": ["Inter"],
+            "label-sm": ["Inter"],
+            "headline-sm": ["Inter"],
+            "title-currency": ["Inter"]
+          },
+          "fontSize": {
+            "label-md": ["13px", {"lineHeight": "18px", "fontWeight": "500"}],
+            "display-currency": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "headline-md": ["22px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "headline-lg": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+            "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+            "label-lg": ["15px", {"lineHeight": "20px", "fontWeight": "600"}],
+            "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+            "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+            "title-currency": ["20px", {"lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 24px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      -webkit-font-feature-settings: 'liga';
+      -webkit-font-smoothing: antialiased;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+    .animate-blink {
+      animation: blink 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex justify-center selection:bg-primary-container selection:text-on-primary-fixed">
+<!-- Main Mobile Frame Canvas (390px x 844px baseline) -->
+<main class="w-full max-w-[420px] bg-surface flex flex-col min-h-screen relative shadow-2xl overflow-y-auto">
+<!-- Top Navigation Header (Screen ID: S-CB-032 Task-focused, bottom nav suppressed) -->
+<header class="sticky top-0 z-30 bg-surface/95 backdrop-blur-md px-margin py-space-sm flex items-center justify-between min-h-[56px]">
+<button aria-label="Go back" class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="flex flex-col items-center">
+<span class="font-headline-sm text-headline-sm text-on-surface tracking-tight font-semibold">Transfer Amount</span>
+<span class="font-label-sm text-label-sm text-outline tracking-wider uppercase">S-CB-032</span>
+</div>
+<button aria-label="Customer support" class="w-10 h-10 rounded-full flex items-center justify-center text-outline hover:text-primary hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined" data-icon="headset_mic">headset_mic</span>
+</button>
+</header>
+<!-- Scrollable Transaction Body -->
+<section class="flex-1 px-margin pb-6 flex flex-col gap-space-md">
+<!-- Selected Recipient Card -->
+<article class="p-3.5 bg-surface-container-low rounded-xl border border-outline-variant/40 flex items-center justify-between gap-3">
+<div class="flex items-center gap-3 min-w-0">
+<!-- Recipient Avatar with Nigerian Initials -->
+<div class="relative w-12 h-12 rounded-full bg-surface-container-highest border border-outline-variant/60 flex items-center justify-center shrink-0">
+<span class="font-label-lg text-label-lg text-primary font-bold">BS</span>
+<div class="absolute -bottom-0.5 -right-0.5 w-4 h-4 rounded-full bg-surface flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-[14px]" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<div class="min-w-0 flex flex-col">
+<div class="flex items-center gap-1.5">
+<h2 class="font-label-lg text-label-lg text-on-surface truncate">Babajide Sanwo-Olu</h2>
+<span class="px-1.5 py-0.5 rounded-full text-[10px] font-semibold bg-surface-container-highest text-secondary border border-secondary/30">Verified</span>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant truncate">
+              GTBank <span class="text-outline-variant">•</span> <span class="font-mono tracking-tight">0123948576</span>
+</p>
+</div>
+</div>
+<button aria-label="Change recipient" class="w-8 h-8 rounded-full flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors shrink-0" type="button">
+<span class="material-symbols-outlined text-lg" data-icon="swap_horiz">swap_horiz</span>
+</button>
+</article>
+<!-- Available Balance Indicator with Max Toggle -->
+<div class="flex items-center justify-between px-1">
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Available Balance:</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold tabular-nums">₦142,850.00</span>
+</div>
+<button class="h-6 px-2.5 rounded-full bg-surface-container hover:bg-surface-container-high border border-outline-variant/50 text-primary font-label-sm text-label-sm active:scale-95 transition-all" id="btn-max" type="button">
+          Use Max
+        </button>
+</div>
+<!-- Hero Big Amount Input Canvas -->
+<div class="bg-surface-container-low rounded-xl border border-outline-variant/50 p-5 flex flex-col items-center justify-center gap-2">
+<span class="font-label-sm text-label-sm text-outline tracking-wider uppercase">Transfer Sum</span>
+<div class="flex items-baseline justify-center tracking-tight text-center w-full">
+<span class="font-display-currency text-display-currency text-primary-container mr-1.5 select-none font-bold">₦</span>
+<div class="flex items-center">
+<span class="font-display-currency text-display-currency text-on-surface tabular-nums font-bold" id="amount-display">45,000.00</span>
+<span class="w-[3px] h-8 bg-primary-container ml-1 rounded-full animate-blink"></span>
+</div>
+</div>
+<p class="font-label-sm text-label-sm text-outline-variant flex items-center gap-1">
+<span>Zero transaction tax applied today</span>
+</p>
+</div>
+<!-- Quick Amount Incremental Chips -->
+<div class="grid grid-cols-4 gap-2">
+<button class="quick-chip h-9 rounded-lg bg-surface-container hover:bg-surface-container-high border border-outline-variant/40 text-on-surface font-label-md text-label-md active:scale-95 transition-all text-center" data-val="5000" type="button">
+          +₦5k
+        </button>
+<button class="quick-chip h-9 rounded-lg bg-surface-container hover:bg-surface-container-high border border-outline-variant/40 text-on-surface font-label-md text-label-md active:scale-95 transition-all text-center" data-val="10000" type="button">
+          +₦10k
+        </button>
+<button class="quick-chip h-9 rounded-lg bg-surface-container hover:bg-surface-container-high border border-outline-variant/40 text-on-surface font-label-md text-label-md active:scale-95 transition-all text-center" data-val="20000" type="button">
+          +₦20k
+        </button>
+<button class="quick-chip h-9 rounded-lg bg-surface-container hover:bg-surface-container-high border border-outline-variant/40 text-on-surface font-label-md text-label-md active:scale-95 transition-all text-center" data-val="50000" type="button">
+          +₦50k
+        </button>
+</div>
+<!-- Narration / Payment Reason Input Field -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm text-on-surface-variant flex items-center justify-between px-1" for="narration-input">
+<span>Narration (Optional)</span>
+<span class="text-outline">Max 40 chars</span>
+</label>
+<div class="h-[52px] bg-surface-container-low rounded-xl border border-outline-variant/50 focus-within:border-primary-container flex items-center px-3.5 gap-2.5 transition-colors">
+<span class="material-symbols-outlined text-outline text-xl" data-icon="edit_note">edit_note</span>
+<input class="bg-transparent border-0 p-0 text-on-surface font-body-md text-body-md placeholder:text-outline w-full focus:ring-0" id="narration-input" maxlength="40" placeholder="e.g. Office rent contribution Feb" type="text" value="Office rent contribution Feb"/>
+</div>
+</div>
+<!-- NIP Interbank Fee Disclosure Badge -->
+<aside class="flex items-center gap-2 p-2.5 rounded-lg bg-surface-container/60 border border-outline-variant/30">
+<span class="material-symbols-outlined text-secondary text-lg shrink-0" data-icon="bolt">bolt</span>
+<div class="font-label-sm text-label-sm text-on-surface-variant leading-tight flex-1">
+<span class="text-on-surface font-medium">NIP Interbank Fee:</span> ₦10.75 + VAT <span class="text-outline-variant mx-1">|</span> <span class="text-secondary font-medium">Instant Clearing</span>
+</div>
+<span class="material-symbols-outlined text-outline text-base" data-icon="info">info</span>
+</aside>
+<!-- Primary Action CTA Button (Fixed 52px height) -->
+<button class="h-[52px] w-full rounded-xl bg-primary-container hover:bg-inverse-primary active:scale-[0.98] text-on-primary-container font-label-lg text-label-lg font-bold flex items-center justify-center gap-2 transition-all shadow-lg" id="btn-continue" type="button">
+<span>Continue to Confirmation</span>
+<span class="material-symbols-outlined text-xl" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<!-- Custom 3x4 Tactile Numeric Keypad -->
+<section aria-label="Virtual keypad" class="mt-auto pt-2 grid grid-cols-3 gap-2 select-none">
+<button class="keypad-btn h-12 rounded-xl bg-surface-container hover:bg-surface-container-high border border-outline-variant/30 text-on-surface font-title-currency text-title-currency font-semibold flex items-center justify-center active:scale-95 transition-all" data-key="1" type="button">1</button>
+<button class="keypad-btn h-12 rounded-xl bg-surface-container hover:bg-surface-container-high border border-outline-variant/30 text-on-surface font-title-currency text-title-currency font-semibold flex items-center justify-center active:scale-95 transition-all" data-key="2" type="button">2</button>
+<button class="keypad-btn h-12 rounded-xl bg-surface-container hover:bg-surface-container-high border border-outline-variant/30 text-on-surface font-title-currency text-title-currency font-semibold flex items-center justify-center active:scale-95 transition-all" data-key="3" type="button">3</button>
+<button class="keypad-btn h-12 rounded-xl bg-surface-container hover:bg-surface-container-high border border-outline-variant/30 text-on-surface font-title-currency text-title-currency font-semibold flex items-center justify-center active:scale-95 transition-all" data-key="4" type="button">4</button>
+<button class="keypad-btn h-12 rounded-xl bg-surface-container hover:bg-surface-container-high border border-outline-variant/30 text-on-surface font-title-currency text-title-currency font-semibold flex items-center justify-center active:scale-95 transition-all" data-key="5" type="button">5</button>
+<button class="keypad-btn h-12 rounded-xl bg-surface-container hover:bg-surface-container-high border border-outline-variant/30 text-on-surface font-title-currency text-title-currency font-semibold flex items-center justify-center active:scale-95 transition-all" data-key="6" type="button">6</button>
+<button class="keypad-btn h-12 rounded-xl bg-surface-container hover:bg-surface-container-high border border-outline-variant/30 text-on-surface font-title-currency text-title-currency font-semibold flex items-center justify-center active:scale-95 transition-all" data-key="7" type="button">7</button>
+<button class="keypad-btn h-12 rounded-xl bg-surface-container hover:bg-surface-container-high border border-outline-variant/30 text-on-surface font-title-currency text-title-currency font-semibold flex items-center justify-center active:scale-95 transition-all" data-key="8" type="button">8</button>
+<button class="keypad-btn h-12 rounded-xl bg-surface-container hover:bg-surface-container-high border border-outline-variant/30 text-on-surface font-title-currency text-title-currency font-semibold flex items-center justify-center active:scale-95 transition-all" data-key="9" type="button">9</button>
+<button class="keypad-btn h-12 rounded-xl bg-surface-container hover:bg-surface-container-high border border-outline-variant/30 text-on-surface font-title-currency text-title-currency font-semibold flex items-center justify-center active:scale-95 transition-all" data-key="." type="button">.</button>
+<button class="keypad-btn h-12 rounded-xl bg-surface-container hover:bg-surface-container-high border border-outline-variant/30 text-on-surface font-title-currency text-title-currency font-semibold flex items-center justify-center active:scale-95 transition-all" data-key="0" type="button">0</button>
+<button aria-label="Backspace" class="keypad-btn h-12 rounded-xl bg-surface-container hover:bg-surface-container-high border border-outline-variant/30 text-primary-container flex items-center justify-center active:scale-95 transition-all" data-key="backspace" type="button">
+<span class="material-symbols-outlined" data-icon="backspace">backspace</span>
+</button>
+</section>
+<!-- Subtext / Security badge -->
+<footer class="pt-1 pb-2 flex items-center justify-center gap-1.5 text-outline">
+<span class="material-symbols-outlined text-xs" data-icon="lock">lock</span>
+<span class="font-label-sm text-label-sm tracking-wide text-outline">NDPR compliant • End-to-end encrypted transfer</span>
+</footer>
+</section>
+</main>
+<!-- Interactive Demo Logic for Keypad and Chips -->
+<script>
+    (function() {
+      let rawAmount = "45000";
+      const displayElem = document.getElementById('amount-display');
+
+      function formatNaira(val) {
+        if (!val || val === "0") return "0.00";
+        const num = parseFloat(val);
+        if (isNaN(num)) return "0.00";
+        return num.toLocaleString('en-NG', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      }
+
+      function updateDisplay() {
+        displayElem.textContent = formatNaira(rawAmount);
+      }
+
+      // Handle custom Keypad
+      document.querySelectorAll('.keypad-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const key = btn.getAttribute('data-key');
+          if (key === 'backspace') {
+            rawAmount = rawAmount.slice(0, -1);
+            if (rawAmount === "") rawAmount = "0";
+          } else if (key === '.') {
+            if (!rawAmount.includes('.')) {
+              rawAmount += '.';
+            }
+          } else {
+            if (rawAmount === "0") {
+              rawAmount = key;
+            } else if (rawAmount.length < 9) {
+              rawAmount += key;
+            }
+          }
+          updateDisplay();
+        });
+      });
+
+      // Handle Quick Chips
+      document.querySelectorAll('.quick-chip').forEach(chip => {
+        chip.addEventListener('click', () => {
+          const addVal = parseFloat(chip.getAttribute('data-val'));
+          const current = parseFloat(rawAmount) || 0;
+          rawAmount = (current + addVal).toString();
+          updateDisplay();
+        });
+      });
+
+      // Handle Max Button
+      document.getElementById('btn-max').addEventListener('click', () => {
+        rawAmount = "142850";
+        updateDisplay();
+      });
+    })();
+  </script>
+</body></html>

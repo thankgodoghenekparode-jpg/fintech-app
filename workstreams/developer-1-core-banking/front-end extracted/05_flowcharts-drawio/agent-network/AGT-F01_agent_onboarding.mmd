@@ -1,0 +1,14 @@
+flowchart TD
+  a(["Customer applies to be an agent"])
+  b[/"Identity, location, business details, photos"/]
+  c["Staff review and training"]
+  d{"Approved?"}
+  e["Rejected with reason"]
+  f["Create float wallet and agent code; enable agent mode"]
+  g(["Agent active in locator"])
+  a --> b
+  b --> c
+  c --> d
+  d -->|no| e
+  d -->|yes| f
+  f --> g

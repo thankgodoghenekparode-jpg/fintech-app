@@ -1,0 +1,18 @@
+flowchart TD
+  a(["Screening produces a hit"])
+  b["Auto-hold the action; open case in queue"]
+  c["Analyst compares identifiers side by side"]
+  d{"Decision"}
+  e["False positive: clear with rationale; whitelist with expiry"]
+  f["Escalate to MLRO"]
+  g["True match: restrict, restricted case, no tipping off"]
+  h(["Decision audited"])
+  a --> b
+  b --> c
+  c --> d
+  d -->|false positive| e
+  d -->|unclear| f
+  d -->|true match| g
+  e --> h
+  f --> h
+  g --> h

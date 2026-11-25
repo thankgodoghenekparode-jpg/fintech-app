@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YourApp - Reset Passcode</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary-container": "#5d0331",
+            "inverse-surface": "#e7e1e2",
+            "tertiary-container": "#6a92ee",
+            "background": "#151314",
+            "tertiary-fixed": "#d9e2ff",
+            "on-tertiary-fixed-variant": "#06429a",
+            "surface-dim": "#151314",
+            "primary-container": "#e0709a",
+            "on-tertiary": "#002d6f",
+            "surface-container-highest": "#373435",
+            "inverse-primary": "#9e3b63",
+            "secondary-fixed": "#ffdad4",
+            "primary": "#ffb0ca",
+            "error-container": "#93000a",
+            "on-tertiary-container": "#002a69",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "on-secondary-fixed": "#410000",
+            "on-surface": "#e7e1e2",
+            "surface-container-high": "#2c292a",
+            "on-secondary": "#61130a",
+            "surface-variant": "#373435",
+            "on-surface-variant": "#dac0c6",
+            "primary-fixed": "#ffd9e3",
+            "on-primary-fixed": "#3e001f",
+            "inverse-on-surface": "#323031",
+            "surface-container-lowest": "#100e0f",
+            "on-error": "#690005",
+            "on-error-container": "#ffdad6",
+            "outline-variant": "#544247",
+            "tertiary": "#b0c6ff",
+            "on-tertiary-fixed": "#001945",
+            "on-background": "#e7e1e2",
+            "secondary-container": "#822c20",
+            "on-secondary-container": "#ff9f90",
+            "surface": "#151314",
+            "secondary": "#ffb4a8",
+            "surface-tint": "#ffb0ca",
+            "on-primary": "#620735",
+            "surface-container": "#211f20",
+            "outline": "#a28b91",
+            "primary-fixed-dim": "#ffb0ca",
+            "surface-container-low": "#1d1b1c",
+            "surface-bright": "#3b3839",
+            "error": "#ffb4ab",
+            "secondary-fixed-dim": "#ffb4a8",
+            "on-secondary-fixed-variant": "#7f291e",
+            "on-primary-fixed-variant": "#7f234b"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-lg": "1.5rem",
+            "gutter-mobile": "0.75rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "margin": "1rem",
+            "gutter": "1rem",
+            "space-md": "1rem",
+            "margin-mobile": "1rem",
+            "space-xl": "2rem"
+          },
+          "fontFamily": {
+            "title-currency": ["Inter"],
+            "headline-lg": ["Inter"],
+            "body-md": ["Inter"],
+            "label-lg": ["Inter"],
+            "label-md": ["Inter"],
+            "body-lg": ["Inter"],
+            "display-currency": ["Inter"],
+            "headline-sm": ["Inter"],
+            "headline-md": ["Inter"],
+            "label-sm": ["Inter"]
+          },
+          "fontSize": {
+            "title-currency": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "label-lg": ["15px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-lowest text-on-surface antialiased min-h-screen flex justify-center selection:bg-primary-container selection:text-on-primary-container">
+<!-- Mobile Frame Container (Strict 390px base responsive viewport, up to max-w-[440px]) -->
+<div class="w-full max-w-[440px] min-h-screen bg-surface-container-lowest flex flex-col relative pb-safe">
+<!-- Top App Bar / Recovery Header Nav -->
+<header class="w-full px-margin pt-4 pb-2 flex items-center justify-between z-10 sticky top-0 bg-surface-container-lowest/90 backdrop-blur-md">
+<button aria-label="Go back" class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container hover:bg-surface-container-high text-on-surface active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined text-[20px]">arrow_back</span>
+</button>
+<!-- Stepper Badge Indicator -->
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container border border-outline-variant/30">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant tracking-wide font-medium">Step 1 of 3: Identity Check</span>
+</div>
+<button aria-label="Help and FAQs" class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container hover:bg-surface-container-high text-on-surface-variant hover:text-primary active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined text-[20px]">help_outline</span>
+</button>
+</header>
+<!-- Main Content Canvas (Scrollable) -->
+<main class="flex-1 px-margin pt-4 pb-28 flex flex-col space-y-5">
+<!-- Hero Header Section -->
+<section class="flex flex-col items-start space-y-3">
+<!-- Glowing Berry Key Container -->
+<div class="w-14 h-14 rounded-2xl bg-surface-container-low border border-outline-variant/40 flex items-center justify-center relative shadow-[0_0_24px_rgba(224,112,154,0.18)]">
+<div class="absolute inset-1 rounded-xl bg-gradient-to-br from-primary-container/20 to-transparent"></div>
+<span class="material-symbols-outlined text-primary text-[28px] relative z-10" style="font-variation-settings: 'FILL' 1;">lock_reset</span>
+</div>
+<div class="space-y-1">
+<h1 class="font-headline-md text-headline-md text-on-surface tracking-tight">Reset your passcode</h1>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            Enter your registered phone number and BVN or date of birth to verify your identity before creating a new passcode.
+          </p>
+</div>
+</section>
+<!-- Form Inputs Group -->
+<section class="flex flex-col space-y-4">
+<!-- Phone Number Input Field -->
+<div class="space-y-1.5">
+<label class="font-label-md text-label-md text-on-surface font-medium block" for="phone-input">
+            Registered Phone Number
+          </label>
+<div class="h-[52px] bg-surface-container-low rounded-xl border border-outline-variant/50 focus-within:border-primary-container flex items-center px-3.5 transition-colors duration-150">
+<!-- Flag Prefix Badge -->
+<div class="flex items-center gap-2 pr-3 border-r border-outline-variant/40">
+<svg class="w-5 h-3.5 rounded-sm overflow-hidden flex-shrink-0" viewbox="0 0 640 480">
+<g fill-rule="evenodd" stroke-width="1pt">
+<path d="M0 0h213.3v480H0z" fill="#008751"></path>
+<path d="M213.3 0h213.4v480H213.3z" fill="#ffffff"></path>
+<path d="M426.7 0H640v480H426.7z" fill="#008751"></path>
+</g>
+</svg>
+<span class="font-body-md text-body-md font-medium text-on-surface tracking-tight tabular-nums">+234</span>
+</div>
+<!-- Input text -->
+<input class="w-full bg-transparent border-0 px-3 text-on-surface font-body-lg text-body-lg tracking-normal focus:ring-0 placeholder:text-outline/70 focus:outline-none tabular-nums" id="phone-input" inputmode="numeric" placeholder="801 234 5678" type="tel" value="814 902 3841"/>
+<span class="material-symbols-outlined text-[18px] text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<!-- Verification Method Segmented Tab -->
+<div class="space-y-2 pt-1">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface font-medium">Verification Method</span>
+<span class="font-label-sm text-label-sm text-primary font-medium flex items-center gap-1 cursor-pointer hover:underline">
+<span class="material-symbols-outlined text-[14px]">lock</span> Encrypted
+            </span>
+</div>
+<div class="grid grid-cols-2 p-1 bg-surface-container-low rounded-xl border border-outline-variant/40 gap-1" role="tablist">
+<button aria-selected="true" class="h-10 rounded-lg font-label-md text-label-md font-semibold flex items-center justify-center transition-all duration-150 bg-surface-container-high text-primary-fixed shadow-sm" id="tab-bvn" onclick="selectTab('bvn')" role="tab" type="button">
+              BVN
+            </button>
+<button aria-selected="false" class="h-10 rounded-lg font-label-md text-label-md font-medium flex items-center justify-center transition-all duration-150 text-on-surface-variant hover:text-on-surface" id="tab-dob" onclick="selectTab('dob')" role="tab" type="button">
+              Date of Birth
+            </button>
+</div>
+</div>
+<!-- Dynamic Identity Input View: BVN Option -->
+<div class="space-y-1.5" id="view-bvn">
+<div class="flex items-center justify-between">
+<label class="font-label-md text-label-md text-on-surface font-medium" for="bvn-input">
+              11-digit BVN
+            </label>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Dial *565*0# to check</span>
+</div>
+<div class="h-[52px] bg-surface-container-low rounded-xl border border-outline-variant/50 focus-within:border-primary-container flex items-center px-3.5 transition-colors duration-150 relative">
+<span class="material-symbols-outlined text-[20px] text-outline mr-2.5">badge</span>
+<input class="w-full bg-transparent border-0 px-0 text-on-surface font-body-lg text-body-lg tracking-widest focus:ring-0 placeholder:text-outline/70 focus:outline-none tabular-nums" id="bvn-input" inputmode="numeric" maxlength="11" placeholder="•••••••••••" type="password" value="22289410932"/>
+<button aria-label="Toggle BVN visibility" class="text-on-surface-variant hover:text-on-surface focus:outline-none p-1" onclick="togglePasswordVisibility('bvn-input', this)" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility_off</span>
+</button>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1.5 pt-0.5">
+<span class="material-symbols-outlined text-[14px] text-outline">verified_user</span>
+            Used strictly to verify account ownership.
+          </p>
+</div>
+<!-- Dynamic Identity Input View: DOB Option (Hidden by default) -->
+<div class="space-y-1.5 hidden" id="view-dob">
+<label class="font-label-md text-label-md text-on-surface font-medium" for="dob-input">
+            Date of Birth
+          </label>
+<div class="h-[52px] bg-surface-container-low rounded-xl border border-outline-variant/50 focus-within:border-primary-container flex items-center px-3.5 transition-colors duration-150">
+<span class="material-symbols-outlined text-[20px] text-outline mr-2.5">calendar_today</span>
+<input class="w-full bg-transparent border-0 px-0 text-on-surface font-body-md text-body-md focus:ring-0 placeholder:text-outline/70 focus:outline-none" id="dob-input" type="date"/>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1.5 pt-0.5">
+<span class="material-symbols-outlined text-[14px] text-outline">info</span>
+            Must match your registered bank profile records.
+          </p>
+</div>
+</section>
+<!-- Security & Reassurance Card -->
+<section class="bg-surface-container-low border border-outline-variant/40 rounded-xl p-3.5 flex items-start gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container-highest flex-shrink-0 flex items-center justify-center text-primary-fixed">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+</div>
+<div class="space-y-0.5 text-left">
+<span class="font-label-md text-label-md font-semibold text-on-surface block">
+            CBN Compliant &amp; NDPR Protected
+          </span>
+<p class="font-label-sm text-label-sm text-on-surface-variant leading-relaxed">
+            Your identity details are fully encrypted. We never ask for your transactional PIN or full card digits.
+          </p>
+</div>
+</section>
+<!-- Support Fallback Note -->
+<section class="text-center pt-1 pb-2">
+<p class="font-body-md text-body-md text-on-surface-variant">
+          Lost access to your phone number? 
+          <a class="text-primary hover:text-primary-fixed font-semibold underline underline-offset-2 ml-1 transition-colors duration-150 inline-flex items-center gap-0.5" href="#">
+            Contact Support
+            <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</p>
+</section>
+</main>
+<!-- Bottom Docked Sticky Action Canvas -->
+<div class="fixed bottom-0 left-0 right-0 w-full z-40 bg-surface-container-lowest/95 backdrop-blur-lg border-t border-outline-variant/20 px-margin py-3 max-w-[440px] mx-auto pb-safe">
+<button class="w-full h-[52px] rounded-xl bg-primary-container hover:bg-[#c4557f] active:scale-[0.98] transition-all duration-150 flex items-center justify-center text-on-primary-container font-label-lg text-label-lg font-semibold shadow-lg shadow-primary-container/20 gap-2" type="button">
+<span>Continue to OTP Verification</span>
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+<div class="text-center pt-2">
+<span class="font-label-sm text-label-sm text-outline tracking-wider font-semibold">YourApp SECURE GATEWAY</span>
+</div>
+</div>
+</div>
+<!-- Inline Tab Switching & Mask Interaction Script -->
+<script>
+    function selectTab(type) {
+      const tabBvn = document.getElementById('tab-bvn');
+      const tabDob = document.getElementById('tab-dob');
+      const viewBvn = document.getElementById('view-bvn');
+      const viewDob = document.getElementById('view-dob');
+
+      if (type === 'bvn') {
+        tabBvn.className = 'h-10 rounded-lg font-label-md text-label-md font-semibold flex items-center justify-center transition-all duration-150 bg-surface-container-high text-primary-fixed shadow-sm';
+        tabBvn.setAttribute('aria-selected', 'true');
+        tabDob.className = 'h-10 rounded-lg font-label-md text-label-md font-medium flex items-center justify-center transition-all duration-150 text-on-surface-variant hover:text-on-surface';
+        tabDob.setAttribute('aria-selected', 'false');
+        viewBvn.classList.remove('hidden');
+        viewDob.classList.add('hidden');
+      } else {
+        tabDob.className = 'h-10 rounded-lg font-label-md text-label-md font-semibold flex items-center justify-center transition-all duration-150 bg-surface-container-high text-primary-fixed shadow-sm';
+        tabDob.setAttribute('aria-selected', 'true');
+        tabBvn.className = 'h-10 rounded-lg font-label-md text-label-md font-medium flex items-center justify-center transition-all duration-150 text-on-surface-variant hover:text-on-surface';
+        tabBvn.setAttribute('aria-selected', 'false');
+        viewDob.classList.remove('hidden');
+        viewBvn.classList.add('hidden');
+      }
+    }
+
+    function togglePasswordVisibility(inputId, btn) {
+      const input = document.getElementById(inputId);
+      const icon = btn.querySelector('.material-symbols-outlined');
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.textContent = 'visibility';
+      } else {
+        input.type = 'password';
+        icon.textContent = 'visibility_off';
+      }
+    }
+  </script>
+</body></html>

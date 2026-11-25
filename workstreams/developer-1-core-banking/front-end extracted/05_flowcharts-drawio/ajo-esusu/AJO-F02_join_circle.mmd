@@ -1,0 +1,17 @@
+flowchart TD
+  a(["Open invite link or enter code"])
+  b["Show terms, protection mode, amount, schedule, my slot rules"]
+  c[/"Accept terms"/]
+  d{"Protection mode"}
+  e[/"Choose cover guarantor or security deposit"/]
+  f["Guarantor accepts in-app (PIN) / deposit moved to hold"]
+  g[/"Enable auto-debit with consent"/]
+  h(["Member ready"])
+  a --> b
+  b --> c
+  c --> d
+  d -->|protected| e
+  d -->|safeguards only| g
+  e --> f
+  f --> g
+  g --> h

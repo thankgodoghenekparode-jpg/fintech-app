@@ -1,0 +1,21 @@
+flowchart TD
+  a(["Member requests to leave"])
+  b{"Loans or active guarantees?"}
+  c["Resolve first (repay or replace guarantor)"]
+  d["Admin approves settlement"]
+  e["Refund savings and shares per rule"]
+  f["Close membership; notify"]
+  g["Dissolution: freeze new activity; settle all members"]
+  h["Handle unpaid loans and guarantors per rule"]
+  i["Close cooperative account after final reconciliation"]
+  j(["Done"])
+  a --> b
+  b -->|yes| c
+  c --> d
+  b -->|no| d
+  d --> e
+  e --> f
+  f --> j
+  g --> h
+  h --> i
+  i --> j

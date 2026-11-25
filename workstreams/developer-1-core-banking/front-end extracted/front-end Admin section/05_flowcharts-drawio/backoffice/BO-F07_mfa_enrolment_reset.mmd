@@ -1,0 +1,17 @@
+flowchart TD
+  a(["First sign-in or reset request"])
+  b{"New enrolment or lost device?"}
+  c["Scan authenticator QR or register hardware key; confirm code"]
+  d["Show recovery codes once"]
+  e["Lost device: Super Admin requests reset with reason"]
+  f["Second admin approves; MFA cleared; sessions revoked"]
+  g["Staff re-enrols at next sign-in"]
+  h(["Audit logged"])
+  a --> b
+  b -->|new| c
+  c --> d
+  d --> h
+  b -->|lost| e
+  e --> f
+  f --> g
+  g --> h

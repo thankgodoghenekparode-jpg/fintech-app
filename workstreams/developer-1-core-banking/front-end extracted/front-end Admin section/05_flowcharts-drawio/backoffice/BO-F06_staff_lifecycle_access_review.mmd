@@ -1,0 +1,18 @@
+flowchart TD
+  a(["Super Admin creates staff user and assigns role"])
+  b["Invitation sent; forced MFA enrolment"]
+  c["Access granted after MFA"]
+  d{"Role change or leaver?"}
+  e["Role change via approval (requester != approver)"]
+  f["Leaver: deactivate, revoke sessions and credentials same day"]
+  g["Quarterly access review: keep, reduce, revoke"]
+  h(["Evidence exported; audit logged"])
+  a --> b
+  b --> c
+  c --> d
+  d -->|mover| e
+  d -->|leaver| f
+  c -->|quarterly| g
+  e --> g
+  f --> h
+  g --> h

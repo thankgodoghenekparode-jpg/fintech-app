@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Security Hub - YourApp</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary-container": "#5d0331",
+            "secondary": "#ffb4a8",
+            "on-secondary-fixed": "#410000",
+            "on-tertiary-fixed-variant": "#06429a",
+            "surface-variant": "#373435",
+            "error": "#ffb4ab",
+            "on-tertiary-fixed": "#001945",
+            "on-background": "#e7e1e2",
+            "secondary-fixed-dim": "#ffb4a8",
+            "error-container": "#93000a",
+            "surface-container-highest": "#373435",
+            "surface-container-lowest": "#100e0f",
+            "secondary-container": "#822c20",
+            "on-primary-fixed": "#3e001f",
+            "on-secondary": "#61130a",
+            "inverse-surface": "#e7e1e2",
+            "on-error-container": "#ffdad6",
+            "on-secondary-fixed-variant": "#7f291e",
+            "tertiary": "#b0c6ff",
+            "primary-fixed": "#ffd9e3",
+            "on-error": "#690005",
+            "on-surface": "#e7e1e2",
+            "primary": "#ffb0ca",
+            "surface-container-low": "#1d1b1c",
+            "surface-tint": "#ffb0ca",
+            "primary-container": "#e0709a",
+            "on-primary": "#620735",
+            "surface-bright": "#3b3839",
+            "outline-variant": "#544247",
+            "tertiary-container": "#6a92ee",
+            "on-tertiary-container": "#002a69",
+            "on-secondary-container": "#ff9f90",
+            "on-tertiary": "#002d6f",
+            "on-primary-fixed-variant": "#7f234b",
+            "surface-container-high": "#2c292a",
+            "on-surface-variant": "#dac0c6",
+            "surface-container": "#211f20",
+            "outline": "#a28b91",
+            "inverse-on-surface": "#323031",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "inverse-primary": "#9e3b63",
+            "tertiary-fixed": "#d9e2ff",
+            "secondary-fixed": "#ffdad4",
+            "background": "#151314",
+            "surface-dim": "#151314",
+            "surface": "#151314",
+            "primary-fixed-dim": "#ffb0ca"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "1rem",
+            "space-xs": "0.25rem",
+            "gutter": "1rem",
+            "margin-mobile": "1rem",
+            "space-lg": "1.5rem",
+            "space-md": "1rem",
+            "gutter-mobile": "0.75rem",
+            "space-xl": "2rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "body-lg": ["Inter"],
+            "headline-lg": ["Inter"],
+            "display-currency": ["Inter"],
+            "headline-md": ["Inter"],
+            "label-sm": ["Inter"],
+            "headline-sm": ["Inter"],
+            "label-md": ["Inter"],
+            "label-lg": ["Inter"],
+            "title-currency": ["Inter"],
+            "body-md": ["Inter"]
+          },
+          "fontSize": {
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "label-lg": ["15px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "title-currency": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      line-height: 1;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-[#121011] text-[#F5F1F0] antialiased min-h-screen flex justify-center selection:bg-primary-container selection:text-on-primary-container">
+<!-- Mobile Canvas Device Shell (390px base, constrained max 560px) -->
+<main class="w-full max-w-[560px] min-h-screen bg-[#121011] flex flex-col relative pb-[96px] shadow-2xl">
+<!-- Top App Bar (Security Hub Destination Header) -->
+<header class="sticky top-0 z-40 bg-[#1C1819]/90 backdrop-blur-md px-margin py-space-sm min-h-[56px] flex items-center justify-between border-b border-[#3A3335]/40 transition-colors">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Go back" class="w-10 h-10 -ml-2 rounded-full flex items-center justify-center text-[#F5F1F0] hover:bg-surface-container-high transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm text-[#E0709A] font-semibold tracking-wider uppercase">S-CB-073</span>
+<span class="inline-block w-1 h-1 rounded-full bg-[#3A3335]"></span>
+<span class="font-label-sm text-label-sm text-[#8A8184]">YourApp</span>
+</div>
+<h1 class="font-headline-sm text-headline-sm text-[#F5F1F0] tracking-tight">Security Hub</h1>
+</div>
+</div>
+<!-- Live Defense Shield Badge -->
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#4CC38A]/10 border border-[#4CC38A]/30">
+<span class="material-symbols-outlined text-[#4CC38A] text-[18px]" data-icon="verified_user" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="font-label-sm text-label-sm text-[#4CC38A] font-semibold tracking-tight">Active Guard</span>
+</div>
+</header>
+<!-- Main Content Area with 16px Padding -->
+<div class="flex-1 px-margin pt-space-md space-y-space-md">
+<!-- Security Health Bento Banner -->
+<section class="p-4 rounded-2xl bg-gradient-to-br from-[#1C1819] to-[#262122] border border-[#3A3335] shadow-lg relative overflow-hidden">
+<div class="absolute -right-6 -bottom-6 w-32 h-32 rounded-full bg-[#4CC38A]/5 blur-2xl pointer-events-none"></div>
+<div class="flex items-start justify-between gap-3">
+<div class="space-y-1.5">
+<div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#4CC38A]/15 text-[#4CC38A]">
+<span class="material-symbols-outlined text-[14px]" data-icon="shield" style="font-variation-settings: 'FILL' 1;">shield</span>
+<span class="font-label-sm text-label-sm font-semibold">Tier-1 Hardware Security</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-[#F5F1F0] font-bold">
+              Security Score: <span class="text-[#4CC38A]">Excellent (95/100)</span>
+</h2>
+<p class="font-body-md text-body-md text-[#C4BBBD] pr-2">
+              Your account is shielded with 2FA, biometric hardware enclave, and device binding.
+            </p>
+</div>
+<div class="w-12 h-12 rounded-xl bg-[#4CC38A]/15 border border-[#4CC38A]/30 flex items-center justify-center text-[#4CC38A] shrink-0">
+<span class="material-symbols-outlined text-[28px]" data-icon="gpp_good" style="font-variation-settings: 'FILL' 1;">gpp_good</span>
+</div>
+</div>
+<!-- Meter bar -->
+<div class="mt-4 pt-3 border-t border-[#3A3335]/60 flex items-center gap-3">
+<div class="flex-1 h-2 bg-[#121011] rounded-full overflow-hidden p-0.5 border border-[#3A3335]/40">
+<div class="h-full bg-gradient-to-r from-[#4CC38A] to-[#80EBB2] rounded-full w-[95%]"></div>
+</div>
+<span class="font-label-sm text-label-sm text-[#4CC38A] font-semibold tabular-nums">95% Protected</span>
+</div>
+</section>
+<!-- Section: Authentication & Login Controls -->
+<section class="space-y-2">
+<div class="flex items-center justify-between px-1">
+<h3 class="font-label-lg text-label-lg text-[#F5F1F0] font-bold tracking-tight">Authentication &amp; Login Controls</h3>
+<span class="font-label-sm text-label-sm text-[#8A8184]">Core Defense</span>
+</div>
+<div class="bg-[#1C1819] rounded-2xl border border-[#3A3335] divide-y divide-[#3A3335]/60 overflow-hidden shadow-sm">
+<!-- Biometric Login Item -->
+<div class="min-h-[56px] p-3.5 flex items-center justify-between gap-3">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-[#262122] flex items-center justify-center text-[#E0709A] shrink-0">
+<span class="material-symbols-outlined text-[22px]" data-icon="fingerprint">fingerprint</span>
+</div>
+<div>
+<p class="font-label-lg text-label-lg text-[#F5F1F0]">Biometric Login (Face ID / Fingerprint)</p>
+<p class="font-label-sm text-label-sm text-[#C4BBBD]">Passkeys via Secure Enclave</p>
+</div>
+</div>
+<!-- Custom Toggle -->
+<label class="relative inline-flex items-center cursor-pointer shrink-0">
+<input aria-label="Toggle Biometric Login" checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-6 bg-[#262122] border border-[#3A3335] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[3px] after:bg-white after:border-[#3A3335] after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#E0709A] peer-checked:border-[#E0709A]"></div>
+</label>
+</div>
+<!-- Change 6-Digit Passcode -->
+<button class="w-full min-h-[56px] p-3.5 flex items-center justify-between gap-3 text-left hover:bg-[#262122]/50 active:bg-[#262122] transition-colors" type="button">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-[#262122] flex items-center justify-center text-[#E0709A] shrink-0">
+<span class="material-symbols-outlined text-[22px]" data-icon="pin">pin</span>
+</div>
+<div>
+<p class="font-label-lg text-label-lg text-[#F5F1F0]">Change 6-Digit App Passcode</p>
+<p class="font-label-sm text-label-sm text-[#C4BBBD]">Last changed 42 days ago</p>
+</div>
+</div>
+<div class="flex items-center gap-1 text-[#8A8184]">
+<span class="material-symbols-outlined text-[20px]" data-icon="chevron_right">chevron_right</span>
+</div>
+</button>
+<!-- Reset 4-Digit Transaction PIN -->
+<button class="w-full min-h-[56px] p-3.5 flex items-center justify-between gap-3 text-left hover:bg-[#262122]/50 active:bg-[#262122] transition-colors" type="button">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-[#262122] flex items-center justify-center text-[#E0709A] shrink-0">
+<span class="material-symbols-outlined text-[22px]" data-icon="lock_reset">lock_reset</span>
+</div>
+<div>
+<p class="font-label-lg text-label-lg text-[#F5F1F0]">Reset 4-Digit Transaction PIN</p>
+<p class="font-label-sm text-label-sm text-[#C4BBBD]">Requires SMS OTP or BVN check</p>
+</div>
+</div>
+<div class="flex items-center gap-1 text-[#8A8184]">
+<span class="material-symbols-outlined text-[20px]" data-icon="chevron_right">chevron_right</span>
+</div>
+</button>
+<!-- Two-Factor Authentication (2FA) -->
+<button class="w-full min-h-[56px] p-3.5 flex items-center justify-between gap-3 text-left hover:bg-[#262122]/50 active:bg-[#262122] transition-colors" type="button">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-[#262122] flex items-center justify-center text-[#E0709A] shrink-0">
+<span class="material-symbols-outlined text-[22px]" data-icon="phonelink_lock">phonelink_lock</span>
+</div>
+<div>
+<p class="font-label-lg text-label-lg text-[#F5F1F0]">Two-Factor Authentication (2FA)</p>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="w-1.5 h-1.5 rounded-full bg-[#4CC38A]"></span>
+<p class="font-label-sm text-label-sm text-[#C4BBBD]">Active via SMS &amp; Authenticator App</p>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-1 text-[#8A8184]">
+<span class="material-symbols-outlined text-[20px]" data-icon="chevron_right">chevron_right</span>
+</div>
+</button>
+</div>
+</section>
+<!-- Section: Advanced Transaction Protection -->
+<section class="space-y-2">
+<div class="flex items-center justify-between px-1">
+<h3 class="font-label-lg text-label-lg text-[#F5F1F0] font-bold tracking-tight">Advanced Transaction Protection</h3>
+<span class="font-label-sm text-label-sm text-[#E3B341]">High Precision</span>
+</div>
+<div class="bg-[#1C1819] rounded-2xl border border-[#3A3335] divide-y divide-[#3A3335]/60 overflow-hidden shadow-sm">
+<!-- 3D Secure Web Protection -->
+<div class="min-h-[56px] p-3.5 flex items-center justify-between gap-3 bg-[#1C1819]">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-[#262122] flex items-center justify-center text-[#E0709A] shrink-0">
+<span class="material-symbols-outlined text-[22px]" data-icon="language">language</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<p class="font-label-lg text-label-lg text-[#F5F1F0]">3D Secure Web Protection</p>
+<span class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-[#3A3335] text-[#C4BBBD]">Mandatory</span>
+</div>
+<p class="font-label-sm text-label-sm text-[#C4BBBD]">CBN Enforced (Locked active)</p>
+</div>
+</div>
+<div class="flex items-center text-[#4CC38A] px-2 py-1 bg-[#4CC38A]/10 rounded-lg">
+<span class="material-symbols-outlined text-[20px]" data-icon="lock">lock</span>
+</div>
+</div>
+<!-- High-Value Transfer Prompt -->
+<div class="min-h-[56px] p-3.5 flex items-center justify-between gap-3">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-[#262122] flex items-center justify-center text-[#E0709A] shrink-0">
+<span class="material-symbols-outlined text-[22px]" data-icon="payments">payments</span>
+</div>
+<div>
+<p class="font-label-lg text-label-lg text-[#F5F1F0]">High-Value Transfer Prompt</p>
+<p class="font-label-sm text-label-sm text-[#C4BBBD]">Re-auth for transfers exceeding ₦100,000</p>
+</div>
+</div>
+<!-- Custom Toggle -->
+<label class="relative inline-flex items-center cursor-pointer shrink-0">
+<input aria-label="Toggle High-Value Transfer Prompt" checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-6 bg-[#262122] border border-[#3A3335] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[3px] after:bg-white after:border-[#3A3335] after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#E0709A] peer-checked:border-[#E0709A]"></div>
+</label>
+</div>
+<!-- Geofencing / IP Fraud Guard -->
+<div class="min-h-[56px] p-3.5 flex items-center justify-between gap-3">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-[#262122] flex items-center justify-center text-[#E0709A] shrink-0">
+<span class="material-symbols-outlined text-[22px]" data-icon="share_location">share_location</span>
+</div>
+<div>
+<p class="font-label-lg text-label-lg text-[#F5F1F0]">Geofencing / IP Fraud Guard</p>
+<p class="font-label-sm text-label-sm text-[#C4BBBD]">Decline foreign unauthorized sessions</p>
+</div>
+</div>
+<!-- Custom Toggle -->
+<label class="relative inline-flex items-center cursor-pointer shrink-0">
+<input aria-label="Toggle Geofencing Guard" checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-6 bg-[#262122] border border-[#3A3335] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[3px] after:bg-white after:border-[#3A3335] after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#E0709A] peer-checked:border-[#E0709A]"></div>
+</label>
+</div>
+</div>
+</section>
+<!-- Section: Emergency Actions Card -->
+<section class="space-y-2">
+<div class="flex items-center justify-between px-1">
+<h3 class="font-label-lg text-label-lg text-[#F27070] font-bold tracking-tight">Emergency Incident Response</h3>
+<span class="font-label-sm text-label-sm text-[#F27070]">Immediate</span>
+</div>
+<div class="bg-[#1C1819] rounded-2xl border border-[#3A3335] divide-y divide-[#3A3335]/60 overflow-hidden shadow-sm">
+<!-- Freeze All In-App Transactions -->
+<div class="min-h-[56px] p-3.5 flex items-center justify-between gap-3 bg-[#93000a]/10">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-[#93000a]/30 border border-[#F27070]/30 flex items-center justify-center text-[#F27070] shrink-0">
+<span class="material-symbols-outlined text-[22px]" data-icon="ac_unit">ac_unit</span>
+</div>
+<div>
+<p class="font-label-lg text-label-lg text-[#F5F1F0] font-semibold">Freeze All In-App Transactions</p>
+<p class="font-label-sm text-label-sm text-[#C4BBBD]">One-tap lockdown if phone is compromised</p>
+</div>
+</div>
+<!-- Switch (Inactive/Off default for emergency safety) -->
+<label class="relative inline-flex items-center cursor-pointer shrink-0">
+<input aria-label="Freeze All In-App Transactions" class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-6 bg-[#262122] border border-[#3A3335] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[3px] after:bg-white after:border-[#3A3335] after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#F27070] peer-checked:border-[#F27070]"></div>
+</label>
+</div>
+<!-- Report Suspicious Activity -->
+<button class="w-full min-h-[52px] p-3.5 flex items-center justify-between text-left hover:bg-[#262122]/50 active:bg-[#262122] transition-colors" type="button">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-[#262122] flex items-center justify-center text-[#E3B341] shrink-0">
+<span class="material-symbols-outlined text-[22px]" data-icon="report_problem">report_problem</span>
+</div>
+<div>
+<p class="font-label-lg text-label-lg text-[#F5F1F0]">Report Suspicious Activity / Account Fraud</p>
+<p class="font-label-sm text-label-sm text-[#C4BBBD]">Direct escalation to 24/7 YourApp Fraud Desk</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-[#8A8184] text-[20px]" data-icon="open_in_new">open_in_new</span>
+</button>
+</div>
+</section>
+<!-- Trust Assurance Footer Note -->
+<div class="p-3 text-center space-y-1">
+<div class="inline-flex items-center gap-1.5 text-[#8A8184]">
+<span class="material-symbols-outlined text-[14px]" data-icon="encrypted">encrypted</span>
+<span class="font-label-sm text-label-sm">Secured by NDIC Insured Standards • CBN Regulated</span>
+</div>
+</div>
+</div>
+<!-- Docked 5-tab Bottom Navigation (From Shared Components JSON) -->
+<!-- BottomNavBar destination_count: 5. More is active as this is the Security Hub sub-view under settings/more -->
+<nav aria-label="Bottom Navigation" class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-margin h-16 max-w-[560px] mx-auto pb-safe bg-[#1C1819] backdrop-blur-md shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)] border-t border-[#3A3335]/40">
+<!-- Tab 1: Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#home">
+<span class="material-symbols-outlined text-[22px]" data-icon="home">home</span>
+<span class="font-caption text-caption font-medium">Home</span>
+</a>
+<!-- Tab 2: Payments -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#payments">
+<span class="material-symbols-outlined text-[22px]" data-icon="send">send</span>
+<span class="font-caption text-caption font-medium">Payments</span>
+</a>
+<!-- Tab 3: Cards -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#cards">
+<span class="material-symbols-outlined text-[22px]" data-icon="credit_card">credit_card</span>
+<span class="font-caption text-caption font-medium">Cards</span>
+</a>
+<!-- Tab 4: Save & Borrow -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#save-borrow">
+<span class="material-symbols-outlined text-[22px]" data-icon="savings">savings</span>
+<span class="font-caption text-caption font-medium">Save &amp; Borrow</span>
+</a>
+<!-- Tab 5: More (ACTIVE: style_active_navigation) -->
+<a aria-current="page" class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed font-semibold min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#more">
+<span class="material-symbols-outlined text-[22px]" data-icon="more_horiz" style="font-variation-settings: 'FILL' 1;">more_horiz</span>
+<span class="font-caption text-caption font-medium">More</span>
+</a>
+</nav>
+</main>
+</body></html>

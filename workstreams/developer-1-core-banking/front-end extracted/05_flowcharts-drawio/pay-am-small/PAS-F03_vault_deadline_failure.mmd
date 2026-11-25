@@ -1,0 +1,23 @@
+flowchart TD
+  a(["Auto-debit due"])
+  b{"Funds available?"}
+  c["Fund vault"]
+  d["Retry and remind within grace"]
+  e{"Deadline reached and vault not full?"}
+  f["Offer: extend deadline or refund minus fee"]
+  g{"Customer choice"}
+  h["Extend per rule"]
+  i["Refund pocket minus fee; release stock"]
+  j(["Done"])
+  a --> b
+  b -->|yes| c
+  b -->|no| d
+  d --> e
+  e -->|no| a
+  e -->|yes| f
+  f --> g
+  g -->|extend| h
+  g -->|refund| i
+  c --> j
+  h --> j
+  i --> j

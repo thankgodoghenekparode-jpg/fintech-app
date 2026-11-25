@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YourApp - Transaction &amp; Account Limits</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary-container": "#5d0331",
+            "secondary": "#ffb4a8",
+            "on-secondary-fixed": "#410000",
+            "on-tertiary-fixed-variant": "#06429a",
+            "surface-variant": "#373435",
+            "error": "#ffb4ab",
+            "on-tertiary-fixed": "#001945",
+            "on-background": "#e7e1e2",
+            "secondary-fixed-dim": "#ffb4a8",
+            "error-container": "#93000a",
+            "surface-container-highest": "#373435",
+            "surface-container-lowest": "#100e0f",
+            "secondary-container": "#822c20",
+            "on-primary-fixed": "#3e001f",
+            "on-secondary": "#61130a",
+            "inverse-surface": "#e7e1e2",
+            "on-error-container": "#ffdad6",
+            "on-secondary-fixed-variant": "#7f291e",
+            "tertiary": "#b0c6ff",
+            "primary-fixed": "#ffd9e3",
+            "on-error": "#690005",
+            "on-surface": "#e7e1e2",
+            "primary": "#ffb0ca",
+            "surface-container-low": "#1d1b1c",
+            "surface-tint": "#ffb0ca",
+            "primary-container": "#e0709a",
+            "on-primary": "#620735",
+            "surface-bright": "#3b3839",
+            "outline-variant": "#544247",
+            "tertiary-container": "#6a92ee",
+            "on-tertiary-container": "#002a69",
+            "on-secondary-container": "#ff9f90",
+            "on-tertiary": "#002d6f",
+            "on-primary-fixed-variant": "#7f234b",
+            "surface-container-high": "#2c292a",
+            "on-surface-variant": "#dac0c6",
+            "surface-container": "#211f20",
+            "outline": "#a28b91",
+            "inverse-on-surface": "#323031",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "inverse-primary": "#9e3b63",
+            "tertiary-fixed": "#d9e2ff",
+            "secondary-fixed": "#ffdad4",
+            "background": "#151314",
+            "surface-dim": "#151314",
+            "surface": "#151314",
+            "primary-fixed-dim": "#ffb0ca"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "1rem",
+            "space-xs": "0.25rem",
+            "gutter": "1rem",
+            "margin-mobile": "1rem",
+            "space-lg": "1.5rem",
+            "space-md": "1rem",
+            "gutter-mobile": "0.75rem",
+            "space-xl": "2rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "body-lg": ["Inter"],
+            "headline-lg": ["Inter"],
+            "display-currency": ["Inter"],
+            "headline-md": ["Inter"],
+            "label-sm": ["Inter"],
+            "headline-sm": ["Inter"],
+            "label-md": ["Inter"],
+            "label-lg": ["Inter"],
+            "title-currency": ["Inter"],
+            "body-md": ["Inter"]
+          },
+          "fontSize": {
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "label-lg": ["15px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "title-currency": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    input[type=range] {
+      -webkit-appearance: none;
+      width: 100%;
+      background: transparent;
+    }
+    input[type=range]:focus {
+      outline: none;
+    }
+    input[type=range]::-webkit-slider-runnable-track {
+      width: 100%;
+      height: 6px;
+      cursor: pointer;
+      background: #373435;
+      border-radius: 9999px;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      height: 22px;
+      width: 22px;
+      border-radius: 50%;
+      background: #e0709a;
+      cursor: pointer;
+      -webkit-appearance: none;
+      margin-top: -8px;
+      box-shadow: 0 0 10px rgba(224, 112, 154, 0.4);
+      border: 2px solid #151314;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen flex justify-center antialiased selection:bg-primary-container selection:text-on-primary">
+<!-- Mobile Container Shell -->
+<div class="w-full max-w-[390px] min-h-[844px] flex flex-col relative pb-[96px] bg-background shadow-2xl">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-40 bg-surface/90 backdrop-blur-md px-margin py-space-sm flex items-center justify-between min-h-[56px] shadow-sm">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Go back" class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface hover:bg-surface-container active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-headline-sm text-headline-sm text-on-surface truncate">Transaction &amp; Account Limits</h1>
+</div>
+<button aria-label="Help and Info" class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-margin pt-space-sm space-y-space-md">
+<!-- Tier 2 Summary Banner -->
+<section class="bg-surface-container-low rounded-xl p-space-md border border-outline-variant/30 relative overflow-hidden">
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-primary-container/20 text-primary">
+<span class="material-symbols-outlined text-[16px]" data-icon="verified_user">verified_user</span>
+</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">Tier 2 Account Ceiling</span>
+</div>
+<span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-950/60 text-emerald-400 border border-emerald-500/20">
+            Active
+          </span>
+</div>
+<div class="grid grid-cols-2 gap-space-sm py-space-xs">
+<div class="bg-surface-container/60 p-space-sm rounded-lg border border-outline-variant/20">
+<p class="font-label-sm text-label-sm text-on-surface-variant">Daily Cumulative Cap</p>
+<p class="font-title-currency text-title-currency text-on-surface font-bold tracking-tight mt-0.5 tabular-nums">₦1,000,000.00</p>
+</div>
+<div class="bg-surface-container/60 p-space-sm rounded-lg border border-outline-variant/20">
+<p class="font-label-sm text-label-sm text-on-surface-variant">Max Holding Limit</p>
+<p class="font-title-currency text-title-currency text-on-surface font-bold tracking-tight mt-0.5 tabular-nums">₦2,000,000.00</p>
+</div>
+</div>
+<a class="mt-space-sm inline-flex items-center gap-1.5 text-primary text-label-md font-label-md hover:underline active:opacity-80 transition-opacity" href="#upgrade-tier">
+<span>Upgrade to Tier 3 for Unlimited</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</section>
+<!-- Today's Cumulative Usage Breakdown -->
+<section class="bg-surface-container-low rounded-xl p-space-md border border-outline-variant/30 space-y-space-sm">
+<div class="flex justify-between items-baseline">
+<span class="font-label-md text-label-md text-on-surface-variant font-medium">Daily Utilization</span>
+<span class="font-label-md text-label-md text-primary font-semibold tabular-nums">34% Allocated</span>
+</div>
+<!-- Segmented Progress Bar -->
+<div class="w-full bg-surface-container-highest h-2.5 rounded-full overflow-hidden p-0.5">
+<div class="bg-primary-container h-full rounded-full transition-all duration-500" style="width: 34%"></div>
+</div>
+<div class="flex justify-between items-center pt-0.5">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant tabular-nums">
+<span class="text-on-surface font-semibold">₦340,000.00</span> used today
+            </span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-surface-variant"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant tabular-nums">
+<span class="text-on-surface font-semibold">₦660,000.00</span> remaining
+            </span>
+</div>
+</div>
+</section>
+<!-- Custom Config Controls -->
+<section class="space-y-space-md">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Configurable Channels</h2>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Adjust below</span>
+</div>
+<!-- 1. Daily Interbank Transfer Cap (Slider + Chips) -->
+<div class="bg-surface-container-low rounded-xl p-space-md border border-outline-variant/30 space-y-space-sm">
+<div class="flex justify-between items-start">
+<div>
+<p class="font-label-lg text-label-lg text-on-surface font-semibold">Daily Interbank Transfer Cap</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">NIP &amp; Direct Bank Transfers</p>
+</div>
+<span class="font-title-currency text-title-currency text-primary font-bold tabular-nums" id="transfer-display">₦500,000.00</span>
+</div>
+<div class="pt-space-xs">
+<input aria-label="Daily Interbank Transfer Cap Slider" class="w-full h-2 rounded-lg cursor-pointer" id="interbank-slider" max="1000000" min="50000" step="50000" type="range" value="500000"/>
+<div class="flex justify-between text-label-sm font-label-sm text-on-surface-variant mt-1 tabular-nums">
+<span>₦50k</span>
+<span>Max: ₦1,000,000.00</span>
+</div>
+</div>
+<!-- Quick Value Chips -->
+<div class="flex items-center gap-2 pt-space-xs">
+<button class="flex-1 py-1.5 rounded-lg border border-outline-variant/40 bg-surface-container text-on-surface text-label-md font-label-md hover:border-primary-container active:scale-95 transition-all text-center" onclick="setCap(200000)" type="button">
+              ₦200k
+            </button>
+<button class="flex-1 py-1.5 rounded-lg border border-primary-container bg-primary-container/15 text-primary text-label-md font-label-md active:scale-95 transition-all text-center font-semibold" onclick="setCap(500000)" type="button">
+              ₦500k
+            </button>
+<button class="flex-1 py-1.5 rounded-lg border border-outline-variant/40 bg-surface-container text-on-surface text-label-md font-label-md hover:border-primary-container active:scale-95 transition-all text-center" onclick="setCap(1000000)" type="button">
+              ₦1M
+            </button>
+</div>
+</div>
+<!-- 2. Single Transfer Cap -->
+<div class="bg-surface-container-low rounded-xl p-space-md border border-outline-variant/30 flex items-center justify-between">
+<div class="pr-2">
+<p class="font-label-lg text-label-lg text-on-surface font-semibold">Single Transfer Cap</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Prevents large single-debit mistakes</p>
+</div>
+<div class="text-right shrink-0">
+<span class="inline-block px-3 py-1.5 bg-surface-container rounded-lg border border-outline-variant/40 text-on-surface font-title-currency text-title-currency tabular-nums font-semibold">
+              ₦250,000.00
+            </span>
+</div>
+</div>
+<!-- 3. Airtime & Bill Payment Daily Limit -->
+<div class="bg-surface-container-low rounded-xl p-space-md border border-outline-variant/30 flex items-center justify-between">
+<div>
+<p class="font-label-lg text-label-lg text-on-surface font-semibold">Airtime &amp; Bill Payments</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Data, utility bills, and merchant pay</p>
+</div>
+<div class="text-right shrink-0">
+<span class="inline-block px-3 py-1.5 bg-surface-container rounded-lg border border-outline-variant/40 text-on-surface font-title-currency text-title-currency tabular-nums font-semibold">
+              ₦50,000.00
+            </span>
+</div>
+</div>
+<!-- 4. POS & ATM Daily Limit -->
+<div class="bg-surface-container-low rounded-xl p-space-md border border-outline-variant/30 flex items-center justify-between">
+<div>
+<p class="font-label-lg text-label-lg text-on-surface font-semibold">POS &amp; ATM Daily Limit</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Physical terminal transactions</p>
+</div>
+<div class="text-right shrink-0">
+<span class="inline-block px-3 py-1.5 bg-surface-container rounded-lg border border-outline-variant/40 text-on-surface font-title-currency text-title-currency tabular-nums font-semibold">
+              ₦150,000.00
+            </span>
+</div>
+</div>
+<!-- 5. International Web Spend (Toggle) -->
+<div class="bg-surface-container-low rounded-xl p-space-md border border-outline-variant/30 flex items-center justify-between">
+<div>
+<div class="flex items-center gap-1.5">
+<p class="font-label-lg text-label-lg text-on-surface font-semibold">International Web Spend</p>
+<span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-surface-container-highest text-on-surface-variant">FX</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Cross-border USD/GBP e-commerce</p>
+<p class="font-label-sm text-label-sm text-outline mt-0.5 tabular-nums">Current Cap: ₦0.00</p>
+</div>
+<!-- Modern Switch Toggle -->
+<label class="relative inline-flex items-center cursor-pointer shrink-0">
+<input class="sr-only peer" id="fx-toggle" type="checkbox"/>
+<div class="w-12 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-6 peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-surface after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</section>
+<!-- Regulatory & Security Notice -->
+<section class="rounded-xl p-space-md bg-surface-container/50 border border-outline-variant/30 flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-outline text-[20px] shrink-0 mt-0.5" data-icon="policy">policy</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant leading-relaxed">
+          Central Bank of Nigeria (CBN) regulations apply. Reducing limits takes effect immediately. Increasing limits requires entering your 4-digit transaction PIN and facial biometrics.
+        </p>
+</section>
+<!-- Primary Action CTA Button -->
+<div class="pt-space-xs pb-space-sm">
+<button class="w-full h-[52px] bg-primary-container text-on-primary font-label-lg text-label-lg rounded-xl flex items-center justify-center font-semibold hover:bg-opacity-95 active:scale-[0.98] transition-all duration-150 shadow-md" type="button">
+          Save Limit Changes
+        </button>
+</div>
+</main>
+<!-- Docked Bottom Navigation Bar -->
+<nav aria-label="Bottom Navigation" class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-margin h-16 max-w-[560px] mx-auto pb-safe bg-surface-container shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)]">
+<!-- Tab 1: Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#home">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<!-- Tab 2: Payments -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#payments">
+<span class="material-symbols-outlined" data-icon="send">send</span>
+<span class="font-label-sm text-label-sm">Payments</span>
+</a>
+<!-- Tab 3: Cards -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#cards">
+<span class="material-symbols-outlined" data-icon="credit_card">credit_card</span>
+<span class="font-label-sm text-label-sm">Cards</span>
+</a>
+<!-- Tab 4: Save & Borrow -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#save-borrow">
+<span class="material-symbols-outlined" data-icon="savings">savings</span>
+<span class="font-label-sm text-label-sm">Save &amp; Borrow</span>
+</a>
+<!-- Tab 5: More (Active for Settings / Limits Subscreen) -->
+<a aria-current="page" class="flex flex-col items-center justify-center text-primary-fixed font-semibold min-w-[48px] py-space-xs gap-space-xs active:scale-95" href="#more">
+<span class="material-symbols-outlined" data-icon="more_horiz" style="font-variation-settings: 'FILL' 1;">more_horiz</span>
+<span class="font-label-sm text-label-sm">More</span>
+</a>
+</nav>
+</div>
+<script>
+    const slider = document.getElementById('interbank-slider');
+    const display = document.getElementById('transfer-display');
+
+    function formatNaira(num) {
+      return '₦' + Number(num).toLocaleString('en-NG', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    if (slider && display) {
+      slider.addEventListener('input', (e) => {
+        display.textContent = formatNaira(e.target.value);
+      });
+    }
+
+    function setCap(val) {
+      if (slider && display) {
+        slider.value = val;
+        display.textContent = formatNaira(val);
+      }
+    }
+  </script>
+</body></html>

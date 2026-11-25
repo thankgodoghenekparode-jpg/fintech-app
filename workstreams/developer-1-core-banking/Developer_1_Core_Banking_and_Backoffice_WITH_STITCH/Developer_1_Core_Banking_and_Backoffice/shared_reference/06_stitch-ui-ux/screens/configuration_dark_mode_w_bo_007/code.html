@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YourApp Credit Ops - Global Configuration &amp; Parameters</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary": "#ffb4a8",
+            "surface-dim": "#151314",
+            "on-secondary-fixed": "#410000",
+            "primary-fixed": "#ffd9e3",
+            "on-primary": "#620735",
+            "surface-container-lowest": "#100e0f",
+            "on-surface-variant": "#dac0c6",
+            "error-container": "#93000a",
+            "surface-container-low": "#1d1b1c",
+            "surface-container-high": "#2c292a",
+            "secondary-container": "#822c20",
+            "on-secondary": "#61130a",
+            "on-secondary-fixed-variant": "#7f291e",
+            "on-surface": "#e7e1e2",
+            "secondary-fixed-dim": "#ffb4a8",
+            "background": "#151314",
+            "surface-container": "#211f20",
+            "on-error-container": "#ffdad6",
+            "inverse-surface": "#e7e1e2",
+            "secondary-fixed": "#ffdad4",
+            "primary": "#ffb0ca",
+            "on-secondary-container": "#ff9f90",
+            "primary-container": "#e0709a",
+            "tertiary": "#b0c6ff",
+            "inverse-primary": "#9e3b63",
+            "on-tertiary-fixed": "#001945",
+            "surface-tint": "#ffb0ca",
+            "surface-variant": "#373435",
+            "error": "#ffb4ab",
+            "on-primary-container": "#5d0331",
+            "on-primary-fixed": "#3e001f",
+            "surface-bright": "#3b3839",
+            "on-tertiary-fixed-variant": "#06429a",
+            "on-error": "#690005",
+            "surface": "#151314",
+            "outline-variant": "#544247",
+            "tertiary-container": "#6a92ee",
+            "on-background": "#e7e1e2",
+            "on-tertiary-container": "#002a69",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "primary-fixed-dim": "#ffb0ca",
+            "on-primary-fixed-variant": "#7f234b",
+            "outline": "#a28b91",
+            "surface-container-highest": "#373435",
+            "inverse-on-surface": "#323031",
+            "tertiary-fixed": "#d9e2ff",
+            "on-tertiary": "#002d6f"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "margin-mobile": "1rem",
+            "space-lg": "1.5rem",
+            "margin": "1rem",
+            "space-xl": "2rem",
+            "gutter-mobile": "0.75rem",
+            "space-xs": "0.25rem",
+            "gutter": "1rem"
+          },
+          "fontFamily": {
+            "label-sm": ["Inter"],
+            "headline-lg": ["Inter"],
+            "label-md": ["Inter"],
+            "headline-sm": ["Inter"],
+            "body-md": ["Inter"],
+            "display-currency": ["Inter"],
+            "title-currency": ["Inter"],
+            "label-lg": ["Inter"],
+            "body-lg": ["Inter"],
+            "headline-md": ["Inter"]
+          },
+          "fontSize": {
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "title-currency": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-lg": ["15px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-background text-on-surface antialiased font-body-md text-body-md min-h-screen overflow-x-hidden">
+<!-- SideNavBar Anchor -->
+<aside class="fixed left-0 top-0 h-full w-72 flex flex-col justify-between py-space-xl px-space-lg overflow-y-auto bg-surface-container-lowest border-r border-outline-variant z-30 shadow-none">
+<div class="flex flex-col gap-space-lg">
+<!-- Institutional Crest & Identity -->
+<div class="flex items-center gap-space-md px-space-xs">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center border border-outline-variant text-primary shrink-0">
+<span class="material-symbols-outlined text-primary" data-icon="account_balance">account_balance</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-primary tracking-tight">YourApp Credit Ops</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Enterprise Portal</span>
+</div>
+</div>
+<!-- Navigation Tabs -->
+<nav class="flex flex-col gap-space-xs mt-space-md">
+<!-- Inactive: Dashboard -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-container transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<!-- Inactive: Applications Queue -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-container transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="pending_actions">pending_actions</span>
+<span>Applications Queue</span>
+</a>
+<!-- Inactive: Credit Portfolio & Collections -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-container transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span>Credit Portfolio &amp; Collections</span>
+</a>
+<!-- ACTIVE: Product Configuration -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg bg-surface-container text-primary font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="tune" data-weight="fill" style="font-variation-settings: 'FILL' 1;">tune</span>
+<span class="font-label-md text-label-md">Product Configuration</span>
+</a>
+<!-- Inactive: Partner Settlement -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-container transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="handshake">handshake</span>
+<span>Partner Settlement</span>
+</a>
+<!-- Inactive: Audit Log -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-container transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="history">history</span>
+<span>Audit Log</span>
+</a>
+</nav>
+</div>
+<!-- SideNav Footer -->
+<div class="flex flex-col gap-space-xs pt-space-md border-t border-outline-variant">
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-container transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="admin_panel_settings">admin_panel_settings</span>
+<span>Security &amp; Settings</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-container transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="logout">logout</span>
+<span>Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- Sticky TopNavBar Anchor -->
+<header class="sticky top-0 right-0 h-16 w-[calc(100%-18rem)] ml-72 flex items-center justify-between px-space-xl bg-surface-container-lowest border-b border-outline-variant z-20">
+<div class="flex items-center gap-space-md">
+<!-- Breadcrumbs context -->
+<div class="flex items-center gap-space-sm font-label-md text-label-md text-on-surface-variant">
+<span>Operations</span>
+<span class="material-symbols-outlined text-outline text-[16px]" data-icon="chevron_right">chevron_right</span>
+<span>System Administration</span>
+<span class="material-symbols-outlined text-outline text-[16px]" data-icon="chevron_right">chevron_right</span>
+<span class="text-on-surface font-label-md text-label-md">Global Configuration &amp; Parameters</span>
+</div>
+<div class="h-4 w-px bg-outline-variant mx-space-xs"></div>
+<!-- Branch Context Indicator -->
+<div class="flex items-center gap-space-xs px-space-sm py-1 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm border border-outline-variant">
+<span class="material-symbols-outlined text-primary text-[15px]" data-icon="store">store</span>
+<span>Lagos Island Main Branch (012)</span>
+</div>
+</div>
+<!-- Right Controls: Dual Authorization armed badge & actions -->
+<div class="flex items-center gap-space-md">
+<!-- Armed Dual Authorization Pill -->
+<div class="flex items-center gap-space-xs px-space-md py-1.5 rounded-full bg-secondary-container/40 border border-secondary text-secondary font-label-sm text-label-sm">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-label-sm text-label-sm tracking-wide">Dual Authorization: Armed</span>
+</div>
+<!-- Notification & Help icons -->
+<button aria-label="Notifications" class="w-9 h-9 rounded-lg flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors duration-150">
+<span class="material-symbols-outlined text-[20px]" data-icon="notifications">notifications</span>
+</button>
+<button aria-label="Help &amp; Documentation" class="w-9 h-9 rounded-lg flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors duration-150">
+<span class="material-symbols-outlined text-[20px]" data-icon="help_outline">help_outline</span>
+</button>
+<!-- Staff Officer Passport Profile -->
+<div class="flex items-center gap-space-sm pl-space-sm border-l border-outline-variant">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-label-md text-label-md overflow-hidden ring-1 ring-outline-variant">
+<span class="font-label-md text-label-md">SO</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas (Desktop Viewport: ml-72 canvas) -->
+<main class="w-[calc(100%-18rem)] ml-72 p-space-xl flex flex-col gap-space-lg">
+<!-- Dual-Approval Governance Header Notice -->
+<div class="w-full rounded-xl bg-surface-container-low border border-outline-variant p-space-md flex items-start gap-space-md relative overflow-hidden">
+<div class="w-1.5 absolute left-0 top-0 bottom-0 bg-primary-container"></div>
+<div class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center text-primary shrink-0 border border-outline-variant">
+<span class="material-symbols-outlined text-[22px]" data-icon="verified_user">verified_user</span>
+</div>
+<div class="flex flex-col gap-0.5 flex-1 pr-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="font-label-lg text-label-lg text-on-surface">Dual-Approval Governance Mandate</span>
+<span class="px-2 py-0.5 rounded text-[10px] uppercase font-bold tracking-wider bg-surface-container-high border border-outline-variant text-primary">v4.19.2 Active</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          Any change to transaction limits, interest rules, or platform fee schedules requires a secondary authorization from the Compliance Director before taking effect. Current active version: v4.19.2 (Deployed 18 Feb 2026).
+        </p>
+</div>
+<div class="flex items-center gap-space-xs self-center shrink-0 text-on-surface-variant font-label-sm text-label-sm bg-surface-container px-space-md py-2 rounded-lg border border-outline-variant">
+<span class="material-symbols-outlined text-[16px] text-tertiary" data-icon="lock_clock">lock_clock</span>
+<span>Signoff SLA: &lt; 2h</span>
+</div>
+</div>
+<!-- Configuration Horizontal Navigation Tabs -->
+<nav class="flex items-center gap-space-xs border-b border-outline-variant pb-px">
+<button class="px-space-md py-2.5 rounded-t-lg border-b-2 border-primary-container text-primary font-label-md text-label-md bg-surface-container-low/60 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="currency_exchange">currency_exchange</span>
+<span>Transfer &amp; Channel Limits</span>
+</button>
+<button class="px-space-md py-2.5 rounded-t-lg border-b-2 border-transparent text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-label-md text-label-md transition-colors duration-150 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="receipt_long">receipt_long</span>
+<span>Fee Schedules &amp; Tariffs</span>
+</button>
+<button class="px-space-md py-2.5 rounded-t-lg border-b-2 border-transparent text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-label-md text-label-md transition-colors duration-150 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="rule">rule</span>
+<span>Product Engine Rules</span>
+</button>
+<button class="px-space-md py-2.5 rounded-t-lg border-b-2 border-transparent text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-label-md text-label-md transition-colors duration-150 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="power_settings_new">power_settings_new</span>
+<span>System Toggles &amp; Maintenance</span>
+</button>
+<button class="px-space-md py-2.5 rounded-t-lg border-b-2 border-transparent text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-label-md text-label-md transition-colors duration-150 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="manage_history">manage_history</span>
+<span>Audit &amp; History</span>
+</button>
+</nav>
+<!-- Main Content 2-Column Architecture Layout -->
+<div class="grid grid-cols-12 gap-space-lg items-start">
+<!-- LEFT COLUMN: Core Parameter Sets (Col span 7) -->
+<div class="col-span-7 flex flex-col gap-space-lg">
+<!-- Card 1: Statutory CBN KYC Transaction Limits -->
+<section class="rounded-xl bg-surface-container-low border border-outline-variant p-space-lg flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-sm border-b border-outline-variant">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[22px]" data-icon="balance">balance</span>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Statutory CBN KYC Transaction Limits</h2>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Central Bank of Nigeria Tiered Compliance Directives (Circular BPS/DIR/CIR/02/004)</p>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full text-label-sm font-label-sm bg-surface-container border border-outline-variant text-on-surface-variant">Regulatory Enforced</span>
+</div>
+<div class="flex flex-col gap-space-sm">
+<!-- Tier 1 Row -->
+<div class="p-space-md rounded-lg bg-surface-container border border-outline-variant flex items-center justify-between">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-space-sm">
+<span class="font-label-lg text-label-lg text-on-surface">Tier 1 Account Limit</span>
+<span class="px-2 py-0.5 rounded text-[11px] font-label-sm bg-surface-container-high text-on-surface-variant border border-outline-variant">Basic (BVN/NIN Only)</span>
+</div>
+<div class="flex items-center gap-space-md text-on-surface-variant font-label-md text-label-md">
+<span>Daily: <strong class="text-on-surface font-title-currency text-[14px]">₦50,000.00</strong></span>
+<span class="text-outline">•</span>
+<span>Cumulative Balance: <strong class="text-on-surface font-title-currency text-[14px]">₦300,000.00</strong></span>
+<span class="text-outline">•</span>
+<span>Single Transfer: <strong class="text-on-surface font-title-currency text-[14px]">₦50,000.00</strong></span>
+</div>
+</div>
+<button class="h-9 px-space-md rounded-lg bg-surface-container-high border border-outline-variant text-on-surface hover:text-primary hover:border-primary-container font-label-md text-label-md flex items-center gap-1.5 transition-colors duration-150">
+<span class="material-symbols-outlined text-[16px]" data-icon="edit">edit</span>
+<span>Edit parameter</span>
+</button>
+</div>
+<!-- Tier 2 Row -->
+<div class="p-space-md rounded-lg bg-surface-container border border-outline-variant flex items-center justify-between">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-space-sm">
+<span class="font-label-lg text-label-lg text-on-surface">Tier 2 Account Limit</span>
+<span class="px-2 py-0.5 rounded text-[11px] font-label-sm bg-surface-container-high text-on-surface-variant border border-outline-variant">Verified ID</span>
+</div>
+<div class="flex items-center gap-space-md text-on-surface-variant font-label-md text-label-md">
+<span>Daily: <strong class="text-on-surface font-title-currency text-[14px]">₦200,000.00</strong></span>
+<span class="text-outline">•</span>
+<span>Cumulative Balance: <strong class="text-on-surface font-title-currency text-[14px]">₦500,000.00</strong></span>
+<span class="text-outline">•</span>
+<span>Single Transfer: <strong class="text-on-surface font-title-currency text-[14px]">₦100,000.00</strong></span>
+</div>
+</div>
+<button class="h-9 px-space-md rounded-lg bg-surface-container-high border border-outline-variant text-on-surface hover:text-primary hover:border-primary-container font-label-md text-label-md flex items-center gap-1.5 transition-colors duration-150">
+<span class="material-symbols-outlined text-[16px]" data-icon="edit">edit</span>
+<span>Edit parameter</span>
+</button>
+</div>
+<!-- Tier 3 Row -->
+<div class="p-space-md rounded-lg bg-surface-container border border-outline-variant flex items-center justify-between">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-space-sm">
+<span class="font-label-lg text-label-lg text-on-surface">Tier 3 Account Limit</span>
+<span class="px-2 py-0.5 rounded text-[11px] font-label-sm bg-surface-container-high text-primary border border-outline-variant">Full KYC &amp; Utility</span>
+</div>
+<div class="flex items-center gap-space-md text-on-surface-variant font-label-md text-label-md">
+<span>Daily: <strong class="text-on-surface font-title-currency text-[14px]">₦5,000,000.00</strong> <span class="text-on-surface-variant">(Unencumbered)</span></span>
+<span class="text-outline">•</span>
+<span>Single Transfer Max: <strong class="text-on-surface font-title-currency text-[14px]">₦5,000,000.00</strong></span>
+</div>
+</div>
+<button class="h-9 px-space-md rounded-lg bg-surface-container-high border border-outline-variant text-on-surface hover:text-primary hover:border-primary-container font-label-md text-label-md flex items-center gap-1.5 transition-colors duration-150">
+<span class="material-symbols-outlined text-[16px]" data-icon="edit">edit</span>
+<span>Edit parameter</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Card 2: Interbank Transfer Tariff Schedule -->
+<section class="rounded-xl bg-surface-container-low border border-outline-variant p-space-lg flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-sm border-b border-outline-variant">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[22px]" data-icon="payments">payments</span>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Interbank Transfer Tariff Schedule</h2>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Statutory NIBSS &amp; Switch Cost Pricing Breakdown</p>
+</div>
+</div>
+<button class="h-8 px-3 rounded bg-surface-container border border-outline-variant text-on-surface-variant hover:text-on-surface text-label-sm font-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="history">history</span>
+<span>Tariff Logs</span>
+</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-outline-variant text-on-surface-variant font-label-sm text-label-sm">
+<th class="py-2.5 px-3">Band / Destination</th>
+<th class="py-2.5 px-3">Base Tariff</th>
+<th class="py-2.5 px-3">VAT (7.5%)</th>
+<th class="py-2.5 px-3">Customer Debit Total</th>
+<th class="py-2.5 px-3 text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/60 font-body-md text-body-md text-on-surface">
+<tr class="hover:bg-surface-container/50 transition-colors">
+<td class="py-3 px-3">Transfers ≤ ₦5,000</td>
+<td class="py-3 px-3 text-on-surface-variant">₦10.00</td>
+<td class="py-3 px-3 text-on-surface-variant">₦0.75</td>
+<td class="py-3 px-3 font-title-currency text-[14px] text-on-surface">₦10.75 total</td>
+<td class="py-3 px-3 text-right">
+<button class="text-primary hover:underline font-label-sm text-label-sm">Adjust</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container/50 transition-colors">
+<td class="py-3 px-3">Transfers ₦5,001 - ₦50,000</td>
+<td class="py-3 px-3 text-on-surface-variant">₦25.00</td>
+<td class="py-3 px-3 text-on-surface-variant">₦1.88</td>
+<td class="py-3 px-3 font-title-currency text-[14px] text-on-surface">₦26.88 total</td>
+<td class="py-3 px-3 text-right">
+<button class="text-primary hover:underline font-label-sm text-label-sm">Adjust</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container/50 transition-colors">
+<td class="py-3 px-3">Transfers &gt; ₦50,000</td>
+<td class="py-3 px-3 text-on-surface-variant">₦50.00</td>
+<td class="py-3 px-3 text-on-surface-variant">₦3.75</td>
+<td class="py-3 px-3 font-title-currency text-[14px] text-on-surface">₦53.75 total</td>
+<td class="py-3 px-3 text-right">
+<button class="text-primary hover:underline font-label-sm text-label-sm">Adjust</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container/50 transition-colors bg-surface-container/30">
+<td class="py-3 px-3 flex items-center gap-2">
+<span>Intra-platform YourApp Transfers</span>
+<span class="px-2 py-0.5 rounded text-[10px] font-label-sm bg-primary/10 text-primary border border-primary/20">Zero-Fee</span>
+</td>
+<td class="py-3 px-3 text-on-surface-variant">₦0.00</td>
+<td class="py-3 px-3 text-on-surface-variant">₦0.00</td>
+<td class="py-3 px-3 font-title-currency text-[14px] text-primary">₦0.00 (Free in-app settlement)</td>
+<td class="py-3 px-3 text-right">
+<span class="text-on-surface-variant/60 font-label-sm text-label-sm">Fixed Free</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+<!-- RIGHT COLUMN: Operational Toggles & Circuit Breakers (Col span 5) -->
+<div class="col-span-5 flex flex-col gap-space-lg">
+<!-- Card 3: Switch & Channel Emergency Circuit Breakers -->
+<section class="rounded-xl bg-surface-container-low border border-outline-variant p-space-lg flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-sm border-b border-outline-variant">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[22px]" data-icon="electric_bolt">electric_bolt</span>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Switch &amp; Channel Circuit Breakers</h2>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Live Gateway Operational Switches</p>
+</div>
+</div>
+<span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+</div>
+<div class="flex flex-col gap-space-sm">
+<!-- NIP Outward -->
+<div class="p-space-sm rounded-lg bg-surface-container border border-outline-variant flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">NIBSS Instant Payment (NIP) Outward</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Interbank outbound transfers</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="font-label-sm text-label-sm text-emerald-400">Active</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-500"></div>
+</label>
+</div>
+</div>
+<!-- NIP Inward Credit Settlement -->
+<div class="p-space-sm rounded-lg bg-surface-container border border-outline-variant flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">NIP Inward Credit Settlement</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Receiving funds from other banks</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="font-label-sm text-label-sm text-emerald-400">Active</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-500"></div>
+</label>
+</div>
+</div>
+<!-- Interswitch Card Gateway -->
+<div class="p-space-sm rounded-lg bg-surface-container border border-outline-variant flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Interswitch Card Gateway</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Verve, Mastercard debit routing</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="font-label-sm text-label-sm text-emerald-400">Active</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-500"></div>
+</label>
+</div>
+</div>
+<!-- NQR Merchant Settlement -->
+<div class="p-space-sm rounded-lg bg-surface-container border border-outline-variant flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">NQR Merchant Settlement</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Nigeria Quick Response network</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="font-label-sm text-label-sm text-emerald-400">Active</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-500"></div>
+</label>
+</div>
+</div>
+<!-- High-Value Transfer Rate Limiter (>₦20M) -->
+<div class="p-space-sm rounded-lg bg-surface-container border border-outline-variant flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">High-Value Transfer Rate Limiter (&gt;₦20M)</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Step-up verification trigger</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="font-label-sm text-label-sm text-secondary">Armed</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</div>
+</div>
+</section>
+<!-- Card 4: Scheduled Maintenance & Release Windows -->
+<section class="rounded-xl bg-surface-container-low border border-outline-variant p-space-lg flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-sm border-b border-outline-variant">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[22px]" data-icon="schedule">schedule</span>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Scheduled Maintenance &amp; Windows</h2>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Build Deployment &amp; Settlement Automation</p>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-space-md">
+<!-- Planned Maintenance Mode Toggle OFF -->
+<div class="p-space-sm rounded-lg bg-surface-container border border-outline-variant flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Planned Maintenance Mode</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Halts customer facing mobile apps</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant">OFF</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</div>
+<!-- Force Mobile App Update threshold -->
+<div class="p-space-sm rounded-lg bg-surface-container border border-outline-variant flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface">Force Mobile App Update Threshold</span>
+<span class="px-2 py-0.5 rounded text-[11px] font-label-sm bg-error/10 text-error border border-error/20">CVE-2026-092 Enforced</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">
+                Minimum client version 2.4.0 (Enforced for security patch CVE-2026-092)
+              </p>
+<div class="flex items-center gap-2 mt-1">
+<input class="h-9 px-3 rounded-lg bg-surface-container-high border border-outline-variant text-on-surface font-label-md text-label-md w-40 text-center" readonly="" type="text" value="v2.4.0-build-89"/>
+<button class="h-9 px-3 rounded-lg bg-surface-container-high hover:bg-surface-variant border border-outline-variant text-on-surface font-label-md text-label-md transition-colors">
+                  Bump Minimum
+                </button>
+</div>
+</div>
+<!-- Automated Reconciliation Cron -->
+<div class="p-space-sm rounded-lg bg-surface-container border border-outline-variant flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Next Automated Reconciliation Cron</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Zenith Bank Clearing Settlement</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-high border border-outline-variant text-primary font-label-md text-label-md">
+<span class="material-symbols-outlined text-[16px]" data-icon="alarm">alarm</span>
+<span>23:59 WAT</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+<!-- Bottom Actions / Submission Sticky Bar -->
+<div class="sticky bottom-0 bg-surface-container-lowest/90 backdrop-blur-md border border-outline-variant rounded-xl p-space-md flex items-center justify-between shadow-2xl mt-space-md z-10">
+<div class="flex items-center gap-space-sm">
+<span class="w-3 h-3 rounded-full bg-secondary"></span>
+<span class="font-label-md text-label-md text-on-surface">2 Uncommitted Draft Adjustments</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">• Modified by SO-8921 (Officer In Charge)</span>
+</div>
+<div class="flex items-center gap-space-md">
+<!-- Discard Button -->
+<button class="h-[52px] px-space-lg rounded-xl bg-surface-container hover:bg-surface-variant border border-outline-variant text-on-surface font-label-lg text-label-lg transition-colors duration-150">
+          Discard Draft Changes
+        </button>
+<!-- Primary Berry Action Button -->
+<button class="h-[52px] px-space-xl rounded-xl bg-primary-container hover:bg-[#c4557f] text-on-primary-container font-label-lg text-label-lg flex items-center gap-space-sm transition-colors duration-150 shadow-lg">
+<span>Submit Configuration Changes for Dual-Signoff</span>
+<span class="material-symbols-outlined text-[20px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</main>
+</body></html>

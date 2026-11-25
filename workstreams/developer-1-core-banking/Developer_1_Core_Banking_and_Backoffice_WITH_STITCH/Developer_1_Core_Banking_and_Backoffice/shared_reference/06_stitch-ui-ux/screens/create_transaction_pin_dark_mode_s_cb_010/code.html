@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Create Transaction PIN - YourApp</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary": "#b0c6ff",
+            "tertiary-container": "#6a92ee",
+            "secondary-fixed-dim": "#ffb4a8",
+            "surface": "#151314",
+            "outline-variant": "#544247",
+            "on-surface": "#e7e1e2",
+            "on-primary": "#620735",
+            "on-primary-container": "#5d0331",
+            "surface-container-low": "#1d1b1c",
+            "on-secondary-fixed-variant": "#7f291e",
+            "on-tertiary": "#002d6f",
+            "on-primary-fixed-variant": "#7f234b",
+            "on-surface-variant": "#dac0c6",
+            "on-error-container": "#ffdad6",
+            "background": "#151314",
+            "primary-container": "#e0709a",
+            "secondary": "#ffb4a8",
+            "surface-container-highest": "#373435",
+            "inverse-on-surface": "#323031",
+            "primary-fixed": "#ffd9e3",
+            "on-tertiary-fixed": "#001945",
+            "tertiary-fixed": "#d9e2ff",
+            "primary": "#ffb0ca",
+            "on-tertiary-container": "#002a69",
+            "on-primary-fixed": "#3e001f",
+            "surface-variant": "#373435",
+            "surface-container-high": "#2c292a",
+            "surface-container": "#211f20",
+            "outline": "#a28b91",
+            "secondary-container": "#822c20",
+            "error-container": "#93000a",
+            "on-secondary": "#61130a",
+            "surface-tint": "#ffb0ca",
+            "on-tertiary-fixed-variant": "#06429a",
+            "error": "#ffb4ab",
+            "inverse-surface": "#e7e1e2",
+            "surface-bright": "#3b3839",
+            "on-secondary-fixed": "#410000",
+            "secondary-fixed": "#ffdad4",
+            "primary-fixed-dim": "#ffb0ca",
+            "surface-dim": "#151314",
+            "surface-container-lowest": "#100e0f",
+            "on-secondary-container": "#ff9f90",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "on-error": "#690005",
+            "inverse-primary": "#9e3b63",
+            "on-background": "#e7e1e2"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "space-xs": "0.25rem",
+            "margin": "1rem",
+            "space-xl": "2rem",
+            "gutter-mobile": "0.75rem",
+            "space-md": "1rem",
+            "margin-mobile": "1rem",
+            "space-lg": "1.5rem",
+            "gutter": "1rem"
+          },
+          "fontFamily": {
+            "label-md": ["Inter"],
+            "display-currency": ["Inter"],
+            "body-md": ["Inter"],
+            "body-lg": ["Inter"],
+            "label-sm": ["Inter"],
+            "label-lg": ["Inter"],
+            "headline-md": ["Inter"],
+            "headline-sm": ["Inter"],
+            "title-currency": ["Inter"],
+            "headline-lg": ["Inter"]
+          },
+          "fontSize": {
+            "label-md": ["13px", {"lineHeight": "18px", "fontWeight": "500"}],
+            "display-currency": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+            "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+            "label-lg": ["15px", {"lineHeight": "20px", "fontWeight": "600"}],
+            "headline-md": ["22px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+            "title-currency": ["20px", {"lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "headline-lg": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-lowest text-on-surface antialiased min-h-screen flex justify-center items-center p-0 selection:bg-primary-container selection:text-on-primary-container">
+<!-- Mobile Viewport Canvas Container: 390px x 844px max dimensions -->
+<main class="w-full max-w-[390px] h-[844px] max-h-[844px] bg-surface flex flex-col justify-between overflow-hidden shadow-2xl relative select-none">
+<!-- Top Content Area -->
+<div class="flex flex-col w-full px-margin-mobile pt-space-md">
+<!-- Top Bar: Task Focused Navigation (Shell suppressed per protocol) -->
+<nav aria-label="Navigation Header" class="flex items-center justify-between w-full h-[52px]">
+<button aria-label="Go back" class="w-[44px] h-[44px] flex items-center justify-center rounded-xl bg-surface-container text-on-surface hover:bg-surface-container-high active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<!-- Security Badge -->
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container border border-outline-variant/30">
+<span class="material-symbols-outlined text-primary text-[14px]" data-icon="lock" style="font-variation-settings: 'FILL' 1;">lock</span>
+<span class="font-label-sm text-label-sm tracking-widest text-on-surface-variant font-semibold">TRANSACTION AUTHORIZATION</span>
+</div>
+<button aria-label="Get assistance" class="w-[44px] h-[44px] flex items-center justify-center rounded-xl bg-surface-container text-on-surface hover:bg-surface-container-high active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+</nav>
+<!-- Headline & Explainer Text Group -->
+<header class="mt-space-lg text-center flex flex-col items-center">
+<div class="w-12 h-12 rounded-full bg-surface-container-high border border-outline-variant/30 flex items-center justify-center mb-space-sm text-primary">
+<span class="material-symbols-outlined text-[24px]" data-icon="shield">shield</span>
+</div>
+<h1 class="font-headline-md text-headline-md font-bold text-on-surface tracking-tight">Create your 4-digit transfer PIN</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-space-xs max-w-[310px] leading-relaxed">
+          This PIN authorizes all money transfers, bill payments, and card creations. Keep it strictly confidential.
+        </p>
+</header>
+<!-- PIN Indicator Dots -->
+<div aria-label="PIN progress: 2 of 4 digits entered" class="flex items-center justify-center gap-space-lg my-6" role="status">
+<!-- Digit 1: Filled -->
+<div class="w-4 h-4 rounded-full bg-primary-container ring-4 ring-primary-container/20 transition-all duration-200"></div>
+<!-- Digit 2: Filled -->
+<div class="w-4 h-4 rounded-full bg-primary-container ring-4 ring-primary-container/20 transition-all duration-200"></div>
+<!-- Digit 3: Unfilled -->
+<div class="w-4 h-4 rounded-full border-2 border-outline-variant/60 bg-surface-container transition-all duration-200"></div>
+<!-- Digit 4: Unfilled -->
+<div class="w-4 h-4 rounded-full border-2 border-outline-variant/60 bg-surface-container transition-all duration-200"></div>
+</div>
+<!-- Security Notice Card -->
+<aside aria-label="Security Notice" class="w-full bg-surface-container-low border border-outline-variant/40 rounded-xl p-3.5 flex items-start gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex-shrink-0 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[18px]" data-icon="warning">warning</span>
+</div>
+<div class="flex-1">
+<h2 class="font-label-md text-label-md font-semibold text-on-surface">Security Alert</h2>
+<p class="font-label-sm text-label-sm text-on-surface-variant leading-snug mt-0.5">
+            Never share your PIN with anyone, including YourApp staff. We will never ask for it via phone call or SMS.
+          </p>
+</div>
+</aside>
+</div>
+<!-- Bottom Ergonomic Numeric Keypad -->
+<section aria-label="Numeric PIN Keypad" class="w-full px-margin-mobile pb-6 pt-2 bg-surface-container-lowest border-t border-outline-variant/20">
+<!-- 3x4 Keypad Grid -->
+<div class="grid grid-cols-3 gap-2.5 max-w-[340px] mx-auto">
+<!-- Key 1 -->
+<button class="h-[52px] rounded-xl bg-surface-container border border-outline-variant/30 flex flex-col items-center justify-center hover:bg-surface-container-high active:bg-surface-container-highest active:scale-95 transition-all" type="button">
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">1</span>
+</button>
+<!-- Key 2 -->
+<button class="h-[52px] rounded-xl bg-surface-container border border-outline-variant/30 flex flex-col items-center justify-center hover:bg-surface-container-high active:bg-surface-container-highest active:scale-95 transition-all" type="button">
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">2</span>
+<span class="font-label-sm text-[9px] text-outline font-medium tracking-widest -mt-1">ABC</span>
+</button>
+<!-- Key 3 -->
+<button class="h-[52px] rounded-xl bg-surface-container border border-outline-variant/30 flex flex-col items-center justify-center hover:bg-surface-container-high active:bg-surface-container-highest active:scale-95 transition-all" type="button">
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">3</span>
+<span class="font-label-sm text-[9px] text-outline font-medium tracking-widest -mt-1">DEF</span>
+</button>
+<!-- Key 4 -->
+<button class="h-[52px] rounded-xl bg-surface-container border border-outline-variant/30 flex flex-col items-center justify-center hover:bg-surface-container-high active:bg-surface-container-highest active:scale-95 transition-all" type="button">
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">4</span>
+<span class="font-label-sm text-[9px] text-outline font-medium tracking-widest -mt-1">GHI</span>
+</button>
+<!-- Key 5 -->
+<button class="h-[52px] rounded-xl bg-surface-container border border-outline-variant/30 flex flex-col items-center justify-center hover:bg-surface-container-high active:bg-surface-container-highest active:scale-95 transition-all" type="button">
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">5</span>
+<span class="font-label-sm text-[9px] text-outline font-medium tracking-widest -mt-1">JKL</span>
+</button>
+<!-- Key 6 -->
+<button class="h-[52px] rounded-xl bg-surface-container border border-outline-variant/30 flex flex-col items-center justify-center hover:bg-surface-container-high active:bg-surface-container-highest active:scale-95 transition-all" type="button">
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">6</span>
+<span class="font-label-sm text-[9px] text-outline font-medium tracking-widest -mt-1">MNO</span>
+</button>
+<!-- Key 7 -->
+<button class="h-[52px] rounded-xl bg-surface-container border border-outline-variant/30 flex flex-col items-center justify-center hover:bg-surface-container-high active:bg-surface-container-highest active:scale-95 transition-all" type="button">
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">7</span>
+<span class="font-label-sm text-[9px] text-outline font-medium tracking-widest -mt-1">PQRS</span>
+</button>
+<!-- Key 8 -->
+<button class="h-[52px] rounded-xl bg-surface-container border border-outline-variant/30 flex flex-col items-center justify-center hover:bg-surface-container-high active:bg-surface-container-highest active:scale-95 transition-all" type="button">
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">8</span>
+<span class="font-label-sm text-[9px] text-outline font-medium tracking-widest -mt-1">TUV</span>
+</button>
+<!-- Key 9 -->
+<button class="h-[52px] rounded-xl bg-surface-container border border-outline-variant/30 flex flex-col items-center justify-center hover:bg-surface-container-high active:bg-surface-container-highest active:scale-95 transition-all" type="button">
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">9</span>
+<span class="font-label-sm text-[9px] text-outline font-medium tracking-widest -mt-1">WXYZ</span>
+</button>
+<!-- Key Empty / Biometrics Placeholder -->
+<div class="h-[52px] rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-outline/50 text-[20px]" data-icon="fingerprint">fingerprint</span>
+</div>
+<!-- Key 0 -->
+<button class="h-[52px] rounded-xl bg-surface-container border border-outline-variant/30 flex items-center justify-center hover:bg-surface-container-high active:bg-surface-container-highest active:scale-95 transition-all" type="button">
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">0</span>
+</button>
+<!-- Key Backspace -->
+<button aria-label="Delete last digit" class="h-[52px] rounded-xl bg-surface-container border border-outline-variant/30 flex items-center justify-center hover:bg-surface-container-high active:bg-surface-container-highest active:scale-95 transition-all text-on-surface" type="button">
+<span class="material-symbols-outlined text-[22px]" data-icon="backspace">backspace</span>
+</button>
+</div>
+<!-- Safe Area Indicator Spacing -->
+<div aria-hidden="true" class="w-32 h-1 bg-outline-variant/40 rounded-full mx-auto mt-4"></div>
+</section>
+</main>
+</body></html>

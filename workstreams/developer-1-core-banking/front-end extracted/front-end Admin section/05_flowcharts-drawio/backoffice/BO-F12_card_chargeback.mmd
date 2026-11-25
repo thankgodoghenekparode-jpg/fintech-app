@@ -1,0 +1,22 @@
+flowchart TD
+  a(["Customer reports card transaction problem"])
+  b["Ticket linked; evidence requested"]
+  c["Dispute officer reviews; deadline set"]
+  d{"Valid claim?"}
+  e["Submit to issuer; optional provisional credit (dual control)"]
+  f["Close with explanation"]
+  g{"Issuer outcome"}
+  h["Won: finalise credit"]
+  i["Lost: reverse provisional credit; inform customer"]
+  j(["Closed"])
+  a --> b
+  b --> c
+  c --> d
+  d -->|yes| e
+  d -->|no| f
+  e --> g
+  g -->|won| h
+  g -->|lost| i
+  f --> j
+  h --> j
+  i --> j

@@ -1,0 +1,18 @@
+flowchart TD
+  a(["Auto-save due"])
+  b{"Available balance enough?"}
+  c["Move amount: main account to goal pocket"]
+  d["Notify and update progress"]
+  e["Retry per rule; reminder"]
+  f{"Retries exhausted?"}
+  g["Skip run; notify; keep schedule"]
+  h(["Done"])
+  a --> b
+  b -->|yes| c
+  c --> d
+  d --> h
+  b -->|no| e
+  e --> f
+  f -->|no| b
+  f -->|yes| g
+  g --> h

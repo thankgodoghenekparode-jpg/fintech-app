@@ -1,0 +1,18 @@
+flowchart TD
+  a(["Request received (app or email)"])
+  b["Verify identity"]
+  c{"Request type and legal basis"}
+  d["Collect data from sources; prepare response"]
+  e["Deny or restrict with reason (for example legal retention)"]
+  f["Extend with notice if needed"]
+  g["Respond within the deadline; keep evidence"]
+  h(["Closed"])
+  a --> b
+  b --> c
+  c -->|fulfil| d
+  c -->|deny| e
+  c -->|extend| f
+  d --> g
+  e --> g
+  f --> d
+  g --> h

@@ -1,0 +1,725 @@
+openapi: 3.0.3
+info:
+  title: Fintech Bank Core API
+  version: 1.0.0
+  description: |
+    Core banking API (Stage 1). Contract-first. Amounts are integer kobo. Money-moving requests need Idempotency-Key.
+    Values marked [CONFIRM WITH ZENITH] are configuration, not constants.
+servers:
+  - url: https://api.example.com/api/v1
+    description: Replace per environment
+security:
+  - bearerAuth: []
+tags:
+  - name: Auth
+  - name: Onboarding
+  - name: Accounts
+  - name: Transfers
+  - name: Bills
+  - name: Cards
+  - name: Support
+  - name: Notifications
+  - name: Security
+paths:
+  /auth/otp/request:
+    post:
+      tags: [Auth]
+      security: []
+      summary: Request an OTP for a phone number
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/OtpRequest' }
+      responses:
+        '202': { description: OTP sent }
+        '429': { $ref: '#/components/responses/Error' }
+  /auth/otp/verify:
+    post:
+      tags: [Auth]
+      security: []
+      summary: Verify an OTP
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/OtpVerify' }
+      responses:
+        '200':
+          description: Verified; returns an onboarding or login session token
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/OtpVerified' }
+        '400': { $ref: '#/components/responses/Error' }
+  /auth/login:
+    post:
+      tags: [Auth]
+      security: []
+      summary: Login with passcode (device bound)
+      parameters:
+        - { $ref: '#/components/parameters/DeviceId' }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/LoginRequest' }
+      responses:
+        '200':
+          description: Tokens
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/TokenPair' }
+        '401': { $ref: '#/components/responses/Error' }
+        '403': { $ref: '#/components/responses/Error' }
+        '423': { $ref: '#/components/responses/Error' }
+  /auth/refresh:
+    post:
+      tags: [Auth]
+      security: []
+      summary: Exchange a refresh token
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [refreshToken]
+              properties:
+                refreshToken: { type: string }
+      responses:
+        '200':
+          description: New tokens
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/TokenPair' }
+  /auth/pin/verify:
+    post:
+      tags: [Auth]
+      summary: Verify transaction PIN and get a short-lived pin token
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [pin]
+              properties:
+                pin: { type: string, minLength: 4, maxLength: 4 }
+      responses:
+        '200':
+          description: Pin token valid for one action
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  pinToken: { type: string }
+                  expiresInSeconds: { type: integer }
+        '401': { $ref: '#/components/responses/Error' }
+  /onboarding/profile:
+    put:
+      tags: [Onboarding]
+      summary: Save personal details and consents
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/OnboardingProfile' }
+      responses:
+        '200': { description: Saved }
+  /onboarding/bvn:
+    post:
+      tags: [Onboarding]
+      summary: Verify BVN
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [bvn]
+              properties:
+                bvn: { type: string, pattern: '^[0-9]{11}$' }
+      responses:
+        '200': { description: Verified }
+        '422': { $ref: '#/components/responses/Error' }
+  /onboarding/nin:
+    post:
+      tags: [Onboarding]
+      summary: Verify NIN
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [nin]
+              properties:
+                nin: { type: string, pattern: '^[0-9]{11}$' }
+      responses:
+        '200': { description: Verified }
+        '422': { $ref: '#/components/responses/Error' }
+  /onboarding/liveness:
+    post:
+      tags: [Onboarding]
+      summary: Submit liveness result/selfie reference
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [sessionId]
+              properties:
+                sessionId: { type: string }
+      responses:
+        '200': { description: Result }
+  /onboarding/credentials:
+    post:
+      tags: [Onboarding]
+      summary: Set passcode and transaction PIN
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [passcode, pin]
+              properties:
+                passcode: { type: string, minLength: 6, maxLength: 6 }
+                pin: { type: string, minLength: 4, maxLength: 4 }
+      responses:
+        '200': { description: Saved }
+  /onboarding/status:
+    get:
+      tags: [Onboarding]
+      summary: Current onboarding step and account creation status
+      responses:
+        '200':
+          description: Status
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/OnboardingStatus' }
+  /accounts/me:
+    get:
+      tags: [Accounts]
+      summary: Main account, balance, tier and limits
+      responses:
+        '200':
+          description: Account
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Account' }
+  /accounts/me/transactions:
+    get:
+      tags: [Accounts]
+      summary: Transaction history
+      parameters:
+        - { name: limit, in: query, schema: { type: integer, default: 20, maximum: 100 } }
+        - { name: cursor, in: query, schema: { type: string } }
+        - { name: type, in: query, schema: { type: string } }
+        - { name: status, in: query, schema: { $ref: '#/components/schemas/TxnStatus' } }
+        - { name: from, in: query, schema: { type: string, format: date } }
+        - { name: to, in: query, schema: { type: string, format: date } }
+        - { name: q, in: query, schema: { type: string } }
+      responses:
+        '200':
+          description: Page of transactions
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items: { $ref: '#/components/schemas/Transaction' }
+                  nextCursor: { type: string, nullable: true }
+  /transactions/{id}:
+    get:
+      tags: [Accounts]
+      summary: One transaction
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string, format: uuid } }
+      responses:
+        '200':
+          description: Transaction
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Transaction' }
+        '404': { $ref: '#/components/responses/Error' }
+  /name-enquiry:
+    post:
+      tags: [Transfers]
+      summary: Resolve account name for a bank and account number
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [bankCode, accountNumber]
+              properties:
+                bankCode: { type: string }
+                accountNumber: { type: string, pattern: '^[0-9]{10}$' }
+      responses:
+        '200':
+          description: Resolved
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  accountName: { type: string }
+                  sameBank: { type: boolean }
+        '422': { $ref: '#/components/responses/Error' }
+  /transfers/quote:
+    post:
+      tags: [Transfers]
+      summary: Quote fee, limits and total
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/TransferRequest' }
+      responses:
+        '200':
+          description: Quote
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/TransferQuote' }
+        '422': { $ref: '#/components/responses/Error' }
+  /transfers:
+    post:
+      tags: [Transfers]
+      summary: Submit a transfer (idempotent)
+      parameters:
+        - { $ref: '#/components/parameters/IdempotencyKey' }
+        - { $ref: '#/components/parameters/PinToken' }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [quoteId]
+              properties:
+                quoteId: { type: string, format: uuid }
+      responses:
+        '200':
+          description: Completed
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Transaction' }
+        '202':
+          description: Pending (outcome unknown, will be resolved)
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Transaction' }
+        '409': { $ref: '#/components/responses/Error' }
+        '422': { $ref: '#/components/responses/Error' }
+  /beneficiaries:
+    get:
+      tags: [Transfers]
+      summary: List beneficiaries
+      responses:
+        '200':
+          description: List
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Beneficiary' }
+    post:
+      tags: [Transfers]
+      summary: Add beneficiary
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/Beneficiary' }
+      responses:
+        '201': { description: Created }
+  /beneficiaries/{id}:
+    delete:
+      tags: [Transfers]
+      summary: Remove beneficiary
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string, format: uuid } }
+      responses:
+        '204': { description: Deleted }
+  /bills/categories:
+    get:
+      tags: [Bills]
+      summary: Bill categories and billers
+      responses:
+        '200': { description: List }
+  /bills/validate:
+    post:
+      tags: [Bills]
+      summary: Validate a customer reference (meter, decoder, phone)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [billerCode, customerRef]
+              properties:
+                billerCode: { type: string }
+                productCode: { type: string }
+                customerRef: { type: string }
+      responses:
+        '200':
+          description: Validated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customerName: { type: string }
+        '422': { $ref: '#/components/responses/Error' }
+  /bills/pay:
+    post:
+      tags: [Bills]
+      summary: Pay a bill or buy airtime/data (idempotent)
+      parameters:
+        - { $ref: '#/components/parameters/IdempotencyKey' }
+        - { $ref: '#/components/parameters/PinToken' }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/BillPayRequest' }
+      responses:
+        '200':
+          description: Result
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Transaction' }
+        '202': { description: Pending }
+        '422': { $ref: '#/components/responses/Error' }
+  /cards:
+    get:
+      tags: [Cards]
+      summary: List cards
+      responses:
+        '200':
+          description: Cards
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Card' }
+    post:
+      tags: [Cards]
+      summary: Create a virtual naira card (idempotent)
+      parameters:
+        - { $ref: '#/components/parameters/IdempotencyKey' }
+        - { $ref: '#/components/parameters/PinToken' }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [label, theme]
+              properties:
+                label: { type: string, maxLength: 30 }
+                theme: { type: string, enum: [BERRY, MIDNIGHT, CORAL, FOREST, SAND, SLATE] }
+                dailyLimitKobo: { type: integer, format: int64 }
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Card' }
+        '422': { $ref: '#/components/responses/Error' }
+  /cards/{id}/freeze:
+    post:
+      tags: [Cards]
+      summary: Freeze or unfreeze
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string, format: uuid } }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [frozen]
+              properties:
+                frozen: { type: boolean }
+      responses:
+        '200': { description: Updated }
+  /cards/{id}/details:
+    post:
+      tags: [Cards]
+      summary: Reveal card details (requires PIN token; never stored on device)
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string, format: uuid } }
+        - { $ref: '#/components/parameters/PinToken' }
+      responses:
+        '200':
+          description: Details valid for display only
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  number: { type: string }
+                  expiry: { type: string }
+                  cvv: { type: string }
+  /cards/{id}/limits:
+    put:
+      tags: [Cards]
+      summary: Set card limits
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string, format: uuid } }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                perTxnLimitKobo: { type: integer, format: int64 }
+                dailyLimitKobo: { type: integer, format: int64 }
+      responses:
+        '200': { description: Updated }
+  /kyc/status:
+    get:
+      tags: [Onboarding]
+      summary: Current tier and upgrade checklist
+      responses:
+        '200': { description: Status }
+  /security/devices:
+    get:
+      tags: [Security]
+      summary: List devices
+      responses:
+        '200': { description: Devices }
+  /security/devices/{id}:
+    delete:
+      tags: [Security]
+      summary: Remove a device
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string, format: uuid } }
+      responses:
+        '204': { description: Removed }
+  /security/lock:
+    post:
+      tags: [Security]
+      summary: Customer locks own account
+      parameters:
+        - { $ref: '#/components/parameters/PinToken' }
+      responses:
+        '200': { description: Locked }
+  /tickets:
+    get:
+      tags: [Support]
+      summary: List tickets
+      responses:
+        '200': { description: Tickets }
+    post:
+      tags: [Support]
+      summary: Create ticket (optionally linked to a transaction)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [category, description]
+              properties:
+                category: { type: string }
+                description: { type: string }
+                transactionId: { type: string, format: uuid }
+      responses:
+        '201': { description: Created }
+  /notifications:
+    get:
+      tags: [Notifications]
+      summary: In-app notifications
+      responses:
+        '200': { description: List }
+  /notifications/read-all:
+    post:
+      tags: [Notifications]
+      summary: Mark all read
+      responses:
+        '204': { description: Done }
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  parameters:
+    DeviceId:
+      name: X-Device-Id
+      in: header
+      required: true
+      schema: { type: string, format: uuid }
+    IdempotencyKey:
+      name: Idempotency-Key
+      in: header
+      required: true
+      schema: { type: string, format: uuid }
+    PinToken:
+      name: X-Pin-Token
+      in: header
+      required: true
+      schema: { type: string }
+  responses:
+    Error:
+      description: Error
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Error' }
+  schemas:
+    Error:
+      type: object
+      required: [code, message, requestId]
+      properties:
+        code: { type: string, example: TRF_LIMIT_EXCEEDED }
+        message: { type: string }
+        details: { type: object, additionalProperties: true }
+        requestId: { type: string }
+    OtpRequest:
+      type: object
+      required: [phone, purpose]
+      properties:
+        phone: { type: string, example: '+2348012345678' }
+        purpose: { type: string, enum: [SIGNUP, LOGIN_NEW_DEVICE, PASSCODE_RESET, STEP_UP] }
+    OtpVerify:
+      type: object
+      required: [phone, code, purpose]
+      properties:
+        phone: { type: string }
+        code: { type: string, minLength: 6, maxLength: 6 }
+        purpose: { type: string }
+    OtpVerified:
+      type: object
+      properties:
+        sessionToken: { type: string }
+        nextStep: { type: string }
+    LoginRequest:
+      type: object
+      required: [identifier, passcode]
+      properties:
+        identifier: { type: string, description: Phone or email }
+        passcode: { type: string, minLength: 6, maxLength: 6 }
+    TokenPair:
+      type: object
+      properties:
+        accessToken: { type: string }
+        refreshToken: { type: string }
+        expiresInSeconds: { type: integer }
+    OnboardingProfile:
+      type: object
+      required: [firstName, lastName, dateOfBirth, email, consents]
+      properties:
+        firstName: { type: string }
+        lastName: { type: string }
+        dateOfBirth: { type: string, format: date }
+        email: { type: string, format: email }
+        referralCode: { type: string }
+        consents:
+          type: array
+          items:
+            type: object
+            properties:
+              documentType: { type: string }
+              documentVersion: { type: string }
+              granted: { type: boolean }
+    OnboardingStatus:
+      type: object
+      properties:
+        step: { type: string }
+        status: { type: string, enum: [ONBOARDING, PENDING_ACCOUNT, ACTIVE, MANUAL_REVIEW, REJECTED] }
+        accountNumber: { type: string, nullable: true }
+    Account:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        accountNumber: { type: string }
+        accountName: { type: string }
+        status: { type: string, enum: [ACTIVE, LOCKED, RESTRICTED, DORMANT, CLOSED] }
+        tier: { type: integer }
+        currency: { type: string, example: NGN }
+        ledgerBalanceKobo: { type: integer, format: int64 }
+        availableBalanceKobo: { type: integer, format: int64 }
+        limits:
+          type: object
+          properties:
+            perTxnKobo: { type: integer, format: int64 }
+            dailyOutKobo: { type: integer, format: int64 }
+            dailyUsedKobo: { type: integer, format: int64 }
+            balanceCapKobo: { type: integer, format: int64 }
+    TxnStatus:
+      type: string
+      enum: [PENDING, SUCCESSFUL, FAILED, REVERSED]
+    Transaction:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        reference: { type: string }
+        type: { type: string }
+        direction: { type: string, enum: [D, C] }
+        amountKobo: { type: integer, format: int64 }
+        feeKobo: { type: integer, format: int64 }
+        status: { $ref: '#/components/schemas/TxnStatus' }
+        counterpartyName: { type: string }
+        counterpartyBank: { type: string }
+        narration: { type: string }
+        failureCode: { type: string, nullable: true }
+        balanceAfterKobo: { type: integer, format: int64 }
+        createdAt: { type: string, format: date-time }
+    TransferRequest:
+      type: object
+      required: [bankCode, accountNumber, amountKobo]
+      properties:
+        bankCode: { type: string }
+        accountNumber: { type: string }
+        accountName: { type: string }
+        amountKobo: { type: integer, format: int64, minimum: 1 }
+        narration: { type: string, maxLength: 100 }
+        saveBeneficiary: { type: boolean }
+    TransferQuote:
+      type: object
+      properties:
+        quoteId: { type: string, format: uuid }
+        amountKobo: { type: integer, format: int64 }
+        feeKobo: { type: integer, format: int64 }
+        totalKobo: { type: integer, format: int64 }
+        recipientName: { type: string }
+        expiresAt: { type: string, format: date-time }
+        stepUpRequired: { type: boolean }
+    Beneficiary:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        bankCode: { type: string }
+        accountNumber: { type: string }
+        accountName: { type: string }
+        nickname: { type: string }
+        favourite: { type: boolean }
+    BillPayRequest:
+      type: object
+      required: [billerCode, customerRef, amountKobo]
+      properties:
+        billerCode: { type: string }
+        productCode: { type: string }
+        customerRef: { type: string }
+        amountKobo: { type: integer, format: int64 }
+        saveBiller: { type: boolean }
+    Card:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        label: { type: string }
+        theme: { type: string }
+        last4: { type: string }
+        status: { type: string, enum: [CREATING, ACTIVE, FROZEN, EXPIRED, DELETED] }
+        perTxnLimitKobo: { type: integer, format: int64, nullable: true }
+        dailyLimitKobo: { type: integer, format: int64, nullable: true }

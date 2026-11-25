@@ -1,0 +1,21 @@
+flowchart TD
+  a(["Customer requests withdrawal (amount, agent)"])
+  b["Show fee; hold amount; generate code"]
+  c["Customer shows code to agent"]
+  d[/"Agent enters code and amount"/]
+  e{"Code valid and not expired?"}
+  f["Reject; release hold if expired"]
+  g["Customer confirms with PIN/biometric"]
+  h["Debit customer; credit agent float and commission"]
+  i["Agent pays cash; receipts"]
+  j(["Done"])
+  a --> b
+  b --> c
+  c --> d
+  d --> e
+  e -->|no| f
+  e -->|yes| g
+  g --> h
+  h --> i
+  i --> j
+  f --> j

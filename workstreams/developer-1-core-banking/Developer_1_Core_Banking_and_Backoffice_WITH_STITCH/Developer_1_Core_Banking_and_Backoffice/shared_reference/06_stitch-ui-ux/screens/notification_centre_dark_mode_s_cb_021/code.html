@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YourApp - Notifications</title>
+<!-- Inter Google Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary": "#61130a",
+            "surface-tint": "#ffb0ca",
+            "error": "#ffb4ab",
+            "tertiary": "#b0c6ff",
+            "on-tertiary": "#002d6f",
+            "inverse-primary": "#9e3b63",
+            "on-surface-variant": "#dac0c6",
+            "on-secondary-container": "#ff9f90",
+            "on-secondary-fixed": "#410000",
+            "inverse-on-surface": "#323031",
+            "surface-container": "#211f20",
+            "primary": "#ffb0ca",
+            "secondary-container": "#822c20",
+            "tertiary-fixed": "#d9e2ff",
+            "on-primary-fixed-variant": "#7f234b",
+            "on-primary-fixed": "#3e001f",
+            "surface-container-highest": "#373435",
+            "on-primary": "#620735",
+            "secondary-fixed-dim": "#ffb4a8",
+            "surface-dim": "#151314",
+            "outline": "#a28b91",
+            "surface-bright": "#3b3839",
+            "on-primary-container": "#5d0331",
+            "primary-fixed": "#ffd9e3",
+            "primary-container": "#e0709a",
+            "surface-container-high": "#2c292a",
+            "secondary": "#ffb4a8",
+            "background": "#151314",
+            "on-background": "#e7e1e2",
+            "on-tertiary-fixed-variant": "#06429a",
+            "tertiary-container": "#6a92ee",
+            "primary-fixed-dim": "#ffb0ca",
+            "outline-variant": "#544247",
+            "on-tertiary-container": "#002a69",
+            "surface-container-low": "#1d1b1c",
+            "on-secondary-fixed-variant": "#7f291e",
+            "on-error-container": "#ffdad6",
+            "surface": "#151314",
+            "surface-container-lowest": "#100e0f",
+            "surface-variant": "#373435",
+            "on-tertiary-fixed": "#001945",
+            "secondary-fixed": "#ffdad4",
+            "inverse-surface": "#e7e1e2",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "error-container": "#93000a",
+            "on-surface": "#e7e1e2",
+            "on-error": "#690005"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xl": "2rem",
+            "margin-mobile": "1rem",
+            "space-lg": "1.5rem",
+            "margin": "1rem",
+            "gutter-mobile": "0.75rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "space-xs": "0.25rem",
+            "gutter": "1rem"
+          },
+          "fontFamily": {
+            "label-md": ["Inter"],
+            "label-sm": ["Inter"],
+            "body-md": ["Inter"],
+            "body-lg": ["Inter"],
+            "title-currency": ["Inter"],
+            "label-lg": ["Inter"],
+            "headline-md": ["Inter"],
+            "headline-lg": ["Inter"],
+            "display-currency": ["Inter"],
+            "headline-sm": ["Inter"]
+          },
+          "fontSize": {
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "title-currency": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-lg": ["15px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    /* Hide scrollbars for clean mobile appearance */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen flex justify-center">
+<!-- Mobile Viewport Wrapper (390px base, max 560px) -->
+<div class="w-full max-w-[560px] min-h-screen bg-surface flex flex-col relative pb-[96px] shadow-2xl">
+<!-- Top Status/Brand Micro Anchor Bar -->
+<header class="sticky top-0 z-40 bg-surface/95 backdrop-blur-md px-margin py-space-sm">
+<div class="flex items-center justify-between min-h-[56px]">
+<!-- Leading: Back Action Button -->
+<button aria-label="Go back" class="w-10 h-10 -ml-2 rounded-xl flex items-center justify-center text-on-surface hover:bg-surface-container active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<!-- Headline / Screen Title -->
+<div class="flex flex-col items-center">
+<span class="font-label-sm text-label-sm text-outline tracking-wider">YourApp</span>
+<h1 class="font-headline-sm text-headline-sm text-on-surface font-semibold tracking-tight">Notifications</h1>
+</div>
+<!-- Trailing Action: Mark all as read -->
+<button class="h-10 px-2 rounded-xl flex items-center justify-center text-primary hover:bg-surface-container active:scale-95 transition-transform duration-150" type="button">
+<span class="font-label-md text-label-md font-semibold text-primary">Read all</span>
+</button>
+</div>
+<!-- Segmented Horizontal Filter Tabs -->
+<nav aria-label="Notification Filters" class="flex items-center gap-space-xs mt-space-sm pb-1 overflow-x-auto no-scrollbar">
+<button class="h-[36px] px-4 rounded-full bg-primary-container text-on-primary-container font-label-md text-label-md font-semibold whitespace-nowrap active:scale-95 transition-all" type="button">
+          All
+        </button>
+<button class="h-[36px] px-4 rounded-full bg-surface-container-low text-on-surface-variant font-label-md text-label-md border border-outline-variant/30 hover:border-outline-variant whitespace-nowrap active:scale-95 transition-all" type="button">
+          Transactions
+        </button>
+<button class="h-[36px] px-4 rounded-full bg-surface-container-low text-on-surface-variant font-label-md text-label-md border border-outline-variant/30 hover:border-outline-variant whitespace-nowrap active:scale-95 transition-all" type="button">
+          Security
+        </button>
+<button class="h-[36px] px-4 rounded-full bg-surface-container-low text-on-surface-variant font-label-md text-label-md border border-outline-variant/30 hover:border-outline-variant whitespace-nowrap active:scale-95 transition-all" type="button">
+          Announcements
+        </button>
+</nav>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-margin py-space-sm space-y-space-md">
+<!-- Quick Status Section Header -->
+<div class="flex items-center justify-between pt-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">Activity Stream</span>
+<span class="font-label-sm text-label-sm text-primary font-medium">3 Unread</span>
+</div>
+<!-- Bento-style Card 1: Security Alert (Critical High-Priority Item) -->
+<article class="relative bg-surface-container-low rounded-xl p-space-md border border-outline-variant/50 hover:border-primary-container/60 transition-all duration-200 cursor-pointer active:scale-[0.99] group shadow-sm">
+<div class="flex items-start gap-space-md">
+<!-- Icon Container with Security Indicator -->
+<div class="w-10 h-10 rounded-full bg-secondary-container/40 border border-secondary-container flex items-center justify-center shrink-0 text-secondary">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">shield_with_heart</span>
+</div>
+<!-- Body Content -->
+<div class="flex-1 min-w-0 pr-2">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full font-label-sm text-label-sm font-semibold bg-error-container/40 text-error border border-error/30">
+                Security Alert
+              </span>
+<span class="font-label-sm text-label-sm text-outline">10m ago</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface font-medium mt-1 leading-snug">
+              New sign-in detected on Samsung S24 in Lagos
+            </p>
+<div class="mt-2.5 flex items-center gap-2">
+<button class="h-[32px] px-3 rounded-lg bg-surface-container-highest text-on-surface font-label-sm text-label-sm font-medium hover:bg-surface-bright transition-colors inline-flex items-center gap-1" type="button">
+<span>Manage Devices</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Unread Dot Badge in Rose (#E0709A / primary-container) -->
+<div class="shrink-0 flex items-center pt-1" title="Unread notification">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container ring-4 ring-primary-container/20 animate-pulse"></span>
+</div>
+</div>
+</article>
+<!-- Bento-style Card 2: Inbound Credit (Transaction - Income) -->
+<article class="relative bg-surface-container-low rounded-xl p-space-md border border-outline-variant/50 hover:border-outline-variant transition-all duration-200 cursor-pointer active:scale-[0.99] group shadow-sm">
+<div class="flex items-start gap-space-md">
+<!-- Income Badge Container -->
+<div class="w-10 h-10 rounded-full bg-[rgba(76,195,138,0.12)] border border-[#4CC38A]/30 flex items-center justify-center shrink-0 text-[#4CC38A]">
+<span class="material-symbols-outlined text-[22px]">arrow_downward</span>
+</div>
+<!-- Content -->
+<div class="flex-1 min-w-0 pr-2">
+<div class="flex items-center justify-between">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full font-label-sm text-label-sm font-semibold bg-[rgba(76,195,138,0.12)] text-[#4CC38A]">
+                Credit Received
+              </span>
+<span class="font-label-sm text-label-sm text-outline">2h ago</span>
+</div>
+<!-- Naira Tabular Typography -->
+<div class="mt-1">
+<span class="font-title-currency text-title-currency text-[#4CC38A] font-semibold tabular-nums">+₦25,000.00</span>
+<p class="font-body-md text-body-md text-on-surface mt-0.5">
+                Received from <span class="font-medium text-on-surface">Tunde Bakare</span> (Access Bank)
+              </p>
+</div>
+<p class="font-label-sm text-label-sm text-outline mt-1 font-mono">Ref: TRF/NIP/2940294109</p>
+</div>
+<!-- Unread Dot Badge -->
+<div class="shrink-0 flex items-center pt-1" title="Unread notification">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container ring-4 ring-primary-container/20"></span>
+</div>
+</div>
+</article>
+<!-- Bento-style Card 3: Outbound Debit (DSTV Premium) -->
+<article class="relative bg-surface-container-low rounded-xl p-space-md border border-outline-variant/50 hover:border-outline-variant transition-all duration-200 cursor-pointer active:scale-[0.99] group shadow-sm">
+<div class="flex items-start gap-space-md">
+<!-- Outbound Category Icon Container -->
+<div class="w-10 h-10 rounded-full bg-surface-container-highest border border-outline-variant/40 flex items-center justify-center shrink-0 text-on-surface">
+<span class="material-symbols-outlined text-[20px]">tv</span>
+</div>
+<!-- Content -->
+<div class="flex-1 min-w-0 pr-2">
+<div class="flex items-center justify-between">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full font-label-sm text-label-sm font-medium bg-surface-container text-on-surface-variant">
+                Bill Payment
+              </span>
+<span class="font-label-sm text-label-sm text-outline">Yesterday</span>
+</div>
+<div class="mt-1">
+<span class="font-title-currency text-title-currency text-on-surface font-semibold tabular-nums">-₦4,500.00</span>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5">
+                Paid for DSTV Premium subscription
+              </p>
+</div>
+<!-- Receipt Link Button -->
+<div class="mt-2.5">
+<a class="inline-flex items-center gap-1 font-label-sm text-label-sm text-primary hover:text-primary-fixed transition-colors font-medium" href="#receipt">
+<span class="material-symbols-outlined text-[16px]">receipt_long</span>
+<span>View receipt</span>
+</a>
+</div>
+</div>
+<!-- Read item: Subtle Chevron tap cue -->
+<div class="shrink-0 flex items-center pt-1 text-outline">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</div>
+</div>
+</article>
+<!-- Bento-style Card 4: System Announcement (CBN NIBSS Maintenance) -->
+<article class="relative bg-surface-container-low rounded-xl p-space-md border border-outline-variant/50 hover:border-outline-variant transition-all duration-200 cursor-pointer active:scale-[0.99] group shadow-sm">
+<div class="flex items-start gap-space-md">
+<!-- Announcement Warning Container -->
+<div class="w-10 h-10 rounded-full bg-[rgba(227,179,65,0.12)] border border-[#E3B341]/30 flex items-center justify-center shrink-0 text-[#E3B341]">
+<span class="material-symbols-outlined text-[22px]">campaign</span>
+</div>
+<!-- Content -->
+<div class="flex-1 min-w-0 pr-2">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full font-label-sm text-label-sm font-semibold bg-[rgba(227,179,65,0.12)] text-[#E3B341]">
+                System Notice
+              </span>
+<span class="font-label-sm text-label-sm text-outline">Yesterday</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface font-medium mt-1 leading-snug">
+              Scheduled CBN NIBSS instant settlement maintenance tonight at 02:00 WAT.
+            </p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1.5">
+              Outbound inter-bank transfers may experience transient delays. Card payments remain unaffected.
+            </p>
+</div>
+<!-- Unread Dot Badge -->
+<div class="shrink-0 flex items-center pt-1" title="Unread notification">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container ring-4 ring-primary-container/20"></span>
+</div>
+</div>
+</article>
+<!-- Clear History & Empty State Preview Tile -->
+<div class="pt-4 pb-2 flex flex-col items-center justify-center text-center">
+<button class="h-[44px] px-6 rounded-xl border border-outline-variant/40 bg-surface-container/60 hover:bg-surface-container text-on-surface-variant font-label-md text-label-md inline-flex items-center gap-2 active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[18px]">delete_sweep</span>
+<span>Clear Notification History</span>
+</button>
+<p class="font-label-sm text-label-sm text-outline mt-2">Notifications older than 30 days are automatically archived.</p>
+</div>
+</main>
+<!-- Docked Bottom Navigation Bar (Shared Components Blueprint) -->
+<!-- Destination 5 items: Home, Payments, Cards, Save & Borrow, More -->
+<nav aria-label="Main Navigation" class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-margin h-16 max-w-[560px] mx-auto pb-safe bg-surface-container-lowest dark:bg-surface-container shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)]">
+<!-- 1. Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#home">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="font-caption text-caption font-medium">Home</span>
+</a>
+<!-- 2. Payments -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#payments">
+<span class="material-symbols-outlined text-[24px]">send</span>
+<span class="font-caption text-caption font-medium">Payments</span>
+</a>
+<!-- 3. Cards -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#cards">
+<span class="material-symbols-outlined text-[24px]">credit_card</span>
+<span class="font-caption text-caption font-medium">Cards</span>
+</a>
+<!-- 4. Save & Borrow -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#save-borrow">
+<span class="material-symbols-outlined text-[24px]">savings</span>
+<span class="font-caption text-caption font-medium">Save &amp; Borrow</span>
+</a>
+<!-- 5. More (Notification Centre maps conceptually under More/App ecosystem) -->
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed font-semibold min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#more">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">more_horiz</span>
+<span class="font-caption text-caption font-medium">More</span>
+</a>
+</nav>
+</div>
+<!-- Micro-interactions Script -->
+<script>
+    // Tab switching interaction
+    document.querySelectorAll('nav[aria-label="Notification Filters"] button').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('nav[aria-label="Notification Filters"] button').forEach(btn => {
+          btn.className = "h-[36px] px-4 rounded-full bg-surface-container-low text-on-surface-variant font-label-md text-label-md border border-outline-variant/30 hover:border-outline-variant whitespace-nowrap active:scale-95 transition-all";
+        });
+        tab.className = "h-[36px] px-4 rounded-full bg-primary-container text-on-primary-container font-label-md text-label-md font-semibold whitespace-nowrap active:scale-95 transition-all";
+      });
+    });
+
+    // Mark all as read micro-interaction
+    const readAllBtn = document.querySelector('header button:last-child');
+    if (readAllBtn) {
+      readAllBtn.addEventListener('click', () => {
+        document.querySelectorAll('.animate-pulse, [title="Unread notification"]').forEach(dot => {
+          dot.style.opacity = '0';
+          setTimeout(() => dot.remove(), 200);
+        });
+        const counter = document.querySelector('main span.text-primary.font-medium');
+        if (counter) counter.textContent = '0 Unread';
+      });
+    }
+  </script>
+</body></html>

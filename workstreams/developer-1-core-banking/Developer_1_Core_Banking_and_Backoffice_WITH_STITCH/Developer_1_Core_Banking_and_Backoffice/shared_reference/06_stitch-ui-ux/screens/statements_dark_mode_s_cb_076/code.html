@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YourApp - Bank Statements &amp; Reports</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Inter Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary-container": "#5d0331",
+            "secondary": "#ffb4a8",
+            "on-secondary-fixed": "#410000",
+            "on-tertiary-fixed-variant": "#06429a",
+            "surface-variant": "#373435",
+            "error": "#ffb4ab",
+            "on-tertiary-fixed": "#001945",
+            "on-background": "#e7e1e2",
+            "secondary-fixed-dim": "#ffb4a8",
+            "error-container": "#93000a",
+            "surface-container-highest": "#373435",
+            "surface-container-lowest": "#100e0f",
+            "secondary-container": "#822c20",
+            "on-primary-fixed": "#3e001f",
+            "on-secondary": "#61130a",
+            "inverse-surface": "#e7e1e2",
+            "on-error-container": "#ffdad6",
+            "on-secondary-fixed-variant": "#7f291e",
+            "tertiary": "#b0c6ff",
+            "primary-fixed": "#ffd9e3",
+            "on-error": "#690005",
+            "on-surface": "#e7e1e2",
+            "primary": "#ffb0ca",
+            "surface-container-low": "#1d1b1c",
+            "surface-tint": "#ffb0ca",
+            "primary-container": "#e0709a",
+            "on-primary": "#620735",
+            "surface-bright": "#3b3839",
+            "outline-variant": "#544247",
+            "tertiary-container": "#6a92ee",
+            "on-tertiary-container": "#002a69",
+            "on-secondary-container": "#ff9f90",
+            "on-tertiary": "#002d6f",
+            "on-primary-fixed-variant": "#7f234b",
+            "surface-container-high": "#2c292a",
+            "on-surface-variant": "#dac0c6",
+            "surface-container": "#211f20",
+            "outline": "#a28b91",
+            "inverse-on-surface": "#323031",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "inverse-primary": "#9e3b63",
+            "tertiary-fixed": "#d9e2ff",
+            "secondary-fixed": "#ffdad4",
+            "background": "#151314",
+            "surface-dim": "#151314",
+            "surface": "#151314",
+            "primary-fixed-dim": "#ffb0ca"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "1rem",
+            "space-xs": "0.25rem",
+            "gutter": "1rem",
+            "margin-mobile": "1rem",
+            "space-lg": "1.5rem",
+            "space-md": "1rem",
+            "gutter-mobile": "0.75rem",
+            "space-xl": "2rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "body-lg": ["Inter"],
+            "headline-lg": ["Inter"],
+            "display-currency": ["Inter"],
+            "headline-md": ["Inter"],
+            "label-sm": ["Inter"],
+            "headline-sm": ["Inter"],
+            "label-md": ["Inter"],
+            "label-lg": ["Inter"],
+            "title-currency": ["Inter"],
+            "body-md": ["Inter"]
+          },
+          "fontSize": {
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "label-lg": ["15px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "title-currency": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .custom-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-lowest text-on-surface antialiased font-body-md text-body-md min-h-screen flex justify-center selection:bg-primary-container selection:text-on-primary">
+<!-- Mobile Frame Container (Max 560px, baseline 390px reference) -->
+<div class="w-full max-w-[560px] min-h-screen bg-surface flex flex-col relative pb-[92px]">
+<!-- Top Bar Component -->
+<header class="sticky top-0 z-40 bg-surface/95 backdrop-blur-md px-margin py-space-sm flex items-center justify-between min-h-[56px] border-b border-outline-variant/20">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Go back" class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface hover:bg-surface-container-high transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div>
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-wider block font-semibold">YourApp Secure</span>
+<h1 class="font-headline-sm text-headline-sm text-on-surface leading-tight font-bold">Bank Statements &amp; Reports</h1>
+</div>
+</div>
+<button aria-label="Statement Info" class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-margin py-space-md space-y-space-md">
+<!-- Informational Explainer Card -->
+<section class="bg-surface-container-low rounded-xl p-space-md border border-outline-variant/30 flex items-start gap-3">
+<div class="w-9 h-9 rounded-lg bg-surface-container-high border border-outline-variant/30 flex items-center justify-center text-primary shrink-0 mt-0.5">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Generate official bank-stamped electronic statements suitable for visa applications, tax audits, and accounting.
+        </p>
+</section>
+<!-- Configuration Card -->
+<section class="bg-surface-container-low rounded-xl border border-outline-variant/30 p-space-md space-y-space-md shadow-sm">
+<!-- Account Selector -->
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1.5 font-medium">Select Account</label>
+<div class="bg-surface-container rounded-xl border border-outline-variant/40 p-3 flex items-center justify-between cursor-pointer hover:border-primary-container transition-colors active:scale-[0.99]">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary-fixed border border-outline-variant/20">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">YourApp Tier 2 Savings</span>
+<span class="px-2 py-0.5 text-[10px] font-semibold bg-surface-container-high text-primary rounded-full border border-outline-variant/30">Active</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant font-mono tracking-tight mt-0.5">
+                  0124 892 019 <span class="text-outline">·</span> Chioma B. Adeleke
+                </p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">expand_more</span>
+</div>
+</div>
+<!-- Date Range Presets -->
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1.5 font-medium">Date Range</label>
+<div class="flex gap-2 overflow-x-auto pb-1 custom-scrollbar">
+<button class="h-9 px-3.5 rounded-full text-label-md font-label-md shrink-0 bg-surface-container text-on-surface-variant border border-outline-variant/30 hover:border-outline-variant transition-colors" type="button">
+              Last 30 Days
+            </button>
+<button class="h-9 px-3.5 rounded-full text-label-md font-label-md shrink-0 bg-surface-container text-on-surface-variant border border-outline-variant/30 hover:border-outline-variant transition-colors" type="button">
+              Last 3 Months
+            </button>
+<button class="h-9 px-3.5 rounded-full text-label-md font-label-md shrink-0 bg-surface-container text-on-surface-variant border border-outline-variant/30 hover:border-outline-variant transition-colors" type="button">
+              Last 6 Months
+            </button>
+<button class="h-9 px-3.5 rounded-full text-label-md font-label-md shrink-0 bg-surface-container text-on-surface-variant border border-outline-variant/30 hover:border-outline-variant transition-colors" type="button">
+              1 Year
+            </button>
+<button class="h-9 px-3.5 rounded-full text-label-md font-label-md shrink-0 bg-primary-container text-on-primary font-semibold border border-primary-container shadow-sm" type="button">
+              Custom Date Range
+            </button>
+</div>
+</div>
+<!-- Custom Date Range Inputs -->
+<div class="grid grid-cols-2 gap-space-sm pt-1">
+<div>
+<span class="block font-label-sm text-label-sm text-on-surface-variant mb-1 font-medium">From Date</span>
+<div class="h-[52px] bg-surface-container border border-outline-variant/40 rounded-xl px-3 flex items-center justify-between text-on-surface focus-within:border-primary-container transition-colors">
+<span class="font-body-md text-body-md font-mono tabular-nums">01 Nov 2026</span>
+<span class="material-symbols-outlined text-outline text-[20px]">calendar_today</span>
+</div>
+</div>
+<div>
+<span class="block font-label-sm text-label-sm text-on-surface-variant mb-1 font-medium">To Date</span>
+<div class="h-[52px] bg-surface-container border border-outline-variant/40 rounded-xl px-3 flex items-center justify-between text-on-surface focus-within:border-primary-container transition-colors">
+<span class="font-body-md text-body-md font-mono tabular-nums">24 Feb 2027</span>
+<span class="material-symbols-outlined text-outline text-[20px]">calendar_today</span>
+</div>
+</div>
+</div>
+<!-- Export Format Selector -->
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2 font-medium">File Format</label>
+<div class="grid grid-cols-3 gap-2">
+<!-- PDF Stamped (Selected) -->
+<label class="cursor-pointer">
+<input checked="" class="sr-only peer" name="format" type="radio" value="pdf"/>
+<div class="p-2.5 rounded-xl border border-primary-container bg-primary-container/10 flex flex-col items-center justify-center text-center gap-1.5 transition-all peer-checked:border-primary-container peer-checked:bg-primary-container/15">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">picture_as_pdf</span>
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">Official PDF</span>
+<span class="text-[10px] text-primary font-medium tracking-tight">Stamped</span>
+</div>
+</label>
+<!-- Excel -->
+<label class="cursor-pointer">
+<input class="sr-only peer" name="format" type="radio" value="excel"/>
+<div class="p-2.5 rounded-xl border border-outline-variant/30 bg-surface-container flex flex-col items-center justify-center text-center gap-1.5 transition-all peer-checked:border-primary-container peer-checked:bg-primary-container/15 hover:border-outline-variant">
+<span class="material-symbols-outlined text-on-surface-variant">table_chart</span>
+<span class="font-label-sm text-label-sm font-medium text-on-surface">Excel (XLSX)</span>
+<span class="text-[10px] text-on-surface-variant">Raw Data</span>
+</div>
+</label>
+<!-- CSV -->
+<label class="cursor-pointer">
+<input class="sr-only peer" name="format" type="radio" value="csv"/>
+<div class="p-2.5 rounded-xl border border-outline-variant/30 bg-surface-container flex flex-col items-center justify-center text-center gap-1.5 transition-all peer-checked:border-primary-container peer-checked:bg-primary-container/15 hover:border-outline-variant">
+<span class="material-symbols-outlined text-on-surface-variant">receipt_long</span>
+<span class="font-label-sm text-label-sm font-medium text-on-surface">CSV</span>
+<span class="text-[10px] text-on-surface-variant">Spreadsheet</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Delivery Method -->
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2 font-medium">Delivery Destination</label>
+<div class="space-y-2">
+<label class="flex items-center justify-between p-3 rounded-xl bg-surface-container border border-primary-container cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-container/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">download</span>
+</div>
+<div>
+<span class="font-label-lg text-label-lg text-on-surface font-semibold block">Download Directly to Device</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Instant download to local file storage</span>
+</div>
+</div>
+<input checked="" class="h-4 w-4 text-primary-container border-outline-variant bg-surface focus:ring-0 focus:ring-offset-0" name="delivery" type="radio"/>
+</label>
+<label class="flex items-center justify-between p-3 rounded-xl bg-surface-container border border-outline-variant/30 cursor-pointer hover:border-outline-variant">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">mail</span>
+</div>
+<div>
+<span class="font-label-lg text-label-lg text-on-surface font-semibold block">Send to Registered Email</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">chioma.adeleke@example.com</span>
+</div>
+</div>
+<input class="h-4 w-4 text-primary-container border-outline-variant bg-surface focus:ring-0 focus:ring-offset-0" name="delivery" type="radio"/>
+</label>
+</div>
+</div>
+</section>
+<!-- Security & Certification Options -->
+<section class="bg-surface-container-low rounded-xl border border-outline-variant/30 p-space-md space-y-space-md">
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Security &amp; Verification</h2>
+<!-- Toggle 1: Digital Stamp (Checked) -->
+<div class="flex items-center justify-between gap-3">
+<div class="flex items-start gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high border border-outline-variant/30 flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[20px]">qr_code_2</span>
+</div>
+<div>
+<span class="font-label-lg text-label-lg text-on-surface font-semibold block">Include Official Digital Stamp &amp; QR Verification</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Enables instant third-party validation by consulates and banks</p>
+</div>
+</div>
+<!-- Native styled switch -->
+<label class="relative inline-flex items-center cursor-pointer shrink-0">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<div class="h-[1px] bg-outline-variant/20"></div>
+<!-- Toggle 2: Letter of Introduction -->
+<div class="flex items-center justify-between gap-3">
+<div class="flex items-start gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high border border-outline-variant/30 flex items-center justify-center text-on-surface-variant shrink-0">
+<span class="material-symbols-outlined text-[20px]">article</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">Include Letter of Introduction</span>
+<span class="px-2 py-0.2 text-[10px] font-semibold bg-surface-container-high text-primary rounded-full">Free</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Addressed to embassies, embassies or immigration authorities</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer shrink-0">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</section>
+<!-- Primary Action Button (Fixed height 52px, rose color token) -->
+<section class="pt-2">
+<button class="w-full h-[52px] bg-primary-container text-on-primary font-label-lg text-label-lg font-semibold rounded-xl flex items-center justify-center gap-2 hover:brightness-105 active:scale-95 transition-all shadow-md" type="button">
+<span class="material-symbols-outlined text-[22px]">file_download</span>
+<span>Generate &amp; Download Statement</span>
+</button>
+</section>
+<!-- Recent Generated Statements History -->
+<section class="space-y-space-sm pt-2">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Recent Generated Statements</h2>
+<button class="text-primary font-label-sm text-label-sm font-semibold hover:underline" type="button">View All</button>
+</div>
+<div class="space-y-2">
+<!-- Statement Jan 2027 -->
+<div class="min-h-[64px] bg-surface-container-low border border-outline-variant/30 rounded-xl p-3 flex items-center justify-between gap-3">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary shrink-0 border border-outline-variant/20">
+<span class="material-symbols-outlined text-[20px]">picture_as_pdf</span>
+</div>
+<div>
+<span class="font-label-lg text-label-lg text-on-surface font-semibold block">Statement Jan 2027</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono tabular-nums">PDF · 240 KB · Downloaded 02 Feb 2027</span>
+</div>
+</div>
+<div class="flex items-center gap-1 shrink-0">
+<button aria-label="Share statement" class="w-9 h-9 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[20px]">share</span>
+</button>
+<button aria-label="Re-download statement" class="w-9 h-9 rounded-full flex items-center justify-center text-primary hover:bg-surface-container-high transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[20px]">download</span>
+</button>
+</div>
+</div>
+<!-- Statement Q4 2026 -->
+<div class="min-h-[64px] bg-surface-container-low border border-outline-variant/30 rounded-xl p-3 flex items-center justify-between gap-3">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary shrink-0 border border-outline-variant/20">
+<span class="material-symbols-outlined text-[20px]">picture_as_pdf</span>
+</div>
+<div>
+<span class="font-label-lg text-label-lg text-on-surface font-semibold block">Statement Q4 2026</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono tabular-nums">PDF · 680 KB · Downloaded 05 Jan 2027</span>
+</div>
+</div>
+<div class="flex items-center gap-1 shrink-0">
+<button aria-label="Share statement" class="w-9 h-9 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[20px]">share</span>
+</button>
+<button aria-label="Re-download statement" class="w-9 h-9 rounded-full flex items-center justify-center text-primary hover:bg-surface-container-high transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[20px]">download</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Regulatory Footer -->
+<footer class="pt-4 pb-2 text-center space-y-1">
+<div class="flex items-center justify-center gap-1.5 text-primary text-xs font-medium">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">shield</span>
+<span>Tamper-evident SHA-256 seal</span>
+</div>
+<p class="font-label-sm text-label-sm text-outline">
+          Licensed by Central Bank of Nigeria (CBN). Insured by NDIC.
+        </p>
+</footer>
+</main>
+<!-- Docked BottomNavBar Component from Shared Components JSON -->
+<!-- Active Tab: More (Destination count: 5) -->
+<nav class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-margin h-16 max-w-[560px] mx-auto pb-safe bg-surface-container-lowest dark:bg-surface-container shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)]">
+<!-- Home Tab -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#home">
+<span class="material-symbols-outlined">home</span>
+<span class="font-caption text-caption font-medium">Home</span>
+</a>
+<!-- Payments Tab -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#payments">
+<span class="material-symbols-outlined">send</span>
+<span class="font-caption text-caption font-medium">Payments</span>
+</a>
+<!-- Cards Tab -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#cards">
+<span class="material-symbols-outlined">credit_card</span>
+<span class="font-caption text-caption font-medium">Cards</span>
+</a>
+<!-- Save & Borrow Tab -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#savings">
+<span class="material-symbols-outlined">savings</span>
+<span class="font-caption text-caption font-medium">Save &amp; Borrow</span>
+</a>
+<!-- More Tab (ACTIVE according to user prompt and Semantic Shell mapping) -->
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed font-semibold min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#more">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">more_horiz</span>
+<span class="font-caption text-caption font-medium">More</span>
+</a>
+</nav>
+</div>
+</body></html>

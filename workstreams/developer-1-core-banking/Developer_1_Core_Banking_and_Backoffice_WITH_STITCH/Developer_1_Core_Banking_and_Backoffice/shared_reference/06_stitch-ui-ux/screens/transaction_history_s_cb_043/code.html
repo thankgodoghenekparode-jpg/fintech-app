@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YourApp - Transaction History</title>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration Verbatim -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary-fixed": "#ffd9e1",
+            "background": "#fff8f8",
+            "inverse-primary": "#ffb1c5",
+            "surface-dim": "#e1d8d9",
+            "secondary": "#ae3123",
+            "on-secondary-fixed": "#410000",
+            "on-secondary-container": "#690000",
+            "on-background": "#1f1b1c",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "on-primary-fixed": "#3f001b",
+            "on-tertiary": "#ffffff",
+            "tertiary": "#3b3236",
+            "outline-variant": "#dcbfc5",
+            "primary-container": "#8e1b4a",
+            "surface-container-highest": "#e9e0e1",
+            "on-surface": "#1f1b1c",
+            "on-surface-variant": "#564146",
+            "on-secondary": "#ffffff",
+            "secondary-fixed-dim": "#ffb4a8",
+            "surface-container-high": "#efe6e7",
+            "primary-fixed-dim": "#ffb1c5",
+            "on-error-container": "#93000a",
+            "secondary-container": "#fc6955",
+            "outline": "#897176",
+            "on-secondary-fixed-variant": "#8c170e",
+            "on-tertiary-fixed": "#21191e",
+            "primary": "#6d0033",
+            "surface": "#fff8f8",
+            "on-primary-fixed-variant": "#881646",
+            "surface-bright": "#fff8f8",
+            "error": "#ba1a1a",
+            "surface-container": "#f5eced",
+            "surface-container-lowest": "#ffffff",
+            "inverse-surface": "#342f30",
+            "error-container": "#ffdad6",
+            "secondary-fixed": "#ffdad4",
+            "surface-tint": "#a8315d",
+            "surface-container-low": "#fbf1f2",
+            "tertiary-container": "#53484d",
+            "tertiary-fixed": "#eedee4",
+            "inverse-on-surface": "#f8eeef",
+            "on-primary": "#ffffff",
+            "on-error": "#ffffff",
+            "on-tertiary-container": "#c6b7bd",
+            "on-primary-container": "#ffa0ba",
+            "surface-variant": "#e9e0e1",
+            "tertiary-fixed-dim": "#d1c3c8"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-3xl": "3rem",
+            "space-sm": "0.5rem",
+            "margin": "1rem",
+            "space-xl": "1.5rem",
+            "space-lg": "1rem",
+            "gutter": "1rem",
+            "space-2xl": "2rem",
+            "space-xs": "0.25rem",
+            "space-md": "0.75rem"
+          },
+          "fontFamily": {
+            "caption": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "body-medium": ["Inter"],
+            "body": ["Inter"],
+            "display": ["Inter"],
+            "title": ["Inter"],
+            "amount-lg": ["Inter"],
+            "label": ["Inter"],
+            "subtitle": ["Inter"]
+          },
+          "fontSize": {
+            "caption": [
+              "13px",
+              { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }
+            ],
+            "amount-lg-mobile": [
+              "32px",
+              { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }
+            ],
+            "body-medium": [
+              "16px",
+              { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }
+            ],
+            "body": [
+              "16px",
+              { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }
+            ],
+            "display": [
+              "32px",
+              { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }
+            ],
+            "title": [
+              "24px",
+              { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }
+            ],
+            "amount-lg": [
+              "36px",
+              { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }
+            ],
+            "label": [
+              "14px",
+              { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }
+            ],
+            "subtitle": [
+              "20px",
+              { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }
+            ]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+    /* Hide scrollbar for horizontal chip container */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased selection:bg-primary-fixed selection:text-on-primary-fixed min-h-screen flex justify-center">
+<!-- Mobile Viewport Container (390px x 844px context scaled) -->
+<div class="w-full max-w-[560px] min-h-screen bg-background flex flex-col relative pb-32">
+<!-- Top App Bar (Warm Dignity Specs) -->
+<header class="sticky top-0 z-40 bg-surface/90 backdrop-blur-md px-margin py-space-sm flex justify-between items-center min-h-[56px] border-b border-outline-variant/40">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Go back" class="w-12 h-12 -ml-2 rounded-full flex items-center justify-center text-on-surface hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<h1 class="font-subtitle text-subtitle text-on-surface tracking-tight">Transaction History</h1>
+</div>
+<div class="flex items-center">
+<button aria-label="Export or download statement" class="w-12 h-12 -mr-2 rounded-full flex items-center justify-center text-primary hover:bg-surface-container active:scale-95 transition-all" title="Download Statement" type="button">
+<span class="material-symbols-outlined text-[24px]">file_download</span>
+</button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 px-margin pt-space-md space-y-space-lg">
+<!-- Search & Filter Controls -->
+<section class="space-y-space-md">
+<!-- Search bar + Filter Trigger Button -->
+<div class="flex items-center gap-space-sm">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-space-md top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px] pointer-events-none">search</span>
+<input class="w-full h-[52px] pl-11 pr-space-md bg-surface-container-lowest border border-outline-variant rounded-xl font-body text-caption text-on-surface placeholder:text-on-surface-variant focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all" placeholder="Search by recipient, service, or ref..." type="text"/>
+</div>
+<button aria-label="Filter transactions" class="relative h-[52px] min-w-[52px] px-space-md bg-surface-container-lowest border border-outline-variant rounded-xl flex items-center justify-center text-on-surface hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[22px]">tune</span>
+<!-- Active Filter Badge -->
+<span class="absolute -top-1.5 -right-1.5 bg-primary-container text-on-primary w-5 h-5 rounded-full font-caption text-[11px] font-bold flex items-center justify-center shadow-sm">
+              2
+            </span>
+</button>
+</div>
+<!-- Filter Chips Row (Horizontal Scroll) -->
+<div class="flex items-center gap-space-xs overflow-x-auto no-scrollbar py-1 -mx-margin px-margin">
+<!-- Active Filter Chip -->
+<button class="whitespace-nowrap px-space-md h-9 rounded-full bg-primary-container text-on-primary font-label text-caption flex items-center gap-1.5 shadow-sm active:scale-95 transition-transform" type="button">
+<span>All Transactions</span>
+</button>
+<!-- Inactive Filter Chips -->
+<button class="whitespace-nowrap px-space-md h-9 rounded-full bg-surface-container-lowest border border-outline-variant text-on-surface-variant font-label text-caption hover:bg-surface-container active:scale-95 transition-all" type="button">
+            Transfers
+          </button>
+<button class="whitespace-nowrap px-space-md h-9 rounded-full bg-surface-container-lowest border border-outline-variant text-on-surface-variant font-label text-caption hover:bg-surface-container active:scale-95 transition-all" type="button">
+            Bills &amp; Utilities
+          </button>
+<button class="whitespace-nowrap px-space-md h-9 rounded-full bg-surface-container-lowest border border-outline-variant text-on-surface-variant font-label text-caption hover:bg-surface-container active:scale-95 transition-all" type="button">
+            Inbound Deposits
+          </button>
+<button class="whitespace-nowrap px-space-md h-9 rounded-full bg-surface-container-lowest border border-outline-variant text-on-surface-variant font-label text-caption hover:bg-surface-container active:scale-95 transition-all" type="button">
+            Cards
+          </button>
+</div>
+<!-- Date Range Selector Pill -->
+<div class="flex items-center justify-between pt-space-xs">
+<button class="inline-flex items-center gap-space-xs px-space-md py-1.5 bg-surface-container border border-outline-variant/60 rounded-lg text-on-surface hover:bg-surface-container-high transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[18px] text-primary">calendar_month</span>
+<span class="font-label text-caption text-on-surface">This Month (Oct 2024)</span>
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">expand_more</span>
+</button>
+<span class="font-caption text-caption text-on-surface-variant">6 Transactions</span>
+</div>
+</section>
+<!-- Financial Summary Bento Banner -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)]">
+<div class="flex items-center justify-between pb-space-md border-b border-outline-variant/40">
+<div class="flex items-center gap-space-xs text-on-surface-variant font-caption text-caption">
+<span class="material-symbols-outlined text-[16px]">account_balance_wallet</span>
+<span>Monthly Cashflow Overview</span>
+</div>
+<span class="font-caption text-[11px] font-medium px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant">
+            Oct 1 – Oct 31
+          </span>
+</div>
+<div class="grid grid-cols-2 gap-space-md pt-space-md">
+<!-- Money In -->
+<div class="flex flex-col space-y-0.5">
+<div class="flex items-center gap-1 text-[13px] text-on-surface-variant font-caption">
+<span class="w-2 h-2 rounded-full bg-[#1b6d2e]"></span>
+<span>Money In</span>
+</div>
+<div class="font-title text-[20px] text-[#1b6d2e] tabular-nums font-bold tracking-tight">
+              +₦385,000.00
+            </div>
+</div>
+<!-- Money Out -->
+<div class="flex flex-col space-y-0.5 border-l border-outline-variant/40 pl-space-md">
+<div class="flex items-center gap-1 text-[13px] text-on-surface-variant font-caption">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span>Money Out</span>
+</div>
+<div class="font-title text-[20px] text-primary-container tabular-nums font-bold tracking-tight">
+              -₦192,500.00
+            </div>
+</div>
+</div>
+</section>
+<!-- Grouped Transaction Activity Stream -->
+<section class="space-y-space-xl">
+<!-- Group 1: Today, 24 Oct 2024 -->
+<div class="space-y-space-xs">
+<div class="sticky top-[56px] z-10 py-1 bg-background/95 backdrop-blur-sm">
+<h2 class="font-label text-caption text-on-surface-variant font-medium">Today, 24 Oct 2024</h2>
+</div>
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] divide-y divide-outline-variant/30">
+<!-- Row 1: Transfer to Amina Yusuf -->
+<a class="flex items-center justify-between p-space-md hover:bg-surface-container-low transition-colors group cursor-pointer" href="#transaction-detail">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary flex-shrink-0 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[20px]">account_balance</span>
+</div>
+<div class="min-w-0">
+<div class="font-body-medium text-body-medium text-on-surface truncate">Transfer to Amina Yusuf</div>
+<div class="font-caption text-caption text-on-surface-variant">11:20 AM • Direct Bank Transfer</div>
+</div>
+</div>
+<div class="text-right flex-shrink-0 ml-space-sm">
+<div class="font-body-medium text-body-medium text-primary tabular-nums font-semibold">-₦25,000.00</div>
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-[#eaf7ed] text-[#1b6d2e] font-caption text-[11px] font-medium mt-0.5">
+<span class="material-symbols-outlined text-[13px]">check_circle</span>
+<span>Successful</span>
+</div>
+</div>
+</a>
+<!-- Row 2: Inbound transfer from Zenith Partner -->
+<a class="flex items-center justify-between p-space-md hover:bg-surface-container-low transition-colors group cursor-pointer" href="#transaction-detail">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="w-10 h-10 rounded-full bg-[#eaf7ed] flex items-center justify-center text-[#1b6d2e] flex-shrink-0 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[20px]">south_west</span>
+</div>
+<div class="min-w-0">
+<div class="font-body-medium text-body-medium text-on-surface truncate">Zenith Partner Limited</div>
+<div class="font-caption text-caption text-on-surface-variant">09:15 AM • Inbound Deposit</div>
+</div>
+</div>
+<div class="text-right flex-shrink-0 ml-space-sm">
+<div class="font-body-medium text-body-medium text-[#1b6d2e] tabular-nums font-semibold">+₦100,000.00</div>
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-[#eaf7ed] text-[#1b6d2e] font-caption text-[11px] font-medium mt-0.5">
+<span class="material-symbols-outlined text-[13px]">check_circle</span>
+<span>Successful</span>
+</div>
+</div>
+</a>
+<!-- Row 3: Ikeja Electric Prepaid -->
+<a class="flex items-center justify-between p-space-md hover:bg-surface-container-low transition-colors group cursor-pointer" href="#transaction-detail">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary flex-shrink-0 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[20px]">bolt</span>
+</div>
+<div class="min-w-0">
+<div class="font-body-medium text-body-medium text-on-surface truncate">Ikeja Electric Prepaid</div>
+<div class="font-caption text-caption text-on-surface-variant">08:30 AM • Token: 4920-1120-4491</div>
+</div>
+</div>
+<div class="text-right flex-shrink-0 ml-space-sm">
+<div class="font-body-medium text-body-medium text-primary tabular-nums font-semibold">-₦10,000.00</div>
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-[#eaf7ed] text-[#1b6d2e] font-caption text-[11px] font-medium mt-0.5">
+<span class="material-symbols-outlined text-[13px]">check_circle</span>
+<span>Successful</span>
+</div>
+</div>
+</a>
+</div>
+</div>
+<!-- Group 2: Yesterday, 23 Oct 2024 -->
+<div class="space-y-space-xs">
+<div class="sticky top-[56px] z-10 py-1 bg-background/95 backdrop-blur-sm">
+<h2 class="font-label text-caption text-on-surface-variant font-medium">Yesterday, 23 Oct 2024</h2>
+</div>
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] divide-y divide-outline-variant/30">
+<!-- Row 4: Kuda Microfinance Bank -->
+<a class="flex items-center justify-between p-space-md hover:bg-surface-container-low transition-colors group cursor-pointer" href="#transaction-detail">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary flex-shrink-0 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[20px]">account_balance</span>
+</div>
+<div class="min-w-0">
+<div class="font-body-medium text-body-medium text-on-surface truncate">Kuda Microfinance Bank</div>
+<div class="font-caption text-caption text-on-surface-variant">04:12 PM • Card Funding</div>
+</div>
+</div>
+<div class="text-right flex-shrink-0 ml-space-sm">
+<div class="font-body-medium text-body-medium text-primary tabular-nums font-semibold">-₦18,500.00</div>
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-[#eaf7ed] text-[#1b6d2e] font-caption text-[11px] font-medium mt-0.5">
+<span class="material-symbols-outlined text-[13px]">check_circle</span>
+<span>Successful</span>
+</div>
+</div>
+</a>
+<!-- Row 5: MTN 50GB Monthly Data (Pending) -->
+<a class="flex items-center justify-between p-space-md hover:bg-surface-container-low transition-colors group cursor-pointer" href="#transaction-detail">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="w-10 h-10 rounded-full bg-[#fdf3e7] flex items-center justify-center text-[#9a5405] flex-shrink-0 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[20px]">wifi_tethering</span>
+</div>
+<div class="min-w-0">
+<div class="font-body-medium text-body-medium text-on-surface truncate">MTN 50GB Monthly Data</div>
+<div class="font-caption text-caption text-on-surface-variant">01:05 PM • 0803 294 8812</div>
+</div>
+</div>
+<div class="text-right flex-shrink-0 ml-space-sm">
+<div class="font-body-medium text-body-medium text-on-surface tabular-nums font-semibold">-₦10,000.00</div>
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-[#fdf3e7] text-[#9a5405] font-caption text-[11px] font-medium mt-0.5">
+<span class="material-symbols-outlined text-[13px]">schedule</span>
+<span>Pending</span>
+</div>
+</div>
+</a>
+</div>
+</div>
+<!-- Group 3: 16 Oct 2024 -->
+<div class="space-y-space-xs">
+<div class="sticky top-[56px] z-10 py-1 bg-background/95 backdrop-blur-sm">
+<h2 class="font-label text-caption text-on-surface-variant font-medium">16 Oct 2024</h2>
+</div>
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)]">
+<!-- Row 6: Transfer to Nneka Grace (Failed with Refund) -->
+<a class="flex items-center justify-between p-space-md hover:bg-surface-container-low transition-colors group cursor-pointer" href="#transaction-detail">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="w-10 h-10 rounded-full bg-error-container flex items-center justify-center text-error flex-shrink-0 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[20px]">error_outline</span>
+</div>
+<div class="min-w-0">
+<div class="font-body-medium text-body-medium text-on-surface truncate">Transfer to Nneka Grace</div>
+<div class="font-caption text-caption text-on-surface-variant">10:02 AM • Auto-Refunded</div>
+</div>
+</div>
+<div class="text-right flex-shrink-0 ml-space-sm">
+<div class="font-body-medium text-body-medium text-error line-through tabular-nums font-semibold">-₦55,000.00</div>
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-error-container text-error font-caption text-[11px] font-medium mt-0.5">
+<span class="material-symbols-outlined text-[13px]">warning</span>
+<span>Failed</span>
+</div>
+</div>
+</a>
+</div>
+</div>
+</section>
+<!-- Bottom Sticky CTA Container (Floating action bar above Nav) -->
+<div class="pt-space-md pb-space-lg">
+<button class="w-full h-[52px] bg-surface-container border border-outline-variant rounded-xl text-primary font-label text-label flex items-center justify-center gap-space-sm hover:bg-surface-container-high active:scale-[0.98] transition-all shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)]" type="button">
+<span class="material-symbols-outlined text-[20px]">description</span>
+<span>Download Statement (PDF / Excel)</span>
+</button>
+</div>
+</main>
+<!-- Shared Bottom Navigation Bar (Mandatory Strict Implementation) -->
+<!-- Destination 2: 'Payments' is ACTIVE -->
+<nav aria-label="Bottom Navigation" class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-margin h-16 max-w-[560px] mx-auto bg-surface-container-lowest border-t border-outline-variant/40 shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)]">
+<!-- Item 1: Home (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#home">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="font-caption text-[12px] font-medium leading-none">Home</span>
+</a>
+<!-- Item 2: Payments (ACTIVE - Current Intent: Transaction History / Payments Ecosystem) -->
+<a class="flex flex-col items-center justify-center text-primary font-semibold min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#payments">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">send</span>
+<span class="font-caption text-[12px] font-semibold leading-none">Payments</span>
+</a>
+<!-- Item 3: Cards (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#cards">
+<span class="material-symbols-outlined text-[24px]">credit_card</span>
+<span class="font-caption text-[12px] font-medium leading-none">Cards</span>
+</a>
+<!-- Item 4: Save & Borrow (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#save-borrow">
+<span class="material-symbols-outlined text-[24px]">savings</span>
+<span class="font-caption text-[12px] font-medium leading-none whitespace-nowrap">Save &amp; Borrow</span>
+</a>
+<!-- Item 5: More (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#more">
+<span class="material-symbols-outlined text-[24px]">more_horiz</span>
+<span class="font-caption text-[12px] font-medium leading-none">More</span>
+</a>
+</nav>
+</div>
+</body></html>

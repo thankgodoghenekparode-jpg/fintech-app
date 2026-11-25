@@ -1,0 +1,18 @@
+flowchart TD
+  a(["Customer hands cash to agent"])
+  b[/"Agent enters customer phone or account and amount"/]
+  c["Name shown; customer confirms identity"]
+  d{"Limits and float OK?"}
+  e["Blocked with reason"]
+  f["Agent confirms with PIN"]
+  g["Debit agent float; credit customer"]
+  h["Receipts to both"]
+  i(["Done"])
+  a --> b
+  b --> c
+  c --> d
+  d -->|no| e
+  d -->|yes| f
+  f --> g
+  g --> h
+  h --> i

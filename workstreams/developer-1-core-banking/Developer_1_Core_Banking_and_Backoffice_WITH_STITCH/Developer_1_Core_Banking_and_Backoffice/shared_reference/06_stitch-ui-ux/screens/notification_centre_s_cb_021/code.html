@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YourApp - Notification Centre</title>
+<!-- Inter font family via Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN with configuration -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary-fixed-dim": "#ffb1c5",
+            "primary-container": "#8e1b4a",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "surface-container-low": "#fbf1f2",
+            "surface": "#fff8f8",
+            "on-primary": "#ffffff",
+            "secondary-fixed-dim": "#ffb4a8",
+            "secondary-fixed": "#ffdad4",
+            "on-secondary-container": "#690000",
+            "surface-variant": "#e9e0e1",
+            "inverse-on-surface": "#f8eeef",
+            "on-background": "#1f1b1c",
+            "on-primary-fixed": "#3f001b",
+            "primary-fixed": "#ffd9e1",
+            "on-primary-container": "#ffa0ba",
+            "outline": "#897176",
+            "surface-container-lowest": "#ffffff",
+            "secondary": "#ae3123",
+            "primary": "#6d0033",
+            "error": "#ba1a1a",
+            "outline-variant": "#dcbfc5",
+            "inverse-primary": "#ffb1c5",
+            "surface-container-highest": "#e9e0e1",
+            "tertiary-fixed": "#eedee4",
+            "surface-container": "#f5eced",
+            "on-tertiary-container": "#c6b7bd",
+            "tertiary-container": "#53484d",
+            "on-tertiary": "#ffffff",
+            "tertiary": "#3b3236",
+            "surface-container-high": "#efe6e7",
+            "on-error": "#ffffff",
+            "error-container": "#ffdad6",
+            "on-primary-fixed-variant": "#881646",
+            "on-tertiary-fixed": "#21191e",
+            "surface-bright": "#fff8f8",
+            "on-surface-variant": "#564146",
+            "surface-tint": "#a8315d",
+            "inverse-surface": "#342f30",
+            "on-error-container": "#93000a",
+            "on-secondary-fixed-variant": "#8c170e",
+            "background": "#fff8f8",
+            "surface-dim": "#e1d8d9",
+            "secondary-container": "#fc6955",
+            "on-surface": "#1f1b1c",
+            "on-secondary-fixed": "#410000",
+            "on-secondary": "#ffffff",
+            "tertiary-fixed-dim": "#d1c3c8"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "1rem",
+            "space-xl": "1.5rem",
+            "margin": "1rem",
+            "space-2xl": "2rem",
+            "space-3xl": "3rem",
+            "space-xs": "0.25rem",
+            "space-md": "0.75rem",
+            "space-sm": "0.5rem",
+            "space-lg": "1rem"
+          },
+          "fontFamily": {
+            "title": ["Inter"],
+            "body-medium": ["Inter"],
+            "display": ["Inter"],
+            "subtitle": ["Inter"],
+            "body": ["Inter"],
+            "amount-lg": ["Inter"],
+            "caption": ["Inter"],
+            "label": ["Inter"],
+            "amount-lg-mobile": ["Inter"]
+          },
+          "fontSize": {
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scroll-hide::-webkit-scrollbar {
+      display: none;
+    }
+    .custom-scroll-hide {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased font-body min-h-screen flex justify-center selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Mobile Viewport Frame (390 x 844 target) -->
+<main class="w-full max-w-[560px] bg-background min-h-screen flex flex-col relative shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08)]">
+<!-- Top Bar with Back, Title, and Action Link -->
+<header class="sticky top-0 z-40 bg-surface/95 backdrop-blur-md px-margin py-space-sm flex items-center justify-between min-h-[56px] border-b border-outline-variant/30">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Go back" class="w-12 h-12 flex items-center justify-center rounded-xl text-on-surface hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<h1 class="font-subtitle text-subtitle text-on-surface tracking-tight font-bold">Notifications</h1>
+</div>
+<button class="text-primary-container font-label text-label hover:underline active:scale-95 transition-transform px-space-xs py-space-sm" type="button">
+        Mark all as read
+      </button>
+</header>
+<!-- Main Content Canvas -->
+<div class="flex-1 flex flex-col px-margin pt-space-md pb-space-3xl">
+<!-- Segmented Filter Control -->
+<nav aria-label="Notification categories" class="p-1 bg-surface-container rounded-xl flex items-center gap-1 mb-space-lg">
+<button class="flex-1 py-2 px-space-sm rounded-lg bg-surface-container-lowest text-primary font-label text-label shadow-sm text-center transition-all duration-200" type="button">
+          All
+        </button>
+<button class="flex-1 py-2 px-space-sm rounded-lg text-on-surface-variant hover:text-on-surface font-label text-label text-center transition-all duration-200" type="button">
+          Transactions
+        </button>
+<button class="flex-1 py-2 px-space-sm rounded-lg text-on-surface-variant hover:text-on-surface font-label text-label text-center transition-all duration-200" type="button">
+          Security &amp; System
+        </button>
+</nav>
+<!-- Section Title & Counter Summary -->
+<div class="flex items-center justify-between mb-space-md px-space-xs">
+<span class="font-label text-label text-on-surface-variant uppercase tracking-wider text-[11px]">Recent Updates</span>
+<span class="font-caption text-caption text-primary-container font-medium bg-primary-fixed/40 px-2 py-0.5 rounded-full">2 Unread</span>
+</div>
+<!-- Bento-informed Notification Feed Stack -->
+<div class="flex flex-col gap-space-md">
+<!-- 1. Transaction Alert (Unread) -->
+<article class="bg-surface-container-lowest rounded-xl p-space-md border border-outline-variant/50 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] hover:border-primary-container/40 transition-all relative overflow-hidden group">
+<!-- Unread indicator coral bar -->
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-secondary-container"></div>
+<div class="flex items-start gap-space-md pl-1">
+<!-- Icon Container -->
+<div class="w-12 h-12 rounded-xl bg-surface-container-low flex items-center justify-center shrink-0 border border-outline-variant/30 text-primary-container">
+<span class="material-symbols-outlined text-[24px]">send</span>
+</div>
+<!-- Content Area -->
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-space-xs mb-1">
+<span class="inline-flex items-center gap-1 text-[12px] font-label font-semibold text-[#1E9E5A]">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                  Successful Transfer
+                </span>
+<span class="font-caption text-caption text-on-surface-variant flex items-center gap-1 shrink-0">
+<span class="w-2 h-2 rounded-full bg-secondary-container inline-block" title="Unread"></span>
+                  10m ago
+                </span>
+</div>
+<h2 class="font-body-medium text-body-medium text-on-surface font-semibold mb-1">
+                ₦25,000 sent to Amina Yusuf
+              </h2>
+<p class="font-caption text-caption text-on-surface-variant leading-relaxed">
+                Your transfer from Daily Checking (••4902) was completed and verified by NIBSS.
+              </p>
+<!-- Transaction Meta pill -->
+<div class="mt-space-sm pt-space-xs border-t border-outline-variant/30 flex items-center justify-between">
+<span class="font-caption text-[11px] text-on-surface-variant">Ref: NIBSS-98234-TF</span>
+<button class="text-primary-container font-label text-[13px] hover:underline flex items-center gap-0.5" type="button">
+                  View receipt <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+<!-- 2. Security Alert (Unread) -->
+<article class="bg-surface-container-lowest rounded-xl p-space-md border border-outline-variant/50 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] hover:border-primary-container/40 transition-all relative overflow-hidden group">
+<!-- Unread indicator coral bar -->
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-secondary-container"></div>
+<div class="flex items-start gap-space-md pl-1">
+<!-- Icon Container -->
+<div class="w-12 h-12 rounded-xl bg-error-container/40 flex items-center justify-center shrink-0 border border-error/20 text-[#C62828]">
+<span class="material-symbols-outlined text-[24px]">shield</span>
+</div>
+<!-- Content Area -->
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-space-xs mb-1">
+<span class="inline-flex items-center gap-1 text-[12px] font-label font-semibold text-[#C62828] bg-error-container/60 px-2 py-0.5 rounded-md">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+                  Security Notice
+                </span>
+<span class="font-caption text-caption text-on-surface-variant flex items-center gap-1 shrink-0">
+<span class="w-2 h-2 rounded-full bg-secondary-container inline-block" title="Unread"></span>
+                  2h ago
+                </span>
+</div>
+<h2 class="font-body-medium text-body-medium text-on-surface font-semibold mb-1">
+                New device login detected
+              </h2>
+<p class="font-caption text-caption text-on-surface-variant leading-relaxed">
+                Samsung Galaxy A54 in Lagos, Nigeria logged into your banking mobile profile.
+              </p>
+<!-- Quick action banner -->
+<div class="mt-space-sm p-2 bg-surface-container-low rounded-lg flex items-center justify-between">
+<span class="font-caption text-[12px] text-on-surface font-medium">Was this not you?</span>
+<button class="px-space-sm py-1 bg-[#ba1a1a] text-on-error rounded-md font-label text-[12px] hover:opacity-90 active:scale-95 transition-all" type="button">
+                  Lock Account
+                </button>
+</div>
+</div>
+</div>
+</article>
+<!-- 3. KYC Update (Read) -->
+<article class="bg-surface-container-lowest rounded-xl p-space-md border border-outline-variant/40 shadow-none hover:border-outline transition-all group">
+<div class="flex items-start gap-space-md">
+<!-- Icon Container -->
+<div class="w-12 h-12 rounded-xl bg-[#E8F5E9] flex items-center justify-center shrink-0 border border-[#C8E6C9] text-[#1E9E5A]">
+<span class="material-symbols-outlined text-[24px]">verified_user</span>
+</div>
+<!-- Content Area -->
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-space-xs mb-1">
+<span class="inline-flex items-center gap-1 text-[12px] font-label font-semibold text-[#1E9E5A] bg-[#E8F5E9] px-2 py-0.5 rounded-md">
+<span class="material-symbols-outlined text-[14px]">check</span>
+                  Tier 2 Verified
+                </span>
+<span class="font-caption text-caption text-on-surface-variant shrink-0">
+                  Yesterday
+                </span>
+</div>
+<h2 class="font-body-medium text-body-medium text-on-surface font-semibold mb-1">
+                Verification completed successfully
+              </h2>
+<p class="font-caption text-caption text-on-surface-variant leading-relaxed">
+                Your National Identity Number (NIN) has been confirmed. Daily transaction limit expanded to ₦1,000,000.
+              </p>
+</div>
+</div>
+</article>
+<!-- 4. Savings Milestone (Read) -->
+<article class="bg-surface-container-lowest rounded-xl p-space-md border border-outline-variant/40 shadow-none hover:border-outline transition-all group">
+<div class="flex items-start gap-space-md">
+<!-- Icon Container -->
+<div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center shrink-0 border border-outline-variant/30 text-primary-container">
+<span class="material-symbols-outlined text-[24px]">savings</span>
+</div>
+<!-- Content Area -->
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-space-xs mb-1">
+<span class="inline-flex items-center gap-1 text-[12px] font-label font-semibold text-[#2563EB] bg-[#EFF6FF] px-2 py-0.5 rounded-md">
+<span class="material-symbols-outlined text-[14px]">flag</span>
+                  Target Goal
+                </span>
+<span class="font-caption text-caption text-on-surface-variant shrink-0">
+                  24 Oct
+                </span>
+</div>
+<h2 class="font-body-medium text-body-medium text-on-surface font-semibold mb-1">
+                ₦10,000 saved into New Laptop target
+              </h2>
+<p class="font-caption text-caption text-on-surface-variant leading-relaxed">
+                Automated monthly stash deposited. You have achieved 65% of your target milestone.
+              </p>
+<!-- Visual Progress bar -->
+<div class="mt-space-sm">
+<div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full rounded-full" style="width: 65%;"></div>
+</div>
+<div class="flex justify-between items-center mt-1 text-[11px] font-caption text-on-surface-variant">
+<span>₦195,000 / ₦300,000</span>
+<span class="font-medium text-primary">65%</span>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- 5. System Notice (Read) -->
+<article class="bg-surface-container-lowest rounded-xl p-space-md border border-outline-variant/40 shadow-none hover:border-outline transition-all group">
+<div class="flex items-start gap-space-md">
+<!-- Icon Container -->
+<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center shrink-0 border border-outline-variant/30 text-on-surface-variant">
+<span class="material-symbols-outlined text-[24px]">build</span>
+</div>
+<!-- Content Area -->
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-space-xs mb-1">
+<span class="inline-flex items-center gap-1 text-[12px] font-label font-semibold text-[#B7791F] bg-[#FEF3C7] px-2 py-0.5 rounded-md">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+                  Maintenance
+                </span>
+<span class="font-caption text-caption text-on-surface-variant shrink-0">
+                  20 Oct
+                </span>
+</div>
+<h2 class="font-body-medium text-body-medium text-on-surface font-semibold mb-1">
+                Scheduled maintenance notice
+              </h2>
+<p class="font-caption text-caption text-on-surface-variant leading-relaxed">
+                Sunday between 02:00 AM - 04:00 AM. Card payments and airtime purchases may experience brief intermittent delays.
+              </p>
+</div>
+</div>
+</article>
+</div>
+<!-- Bottom Action Links & Preferences Container -->
+<footer class="mt-space-2xl pt-space-md flex flex-col items-center gap-space-md">
+<div class="flex items-center justify-center gap-space-lg w-full">
+<button class="flex items-center gap-1 text-on-surface-variant hover:text-error text-label font-label transition-colors py-2 px-3" type="button">
+<span class="material-symbols-outlined text-[18px]">delete_sweep</span>
+            Clear all
+          </button>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<button class="flex items-center gap-1 text-primary-container hover:text-primary text-label font-label transition-colors py-2 px-3" type="button">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+            Notification preferences
+          </button>
+</div>
+<p class="font-caption text-[11px] text-outline text-center">
+          YourApp Nigerian Retail Banking • System Alerts &amp; Security Center
+        </p>
+</footer>
+</div>
+</main>
+</body></html>

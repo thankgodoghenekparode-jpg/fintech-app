@@ -1,0 +1,631 @@
+openapi: 3.0.3
+info:
+  title: Pay Am Small API
+  version: 1.0.0
+  description: Product API. Uses the core conventions (Idempotency-Key, X-Pin-Token,
+    X-Tenant-Id, error format). Amounts in kobo.
+security:
+- bearerAuth: []
+paths:
+  /pas/vendors:
+    post:
+      tags:
+      - Vendors
+      summary: Open a store
+      description: 'Roles: any authenticated customer'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                businessName:
+                  type: string
+                registrationNumber:
+                  type: string
+                ownerIdFileKey:
+                  type: string
+                settlementAccount:
+                  type: string
+              required:
+              - businessName
+              - ownerIdFileKey
+              - settlementAccount
+      responses:
+        '201':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /pas/products:
+    get:
+      tags:
+      - Marketplace
+      summary: Marketplace products
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: q
+        in: query
+        schema:
+          type: string
+      - name: category
+        in: query
+        schema:
+          type: string
+      - name: cursor
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /pas/products/{productId}:
+    get:
+      tags:
+      - Marketplace
+      summary: Product detail
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: productId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /pas/vendor/products:
+    post:
+      tags:
+      - Vendors
+      summary: Create/update product
+      description: 'Roles: Vendor Manager'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                priceKobo:
+                  type: integer
+                  format: int64
+                  description: Amount in kobo
+                stock:
+                  type: integer
+                modes:
+                  type: array
+                  items:
+                    type: string
+                lockDaysMax:
+                  type: integer
+                deliveryDays:
+                  type: integer
+              required:
+              - title
+              - priceKobo
+              - stock
+              - modes
+              - deliveryDays
+      responses:
+        '201':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /pas/plans/quote:
+    post:
+      tags:
+      - Plans
+      summary: Plan summary and terms
+      description: 'Roles: any authenticated customer'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                productIds:
+                  type: array
+                  items:
+                    type: string
+                    format: uuid
+                mode:
+                  type: string
+                  enum:
+                  - PRICE_LOCK
+                  - CREDIT
+                deadline:
+                  type: string
+                  format: date
+                autoSave:
+                  type: object
+                  additionalProperties: true
+              required:
+              - productIds
+              - mode
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /pas/plans:
+    post:
+      tags:
+      - Plans
+      summary: Start a plan (vault or credit)
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                quoteId:
+                  type: string
+                  format: uuid
+                termsVersion:
+                  type: string
+              required:
+              - quoteId
+              - termsVersion
+      responses:
+        '201':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+    get:
+      tags:
+      - Plans
+      summary: My plans
+      description: 'Roles: any authenticated customer'
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /pas/plans/{planId}:
+    get:
+      tags:
+      - Plans
+      summary: Plan detail
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: planId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /pas/plans/{planId}/topups:
+    post:
+      tags:
+      - Plans
+      summary: Add money to vault
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: planId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amountKobo:
+                  type: integer
+                  format: int64
+                  description: Amount in kobo
+              required:
+              - amountKobo
+      responses:
+        '201':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /pas/plans/{planId}/auto-debit:
+    put:
+      tags:
+      - Plans
+      summary: Set auto-debit (consent)
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: planId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                enabled:
+                  type: boolean
+                frequency:
+                  type: string
+                amountKobo:
+                  type: integer
+                  format: int64
+                  description: Amount in kobo
+              required:
+              - enabled
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /pas/plans/{planId}/withdrawal:
+    post:
+      tags:
+      - Plans
+      summary: Early withdrawal (quote then confirm)
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: planId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                confirm:
+                  type: boolean
+              required:
+              - confirm
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /pas/plans/{planId}/deadline-decision:
+    post:
+      tags:
+      - Plans
+      summary: Extend or refund at deadline
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: planId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                decision:
+                  type: string
+                  enum:
+                  - EXTEND
+                  - REFUND
+              required:
+              - decision
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /pas/plans/{planId}/repayments:
+    post:
+      tags:
+      - Plans
+      summary: Repay credit installment
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: planId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amountKobo:
+                  type: integer
+                  format: int64
+                  description: Amount in kobo
+              required:
+              - amountKobo
+      responses:
+        '201':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /pas/orders/{orderId}:
+    get:
+      tags:
+      - Orders
+      summary: Order tracking and delivery code
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: orderId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /pas/vendor/orders/{orderId}/delivered:
+    post:
+      tags:
+      - Orders
+      summary: Confirm delivery with code
+      description: 'Roles: Order handler'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: orderId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                deliveryCode:
+                  type: string
+                proofFileKey:
+                  type: string
+              required:
+              - deliveryCode
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /pas/vendor/plans:
+    get:
+      tags:
+      - Vendors
+      summary: Vendor view of plans and buyers
+      description: 'Roles: Vendor Manager'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /pas/vendor/credit-requests/{id}/decision:
+    post:
+      tags:
+      - Vendors
+      summary: Accept or decline a credit request
+      description: 'Roles: Vendor Manager'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                decision:
+                  type: string
+                  enum:
+                  - ACCEPT
+                  - DECLINE
+                reason:
+                  type: string
+              required:
+              - decision
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /pas/vendor/payouts:
+    get:
+      tags:
+      - Vendors
+      summary: Payouts and holdback
+      description: 'Roles: Vendor Finance'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /pas/orders/{orderId}/report:
+    post:
+      tags:
+      - Orders
+      summary: Report an order problem
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: orderId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reason:
+                  type: string
+                description:
+                  type: string
+              required:
+              - reason
+              - description
+      responses:
+        '201':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  parameters:
+    IdempotencyKey:
+      name: Idempotency-Key
+      in: header
+      required: true
+      schema:
+        type: string
+        format: uuid
+    PinToken:
+      name: X-Pin-Token
+      in: header
+      required: true
+      schema:
+        type: string
+  responses:
+    Error:
+      description: Error (see core ERROR_CODES.md)
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+              details:
+                type: object
+              requestId:
+                type: string

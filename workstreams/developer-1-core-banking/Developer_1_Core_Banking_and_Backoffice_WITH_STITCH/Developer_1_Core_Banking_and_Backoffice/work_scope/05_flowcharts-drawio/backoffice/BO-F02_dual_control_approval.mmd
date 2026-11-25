@@ -1,0 +1,15 @@
+flowchart TD
+  a(["Staff requests action with reason and evidence"])
+  b["Approval request created; requester cannot approve"]
+  c["Authorised approver reviews"]
+  d{"Approve?"}
+  e["Execute action (postings or config version)"]
+  f["Reject with reason; notify requester"]
+  g(["Audit logged"])
+  a --> b
+  b --> c
+  c --> d
+  d -->|yes| e
+  d -->|no| f
+  e --> g
+  f --> g

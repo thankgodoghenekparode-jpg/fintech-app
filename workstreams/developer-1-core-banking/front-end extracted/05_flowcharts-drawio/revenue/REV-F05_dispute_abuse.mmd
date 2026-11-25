@@ -1,0 +1,20 @@
+flowchart TD
+  a(["Payer taps This isn't mine or Report abuse"])
+  b["Create case; notify collector (dispute) or staff (abuse)"]
+  c{"Type"}
+  d["Collector responds with basis for the charge"]
+  e["Staff review"]
+  f{"Valid?"}
+  g["Cancel bill or keep with explanation"]
+  h["Suspend collector; refund affected payers if needed"]
+  i(["Closed"])
+  a --> b
+  b --> c
+  c -->|dispute| d
+  c -->|abuse| e
+  d --> f
+  e --> f
+  f -->|charge invalid / dispute| g
+  f -->|abuse confirmed| h
+  g --> i
+  h --> i

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YourApp - Biometric KYC Verification</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config verbatim -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary": "#b0c6ff",
+            "tertiary-container": "#6a92ee",
+            "secondary-fixed-dim": "#ffb4a8",
+            "surface": "#151314",
+            "outline-variant": "#544247",
+            "on-surface": "#e7e1e2",
+            "on-primary": "#620735",
+            "on-primary-container": "#5d0331",
+            "surface-container-low": "#1d1b1c",
+            "on-secondary-fixed-variant": "#7f291e",
+            "on-tertiary": "#002d6f",
+            "on-primary-fixed-variant": "#7f234b",
+            "on-surface-variant": "#dac0c6",
+            "on-error-container": "#ffdad6",
+            "background": "#151314",
+            "primary-container": "#e0709a",
+            "secondary": "#ffb4a8",
+            "surface-container-highest": "#373435",
+            "inverse-on-surface": "#323031",
+            "primary-fixed": "#ffd9e3",
+            "on-tertiary-fixed": "#001945",
+            "tertiary-fixed": "#d9e2ff",
+            "primary": "#ffb0ca",
+            "on-tertiary-container": "#002a69",
+            "on-primary-fixed": "#3e001f",
+            "surface-variant": "#373435",
+            "surface-container-high": "#2c292a",
+            "surface-container": "#211f20",
+            "outline": "#a28b91",
+            "secondary-container": "#822c20",
+            "error-container": "#93000a",
+            "on-secondary": "#61130a",
+            "surface-tint": "#ffb0ca",
+            "on-tertiary-fixed-variant": "#06429a",
+            "error": "#ffb4ab",
+            "inverse-surface": "#e7e1e2",
+            "surface-bright": "#3b3839",
+            "on-secondary-fixed": "#410000",
+            "secondary-fixed": "#ffdad4",
+            "primary-fixed-dim": "#ffb0ca",
+            "surface-dim": "#151314",
+            "surface-container-lowest": "#100e0f",
+            "on-secondary-container": "#ff9f90",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "on-error": "#690005",
+            "inverse-primary": "#9e3b63",
+            "on-background": "#e7e1e2"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "space-xs": "0.25rem",
+            "margin": "1rem",
+            "space-xl": "2rem",
+            "gutter-mobile": "0.75rem",
+            "space-md": "1rem",
+            "margin-mobile": "1rem",
+            "space-lg": "1.5rem",
+            "gutter": "1rem"
+          },
+          "fontFamily": {
+            "label-md": ["Inter"],
+            "display-currency": ["Inter"],
+            "body-md": ["Inter"],
+            "body-lg": ["Inter"],
+            "label-sm": ["Inter"],
+            "label-lg": ["Inter"],
+            "headline-md": ["Inter"],
+            "headline-sm": ["Inter"],
+            "title-currency": ["Inter"],
+            "headline-lg": ["Inter"]
+          },
+          "fontSize": {
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "label-lg": ["15px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "title-currency": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    @keyframes pulse-ring {
+      0% {
+        transform: scale(0.98);
+        opacity: 0.7;
+      }
+      50% {
+        transform: scale(1.02);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(0.98);
+        opacity: 0.7;
+      }
+    }
+    .animate-oval-pulse {
+      animation: pulse-ring 3s ease-in-out infinite;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-lowest text-on-surface antialiased min-h-screen flex justify-center selection:bg-primary-container selection:text-surface-container-lowest">
+<!-- Mobile Viewport Container (390px base width, safe expansion max 560px) -->
+<main class="w-full max-w-[390px] min-h-screen bg-surface-container-lowest flex flex-col justify-between relative shadow-2xl">
+<!-- Top Content Area -->
+<div class="w-full flex flex-col">
+<!-- Top Bar: Task Focused Navigation (Back, Step Pill, Help) -->
+<header class="flex items-center justify-between px-margin py-space-sm min-h-[56px] w-full">
+<!-- Back Navigation Button (52px ergonomic standard) -->
+<button aria-label="Go Back" class="w-[44px] h-[44px] flex items-center justify-center rounded-xl bg-surface-container-low text-on-surface border border-surface-variant hover:bg-surface-container-high transition-colors active:scale-95 duration-150" type="button">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<!-- Step Indicator Pill -->
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container border border-surface-variant">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-on-surface tracking-wider uppercase">Biometric Check</span>
+</div>
+<!-- Help / Assistance Trigger -->
+<button aria-label="Support and instructions" class="w-[44px] h-[44px] flex items-center justify-center rounded-xl bg-surface-container-low text-on-surface-variant border border-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors active:scale-95 duration-150" type="button">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+</header>
+<!-- Headline and Narrative Context -->
+<section class="px-margin pt-space-sm pb-space-xs text-center flex flex-col items-center">
+<h1 class="font-headline-md text-headline-md text-on-surface font-semibold tracking-tight">
+          Take a quick video selfie
+        </h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1.5 max-w-[320px]">
+          We will match your face with your official BVN/NIN identity record.
+        </p>
+</section>
+<!-- Central Viewfinder Oval Section -->
+<section class="relative w-full px-margin py-space-sm flex flex-col items-center justify-center">
+<!-- Glow Backdrop -->
+<div class="absolute w-56 h-64 bg-primary-container/10 rounded-full blur-2xl pointer-events-none"></div>
+<!-- Viewfinder Outer Target Frame -->
+<div class="relative w-[210px] h-[270px] rounded-[105px] border-2 border-dashed border-primary-container bg-surface-container-low/80 flex flex-col items-center justify-center p-3 animate-oval-pulse shadow-[0_0_24px_rgba(224,112,154,0.18)]">
+<!-- Inner Precision Guide Ring -->
+<div class="w-full h-full rounded-[95px] border border-outline-variant/30 flex flex-col items-center justify-center relative overflow-hidden bg-surface/60">
+<!-- Face Outline Silhouette Graphic via CSS & SVG -->
+<div class="relative w-28 h-36 flex flex-col items-center justify-center text-outline/50">
+<!-- Stylized Vector Head Silhouette -->
+<svg class="w-full h-full text-on-surface-variant/40" fill="none" viewbox="0 0 100 130" xmlns="http://www.w3.org/2000/svg">
+<path class="text-primary-container/70" d="M50 10C30 10 20 28 20 54C20 80 34 100 50 100C66 100 80 80 80 54C80 28 70 10 50 10Z" stroke="currentColor" stroke-dasharray="4 4" stroke-linecap="round" stroke-width="2.5"></path>
+<path class="text-outline/40" d="M12 126C12 110 26 104 50 104C74 104 88 110 88 126" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+<!-- Eye-level alignment notches -->
+<line class="text-primary-container/80" stroke="currentColor" stroke-linecap="round" stroke-width="2" x1="14" x2="26" y1="52" y2="52"></line>
+<line class="text-primary-container/80" stroke="currentColor" stroke-linecap="round" stroke-width="2" x1="74" x2="86" y1="52" y2="52"></line>
+</svg>
+<!-- Central Sensor Scanning Line Indicator -->
+<div class="absolute inset-x-0 top-1/2 -translate-y-1/2 flex items-center justify-center">
+<div class="w-8 h-[2px] bg-primary-container rounded-full shadow-[0_0_8px_#e0709a]"></div>
+</div>
+</div>
+<!-- Viewfinder Corner Alignment Brackets -->
+<div class="absolute top-4 left-4 w-3 h-3 border-t-2 border-l-2 border-primary-container/60 rounded-tl-sm"></div>
+<div class="absolute top-4 right-4 w-3 h-3 border-t-2 border-r-2 border-primary-container/60 rounded-tr-sm"></div>
+<div class="absolute bottom-4 left-4 w-3 h-3 border-b-2 border-l-2 border-primary-container/60 rounded-bl-sm"></div>
+<div class="absolute bottom-4 right-4 w-3 h-3 border-b-2 border-r-2 border-primary-container/60 rounded-br-sm"></div>
+</div>
+</div>
+<!-- Real-Time Guidance Chip below Viewfinder -->
+<div class="mt-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container border border-surface-variant shadow-lg z-10">
+<span class="material-symbols-outlined text-primary-container text-body-lg" data-icon="light_mode">light_mode</span>
+<span class="font-label-sm text-label-sm text-on-surface">Position your face inside the circle • Good lighting</span>
+</div>
+</section>
+<!-- Verification Guidelines Row / Bento Cards -->
+<section aria-label="Preparation steps" class="px-margin mt-1 w-full">
+<div class="grid grid-cols-3 gap-2">
+<!-- Guideline 1 -->
+<div class="bg-surface-container-low border border-surface-variant rounded-xl p-2.5 flex flex-col items-center text-center justify-center min-h-[76px] transition-all hover:border-outline">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface mb-1.5">
+<span class="material-symbols-outlined text-[18px]" data-icon="visibility_off">visibility_off</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface leading-tight">No glasses<br/>or hats</span>
+</div>
+<!-- Guideline 2 -->
+<div class="bg-surface-container-low border border-surface-variant rounded-xl p-2.5 flex flex-col items-center text-center justify-center min-h-[76px] transition-all hover:border-outline">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface mb-1.5">
+<span class="material-symbols-outlined text-[18px]" data-icon="wb_sunny">wb_sunny</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface leading-tight">Face a light<br/>source</span>
+</div>
+<!-- Guideline 3 -->
+<div class="bg-surface-container-low border border-surface-variant rounded-xl p-2.5 flex flex-col items-center text-center justify-center min-h-[76px] transition-all hover:border-outline">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface mb-1.5">
+<span class="material-symbols-outlined text-[18px]" data-icon="stay_current_portrait">stay_current_portrait</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface leading-tight">Hold device<br/>at eye level</span>
+</div>
+</div>
+</section>
+</div>
+<!-- Bottom Interactive Standard Section (Privacy Badge + 52px CTA) -->
+<footer class="w-full px-margin pb-6 pt-3 flex flex-col items-center bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest to-transparent">
+<!-- Privacy & Compliance Guarantee Badge -->
+<div class="flex items-center gap-2 mb-3.5 px-3 py-1.5 rounded-lg bg-surface-container-low/70 border border-surface-variant/50 max-w-[340px]">
+<span class="material-symbols-outlined text-primary-container text-body-md shrink-0" data-icon="lock">lock</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant text-center">
+          Biometric data encrypted & stored in accordance with NDPR guidelines
+        </span>
+</div>
+<!-- Primary Action CTA (52px Touch Standard, Primary #E0709A) -->
+<button class="w-full h-[52px] rounded-xl bg-primary-container hover:bg-primary-container/90 active:scale-[0.98] transition-all duration-150 flex items-center justify-center gap-2 shadow-lg shadow-primary-container/20" type="button">
+<span class="material-symbols-outlined text-surface-container-lowest font-semibold" data-icon="photo_camera">photo_camera</span>
+<span class="font-label-lg text-label-lg text-surface-container-lowest font-semibold tracking-wide">
+          I'm Ready, Start Camera
+        </span>
+</button>
+<!-- Subtext / Safe area reassurance spacer -->
+<p class="font-label-sm text-label-sm text-on-surface-variant/70 mt-2.5">
+        Verification takes less than 30 seconds
+      </p>
+</footer>
+</main>
+<!-- Lightweight Micro-Interaction Script for Active Guidance feedback -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const ctaBtn = document.querySelector('button.bg-primary-container');
+      if (ctaBtn) {
+        ctaBtn.addEventListener('click', () => {
+          ctaBtn.classList.add('opacity-90');
+          ctaBtn.innerHTML = `
+            <span class="material-symbols-outlined animate-spin text-surface-container-lowest" data-icon="progress_activity">progress_activity</span>
+            <span class="font-label-lg text-label-lg text-surface-container-lowest font-semibold">Initializing Sensor...</span>
+          `;
+          setTimeout(() => {
+            ctaBtn.innerHTML = `
+              <span class="material-symbols-outlined text-surface-container-lowest font-semibold" data-icon="videocam">videocam</span>
+              <span class="font-label-lg text-label-lg text-surface-container-lowest font-semibold">Center Your Face</span>
+            `;
+          }, 1200);
+        });
+      }
+    });
+  </script>
+</body></html>

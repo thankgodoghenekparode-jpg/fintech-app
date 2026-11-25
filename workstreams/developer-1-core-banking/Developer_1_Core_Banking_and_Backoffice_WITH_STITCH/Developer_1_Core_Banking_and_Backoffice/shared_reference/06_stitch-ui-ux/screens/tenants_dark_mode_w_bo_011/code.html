@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tenants (Dark Mode) - Back-Office Banking Console | YourApp Credit Ops</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-error-container": "#ffdad6",
+            "tertiary-fixed": "#d9e2ff",
+            "background": "#151314",
+            "surface-tint": "#ffb0ca",
+            "error": "#ffb4ab",
+            "surface": "#151314",
+            "inverse-primary": "#9e3b63",
+            "on-secondary-fixed": "#410000",
+            "primary": "#ffb0ca",
+            "secondary": "#ffb4a8",
+            "on-tertiary-container": "#002a69",
+            "on-background": "#e7e1e2",
+            "tertiary-container": "#6a92ee",
+            "outline-variant": "#544247",
+            "outline": "#a28b91",
+            "on-surface-variant": "#dac0c6",
+            "on-error": "#690005",
+            "tertiary": "#b0c6ff",
+            "on-secondary": "#61130a",
+            "secondary-fixed-dim": "#ffb4a8",
+            "surface-container": "#211f20",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "on-secondary-container": "#ff9f90",
+            "surface-container-lowest": "#100e0f",
+            "on-primary-fixed-variant": "#7f234b",
+            "on-tertiary-fixed": "#001945",
+            "primary-container": "#e0709a",
+            "error-container": "#93000a",
+            "surface-bright": "#3b3839",
+            "surface-container-highest": "#373435",
+            "primary-fixed": "#ffd9e3",
+            "primary-fixed-dim": "#ffb0ca",
+            "on-primary": "#620735",
+            "on-tertiary": "#002d6f",
+            "secondary-container": "#822c20",
+            "on-secondary-fixed-variant": "#7f291e",
+            "on-primary-fixed": "#3e001f",
+            "on-surface": "#e7e1e2",
+            "surface-container-low": "#1d1b1c",
+            "inverse-surface": "#e7e1e2",
+            "secondary-fixed": "#ffdad4",
+            "inverse-on-surface": "#323031",
+            "on-primary-container": "#5d0331",
+            "surface-dim": "#151314",
+            "surface-container-high": "#2c292a",
+            "on-tertiary-fixed-variant": "#06429a",
+            "surface-variant": "#373435"
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          spacing: {
+            "space-md": "1rem",
+            "space-sm": "0.5rem",
+            "space-xs": "0.25rem",
+            "margin": "1rem",
+            "space-lg": "1.5rem",
+            "space-xl": "2rem",
+            "gutter-mobile": "0.75rem",
+            "margin-mobile": "1rem",
+            "gutter": "1rem"
+          },
+          fontFamily: {
+            "body-lg": ["Inter"],
+            "label-lg": ["Inter"],
+            "label-md": ["Inter"],
+            "headline-lg": ["Inter"],
+            "headline-sm": ["Inter"],
+            "display-currency": ["Inter"],
+            "label-sm": ["Inter"],
+            "headline-md": ["Inter"],
+            "title-currency": ["Inter"],
+            "body-md": ["Inter"]
+          },
+          fontSize: {
+            "body-lg": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+            "label-lg": ["15px", { lineHeight: "20px", fontWeight: "600" }],
+            "label-md": ["13px", { lineHeight: "18px", fontWeight: "500" }],
+            "headline-lg": ["28px", { lineHeight: "34px", letterSpacing: "-0.01em", fontWeight: "700" }],
+            "headline-sm": ["18px", { lineHeight: "24px", fontWeight: "600" }],
+            "display-currency": ["36px", { lineHeight: "44px", letterSpacing: "-0.02em", fontWeight: "700" }],
+            "label-sm": ["11px", { lineHeight: "14px", letterSpacing: "0.02em", fontWeight: "500" }],
+            "headline-md": ["22px", { lineHeight: "28px", letterSpacing: "-0.01em", fontWeight: "600" }],
+            "title-currency": ["20px", { lineHeight: "26px", letterSpacing: "-0.01em", fontWeight: "600" }],
+            "body-md": ["14px", { lineHeight: "20px", fontWeight: "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .font-tabular {
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen overflow-x-hidden">
+<!-- Docked SideNavBar -->
+<aside class="fixed left-0 top-0 h-full w-72 flex flex-col justify-between py-space-xl px-space-lg overflow-y-auto bg-surface-container-lowest dark:bg-surface-container-lowest border-r border-surface-variant dark:border-outline-variant z-30 shadow-sm dark:shadow-none transition-all duration-150 ease-in-out">
+<div class="flex flex-col gap-space-lg">
+<!-- Institutional Crest & Header -->
+<div class="flex items-center gap-space-sm px-space-xs pb-space-sm border-b border-surface-variant/40">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high border border-outline-variant flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-primary-container" data-icon="account_balance">account_balance</span>
+</div>
+<div class="flex flex-col">
+<span class="text-subtitle font-subtitle text-primary dark:text-inverse-primary tracking-tight font-headline-sm text-headline-sm">YourApp Credit Ops</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Enterprise Portal</span>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav aria-label="Main Navigation" class="flex flex-col gap-1.5">
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant dark:text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant dark:text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="pending_actions">pending_actions</span>
+<span>Applications Queue</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant dark:text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span>Credit Portfolio &amp; Collections</span>
+</a>
+<!-- Active: Tenant Management & Multi-Tenant Registry -->
+<a aria-current="page" class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg bg-surface-container-low dark:bg-surface-container text-primary dark:text-inverse-primary font-label-md text-label-md border-l-4 border-primary-container" href="#">
+<span class="material-symbols-outlined text-primary-container" data-icon="corporate_fare" style="font-variation-settings: 'FILL' 1;">corporate_fare</span>
+<span class="font-label-lg text-label-lg text-on-surface">Tenant Management</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant dark:text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="tune">tune</span>
+<span>Product Configuration</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant dark:text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="handshake">handshake</span>
+<span>Partner Settlement</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant dark:text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span>Audit Log</span>
+</a>
+</nav>
+</div>
+<!-- SideNavBar Footer -->
+<div class="flex flex-col gap-2 pt-space-md border-t border-surface-variant/40">
+<div class="px-space-md py-2 rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary-fixed"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Core Banking: Online</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline font-tabular">v2.9.4</span>
+</div>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant dark:text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="admin_panel_settings">admin_panel_settings</span>
+<span>Security &amp; Settings</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant dark:text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span>Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- Sticky TopNavBar -->
+<header class="sticky top-0 right-0 h-16 ml-72 flex items-center justify-between px-space-xl bg-surface-container-lowest border-b border-surface-variant z-20">
+<div class="flex items-center gap-space-md">
+<!-- Breadcrumbs -->
+<nav aria-label="Breadcrumb" class="flex items-center gap-2 font-label-md text-label-md">
+<span class="text-on-surface-variant">Operations</span>
+<span class="material-symbols-outlined text-outline text-sm" data-icon="chevron_right">chevron_right</span>
+<span class="text-on-surface-variant">Organization Registry</span>
+<span class="material-symbols-outlined text-outline text-sm" data-icon="chevron_right">chevron_right</span>
+<span class="text-on-surface font-semibold">Tenant Management</span>
+</nav>
+<!-- Separator -->
+<span class="h-4 w-px bg-outline-variant"></span>
+<!-- Global tenant count badge -->
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container border border-outline-variant text-primary-fixed">
+<span class="material-symbols-outlined text-xs text-primary-container" data-icon="domain_verification">domain_verification</span>
+<span class="font-label-sm text-label-sm font-tabular">1,428 Registered Entities</span>
+</div>
+</div>
+<!-- Trailing Actions & Officer Profile -->
+<div class="flex items-center gap-space-md">
+<!-- Branch Context indicator -->
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-container-low border border-outline-variant">
+<span class="material-symbols-outlined text-on-surface-variant text-base" data-icon="store">store</span>
+<span class="font-label-sm text-label-sm text-on-surface font-medium">Lagos Island Main Branch (012)</span>
+</div>
+<!-- Trailing Action Buttons -->
+<div class="flex items-center gap-1">
+<button class="w-10 h-10 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface flex items-center justify-center transition-colors relative" title="Notifications">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-primary-container ring-2 ring-surface-container-lowest"></span>
+</button>
+<button class="w-10 h-10 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface flex items-center justify-center transition-colors" title="Support &amp; Docs">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+</div>
+<!-- Dual Authorization Badge Action -->
+<button class="h-9 px-3.5 rounded-lg bg-surface-container-high border border-outline-variant hover:border-primary-container text-on-surface flex items-center gap-2 font-label-md text-label-md transition-colors">
+<span class="w-2 h-2 rounded-full bg-secondary-fixed animate-pulse"></span>
+<span>Dual Authorization</span>
+<span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-primary-container text-on-primary font-tabular">3 Req</span>
+</button>
+<!-- Profile -->
+<div class="flex items-center gap-2.5 pl-2 border-l border-outline-variant">
+<div class="w-9 h-9 rounded-full bg-surface-container-high border border-outline-variant flex items-center justify-center text-primary-fixed font-semibold font-label-md text-label-md">
+          OA
+        </div>
+<div class="flex flex-col text-left">
+<span class="font-label-md text-label-md text-on-surface leading-tight font-medium">Officer Adeleke</span>
+<span class="font-label-sm text-label-sm text-outline leading-tight">Senior Registry Mgr</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Viewport Canvas (1440px desktop with 72w (18rem) SideNav margin) -->
+<main class="ml-72 flex flex-row min-h-[calc(100vh-4rem)] bg-surface">
+<!-- Left / Center Workspace Content Area -->
+<div class="flex-1 min-w-0 p-space-xl flex flex-col gap-space-lg">
+<!-- Top Section Header -->
+<div class="flex items-center justify-between">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-background tracking-tight">Tenant Management &amp; Institutional Registry</h1>
+<p class="font-body-md text-body-md text-outline">Multi-tenant provisioning, statutory documentation status, dedicated escrow vault balances, and regulatory oversight.</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="h-[52px] px-space-md rounded-xl bg-surface-container border border-outline-variant hover:bg-surface-container-high text-on-surface flex items-center gap-2 font-label-lg text-label-lg transition-colors">
+<span class="material-symbols-outlined text-outline" data-icon="download">download</span>
+<span>Export Registry (CSV)</span>
+</button>
+<button class="h-[52px] px-space-lg rounded-xl bg-primary-container text-on-primary hover:opacity-95 active:scale-[0.99] flex items-center gap-2 font-label-lg text-label-lg shadow-sm transition-all">
+<span class="material-symbols-outlined" data-icon="add_business">add_business</span>
+<span>+ Register &amp; Onboard New Tenant</span>
+</button>
+</div>
+</div>
+<!-- Top KPI Summary Cards (4 Columns) -->
+<section aria-label="Tenant Registry Metrics" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-space-md">
+<!-- KPI 1: Active Tenants -->
+<div class="p-space-lg rounded-xl bg-surface-container-low border border-outline-variant flex flex-col justify-between hover:border-outline transition-colors">
+<div class="flex items-start justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant font-medium">Active Institutional Tenants</span>
+<span class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-xl" data-icon="corporate_fare">corporate_fare</span>
+</span>
+</div>
+<div class="mt-3">
+<div class="font-display-currency text-display-currency text-on-surface font-tabular">1,428</div>
+<div class="mt-1 font-body-md text-body-md text-outline">Co-ops, Merchants, Collectors, Ajo Circles</div>
+</div>
+<div class="mt-3 pt-3 border-t border-surface-variant/40 flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-secondary-fixed flex items-center gap-1 font-tabular">
+<span class="material-symbols-outlined text-xs" data-icon="trending_up">trending_up</span> +32 this month
+            </span>
+<span class="text-outline">98.2% Active Rate</span>
+</div>
+</div>
+<!-- KPI 2: Total Escrow & Savings Holdings -->
+<div class="p-space-lg rounded-xl bg-surface-container-low border border-outline-variant flex flex-col justify-between hover:border-outline transition-colors">
+<div class="flex items-start justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant font-medium">Total Tenant Escrow &amp; Savings</span>
+<span class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center text-secondary-fixed">
+<span class="material-symbols-outlined text-xl" data-icon="account_balance_wallet">account_balance_wallet</span>
+</span>
+</div>
+<div class="mt-3">
+<div class="font-display-currency text-display-currency text-on-surface font-tabular flex items-baseline">
+<span class="text-primary-container mr-1 text-2xl">₦</span>384,500,000<span class="text-base text-outline">.00</span>
+</div>
+<div class="mt-1 font-body-md text-body-md text-outline">Custodial accounts unencumbered</div>
+</div>
+<div class="mt-3 pt-3 border-t border-surface-variant/40 flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-on-surface-variant">Lien Reserve: <span class="font-tabular font-semibold text-on-surface">₦42.1M</span></span>
+<span class="text-outline">NDIC Insured</span>
+</div>
+</div>
+<!-- KPI 3: Pending Statutory Verifications -->
+<div class="p-space-lg rounded-xl bg-surface-container-low border border-outline-variant flex flex-col justify-between hover:border-outline transition-colors">
+<div class="flex items-start justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant font-medium">Pending Statutory Verifications</span>
+<span class="w-9 h-9 rounded-lg bg-secondary-container/40 flex items-center justify-center text-secondary-fixed-dim">
+<span class="material-symbols-outlined text-xl" data-icon="gavel">gavel</span>
+</span>
+</div>
+<div class="mt-3">
+<div class="font-display-currency text-display-currency text-on-surface font-tabular text-secondary-fixed-dim">12</div>
+<div class="mt-1 font-body-md text-body-md text-outline">CAC, State Co-op Ministry &amp; Tax reviews</div>
+</div>
+<div class="mt-3 pt-3 border-t border-surface-variant/40 flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-secondary-fixed-dim flex items-center gap-1">
+<span class="material-symbols-outlined text-xs" data-icon="schedule">schedule</span> 4 Expiring &lt; 48 hrs
+            </span>
+<a class="text-primary hover:underline font-medium" href="#">Review Queue →</a>
+</div>
+</div>
+<!-- KPI 4: Restricted / Suspended Tenants -->
+<div class="p-space-lg rounded-xl bg-surface-container-low border border-outline-variant flex flex-col justify-between hover:border-outline transition-colors">
+<div class="flex items-start justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant font-medium">Restricted / Suspended Tenants</span>
+<span class="w-9 h-9 rounded-lg bg-error-container/30 flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-xl" data-icon="block">block</span>
+</span>
+</div>
+<div class="mt-3">
+<div class="font-display-currency text-display-currency text-error font-tabular">3</div>
+<div class="mt-1 font-body-md text-body-md text-outline">Under AML/Sanctions compliance review</div>
+</div>
+<div class="mt-3 pt-3 border-t border-surface-variant/40 flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-error flex items-center gap-1 font-tabular">
+<span class="material-symbols-outlined text-xs" data-icon="warning">warning</span> NFIU Escalation (1)
+            </span>
+<span class="text-outline">Vaults Frozen</span>
+</div>
+</div>
+</section>
+<!-- Universal Filter & Search Bar Section -->
+<section class="rounded-xl bg-surface-container-low border border-outline-variant p-4 flex flex-col gap-4">
+<!-- Top row: Search input + Status Filter + Category Selectors -->
+<div class="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3">
+<!-- Search input -->
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input class="w-full h-[52px] pl-11 pr-4 rounded-xl bg-surface-container border border-outline-variant text-on-surface placeholder:text-outline font-body-md text-body-md focus:outline-none focus:border-primary-container transition-colors" placeholder="Search tenant name, registration number (RC/RCS), admin email or phone..." type="text" value=""/>
+</div>
+<!-- Secondary Filters Row -->
+<div class="flex items-center gap-3">
+<!-- Status dropdown -->
+<div class="relative">
+<select class="h-[52px] px-4 pr-10 rounded-xl bg-surface-container border border-outline-variant text-on-surface font-label-md text-label-md appearance-none focus:outline-none focus:border-primary-container cursor-pointer">
+<option selected="">Status: All</option>
+<option>Verified &amp; Active</option>
+<option>Pending Verification</option>
+<option>Restricted</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline pointer-events-none text-sm" data-icon="expand_more">expand_more</span>
+</div>
+<!-- Compliance Tier dropdown -->
+<div class="relative">
+<select class="h-[52px] px-4 pr-10 rounded-xl bg-surface-container border border-outline-variant text-on-surface font-label-md text-label-md appearance-none focus:outline-none focus:border-primary-container cursor-pointer">
+<option selected="">Compliance Level: All</option>
+<option>Tier 3 Ministry Vetted</option>
+<option>CAC Verified</option>
+<option>Statutory Govt Board</option>
+<option>Safeguards Only</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline pointer-events-none text-sm" data-icon="expand_more">expand_more</span>
+</div>
+<!-- Reset Filters -->
+<button class="h-[52px] w-[52px] rounded-xl bg-surface-container border border-outline-variant hover:bg-surface-container-high text-outline hover:text-on-surface flex items-center justify-center transition-colors" title="Reset Filters">
+<span class="material-symbols-outlined text-lg" data-icon="filter_alt_off">filter_alt_off</span>
+</button>
+</div>
+</div>
+<!-- Tenant Category Tabs -->
+<div class="flex items-center gap-2 overflow-x-auto pb-1 border-t border-surface-variant/40 pt-3">
+<button class="h-9 px-4 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md flex items-center gap-1.5 shrink-0">
+<span>All Tenants</span>
+<span class="px-1.5 py-0.2 rounded-full bg-on-primary-container text-primary-fixed text-xs font-tabular">1,428</span>
+</button>
+<button class="h-9 px-4 rounded-lg bg-surface-container hover:bg-surface-container-high border border-outline-variant text-on-surface-variant hover:text-on-surface font-label-md text-label-md flex items-center gap-1.5 shrink-0 transition-colors">
+<span>Cooperative Societies</span>
+<span class="px-1.5 py-0.2 rounded-full bg-surface-container-highest text-outline text-xs font-tabular">412</span>
+</button>
+<button class="h-9 px-4 rounded-lg bg-surface-container hover:bg-surface-container-high border border-outline-variant text-on-surface-variant hover:text-on-surface font-label-md text-label-md flex items-center gap-1.5 shrink-0 transition-colors">
+<span>Merchants &amp; Businesses</span>
+<span class="px-1.5 py-0.2 rounded-full bg-surface-container-highest text-outline text-xs font-tabular">640</span>
+</button>
+<button class="h-9 px-4 rounded-lg bg-surface-container hover:bg-surface-container-high border border-outline-variant text-on-surface-variant hover:text-on-surface font-label-md text-label-md flex items-center gap-1.5 shrink-0 transition-colors">
+<span>Revenue Collectors</span>
+<span class="px-1.5 py-0.2 rounded-full bg-surface-container-highest text-outline text-xs font-tabular">186</span>
+</button>
+<button class="h-9 px-4 rounded-lg bg-surface-container hover:bg-surface-container-high border border-outline-variant text-on-surface-variant hover:text-on-surface font-label-md text-label-md flex items-center gap-1.5 shrink-0 transition-colors">
+<span>Ajo Organizers</span>
+<span class="px-1.5 py-0.2 rounded-full bg-surface-container-highest text-outline text-xs font-tabular">190</span>
+</button>
+</div>
+</section>
+<!-- Tenants Master Data Table -->
+<section class="rounded-xl bg-surface-container-low border border-outline-variant overflow-hidden flex flex-col">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-lowest/80 border-b border-outline-variant text-outline font-label-md text-label-md">
+<th class="py-3.5 px-4 font-medium">Tenant Name &amp; Identifier</th>
+<th class="py-3.5 px-3 font-medium">Category / Type</th>
+<th class="py-3.5 px-3 font-medium">Registration / Legal Ref</th>
+<th class="py-3.5 px-3 font-medium">Primary Administrator</th>
+<th class="py-3.5 px-3 font-medium text-right">Dedicated Pool Vault (₦)</th>
+<th class="py-3.5 px-3 font-medium">Compliance Level</th>
+<th class="py-3.5 px-3 font-medium">Status</th>
+<th class="py-3.5 px-4 font-medium text-center">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-variant/40 font-body-md text-body-md">
+<!-- Row 1 (Selected Row) -->
+<tr class="bg-surface-container/90 border-l-4 border-l-primary-container transition-colors cursor-pointer">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-surface-container-high border border-primary-container/40 flex items-center justify-center text-primary-container font-bold text-sm shrink-0">
+                      LP
+                    </div>
+<div>
+<div class="font-label-lg text-label-lg text-on-surface font-semibold flex items-center gap-1.5">
+                        Lekki Phase 1 Multipurpose Cooperative Society Ltd
+                        <span class="material-symbols-outlined text-xs text-primary-container" style="font-variation-settings: 'FILL' 1;" title="Selected Tenant">check_circle</span>
+</div>
+<div class="font-label-sm text-label-sm text-outline font-tabular">UUID: TNT-LAG-2014-0012</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-surface-container-high border border-outline-variant text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-xs" data-icon="groups">groups</span> Cooperative
+                  </span>
+</td>
+<td class="py-3.5 px-3 font-tabular text-on-surface-variant">
+<div class="font-medium text-on-surface">RCS/LAGOS/2014/892</div>
+<div class="font-label-sm text-label-sm text-outline">Lagos State Dept. of Coops</div>
+</td>
+<td class="py-3.5 px-3">
+<div class="text-on-surface font-medium">Dr. Adebayo Ogunlesi</div>
+<div class="font-label-sm text-label-sm text-outline">President / Signatory A</div>
+</td>
+<td class="py-3.5 px-3 text-right font-tabular">
+<div class="font-title-currency text-title-currency text-on-surface font-bold">₦84,250,000.00</div>
+<div class="font-label-sm text-label-sm text-secondary-fixed">Yield Rate: 8.5% p.a.</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium bg-tertiary-container/20 text-tertiary border border-tertiary/30">
+<span class="material-symbols-outlined text-[13px]" data-icon="verified_user">verified_user</span> Tier 3 Ministry Vetted
+                  </span>
+</td>
+<td class="py-3.5 px-3">
+<!-- Green Chip -->
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-[rgba(76,195,138,0.12)] text-[#4CC38A] border border-[rgba(76,195,138,0.3)]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#4CC38A]"></span> Active
+                  </span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<button class="h-9 px-3.5 rounded-lg bg-surface-container-high hover:bg-primary-container hover:text-on-primary text-on-surface border border-outline-variant font-label-md text-label-md transition-colors inline-flex items-center gap-1">
+<span>Manage</span>
+<span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+</button>
+</td>
+</tr>
+<!-- Row 2: Spar Supermarket -->
+<tr class="hover:bg-surface-container/50 transition-colors">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-surface-container-high border border-outline-variant flex items-center justify-center text-outline font-bold text-sm shrink-0">
+                      SP
+                    </div>
+<div>
+<div class="font-label-lg text-label-lg text-on-surface font-semibold">Spar Supermarket Victoria Island</div>
+<div class="font-label-sm text-label-sm text-outline font-tabular">UUID: TNT-MER-2018-0941</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-surface-container-high border border-outline-variant text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-xs" data-icon="storefront">storefront</span> Merchant (Retail)
+                  </span>
+</td>
+<td class="py-3.5 px-3 font-tabular text-on-surface-variant">
+<div class="font-medium text-on-surface">RC-1092841</div>
+<div class="font-label-sm text-label-sm text-outline">Corporate Affairs Comm.</div>
+</td>
+<td class="py-3.5 px-3">
+<div class="text-on-surface font-medium">Folashade Alakija</div>
+<div class="font-label-sm text-label-sm text-outline">Treasury Lead</div>
+</td>
+<td class="py-3.5 px-3 text-right font-tabular">
+<div class="font-title-currency text-title-currency text-on-surface font-bold">₦18,450,000.00</div>
+<div class="font-label-sm text-label-sm text-outline">Daily Sweep Enabled</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium bg-tertiary-container/20 text-tertiary border border-tertiary/30">
+<span class="material-symbols-outlined text-[13px]" data-icon="verified">verified</span> CAC Verified
+                  </span>
+</td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-[rgba(76,195,138,0.12)] text-[#4CC38A] border border-[rgba(76,195,138,0.3)]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#4CC38A]"></span> Active
+                  </span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<button class="h-9 px-3.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface border border-outline-variant font-label-md text-label-md transition-colors">
+                    Manage
+                  </button>
+</td>
+</tr>
+<!-- Row 3: Lagos Island Municipal Waste -->
+<tr class="hover:bg-surface-container/50 transition-colors">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-surface-container-high border border-outline-variant flex items-center justify-center text-outline font-bold text-sm shrink-0">
+                      LM
+                    </div>
+<div>
+<div class="font-label-lg text-label-lg text-on-surface font-semibold">Lagos Island Municipal Waste Authority</div>
+<div class="font-label-sm text-label-sm text-outline font-tabular">UUID: TNT-REV-2020-0043</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-surface-container-high border border-outline-variant text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-xs" data-icon="account_balance">account_balance</span> Revenue Collector
+                  </span>
+</td>
+<td class="py-3.5 px-3 font-tabular text-on-surface-variant">
+<div class="font-medium text-on-surface">LGA-REV-901</div>
+<div class="font-label-sm text-label-sm text-outline">State Treasury Office Gazetted</div>
+</td>
+<td class="py-3.5 px-3">
+<div class="text-on-surface font-medium">Babatunde Raji</div>
+<div class="font-label-sm text-label-sm text-outline">Zonal Collector</div>
+</td>
+<td class="py-3.5 px-3 text-right font-tabular">
+<div class="font-title-currency text-title-currency text-on-surface font-bold">₦9,200,000.00</div>
+<div class="font-label-sm text-label-sm text-outline">Treasury Single Sub-Account</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium bg-tertiary-container/20 text-tertiary border border-tertiary/30">
+<span class="material-symbols-outlined text-[13px]" data-icon="shield">shield</span> Statutory Govt Board
+                  </span>
+</td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-[rgba(76,195,138,0.12)] text-[#4CC38A] border border-[rgba(76,195,138,0.3)]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#4CC38A]"></span> Active
+                  </span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<button class="h-9 px-3.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface border border-outline-variant font-label-md text-label-md transition-colors">
+                    Manage
+                  </button>
+</td>
+</tr>
+<!-- Row 4: Yaba Tech Alumni Thrift Circle #4 -->
+<tr class="hover:bg-surface-container/50 transition-colors">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-surface-container-high border border-outline-variant flex items-center justify-center text-outline font-bold text-sm shrink-0">
+                      YT
+                    </div>
+<div>
+<div class="font-label-lg text-label-lg text-on-surface font-semibold">Yaba Tech Alumni Thrift Circle #4</div>
+<div class="font-label-sm text-label-sm text-outline font-tabular">UUID: TNT-AJO-2022-0310</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-surface-container-high border border-outline-variant text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-xs" data-icon="savings">savings</span> Ajo / Esusu
+                  </span>
+</td>
+<td class="py-3.5 px-3 font-tabular text-on-surface-variant">
+<div class="font-medium text-on-surface">UNREG-AJO-004</div>
+<div class="font-label-sm text-label-sm text-outline">Internal Constitution Enforced</div>
+</td>
+<td class="py-3.5 px-3">
+<div class="text-on-surface font-medium">Chioma Adeleke</div>
+<div class="font-label-sm text-label-sm text-outline">Circle Coordinator</div>
+</td>
+<td class="py-3.5 px-3 text-right font-tabular">
+<div class="font-title-currency text-title-currency text-on-surface font-bold">₦4,500,000.00</div>
+<div class="font-label-sm text-label-sm text-outline">Rotating Payout (Bi-Weekly)</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium bg-surface-container-highest text-on-surface-variant border border-outline-variant">
+<span class="material-symbols-outlined text-[13px]" data-icon="lock_clock">lock_clock</span> Safeguards Only
+                  </span>
+</td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-[rgba(76,195,138,0.12)] text-[#4CC38A] border border-[rgba(76,195,138,0.3)]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#4CC38A]"></span> Active
+                  </span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<button class="h-9 px-3.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface border border-outline-variant font-label-md text-label-md transition-colors">
+                    Manage
+                  </button>
+</td>
+</tr>
+<!-- Row 5: Dantata Logistics Sub-account -->
+<tr class="hover:bg-surface-container/50 transition-colors">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-surface-container-high border border-outline-variant flex items-center justify-center text-outline font-bold text-sm shrink-0">
+                      DL
+                    </div>
+<div>
+<div class="font-label-lg text-label-lg text-on-surface font-semibold">Dantata Logistics Sub-account</div>
+<div class="font-label-sm text-label-sm text-outline font-tabular">UUID: TNT-MER-2023-1102</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-surface-container-high border border-outline-variant text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-xs" data-icon="local_shipping">local_shipping</span> Merchant
+                  </span>
+</td>
+<td class="py-3.5 px-3 font-tabular text-on-surface-variant">
+<div class="font-medium text-on-surface">RC-881920</div>
+<div class="font-label-sm text-label-sm text-outline">Corporate Affairs Comm.</div>
+</td>
+<td class="py-3.5 px-3">
+<div class="text-on-surface font-medium">Emeka Eze</div>
+<div class="font-label-sm text-label-sm text-outline">Managing Director</div>
+</td>
+<td class="py-3.5 px-3 text-right font-tabular">
+<div class="font-title-currency text-title-currency text-on-surface font-bold">₦1,200,000.00</div>
+<div class="font-label-sm text-label-sm text-secondary-fixed-dim">Debit Restricted (Inward Only)</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium bg-secondary-container/40 text-secondary-fixed border border-secondary-container">
+<span class="material-symbols-outlined text-[13px]" data-icon="report_problem">report_problem</span> Incomplete UBO Doc
+                  </span>
+</td>
+<td class="py-3.5 px-3">
+<!-- Amber Chip -->
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-[rgba(227,179,65,0.12)] text-[#E3B341] border border-[rgba(227,179,65,0.3)]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#E3B341]"></span> Pending Review
+                  </span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<button class="h-9 px-3.5 rounded-lg bg-secondary-container/50 hover:bg-secondary-container text-secondary-fixed border border-secondary-container font-label-md text-label-md transition-colors">
+                    Verify
+                  </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer / Pagination -->
+<div class="px-space-lg py-3 bg-surface-container-lowest/90 border-t border-outline-variant flex items-center justify-between text-on-surface-variant font-label-md text-label-md">
+<div class="flex items-center gap-2">
+<span>Showing <span class="text-on-surface font-semibold font-tabular">1 - 5</span> of <span class="text-on-surface font-semibold font-tabular">1,428</span> entities</span>
+</div>
+<div class="flex items-center gap-1 font-tabular">
+<button class="h-8 w-8 rounded-lg border border-outline-variant flex items-center justify-center hover:bg-surface-container disabled:opacity-40" disabled="">
+<span class="material-symbols-outlined text-sm" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="h-8 w-8 rounded-lg bg-primary-container text-on-primary font-semibold flex items-center justify-center">1</button>
+<button class="h-8 w-8 rounded-lg border border-outline-variant flex items-center justify-center hover:bg-surface-container text-on-surface">2</button>
+<button class="h-8 w-8 rounded-lg border border-outline-variant flex items-center justify-center hover:bg-surface-container text-on-surface">3</button>
+<span class="px-1 text-outline">...</span>
+<button class="h-8 w-8 rounded-lg border border-outline-variant flex items-center justify-center hover:bg-surface-container text-on-surface">143</button>
+<button class="h-8 w-8 rounded-lg border border-outline-variant flex items-center justify-center hover:bg-surface-container text-on-surface">
+<span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Tenant Deep-Dive & Governance Drawer (w-96) -->
+<aside class="w-96 shrink-0 bg-surface-container-lowest border-l border-outline-variant flex flex-col justify-between overflow-y-auto">
+<!-- Drawer Content -->
+<div class="p-space-lg flex flex-col gap-space-md">
+<!-- Header & Close/Focus toggle -->
+<div class="flex items-center justify-between pb-3 border-b border-surface-variant/40">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container" data-icon="verified_user">verified_user</span>
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">Tenant Governance Dossier</span>
+</div>
+<div class="flex items-center gap-1">
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container text-outline hover:text-on-surface flex items-center justify-center" title="Full Screen View">
+<span class="material-symbols-outlined text-base" data-icon="open_in_new">open_in_new</span>
+</button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container text-outline hover:text-on-surface flex items-center justify-center" title="Close Panel">
+<span class="material-symbols-outlined text-base" data-icon="close">close</span>
+</button>
+</div>
+</div>
+<!-- Selected Tenant Overview Card -->
+<div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant flex flex-col gap-3">
+<div class="flex items-start gap-3">
+<div class="w-12 h-12 rounded-xl bg-surface-container-high border border-primary-container/40 flex items-center justify-center text-primary-container text-xl font-bold shrink-0">
+<span class="material-symbols-outlined text-2xl" data-icon="corporate_fare" style="font-variation-settings: 'FILL' 1;">corporate_fare</span>
+</div>
+<div>
+<h2 class="font-label-lg text-label-lg text-on-surface font-bold leading-tight">Lekki Phase 1 Multipurpose Cooperative Society Ltd</h2>
+<div class="font-label-sm text-label-sm text-outline mt-0.5">RCS/LAGOS/2014/892</div>
+</div>
+</div>
+<!-- Badges & Verification flags -->
+<div class="flex flex-wrap items-center gap-1.5 pt-1">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-[rgba(76,195,138,0.12)] text-[#4CC38A] border border-[rgba(76,195,138,0.25)]">
+<span class="material-symbols-outlined text-xs" data-icon="verified">verified</span> State Ministry Cert Verified
+            </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-surface-container-high text-on-surface-variant border border-outline-variant font-tabular">
+<span class="material-symbols-outlined text-xs" data-icon="group">group</span> 142 Active Members
+            </span>
+</div>
+<!-- Quick Metadata Row -->
+<div class="grid grid-cols-2 gap-2 pt-2 border-t border-surface-variant/40 text-xs">
+<div>
+<span class="text-outline block">Tenant Type:</span>
+<span class="text-on-surface font-medium">Tier-3 Multi-Purpose Coop</span>
+</div>
+<div>
+<span class="text-outline block">Settlement Frequency:</span>
+<span class="text-on-surface font-medium">T+0 Real-Time Liquidity</span>
+</div>
+</div>
+</div>
+<!-- Financial Pool Breakdown -->
+<div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface font-semibold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary-fixed text-base" data-icon="donut_large">donut_large</span>
+              Financial Pool Breakdown
+            </span>
+<span class="font-label-sm text-label-sm text-outline font-tabular">Total: ₦84.25M</span>
+</div>
+<!-- Segment Bar Visual -->
+<div class="h-2.5 w-full rounded-full bg-surface-container-highest overflow-hidden flex">
+<div class="bg-primary-container h-full" style="width: 62.7%" title="Thrift Savings: 62.7%"></div>
+<div class="bg-tertiary-container h-full" style="width: 16.8%" title="Share Capital: 16.8%"></div>
+<div class="bg-[#4CC38A] h-full" style="width: 20.5%" title="Liquid Reserves: 20.5%"></div>
+</div>
+<!-- Detail Items -->
+<div class="flex flex-col gap-2 pt-1 font-body-md text-body-md">
+<div class="flex items-center justify-between text-xs">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container"></span>
+<span class="text-on-surface-variant">Member Thrift Savings</span>
+</div>
+<span class="text-on-surface font-semibold font-tabular">₦52,800,000.00</span>
+</div>
+<div class="flex items-center justify-between text-xs">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary-container"></span>
+<span class="text-on-surface-variant">Share Capital (Restricted)</span>
+</div>
+<span class="text-on-surface font-semibold font-tabular">₦14,200,000.00</span>
+</div>
+<div class="flex items-center justify-between text-xs">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-[#4CC38A]"></span>
+<span class="text-on-surface-variant">Liquid Statutory Reserves</span>
+</div>
+<span class="text-on-surface font-semibold font-tabular">₦17,250,000.00</span>
+</div>
+</div>
+</div>
+<!-- Dual Control Signatories Matrix -->
+<div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface font-semibold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary-container text-base" data-icon="policy">policy</span>
+              Dual Control Signatories Matrix
+            </span>
+<span class="px-2 py-0.5 rounded text-[11px] font-medium bg-surface-container-high text-secondary-fixed">Rule: 2-of-2 Required</span>
+</div>
+<div class="flex flex-col gap-2 pt-1">
+<!-- Signatory A -->
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container border border-outline-variant/60">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-primary-container/20 text-primary-container flex items-center justify-center font-bold text-xs">
+                  AO
+                </div>
+<div>
+<div class="font-label-md text-label-md text-on-surface font-medium leading-tight">Dr. Adebayo Ogunlesi</div>
+<div class="font-label-sm text-label-sm text-outline">President • Mandate Class A</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-[#4CC38A] text-lg" data-icon="check_circle" title="BVN &amp; Face-Match Verified">check_circle</span>
+</div>
+<!-- Signatory B -->
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container border border-outline-variant/60">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-tertiary-container/20 text-tertiary flex items-center justify-center font-bold text-xs">
+                  FA
+                </div>
+<div>
+<div class="font-label-md text-label-md text-on-surface font-medium leading-tight">Funke Akindele</div>
+<div class="font-label-sm text-label-sm text-outline">General Treasurer • Mandate Class B</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-[#4CC38A] text-lg" data-icon="check_circle" title="BVN &amp; Face-Match Verified">check_circle</span>
+</div>
+</div>
+</div>
+<!-- Governance Directives & Supervisory Actions -->
+<div class="flex flex-col gap-2">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Supervisory Actions</span>
+<button class="w-full h-11 px-3 rounded-xl bg-surface-container hover:bg-surface-container-high border border-outline-variant text-on-surface font-label-md text-label-md flex items-center justify-between transition-colors">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-base" data-icon="speed">speed</span>
+<span>Adjust Tenant Daily Limits</span>
+</span>
+<span class="font-label-sm text-label-sm text-outline font-tabular">₦25M/day ›</span>
+</button>
+<button class="w-full h-11 px-3 rounded-xl bg-surface-container hover:bg-surface-container-high border border-outline-variant text-on-surface font-label-md text-label-md flex items-center justify-between transition-colors">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-base" data-icon="published_with_changes">published_with_changes</span>
+<span>Trigger Board Resolution Audit</span>
+</span>
+<span class="material-symbols-outlined text-outline text-sm" data-icon="chevron_right">chevron_right</span>
+</button>
+<button class="w-full h-11 px-3 rounded-xl bg-error-container/20 hover:bg-error-container/30 border border-error-container text-error font-label-md text-label-md flex items-center justify-between transition-colors">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-error text-base" data-icon="lock_open">lock</span>
+<span>Freeze Settlement Vault (PND)</span>
+</span>
+<span class="font-label-sm text-label-sm font-semibold">Dual Req</span>
+</button>
+</div>
+</div>
+<!-- Drawer Fixed Footer Action: 52px Primary Berry Button -->
+<div class="p-space-lg border-t border-outline-variant bg-surface-container-low">
+<button class="w-full h-[52px] rounded-xl bg-primary-container text-on-primary hover:opacity-95 active:scale-[0.99] font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 shadow-sm transition-all">
+<span class="material-symbols-outlined" data-icon="picture_as_pdf">picture_as_pdf</span>
+<span>Download Official Tenant Regulatory Pack (PDF)</span>
+</button>
+<div class="mt-2 text-center">
+<span class="font-label-sm text-label-sm text-outline">Generated under CBN AML/CFT 2023 Compliance Framework</span>
+</div>
+</div>
+</aside>
+</main>
+</body></html>

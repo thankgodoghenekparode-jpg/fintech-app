@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YourApp - Confirm Transfer</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary": "#ffffff",
+            "secondary-container": "#fc6955",
+            "surface-bright": "#fff8f8",
+            "surface-container-lowest": "#ffffff",
+            "on-error": "#ffffff",
+            "surface-tint": "#a8315d",
+            "on-primary-container": "#ffa0ba",
+            "surface-dim": "#e1d8d9",
+            "on-primary-fixed": "#3f001b",
+            "inverse-primary": "#ffb1c5",
+            "outline": "#897176",
+            "secondary-fixed": "#ffdad4",
+            "on-secondary-fixed": "#410000",
+            "on-tertiary-fixed": "#21191e",
+            "on-primary": "#ffffff",
+            "on-tertiary-container": "#c6b7bd",
+            "secondary-fixed-dim": "#ffb4a8",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "surface-container-high": "#efe6e7",
+            "on-secondary-container": "#690000",
+            "primary-fixed": "#ffd9e1",
+            "background": "#fff8f8",
+            "on-surface-variant": "#564146",
+            "inverse-on-surface": "#f8eeef",
+            "on-tertiary": "#ffffff",
+            "surface-container": "#f5eced",
+            "surface-container-low": "#fbf1f2",
+            "inverse-surface": "#342f30",
+            "tertiary": "#3b3236",
+            "tertiary-container": "#53484d",
+            "on-surface": "#1f1b1c",
+            "on-secondary-fixed-variant": "#8c170e",
+            "primary-container": "#8e1b4a",
+            "primary": "#6d0033",
+            "error": "#ba1a1a",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "tertiary-fixed": "#eedee4",
+            "surface-container-highest": "#e9e0e1",
+            "on-primary-fixed-variant": "#881646",
+            "surface-variant": "#e9e0e1",
+            "outline-variant": "#dcbfc5",
+            "on-error-container": "#93000a",
+            "on-background": "#1f1b1c",
+            "secondary": "#ae3123",
+            "surface": "#fff8f8",
+            "error-container": "#ffdad6",
+            "primary-fixed-dim": "#ffb1c5"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "1rem",
+            "space-xl": "1.5rem",
+            "space-lg": "1rem",
+            "space-3xl": "3rem",
+            "space-2xl": "2rem",
+            "space-sm": "0.5rem",
+            "space-md": "0.75rem",
+            "gutter": "1rem",
+            "space-xs": "0.25rem"
+          },
+          "fontFamily": {
+            "body-medium": ["Inter"],
+            "label": ["Inter"],
+            "caption": ["Inter"],
+            "title": ["Inter"],
+            "subtitle": ["Inter"],
+            "body": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "display": ["Inter"],
+            "amount-lg": ["Inter"]
+          },
+          "fontSize": {
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 24px;
+      line-height: 1;
+      display: inline-block;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+      -webkit-font-smoothing: antialiased;
+    }
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex items-center justify-center p-0 sm:p-4">
+<!-- Mobile Screen Viewport (390 x 844 target) -->
+<div class="relative w-full max-w-[390px] h-[844px] bg-surface overflow-hidden shadow-2xl sm:rounded-[40px] border border-outline-variant/30 flex flex-col justify-between">
+<!-- BACKGROUND: Dimmed Send Money Entry Canvas -->
+<div aria-hidden="true" class="absolute inset-0 z-0 flex flex-col bg-surface select-none pointer-events-none">
+<!-- Top App Bar Mockup -->
+<header class="flex justify-between items-center w-full px-margin py-space-sm min-h-[56px] border-b border-outline-variant/40">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-[20px]" data-icon="arrow_back">arrow_back</span>
+</div>
+<span class="font-title text-title text-primary font-bold">YourApp</span>
+</div>
+<div class="flex items-center gap-space-xs text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</div>
+</header>
+<!-- Amount Entry Screen Body Content -->
+<div class="px-margin pt-space-xl flex flex-col gap-space-xl">
+<!-- Selected Recipient Chip Card -->
+<div class="p-space-lg bg-surface-container-lowest rounded-xl border border-outline-variant/40 flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed font-title text-label">
+              AY
+            </div>
+<div class="flex flex-col">
+<span class="font-body-medium text-body-medium text-on-surface">Amina Yusuf</span>
+<span class="font-caption text-caption text-on-surface-variant">Access Bank • 0234891102</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline" data-icon="expand_more">expand_more</span>
+</div>
+<!-- Entered Amount Display -->
+<div class="flex flex-col items-center justify-center py-space-lg gap-space-xs">
+<span class="font-caption text-caption text-on-surface-variant">Transfer Amount</span>
+<div class="font-amount-lg-mobile text-amount-lg-mobile text-on-surface tabular-nums font-bold">
+            ₦25,000.00
+          </div>
+<span class="font-caption text-caption text-on-surface-variant">Available balance: ₦482,150.00</span>
+</div>
+<!-- Fake Numeric Keypad Representation -->
+<div class="grid grid-cols-3 gap-y- space-lg gap-x-space-md text-center pt-space-md opacity-40">
+<div class="py-space-md font-subtitle text-subtitle text-on-surface">1</div>
+<div class="py-space-md font-subtitle text-subtitle text-on-surface">2</div>
+<div class="py-space-md font-subtitle text-subtitle text-on-surface">3</div>
+<div class="py-space-md font-subtitle text-subtitle text-on-surface">4</div>
+<div class="py-space-md font-subtitle text-subtitle text-on-surface">5</div>
+<div class="py-space-md font-subtitle text-subtitle text-on-surface">6</div>
+<div class="py-space-md font-subtitle text-subtitle text-on-surface">7</div>
+<div class="py-space-md font-subtitle text-subtitle text-on-surface">8</div>
+<div class="py-space-md font-subtitle text-subtitle text-on-surface">9</div>
+<div class="py-space-md font-subtitle text-subtitle text-on-surface">.</div>
+<div class="py-space-md font-subtitle text-subtitle text-on-surface">0</div>
+<div class="py-space-md flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined" data-icon="backspace">backspace</span>
+</div>
+</div>
+</div>
+</div>
+<!-- MODAL BACKDROP OVERLAY -->
+<div class="absolute inset-0 bg-inverse-surface/60 backdrop-blur-[2px] z-10 transition-opacity"></div>
+<!-- BOTTOM CONFIRMATION SHEET (S-CB-033) -->
+<section class="relative z-20 w-full mt-auto bg-surface-container-lowest rounded-t-[24px] shadow-[0_16px_36px_-6px_rgba(30,26,27,0.16)] border-t border-outline-variant/30 flex flex-col max-h-[92%] overflow-y-auto">
+<!-- Top Drag Handle -->
+<div class="w-full flex items-center justify-center pt-space-md pb-space-xs">
+<div class="w-10 h-1 rounded-full bg-outline-variant"></div>
+</div>
+<!-- Header Content -->
+<div class="px-margin pt-space-xs pb-space-sm">
+<h2 class="font-title text-title text-on-surface font-bold tracking-tight">Confirm transfer</h2>
+<p class="font-caption text-caption text-on-surface-variant mt-1 leading-normal">
+          Please check recipient details carefully before committing funds.
+        </p>
+</div>
+<!-- Hero Amount & Plain Fee Note -->
+<div class="px-margin py-space-sm flex flex-col items-center justify-center bg-surface-container-low mx-margin rounded-xl border border-outline-variant/30 my-space-xs">
+<span class="font-caption text-caption text-on-surface-variant font-medium">Total Amount</span>
+<div class="font-amount-lg-mobile text-amount-lg-mobile text-on-surface tabular-nums tracking-tight font-bold py-space-xs">
+          ₦25,000.00
+        </div>
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-lowest border border-outline-variant/30 text-on-surface-variant">
+<span class="material-symbols-outlined text-[15px] text-primary" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-caption text-caption tabular-nums font-medium">Fee: ₦0.00 • Total to debit: ₦25,000.00</span>
+</div>
+</div>
+<!-- Summary Details Breakdown Card -->
+<div class="px-margin pt-space-xs">
+<div class="bg-surface-container rounded-xl border border-outline-variant/40 divide-y divide-outline-variant/30 px-space-md py-space-xs">
+<!-- Row 1: Recipient Name -->
+<div class="flex justify-between items-center py-2.5">
+<span class="font-caption text-caption text-on-surface-variant">Recipient Name</span>
+<div class="flex items-center gap-1.5">
+<span class="font-body-medium text-body-medium text-on-surface font-semibold">Amina Yusuf</span>
+<div class="inline-flex items-center px-1.5 py-0.5 rounded bg-surface-container-lowest border border-outline-variant/40 text-[11px] font-medium text-primary">
+<span class="material-symbols-outlined text-[13px] text-primary mr-0.5" data-icon="verified" data-weight="fill" style="font-variation-settings: 'FILL' 1;">verified</span>
+                Verified
+              </div>
+</div>
+</div>
+<!-- Row 2: Destination Bank -->
+<div class="flex justify-between items-center py-2.5">
+<span class="font-caption text-caption text-on-surface-variant">Destination Bank</span>
+<span class="font-body-medium text-body-medium text-on-surface">Access Bank Plc</span>
+</div>
+<!-- Row 3: Account Number -->
+<div class="flex justify-between items-center py-2.5">
+<span class="font-caption text-caption text-on-surface-variant">Account Number</span>
+<span class="font-body-medium text-body-medium text-on-surface tabular-nums tracking-wide">0234891102</span>
+</div>
+<!-- Row 4: Transfer Amount -->
+<div class="flex justify-between items-center py-2.5">
+<span class="font-caption text-caption text-on-surface-variant">Transfer Amount</span>
+<span class="font-body-medium text-body-medium text-on-surface tabular-nums">₦25,000.00</span>
+</div>
+<!-- Row 5: Transaction Fee -->
+<div class="flex justify-between items-center py-2.5">
+<span class="font-caption text-caption text-on-surface-variant">Transaction Fee</span>
+<span class="font-body-medium text-body-medium text-primary tabular-nums font-medium">₦0.00 (Free in tier)</span>
+</div>
+<!-- Row 6: Total to Debit -->
+<div class="flex justify-between items-center py-2.5">
+<span class="font-caption text-caption text-on-surface-variant font-medium">Total to Debit</span>
+<span class="font-body-medium text-body-medium text-on-surface font-bold tabular-nums">₦25,000.00</span>
+</div>
+<!-- Row 7: Narration -->
+<div class="flex justify-between items-center py-2.5">
+<span class="font-caption text-caption text-on-surface-variant">Narration</span>
+<span class="font-caption text-caption text-on-surface font-medium max-w-[210px] text-right truncate">Catering deposit for Saturday</span>
+</div>
+</div>
+</div>
+<!-- Beneficiary Switch Row -->
+<div class="px-margin pt-space-sm pb-space-xs">
+<label class="flex items-center justify-between p-space-sm rounded-xl bg-surface-container-low border border-outline-variant/30 cursor-pointer select-none">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]" data-icon="person_add">person_add</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label text-label text-on-surface">Save as beneficiary</span>
+<span class="font-caption text-caption text-on-surface-variant text-[11px]">Save for quick payments in the future</span>
+</div>
+</div>
+<!-- Native Toggle Styled with Active Berry Tint -->
+<div class="relative inline-block w-11 h-6 align-middle select-none">
+<input checked="" class="peer sr-only" id="save-beneficiary" name="save-beneficiary" type="checkbox"/>
+<div class="block w-11 h-6 bg-outline-variant peer-checked:bg-primary-container rounded-full transition-colors duration-200"></div>
+<div class="dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-transform duration-200 peer-checked:translate-x-5"></div>
+</div>
+</label>
+</div>
+<!-- Action Cluster -->
+<div class="px-margin pt-space-sm pb-space-lg flex flex-col gap-space-xs">
+<!-- Primary Action Trigger -->
+<button class="w-full h-[52px] bg-primary-container text-on-primary font-label text-label rounded-xl flex items-center justify-center gap-space-xs active:scale-[0.98] active:bg-primary transition-all duration-150 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[19px]" data-icon="lock" data-weight="fill" style="font-variation-settings: 'FILL' 1;">lock</span>
+<span>Confirm and enter PIN</span>
+</button>
+<!-- Secondary Action: Cancel Text Button -->
+<button class="w-full h-[48px] bg-transparent text-on-surface-variant font-label text-label rounded-xl flex items-center justify-center hover:bg-surface-container transition-colors duration-150" type="button">
+          Cancel
+        </button>
+</div>
+<!-- Bottom Safe Area Inset Spacer -->
+<div class="w-full h-4"></div>
+</section>
+</div>
+</body></html>

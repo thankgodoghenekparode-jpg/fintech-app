@@ -1,0 +1,17 @@
+flowchart TD
+  a(["Admin sets share unit, price and limits"])
+  b["Members acquire shares per rule (from contributions or purchase)"]
+  c["Certificate generated"]
+  d["Period end: admins propose dividend rate"]
+  e{"Approved by required admins?"}
+  f["Compute per-member amounts"]
+  g["Post dividends (to savings or payout)"]
+  h(["Notify members; reports updated"])
+  a --> b
+  b --> c
+  c --> d
+  d --> e
+  e -->|yes| f
+  e -->|no, revise| d
+  f --> g
+  g --> h

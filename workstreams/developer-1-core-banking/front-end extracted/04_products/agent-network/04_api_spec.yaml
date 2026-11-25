@@ -1,0 +1,443 @@
+openapi: 3.0.3
+info:
+  title: Cash-in / Cash-out Agent Network API
+  version: 1.0.0
+  description: Product API. Uses the core conventions (Idempotency-Key, X-Pin-Token,
+    X-Tenant-Id, error format). Amounts in kobo.
+security:
+- bearerAuth: []
+paths:
+  /agents/apply:
+    post:
+      tags:
+      - Agents
+      summary: Apply to be an agent
+      description: 'Roles: any authenticated customer'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                businessName:
+                  type: string
+                location:
+                  type: object
+                  additionalProperties: true
+                photos:
+                  type: array
+                  items:
+                    type: string
+              required:
+              - location
+              - photos
+      responses:
+        '201':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /agent/home:
+    get:
+      tags:
+      - Agents
+      summary: Agent dashboard
+      description: 'Roles: any authenticated customer'
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /agent/cash-in:
+    post:
+      tags:
+      - Agents
+      summary: Cash-in for a customer
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                customerRef:
+                  type: string
+                amountKobo:
+                  type: integer
+                  format: int64
+                  description: Amount in kobo
+              required:
+              - customerRef
+              - amountKobo
+      responses:
+        '201':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /agent/cash-out/redeem:
+    post:
+      tags:
+      - Agents
+      summary: Redeem a cash-out code
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                code:
+                  type: string
+                amountKobo:
+                  type: integer
+                  format: int64
+                  description: Amount in kobo
+              required:
+              - code
+              - amountKobo
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /agent/float/topups:
+    post:
+      tags:
+      - Agents
+      summary: Top up float
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amountKobo:
+                  type: integer
+                  format: int64
+                  description: Amount in kobo
+                method:
+                  type: string
+              required:
+              - amountKobo
+              - method
+      responses:
+        '201':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /agent/history:
+    get:
+      tags:
+      - Agents
+      summary: Transactions and commission
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: from
+        in: query
+        schema:
+          type: string
+          format: date
+      - name: to
+        in: query
+        schema:
+          type: string
+          format: date
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /agent/day-end:
+    post:
+      tags:
+      - Agents
+      summary: Submit day-end summary
+      description: 'Roles: any authenticated customer'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                declaredCashKobo:
+                  type: integer
+                  format: int64
+                  description: Amount in kobo
+                notes:
+                  type: string
+              required:
+              - declaredCashKobo
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /agents/nearby:
+    get:
+      tags:
+      - Customer
+      summary: Find agents
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: lat
+        in: query
+        schema:
+          type: string
+      - name: lng
+        in: query
+        schema:
+          type: string
+      - name: radius
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /agents/cash-out/requests:
+    post:
+      tags:
+      - Customer
+      summary: Request a cash-out code
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                agentId:
+                  type: string
+                  format: uuid
+                amountKobo:
+                  type: integer
+                  format: int64
+                  description: Amount in kobo
+              required:
+              - amountKobo
+      responses:
+        '201':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /agents/cash-out/requests/{id}/confirm:
+    post:
+      tags:
+      - Customer
+      summary: Customer confirms cash-out
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                confirm:
+                  type: boolean
+              required:
+              - confirm
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /agents/{agentId}/feedback:
+    post:
+      tags:
+      - Customer
+      summary: Rate or report an agent
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: agentId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                stars:
+                  type: integer
+                comment:
+                  type: string
+                report:
+                  type: boolean
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /backoffice/agents:
+    get:
+      tags:
+      - Backoffice
+      summary: Agent applications and list
+      description: 'Roles: Agent operations'
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /backoffice/agents/{agentId}/decision:
+    post:
+      tags:
+      - Backoffice
+      summary: Approve, reject or suspend
+      description: 'Roles: Agent operations'
+      parameters:
+      - name: agentId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                decision:
+                  type: string
+                  enum:
+                  - APPROVE
+                  - REJECT
+                  - SUSPEND
+                reason:
+                  type: string
+              required:
+              - decision
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /backoffice/agents/config:
+    put:
+      tags:
+      - Backoffice
+      summary: Commission and limits (dual control)
+      description: 'Roles: Product admin'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                commission:
+                  type: object
+                  additionalProperties: true
+                limits:
+                  type: object
+                  additionalProperties: true
+              required:
+              - commission
+              - limits
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  parameters:
+    IdempotencyKey:
+      name: Idempotency-Key
+      in: header
+      required: true
+      schema:
+        type: string
+        format: uuid
+    PinToken:
+      name: X-Pin-Token
+      in: header
+      required: true
+      schema:
+        type: string
+  responses:
+    Error:
+      description: Error (see core ERROR_CODES.md)
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+              details:
+                type: object
+              requestId:
+                type: string

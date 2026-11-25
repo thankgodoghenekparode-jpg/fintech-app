@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>YourApp - Verify your NIN</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Inter Google Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with Forms and Container Queries Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary": "#b0c6ff",
+            "tertiary-container": "#6a92ee",
+            "secondary-fixed-dim": "#ffb4a8",
+            "surface": "#151314",
+            "outline-variant": "#544247",
+            "on-surface": "#e7e1e2",
+            "on-primary": "#620735",
+            "on-primary-container": "#5d0331",
+            "surface-container-low": "#1d1b1c",
+            "on-secondary-fixed-variant": "#7f291e",
+            "on-tertiary": "#002d6f",
+            "on-primary-fixed-variant": "#7f234b",
+            "on-surface-variant": "#dac0c6",
+            "on-error-container": "#ffdad6",
+            "background": "#151314",
+            "primary-container": "#e0709a",
+            "secondary": "#ffb4a8",
+            "surface-container-highest": "#373435",
+            "inverse-on-surface": "#323031",
+            "primary-fixed": "#ffd9e3",
+            "on-tertiary-fixed": "#001945",
+            "tertiary-fixed": "#d9e2ff",
+            "primary": "#ffb0ca",
+            "on-tertiary-container": "#002a69",
+            "on-primary-fixed": "#3e001f",
+            "surface-variant": "#373435",
+            "surface-container-high": "#2c292a",
+            "surface-container": "#211f20",
+            "outline": "#a28b91",
+            "secondary-container": "#822c20",
+            "error-container": "#93000a",
+            "on-secondary": "#61130a",
+            "surface-tint": "#ffb0ca",
+            "on-tertiary-fixed-variant": "#06429a",
+            "error": "#ffb4ab",
+            "inverse-surface": "#e7e1e2",
+            "surface-bright": "#3b3839",
+            "on-secondary-fixed": "#410000",
+            "secondary-fixed": "#ffdad4",
+            "primary-fixed-dim": "#ffb0ca",
+            "surface-dim": "#151314",
+            "surface-container-lowest": "#100e0f",
+            "on-secondary-container": "#ff9f90",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "on-error": "#690005",
+            "inverse-primary": "#9e3b63",
+            "on-background": "#e7e1e2"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "space-xs": "0.25rem",
+            "margin": "1rem",
+            "space-xl": "2rem",
+            "gutter-mobile": "0.75rem",
+            "space-md": "1rem",
+            "margin-mobile": "1rem",
+            "space-lg": "1.5rem",
+            "gutter": "1rem"
+          },
+          "fontFamily": {
+            "label-md": ["Inter"],
+            "display-currency": ["Inter"],
+            "body-md": ["Inter"],
+            "body-lg": ["Inter"],
+            "label-sm": ["Inter"],
+            "label-lg": ["Inter"],
+            "headline-md": ["Inter"],
+            "headline-sm": ["Inter"],
+            "title-currency": ["Inter"],
+            "headline-lg": ["Inter"]
+          },
+          "fontSize": {
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "label-lg": ["15px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "title-currency": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 20px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      -webkit-font-smoothing: antialiased;
+      font-feature-settings: 'liga';
+    }
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-lowest text-on-surface min-h-screen flex justify-center antialiased selection:bg-primary selection:text-on-primary">
+<!-- Mobile Frame Container (Strict 390px x 844px Reference Layout) -->
+<main class="w-full max-w-[430px] min-h-screen bg-surface-container-lowest flex flex-col justify-between relative shadow-2xl">
+<!-- Header / Contextual Top Bar -->
+<header class="w-full px-margin-mobile pt-4 pb-2 flex items-center justify-between z-10">
+<!-- Back Arrow Action -->
+<button aria-label="Go back" class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-on-surface border border-outline-variant/30 active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<!-- Step Counter Indicator Badge -->
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container border border-outline-variant/30">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium tracking-wide">Step 5 of 5</span>
+</div>
+<!-- Contextual Help / Info Button -->
+<button aria-label="Help and Support" class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-on-surface-variant border border-outline-variant/30 active:scale-95 transition-transform hover:text-on-surface" type="button">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+</header>
+<!-- Main Content Area -->
+<div class="flex-1 px-margin-mobile pt-3 pb-8 flex flex-col gap-space-md overflow-y-auto">
+<!-- Regulatory Compliance Tag -->
+<div>
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-container/40 border border-secondary-container text-secondary">
+<span class="material-symbols-outlined text-secondary" data-icon="verified_user" style="font-size: 14px;">verified_user</span>
+<span class="font-label-sm text-label-sm font-semibold tracking-wider uppercase">CBN &amp; NIMC Mandate</span>
+</div>
+</div>
+<!-- Headline & Explanatory Subtitle -->
+<div class="flex flex-col gap-1.5">
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Verify your NIN</h1>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          The Central Bank of Nigeria (CBN) and NIMC require a verified 11-digit National Identification Number to secure your bank account.
+        </p>
+</div>
+<!-- Primary NIN Input Module -->
+<div class="bg-surface-container-low border border-outline-variant/40 rounded-xl p-4 flex flex-col gap-2.5 transition-all focus-within:border-primary-container focus-within:ring-1 focus-within:ring-primary-container/30">
+<div class="flex justify-between items-center">
+<label class="font-label-md text-label-md text-on-surface-variant" for="nin-input">11-Digit National ID Number</label>
+<div class="flex items-center gap-1">
+<span class="font-label-sm text-label-sm font-mono text-primary font-semibold" id="nin-counter">0</span>
+<span class="font-label-sm text-label-sm font-mono text-outline">/11</span>
+</div>
+</div>
+<div class="relative flex items-center">
+<input class="w-full bg-surface-container border border-outline-variant/40 rounded-xl h-[52px] pl-3.5 pr-24 font-headline-sm text-headline-sm tracking-widest text-on-surface placeholder:text-outline/60 focus:outline-none focus:border-primary-container focus:ring-0 transition-colors" id="nin-input" inputmode="numeric" maxlength="11" pattern="[0-9]*" placeholder="•••• •••• •••" type="password"/>
+<!-- Action Buttons inside Input: Visibility & Paste -->
+<div class="absolute right-2 flex items-center gap-1">
+<button aria-label="Toggle NIN visibility" class="w-9 h-9 rounded-lg flex items-center justify-center text-outline hover:text-on-surface active:scale-95 transition-all" id="toggle-visibility" type="button">
+<span class="material-symbols-outlined" data-icon="visibility_off" id="visibility-icon">visibility_off</span>
+</button>
+<button class="h-8 px-2.5 rounded-lg bg-surface-container-high border border-outline-variant/50 flex items-center gap-1 text-on-surface font-label-sm text-label-sm active:scale-95 transition-transform hover:bg-surface-variant" id="paste-btn" type="button">
+<span class="material-symbols-outlined" data-icon="content_paste" style="font-size: 15px;">content_paste</span>
+<span>Paste</span>
+</button>
+</div>
+</div>
+<div class="flex items-center gap-1.5 text-outline pt-0.5">
+<span class="material-symbols-outlined text-outline" data-icon="info" style="font-size: 14px;">info</span>
+<p class="font-label-sm text-label-sm">Must match your official registered SIM identity.</p>
+</div>
+</div>
+<!-- Quick USSD Callout Card -->
+<div class="bg-surface-container border border-outline-variant/30 rounded-xl p-3.5 flex items-center justify-between gap-3">
+<div class="flex items-start gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high border border-outline-variant/30 flex items-center justify-center shrink-0 text-primary">
+<span class="material-symbols-outlined" data-icon="dialpad">dialpad</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface">Don't know your NIN?</span>
+<span class="font-body-md text-body-md text-on-surface-variant text-[13px] leading-tight">
+              Dial <span class="font-semibold text-primary font-mono">*346#</span> on your registered SIM
+            </span>
+</div>
+</div>
+<a class="h-[40px] px-3 rounded-xl bg-surface-container-high border border-outline-variant/40 flex items-center gap-1.5 text-on-surface font-label-md text-label-md shrink-0 active:scale-95 transition-transform hover:bg-surface-variant" href="tel:*346%23">
+<span class="material-symbols-outlined" data-icon="call" style="font-size: 16px;">call</span>
+<span>Dial code</span>
+</a>
+</div>
+<!-- Privacy & Reassurance Bento Card -->
+<div class="bg-surface-container-low border border-outline-variant/30 rounded-xl p-4 flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="policy">policy</span>
+<h2 class="font-label-lg text-label-lg text-on-surface">Why NIMC verification?</h2>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-highest border border-outline-variant/30 font-label-sm text-label-sm text-secondary font-medium tracking-wide">
+            NDPR Compliant
+          </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant text-[13px] leading-relaxed">
+          Your NIN enables YourApp to cross-match your legal full name and date of birth directly with the National Identity Database. This protects you from identity fraud and satisfies statutory Anti-Money Laundering (AML) standards.
+        </p>
+<div class="grid grid-cols-2 gap-2 pt-1">
+<div class="bg-surface-container/60 rounded-lg p-2.5 border border-outline-variant/20 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="check_circle" style="font-size: 16px;">check_circle</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Tier-3 Limit Access</span>
+</div>
+<div class="bg-surface-container/60 rounded-lg p-2.5 border border-outline-variant/20 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="shield" style="font-size: 16px;">shield</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Anti-Fraud Shield</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Docked Bottom Interactive Section -->
+<footer class="w-full px-margin-mobile pt-3 pb-6 bg-surface-container-lowest/95 backdrop-blur-md border-t border-outline-variant/30 flex flex-col gap-3">
+<!-- Bank Grade Encryption Reassurance Note -->
+<div class="flex items-center justify-center gap-1.5 text-outline">
+<span class="material-symbols-outlined" data-icon="lock" style="font-size: 16px;">lock</span>
+<span class="font-label-sm text-label-sm">256-bit bank-grade encryption with NIMC gateway</span>
+</div>
+<!-- Full-Width Primary Verification Action Button (52px ergonomic standard) -->
+<button class="w-full h-[52px] rounded-xl bg-primary-container text-on-surface-lowest text-[#121011] font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 active:scale-[0.98] transition-all disabled:opacity-40 disabled:cursor-not-allowed shadow-[0_8px_20px_-4px_rgba(224,112,154,0.3)]" id="verify-button" type="button">
+<span>Verify NIN</span>
+<span class="material-symbols-outlined text-[#121011]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<!-- Wordmark indicator / Footer Attribution -->
+<div class="flex items-center justify-center pt-1">
+<span class="font-label-sm text-label-sm text-outline tracking-wider uppercase font-semibold">YourApp Financial Services</span>
+</div>
+</footer>
+</main>
+<!-- Interactive Logic for Input, Counter, Visibility, and Verification -->
+<script>
+    const ninInput = document.getElementById('nin-input');
+    const ninCounter = document.getElementById('nin-counter');
+    const toggleVisibilityBtn = document.getElementById('toggle-visibility');
+    const visibilityIcon = document.getElementById('visibility-icon');
+    const pasteBtn = document.getElementById('paste-btn');
+    const verifyButton = document.getElementById('verify-button');
+
+    function updateCounter() {
+      const length = ninInput.value.length;
+      ninCounter.textContent = length;
+      
+      if (length === 11) {
+        verifyButton.removeAttribute('disabled');
+        ninCounter.classList.add('text-secondary');
+        ninCounter.classList.remove('text-primary');
+      } else {
+        ninCounter.classList.remove('text-secondary');
+        ninCounter.classList.add('text-primary');
+      }
+    }
+
+    ninInput.addEventListener('input', (e) => {
+      // Allow only numbers
+      ninInput.value = ninInput.value.replace(/[^0-9]/g, '');
+      updateCounter();
+    });
+
+    toggleVisibilityBtn.addEventListener('click', () => {
+      if (ninInput.type === 'password') {
+        ninInput.type = 'text';
+        visibilityIcon.textContent = 'visibility';
+        visibilityIcon.setAttribute('data-icon', 'visibility');
+      } else {
+        ninInput.type = 'password';
+        visibilityIcon.textContent = 'visibility_off';
+        visibilityIcon.setAttribute('data-icon', 'visibility_off');
+      }
+    });
+
+    pasteBtn.addEventListener('click', async () => {
+      try {
+        const text = await navigator.clipboard.readText();
+        const cleaned = text.replace(/[^0-9]/g, '').slice(0, 11);
+        if (cleaned) {
+          ninInput.value = cleaned;
+          updateCounter();
+        }
+      } catch (err) {
+        // Fallback prompt for environments without clipboard permissions
+        const fallback = prompt("Enter your 11-digit NIN:");
+        if (fallback) {
+          ninInput.value = fallback.replace(/[^0-9]/g, '').slice(0, 11);
+          updateCounter();
+        }
+      }
+    });
+
+    verifyButton.addEventListener('click', () => {
+      if (ninInput.value.length === 11) {
+        verifyButton.innerHTML = `
+          <svg class="animate-spin -ml-1 mr-2 h-5 w-5 text-[#121011]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+          <span>Verifying with NIMC...</span>
+        `;
+        setTimeout(() => {
+          verifyButton.innerHTML = `
+            <span class="material-symbols-outlined text-[#121011]" data-icon="check_circle">check_circle</span>
+            <span>Verified Successfully</span>
+          `;
+          verifyButton.classList.replace('bg-primary-container', 'bg-tertiary-container');
+        }, 1800);
+      }
+    });
+
+    // Initialize State
+    updateCounter();
+  </script>
+</body></html>

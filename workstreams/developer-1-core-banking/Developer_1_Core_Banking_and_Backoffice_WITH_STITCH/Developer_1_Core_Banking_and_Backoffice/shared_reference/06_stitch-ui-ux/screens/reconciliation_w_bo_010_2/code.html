@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Reconciliation (W-BO-010) - YourApp Credit Ops</title>
+<!-- Material Symbols Outlined Font -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Inter Font -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary-container": "#690000",
+            "secondary-fixed": "#ffdad4",
+            "primary-container": "#8e1b4a",
+            "on-secondary": "#ffffff",
+            "tertiary": "#3b3236",
+            "background": "#fff8f8",
+            "primary-fixed": "#ffd9e1",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "secondary-fixed-dim": "#ffb4a8",
+            "on-surface": "#1f1b1c",
+            "surface": "#fff8f8",
+            "surface-container-high": "#efe6e7",
+            "on-tertiary": "#ffffff",
+            "surface-tint": "#a8315d",
+            "outline-variant": "#dcbfc5",
+            "on-secondary-fixed-variant": "#8c170e",
+            "on-primary-container": "#ffa0ba",
+            "on-surface-variant": "#564146",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "surface-dim": "#e1d8d9",
+            "inverse-on-surface": "#f8eeef",
+            "on-error-container": "#93000a",
+            "primary": "#6d0033",
+            "surface-container-lowest": "#ffffff",
+            "inverse-surface": "#342f30",
+            "on-error": "#ffffff",
+            "error-container": "#ffdad6",
+            "on-primary": "#ffffff",
+            "on-secondary-fixed": "#410000",
+            "tertiary-container": "#53484d",
+            "primary-fixed-dim": "#ffb1c5",
+            "on-background": "#1f1b1c",
+            "secondary-container": "#fc6955",
+            "surface-container-low": "#fbf1f2",
+            "on-tertiary-fixed": "#21191e",
+            "on-tertiary-container": "#c6b7bd",
+            "error": "#ba1a1a",
+            "surface-container": "#f5eced",
+            "secondary": "#ae3123",
+            "on-primary-fixed": "#3f001b",
+            "on-primary-fixed-variant": "#881646",
+            "surface-bright": "#fff8f8",
+            "surface-variant": "#e9e0e1",
+            "tertiary-fixed": "#eedee4",
+            "outline": "#897176",
+            "inverse-primary": "#ffb1c5",
+            "surface-container-highest": "#e9e0e1"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-2xl": "2rem",
+            "space-3xl": "3rem",
+            "space-sm": "0.5rem",
+            "space-lg": "1rem",
+            "margin": "1rem",
+            "gutter": "1rem",
+            "space-md": "0.75rem",
+            "space-xl": "1.5rem",
+            "space-xs": "0.25rem"
+          },
+          "fontFamily": {
+            "body-medium": ["Inter"],
+            "title": ["Inter"],
+            "label": ["Inter"],
+            "display": ["Inter"],
+            "subtitle": ["Inter"],
+            "body": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "caption": ["Inter"],
+            "amount-lg": ["Inter"]
+          },
+          "fontSize": {
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 20px;
+      line-height: 1;
+      display: inline-block;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+      vertical-align: middle;
+      font-feature-settings: 'liga';
+      -webkit-font-smoothing: antialiased;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: #fbf1f2;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #dcbfc5;
+      border-radius: 9999px;
+    }
+    .tabular-naira {
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex flex-col font-body selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- ==================== LEFT DOCKED SIDEBAR ==================== -->
+<aside class="fixed left-0 top-0 h-screen w-72 flex flex-col justify-between py-space-xl px-space-lg bg-surface-container-lowest border-r border-surface-variant shadow-sm z-30 overflow-y-auto custom-scroll">
+<!-- Sidebar Top Cluster -->
+<div class="flex flex-col gap-space-xl">
+<!-- Institutional Crest & Identity -->
+<div class="flex items-center gap-space-md pb-space-lg border-b border-surface-variant">
+<div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-on-primary shadow-sm flex-shrink-0">
+<span class="material-symbols-outlined" data-icon="account_balance">account_balance</span>
+</div>
+<div class="flex flex-col overflow-hidden">
+<span class="text-subtitle font-subtitle text-primary tracking-tight truncate">YourApp Credit Ops</span>
+<span class="text-caption font-caption text-on-surface-variant flex items-center gap-1">
+            Enterprise Portal
+            <span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+</span>
+</div>
+</div>
+<!-- Officer Clearance Tier Capsule -->
+<div class="p-space-md rounded-xl bg-surface-container border border-surface-variant flex items-center gap-space-md">
+<div class="w-8 h-8 rounded-lg bg-primary-fixed flex items-center justify-center text-on-primary-fixed font-label text-label flex-shrink-0">
+          T3
+        </div>
+<div class="flex flex-col">
+<span class="text-caption font-caption text-on-surface-variant">Active Console Tier</span>
+<span class="text-label font-label text-on-surface">Operations Level 3</span>
+</div>
+</div>
+<!-- Section: Core Operations -->
+<div class="flex flex-col gap-1">
+<span class="px-space-md text-caption font-caption text-on-surface-variant tracking-wider uppercase">Core Operations</span>
+<nav class="flex flex-col gap-1 mt-1">
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="person_search">person_search</span>
+<span>Customer Search</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="pending_actions">pending_actions</span>
+<span>KYC Queue</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="sync_alt">sync_alt</span>
+<span>Transactions &amp; Inflows</span>
+</a>
+<!-- Active Nav Anchor for Reconciliation (W-BO-010) -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg bg-surface-container-low text-primary font-label text-label" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+<span>Reconciliation</span>
+<span class="ml-auto px-2 py-0.5 rounded-full bg-primary text-on-primary text-caption font-caption">3</span>
+</a>
+</nav>
+</div>
+<!-- Section: Governance & Risk -->
+<div class="flex flex-col gap-1">
+<span class="px-space-md text-caption font-caption text-on-surface-variant tracking-wider uppercase">Governance &amp; Approvals</span>
+<nav class="flex flex-col gap-1 mt-1">
+<a class="flex items-center justify-between px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<div class="flex items-center gap-space-md">
+<span class="material-symbols-outlined" data-icon="verified_user">verified_user</span>
+<span>Dual-Control Approvals</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant text-caption font-caption">6</span>
+</a>
+<a class="flex items-center justify-between px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<div class="flex items-center gap-space-md">
+<span class="material-symbols-outlined" data-icon="policy">policy</span>
+<span>Risk &amp; AML Alerts</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant text-caption font-caption">12</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="gavel">gavel</span>
+<span>Dispute Cases</span>
+</a>
+</nav>
+</div>
+<!-- Section: System & Settlement Logs -->
+<div class="flex flex-col gap-1">
+<span class="px-space-md text-caption font-caption text-on-surface-variant tracking-wider uppercase">System Management</span>
+<nav class="flex flex-col gap-1 mt-1">
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="tune">tune</span>
+<span>Product Configuration</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span>Audit Log</span>
+</a>
+</nav>
+</div>
+</div>
+<!-- Sidebar Footer Anchor -->
+<div class="pt-space-lg border-t border-surface-variant flex flex-col gap-1">
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="admin_panel_settings">admin_panel_settings</span>
+<span>Security &amp; Settings</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-secondary font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span>Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- ==================== MAIN CONTENT WRAPPER ==================== -->
+<div class="ml-72 flex-1 flex flex-col min-w-0">
+<!-- ==================== STICKY TOP APP BAR ==================== -->
+<header class="sticky top-0 right-0 h-16 flex items-center justify-between px-space-xl bg-surface-container-lowest border-b border-surface-variant z-20">
+<!-- Left: Omnisearch Search Input -->
+<div class="flex items-center gap-space-md w-96">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="search">search</span>
+<input class="w-full h-10 pl-10 pr-4 text-label font-body bg-surface-container-low border border-surface-variant rounded-xl focus:border-primary-container focus:ring-1 focus:ring-primary-container focus:outline-none placeholder:text-on-surface-variant/60" placeholder="Search reconciliation batches, session IDs, NIBSS logs..." type="text"/>
+</div>
+</div>
+<!-- Center & Right: Clearing Indicators & Profile Actions -->
+<div class="flex items-center gap-space-lg">
+<!-- NIBSS Cycle Pill Indicator -->
+<div class="hidden xl:flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container border border-surface-variant">
+<span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+<span class="text-caption font-caption text-on-surface">NIBSS Clearing Cycle: <strong class="font-label">Session 2 (14:00 WAT)</strong></span>
+</div>
+<!-- Zenith Master Settlement Float Badge -->
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary-fixed/50 border border-outline-variant text-on-primary-fixed">
+<span class="material-symbols-outlined text-primary" data-icon="account_balance">account_balance</span>
+<span class="text-caption font-caption">Zenith Master Settlement: <strong>Synced</strong></span>
+</div>
+<div class="h-6 w-px bg-surface-variant"></div>
+<!-- Action Icons & Dual Control Action -->
+<button class="w-10 h-10 rounded-xl flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors relative" title="Notifications">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-secondary"></span>
+</button>
+<button class="px-3 py-1.5 rounded-xl border border-surface-variant flex items-center gap-1.5 text-on-surface font-label text-caption hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-primary" data-icon="verified">verified</span>
+<span>Dual Authorization</span>
+</button>
+<!-- Officer Profile Stack -->
+<div class="flex items-center gap-space-md pl-2 border-l border-surface-variant">
+<div class="w-9 h-9 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-label text-caption shadow-sm">
+            OA
+          </div>
+<div class="flex flex-col text-left">
+<span class="text-label font-label text-on-surface truncate">Dr. Oluwaseun Adeyemi</span>
+<span class="text-caption font-caption text-on-surface-variant">Head of Finance &amp; Clearing</span>
+</div>
+</div>
+</div>
+</header>
+<!-- ==================== MAIN DASHBOARD CANVAS ==================== -->
+<main class="p-space-xl flex flex-col gap-space-xl max-w-[1440px] mx-auto w-full">
+<!-- Breadcrumbs & Headline Section -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div>
+<div class="flex items-center gap-2 text-caption font-caption text-on-surface-variant mb-1">
+<span>Treasury &amp; Settlements</span>
+<span class="material-symbols-outlined text-[14px]" data-icon="chevron_right">chevron_right</span>
+<span>Clearing Operations</span>
+<span class="material-symbols-outlined text-[14px]" data-icon="chevron_right">chevron_right</span>
+<span class="text-primary font-label">W-BO-010 Parity Blotter</span>
+</div>
+<h1 class="text-title font-title text-on-surface tracking-tight">
+            Interbank Settlement Reconciliation &amp; Ledger Parity Blotter
+          </h1>
+<p class="text-caption font-caption text-on-surface-variant mt-0.5 max-w-3xl">
+            Automated end-of-cycle matching between YourApp internal core ledgers, NIBSS Instant Payment (NIP) switch logs, and Zenith Commercial Bank settlement pools.
+          </p>
+</div>
+<!-- Action CTAs -->
+<div class="flex items-center gap-space-md flex-shrink-0">
+<button class="h-[52px] px-space-lg rounded-xl border border-surface-variant bg-surface-container-lowest text-on-surface font-label text-label hover:bg-surface-container flex items-center gap-2 shadow-sm transition-colors">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+<span>Export Full Clearing Blotter</span>
+</button>
+<button class="h-[52px] px-space-xl rounded-xl bg-primary-container hover:bg-primary text-on-primary font-label text-label flex items-center gap-2 shadow-sm transition-colors">
+<span class="material-symbols-outlined" data-icon="bolt">bolt</span>
+<span>+ Run Manual Ledger Sweep</span>
+</button>
+</div>
+</div>
+<!-- Regulatory Mandate Warning Banner (CBN Statutory Protocol) -->
+<div class="p-space-md rounded-xl bg-primary text-on-primary flex items-start gap-space-md shadow-sm">
+<div class="p-2 rounded-lg bg-surface-container-lowest/10 flex-shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-inverse-primary" data-icon="warning">warning</span>
+</div>
+<div class="flex-1 flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
+<div>
+<div class="flex items-center gap-2">
+<span class="text-label font-label text-surface-bright">CBN Statutory Clearing Protocol (BPS/DIR/CIR/05)</span>
+<span class="text-caption font-caption px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-fixed font-semibold">Strict Parity</span>
+</div>
+<p class="text-caption font-caption text-inverse-on-surface/90 mt-0.5">
+              All interbank clearing differences exceeding ₦1,000,000.00 must be reconciled or escalated to dual-control restitution within 2 hours of cycle close.
+            </p>
+</div>
+<a class="inline-flex items-center gap-1 text-label font-label text-inverse-primary hover:underline flex-shrink-0" href="#">
+<span>Review Statutory Reconciliation SOP</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- KPI Summary Cards (4 Across Grid) -->
+<section class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-space-md">
+<!-- KPI 1: Settled Volume -->
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest border border-surface-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-on-surface-variant">Total Settled Volume (Cycle 2)</span>
+<span class="p-2 rounded-xl bg-surface-container text-primary material-symbols-outlined" data-icon="payments">payments</span>
+</div>
+<div class="mt-space-md">
+<span class="text-title font-title text-on-surface tabular-naira">₦184,650,000.00</span>
+<div class="flex items-center gap-1 text-caption font-caption text-emerald-700 mt-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="check_circle">check_circle</span>
+<span>5,120 transactions (100% posted)</span>
+</div>
+</div>
+</div>
+<!-- KPI 2: Parity Rate -->
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest border border-surface-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-on-surface-variant">Matched Parity Rate</span>
+<span class="p-2 rounded-xl bg-surface-container text-emerald-700 material-symbols-outlined" data-icon="verified">verified</span>
+</div>
+<div class="mt-space-md">
+<span class="text-title font-title text-emerald-800 tabular-naira">99.94%</span>
+<div class="flex items-center gap-1 text-caption font-caption text-on-surface-variant mt-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="schedule">schedule</span>
+<span>Matched in 0.5s auto-reconciliation window</span>
+</div>
+</div>
+</div>
+<!-- KPI 3: Ledger Breaks -->
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest border border-secondary-fixed shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="absolute top-0 left-0 h-1 w-full bg-secondary"></div>
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-on-surface-variant">Active Ledger Breaks</span>
+<span class="p-2 rounded-xl bg-error-container text-error material-symbols-outlined" data-icon="error">error</span>
+</div>
+<div class="mt-space-md">
+<div class="flex items-baseline gap-2">
+<span class="text-title font-title text-secondary">3 Exceptions</span>
+<span class="text-caption font-caption text-on-surface-variant">In triage</span>
+</div>
+<div class="flex items-center gap-1 text-caption font-caption text-on-surface-variant mt-1">
+<span>Total break value:</span>
+<strong class="tabular-naira text-secondary">₦3,250,000.00</strong>
+</div>
+</div>
+</div>
+<!-- KPI 4: Suspense Float -->
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest border border-surface-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-on-surface-variant">Suspense Account Float</span>
+<span class="p-2 rounded-xl bg-surface-container text-on-surface-variant material-symbols-outlined" data-icon="lock_clock">lock_clock</span>
+</div>
+<div class="mt-space-md">
+<span class="text-title font-title text-on-surface tabular-naira">₦3,250,000.00</span>
+<div class="flex items-center gap-1 text-caption font-caption text-on-surface-variant mt-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="shield">shield</span>
+<span>Held in protective balancing escrow</span>
+</div>
+</div>
+</div>
+</section>
+<!-- TWO-COLUMN WORKSPACE: 7/12 Blotter vs 5/12 Restitution Dossier -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-xl items-start">
+<!-- ==================== LEFT COLUMN: 7/12 RECONCILIATION BLOTTER ==================== -->
+<section class="xl:col-span-7 flex flex-col gap-space-lg">
+<div class="bg-surface-container-lowest rounded-2xl border border-surface-variant shadow-sm overflow-hidden">
+<!-- Blotter Sub-Navigation Tabs -->
+<div class="flex items-center justify-between px-space-lg pt-space-md border-b border-surface-variant bg-surface-container-lowest">
+<div class="flex items-center gap-space-lg overflow-x-auto">
+<button class="pb-space-md font-label text-label text-primary border-b-2 border-primary flex items-center gap-2">
+<span>Cycle 2 Active Breaks</span>
+<span class="px-2 py-0.5 rounded-full bg-error-container text-error text-caption font-caption">3</span>
+</button>
+<button class="pb-space-md font-label text-label text-on-surface-variant hover:text-on-surface border-b-2 border-transparent transition-colors flex items-center gap-2">
+<span>Auto-Matched Streams</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant text-caption font-caption">5,117</span>
+</button>
+<button class="pb-space-md font-label text-label text-on-surface-variant hover:text-on-surface border-b-2 border-transparent transition-colors">
+<span>Zenith Escrow Pool</span>
+</button>
+<button class="pb-space-md font-label text-label text-on-surface-variant hover:text-on-surface border-b-2 border-transparent transition-colors">
+<span>Suspense General Ledger</span>
+</button>
+</div>
+<!-- Micro Refresh CTA -->
+<button class="p-2 text-on-surface-variant hover:text-primary rounded-lg transition-colors" title="Sync Blotter">
+<span class="material-symbols-outlined" data-icon="refresh">refresh</span>
+</button>
+</div>
+<!-- Table Filter Toolbar -->
+<div class="p-space-md bg-surface-container-low/50 border-b border-surface-variant flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex flex-wrap items-center gap-2">
+<!-- Channel Filter Dropdown -->
+<div class="inline-flex items-center gap-1 px-3 py-1.5 bg-surface-container-lowest border border-surface-variant rounded-lg text-caption font-label text-on-surface">
+<span class="text-on-surface-variant">Rail:</span>
+<span class="font-semibold">All Switches (NIP, POS, Billers)</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="expand_more">expand_more</span>
+</div>
+<!-- Discrepancy Type Filter -->
+<div class="inline-flex items-center gap-1 px-3 py-1.5 bg-surface-container-lowest border border-surface-variant rounded-lg text-caption font-label text-on-surface">
+<span class="text-on-surface-variant">Severity:</span>
+<span class="font-semibold">All Discrepancies</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="expand_more">expand_more</span>
+</div>
+<!-- Value Filter -->
+<div class="inline-flex items-center gap-1 px-3 py-1.5 bg-surface-container-lowest border border-surface-variant rounded-lg text-caption font-label text-on-surface">
+<span class="text-on-surface-variant">Amount:</span>
+<span class="font-semibold">&gt; ₦100,000.00</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<div class="text-caption font-caption text-on-surface-variant">
+                Live Polling: <span class="font-semibold text-on-surface">Every 15s</span>
+</div>
+</div>
+<!-- Exceptions Ledger Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container text-on-surface-variant text-caption font-label border-b border-surface-variant">
+<th class="py-3 px-4 font-semibold">Break ID / Rail</th>
+<th class="py-3 px-4 font-semibold text-right">Core Ledger</th>
+<th class="py-3 px-4 font-semibold text-right">Switch / Partner</th>
+<th class="py-3 px-4 font-semibold text-right">Variance</th>
+<th class="py-3 px-4 font-semibold text-center">Status / Age</th>
+<th class="py-3 px-4 font-semibold text-center">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-variant text-label font-body">
+<!-- ROW 1: SELECTED ROW (#BRK-2027-088) -->
+<tr class="bg-primary-fixed/20 border-l-4 border-l-primary hover:bg-primary-fixed/30 cursor-pointer transition-colors">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2">
+<span class="font-semibold text-primary font-label">#BRK-2027-088</span>
+<span class="px-1.5 py-0.5 rounded text-[11px] font-semibold bg-primary-container text-on-primary">Active Dossier</span>
+</div>
+<div class="text-caption font-caption text-on-surface-variant mt-0.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="swap_horiz">swap_horiz</span>
+<span>NIP Outward (Zenith → First Bank)</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right">
+<span class="font-semibold text-on-surface tabular-naira">₦2,500,000.00</span>
+<span class="block text-caption font-caption text-emerald-800">Core debited</span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<span class="font-semibold text-on-surface tabular-naira">₦0.00</span>
+<span class="block text-caption font-caption text-error">Switch timed out</span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<span class="font-bold text-error tabular-naira">-₦2,500,000.00</span>
+<span class="block text-caption font-caption text-error font-medium">Break Mismatch</span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<div class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-error-container text-error text-caption font-caption font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-error animate-ping"></span>
+<span>Critical (42m)</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-center">
+<button class="p-1 rounded-lg text-primary hover:bg-primary-fixed/40 transition-colors" title="Inspect Break">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</button>
+</td>
+</tr>
+<!-- ROW 2: #BRK-2027-089 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2">
+<span class="font-semibold text-on-surface font-label">#BRK-2027-089</span>
+</div>
+<div class="text-caption font-caption text-on-surface-variant mt-0.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="point_of_sale">point_of_sale</span>
+<span>Interswitch POS Terminal Kiosk</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right">
+<span class="font-semibold text-on-surface tabular-naira">₦500,000.00</span>
+<span class="block text-caption font-caption text-on-surface-variant">Batch claim</span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<span class="font-semibold text-on-surface tabular-naira">₦498,500.00</span>
+<span class="block text-caption font-caption text-on-surface-variant">Switch net</span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<span class="font-semibold text-secondary tabular-naira">-₦1,500.00</span>
+<span class="block text-caption font-caption text-on-surface-variant">MDR Fee Diff</span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<div class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant text-caption font-caption">
+<span class="material-symbols-outlined text-[12px]" data-icon="schedule">schedule</span>
+<span>Medium (1.2h)</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-center">
+<button class="p-1 rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors" title="Inspect Break">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</td>
+</tr>
+<!-- ROW 3: #BRK-2027-090 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2">
+<span class="font-semibold text-on-surface font-label">#BRK-2027-090</span>
+</div>
+<div class="text-caption font-caption text-on-surface-variant mt-0.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="bolt">bolt</span>
+<span>EKEDC Biller Inbound API</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right">
+<span class="font-semibold text-on-surface tabular-naira">₦250,000.00</span>
+<span class="block text-caption font-caption text-emerald-800">Debited</span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<span class="font-semibold text-on-surface tabular-naira">₦0.00</span>
+<span class="block text-caption font-caption text-error">Token unissued</span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<span class="font-bold text-error tabular-naira">-₦250,000.00</span>
+<span class="block text-caption font-caption text-error font-medium">Biller Timeout</span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<div class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant text-caption font-caption">
+<span class="material-symbols-outlined text-[12px]" data-icon="priority_high">priority_high</span>
+<span>High (58m)</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-center">
+<button class="p-1 rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors" title="Inspect Break">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Auto-Matched Parity Balance Summary Block -->
+<div class="p-space-lg bg-surface-container border-t border-surface-variant">
+<span class="text-caption font-caption text-on-surface-variant uppercase tracking-wider block mb-2">Automated Settlement Inflow/Outflow Balances</span>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<!-- Outward Summary -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest border border-surface-variant flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-caption font-caption text-on-surface-variant">Core Outward Ledger</span>
+<span class="text-label font-label text-on-surface tabular-naira">₦92,400,000.00</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="text-right">
+<span class="text-caption font-caption text-on-surface-variant">NIBSS Switch Ack</span>
+<span class="text-label font-label text-on-surface tabular-naira block">₦92,400,000.00</span>
+</div>
+<span class="material-symbols-outlined text-emerald-700 bg-emerald-100 p-1 rounded-full text-[16px]" data-icon="check">check</span>
+</div>
+</div>
+<!-- Inward Summary -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest border border-surface-variant flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-caption font-caption text-on-surface-variant">Core Inward Ledger</span>
+<span class="text-label font-label text-on-surface tabular-naira">₦89,000,000.00</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="text-right">
+<span class="text-caption font-caption text-on-surface-variant">Zenith Nostro Credit</span>
+<span class="text-label font-label text-on-surface tabular-naira block">₦89,000,000.00</span>
+</div>
+<span class="material-symbols-outlined text-emerald-700 bg-emerald-100 p-1 rounded-full text-[16px]" data-icon="check">check</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Blotter Table Footer / Pagination -->
+<div class="px-space-lg py-3 bg-surface-container-lowest border-t border-surface-variant flex items-center justify-between text-caption font-caption text-on-surface-variant">
+<span>Showing <strong class="text-on-surface">3 open clearing discrepancies</strong> of 5,120 ledger postings</span>
+<div class="flex items-center gap-1">
+<button class="px-2 py-1 rounded border border-surface-variant bg-surface-container-low text-on-surface-variant disabled:opacity-50" disabled="">Previous</button>
+<button class="px-2 py-1 rounded bg-primary text-on-primary font-semibold">1</button>
+<button class="px-2 py-1 rounded border border-surface-variant hover:bg-surface-container text-on-surface transition-colors">Next</button>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== RIGHT COLUMN: 5/12 RESOLUTION DOSSIER ==================== -->
+<section class="xl:col-span-5 flex flex-col gap-space-lg">
+<div class="bg-surface-container-lowest rounded-2xl border border-surface-variant shadow-sm p-space-lg flex flex-col gap-space-lg">
+<!-- Dossier Header -->
+<div class="flex items-start justify-between pb-space-md border-b border-surface-variant">
+<div>
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded text-caption font-caption bg-error-container text-error font-semibold">Suspense Break</span>
+<span class="text-caption font-caption text-on-surface-variant">Session #0000132027</span>
+</div>
+<h2 class="text-subtitle font-subtitle text-on-surface mt-1">Break #BRK-2027-088</h2>
+<p class="text-caption font-caption text-on-surface-variant">NIP Outward Timeout Discrepancy</p>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-caption font-caption text-on-surface-variant">Protocol Status</span>
+<span class="inline-flex items-center gap-1 text-label font-label text-secondary mt-0.5">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+                  Awaiting Dual Restitution
+                </span>
+</div>
+</div>
+<!-- Ledger Telemetry Comparison Card -->
+<div class="p-space-md rounded-xl bg-surface-container border border-surface-variant flex flex-col gap-3">
+<span class="text-caption font-caption text-on-surface-variant uppercase tracking-wider font-semibold">Switch Audit Trail Telemetry</span>
+<!-- Telemetry Row 1: Core -->
+<div class="flex items-start gap-2.5 p-2 rounded-lg bg-surface-container-lowest">
+<span class="material-symbols-outlined text-primary text-[18px] mt-0.5" data-icon="account_balance">account_balance</span>
+<div class="flex-1">
+<span class="text-label font-label text-on-surface block">YourApp Core Ledger (Origin)</span>
+<p class="text-caption font-caption text-on-surface-variant">
+                    Debited customer account <span class="font-semibold text-on-surface">#0124892019</span> (Chinedu Adeleke) at 14:08:45 WAT. Ref: <span class="font-mono text-xs">TXN-998209</span>.
+                  </p>
+</div>
+<span class="text-label font-label text-emerald-700 tabular-naira">₦2,500,000.00</span>
+</div>
+<!-- Telemetry Row 2: Switch -->
+<div class="flex items-start gap-2.5 p-2 rounded-lg bg-surface-container-lowest border border-error/20">
+<span class="material-symbols-outlined text-error text-[18px] mt-0.5" data-icon="router">router</span>
+<div class="flex-1">
+<span class="text-label font-label text-on-surface block">NIBSS Switch Gateway (NIP)</span>
+<p class="text-caption font-caption text-error font-medium">
+                    Session 00001320270224140812 returned <span class="font-mono bg-error-container px-1 py-0.5 rounded text-on-error-container">91 - Downstream Switch Inoperative</span> (First Bank of Nigeria).
+                  </p>
+</div>
+<span class="text-label font-label text-error tabular-naira">₦0.00</span>
+</div>
+<!-- Telemetry Row 3: Zenith Nostro -->
+<div class="flex items-start gap-2.5 p-2 rounded-lg bg-surface-container-lowest">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px] mt-0.5" data-icon="lock_open">lock_open</span>
+<div class="flex-1">
+<span class="text-label font-label text-on-surface block">Zenith Clearing Settlement Pool</span>
+<p class="text-caption font-caption text-on-surface-variant">
+                    Funds quarantined in intermediate settlement suspense pool <span class="font-mono text-xs">#1019283741</span>. No settlement advice executed.
+                  </p>
+</div>
+<span class="text-caption font-caption text-on-surface-variant">Quarantined</span>
+</div>
+</div>
+<!-- Root Cause Diagnosis Note -->
+<div class="p-space-md rounded-xl bg-surface-container-low border border-outline-variant flex items-start gap-space-md">
+<span class="material-symbols-outlined text-primary mt-0.5" data-icon="psychology">psychology</span>
+<div class="flex flex-col">
+<span class="text-label font-label text-primary">Automated Root-Cause Diagnosis</span>
+<p class="text-caption font-caption text-on-surface-variant mt-0.5">
+                  Timeout retry caused customer debit to persist in suspense while destination clearing node rejected transmission. Automated rest-of-funds protocol applies.
+                </p>
+</div>
+</div>
+<!-- Restitution Actions (Radio Form) -->
+<div class="flex flex-col gap-space-sm">
+<span class="text-caption font-caption text-on-surface-variant uppercase tracking-wider font-semibold">Select Authorized Restitution Action</span>
+<!-- Action Option 1 (Selected / Recommended) -->
+<label class="p-space-md rounded-xl border-2 border-primary bg-primary-fixed/20 flex items-start gap-space-md cursor-pointer transition-colors">
+<input checked="" class="mt-1 text-primary focus:ring-primary h-4 w-4" name="restitution_action" type="radio"/>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="text-label font-label text-on-surface">Option A: Direct Credit-Back to Customer</span>
+<span class="px-2 py-0.5 rounded text-[11px] font-bold bg-primary text-on-primary">Recommended SOP</span>
+</div>
+<p class="text-caption font-caption text-on-surface-variant mt-0.5">
+                    Release suspense float and auto-credit <span class="font-semibold text-on-surface tabular-naira">₦2,500,000.00</span> back to account #0124892019. Clears ledger break immediately.
+                  </p>
+</div>
+</label>
+<!-- Action Option 2 -->
+<label class="p-space-md rounded-xl border border-surface-variant hover:bg-surface-container flex items-start gap-space-md cursor-pointer transition-colors">
+<input class="mt-1 text-primary focus:ring-primary h-4 w-4" name="restitution_action" type="radio"/>
+<div class="flex flex-col">
+<span class="text-label font-label text-on-surface">Option B: Re-push Cleared Packet via Secondary Route</span>
+<p class="text-caption font-caption text-on-surface-variant mt-0.5">
+                    Re-transmit payload via direct Interswitch NIP fallback rail to First Bank. Destination account will be credited.
+                  </p>
+</div>
+</label>
+<!-- Action Option 3 -->
+<label class="p-space-md rounded-xl border border-surface-variant hover:bg-surface-container flex items-start gap-space-md cursor-pointer transition-colors">
+<input class="mt-1 text-primary focus:ring-primary h-4 w-4" name="restitution_action" type="radio"/>
+<div class="flex flex-col">
+<span class="text-label font-label text-on-surface">Option C: Hold in Escrow Pending Interbank Enquiry</span>
+<p class="text-caption font-caption text-on-surface-variant mt-0.5">
+                    Escalate to NIBSS Helpdesk ticket. Keep funds locked in Zenith suspense until manual confirmation advice.
+                  </p>
+</div>
+</label>
+</div>
+<!-- Dual-Control Mandate Note -->
+<div class="p-space-sm rounded-lg bg-surface-container text-on-surface-variant text-caption font-caption flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="lock">lock</span>
+<span>Requires dual-signoff authorization from an active Level 3 Approver or Treasury Lead.</span>
+</div>
+<!-- Execution Action Buttons -->
+<div class="flex flex-col gap-2 pt-2 border-t border-surface-variant">
+<button class="h-[52px] w-full rounded-xl bg-primary-container hover:bg-primary text-on-primary font-label text-label flex items-center justify-center gap-2 shadow-sm transition-colors">
+<span class="material-symbols-outlined" data-icon="assignment_turned_in">assignment_turned_in</span>
+<span>Authorize Reversal &amp; Credit Customer Wallet</span>
+</button>
+<button class="h-[52px] w-full rounded-xl border border-surface-variant bg-transparent text-on-surface font-label text-label hover:bg-surface-container flex items-center justify-center gap-2 transition-colors">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span>Download Clearing Trace File (ISO 8583 Log)</span>
+</button>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- ==================== STICKY SYSTEM STATUS FOOTER ==================== -->
+<footer class="mt-auto bg-surface-container-lowest border-t border-surface-variant py-3 px-space-xl flex flex-wrap items-center justify-between text-caption font-caption text-on-surface-variant">
+<div class="flex items-center gap-3">
+<span class="inline-flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+<span class="text-on-surface font-medium">Automated NIP / NIBSS Clearing Bridge v9.2</span>
+</span>
+<span class="text-outline-variant">•</span>
+<span>Real-Time Core-to-Nostro Ledger Synchronized</span>
+<span class="text-outline-variant">•</span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="verified_user">verified_user</span>
+          All audit entries cryptographically sealed
+        </span>
+</div>
+<div class="flex items-center gap-4 text-on-surface-variant">
+<span>Session Latency: <strong>18ms</strong></span>
+<span>Zenith Direct Connect: <strong>ACTIVE</strong></span>
+</div>
+</footer>
+</div>
+</body></html>

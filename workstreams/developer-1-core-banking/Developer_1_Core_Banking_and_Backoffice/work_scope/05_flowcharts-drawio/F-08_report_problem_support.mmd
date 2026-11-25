@@ -1,0 +1,23 @@
+flowchart TD
+  a(["Open transaction detail"])
+  b["Tap Report a problem"]
+  c[/"Choose reason; add description and evidence"/]
+  d["Create ticket linked to transaction"]
+  e["Show ticket number and response time"]
+  f["Support/dispute officer reviews"]
+  g{"Resolution"}
+  h["Refund or reversal (dual control)"]
+  i["Explain and close with reason"]
+  j["Notify customer; ticket closed"]
+  k(["Done"])
+  a --> b
+  b --> c
+  c --> d
+  d --> e
+  e --> f
+  f --> g
+  g -->|valid| h
+  g -->|not valid| i
+  h --> j
+  i --> j
+  j --> k

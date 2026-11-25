@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YourApp - Report a Problem</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary-fixed-variant": "#881646",
+            "on-surface-variant": "#564146",
+            "on-secondary-fixed-variant": "#8c170e",
+            "error": "#ba1a1a",
+            "surface-container-highest": "#e9e0e1",
+            "tertiary-fixed": "#eedee4",
+            "on-tertiary-container": "#c6b7bd",
+            "outline-variant": "#dcbfc5",
+            "on-secondary-fixed": "#410000",
+            "surface-container": "#f5eced",
+            "on-primary": "#ffffff",
+            "error-container": "#ffdad6",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "on-secondary-container": "#690000",
+            "surface-variant": "#e9e0e1",
+            "primary-container": "#8e1b4a",
+            "surface": "#fff8f8",
+            "primary": "#6d0033",
+            "secondary-container": "#fc6955",
+            "primary-fixed-dim": "#ffb1c5",
+            "inverse-surface": "#342f30",
+            "secondary-fixed": "#ffdad4",
+            "surface-tint": "#a8315d",
+            "surface-container-lowest": "#ffffff",
+            "tertiary-container": "#53484d",
+            "on-tertiary": "#ffffff",
+            "tertiary": "#3b3236",
+            "on-error-container": "#93000a",
+            "secondary-fixed-dim": "#ffb4a8",
+            "surface-container-high": "#efe6e7",
+            "secondary": "#ae3123",
+            "primary-fixed": "#ffd9e1",
+            "inverse-primary": "#ffb1c5",
+            "on-error": "#ffffff",
+            "outline": "#897176",
+            "on-primary-fixed": "#3f001b",
+            "on-secondary": "#ffffff",
+            "surface-dim": "#e1d8d9",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "inverse-on-surface": "#f8eeef",
+            "surface-bright": "#fff8f8",
+            "on-surface": "#1f1b1c",
+            "on-background": "#1f1b1c",
+            "background": "#fff8f8",
+            "surface-container-low": "#fbf1f2",
+            "on-primary-container": "#ffa0ba",
+            "on-tertiary-fixed": "#21191e"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-md": "0.75rem",
+            "gutter": "1rem",
+            "space-sm": "0.5rem",
+            "space-2xl": "2rem",
+            "space-xs": "0.25rem",
+            "margin": "1rem",
+            "space-lg": "1rem",
+            "space-3xl": "3rem",
+            "space-xl": "1.5rem"
+          },
+          "fontFamily": {
+            "display": ["Inter"],
+            "title": ["Inter"],
+            "caption": ["Inter"],
+            "amount-lg": ["Inter"],
+            "label": ["Inter"],
+            "body": ["Inter"],
+            "body-medium": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "subtitle": ["Inter"]
+          },
+          "fontSize": {
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex justify-center selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Mobile Screen Canvas (390px max target) -->
+<main class="w-full max-w-[390px] min-h-screen bg-surface flex flex-col relative shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08)]">
+<!-- Top App Bar (Task Sub-page header with Close/Back, suppression of global bottom bar applies) -->
+<header class="sticky top-0 z-40 bg-surface/95 backdrop-blur-md px-margin py-space-sm flex items-center justify-between min-h-[56px] shadow-[0_2px_8px_-2px_rgba(30,26,27,0.03)]">
+<button aria-label="Go back" class="w-10 h-10 -ml-2 rounded-full flex items-center justify-center text-on-surface hover:bg-surface-container active:scale-95 transition-all duration-150" type="button">
+<span class="material-symbols-outlined text-on-surface" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="flex-1 text-center pr-2">
+<h1 class="font-subtitle text-subtitle text-on-surface font-semibold tracking-tight">Report a Problem</h1>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="font-label text-caption font-medium text-on-surface-variant bg-surface-container-high px-2 py-0.5 rounded-full">S-CB-079</span>
+</div>
+</header>
+<!-- Main Content Container -->
+<div class="flex-1 px-margin pt-space-md pb-space-3xl flex flex-col gap-space-xl">
+<!-- Issue Category Selection -->
+<section class="flex flex-col gap-space-sm">
+<div class="flex justify-between items-baseline">
+<label class="font-label text-label text-on-surface-variant">Select Issue Category</label>
+<span class="font-caption text-caption text-primary font-medium">Required</span>
+</div>
+<div aria-label="Dispute Category" class="grid grid-cols-1 gap-space-sm" role="radiogroup">
+<!-- Category 1: Selected State -->
+<label class="relative flex items-center p-space-md rounded-xl border-[1.5px] border-primary-container bg-surface-container-low cursor-pointer shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] transition-all">
+<input checked="" class="sr-only" name="dispute_category" type="radio" value="failed_transfer"/>
+<div class="w-6 h-6 rounded-full border-2 border-primary-container flex items-center justify-center mr-space-md shrink-0 bg-primary-container">
+<span class="material-symbols-outlined text-[16px] text-on-primary font-bold" data-icon="check">check</span>
+</div>
+<div class="flex-1 min-w-0">
+<span class="font-body-medium text-body-medium text-on-surface block truncate">Failed Transfer / Money Debited</span>
+<span class="font-caption text-caption text-on-surface-variant block">Funds deducted but recipient uncredited</span>
+</div>
+<span class="material-symbols-outlined text-primary-container shrink-0 ml-space-xs" data-icon="sync_problem">sync_problem</span>
+</label>
+<!-- Category 2 -->
+<label class="relative flex items-center p-space-md rounded-xl border border-outline-variant/60 bg-surface-container-lowest hover:bg-surface-container-low cursor-pointer transition-all">
+<input class="sr-only" name="dispute_category" type="radio" value="unauthorized_card"/>
+<div class="w-6 h-6 rounded-full border border-outline flex items-center justify-center mr-space-md shrink-0 bg-transparent"></div>
+<div class="flex-1 min-w-0">
+<span class="font-body-medium text-body-medium text-on-surface block truncate">Unauthorized Card Transaction</span>
+<span class="font-caption text-caption text-on-surface-variant block">Unknown POS, ATM or Web billing</span>
+</div>
+<span class="material-symbols-outlined text-outline shrink-0 ml-space-xs" data-icon="credit_card_off">credit_card_off</span>
+</label>
+<!-- Category 3 -->
+<label class="relative flex items-center p-space-md rounded-xl border border-outline-variant/60 bg-surface-container-lowest hover:bg-surface-container-low cursor-pointer transition-all">
+<input class="sr-only" name="dispute_category" type="radio" value="airtime_bill"/>
+<div class="w-6 h-6 rounded-full border border-outline flex items-center justify-center mr-space-md shrink-0 bg-transparent"></div>
+<div class="flex-1 min-w-0">
+<span class="font-body-medium text-body-medium text-on-surface block truncate">Airtime / Bill vend failure</span>
+<span class="font-caption text-caption text-on-surface-variant block">Token not generated or line not credited</span>
+</div>
+<span class="material-symbols-outlined text-outline shrink-0 ml-space-xs" data-icon="receipt_long">receipt_long</span>
+</label>
+<!-- Category 4 -->
+<label class="relative flex items-center p-space-md rounded-xl border border-outline-variant/60 bg-surface-container-lowest hover:bg-surface-container-low cursor-pointer transition-all">
+<input class="sr-only" name="dispute_category" type="radio" value="access_glitch"/>
+<div class="w-6 h-6 rounded-full border border-outline flex items-center justify-center mr-space-md shrink-0 bg-transparent"></div>
+<div class="flex-1 min-w-0">
+<span class="font-body-medium text-body-medium text-on-surface block truncate">Account / App Access Glitch</span>
+<span class="font-caption text-caption text-on-surface-variant block">Login failure, OTP delays, or profile errors</span>
+</div>
+<span class="material-symbols-outlined text-outline shrink-0 ml-space-xs" data-icon="phonelink_erase">phonelink_erase</span>
+</label>
+</div>
+</section>
+<!-- Linked Transaction Card -->
+<section class="flex flex-col gap-space-xs">
+<div class="flex justify-between items-center px-1">
+<label class="font-label text-label text-on-surface-variant">Affected Transaction</label>
+<button class="font-label text-label text-primary hover:underline flex items-center gap-0.5" type="button">
+            Change
+            <span class="material-symbols-outlined text-[16px]" data-icon="swap_horiz">swap_horiz</span>
+</button>
+</div>
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest border border-outline-variant/70 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] flex items-center justify-between">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="w-11 h-11 rounded-full bg-error-container/60 text-error flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[22px]" data-icon="arrow_outward">arrow_outward</span>
+</div>
+<div class="min-w-0 flex flex-col">
+<p class="font-body-medium text-body-medium text-on-surface font-semibold truncate">Transfer to Amina Y.</p>
+<div class="flex items-center gap-space-xs mt-0.5 text-on-surface-variant">
+<span class="font-caption text-caption">24 Oct, 14:32</span>
+<span class="text-[10px]">•</span>
+<span class="inline-flex items-center gap-1 font-caption text-caption text-secondary font-medium">
+<span class="material-symbols-outlined text-[14px]" data-icon="schedule">schedule</span>
+                  Pending
+                </span>
+</div>
+</div>
+</div>
+<div class="text-right shrink-0 pl-2">
+<span class="font-body-medium text-body-medium text-on-surface font-bold tabular-nums">₦25,000.00</span>
+<span class="block font-caption text-[11px] text-on-surface-variant uppercase tracking-wider">NIP Interbank</span>
+</div>
+</div>
+</section>
+<!-- Problem Details Form Field -->
+<section class="flex flex-col gap-space-xs">
+<label class="font-label text-label text-on-surface-variant" for="dispute-description">Describe what happened</label>
+<div class="relative rounded-xl border border-outline-variant/80 bg-surface-container-lowest focus-within:border-primary-container focus-within:ring-1 focus-within:ring-primary-container transition-all">
+<textarea class="w-full bg-transparent p-space-md font-body text-body text-on-surface placeholder:text-outline border-0 focus:ring-0 resize-none outline-none" id="dispute-description" placeholder="Give details, counterparty claim, recipient statement..." rows="4"></textarea>
+<div class="px-space-md pb-space-sm flex justify-between items-center text-on-surface-variant">
+<span class="font-caption text-[12px] text-outline">Include session ID or bank response if available</span>
+<span class="font-caption text-[12px] tabular-nums text-outline">0/500</span>
+</div>
+</div>
+</section>
+<!-- Evidence Upload Card -->
+<section class="flex flex-col gap-space-xs">
+<label class="font-label text-label text-on-surface-variant">Attach screenshot or proof (Optional)</label>
+<div class="border border-dashed border-outline-variant rounded-2xl bg-surface-container-low p-space-lg flex flex-col items-center justify-center text-center gap-space-sm hover:bg-surface-container transition-colors cursor-pointer group">
+<div class="w-12 h-12 rounded-full bg-surface-container-lowest border border-outline-variant/50 flex items-center justify-center text-primary-container group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[24px]" data-icon="photo_camera">photo_camera</span>
+</div>
+<div>
+<p class="font-body-medium text-body-medium text-on-surface font-medium">Click to upload or drag &amp; drop</p>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">JPEG, PNG or PDF (Max 5MB debit receipt)</p>
+</div>
+<button class="mt-space-xs px-space-md py-1.5 rounded-lg bg-surface-container-highest text-on-surface-variant font-label text-caption font-semibold flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[16px]" data-icon="upload_file">upload_file</span>
+            Browse Files
+          </button>
+</div>
+</section>
+<!-- Resolution Expectations Callout (CBN Compliance) -->
+<aside class="p-space-md rounded-xl bg-surface-container border border-outline-variant/40 flex items-start gap-space-md" role="note">
+<div class="w-6 h-6 rounded-full bg-primary-fixed text-primary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[16px]" data-icon="policy">policy</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant leading-relaxed">
+          Under <strong class="text-on-surface font-medium">CBN consumer protection guidelines</strong>, standard interbank transfer disputes are resolved or refunded within <strong class="text-on-surface font-semibold">24–72 hours</strong>.
+        </p>
+</aside>
+<!-- Primary Action Trigger -->
+<div class="pt-space-xs">
+<button class="w-full h-[52px] rounded-xl bg-primary-container text-on-primary font-label text-label font-semibold tracking-wide flex items-center justify-center gap-space-sm shadow-[0_4px_12px_-2px_rgba(30,26,27,0.08)] active:bg-primary active:scale-[0.99] transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="send">send</span>
+          Submit Dispute Ticket
+        </button>
+<p class="text-center font-caption text-caption text-outline mt-space-md flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="lock">lock</span>
+          Secured with official banking ombudsman auditing
+        </p>
+</div>
+</div>
+</main>
+<script>
+    // Radio selection visual toggle micro-interaction
+    document.querySelectorAll('input[name="dispute_category"]').forEach(radio => {
+      radio.addEventListener('change', (e) => {
+        document.querySelectorAll('label[role="none"], label:has(input[name="dispute_category"])').forEach(lbl => {
+          const checkIcon = lbl.querySelector('.w-6.h-6');
+          if (lbl.contains(e.target)) {
+            lbl.classList.remove('border-outline-variant/60', 'bg-surface-container-lowest');
+            lbl.classList.add('border-primary-container', 'bg-surface-container-low', 'border-[1.5px]');
+            if (checkIcon) {
+              checkIcon.className = 'w-6 h-6 rounded-full border-2 border-primary-container flex items-center justify-center mr-space-md shrink-0 bg-primary-container';
+              checkIcon.innerHTML = '<span class="material-symbols-outlined text-[16px] text-on-primary font-bold" data-icon="check">check</span>';
+            }
+          } else {
+            lbl.classList.remove('border-primary-container', 'bg-surface-container-low', 'border-[1.5px]');
+            lbl.classList.add('border-outline-variant/60', 'bg-surface-container-lowest');
+            if (checkIcon) {
+              checkIcon.className = 'w-6 h-6 rounded-full border border-outline flex items-center justify-center mr-space-md shrink-0 bg-transparent';
+              checkIcon.innerHTML = '';
+            }
+          }
+        });
+      });
+    });
+
+    // Character counter micro-interaction
+    const textarea = document.getElementById('dispute-description');
+    if (textarea) {
+      const counter = textarea.parentElement.querySelector('.tabular-nums');
+      textarea.addEventListener('input', () => {
+        const len = textarea.value.length;
+        if (counter) counter.textContent = `${len}/500`;
+      });
+    }
+  </script>
+</body></html>

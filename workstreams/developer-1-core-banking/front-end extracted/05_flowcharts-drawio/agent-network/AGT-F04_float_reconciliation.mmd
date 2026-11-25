@@ -1,0 +1,17 @@
+flowchart TD
+  a(["Agent low on float"])
+  b["Top up float by transfer or deposit"]
+  c["Float credited after confirmation"]
+  d["Day end: agent submits cash and float summary"]
+  e{"Matches records?"}
+  f["Mark reconciled; pay commission"]
+  g["Raise exception; staff review"]
+  h(["Done"])
+  a --> b
+  b --> c
+  c --> d
+  d --> e
+  e -->|yes| f
+  e -->|no| g
+  f --> h
+  g --> h

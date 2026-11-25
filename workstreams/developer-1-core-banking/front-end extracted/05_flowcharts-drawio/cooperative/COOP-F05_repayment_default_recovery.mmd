@@ -1,0 +1,25 @@
+flowchart TD
+  a(["Instalment due"])
+  b{"Paid (manual or auto)?"}
+  c["Post repayment: principal, interest, penalty"]
+  d{"Loan fully repaid?"}
+  e["Release guarantor holds; close loan"]
+  f["Reminders; arrears status"]
+  g{"Overdue beyond recovery threshold?"}
+  h["Notify borrower and guarantors in advance"]
+  i["Deduct from guarantors' locked savings per rule"]
+  j["Apply to loan; update records; notify"]
+  k(["Done"])
+  a --> b
+  b -->|yes| c
+  c --> d
+  d -->|yes| e
+  d -->|no| k
+  b -->|no| f
+  f --> g
+  g -->|no, wait| a
+  g -->|yes| h
+  h --> i
+  i --> j
+  j --> k
+  e --> k

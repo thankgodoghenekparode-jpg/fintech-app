@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Essential Security Update - YourApp</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-highest": "#e9e0e1",
+            "secondary-fixed": "#ffdad4",
+            "on-surface": "#1f1b1c",
+            "surface-container-high": "#efe6e7",
+            "error-container": "#ffdad6",
+            "surface-container": "#f5eced",
+            "on-primary-fixed-variant": "#881646",
+            "on-tertiary": "#ffffff",
+            "on-tertiary-fixed": "#21191e",
+            "on-primary-fixed": "#3f001b",
+            "error": "#ba1a1a",
+            "on-secondary-fixed": "#410000",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "tertiary": "#3b3236",
+            "primary-fixed-dim": "#ffb1c5",
+            "outline": "#897176",
+            "secondary-container": "#fc6955",
+            "secondary-fixed-dim": "#ffb4a8",
+            "tertiary-fixed": "#eedee4",
+            "on-background": "#1f1b1c",
+            "primary-container": "#8e1b4a",
+            "surface-tint": "#a8315d",
+            "on-secondary-container": "#690000",
+            "on-surface-variant": "#564146",
+            "surface": "#fff8f8",
+            "secondary": "#ae3123",
+            "surface-dim": "#e1d8d9",
+            "on-error": "#ffffff",
+            "inverse-surface": "#342f30",
+            "on-primary": "#ffffff",
+            "on-tertiary-container": "#c6b7bd",
+            "background": "#fff8f8",
+            "tertiary-container": "#53484d",
+            "on-secondary": "#ffffff",
+            "outline-variant": "#dcbfc5",
+            "surface-variant": "#e9e0e1",
+            "on-primary-container": "#ffa0ba",
+            "primary": "#6d0033",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "surface-container-low": "#fbf1f2",
+            "on-error-container": "#93000a",
+            "surface-bright": "#fff8f8",
+            "inverse-primary": "#ffb1c5",
+            "primary-fixed": "#ffd9e1",
+            "on-secondary-fixed-variant": "#8c170e",
+            "surface-container-lowest": "#ffffff",
+            "inverse-on-surface": "#f8eeef"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "space-lg": "1rem",
+            "space-md": "0.75rem",
+            "gutter": "1rem",
+            "space-2xl": "2rem",
+            "space-sm": "0.5rem",
+            "margin": "1rem",
+            "space-xl": "1.5rem",
+            "space-3xl": "3rem"
+          },
+          "fontFamily": {
+            "caption": ["Inter"],
+            "subtitle": ["Inter"],
+            "body-medium": ["Inter"],
+            "label": ["Inter"],
+            "title": ["Inter"],
+            "amount-lg": ["Inter"],
+            "display": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "body": ["Inter"]
+          },
+          "fontSize": {
+            "caption": ["13px", {"lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+            "subtitle": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "body-medium": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500"}],
+            "label": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+            "title": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700"}],
+            "amount-lg": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700"}],
+            "display": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "amount-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "body": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400"}]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased min-h-full flex flex-col items-center justify-start selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Mobile Container viewport: 390x844 constrained shell -->
+<div class="w-full max-w-[560px] min-h-screen bg-background flex flex-col justify-between shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)] relative overflow-x-hidden">
+<!-- Top Bar Component -->
+<header class="flex justify-between items-center w-full px-margin py-space-sm max-w-[560px] mx-auto min-h-[56px] border-b border-outline-variant/40 bg-surface">
+<!-- Wordmark anchor -->
+<div class="flex items-center gap-space-xs">
+<span class="font-title text-title font-bold text-primary tracking-tight">YourApp</span>
+<span class="inline-flex items-center px-1.5 py-0.5 rounded-full text-[10px] font-semibold bg-surface-container text-on-surface-variant uppercase tracking-wider ml-1">Secure</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<div class="flex items-center gap-1 text-on-surface-variant font-caption text-caption bg-surface-container-low px-2.5 py-1 rounded-full border border-outline-variant/30">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-medium">Mandatory Update</span>
+</div>
+</div>
+</header>
+<!-- Scrollable Content Canvas -->
+<main class="flex-1 px-margin pt-space-xl pb-space-lg flex flex-col items-center text-center">
+<!-- Visual Hero Graphic: Rocket & Shield inside warm brand rings -->
+<div class="relative mb-space-lg flex items-center justify-center">
+<!-- Outer soft diffuse ripple -->
+<div class="absolute w-28 h-28 rounded-full bg-primary-fixed/40 animate-ping opacity-30"></div>
+<!-- Medium accent ring -->
+<div class="relative w-24 h-24 rounded-full bg-primary-fixed flex items-center justify-center border-4 border-surface shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08)]">
+<!-- Inner berry core ring -->
+<div class="w-16 h-16 rounded-full bg-primary-container flex items-center justify-center text-on-primary shadow-inner">
+<span class="material-symbols-outlined text-display" data-icon="security_update_good">security_update_good</span>
+</div>
+<!-- Badged Micro Chip -->
+<div class="absolute -bottom-1 -right-1 bg-surface-container-lowest border-2 border-surface rounded-full p-1 shadow-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="verified_user" data-weight="fill" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+</div>
+</div>
+<!-- Headline & Subtitle -->
+<div class="space-y-space-xs max-w-md mx-auto mb-space-xl">
+<h1 class="font-title text-title font-bold text-on-surface tracking-tight">
+          Essential Security Update Required
+        </h1>
+<p class="font-body text-body text-on-surface-variant text-sm leading-relaxed px-space-xs">
+          To safeguard your account and comply with the latest Central Bank of Nigeria (CBN) regulatory security protocols, you need to update to YourApp v2.5.0.
+        </p>
+</div>
+<!-- What's New & Security Card (Bento-style structured container) -->
+<div class="w-full bg-surface-container-lowest rounded-xl border border-outline-variant/50 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] p-space-lg text-left mb-space-lg transition-all">
+<!-- Versions & Status Ribbon -->
+<div class="flex items-center justify-between pb-space-md border-b border-outline-variant/30 mb-space-md">
+<div>
+<span class="font-caption text-caption text-on-surface-variant block">Current Version</span>
+<span class="font-label text-label text-on-surface font-semibold">v2.4.1</span>
+</div>
+<div class="flex items-center px-space-sm py-space-xs rounded-full bg-surface-container text-on-surface-variant">
+<span class="material-symbols-outlined text-label text-primary" data-icon="arrow_forward">arrow_forward</span>
+</div>
+<div class="text-right">
+<span class="font-caption text-caption text-primary-container block font-medium">Required Version</span>
+<span class="font-label text-label text-primary-container font-bold">v2.5.0</span>
+</div>
+</div>
+<!-- Release Highlights List -->
+<div class="space-y-space-md mb-space-md">
+<p class="font-caption text-caption uppercase tracking-wider text-on-surface-variant font-semibold">
+            Security Enhancements &amp; Upgrades
+          </p>
+<div class="flex items-start gap-space-sm">
+<div class="mt-0.5 w-6 h-6 rounded-full bg-surface-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="fingerprint">fingerprint</span>
+</div>
+<p class="font-body text-body text-sm text-on-surface leading-tight">
+              Enhanced biometric cryptographic binding
+            </p>
+</div>
+<div class="flex items-start gap-space-sm">
+<div class="mt-0.5 w-6 h-6 rounded-full bg-surface-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="bolt">bolt</span>
+</div>
+<p class="font-body text-body text-sm text-on-surface leading-tight">
+              Instant interbank transfer speed improvements
+            </p>
+</div>
+<div class="flex items-start gap-space-sm">
+<div class="mt-0.5 w-6 h-6 rounded-full bg-surface-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="account_balance">account_balance</span>
+</div>
+<p class="font-body text-body text-sm text-on-surface leading-tight">
+              NIBSS electronic mandate integration
+            </p>
+</div>
+</div>
+<!-- File Size Badge & Optimization Info -->
+<div class="pt-space-sm border-t border-outline-variant/30 flex items-center justify-between">
+<div class="flex items-center gap-space-xs text-on-surface-variant font-caption text-caption">
+<span class="material-symbols-outlined text-[18px] text-outline" data-icon="data_saver_on">data_saver_on</span>
+<span>Download Package</span>
+</div>
+<span class="font-caption text-caption font-semibold text-on-surface bg-surface-container px-2 py-0.5 rounded-md">
+            28.4 MB (data-saver optimized)
+          </span>
+</div>
+</div>
+<!-- Warm Trust Banner / Safety Note -->
+<div class="w-full flex items-start gap-space-sm p-space-md rounded-xl bg-surface-container-low border border-outline-variant/30 text-left mb-space-lg">
+<span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5" data-icon="lock" data-weight="fill" style="font-variation-settings: 'FILL' 1;">lock</span>
+<p class="font-caption text-caption text-on-surface-variant leading-relaxed">
+          Your saved cards, beneficiaries, and transaction history will remain intact upon updating.
+        </p>
+</div>
+</main>
+<!-- Bottom Sticky Operational Panel with Actions & Regulatory Footer -->
+<footer class="w-full px-margin pb-space-xl pt-space-md bg-surface border-t border-outline-variant/30 shadow-[0_-4px_16px_rgba(30,26,27,0.03)] flex flex-col gap-space-md">
+<!-- Action Primary Button -->
+<a class="h-[52px] w-full rounded-xl bg-primary-container text-on-primary font-label text-label flex items-center justify-center gap-space-sm shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] hover:bg-primary active:scale-[0.98] transition-all duration-150 text-center" href="https://play.google.com" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[20px]" data-icon="download">download</span>
+<span>Update Now via Google Play</span>
+</a>
+<!-- Secondary Trigger Action / Modal Trigger -->
+<button class="h-[52px] w-full rounded-xl bg-surface-container text-primary font-label text-label flex items-center justify-center gap-space-xs hover:bg-surface-container-high active:scale-[0.98] transition-all duration-150" onclick="document.getElementById('security-modal').classList.remove('hidden')" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="info">info</span>
+<span>Learn More about this Security Release</span>
+</button>
+<!-- Institutional Assurance Note -->
+<div class="pt-space-xs text-center space-y-1">
+<p class="font-caption text-[11px] text-outline leading-tight">
+          YourApp by licensed banking partner. All financial transactions are encrypted with 256-bit bank-grade SSL.
+        </p>
+<div class="flex items-center justify-center gap-2 text-[10px] text-outline-variant">
+<span class="flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[12px]" data-icon="security">security</span> CBN Regulated
+          </span>
+<span>•</span>
+<span class="flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[12px]" data-icon="shield">shield</span> NDIC Insured
+          </span>
+</div>
+</div>
+</footer>
+<!-- Interactive Bottom Sheet Dialog (Learn More About Security Release) -->
+<div class="hidden fixed inset-0 z-50 bg-on-surface/40 backdrop-blur-sm flex items-end sm:items-center justify-center transition-opacity duration-200" id="security-modal">
+<div class="w-full max-w-[560px] bg-surface-container-lowest rounded-t-2xl sm:rounded-2xl p-space-xl shadow-[0_16px_36px_-6px_rgba(30,26,27,0.16)] border border-outline-variant/30 flex flex-col gap-space-md animate-in fade-in slide-in-from-bottom-4 duration-200">
+<div class="flex justify-between items-center pb-space-sm border-b border-outline-variant/20">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary" data-icon="verified">verified</span>
+<h3 class="font-subtitle text-subtitle text-on-surface">Compliance Notice</h3>
+</div>
+<button class="w-8 h-8 rounded-full flex items-center justify-center hover:bg-surface-container text-on-surface-variant transition-colors" onclick="document.getElementById('security-modal').classList.add('hidden')" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="close">close</span>
+</button>
+</div>
+<div class="space-y-space-sm text-left">
+<p class="font-body text-body text-sm text-on-surface-variant leading-relaxed">
+            As mandated by the Central Bank of Nigeria (CBN) Cybersecurity Framework 2024, all direct banking applications must employ zero-trust biometric pairing. 
+          </p>
+<div class="p-space-sm bg-surface-container rounded-lg border border-outline-variant/20 flex gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[18px] shrink-0" data-icon="gavel">gavel</span>
+<span class="font-caption text-caption text-on-surface">Directive Ref: CBN/BSD/DIR/GEN/08/022</span>
+</div>
+<p class="font-caption text-caption text-outline">
+            Older app versions will permanently disconnect from the real-time settlement gateway on 31st October to prevent interception vulnerabilities.
+          </p>
+</div>
+<div class="pt-space-sm">
+<button class="w-full h-[52px] bg-primary-container text-on-primary rounded-xl font-label text-label hover:bg-primary active:scale-[0.98] transition-all" onclick="document.getElementById('security-modal').classList.add('hidden')" type="button">
+            Understood
+          </button>
+</div>
+</div>
+</div>
+</div>
+</body></html>

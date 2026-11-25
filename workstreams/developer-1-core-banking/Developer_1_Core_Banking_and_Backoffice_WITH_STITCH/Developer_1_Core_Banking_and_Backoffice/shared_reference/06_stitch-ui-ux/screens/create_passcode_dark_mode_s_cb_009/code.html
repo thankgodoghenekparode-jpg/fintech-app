@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Create Passcode - YourApp</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary": "#b0c6ff",
+            "tertiary-container": "#6a92ee",
+            "secondary-fixed-dim": "#ffb4a8",
+            "surface": "#151314",
+            "outline-variant": "#544247",
+            "on-surface": "#e7e1e2",
+            "on-primary": "#620735",
+            "on-primary-container": "#5d0331",
+            "surface-container-low": "#1d1b1c",
+            "on-secondary-fixed-variant": "#7f291e",
+            "on-tertiary": "#002d6f",
+            "on-primary-fixed-variant": "#7f234b",
+            "on-surface-variant": "#dac0c6",
+            "on-error-container": "#ffdad6",
+            "background": "#151314",
+            "primary-container": "#e0709a",
+            "secondary": "#ffb4a8",
+            "surface-container-highest": "#373435",
+            "inverse-on-surface": "#323031",
+            "primary-fixed": "#ffd9e3",
+            "on-tertiary-fixed": "#001945",
+            "tertiary-fixed": "#d9e2ff",
+            "primary": "#ffb0ca",
+            "on-tertiary-container": "#002a69",
+            "on-primary-fixed": "#3e001f",
+            "surface-variant": "#373435",
+            "surface-container-high": "#2c292a",
+            "surface-container": "#211f20",
+            "outline": "#a28b91",
+            "secondary-container": "#822c20",
+            "error-container": "#93000a",
+            "on-secondary": "#61130a",
+            "surface-tint": "#ffb0ca",
+            "on-tertiary-fixed-variant": "#06429a",
+            "error": "#ffb4ab",
+            "inverse-surface": "#e7e1e2",
+            "surface-bright": "#3b3839",
+            "on-secondary-fixed": "#410000",
+            "secondary-fixed": "#ffdad4",
+            "primary-fixed-dim": "#ffb0ca",
+            "surface-dim": "#151314",
+            "surface-container-lowest": "#100e0f",
+            "on-secondary-container": "#ff9f90",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "on-error": "#690005",
+            "inverse-primary": "#9e3b63",
+            "on-background": "#e7e1e2"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "space-xs": "0.25rem",
+            "margin": "1rem",
+            "space-xl": "2rem",
+            "gutter-mobile": "0.75rem",
+            "space-md": "1rem",
+            "margin-mobile": "1rem",
+            "space-lg": "1.5rem",
+            "gutter": "1rem"
+          },
+          "fontFamily": {
+            "label-md": ["Inter"],
+            "display-currency": ["Inter"],
+            "body-md": ["Inter"],
+            "body-lg": ["Inter"],
+            "label-sm": ["Inter"],
+            "label-lg": ["Inter"],
+            "headline-md": ["Inter"],
+            "headline-sm": ["Inter"],
+            "title-currency": ["Inter"],
+            "headline-lg": ["Inter"]
+          },
+          "fontSize": {
+            "label-md": ["13px", {"lineHeight": "18px", "fontWeight": "500"}],
+            "display-currency": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+            "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+            "label-lg": ["15px", {"lineHeight": "20px", "fontWeight": "600"}],
+            "headline-md": ["22px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+            "title-currency": ["20px", {"lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "headline-lg": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-lowest text-on-surface antialiased min-h-screen flex items-center justify-center p-0 md:p-6 selection:bg-primary-container selection:text-surface-container-lowest">
+<!-- Mobile Viewport Shell (390px x 844px context) -->
+<main class="w-full max-w-[390px] min-h-[844px] bg-surface flex flex-col justify-between relative shadow-2xl overflow-hidden border border-outline-variant/30 md:rounded-3xl">
+<!-- Top App Bar / Security Header -->
+<header class="w-full pt-4 pb-2 px-margin flex items-center justify-between z-10">
+<!-- Back Navigation Action -->
+<button aria-label="Go back" class="w-[52px] h-[52px] -ml-2 rounded-xl flex items-center justify-center text-on-surface hover:bg-surface-container transition-colors active:scale-95 duration-150" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<!-- Center Security Lock Badge -->
+<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container border border-outline-variant/40 shadow-sm">
+<span class="material-symbols-outlined text-primary-container text-[16px]" style="font-variation-settings: 'FILL' 1;">lock</span>
+<span class="font-label-sm text-label-sm text-primary-container font-semibold tracking-wider">SECURE SETUP</span>
+</div>
+<!-- Trailing Help Action -->
+<button aria-label="Help and support" class="w-[52px] h-[52px] -mr-2 rounded-xl flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors active:scale-95 duration-150" type="button">
+<span class="material-symbols-outlined text-[24px]">help_outline</span>
+</button>
+</header>
+<!-- Main Interactive Canvas -->
+<div class="flex-1 flex flex-col px-margin pt-2 pb-3">
+<!-- Eyebrow & Headline Group -->
+<section class="text-center mt-1 mb-5">
+<p class="font-label-sm text-label-sm text-outline tracking-widest mb-1.5 font-semibold">SECURITY SETUP</p>
+<h1 class="font-headline-md text-headline-md text-on-surface mb-2 font-bold tracking-tight">Create your login passcode</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-[320px] mx-auto leading-relaxed">
+          You will use this 6-digit code to log into YourApp on this device
+        </p>
+</section>
+<!-- 6-Digit Passcode Indicator (3 filled with subtle glow in #E0709A, 3 empty) -->
+<section aria-label="Passcode entered: 3 of 6 digits" class="flex justify-center items-center gap-4 my-3">
+<!-- Dot 1: Filled -->
+<div class="w-4 h-4 rounded-full bg-primary-container shadow-[0_0_12px_rgba(224,112,154,0.65)] ring-2 ring-primary-container/40 transition-transform scale-110"></div>
+<!-- Dot 2: Filled -->
+<div class="w-4 h-4 rounded-full bg-primary-container shadow-[0_0_12px_rgba(224,112,154,0.65)] ring-2 ring-primary-container/40 transition-transform scale-110"></div>
+<!-- Dot 3: Filled -->
+<div class="w-4 h-4 rounded-full bg-primary-container shadow-[0_0_12px_rgba(224,112,154,0.65)] ring-2 ring-primary-container/40 transition-transform scale-110"></div>
+<!-- Dot 4: Empty -->
+<div class="w-4 h-4 rounded-full bg-surface-container-high border border-outline-variant/60"></div>
+<!-- Dot 5: Empty -->
+<div class="w-4 h-4 rounded-full bg-surface-container-high border border-outline-variant/60"></div>
+<!-- Dot 6: Empty -->
+<div class="w-4 h-4 rounded-full bg-surface-container-high border border-outline-variant/60"></div>
+</section>
+<!-- Passcode Strength & Rule Checklist Card -->
+<section class="my-4 bg-surface-container-low border border-outline-variant/40 rounded-xl p-3.5 space-y-2">
+<!-- Rule 1 -->
+<div class="flex items-center gap-2.5">
+<div class="w-4 h-4 rounded-full bg-surface-container-high flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[13px] text-primary-container">check</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant">No repeating numbers (e.g. 111111)</span>
+</div>
+<!-- Rule 2 -->
+<div class="flex items-center gap-2.5">
+<div class="w-4 h-4 rounded-full bg-surface-container-high flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[13px] text-primary-container">check</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant">No simple sequences (e.g. 123456)</span>
+</div>
+<!-- Rule 3 -->
+<div class="flex items-center gap-2.5">
+<div class="w-4 h-4 rounded-full bg-surface-container-high flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[13px] text-primary-container">check</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant">Do not use your date of birth</span>
+</div>
+</section>
+<!-- Custom 3x4 Tactile Numeric Keypad -->
+<section aria-label="Numeric keypad" class="mt-auto mb-2">
+<div class="grid grid-cols-3 gap-2.5">
+<!-- Key 1 -->
+<button class="h-[54px] rounded-xl bg-surface-container-low border border-outline-variant/40 flex flex-col items-center justify-center text-on-surface hover:bg-surface-container-high active:bg-surface-container-highest active:scale-95 transition-all duration-150" type="button">
+<span class="font-headline-sm text-headline-sm font-semibold leading-tight">1</span>
+<span class="font-label-sm text-[9px] text-outline leading-none mt-0.5 tracking-widest"> </span>
+</button>
+<!-- Key 2 -->
+<button class="h-[54px] rounded-xl bg-surface-container-low border border-outline-variant/40 flex flex-col items-center justify-center text-on-surface hover:bg-surface-container-high active:bg-surface-container-highest active:scale-95 transition-all duration-150" type="button">
+<span class="font-headline-sm text-headline-sm font-semibold leading-tight">2</span>
+<span class="font-label-sm text-[9px] text-outline leading-none mt-0.5 tracking-wider">ABC</span>
+</button>
+<!-- Key 3 -->
+<button class="h-[54px] rounded-xl bg-surface-container-low border border-outline-variant/40 flex flex-col items-center justify-center text-on-surface hover:bg-surface-container-high active:bg-surface-container-highest active:scale-95 transition-all duration-150" type="button">
+<span class="font-headline-sm text-headline-sm font-semibold leading-tight">3</span>
+<span class="font-label-sm text-[9px] text-outline leading-none mt-0.5 tracking-wider">DEF</span>
+</button>
+<!-- Key 4 -->
+<button class="h-[54px] rounded-xl bg-surface-container-low border border-outline-variant/40 flex flex-col items-center justify-center text-on-surface hover:bg-surface-container-high active:bg-surface-container-highest active:scale-95 transition-all duration-150" type="button">
+<span class="font-headline-sm text-headline-sm font-semibold leading-tight">4</span>
+<span class="font-label-sm text-[9px] text-outline leading-none mt-0.5 tracking-wider">GHI</span>
+</button>
+<!-- Key 5 -->
+<button class="h-[54px] rounded-xl bg-surface-container-low border border-outline-variant/40 flex flex-col items-center justify-center text-on-surface hover:bg-surface-container-high active:bg-surface-container-highest active:scale-95 transition-all duration-150" type="button">
+<span class="font-headline-sm text-headline-sm font-semibold leading-tight">5</span>
+<span class="font-label-sm text-[9px] text-outline leading-none mt-0.5 tracking-wider">JKL</span>
+</button>
+<!-- Key 6 -->
+<button class="h-[54px] rounded-xl bg-surface-container-low border border-outline-variant/40 flex flex-col items-center justify-center text-on-surface hover:bg-surface-container-high active:bg-surface-container-highest active:scale-95 transition-all duration-150" type="button">
+<span class="font-headline-sm text-headline-sm font-semibold leading-tight">6</span>
+<span class="font-label-sm text-[9px] text-outline leading-none mt-0.5 tracking-wider">MNO</span>
+</button>
+<!-- Key 7 -->
+<button class="h-[54px] rounded-xl bg-surface-container-low border border-outline-variant/40 flex flex-col items-center justify-center text-on-surface hover:bg-surface-container-high active:bg-surface-container-highest active:scale-95 transition-all duration-150" type="button">
+<span class="font-headline-sm text-headline-sm font-semibold leading-tight">7</span>
+<span class="font-label-sm text-[9px] text-outline leading-none mt-0.5 tracking-wider">PQRS</span>
+</button>
+<!-- Key 8 -->
+<button class="h-[54px] rounded-xl bg-surface-container-low border border-outline-variant/40 flex flex-col items-center justify-center text-on-surface hover:bg-surface-container-high active:bg-surface-container-highest active:scale-95 transition-all duration-150" type="button">
+<span class="font-headline-sm text-headline-sm font-semibold leading-tight">8</span>
+<span class="font-label-sm text-[9px] text-outline leading-none mt-0.5 tracking-wider">TUV</span>
+</button>
+<!-- Key 9 -->
+<button class="h-[54px] rounded-xl bg-surface-container-low border border-outline-variant/40 flex flex-col items-center justify-center text-on-surface hover:bg-surface-container-high active:bg-surface-container-highest active:scale-95 transition-all duration-150" type="button">
+<span class="font-headline-sm text-headline-sm font-semibold leading-tight">9</span>
+<span class="font-label-sm text-[9px] text-outline leading-none mt-0.5 tracking-wider">WXYZ</span>
+</button>
+<!-- Key Biometrics (Face / Fingerprint) -->
+<button aria-label="Authenticate with biometrics" class="h-[54px] rounded-xl bg-surface-container-low/60 border border-outline-variant/30 flex items-center justify-center text-primary-container hover:bg-surface-container-high active:scale-95 transition-all duration-150" type="button">
+<span class="material-symbols-outlined text-[24px]">fingerprint</span>
+</button>
+<!-- Key 0 -->
+<button class="h-[54px] rounded-xl bg-surface-container-low border border-outline-variant/40 flex flex-col items-center justify-center text-on-surface hover:bg-surface-container-high active:bg-surface-container-highest active:scale-95 transition-all duration-150" type="button">
+<span class="font-headline-sm text-headline-sm font-semibold leading-tight">0</span>
+<span class="font-label-sm text-[9px] text-outline leading-none mt-0.5 tracking-widest">+</span>
+</button>
+<!-- Key Backspace -->
+<button aria-label="Delete last digit" class="h-[54px] rounded-xl bg-surface-container-low/60 border border-outline-variant/30 flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high active:scale-95 transition-all duration-150" type="button">
+<span class="material-symbols-outlined text-[22px]">backspace</span>
+</button>
+</div>
+</section>
+<!-- Bottom Security & Encryption Assurance -->
+<footer class="pt-2 pb-1 flex items-center justify-center gap-1.5 text-center">
+<span class="material-symbols-outlined text-outline text-[15px]" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="font-label-sm text-label-sm text-outline font-medium tracking-wide">
+          Bank-grade 256-bit encryption
+        </span>
+</footer>
+</div>
+<!-- Home Indicator Bar -->
+<div class="w-full flex justify-center pb-2 pt-1">
+<div class="w-32 h-1 bg-surface-container-highest rounded-full"></div>
+</div>
+</main>
+</body></html>

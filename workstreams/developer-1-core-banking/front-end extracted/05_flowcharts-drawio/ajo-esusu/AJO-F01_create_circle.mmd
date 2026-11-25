@@ -1,0 +1,21 @@
+flowchart TD
+  a(["Creator taps Create circle"])
+  b[/"Enter name, amount, frequency, slots, start date"/]
+  c[/"Choose protection mode and payout order method"/]
+  d["Create tenant; provision dedicated account (RESTRICTED)"]
+  e["Share invite link or code"]
+  f["Members join and accept terms; set auto-debit; provide cover if PROTECTED"]
+  g{"All slots filled and ready?"}
+  h["Run order draw or lock chosen order"]
+  i["Activate account; schedule rounds"]
+  j(["Circle ACTIVE"])
+  a --> b
+  b --> c
+  c --> d
+  d --> e
+  e --> f
+  f --> g
+  g -->|no, invite more| e
+  g -->|yes| h
+  h --> i
+  i --> j

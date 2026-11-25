@@ -1,0 +1,26 @@
+flowchart TD
+  a(["Party creates deal"])
+  b[/"Type, amount, description, timeline"/]
+  c["Invite counterparty; negotiate terms"]
+  d["Choose fee payer and cancel/refund fee options; plain summary"]
+  e{"Both accept?"}
+  f["Terms locked; deal account created"]
+  g["Buyer funds; seller notified"]
+  h["Seller ships; proof and delivery code"]
+  i{"Buyer confirms or timer ends?"}
+  j["Release to seller less fees"]
+  k["Dispute path"]
+  l(["Deal closed; receipts and ratings"])
+  a --> b
+  b --> c
+  c --> d
+  d --> e
+  e -->|no| c
+  e -->|yes| f
+  f --> g
+  g --> h
+  h --> i
+  i -->|confirmed or auto-release| j
+  i -->|problem raised| k
+  j --> l
+  k --> l

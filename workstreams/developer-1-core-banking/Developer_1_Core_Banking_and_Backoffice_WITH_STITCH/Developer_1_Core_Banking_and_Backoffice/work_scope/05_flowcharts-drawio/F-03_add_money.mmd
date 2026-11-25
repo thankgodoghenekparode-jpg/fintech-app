@@ -1,0 +1,23 @@
+flowchart TD
+  a(["Tap Add money"])
+  b["Show account number and options"]
+  c{"Choose method"}
+  d["Bank transfer: user sends from another bank"]
+  e["Card top-up: enter amount and card; processor authorises"]
+  f["USSD: dial code and confirm"]
+  g["Agent deposit: show code; agent takes cash"]
+  h["Back end receives inbound credit and posts to ledger"]
+  i["Balance updated; push and SMS sent"]
+  j(["Credit visible in history"])
+  a --> b
+  b --> c
+  c -->|transfer| d
+  c -->|card| e
+  c -->|ussd| f
+  c -->|agent| g
+  d --> h
+  e --> h
+  f --> h
+  g --> h
+  h --> i
+  i --> j

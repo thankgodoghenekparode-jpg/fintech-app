@@ -1,0 +1,32 @@
+flowchart TD
+  a(["Member opens Loans"])
+  b{"Eligible (waiting period, no arrears, savings)?"}
+  c["Show reasons and when eligible"]
+  d[/"Enter amount, purpose, tenor; see schedule and cost"/]
+  e[/"Choose 3 guarantors"/]
+  f["Guarantors notified"]
+  g{"All 3 accept and total savings >= multiplier x loan?"}
+  h["Declined/expired/insufficient: add or replace guarantor"]
+  i["Admin review queue (dual approval)"]
+  j{"Approved?"}
+  k["Rejected with reason; notify all"]
+  l["Lock guarantors' savings (holds)"]
+  m["Disburse from cooperative account to member account"]
+  n["Create repayment schedule; notify"]
+  o(["Loan active"])
+  a --> b
+  b -->|no| c
+  b -->|yes| d
+  d --> e
+  e --> f
+  f --> g
+  g -->|no| h
+  h -->|fix| e
+  g -->|yes| i
+  i --> j
+  j -->|no| k
+  j -->|yes| l
+  l --> m
+  m --> n
+  n --> o
+  c --> a

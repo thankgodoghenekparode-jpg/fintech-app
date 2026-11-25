@@ -1,0 +1,17 @@
+flowchart TD
+  a(["Final payout completed"])
+  b["Release deposits and holds"]
+  c["Reconcile circle account"]
+  d["Cycle summary; trust scores updated"]
+  e{"Renew with same group?"}
+  f["Create new circle draft with same members"]
+  g["Close circle account"]
+  h(["Done"])
+  a --> b
+  b --> c
+  c --> d
+  d --> e
+  e -->|yes| f
+  e -->|no| g
+  f --> h
+  g --> h

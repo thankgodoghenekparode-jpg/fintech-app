@@ -1,0 +1,43 @@
+flowchart TD
+  a(["Payments > Send money"])
+  b[/"Choose recipient (new or saved)"/]
+  c["Name enquiry"]
+  d{"Account found?"}
+  d1["Show not found; re-enter"]
+  e[/"Enter amount and narration"/]
+  f["Quote: fee, limits, total"]
+  g{"Funds and limits OK?"}
+  g1["Show reason; upgrade link if limit"]
+  h["Confirm sheet"]
+  i["PIN or biometric (step-up if risky)"]
+  j["Submit with idempotency key"]
+  k{"Outcome"}
+  l["Success: receipt"]
+  m["Pending: poll status and push"]
+  n["Failed: reason and retry"]
+  o{"Pending resolves to?"}
+  p["Auto-reverse and notify"]
+  q(["Done; in history with receipt"])
+  a --> b
+  b --> c
+  c --> d
+  d -->|no| d1
+  d1 --> b
+  d -->|yes| e
+  e --> f
+  f --> g
+  g -->|no| g1
+  g1 --> e
+  g -->|yes| h
+  h --> i
+  i --> j
+  j --> k
+  k -->|success| l
+  k -->|pending| m
+  k -->|failed| n
+  m --> o
+  o -->|success| l
+  o -->|failed| p
+  l --> q
+  n --> q
+  p --> q

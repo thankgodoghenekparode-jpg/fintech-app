@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Branch &amp; Agent Locator - YourApp</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary-fixed-dim": "#ffb0ca",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "tertiary-container": "#6a92ee",
+            "surface-container-low": "#1d1b1c",
+            "on-primary": "#620735",
+            "surface-bright": "#3b3839",
+            "on-tertiary-fixed": "#001945",
+            "primary-container": "#e0709a",
+            "surface-tint": "#ffb0ca",
+            "on-secondary": "#61130a",
+            "background": "#151314",
+            "on-error-container": "#ffdad6",
+            "outline": "#a28b91",
+            "outline-variant": "#544247",
+            "on-primary-container": "#5d0331",
+            "surface-dim": "#151314",
+            "surface-container": "#211f20",
+            "secondary-container": "#822c20",
+            "on-tertiary": "#002d6f",
+            "surface-container-high": "#2c292a",
+            "on-secondary-fixed-variant": "#7f291e",
+            "on-tertiary-fixed-variant": "#06429a",
+            "primary": "#ffb0ca",
+            "on-secondary-container": "#ff9f90",
+            "on-surface-variant": "#dac0c6",
+            "inverse-surface": "#e7e1e2",
+            "surface-variant": "#373435",
+            "inverse-primary": "#9e3b63",
+            "tertiary": "#b0c6ff",
+            "on-tertiary-container": "#002a69",
+            "secondary-fixed-dim": "#ffb4a8",
+            "surface-container-lowest": "#100e0f",
+            "secondary": "#ffb4a8",
+            "surface-container-highest": "#373435",
+            "on-error": "#690005",
+            "on-secondary-fixed": "#410000",
+            "on-primary-fixed-variant": "#7f234b",
+            "surface": "#151314",
+            "inverse-on-surface": "#323031",
+            "tertiary-fixed": "#d9e2ff",
+            "primary-fixed": "#ffd9e3",
+            "error-container": "#93000a",
+            "secondary-fixed": "#ffdad4",
+            "on-primary-fixed": "#3e001f",
+            "on-surface": "#e7e1e2",
+            "error": "#ffb4ab",
+            "on-background": "#e7e1e2"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "1rem",
+            "space-md": "1rem",
+            "space-sm": "0.5rem",
+            "space-xl": "2rem",
+            "space-lg": "1.5rem",
+            "gutter-mobile": "0.75rem",
+            "margin-mobile": "1rem",
+            "space-xs": "0.25rem",
+            "gutter": "1rem"
+          },
+          "fontFamily": {
+            "body-md": ["Inter"],
+            "label-lg": ["Inter"],
+            "label-md": ["Inter"],
+            "display-currency": ["Inter"],
+            "headline-md": ["Inter"],
+            "title-currency": ["Inter"],
+            "headline-lg": ["Inter"],
+            "body-lg": ["Inter"],
+            "headline-sm": ["Inter"],
+            "label-sm": ["Inter"]
+          },
+          "fontSize": {
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "label-lg": ["15px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "title-currency": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      font-size: 20px;
+      line-height: 1;
+      display: inline-block;
+    }
+    .material-symbols-outlined.fill {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    /* Hide scrollbars for chips and horizontal carousels */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-[#121011] text-[#F5F1F0] antialiased selection:bg-[#E0709A]/30 selection:text-[#F5F1F0]">
+<!-- Screen Wrapper strictly constrained to mobile 390px reference frame -->
+<div class="relative mx-auto min-h-screen max-w-[390px] bg-[#121011] flex flex-col pb-[92px] shadow-2xl overflow-x-hidden">
+<!-- Top App Bar (Task Sub-page with contextual back button & title) -->
+<header class="sticky top-0 z-40 bg-[#1C1819]/95 backdrop-blur-md px-margin py-3.5 flex items-center justify-between border-b border-[#3A3335]">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Go back" class="w-10 h-10 rounded-full flex items-center justify-center bg-[#262122] border border-[#3A3335] active:scale-95 transition-transform duration-150 text-[#F5F1F0]" type="button">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div>
+<h1 class="font-headline-sm text-headline-sm text-[#F5F1F0] tracking-tight">Branch &amp; Agent Locator</h1>
+<p class="font-label-sm text-label-sm text-[#8A8184] flex items-center gap-1">
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-[#4CC38A]"></span>
+            Lagos Island &amp; Lekki Axis
+          </p>
+</div>
+</div>
+<button aria-label="Filter locations" class="w-10 h-10 rounded-full flex items-center justify-center bg-[#262122] border border-[#3A3335] text-[#E0709A] active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined">tune</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-margin pt-space-md flex flex-col gap-space-md">
+<!-- Search Input & Quick GPS Trigger -->
+<section class="flex flex-col gap-space-sm">
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3.5 text-[#8A8184] pointer-events-none">search</span>
+<input class="w-full h-[52px] pl-11 pr-12 rounded-xl bg-[#1C1819] border border-[#3A3335] text-[#F5F1F0] font-body-md text-body-md placeholder-[#8A8184] focus:outline-none focus:border-[#E0709A] transition-colors" placeholder="Search address, neighborhood or landmark..." type="text" value="Lekki Phase 1, Lagos"/>
+<button aria-label="Use current GPS location" class="absolute right-2.5 w-8 h-8 rounded-lg flex items-center justify-center text-[#E0709A] hover:bg-[#262122] transition-colors" type="button">
+<span class="material-symbols-outlined fill">my_location</span>
+</button>
+</div>
+<!-- Filter Chips with Counter Badges -->
+<div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-0.5">
+<button class="shrink-0 h-[38px] px-3.5 rounded-full bg-[#E0709A] text-[#121011] font-label-md text-label-md font-semibold flex items-center gap-1.5 shadow-sm active:scale-95 transition-transform" type="button">
+<span>All</span>
+<span class="px-1.5 py-0.2 text-[10px] rounded-full bg-[#121011]/20 font-bold">18</span>
+</button>
+<button class="shrink-0 h-[38px] px-3.5 rounded-full bg-[#1C1819] border border-[#3A3335] text-[#F5F1F0] font-label-md text-label-md flex items-center gap-1.5 hover:border-[#E0709A]/60 active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[16px] text-[#4CC38A]">storefront</span>
+<span>Cash Agents</span>
+<span class="px-1.5 py-0.2 text-[10px] rounded-full bg-[#262122] text-[#8A8184]">12</span>
+</button>
+<button class="shrink-0 h-[38px] px-3.5 rounded-full bg-[#1C1819] border border-[#3A3335] text-[#F5F1F0] font-label-md text-label-md flex items-center gap-1.5 hover:border-[#E0709A]/60 active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[16px] text-[#E0709A]">account_balance</span>
+<span>Bank Branches</span>
+<span class="px-1.5 py-0.2 text-[10px] rounded-full bg-[#262122] text-[#8A8184]">3</span>
+</button>
+<button class="shrink-0 h-[38px] px-3.5 rounded-full bg-[#1C1819] border border-[#3A3335] text-[#F5F1F0] font-label-md text-label-md flex items-center gap-1.5 hover:border-[#E0709A]/60 active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[16px] text-[#E3B341]">atm</span>
+<span>24/7 ATMs</span>
+<span class="px-1.5 py-0.2 text-[10px] rounded-full bg-[#262122] text-[#8A8184]">5</span>
+</button>
+</div>
+</section>
+<!-- Stylized Dark Map Preview Module -->
+<section class="relative w-full h-[168px] rounded-2xl bg-[#1C1819] border border-[#3A3335] overflow-hidden p-3 flex flex-col justify-between group">
+<!-- SVG Vector Map Graphic (Dark Minimal Cartography of Lagos Lagoon/Lekki grid) -->
+<svg class="absolute inset-0 w-full h-full opacity-60 pointer-events-none" preserveaspectratio="xMidYMid slice" viewbox="0 0 358 168" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<radialgradient cx="48%" cy="56%" id="gpsGlow" r="35%">
+<stop offset="0%" stop-color="#E0709A" stop-opacity="0.35"></stop>
+<stop offset="60%" stop-color="#E0709A" stop-opacity="0.08"></stop>
+<stop offset="100%" stop-color="#E0709A" stop-opacity="0"></stop>
+</radialgradient>
+<pattern height="28" id="gridPattern" patternunits="userSpaceOnUse" width="28">
+<path d="M 28 0 L 0 0 0 28" fill="none" stroke="#262122" stroke-width="1.2"></path>
+</pattern>
+</defs>
+<!-- Grid Lines -->
+<rect fill="url(#gridPattern)" height="100%" width="100%"></rect>
+<!-- Stylized Waterway / Lagoon edge -->
+<path d="M-10,35 C80,30 140,75 220,50 C290,28 340,70 380,60 L380,-10 L-10,-10 Z" fill="#151314" opacity="0.9"></path>
+<path d="M-10,35 C80,30 140,75 220,50 C290,28 340,70 380,60" fill="none" stroke="#2c292a" stroke-width="2"></path>
+<!-- Main Roads (Lekki-Epe Expressway & Admiralty Way arteries) -->
+<path d="M0,105 L360,82" stroke="#3A3335" stroke-linecap="round" stroke-width="4.5"></path>
+<path d="M0,105 L360,82" stroke="#262122" stroke-linecap="round" stroke-width="2.5"></path>
+<path d="M165,88 L210,175" stroke="#3A3335" stroke-width="3"></path>
+<path d="M90,20 L110,170" stroke="#2A2426" stroke-dasharray="3,3" stroke-width="2"></path>
+<path d="M260,30 L285,170" stroke="#2A2426" stroke-width="2"></path>
+<!-- GPS Radius Pulse -->
+<circle cx="172" cy="94" fill="url(#gpsGlow)" r="54"></circle>
+<circle cx="172" cy="94" fill="none" opacity="0.6" r="54" stroke="#E0709A" stroke-dasharray="4,4" stroke-width="1"></circle>
+<!-- Current Location Dot (User) -->
+<circle cx="172" cy="94" fill="#E0709A" r="7"></circle>
+<circle cx="172" cy="94" fill="#121011" r="3.5"></circle>
+<!-- Nearby Agent Pins -->
+<!-- Pin 1: Super Agent Tejuosho (Active pink pin) -->
+<g transform="translate(142, 60)">
+<circle cx="0" cy="0" fill="#4CC38A" r="10"></circle>
+<circle cx="0" cy="0" fill="#121011" r="5"></circle>
+</g>
+<!-- Pin 2: Zenith Partner Branch -->
+<g transform="translate(242, 78)">
+<circle cx="0" cy="0" fill="#E0709A" r="9"></circle>
+<circle cx="0" cy="0" fill="#121011" r="4.5"></circle>
+</g>
+<!-- Pin 3: ATM Node -->
+<g transform="translate(85, 120)">
+<circle cx="0" cy="0" fill="#E3B341" r="8"></circle>
+<circle cx="0" cy="0" fill="#121011" r="4"></circle>
+</g>
+</svg>
+<!-- Top Map Header Overlay -->
+<div class="relative z-10 flex items-center justify-between">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#121011]/85 backdrop-blur-sm border border-[#3A3335] text-[#F5F1F0] font-label-sm text-label-sm">
+<span class="inline-block w-2 h-2 rounded-full bg-[#4CC38A] animate-pulse"></span>
+<span>GPS Active (±4m)</span>
+</div>
+<!-- View Switcher Toggle -->
+<div class="inline-flex p-0.5 rounded-xl bg-[#121011]/90 backdrop-blur-sm border border-[#3A3335]">
+<button class="px-2.5 py-1 rounded-lg bg-[#262122] text-[#F5F1F0] font-label-sm text-label-sm font-semibold flex items-center gap-1 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[15px]">list</span>
+              List
+            </button>
+<button class="px-2.5 py-1 rounded-lg text-[#8A8184] hover:text-[#F5F1F0] font-label-sm text-label-sm flex items-center gap-1 transition-colors" type="button">
+<span class="material-symbols-outlined text-[15px]">map</span>
+              Map
+            </button>
+</div>
+</div>
+<!-- Bottom Map Status Banner -->
+<div class="relative z-10 flex items-center justify-between bg-[#121011]/90 backdrop-blur-md px-3 py-1.5 rounded-xl border border-[#3A3335]">
+<span class="font-body-md text-[12px] text-[#DAC0C6]">3 cash points within 15 min walk</span>
+<span class="font-label-sm text-label-sm font-semibold text-[#E0709A] flex items-center gap-0.5">
+            Expand Radius
+            <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+</span>
+</div>
+</section>
+<!-- Section Title with Result Count -->
+<div class="flex items-center justify-between pt-1">
+<h2 class="font-headline-sm text-headline-sm text-[#F5F1F0] tracking-tight">Nearby Verified Points</h2>
+<span class="font-label-md text-label-md text-[#8A8184]">Sorted by distance</span>
+</div>
+<!-- Point 1: YourApp Verified Super Agent (Featured Card) -->
+<article class="p-4 rounded-2xl bg-[#1C1819] border border-[#3A3335] flex flex-col gap-3.5 relative overflow-hidden transition-all hover:border-[#E0709A]/40">
+<!-- Accent top line indicating super verified partner -->
+<div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#E0709A] via-[#FFB0CA] to-[#4CC38A]"></div>
+<div class="flex items-start justify-between gap-3 pt-0.5">
+<div class="flex items-start gap-3">
+<div class="w-11 h-11 rounded-xl bg-[#262122] border border-[#3A3335] flex items-center justify-center shrink-0 text-[#E0709A]">
+<span class="material-symbols-outlined text-[24px]">verified</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5 flex-wrap">
+<h3 class="font-label-lg text-label-lg text-[#F5F1F0] font-bold">Alhaja Tejuosho Stores</h3>
+</div>
+<p class="font-body-md text-[13px] text-[#8A8184] mt-0.5">Block 4, Lekki Phase 1 Gate, Lagos</p>
+</div>
+</div>
+<!-- Tabular Distance -->
+<span class="font-title-currency text-title-currency text-[#E0709A] font-bold shrink-0 tracking-tight">250m</span>
+</div>
+<!-- Badges Row: Open Hours + High Float -->
+<div class="flex items-center gap-2 flex-wrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#4CC38A]/15 text-[#4CC38A] font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-[#4CC38A]"></span>
+            Open Now • Closes 9:00 PM
+          </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#E0709A]/15 text-[#E0709A] font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[13px] fill">bolt</span>
+            High Float (₦2M+ Available)
+          </span>
+</div>
+<!-- Supported Services -->
+<div class="flex items-center gap-2 pt-1 border-t border-[#3A3335]/60 text-[12px] text-[#DAC0C6] font-body-md">
+<span class="text-[#8A8184]">Services:</span>
+<span class="px-2 py-0.5 rounded-md bg-[#262122] text-[#F5F1F0]">Cash-in</span>
+<span class="px-2 py-0.5 rounded-md bg-[#262122] text-[#F5F1F0]">Cash-out</span>
+<span class="px-2 py-0.5 rounded-md bg-[#262122] text-[#F5F1F0]">BVN Check</span>
+</div>
+<!-- Action Buttons (Strict 52px height touch standard) -->
+<div class="grid grid-cols-2 gap-2.5 pt-1">
+<button class="h-[52px] rounded-xl bg-[#E0709A] text-[#121011] font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 active:bg-[#C4557F] active:scale-[0.98] transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]">directions</span>
+            Get Directions
+          </button>
+<button class="h-[52px] rounded-xl bg-[#262122] border border-[#3A3335] text-[#F5F1F0] font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 active:bg-[#3A3335] active:scale-[0.98] transition-all" type="button">
+<span class="material-symbols-outlined text-[20px] text-[#E0709A]">call</span>
+            Call Agent
+          </button>
+</div>
+</article>
+<!-- Point 2: Zenith Partner Branch -->
+<article class="p-4 rounded-2xl bg-[#1C1819] border border-[#3A3335] flex flex-col gap-3 relative transition-all hover:border-[#3A3335]/80">
+<div class="flex items-start justify-between gap-3">
+<div class="flex items-start gap-3">
+<div class="w-11 h-11 rounded-xl bg-[#262122] border border-[#3A3335] flex items-center justify-center shrink-0 text-[#B0C6FF]">
+<span class="material-symbols-outlined text-[24px]">account_balance</span>
+</div>
+<div>
+<h3 class="font-label-lg text-label-lg text-[#F5F1F0] font-bold">Zenith Partner Branch</h3>
+<p class="font-body-md text-[13px] text-[#8A8184] mt-0.5">Plot 12, Admiralty Way, Lekki Phase 1</p>
+</div>
+</div>
+<span class="font-title-currency text-title-currency text-[#DAC0C6] font-bold shrink-0">1.2 km</span>
+</div>
+<!-- Badges Row -->
+<div class="flex items-center gap-2 flex-wrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#E3B341]/15 text-[#E3B341] font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-[#E3B341]"></span>
+            Closes 4:00 PM
+          </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#262122] border border-[#3A3335] text-[#DAC0C6] font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[13px]">local_atm</span>
+            2 ATMs Onsite
+          </span>
+</div>
+<!-- Services Available -->
+<div class="flex items-center gap-2 pt-1 border-t border-[#3A3335]/60 text-[12px] text-[#DAC0C6] font-body-md overflow-x-auto no-scrollbar">
+<span class="text-[#8A8184] shrink-0">Services:</span>
+<span class="px-2 py-0.5 rounded-md bg-[#262122] text-[#F5F1F0] shrink-0">Customer Care</span>
+<span class="px-2 py-0.5 rounded-md bg-[#262122] text-[#F5F1F0] shrink-0">Biometrics</span>
+<span class="px-2 py-0.5 rounded-md bg-[#262122] text-[#F5F1F0] shrink-0">Bulk Cashier Desk</span>
+</div>
+<!-- Action Button -->
+<button class="w-full h-[52px] mt-1 rounded-xl bg-[#262122] border border-[#3A3335] text-[#F5F1F0] font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 active:bg-[#3A3335] active:scale-[0.98] transition-all" type="button">
+<span class="material-symbols-outlined text-[20px] text-[#E0709A]">navigation</span>
+          Directions
+        </button>
+</article>
+<!-- Point 3: Express POS & Agent - Palms Mall -->
+<article class="p-4 rounded-2xl bg-[#1C1819] border border-[#3A3335] flex flex-col gap-3 transition-all hover:border-[#3A3335]/80">
+<div class="flex items-start justify-between gap-3">
+<div class="flex items-start gap-3">
+<div class="w-11 h-11 rounded-xl bg-[#262122] border border-[#3A3335] flex items-center justify-center shrink-0 text-[#4CC38A]">
+<span class="material-symbols-outlined text-[24px]">point_of_sale</span>
+</div>
+<div>
+<h3 class="font-label-lg text-label-lg text-[#F5F1F0] font-bold">Express POS &amp; Agent</h3>
+<p class="font-body-md text-[13px] text-[#8A8184] mt-0.5">Palms Mall Food Court, Bisway St</p>
+</div>
+</div>
+<span class="font-title-currency text-title-currency text-[#DAC0C6] font-bold shrink-0">1.8 km</span>
+</div>
+<div class="flex items-center gap-2 flex-wrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#4CC38A]/15 text-[#4CC38A] font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-[#4CC38A]"></span>
+            Open Now • Closes 10:00 PM
+          </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#262122] border border-[#3A3335] text-[#DAC0C6] font-label-sm text-label-sm">
+            Weekend Friendly
+          </span>
+</div>
+<!-- Services -->
+<div class="flex items-center gap-2 pt-1 border-t border-[#3A3335]/60 text-[12px] text-[#DAC0C6] font-body-md">
+<span class="text-[#8A8184]">Services:</span>
+<span class="px-2 py-0.5 rounded-md bg-[#262122] text-[#F5F1F0]">Quick Cash-out</span>
+<span class="px-2 py-0.5 rounded-md bg-[#262122] text-[#F5F1F0]">Card Pick-up Point</span>
+</div>
+<div class="grid grid-cols-2 gap-2.5 pt-1">
+<button class="h-[52px] rounded-xl bg-[#262122] border border-[#3A3335] text-[#F5F1F0] font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 active:bg-[#3A3335] active:scale-[0.98] transition-all" type="button">
+<span class="material-symbols-outlined text-[20px] text-[#E0709A]">navigation</span>
+            Directions
+          </button>
+<button class="h-[52px] rounded-xl bg-[#262122] border border-[#3A3335] text-[#F5F1F0] font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 active:bg-[#3A3335] active:scale-[0.98] transition-all" type="button">
+<span class="material-symbols-outlined text-[20px] text-[#8A8184]">info</span>
+            Details
+          </button>
+</div>
+</article>
+<!-- Emergency Assistance Card (Contextual Security Action) -->
+<section class="mt-1 p-4 rounded-2xl bg-gradient-to-br from-[#262122] to-[#1C1819] border border-[#3A3335] relative overflow-hidden flex flex-col gap-3">
+<div class="flex items-start gap-3">
+<div class="w-10 h-10 rounded-xl bg-[rgba(242,112,112,0.12)] border border-[rgba(242,112,112,0.24)] text-[#F27070] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined">lock_reset</span>
+</div>
+<div>
+<h4 class="font-label-lg text-label-lg text-[#F5F1F0] font-bold">Lost your ATM card?</h4>
+<p class="font-body-md text-[13px] text-[#DAC0C6] mt-0.5">
+              Freeze it instantly in Security Hub instead of visiting a physical branch.
+            </p>
+</div>
+</div>
+<a class="h-[46px] w-full rounded-xl bg-[#262122] border border-[#3A3335] text-[#F27070] font-label-md text-label-md font-semibold flex items-center justify-between px-3.5 hover:border-[#F27070]/40 transition-colors" href="#freeze-card">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">gpp_maybe</span>
+            Instant Card Freeze
+          </span>
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</a>
+</section>
+<!-- Disclaimer & Central Bank of Nigeria Regulatory Safeguard -->
+<footer class="py-3 px-1 text-center">
+<p class="font-label-sm text-label-sm text-[#8A8184]">
+          Licensed by the Central Bank of Nigeria (CBN). Insured by NDIC. All cash agents carry encrypted digital badges.
+        </p>
+</footer>
+</main>
+<!-- Docked 5-Destination Bottom Navigation Bar -->
+<!-- Blueprint: destination_count 5, active tab 'More' per prompt mapping to S-CB-082 locator section -->
+<nav aria-label="Bottom Navigation" class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-margin h-16 max-w-[560px] mx-auto pb-safe bg-surface-container-lowest dark:bg-[#1C1819] border-t border-[#3A3335] shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)]">
+<!-- 1. Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-[#8A8184] font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#home">
+<span class="material-symbols-outlined text-[22px]">home</span>
+<span class="font-caption text-caption text-[11px] font-medium leading-none">Home</span>
+</a>
+<!-- 2. Payments -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-[#8A8184] font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#payments">
+<span class="material-symbols-outlined text-[22px]">send</span>
+<span class="font-caption text-caption text-[11px] font-medium leading-none">Payments</span>
+</a>
+<!-- 3. Cards -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-[#8A8184] font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#cards">
+<span class="material-symbols-outlined text-[22px]">credit_card</span>
+<span class="font-caption text-caption text-[11px] font-medium leading-none">Cards</span>
+</a>
+<!-- 4. Save & Borrow -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-[#8A8184] font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#save-borrow">
+<span class="material-symbols-outlined text-[22px]">savings</span>
+<span class="font-caption text-caption text-[11px] font-medium leading-none">Save &amp; Borrow</span>
+</a>
+<!-- 5. More (ACTIVE TAB: Locator is nested under More services) -->
+<a aria-current="page" class="flex flex-col items-center justify-center text-[#E0709A] font-semibold min-w-[48px] py-space-xs gap-space-xs active:scale-95 transition-transform duration-150" href="#more">
+<span class="material-symbols-outlined text-[22px] fill">more_horiz</span>
+<span class="font-caption text-caption text-[11px] font-semibold leading-none">More</span>
+</a>
+</nav>
+</div>
+</body></html>

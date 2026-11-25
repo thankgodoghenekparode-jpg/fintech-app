@@ -1,0 +1,53 @@
+flowchart TD
+  a(["Open app"])
+  b["Welcome screen"]
+  c[/"Enter phone number"/]
+  d["Send OTP"]
+  e{"OTP correct?"}
+  e1["Show error; retry or lock after limit"]
+  f[/"Enter name, DOB, email"/]
+  g["Accept terms and privacy (versioned)"]
+  h[/"Enter BVN"/]
+  i{"BVN valid and matches?"}
+  i1["Explain mismatch; allow edit"]
+  j[/"Enter NIN"/]
+  k{"NIN valid and matches?"}
+  k1["Explain mismatch; allow edit"]
+  l["Selfie with liveness check"]
+  m{"Liveness and face match OK?"}
+  m1["Retry (max 3) then manual review"]
+  n["Create passcode"]
+  o["Create transaction PIN"]
+  p["Enable biometrics (optional)"]
+  q["Create account via foundation bank; assign tier"]
+  r{"Account created?"}
+  r1["Show setting-up state; retry in background"]
+  s(["Account ready - go to Home"])
+  a --> b
+  b --> c
+  c --> d
+  d --> e
+  e -->|no| e1
+  e1 -->|retry| d
+  e -->|yes| f
+  f --> g
+  g --> h
+  h --> i
+  i -->|no| i1
+  i1 -->|edit| h
+  i -->|yes| j
+  j --> k
+  k -->|no| k1
+  k1 -->|edit| j
+  k -->|yes| l
+  l --> m
+  m -->|no| m1
+  m1 -->|retry| l
+  m -->|yes| n
+  n --> o
+  o --> p
+  p --> q
+  q --> r
+  r -->|no| r1
+  r1 -->|retry| q
+  r -->|yes| s

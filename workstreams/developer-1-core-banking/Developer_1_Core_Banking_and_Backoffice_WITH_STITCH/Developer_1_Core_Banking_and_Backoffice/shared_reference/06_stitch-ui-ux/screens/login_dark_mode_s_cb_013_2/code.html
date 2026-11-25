@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YourApp - Secure Login</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary-container": "#5d0331",
+            "inverse-surface": "#e7e1e2",
+            "tertiary-container": "#6a92ee",
+            "background": "#151314",
+            "tertiary-fixed": "#d9e2ff",
+            "on-tertiary-fixed-variant": "#06429a",
+            "surface-dim": "#151314",
+            "primary-container": "#e0709a",
+            "on-tertiary": "#002d6f",
+            "surface-container-highest": "#373435",
+            "inverse-primary": "#9e3b63",
+            "secondary-fixed": "#ffdad4",
+            "primary": "#ffb0ca",
+            "error-container": "#93000a",
+            "on-tertiary-container": "#002a69",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "on-secondary-fixed": "#410000",
+            "on-surface": "#e7e1e2",
+            "surface-container-high": "#2c292a",
+            "on-secondary": "#61130a",
+            "surface-variant": "#373435",
+            "on-surface-variant": "#dac0c6",
+            "primary-fixed": "#ffd9e3",
+            "on-primary-fixed": "#3e001f",
+            "inverse-on-surface": "#323031",
+            "surface-container-lowest": "#100e0f",
+            "on-error": "#690005",
+            "on-error-container": "#ffdad6",
+            "outline-variant": "#544247",
+            "tertiary": "#b0c6ff",
+            "on-tertiary-fixed": "#001945",
+            "on-background": "#e7e1e2",
+            "secondary-container": "#822c20",
+            "on-secondary-container": "#ff9f90",
+            "surface": "#151314",
+            "secondary": "#ffb4a8",
+            "surface-tint": "#ffb0ca",
+            "on-primary": "#620735",
+            "surface-container": "#211f20",
+            "outline": "#a28b91",
+            "primary-fixed-dim": "#ffb0ca",
+            "surface-container-low": "#1d1b1c",
+            "surface-bright": "#3b3839",
+            "error": "#ffb4ab",
+            "secondary-fixed-dim": "#ffb4a8",
+            "on-secondary-fixed-variant": "#7f291e",
+            "on-primary-fixed-variant": "#7f234b"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-lg": "1.5rem",
+            "gutter-mobile": "0.75rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "margin": "1rem",
+            "gutter": "1rem",
+            "space-md": "1rem",
+            "margin-mobile": "1rem",
+            "space-xl": "2rem"
+          },
+          "fontFamily": {
+            "title-currency": ["Inter"],
+            "headline-lg": ["Inter"],
+            "body-md": ["Inter"],
+            "label-lg": ["Inter"],
+            "label-md": ["Inter"],
+            "body-lg": ["Inter"],
+            "display-currency": ["Inter"],
+            "headline-sm": ["Inter"],
+            "headline-md": ["Inter"],
+            "label-sm": ["Inter"]
+          },
+          "fontSize": {
+            "title-currency": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "label-lg": ["15px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      line-height: 1;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+    }
+    /* Touch optimization */
+    .touch-target {
+      min-height: 54px;
+      min-width: 54px;
+    }
+    /* Keypad feedback pulse */
+    .key-btn:active {
+      transform: scale(0.94);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-lowest text-on-surface antialiased min-h-screen flex justify-center items-center select-none font-body-md text-body-md">
+<!-- Mobile Viewport Canvas Container (390px x 844px Mobile Frame) -->
+<main class="w-full max-w-[430px] min-h-screen md:min-h-[844px] md:max-h-[880px] bg-background md:rounded-[36px] shadow-2xl overflow-hidden flex flex-col justify-between relative px-margin py-space-sm border border-outline-variant/30">
+<!-- Ambient Subtle Glow (Rose / Energetic Vitality Accent) -->
+<div class="absolute top-[-90px] left-1/2 -translate-x-1/2 w-[320px] h-[220px] bg-primary-container/10 blur-[90px] rounded-full pointer-events-none"></div>
+<!-- Header Section (TopAppBar Anchor for Authentication Screen) -->
+<header class="w-full pt-space-xs z-10 flex flex-col gap-space-xs">
+<!-- Status bar mockup space for mobile feel -->
+<div class="flex justify-between items-center text-on-surface-variant px-space-xs text-[11px] font-medium tracking-tight">
+<span>09:41</span>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]">signal_cellular_4_bar</span>
+<span class="material-symbols-outlined text-[14px]">wifi</span>
+<span class="material-symbols-outlined text-[14px]">battery_full</span>
+</div>
+</div>
+<!-- Top Row: Wordmark, Switch Profile Pill, & Help Anchor -->
+<div class="flex justify-between items-center w-full min-h-[52px] pt-space-xs">
+<div class="flex items-center gap-2">
+<!-- Exact Immutable Wordmark from Shared Components JSON -->
+<span class="font-headline-md text-headline-md font-bold tracking-tight text-primary-fixed">YourApp</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<!-- Switch User Pill -->
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container border border-outline-variant/40 text-on-surface-variant hover:text-on-surface active:scale-95 transition-all text-label-sm font-label-sm" type="button">
+<span class="material-symbols-outlined text-[16px] text-primary">swap_horiz</span>
+<span>Switch User</span>
+</button>
+<!-- Help Icon Target -->
+<button aria-label="Support &amp; Help" class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center border border-outline-variant/40 text-on-surface-variant hover:text-primary transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[20px]">help_outline</span>
+</button>
+</div>
+</div>
+</header>
+<!-- User Greeting & Passcode Indicator Section -->
+<section class="flex flex-col items-center text-center mt-space-sm z-10">
+<!-- Avatar with Status Glow Ring -->
+<div class="relative mb-3">
+<div class="w-[74px] h-[74px] rounded-full p-[2.5px] bg-gradient-to-tr from-primary via-primary-container to-surface-container-highest">
+<div class="w-full h-full rounded-full bg-surface-container-high flex items-center justify-center border border-surface-container-highest">
+<span class="font-headline-md text-headline-md font-bold text-primary-fixed tracking-wider">CA</span>
+</div>
+</div>
+<!-- Active Status Indicator -->
+<span class="absolute bottom-1 right-1 w-4 h-4 rounded-full bg-[#4CC38A] border-2 border-background flex items-center justify-center">
+<span class="w-1.5 h-1.5 rounded-full bg-background"></span>
+</span>
+</div>
+<!-- User Identification Headline -->
+<h1 class="font-headline-md text-headline-md font-bold text-on-surface tracking-tight mb-1">
+        Welcome back, Chioma
+      </h1>
+<!-- Masked Identifier / Instruction Subtext -->
+<div class="flex items-center gap-2 text-on-surface-variant font-body-md text-body-md">
+<span>+234 801 ••• 5678</span>
+<span class="inline-block w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="text-primary-fixed font-medium">Lagos, NG</span>
+</div>
+<p class="text-on-surface-variant text-label-sm font-label-sm mt-1">
+        Enter your 6-digit passcode to sign in
+      </p>
+<!-- 6-digit Passcode Dots Indicator (Interactive State Simulation: 3 digits entered) -->
+<div aria-label="6-digit passcode status" class="flex items-center justify-center gap-4 mt-6 mb-2" id="passcode-display">
+<!-- Digit 1: Filled (Active Glowing Berry) -->
+<div class="w-3.5 h-3.5 rounded-full bg-primary-container shadow-[0_0_12px_rgba(224,112,154,0.65)] ring-2 ring-primary/40 transition-all duration-200"></div>
+<!-- Digit 2: Filled (Active Glowing Berry) -->
+<div class="w-3.5 h-3.5 rounded-full bg-primary-container shadow-[0_0_12px_rgba(224,112,154,0.65)] ring-2 ring-primary/40 transition-all duration-200"></div>
+<!-- Digit 3: Filled (Active Glowing Berry) -->
+<div class="w-3.5 h-3.5 rounded-full bg-primary-container shadow-[0_0_12px_rgba(224,112,154,0.65)] ring-2 ring-primary/40 transition-all duration-200"></div>
+<!-- Digit 4: Empty -->
+<div class="w-3.5 h-3.5 rounded-full bg-surface-container-high border border-outline-variant/60 transition-all duration-200"></div>
+<!-- Digit 5: Empty -->
+<div class="w-3.5 h-3.5 rounded-full bg-surface-container-high border border-outline-variant/60 transition-all duration-200"></div>
+<!-- Digit 6: Empty -->
+<div class="w-3.5 h-3.5 rounded-full bg-surface-container-high border border-outline-variant/60 transition-all duration-200"></div>
+</div>
+<!-- Helper / Security Reset Links -->
+<div class="flex items-center justify-center gap-6 mt-3">
+<button class="text-primary hover:text-primary-fixed font-label-md text-label-md transition-colors active:scale-95 py-1" type="button">
+          Forgot Passcode?
+        </button>
+<span class="text-outline-variant">•</span>
+<button class="text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-colors active:scale-95 py-1" type="button">
+          Reset PIN
+        </button>
+</div>
+</section>
+<!-- Custom Ergonomic Touch Numeric Keypad (3x4 Grid, Min 54px target) -->
+<section class="w-full z-10 px-1 mt-2">
+<div class="grid grid-cols-3 gap-y-2.5 gap-x-4 max-w-[340px] mx-auto">
+<!-- Key 1 -->
+<button class="key-btn touch-target h-[60px] rounded-xl bg-surface-container border border-outline-variant/40 flex flex-col items-center justify-center transition-all duration-150 active:bg-surface-container-highest active:border-primary-container" type="button">
+<span class="font-headline-md text-headline-md font-semibold text-on-surface leading-none">1</span>
+<span class="text-[10px] text-on-surface-variant font-label-sm tracking-widest mt-0.5 opacity-0">.</span>
+</button>
+<!-- Key 2 -->
+<button class="key-btn touch-target h-[60px] rounded-xl bg-surface-container border border-outline-variant/40 flex flex-col items-center justify-center transition-all duration-150 active:bg-surface-container-highest active:border-primary-container" type="button">
+<span class="font-headline-md text-headline-md font-semibold text-on-surface leading-none">2</span>
+<span class="text-[10px] text-on-surface-variant font-label-sm tracking-widest mt-0.5">ABC</span>
+</button>
+<!-- Key 3 -->
+<button class="key-btn touch-target h-[60px] rounded-xl bg-surface-container border border-outline-variant/40 flex flex-col items-center justify-center transition-all duration-150 active:bg-surface-container-highest active:border-primary-container" type="button">
+<span class="font-headline-md text-headline-md font-semibold text-on-surface leading-none">3</span>
+<span class="text-[10px] text-on-surface-variant font-label-sm tracking-widest mt-0.5">DEF</span>
+</button>
+<!-- Key 4 -->
+<button class="key-btn touch-target h-[60px] rounded-xl bg-surface-container border border-outline-variant/40 flex flex-col items-center justify-center transition-all duration-150 active:bg-surface-container-highest active:border-primary-container" type="button">
+<span class="font-headline-md text-headline-md font-semibold text-on-surface leading-none">4</span>
+<span class="text-[10px] text-on-surface-variant font-label-sm tracking-widest mt-0.5">GHI</span>
+</button>
+<!-- Key 5 -->
+<button class="key-btn touch-target h-[60px] rounded-xl bg-surface-container border border-outline-variant/40 flex flex-col items-center justify-center transition-all duration-150 active:bg-surface-container-highest active:border-primary-container" type="button">
+<span class="font-headline-md text-headline-md font-semibold text-on-surface leading-none">5</span>
+<span class="text-[10px] text-on-surface-variant font-label-sm tracking-widest mt-0.5">JKL</span>
+</button>
+<!-- Key 6 -->
+<button class="key-btn touch-target h-[60px] rounded-xl bg-surface-container border border-outline-variant/40 flex flex-col items-center justify-center transition-all duration-150 active:bg-surface-container-highest active:border-primary-container" type="button">
+<span class="font-headline-md text-headline-md font-semibold text-on-surface leading-none">6</span>
+<span class="text-[10px] text-on-surface-variant font-label-sm tracking-widest mt-0.5">MNO</span>
+</button>
+<!-- Key 7 -->
+<button class="key-btn touch-target h-[60px] rounded-xl bg-surface-container border border-outline-variant/40 flex flex-col items-center justify-center transition-all duration-150 active:bg-surface-container-highest active:border-primary-container" type="button">
+<span class="font-headline-md text-headline-md font-semibold text-on-surface leading-none">7</span>
+<span class="text-[10px] text-on-surface-variant font-label-sm tracking-widest mt-0.5">PQRS</span>
+</button>
+<!-- Key 8 -->
+<button class="key-btn touch-target h-[60px] rounded-xl bg-surface-container border border-outline-variant/40 flex flex-col items-center justify-center transition-all duration-150 active:bg-surface-container-highest active:border-primary-container" type="button">
+<span class="font-headline-md text-headline-md font-semibold text-on-surface leading-none">8</span>
+<span class="text-[10px] text-on-surface-variant font-label-sm tracking-widest mt-0.5">TUV</span>
+</button>
+<!-- Key 9 -->
+<button class="key-btn touch-target h-[60px] rounded-xl bg-surface-container border border-outline-variant/40 flex flex-col items-center justify-center transition-all duration-150 active:bg-surface-container-highest active:border-primary-container" type="button">
+<span class="font-headline-md text-headline-md font-semibold text-on-surface leading-none">9</span>
+<span class="text-[10px] text-on-surface-variant font-label-sm tracking-widest mt-0.5">WXYZ</span>
+</button>
+<!-- Bottom Row - Left: Biometric Unlock Prompt -->
+<button aria-label="Biometric Authentication" class="key-btn touch-target h-[60px] rounded-xl bg-surface-container/60 border border-outline-variant/30 flex flex-col items-center justify-center text-primary-container hover:text-primary transition-all duration-150 active:bg-surface-container-highest" type="button">
+<span class="material-symbols-outlined text-[28px]" data-icon="fingerprint">fingerprint</span>
+<span class="text-[9px] font-label-sm text-on-surface-variant uppercase tracking-wider mt-0.5">Biometrics</span>
+</button>
+<!-- Bottom Row - Center: Key 0 -->
+<button class="key-btn touch-target h-[60px] rounded-xl bg-surface-container border border-outline-variant/40 flex flex-col items-center justify-center transition-all duration-150 active:bg-surface-container-highest active:border-primary-container" type="button">
+<span class="font-headline-md text-headline-md font-semibold text-on-surface leading-none">0</span>
+<span class="text-[10px] text-on-surface-variant font-label-sm tracking-widest mt-0.5 opacity-0">+</span>
+</button>
+<!-- Bottom Row - Right: Backspace / Delete -->
+<button aria-label="Delete last digit" class="key-btn touch-target h-[60px] rounded-xl bg-surface-container/60 border border-outline-variant/30 flex flex-col items-center justify-center text-on-surface-variant hover:text-on-surface transition-all duration-150 active:bg-surface-container-highest" type="button">
+<span class="material-symbols-outlined text-[24px]" data-icon="backspace">backspace</span>
+<span class="text-[9px] font-label-sm text-on-surface-variant uppercase tracking-wider mt-0.5">Delete</span>
+</button>
+</div>
+</section>
+<!-- Bottom Regulatory & Trust Anchor (Bank-Grade Nigerian Banking Security) -->
+<footer class="w-full pt-space-xs pb-space-sm z-10 flex flex-col items-center justify-center gap-1.5 border-t border-outline-variant/20 mt-2">
+<div class="flex items-center gap-1.5 text-on-surface-variant text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-[15px] text-[#4CC38A]" data-icon="lock" style="font-variation-settings: 'FILL' 1;">lock</span>
+<span>Bank-grade 256-bit encryption • Licensed by CBN</span>
+</div>
+<p class="text-[10px] text-outline text-center tracking-normal">
+        Deposits insured by NDIC • S-CB-013 Nigerian Banking Engine
+      </p>
+<!-- iOS Home Indicator bar -->
+<div class="w-32 h-1 bg-outline-variant/50 rounded-full mt-2"></div>
+</footer>
+</main>
+<!-- Interactive script to handle keypad tap simulation and biometric prompt demo -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      let passcode = '123'; // Initial 3 entered digits for visual demonstration
+      const maxDigits = 6;
+      const displayContainer = document.getElementById('passcode-display');
+
+      function updateDisplay() {
+        if (!displayContainer) return;
+        const dots = displayContainer.children;
+        for (let i = 0; i < maxDigits; i++) {
+          if (i < passcode.length) {
+            // Active state
+            dots[i].className = 'w-3.5 h-3.5 rounded-full bg-primary-container shadow-[0_0_12px_rgba(224,112,154,0.65)] ring-2 ring-primary/40 transition-all duration-200';
+          } else {
+            // Empty state
+            dots[i].className = 'w-3.5 h-3.5 rounded-full bg-surface-container-high border border-outline-variant/60 transition-all duration-200';
+          }
+        }
+      }
+
+      // Add simple listeners for numeric keys
+      const buttons = document.querySelectorAll('.key-btn');
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const numberText = btn.querySelector('.font-headline-md');
+          const isDelete = btn.querySelector('[data-icon="backspace"]');
+          const isBio = btn.querySelector('[data-icon="fingerprint"]');
+
+          if (numberText && passcode.length < maxDigits) {
+            passcode += numberText.textContent.trim();
+            updateDisplay();
+          } else if (isDelete && passcode.length > 0) {
+            passcode = passcode.slice(0, -1);
+            updateDisplay();
+          } else if (isBio) {
+            // Mock quick biometric trigger
+            passcode = '123456';
+            updateDisplay();
+          }
+        });
+      });
+    });
+  </script>
+</body></html>

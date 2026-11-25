@@ -1,0 +1,20 @@
+flowchart TD
+  a(["Admin requests withdrawal (amount, verified destination, reason)"])
+  b["Create approval request"]
+  c{"Large amount?"}
+  d["Notify all members; cooling-off period"]
+  e["Second admin approves"]
+  f{"Approved and no objection?"}
+  g["Execute transfer via payments"]
+  h["Rejected or objection: freeze for review"]
+  i(["Done; audit logged"])
+  a --> b
+  b --> c
+  c -->|yes| d
+  c -->|no| e
+  d --> e
+  e --> f
+  f -->|yes| g
+  f -->|no| h
+  g --> i
+  h --> i

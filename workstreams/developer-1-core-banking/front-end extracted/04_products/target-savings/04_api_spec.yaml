@@ -1,0 +1,438 @@
+openapi: 3.0.3
+info:
+  title: Target Savings API
+  version: 1.0.0
+  description: Product API. Uses the core conventions (Idempotency-Key, X-Pin-Token,
+    X-Tenant-Id, error format). Amounts in kobo.
+security:
+- bearerAuth: []
+paths:
+  /targets:
+    post:
+      tags:
+      - Targets
+      summary: Create goal
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                targetKobo:
+                  type: integer
+                  format: int64
+                  description: Amount in kobo
+                targetDate:
+                  type: string
+                  format: date
+                mode:
+                  type: string
+                  enum:
+                  - FLEXIBLE
+                  - LOCKED
+                theme:
+                  type: string
+                autoSave:
+                  type: object
+                  additionalProperties: true
+                firstDepositKobo:
+                  type: integer
+                  format: int64
+                  description: Amount in kobo
+              required:
+              - name
+              - targetKobo
+              - mode
+      responses:
+        '201':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+    get:
+      tags:
+      - Targets
+      summary: List goals
+      description: 'Roles: any authenticated customer'
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /targets/{goalId}:
+    get:
+      tags:
+      - Targets
+      summary: Goal detail and history
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: goalId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+    patch:
+      tags:
+      - Targets
+      summary: Edit goal or pause
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: goalId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                theme:
+                  type: string
+                targetKobo:
+                  type: integer
+                  format: int64
+                  description: Amount in kobo
+                status:
+                  type: string
+                  enum:
+                  - ACTIVE
+                  - PAUSED
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /targets/{goalId}/topups:
+    post:
+      tags:
+      - Targets
+      summary: Top up a goal
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: goalId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amountKobo:
+                  type: integer
+                  format: int64
+                  description: Amount in kobo
+              required:
+              - amountKobo
+      responses:
+        '201':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /targets/{goalId}/auto-save:
+    put:
+      tags:
+      - Targets
+      summary: Set auto-save (consent)
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: goalId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                frequency:
+                  type: string
+                  enum:
+                  - DAILY
+                  - WEEKLY
+                  - MONTHLY
+                amountKobo:
+                  type: integer
+                  format: int64
+                  description: Amount in kobo
+                startDate:
+                  type: string
+                  format: date
+              required:
+              - frequency
+              - amountKobo
+              - startDate
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /targets/{goalId}/withdrawals/quote:
+    post:
+      tags:
+      - Targets
+      summary: Quote withdrawal (gross, penalty, net)
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: goalId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amountKobo:
+                  type: integer
+                  format: int64
+                  description: Amount in kobo
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /targets/{goalId}/withdrawals:
+    post:
+      tags:
+      - Targets
+      summary: Withdraw (after quote)
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: goalId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                quoteId:
+                  type: string
+                  format: uuid
+              required:
+              - quoteId
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /targets/{goalId}/close:
+    post:
+      tags:
+      - Targets
+      summary: Close goal
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: goalId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /targets/{goalId}/rollover:
+    post:
+      tags:
+      - Targets
+      summary: Roll matured goal into a new goal
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: goalId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                targetKobo:
+                  type: integer
+                  format: int64
+                  description: Amount in kobo
+              required:
+              - name
+              - targetKobo
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /targets/{goalId}/whatif:
+    get:
+      tags:
+      - Targets
+      summary: What-if calculation
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: goalId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: amountKobo
+        in: query
+        schema:
+          type: integer
+          format: int64
+          description: Amount in kobo
+      - name: date
+        in: query
+        schema:
+          type: string
+          format: date
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /targets/rules:
+    put:
+      tags:
+      - Targets
+      summary: Percent-of-credit rule
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                goalId:
+                  type: string
+                  format: uuid
+                percentBps:
+                  type: integer
+                minCreditKobo:
+                  type: integer
+                  format: int64
+                  description: Amount in kobo
+              required:
+              - goalId
+              - percentBps
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  parameters:
+    IdempotencyKey:
+      name: Idempotency-Key
+      in: header
+      required: true
+      schema:
+        type: string
+        format: uuid
+    PinToken:
+      name: X-Pin-Token
+      in: header
+      required: true
+      schema:
+        type: string
+  responses:
+    Error:
+      description: Error (see core ERROR_CODES.md)
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+              details:
+                type: object
+              requestId:
+                type: string

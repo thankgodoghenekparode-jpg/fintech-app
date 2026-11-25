@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Transaction Receipt - YourApp</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary": "#61130a",
+            "surface-tint": "#ffb0ca",
+            "error": "#ffb4ab",
+            "tertiary": "#b0c6ff",
+            "on-tertiary": "#002d6f",
+            "inverse-primary": "#9e3b63",
+            "on-surface-variant": "#dac0c6",
+            "on-secondary-container": "#ff9f90",
+            "on-secondary-fixed": "#410000",
+            "inverse-on-surface": "#323031",
+            "surface-container": "#211f20",
+            "primary": "#ffb0ca",
+            "secondary-container": "#822c20",
+            "tertiary-fixed": "#d9e2ff",
+            "on-primary-fixed-variant": "#7f234b",
+            "on-primary-fixed": "#3e001f",
+            "surface-container-highest": "#373435",
+            "on-primary": "#620735",
+            "secondary-fixed-dim": "#ffb4a8",
+            "surface-dim": "#151314",
+            "outline": "#a28b91",
+            "surface-bright": "#3b3839",
+            "on-primary-container": "#5d0331",
+            "primary-fixed": "#ffd9e3",
+            "primary-container": "#e0709a",
+            "surface-container-high": "#2c292a",
+            "secondary": "#ffb4a8",
+            "background": "#151314",
+            "on-background": "#e7e1e2",
+            "on-tertiary-fixed-variant": "#06429a",
+            "tertiary-container": "#6a92ee",
+            "primary-fixed-dim": "#ffb0ca",
+            "outline-variant": "#544247",
+            "on-tertiary-container": "#002a69",
+            "surface-container-low": "#1d1b1c",
+            "on-secondary-fixed-variant": "#7f291e",
+            "on-error-container": "#ffdad6",
+            "surface": "#151314",
+            "surface-container-lowest": "#100e0f",
+            "surface-variant": "#373435",
+            "on-tertiary-fixed": "#001945",
+            "secondary-fixed": "#ffdad4",
+            "inverse-surface": "#e7e1e2",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "error-container": "#93000a",
+            "on-surface": "#e7e1e2",
+            "on-error": "#690005"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xl": "2rem",
+            "margin-mobile": "1rem",
+            "space-lg": "1.5rem",
+            "margin": "1rem",
+            "gutter-mobile": "0.75rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "space-xs": "0.25rem",
+            "gutter": "1rem"
+          },
+          "fontFamily": {
+            "label-md": ["Inter"],
+            "label-sm": ["Inter"],
+            "body-md": ["Inter"],
+            "body-lg": ["Inter"],
+            "title-currency": ["Inter"],
+            "label-lg": ["Inter"],
+            "headline-md": ["Inter"],
+            "headline-lg": ["Inter"],
+            "display-currency": ["Inter"],
+            "headline-sm": ["Inter"]
+          },
+          "fontSize": {
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "title-currency": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-lg": ["15px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      font-size: 20px;
+      line-height: 1;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased selection:bg-primary-container selection:text-on-primary min-h-screen flex flex-col justify-between items-center">
+<!-- Mobile Viewport Wrapper (390px base / responsive shell max 440px) -->
+<div class="w-full max-w-[440px] min-h-screen bg-background flex flex-col justify-between relative shadow-2xl overflow-x-hidden pb-8">
+<!-- Top App Bar / Focused Journey Header -->
+<header class="w-full px-margin-mobile pt-4 pb-3 flex items-center justify-between sticky top-0 z-30 bg-background/95 backdrop-blur-md">
+<button aria-label="Go back" class="w-10 h-10 rounded-xl bg-surface-container-high border border-outline-variant/30 flex items-center justify-center text-on-surface hover:bg-surface-variant active:scale-95 transition-all duration-150" type="button">
+<span class="material-symbols-outlined text-on-surface">arrow_back</span>
+</button>
+<h1 class="font-headline-sm text-headline-sm text-on-surface tracking-tight font-bold">
+        Transaction Receipt
+      </h1>
+<button aria-label="Share receipt" class="w-10 h-10 rounded-xl bg-surface-container-high border border-outline-variant/30 flex items-center justify-center text-on-surface hover:bg-surface-variant active:scale-95 transition-all duration-150" type="button">
+<span class="material-symbols-outlined text-primary-fixed">share</span>
+</button>
+</header>
+<!-- Main Receipt Canvas -->
+<main class="w-full px-margin-mobile flex-1 flex flex-col gap-y-4 pt-1">
+<!-- Digital Ticket Voucher Structure -->
+<article class="relative w-full rounded-2xl bg-surface-container-low border border-outline-variant/50 overflow-hidden shadow-[0_16px_36px_rgba(0,0,0,0.5)]">
+<!-- Watermark / Security Holographic Background Stamp -->
+<div class="pointer-events-none absolute inset-0 flex items-center justify-center opacity-[0.035] select-none z-0">
+<div class="w-64 h-64 rounded-full border-[12px] border-primary flex items-center justify-center rotate-[-25deg]">
+<span class="font-display-currency text-display-currency font-bold tracking-widest text-primary text-center leading-none">
+              VERIFIED<br/>PAYMENT<br/>SEAL
+            </span>
+</div>
+</div>
+<!-- Upper Receipt Module -->
+<div class="relative z-10 p-5 pb-4 flex flex-col items-center">
+<!-- Institution & Regulatory Brand Cluster -->
+<div class="w-full flex items-center justify-between pb-4 border-b border-outline-variant/30">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-lg bg-primary-container flex items-center justify-center text-surface-container-lowest font-bold text-label-md">
+                Y
+              </div>
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface tracking-tight">YourApp MFB</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container-high px-2 py-0.5 rounded-full border border-outline-variant/40">
+                CBN Licensed
+              </span>
+<span class="font-label-sm text-label-sm text-primary bg-primary-container/20 px-2 py-0.5 rounded-full border border-primary-container/40">
+                NDIC Insured
+              </span>
+</div>
+</div>
+<!-- Transaction Status Indicator -->
+<div class="mt-5 mb-3 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#4CC38A]/10 border border-[#4CC38A]/30">
+<span class="material-symbols-outlined text-[#4CC38A] text-[18px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-label-md text-label-md font-semibold text-[#4CC38A]">Transaction Successful</span>
+</div>
+<!-- Primary Amount Display -->
+<div class="flex items-baseline gap-1 mt-1 text-center">
+<span class="font-display-currency text-display-currency tabular-nums font-bold text-on-surface tracking-tight">
+              ₦45,000.00
+            </span>
+</div>
+<!-- Transaction Timestamp -->
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1.5 tabular-nums">
+            24 Feb 2027, 02:32 PM WAT
+          </p>
+</div>
+<!-- Scalloped Ticket Notch Divider -->
+<div class="relative w-full h-6 flex items-center z-10">
+<div class="absolute -left-3 w-6 h-6 rounded-full bg-background border-r border-outline-variant/50"></div>
+<div class="w-full border-t border-dashed border-outline-variant/60 mx-4"></div>
+<div class="absolute -right-3 w-6 h-6 rounded-full bg-background border-l border-outline-variant/50"></div>
+</div>
+<!-- Transaction Specifications (Key-Value Grid) -->
+<div class="relative z-10 px-5 pt-3 pb-5 flex flex-col divide-y divide-outline-variant/25">
+<!-- Recipient -->
+<div class="py-2.5 flex items-start justify-between gap-4">
+<span class="font-body-md text-body-md text-on-surface-variant flex-shrink-0">Transfer To</span>
+<span class="font-label-lg text-label-lg font-semibold text-on-surface text-right">Babajide Sanwo-Olu</span>
+</div>
+<!-- Destination Bank -->
+<div class="py-2.5 flex items-start justify-between gap-4">
+<span class="font-body-md text-body-md text-on-surface-variant flex-shrink-0">Destination Bank</span>
+<span class="font-body-md text-body-md font-medium text-on-surface text-right">Guaranty Trust Bank (GTBank)</span>
+</div>
+<!-- Account Number -->
+<div class="py-2.5 flex items-center justify-between gap-4">
+<span class="font-body-md text-body-md text-on-surface-variant flex-shrink-0">Account Number</span>
+<span class="font-body-md text-body-md tabular-nums font-semibold text-on-surface tracking-wider">0123 •••• 76</span>
+</div>
+<!-- Sender Identity -->
+<div class="py-2.5 flex items-start justify-between gap-4">
+<span class="font-body-md text-body-md text-on-surface-variant flex-shrink-0">Sender Name</span>
+<span class="font-body-md text-body-md font-medium text-on-surface text-right">Chioma Blessing Adeleke</span>
+</div>
+<!-- Sending Account -->
+<div class="py-2.5 flex items-start justify-between gap-4">
+<span class="font-body-md text-body-md text-on-surface-variant flex-shrink-0">Sending Account</span>
+<span class="font-body-md text-body-md text-on-surface text-right">
+              YourApp Tier 2 Savings <span class="text-on-surface-variant tabular-nums block text-label-sm">(0124892019)</span>
+</span>
+</div>
+<!-- Reference Code with Copy -->
+<div class="py-2.5 flex items-center justify-between gap-2">
+<span class="font-body-md text-body-md text-on-surface-variant flex-shrink-0">Transaction Ref</span>
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-label-sm font-semibold tabular-nums text-on-surface tracking-tight" id="ref-code">NIP-992014812039-YAP</span>
+<button aria-label="Copy reference number" class="p-1 rounded-md bg-surface-container-high hover:bg-surface-variant active:scale-90 text-primary-fixed transition-all" onclick="copyRef()" type="button">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+</div>
+</div>
+<!-- Session ID -->
+<div class="py-2.5 flex items-start justify-between gap-4">
+<span class="font-body-md text-body-md text-on-surface-variant flex-shrink-0">Session ID</span>
+<span class="font-label-sm text-label-sm tabular-nums text-on-surface-variant text-right break-all">00001327022414321098471</span>
+</div>
+<!-- Fee and Tax Breakdown -->
+<div class="py-2.5 flex items-center justify-between gap-4">
+<span class="font-body-md text-body-md text-on-surface-variant flex-shrink-0">Fee &amp; Tax</span>
+<span class="font-body-md text-body-md tabular-nums font-medium text-on-surface text-right">₦11.56 <span class="text-label-sm text-on-surface-variant">(VAT incl.)</span></span>
+</div>
+<!-- Narration Note -->
+<div class="py-2.5 flex items-start justify-between gap-4">
+<span class="font-body-md text-body-md text-on-surface-variant flex-shrink-0">Narration</span>
+<span class="font-body-md text-body-md font-medium text-on-surface text-right italic">"Office rent contribution Feb"</span>
+</div>
+</div>
+<!-- Security Proof & Cryptographic Metadata Footer -->
+<footer class="bg-surface-container px-4 py-3 border-t border-outline-variant/30 flex items-center gap-2.5">
+<div class="p-1.5 rounded-full bg-surface-container-highest text-primary-fixed flex-shrink-0">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant leading-tight">
+            Official NIBSS Electronic Fund Transfer Advice • Bank-Grade 256-Bit Cryptographic Timestamp
+          </p>
+</footer>
+</article>
+<!-- Security Notice Pill -->
+<div class="flex items-center justify-center gap-1.5 py-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+<span class="font-label-sm text-label-sm">Tamper-evident digital audit document</span>
+</div>
+</main>
+<!-- Bottom Actions Section (Interactive 52px standards) -->
+<div class="w-full px-margin-mobile pt-3 pb-2 flex flex-col gap-2.5 mt-auto">
+<!-- Primary Share Action CTA -->
+<button class="w-full h-[52px] rounded-xl bg-primary-container hover:bg-[#C4557F] text-surface-container-lowest font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 active:scale-[0.98] transition-all duration-150 shadow-md" type="button">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">share</span>
+<span>Share Receipt (PDF / Image)</span>
+</button>
+<!-- Secondary Save to Downloads CTA -->
+<button class="w-full h-[52px] rounded-xl bg-surface-container border border-outline-variant/40 hover:bg-surface-container-high text-on-surface font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 active:scale-[0.98] transition-all duration-150" type="button">
+<span class="material-symbols-outlined text-[20px]">download</span>
+<span>Save to Downloads</span>
+</button>
+</div>
+</div>
+<script>
+    function copyRef() {
+      const code = document.getElementById('ref-code').innerText;
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(code).then(() => {
+          alert('Transaction Reference copied: ' + code);
+        });
+      }
+    }
+  </script>
+</body></html>

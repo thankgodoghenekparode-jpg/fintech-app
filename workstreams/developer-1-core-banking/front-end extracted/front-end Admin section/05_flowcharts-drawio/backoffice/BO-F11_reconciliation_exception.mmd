@@ -1,0 +1,20 @@
+flowchart TD
+  a(["Daily run completes with exceptions"])
+  b["Assign exception to finance"]
+  c{"Exception type"}
+  d["Missing internal: investigate and post via approval"]
+  e["Missing external: query bank; hold"]
+  f["Amount mismatch or duplicate: correct via compensating entries (approval)"]
+  g["Clear suspense items"]
+  h["Sign off the day when all resolved or ageing approved"]
+  i(["Report published"])
+  a --> b
+  b --> c
+  c -->|missing internal| d
+  c -->|missing external| e
+  c -->|mismatch or duplicate| f
+  d --> g
+  e --> g
+  f --> g
+  g --> h
+  h --> i

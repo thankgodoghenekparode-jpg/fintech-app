@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Scan &amp; Pay - YourApp</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-surface-variant": "#dac0c6",
+            "primary-fixed": "#ffd9e3",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "on-tertiary-container": "#002a69",
+            "outline-variant": "#544247",
+            "tertiary-container": "#6a92ee",
+            "primary": "#ffb0ca",
+            "on-primary-container": "#5d0331",
+            "secondary": "#ffb4a8",
+            "primary-container": "#e0709a",
+            "on-background": "#e7e1e2",
+            "on-surface": "#e7e1e2",
+            "inverse-surface": "#e7e1e2",
+            "on-tertiary-fixed": "#001945",
+            "surface-container-low": "#1d1b1c",
+            "on-error-container": "#ffdad6",
+            "surface-dim": "#151314",
+            "on-primary-fixed-variant": "#7f234b",
+            "primary-fixed-dim": "#ffb0ca",
+            "error-container": "#93000a",
+            "surface-container-highest": "#373435",
+            "outline": "#a28b91",
+            "secondary-fixed-dim": "#ffb4a8",
+            "surface-container": "#211f20",
+            "error": "#ffb4ab",
+            "surface": "#151314",
+            "on-error": "#690005",
+            "on-tertiary-fixed-variant": "#06429a",
+            "surface-variant": "#373435",
+            "surface-tint": "#ffb0ca",
+            "on-secondary-fixed": "#410000",
+            "on-primary": "#620735",
+            "secondary-container": "#822c20",
+            "surface-container-high": "#2c292a",
+            "inverse-on-surface": "#323031",
+            "inverse-primary": "#9e3b63",
+            "background": "#151314",
+            "on-secondary-fixed-variant": "#7f291e",
+            "secondary-fixed": "#ffdad4",
+            "tertiary": "#b0c6ff",
+            "on-primary-fixed": "#3e001f",
+            "tertiary-fixed": "#d9e2ff",
+            "surface-container-lowest": "#100e0f",
+            "surface-bright": "#3b3839",
+            "on-secondary-container": "#ff9f90",
+            "on-tertiary": "#002d6f",
+            "on-secondary": "#61130a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-md": "1rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "margin": "1rem",
+            "margin-mobile": "1rem",
+            "gutter": "1rem",
+            "gutter-mobile": "0.75rem",
+            "space-lg": "1.5rem",
+            "space-xl": "2rem"
+          },
+          "fontFamily": {
+            "label-sm": ["Inter"],
+            "display-currency": ["Inter"],
+            "body-lg": ["Inter"],
+            "body-md": ["Inter"],
+            "title-currency": ["Inter"],
+            "headline-lg": ["Inter"],
+            "headline-sm": ["Inter"],
+            "label-md": ["Inter"],
+            "headline-md": ["Inter"],
+            "label-lg": ["Inter"]
+          },
+          "fontSize": {
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "title-currency": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-lg": ["15px", { "lineHeight": "20px", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    @keyframes scan {
+      0% { top: 0%; opacity: 0.2; }
+      50% { opacity: 1; }
+      100% { top: 96%; opacity: 0.2; }
+    }
+    .animate-scan-beam {
+      animation: scan 2.4s ease-in-out infinite alternate;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-lowest text-on-surface antialiased min-h-screen flex justify-center items-center p-0 selection:bg-primary selection:text-on-primary">
+<main class="w-full max-w-[390px] h-[844px] bg-surface relative flex flex-col overflow-hidden shadow-2xl border border-outline-variant/30">
+<!-- Top Action Bar (Dedicated task screen layout with back action) -->
+<header class="flex items-center justify-between px-margin py-space-sm z-30 bg-surface/90 backdrop-blur-md min-h-[56px] border-b border-outline-variant/20">
+<button aria-label="Close scanner" class="w-[42px] h-[42px] rounded-xl bg-surface-container flex items-center justify-center text-on-surface hover:bg-surface-container-high transition-colors active:scale-95 duration-150" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="close">close</span>
+</button>
+<div class="flex flex-col items-center">
+<h1 class="font-headline-sm text-headline-sm text-on-surface tracking-tight">Scan &amp; Pay</h1>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">S-CB-039</span>
+</div>
+<button aria-label="Toggle flash" class="w-[42px] h-[42px] rounded-xl bg-surface-container flex items-center justify-center text-primary-container hover:bg-surface-container-high transition-colors active:scale-95 duration-150" id="torch-btn" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="flash_on">flash_on</span>
+</button>
+</header>
+<!-- Segmented Tab Switcher -->
+<section class="px-margin pt-space-sm pb-space-xs z-30">
+<div class="grid grid-cols-2 bg-surface-container-low p-1 rounded-xl border border-outline-variant/30">
+<button class="py-space-xs text-center font-label-md text-label-md rounded-lg bg-surface-container text-primary font-semibold transition-all" type="button">
+          Scan QR Code
+        </button>
+<button class="py-space-xs text-center font-label-md text-label-md rounded-lg text-on-surface-variant hover:text-on-surface transition-colors font-medium" type="button">
+          My QR Code
+        </button>
+</div>
+</section>
+<!-- Viewfinder Area with dark lens backdrop & glowing brackets -->
+<div class="relative flex-1 flex flex-col items-center justify-center px-margin overflow-hidden">
+<!-- Camera Lens Atmosphere Overlay -->
+<div class="absolute inset-0 bg-surface-container-lowest/80 flex items-center justify-center pointer-events-none">
+<div class="w-[280px] h-[280px] rounded-2xl bg-surface-container-low/20 shadow-[0_0_80px_rgba(0,0,0,0.9)]"></div>
+</div>
+<!-- Viewfinder Target Frame -->
+<div class="relative w-[250px] h-[250px] rounded-xl z-20 flex items-center justify-center">
+<!-- Glowing Rose Corner Brackets -->
+<span class="absolute top-0 left-0 w-8 h-8 border-t-4 border-l-4 border-primary-container rounded-tl-xl shadow-[0_0_12px_rgba(224,112,154,0.6)]"></span>
+<span class="absolute top-0 right-0 w-8 h-8 border-t-4 border-r-4 border-primary-container rounded-tr-xl shadow-[0_0_12px_rgba(224,112,154,0.6)]"></span>
+<span class="absolute bottom-0 left-0 w-8 h-8 border-b-4 border-l-4 border-primary-container rounded-bl-xl shadow-[0_0_12px_rgba(224,112,154,0.6)]"></span>
+<span class="absolute bottom-0 right-0 w-8 h-8 border-b-4 border-r-4 border-primary-container rounded-br-xl shadow-[0_0_12px_rgba(224,112,154,0.6)]"></span>
+<!-- Animated Scanner Beam -->
+<div class="absolute inset-x-2 h-[2px] bg-gradient-to-r from-transparent via-primary-container to-transparent shadow-[0_0_14px_rgba(224,112,154,0.9)] animate-scan-beam"></div>
+<!-- Faint Aim Reticle Center Marker -->
+<div class="w-10 h-10 border border-outline-variant/30 rounded-full flex items-center justify-center opacity-40">
+<div class="w-1.5 h-1.5 bg-primary rounded-full"></div>
+</div>
+</div>
+<p class="z-20 font-body-md text-body-md text-on-surface-variant mt-space-md text-center">
+        Align QR code within frame to scan
+      </p>
+<!-- Quick Action Controls Under Frame -->
+<div class="flex items-center gap-space-md mt-space-sm z-20">
+<button class="flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container border border-outline-variant/40 text-on-surface text-label-md font-label-md hover:bg-surface-container-high transition-colors active:scale-95 duration-150" type="button">
+<span class="material-symbols-outlined text-[18px] text-primary" data-icon="flashlight_on">flashlight_on</span>
+<span>Torch</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container border border-outline-variant/40 text-on-surface text-label-md font-label-md hover:bg-surface-container-high transition-colors active:scale-95 duration-150" type="button">
+<span class="material-symbols-outlined text-[18px] text-primary" data-icon="image">image</span>
+<span>From Gallery</span>
+</button>
+</div>
+</div>
+<!-- Bottom Sheet Drawer -->
+<section class="bg-surface-container-low border-t border-outline-variant/30 rounded-t-3xl px-margin pt-space-md pb-space-sm z-30 shadow-[0_-12px_32px_rgba(0,0,0,0.5)]">
+<!-- Drag handle indicator -->
+<div class="w-10 h-1 bg-outline-variant/50 rounded-full mx-auto mb-space-sm"></div>
+<!-- Standards Compatibility Chip -->
+<div class="flex items-center justify-between py-space-xs px-space-sm bg-surface-container rounded-lg border border-outline-variant/20 mb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="verified_user">verified_user</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant truncate max-w-[280px]">
+            NIBSS NQR, YourApp Merchant &amp; Commercial POS
+          </span>
+</div>
+<span class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-surface-container-high text-primary-fixed border border-outline-variant/30">
+          Instant
+        </span>
+</div>
+<!-- Recent Merchant Shortcut -->
+<div class="mb-space-sm p-space-sm bg-surface-container rounded-xl border border-outline-variant/30 flex items-center justify-between hover:bg-surface-container-high transition-colors cursor-pointer">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary border border-outline-variant/40">
+<span class="material-symbols-outlined text-[20px]" data-icon="storefront">storefront</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Last paid</span>
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">SPAR Victoria Island</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-title-currency text-title-currency text-primary font-semibold tabular-nums">₦18,450</span>
+<span class="block font-label-sm text-label-sm text-on-surface-variant">Repeat</span>
+</div>
+</div>
+<!-- Manual Code Entry CTA -->
+<button class="w-full h-[52px] rounded-xl bg-surface-container border border-outline-variant text-on-surface font-label-lg text-label-lg font-semibold flex items-center justify-center gap-space-xs hover:bg-surface-container-high active:scale-95 transition-all duration-150" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="dialpad">dialpad</span>
+<span>Enter Terminal or Merchant ID</span>
+</button>
+<!-- Bank Security Guarantee Pill -->
+<footer class="mt-space-sm mb-space-xs flex items-center justify-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px] text-outline" data-icon="lock">lock</span>
+<p class="font-label-sm text-label-sm text-outline">
+          Encrypted Central Clearing via NIBSS Nigeria • CBN Licensed
+        </p>
+</footer>
+</section>
+</main>
+<script>
+    const torchBtn = document.getElementById('torch-btn');
+    if (torchBtn) {
+      torchBtn.addEventListener('click', () => {
+        torchBtn.classList.toggle('text-primary');
+        torchBtn.classList.toggle('bg-primary-container');
+        torchBtn.classList.toggle('text-on-primary-container');
+      });
+    }
+  </script>
+</body></html>

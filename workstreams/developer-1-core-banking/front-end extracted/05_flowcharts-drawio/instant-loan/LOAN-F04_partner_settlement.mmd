@@ -1,0 +1,17 @@
+flowchart TD
+  a(["Period end"])
+  b["Compute disbursed, repaid, interest and fees per funding source"]
+  c["Apply revenue split rules"]
+  d["Produce settlement statement"]
+  e{"Reconciled with partner?"}
+  f["Resolve exceptions"]
+  g["Settle (dual control)"]
+  h(["Report published"])
+  a --> b
+  b --> c
+  c --> d
+  d --> e
+  e -->|no| f
+  f --> e
+  e -->|yes| g
+  g --> h

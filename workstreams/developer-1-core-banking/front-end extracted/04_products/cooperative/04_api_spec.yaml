@@ -1,0 +1,1450 @@
+openapi: 3.0.3
+info:
+  title: Cooperative API
+  version: 1.0.0
+  description: Product API. Uses the core conventions (Idempotency-Key, X-Pin-Token,
+    X-Tenant-Id, error format). Amounts in kobo.
+security:
+- bearerAuth: []
+paths:
+  /cooperatives:
+    post:
+      tags:
+      - Cooperative
+      summary: Create cooperative
+      description: 'Roles: any authenticated customer'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                type:
+                  type: string
+                  enum:
+                  - REGISTERED
+                  - INFORMAL
+                description:
+                  type: string
+                meetingSchedule:
+                  type: string
+                adminPhones:
+                  type: array
+                  items:
+                    type: string
+              required:
+              - name
+              - type
+      responses:
+        '201':
+          description: Created (status PENDING_VERIFICATION)
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+    get:
+      tags:
+      - Cooperative
+      summary: List my cooperatives
+      description: 'Roles: any authenticated customer'
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /cooperatives/by-code/{code}:
+    get:
+      tags:
+      - Cooperative
+      summary: Preview a cooperative by invite code
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: code
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /cooperatives/{id}/documents:
+    post:
+      tags:
+      - Cooperative
+      summary: Upload registration documents
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  enum:
+                  - CERTIFICATE
+                  - BYE_LAWS
+                  - OTHER
+                fileKey:
+                  type: string
+              required:
+              - type
+              - fileKey
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /cooperative/overview:
+    get:
+      tags:
+      - Cooperative
+      summary: Member overview inside a cooperative
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /cooperative/join-requests:
+    post:
+      tags:
+      - Membership
+      summary: Request to join (by invite code)
+      description: 'Roles: any authenticated customer'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                inviteCode:
+                  type: string
+                message:
+                  type: string
+              required:
+              - inviteCode
+      responses:
+        '201':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+    get:
+      tags:
+      - Membership
+      summary: List join requests (admin)
+      description: 'Roles: Admin'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /cooperative/join-requests/{requestId}/decision:
+    post:
+      tags:
+      - Membership
+      summary: Approve or reject a join request
+      description: 'Roles: Admin'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: requestId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                decision:
+                  type: string
+                  enum:
+                  - APPROVE
+                  - REJECT
+                reason:
+                  type: string
+              required:
+              - decision
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /cooperative/members:
+    get:
+      tags:
+      - Membership
+      summary: List members
+      description: 'Roles: Admin'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: limit
+        in: query
+        schema:
+          type: integer
+      - name: cursor
+        in: query
+        schema:
+          type: string
+      - name: status
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /cooperative/members/{memberId}/suspend:
+    post:
+      tags:
+      - Membership
+      summary: Suspend or remove member
+      description: 'Roles: Admin'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: memberId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - SUSPEND
+                  - REMOVE
+                reason:
+                  type: string
+              required:
+              - action
+              - reason
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /cooperative/leave:
+    post:
+      tags:
+      - Membership
+      summary: Request to leave
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reason:
+                  type: string
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /cooperative/plans:
+    get:
+      tags:
+      - Contributions
+      summary: List contribution plans
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+    post:
+      tags:
+      - Contributions
+      summary: Create contribution plan (new rule version if changing)
+      description: 'Roles: Admin'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                frequency:
+                  type: string
+                  enum:
+                  - DAILY
+                  - WEEKLY
+                  - MONTHLY
+                  - YEARLY
+                amountKobo:
+                  type: integer
+                  format: int64
+                  description: Amount in kobo
+                categoryAmounts:
+                  type: object
+                  additionalProperties: true
+                startsOn:
+                  type: string
+                  format: date
+                graceDays:
+                  type: integer
+              required:
+              - name
+              - frequency
+              - startsOn
+      responses:
+        '201':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /cooperative/dues:
+    get:
+      tags:
+      - Contributions
+      summary: My dues and history
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: status
+        in: query
+        schema:
+          type: string
+      - name: cursor
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /cooperative/contributions:
+    post:
+      tags:
+      - Contributions
+      summary: Pay a contribution (manual)
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                planId:
+                  type: string
+                  format: uuid
+                amountKobo:
+                  type: integer
+                  format: int64
+                  description: Amount in kobo
+              required:
+              - planId
+              - amountKobo
+      responses:
+        '201':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /cooperative/plans/{planId}/auto-deduct:
+    put:
+      tags:
+      - Contributions
+      summary: Enable or disable auto-deduction (consent)
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: planId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                enabled:
+                  type: boolean
+              required:
+              - enabled
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /cooperative/arrears:
+    get:
+      tags:
+      - Contributions
+      summary: Arrears by member and plan
+      description: 'Roles: Admin'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /cooperative/shares/me:
+    get:
+      tags:
+      - Shares
+      summary: My shares and certificate
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /cooperative/share-policy:
+    put:
+      tags:
+      - Shares
+      summary: Set share policy
+      description: 'Roles: Admin'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                unitPriceKobo:
+                  type: integer
+                  format: int64
+                  description: Amount in kobo
+                minShares:
+                  type: integer
+                maxShares:
+                  type: integer
+              required:
+              - unitPriceKobo
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /cooperative/dividend-runs:
+    post:
+      tags:
+      - Shares
+      summary: Propose a dividend run
+      description: 'Roles: Admin'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                period:
+                  type: string
+                rateBps:
+                  type: integer
+                mode:
+                  type: string
+                  enum:
+                  - CREDIT_SAVINGS
+                  - PAYOUT
+              required:
+              - period
+              - rateBps
+              - mode
+      responses:
+        '201':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /cooperative/dividend-runs/{runId}/approve:
+    post:
+      tags:
+      - Shares
+      summary: Approve a dividend run (second admin)
+      description: 'Roles: Admin'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: runId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /cooperative/loans/eligibility:
+    get:
+      tags:
+      - Loans
+      summary: Loan eligibility and limits
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /cooperative/loan-applications/preview:
+    post:
+      tags:
+      - Loans
+      summary: Preview schedule and cost
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amountKobo:
+                  type: integer
+                  format: int64
+                  description: Amount in kobo
+                tenorMonths:
+                  type: integer
+              required:
+              - amountKobo
+              - tenorMonths
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /cooperative/loan-applications:
+    post:
+      tags:
+      - Loans
+      summary: Submit loan application with guarantors
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amountKobo:
+                  type: integer
+                  format: int64
+                  description: Amount in kobo
+                tenorMonths:
+                  type: integer
+                purpose:
+                  type: string
+                guarantorMemberIds:
+                  type: array
+                  items:
+                    type: string
+                    format: uuid
+              required:
+              - amountKobo
+              - tenorMonths
+              - purpose
+              - guarantorMemberIds
+      responses:
+        '201':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+    get:
+      tags:
+      - Loans
+      summary: Loan application queue (admin)
+      description: 'Roles: Admin'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /cooperative/guarantees:
+    get:
+      tags:
+      - Loans
+      summary: My guarantee requests and obligations
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /cooperative/guarantees/{guaranteeId}/respond:
+    post:
+      tags:
+      - Loans
+      summary: Accept or decline a guarantee
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: guaranteeId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                decision:
+                  type: string
+                  enum:
+                  - ACCEPT
+                  - DECLINE
+              required:
+              - decision
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /cooperative/loan-applications/{applicationId}/decision:
+    post:
+      tags:
+      - Loans
+      summary: Approve or reject (dual control)
+      description: 'Roles: Admin'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: applicationId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                decision:
+                  type: string
+                  enum:
+                  - APPROVE
+                  - REJECT
+                reason:
+                  type: string
+              required:
+              - decision
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /cooperative/loans/{loanId}:
+    get:
+      tags:
+      - Loans
+      summary: Loan detail and schedule
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: loanId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /cooperative/loans/{loanId}/repayments:
+    post:
+      tags:
+      - Loans
+      summary: Repay loan
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: loanId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amountKobo:
+                  type: integer
+                  format: int64
+                  description: Amount in kobo
+              required:
+              - amountKobo
+      responses:
+        '201':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /cooperative/loans/{loanId}/recovery:
+    post:
+      tags:
+      - Loans
+      summary: Start guarantor recovery (after notice)
+      description: 'Roles: Admin'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: loanId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /cooperative/dashboard:
+    get:
+      tags:
+      - Books
+      summary: Admin dashboard figures
+      description: 'Roles: Admin'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /cooperative/statement:
+    get:
+      tags:
+      - Books
+      summary: My statement
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: from
+        in: query
+        schema:
+          type: string
+          format: date
+      - name: to
+        in: query
+        schema:
+          type: string
+          format: date
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /cooperative/reports/{type}:
+    get:
+      tags:
+      - Books
+      summary: Trial balance, income summary, AGM pack
+      description: 'Roles: Admin'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: type
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: from
+        in: query
+        schema:
+          type: string
+          format: date
+      - name: to
+        in: query
+        schema:
+          type: string
+          format: date
+      - name: format
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /cooperative/withdrawals:
+    post:
+      tags:
+      - Books
+      summary: Request a withdrawal (dual control)
+      description: 'Roles: Admin'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amountKobo:
+                  type: integer
+                  format: int64
+                  description: Amount in kobo
+                destinationId:
+                  type: string
+                  format: uuid
+                reason:
+                  type: string
+              required:
+              - amountKobo
+              - destinationId
+              - reason
+      responses:
+        '201':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /cooperative/withdrawals/{withdrawalId}/approve:
+    post:
+      tags:
+      - Books
+      summary: Approve withdrawal (second admin)
+      description: 'Roles: Admin'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: withdrawalId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /cooperative/rules:
+    get:
+      tags:
+      - Rules
+      summary: Active and draft rule sets
+      description: 'Roles: Admin'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+    post:
+      tags:
+      - Rules
+      summary: Submit a rule set draft for approval
+      description: 'Roles: Principal Admin'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                rules:
+                  type: object
+                  additionalProperties: true
+                effectiveFrom:
+                  type: string
+                  format: date-time
+              required:
+              - rules
+              - effectiveFrom
+      responses:
+        '201':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /cooperative/admins:
+    post:
+      tags:
+      - Admins
+      summary: Invite or assign an admin role
+      description: 'Roles: Principal Admin'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                phone:
+                  type: string
+                role:
+                  type: string
+                permissions:
+                  type: array
+                  items:
+                    type: string
+              required:
+              - phone
+              - role
+      responses:
+        '201':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /cooperative/admins/succession:
+    post:
+      tags:
+      - Admins
+      summary: Appoint a replacement admin
+      description: 'Roles: Principal Admin'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nomineeMemberId:
+                  type: string
+                  format: uuid
+                replacesMemberId:
+                  type: string
+                  format: uuid
+              required:
+              - nomineeMemberId
+              - replacesMemberId
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /cooperative/announcements:
+    get:
+      tags:
+      - Hub
+      summary: Announcements
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+    post:
+      tags:
+      - Hub
+      summary: Publish announcement
+      description: 'Roles: Admin'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                body:
+                  type: string
+              required:
+              - title
+              - body
+      responses:
+        '201':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /cooperative/meetings:
+    post:
+      tags:
+      - Hub
+      summary: Schedule meeting
+      description: 'Roles: Admin'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                scheduledAt:
+                  type: string
+                  format: date-time
+                venue:
+                  type: string
+              required:
+              - title
+              - scheduledAt
+      responses:
+        '201':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /cooperative/report-concern:
+    post:
+      tags:
+      - Platform
+      summary: Report a concern about the cooperative
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                category:
+                  type: string
+                description:
+                  type: string
+              required:
+              - category
+              - description
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /cooperative/audit:
+    get:
+      tags:
+      - Platform
+      summary: Audit trail
+      description: 'Roles: Admin'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: cursor
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  parameters:
+    IdempotencyKey:
+      name: Idempotency-Key
+      in: header
+      required: true
+      schema:
+        type: string
+        format: uuid
+    PinToken:
+      name: X-Pin-Token
+      in: header
+      required: true
+      schema:
+        type: string
+  responses:
+    Error:
+      description: Error (see core ERROR_CODES.md)
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+              details:
+                type: object
+              requestId:
+                type: string

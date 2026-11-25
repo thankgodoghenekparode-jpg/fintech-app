@@ -1,0 +1,20 @@
+flowchart TD
+  a(["Payer receives invite or bill link"])
+  b{"Has the app?"}
+  c["Install and sign up"]
+  d["Payer accepts linking to collector record"]
+  e["Dues & Levies shows bills"]
+  f["Pay in one tap or enable auto-pay with consent"]
+  g["Receipt stored in app"]
+  h["Pay via link or transfer without account"]
+  i(["Paid"])
+  a --> b
+  b -->|no, wants app| c
+  b -->|no, prefers not| h
+  b -->|yes| d
+  c --> d
+  d --> e
+  e --> f
+  f --> g
+  g --> i
+  h --> i

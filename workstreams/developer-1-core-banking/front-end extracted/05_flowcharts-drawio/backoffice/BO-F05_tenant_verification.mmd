@@ -1,0 +1,15 @@
+flowchart TD
+  a(["Tenant submits documents"])
+  b["Reviewer checks documents and officers"]
+  c{"Verified?"}
+  d["Set trust level; activate account; notify"]
+  e["Reject with reason; allow resubmission"]
+  f["Schedule periodic re-verification"]
+  g(["Done"])
+  a --> b
+  b --> c
+  c -->|yes| d
+  c -->|no| e
+  e -->|resubmit| b
+  d --> f
+  f --> g

@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>System Status (W-BO-020) - YourApp Credit Ops</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary-fixed-dim": "#ffb1c5",
+            "outline-variant": "#dcbfc5",
+            "on-primary": "#ffffff",
+            "on-secondary-fixed": "#410000",
+            "secondary-container": "#fc6955",
+            "on-surface": "#1f1b1c",
+            "on-tertiary": "#ffffff",
+            "surface": "#fff8f8",
+            "on-tertiary-container": "#c6b7bd",
+            "surface-bright": "#fff8f8",
+            "surface-container": "#f5eced",
+            "inverse-on-surface": "#f8eeef",
+            "outline": "#897176",
+            "on-secondary-fixed-variant": "#8c170e",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "on-primary-fixed": "#3f001b",
+            "error-container": "#ffdad6",
+            "on-primary-container": "#ffa0ba",
+            "on-surface-variant": "#564146",
+            "surface-container-highest": "#e9e0e1",
+            "primary-fixed": "#ffd9e1",
+            "on-secondary": "#ffffff",
+            "surface-container-low": "#fbf1f2",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "surface-container-high": "#efe6e7",
+            "surface-variant": "#e9e0e1",
+            "surface-container-lowest": "#ffffff",
+            "on-error": "#ffffff",
+            "secondary-fixed": "#ffdad4",
+            "tertiary-fixed": "#eedee4",
+            "on-background": "#1f1b1c",
+            "surface-dim": "#e1d8d9",
+            "on-primary-fixed-variant": "#881646",
+            "secondary-fixed-dim": "#ffb4a8",
+            "inverse-primary": "#ffb1c5",
+            "on-tertiary-fixed": "#21191e",
+            "surface-tint": "#a8315d",
+            "primary-container": "#8e1b4a",
+            "tertiary-container": "#53484d",
+            "background": "#fff8f8",
+            "primary": "#6d0033",
+            "on-error-container": "#93000a",
+            "secondary": "#ae3123",
+            "inverse-surface": "#342f30",
+            "error": "#ba1a1a",
+            "tertiary": "#3b3236",
+            "on-secondary-container": "#690000"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xl": "1.5rem",
+            "space-md": "0.75rem",
+            "space-2xl": "2rem",
+            "space-sm": "0.5rem",
+            "gutter": "1rem",
+            "margin": "1rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1rem",
+            "space-3xl": "3rem"
+          },
+          "fontFamily": {
+            "amount-lg": ["Inter"],
+            "caption": ["Inter"],
+            "body-medium": ["Inter"],
+            "label": ["Inter"],
+            "display": ["Inter"],
+            "title": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "body": ["Inter"],
+            "subtitle": ["Inter"]
+          },
+          "fontSize": {
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #e9e0e1;
+      border-radius: 4px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: transparent;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body text-body min-h-screen antialiased flex selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- ========================================================================= -->
+<!-- LEFT SIDEBAR DOCKED (Shared Component Anchor: SideNavBar, w-72 / 288px)    -->
+<!-- ========================================================================= -->
+<aside class="fixed left-0 top-0 h-screen w-72 flex flex-col justify-between py-space-xl px-space-lg bg-surface-container-lowest border-r border-surface-variant z-30 overflow-y-auto">
+<!-- Brand / Crest Header -->
+<div class="flex flex-col gap-space-xl">
+<div class="flex items-center gap-space-md px-space-xs">
+<div class="w-10 h-10 rounded-xl bg-primary-container text-on-primary flex items-center justify-center font-title text-title shadow-sm">
+<span class="material-symbols-outlined text-[22px]">account_balance</span>
+</div>
+<div class="flex flex-col">
+<span class="text-subtitle font-subtitle text-primary tracking-tight">YourApp Credit Ops</span>
+<span class="text-caption font-caption text-on-surface-variant">Enterprise Portal</span>
+</div>
+</div>
+<!-- Navigation Links Cluster -->
+<nav class="flex flex-col gap-1">
+<!-- Active Parent: Dashboard -->
+<div class="flex flex-col gap-1">
+<a class="flex items-center justify-between px-space-lg py-space-md rounded-lg bg-surface-container-low text-primary font-label text-label transition-colors duration-150" href="#">
+<div class="flex items-center gap-space-md">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span>Dashboard</span>
+</div>
+<span class="material-symbols-outlined text-[16px]">expand_more</span>
+</a>
+<!-- Sub-item: Infrastructure & Health (Active Sub-context) -->
+<div class="ml-4 pl-4 border-l-2 border-primary-container flex flex-col gap-1 py-1">
+<a class="flex items-center justify-between px-space-md py-1.5 rounded-lg bg-surface-container-high text-primary font-label text-label" href="#">
+<span class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+<span>Infrastructure &amp; Health</span>
+</span>
+<span class="text-[11px] font-caption px-1.5 py-0.5 rounded bg-surface-container-lowest text-primary font-semibold border border-outline-variant">LIVE</span>
+</a>
+<a class="flex items-center px-space-md py-1.5 rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span>Executive Summary</span>
+</a>
+</div>
+</div>
+<!-- Applications Queue -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">pending_actions</span>
+<span>Applications Queue</span>
+</a>
+<!-- Credit Portfolio & Collections -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">account_balance_wallet</span>
+<span>Credit Portfolio &amp; Collections</span>
+</a>
+<!-- Product Configuration -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+<span>Product Configuration</span>
+</a>
+<!-- Partner Settlement -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">handshake</span>
+<span>Partner Settlement</span>
+</a>
+<!-- Audit Log -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">history</span>
+<span>Audit Log</span>
+</a>
+</nav>
+</div>
+<!-- Sidebar Bottom Footer Tab Group -->
+<div class="flex flex-col gap-1 pt-space-lg border-t border-surface-variant">
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">admin_panel_settings</span>
+<span>Security &amp; Settings</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-error font-label text-label hover:bg-error-container/40 transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">logout</span>
+<span>Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- ========================================================================= -->
+<!-- MAIN WORKSPACE CONTAINER (calc(100% - 18rem) / offset ml-72)               -->
+<!-- ========================================================================= -->
+<div class="ml-72 flex-1 flex flex-col min-w-0">
+<!-- Top Navigation Bar (Shared Component Anchor: TopNavBar) -->
+<header class="sticky top-0 right-0 h-16 flex items-center justify-between px-space-xl bg-surface-container-lowest border-b border-surface-variant z-20">
+<!-- Breadcrumb & Branch Anchor -->
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-1.5 text-caption font-caption text-on-surface-variant">
+<span>Enterprise Back-Office</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span>System Infrastructure</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-primary font-semibold">Live System Status (W-BO-020)</span>
+</div>
+<div class="h-4 w-[1px] bg-surface-variant"></div>
+<div class="flex items-center gap-1.5 text-caption font-caption bg-surface-container-low px-2 py-0.5 rounded text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">account_tree</span>
+<span>Lagos Island Main Branch (012)</span>
+</div>
+</div>
+<!-- Right Controls: Status Badges & Officer Cluster -->
+<div class="flex items-center gap-space-lg">
+<!-- Live Badges -->
+<div class="hidden xl:flex items-center gap-2">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800 text-caption font-label">
+<span class="material-symbols-outlined text-[15px] text-emerald-600">check_circle</span>
+<span>System Health: 99.99% Operational</span>
+</div>
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-surface-container text-on-surface-variant text-caption font-label border border-surface-variant">
+<span class="material-symbols-outlined text-[15px] text-primary">hub</span>
+<span>Network: NIBSS Node Nominal</span>
+</div>
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-surface-container text-on-surface-variant text-caption font-label border border-surface-variant">
+<span class="material-symbols-outlined text-[15px] text-primary">encrypted</span>
+<span>Active Enclaves: 4/4 Armed</span>
+</div>
+</div>
+<!-- Global Search Bar -->
+<div class="relative w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span>
+<input class="w-full h-9 pl-9 pr-3 text-caption font-body rounded-lg border border-outline-variant bg-surface-container-low focus:bg-surface-container-lowest focus:border-primary-container focus:ring-0 outline-none transition-colors" placeholder="Search node, IP or trace..." type="text"/>
+</div>
+<!-- Trailing Actions & Officer Profile -->
+<div class="flex items-center gap-space-md pl-space-md border-l border-surface-variant">
+<button class="relative p-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors" title="Notifications">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-secondary"></span>
+</button>
+<button class="p-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors" title="Dual Authorization">
+<span class="material-symbols-outlined text-[20px]">verified_user</span>
+</button>
+<!-- User Card -->
+<div class="flex items-center gap-2 pl-2">
+<img class="w-9 h-9 rounded-full object-cover border border-outline-variant" data-alt="A dignified corporate photographic portrait of a Nigerian enterprise chief technology officer wearing formal attire in a modern soft-lit Lagos banking headquarters boardroom. Soft neutral lighting, high fidelity, clear professional complexion, deep berry ambient accents in the background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCc1w7qQZzbE1rHI6_d64vajR2Zvq31ZAbIZEv8lGOn3HHsxtkjWOIfacS6hjaFnrKUGfJsdkgRLeeKsisaZH78vi3VDSmeFGmwwLANml_aUiSq_N8324fqskRZ6KsMZm8TpldGJOcPCN-dmDx8B59isTZGrmaUxvNO7SQf6hRhszGXJ1xkVRVdxdo6wWZnpA7sFgetfq2R5LI1NJvSk2Gno72-LFmqVQdiQ1eFjLm"/>
+<div class="hidden 2xl:flex flex-col text-left">
+<span class="text-caption font-label text-on-surface leading-tight">Engr. T. Balogun</span>
+<span class="text-[11px] font-caption text-on-surface-variant leading-tight">Lead SRE / CTO Ops</span>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Scrollable Workspace Surface -->
+<main class="flex-1 p-space-xl overflow-y-auto space-y-space-xl custom-scroll">
+<!-- ========================================================================= -->
+<!-- HEADER BLOCK & PRIMARY TELEMETRY ACTIONS                                  -->
+<!-- ========================================================================= -->
+<section class="flex flex-col md:flex-row md:items-center justify-between gap-space-lg">
+<div class="space-y-1">
+<div class="flex items-center gap-3">
+<h1 class="text-title font-title text-on-surface">Central Infrastructure Health, Node Telemetry &amp; Switch Status</h1>
+<span class="px-2.5 py-0.5 rounded-full text-caption font-label bg-emerald-100 text-emerald-800 border border-emerald-300 flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+              ALL SYSTEMS OPTIMAL
+            </span>
+</div>
+<p class="text-caption font-caption text-on-surface-variant max-w-4xl">
+            Real-time surveillance of interbank payment bridges, core banking databases, cryptographic HSM enclaves, and distributed node latency across Nigerian banking rails.
+          </p>
+</div>
+<div class="flex items-center gap-space-md shrink-0">
+<button class="h-[52px] px-space-lg rounded-xl border border-outline-variant text-on-surface font-label text-label hover:bg-surface-container-high flex items-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-[20px]">download</span>
+<span>Download Diagnostics Report (JSON)</span>
+</button>
+<button class="h-[52px] px-space-xl rounded-xl bg-primary-container text-on-primary font-label text-label hover:bg-primary transition-colors flex items-center gap-2 shadow-sm">
+<span class="material-symbols-outlined text-[20px]">sensors</span>
+<span>+ Trigger Automated Health Ping</span>
+</button>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- TOP ARCHITECTURE ALERT BANNER                                             -->
+<!-- ========================================================================= -->
+<div class="rounded-xl border border-emerald-200 bg-emerald-50/70 p-4 flex items-start gap-3 text-emerald-900">
+<span class="material-symbols-outlined text-emerald-600 text-[22px] mt-0.5">verified</span>
+<div class="flex-1 text-caption font-caption leading-relaxed">
+<strong class="font-label text-emerald-950">ALL BANKING NODES OPERATIONAL:</strong> NIP instant settlement rails, Interswitch card switches, Remita bill gateways, and Zenith Bank clearing settlements are operating within optimal latency thresholds. Zero active incidents reported across production clusters.
+        </div>
+<div class="text-[12px] font-caption text-emerald-700 whitespace-nowrap self-center bg-emerald-100/80 px-2.5 py-1 rounded-md border border-emerald-300">
+          Auto-polling: Every 5s
+        </div>
+</div>
+<!-- ========================================================================= -->
+<!-- 4-COLUMN KPI METRIC CARDS                                                 -->
+<!-- ========================================================================= -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-lg">
+<!-- KPI 1 -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-outline-variant/60 shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="text-caption font-caption font-medium">Overall System Uptime (30d)</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+</div>
+</div>
+<div class="mt-3">
+<div class="text-subtitle font-subtitle text-on-surface">99.992% Operational</div>
+<div class="flex items-center gap-1.5 mt-1 text-caption font-caption text-on-surface-variant">
+<span class="material-symbols-outlined text-[15px] text-emerald-600">check_circle</span>
+<span>Only 2m 14s planned maintenance</span>
+</div>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded-full mt-3 overflow-hidden">
+<div class="bg-emerald-600 h-full rounded-full" style="width: 99.9%"></div>
+</div>
+</div>
+<!-- KPI 2 -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-outline-variant/60 shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="text-caption font-caption font-medium">NIBSS Switch Gateway Latency</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">speed</span>
+</div>
+</div>
+<div class="mt-3">
+<div class="text-subtitle font-subtitle text-on-surface">38ms Average</div>
+<div class="flex items-center gap-1.5 mt-1 text-caption font-caption text-on-surface-variant">
+<span class="material-symbols-outlined text-[15px] text-emerald-600">network_check</span>
+<span>Clean connection • 0 queue packet loss</span>
+</div>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded-full mt-3 overflow-hidden">
+<div class="bg-primary-container h-full rounded-full" style="width: 42%"></div>
+</div>
+</div>
+<!-- KPI 3 -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-outline-variant/60 shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="text-caption font-caption font-medium">Hardware Security Modules (HSM)</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">security</span>
+</div>
+</div>
+<div class="mt-3">
+<div class="text-subtitle font-subtitle text-on-surface">4 of 4 Enclaves Armed</div>
+<div class="flex items-center gap-1.5 mt-1 text-caption font-caption text-on-surface-variant">
+<span class="material-symbols-outlined text-[15px] text-emerald-600">lock</span>
+<span>LAG-DC1, ABU-DC2, Enclave K8S, Vault</span>
+</div>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded-full mt-3 overflow-hidden">
+<div class="bg-emerald-600 h-full rounded-full" style="width: 100%"></div>
+</div>
+</div>
+<!-- KPI 4 -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-outline-variant/60 shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="text-caption font-caption font-medium">Core Database Replication Lag</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">sync_alt</span>
+</div>
+</div>
+<div class="mt-3">
+<div class="text-subtitle font-subtitle text-on-surface">0.02 Seconds</div>
+<div class="flex items-center gap-1.5 mt-1 text-caption font-caption text-on-surface-variant">
+<span class="material-symbols-outlined text-[15px] text-emerald-600">cloud_sync</span>
+<span>Multi-Region Sync Mirroring • 0 Drift</span>
+</div>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded-full mt-3 overflow-hidden">
+<div class="bg-primary-container h-full rounded-full" style="width: 95%"></div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- MAIN TWO-COLUMN WORKBENCH GRID                                           -->
+<!-- ========================================================================= -->
+<div class="grid grid-cols-12 gap-space-xl items-start">
+<!-- ======================================================================= -->
+<!-- LEFT COLUMN (7 Cols / w-7/12): Subsystem Nodes Health Grid & Service    -->
+<!-- ======================================================================= -->
+<section class="col-span-12 xl:col-span-7 space-y-space-xl">
+<!-- Table Container Card -->
+<div class="bg-surface-container-lowest rounded-2xl border border-outline-variant/70 shadow-sm overflow-hidden">
+<!-- Table Header Bar & Filter Tabs -->
+<div class="p-space-lg border-b border-surface-variant flex flex-col sm:flex-row sm:items-center justify-between gap-space-md">
+<div>
+<h2 class="text-subtitle font-subtitle text-on-surface">Subsystem Nodes &amp; Financial Gateways</h2>
+<p class="text-caption font-caption text-on-surface-variant">Real-time ISO-20022 ping latencies, operational up-states, and node roles</p>
+</div>
+<!-- Segmented Category Filters -->
+<div class="flex items-center p-1 bg-surface-container-high rounded-xl gap-1">
+<button class="px-3 py-1 text-caption font-label rounded-lg bg-surface-container-lowest text-primary shadow-xs">All Core (14)</button>
+<button class="px-3 py-1 text-caption font-label rounded-lg text-on-surface-variant hover:text-on-surface">Payment Rails (5)</button>
+<button class="px-3 py-1 text-caption font-label rounded-lg text-on-surface-variant hover:text-on-surface">Data Clusters (4)</button>
+<button class="px-3 py-1 text-caption font-label rounded-lg text-on-surface-variant hover:text-on-surface">Security (5)</button>
+</div>
+</div>
+<!-- Table Rows -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-surface-variant bg-surface-container-low text-caption font-label text-on-surface-variant">
+<th class="py-3 px-space-lg">Service Node Name</th>
+<th class="py-3 px-space-md">Category</th>
+<th class="py-3 px-space-md text-right">Latency</th>
+<th class="py-3 px-space-md text-right">30d Uptime</th>
+<th class="py-3 px-space-lg text-center">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-variant text-caption font-body">
+<!-- Node 1 (SELECTED / INSPECTED) -->
+<tr class="bg-surface-container-low/70 hover:bg-surface-container transition-colors cursor-pointer border-l-4 border-l-primary-container">
+<td class="py-3.5 px-space-lg">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-primary-container/10 text-primary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">account_balance</span>
+</div>
+<div>
+<div class="font-label text-on-surface flex items-center gap-1.5">
+<span>NIBSS NIP Core Bridge v9.2</span>
+<span class="text-[10px] font-caption px-1.5 py-0.2 rounded bg-primary-fixed text-on-primary-fixed">Active Inspector</span>
+</div>
+<span class="text-[11px] font-caption text-on-surface-variant">#NODE-NIP-LAGOS • Port 8443</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-on-surface-variant">Interbank Transfer</td>
+<td class="py-3.5 px-space-md text-right font-medium text-on-surface tabular-nums">38ms</td>
+<td class="py-3.5 px-space-md text-right text-on-surface tabular-nums">99.99%</td>
+<td class="py-3.5 px-space-lg text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[12px] font-label bg-emerald-100 text-emerald-800 border border-emerald-300">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span>Healthy</span>
+</span>
+</td>
+</tr>
+<!-- Node 2 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="py-3.5 px-space-lg">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-on-surface-variant shrink-0">
+<span class="material-symbols-outlined text-[18px]">account_balance_wallet</span>
+</div>
+<div>
+<div class="font-label text-on-surface">Zenith Commercial Clearing Nostro</div>
+<span class="text-[11px] font-caption text-on-surface-variant">#NODE-ZNT-CLEAR • Port 9012</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-on-surface-variant">Settlement Escrow</td>
+<td class="py-3.5 px-space-md text-right font-medium text-on-surface tabular-nums">42ms</td>
+<td class="py-3.5 px-space-md text-right text-on-surface tabular-nums">100.0%</td>
+<td class="py-3.5 px-space-lg text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[12px] font-label bg-emerald-100 text-emerald-800 border border-emerald-300">
+<span class="material-symbols-outlined text-[14px]">sync</span>
+<span>Synced</span>
+</span>
+</td>
+</tr>
+<!-- Node 3 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="py-3.5 px-space-lg">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-on-surface-variant shrink-0">
+<span class="material-symbols-outlined text-[18px]">credit_card</span>
+</div>
+<div>
+<div class="font-label text-on-surface">Interswitch &amp; Verve Card Gateway</div>
+<span class="text-[11px] font-caption text-on-surface-variant">#NODE-ISW-POS • Port 443</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-on-surface-variant">POS &amp; ATM Switching</td>
+<td class="py-3.5 px-space-md text-right font-medium text-on-surface tabular-nums">64ms</td>
+<td class="py-3.5 px-space-md text-right text-on-surface tabular-nums">99.95%</td>
+<td class="py-3.5 px-space-lg text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[12px] font-label bg-emerald-100 text-emerald-800 border border-emerald-300">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span>Healthy</span>
+</span>
+</td>
+</tr>
+<!-- Node 4 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="py-3.5 px-space-lg">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-on-surface-variant shrink-0">
+<span class="material-symbols-outlined text-[18px]">database</span>
+</div>
+<div>
+<div class="font-label text-on-surface">Oracle Flexcube Core Banking Node</div>
+<span class="text-[11px] font-caption text-on-surface-variant">#NODE-ORA-CORE-01 • Port 1521</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-on-surface-variant">Primary Ledger DB</td>
+<td class="py-3.5 px-space-md text-right font-medium text-on-surface tabular-nums">8ms</td>
+<td class="py-3.5 px-space-md text-right text-on-surface tabular-nums">100.0%</td>
+<td class="py-3.5 px-space-lg text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[12px] font-label bg-purple-100 text-purple-800 border border-purple-300">
+<span class="material-symbols-outlined text-[14px]">star</span>
+<span>Master Primary</span>
+</span>
+</td>
+</tr>
+<!-- Node 5 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="py-3.5 px-space-lg">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-on-surface-variant shrink-0">
+<span class="material-symbols-outlined text-[18px]">key</span>
+</div>
+<div>
+<div class="font-label text-on-surface">Thales payShield HSM Cluster</div>
+<span class="text-[11px] font-caption text-on-surface-variant">#NODE-HSM-VAULT • Port 9990</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-on-surface-variant">Hardware Enclave</td>
+<td class="py-3.5 px-space-md text-right font-medium text-on-surface tabular-nums">12ms</td>
+<td class="py-3.5 px-space-md text-right text-on-surface tabular-nums">100.0%</td>
+<td class="py-3.5 px-space-lg text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[12px] font-label bg-emerald-100 text-emerald-800 border border-emerald-300">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+<span>Armed (FIDO2)</span>
+</span>
+</td>
+</tr>
+<!-- Node 6 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="py-3.5 px-space-lg">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-on-surface-variant shrink-0">
+<span class="material-symbols-outlined text-[18px]">fingerprint</span>
+</div>
+<div>
+<div class="font-label text-on-surface">NIMC / BVN Identity Verification Gateway</div>
+<span class="text-[11px] font-caption text-on-surface-variant">#NODE-BVN-FED • Port 443</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-on-surface-variant">Regulatory KYC</td>
+<td class="py-3.5 px-space-md text-right font-medium text-on-surface tabular-nums">110ms</td>
+<td class="py-3.5 px-space-md text-right text-on-surface tabular-nums">99.80%</td>
+<td class="py-3.5 px-space-lg text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[12px] font-label bg-emerald-100 text-emerald-800 border border-emerald-300">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span>Healthy</span>
+</span>
+</td>
+</tr>
+<!-- Node 7 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="py-3.5 px-space-lg">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-on-surface-variant shrink-0">
+<span class="material-symbols-outlined text-[18px]">receipt_long</span>
+</div>
+<div>
+<div class="font-label text-on-surface">Unified Aggregator Bill Gateway (EKEDC, MTN)</div>
+<span class="text-[11px] font-caption text-on-surface-variant">#NODE-UTIL-VEND • Port 8080</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-on-surface-variant">Utility Vending</td>
+<td class="py-3.5 px-space-md text-right font-medium text-on-surface tabular-nums">84ms</td>
+<td class="py-3.5 px-space-md text-right text-on-surface tabular-nums">99.92%</td>
+<td class="py-3.5 px-space-lg text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[12px] font-label bg-emerald-100 text-emerald-800 border border-emerald-300">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span>Healthy</span>
+</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Footer summary -->
+<div class="p-space-md bg-surface-container-low border-t border-surface-variant flex items-center justify-between text-caption font-caption text-on-surface-variant">
+<span>Showing 7 of 14 Mission-Critical Cluster Nodes</span>
+<span class="flex items-center gap-2">
+<span>Auto-refreshed 2 seconds ago</span>
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+</span>
+</div>
+</div>
+<!-- Subsystem Latency Trends Mini-Chart / Metric Block -->
+<div class="bg-surface-container-lowest rounded-2xl border border-outline-variant/70 p-space-lg shadow-sm">
+<div class="flex items-center justify-between mb-space-md">
+<div>
+<h3 class="text-subtitle font-subtitle text-on-surface">24-Hour Interbank Rail Latency Waveform</h3>
+<p class="text-caption font-caption text-on-surface-variant">Historical response times across NIBSS NIP, Interswitch, &amp; Central Settlement Engine</p>
+</div>
+<div class="flex items-center gap-4 text-caption font-label">
+<span class="flex items-center gap-1.5 text-primary">
+<span class="w-3 h-0.5 bg-primary-container rounded"></span> NIP Core Bridge (38ms)
+                </span>
+<span class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="w-3 h-0.5 bg-outline-variant rounded"></span> SLA Ceiling (150ms)
+                </span>
+</div>
+</div>
+<!-- SVG Latency Curve -->
+<div class="h-36 w-full pt-2">
+<svg class="w-full h-full overflow-visible" viewbox="0 0 700 120">
+<defs>
+<lineargradient id="latencyGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#8e1b4a" stop-opacity="0.25"></stop>
+<stop offset="100%" stop-color="#8e1b4a" stop-opacity="0.0"></stop>
+</lineargradient>
+</defs>
+<!-- Horizontal Guidelines -->
+<line stroke="#f1edeb" stroke-dasharray="4" stroke-width="1" x1="0" x2="700" y1="20" y2="20"></line>
+<line stroke="#f1edeb" stroke-dasharray="4" stroke-width="1" x1="0" x2="700" y1="60" y2="60"></line>
+<line stroke="#f1edeb" stroke-width="1" x1="0" x2="700" y1="100" y2="100"></line>
+<!-- SLA Threshold Line at top -->
+<line stroke="#dcbfc5" stroke-dasharray="6" stroke-width="1.2" x1="0" x2="700" y1="15" y2="15"></line>
+<!-- Area Fill -->
+<path d="M0,82 C50,78 90,88 140,80 C190,72 230,85 280,75 C330,65 370,78 420,74 C470,70 510,82 560,76 C610,70 650,74 700,72 L700,110 L0,110 Z" fill="url(#latencyGradient)"></path>
+<!-- Latency Smooth Stroke -->
+<path d="M0,82 C50,78 90,88 140,80 C190,72 230,85 280,75 C330,65 370,78 420,74 C470,70 510,82 560,76 C610,70 650,74 700,72" fill="none" stroke="#8e1b4a" stroke-linecap="round" stroke-width="2.5"></path>
+<!-- Selected Data Point Pulse -->
+<circle cx="560" cy="76" fill="#8e1b4a" r="5" stroke="#ffffff" stroke-width="2"></circle>
+<circle cx="560" cy="76" fill="none" r="9" stroke="#8e1b4a" stroke-opacity="0.4" stroke-width="1.5"></circle>
+</svg>
+</div>
+<!-- Time markers -->
+<div class="flex justify-between text-[11px] font-caption text-on-surface-variant pt-2 border-t border-surface-variant mt-2">
+<span>00:00 WAT</span>
+<span>04:00</span>
+<span>08:00 (Peak Morning Traffic)</span>
+<span>12:00</span>
+<span>16:00 (Clearing Cutoff)</span>
+<span>20:00</span>
+<span>Live Now (38ms)</span>
+</div>
+</div>
+</section>
+<!-- ======================================================================= -->
+<!-- RIGHT COLUMN (5 Cols / w-5/12): Telemetry Inspector & Topology Drawer   -->
+<!-- ======================================================================= -->
+<section class="col-span-12 xl:col-span-5 space-y-space-xl">
+<!-- Telemetry Inspector Drawer Card -->
+<div class="bg-surface-container-lowest rounded-2xl border border-outline-variant/70 shadow-sm overflow-hidden">
+<!-- Inspector Header -->
+<div class="p-space-lg bg-surface-container-low border-b border-surface-variant">
+<div class="flex items-center justify-between">
+<span class="text-caption font-label text-primary uppercase tracking-wider flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                  Active Node Telemetry Inspector
+                </span>
+<span class="text-[12px] font-caption bg-surface-container-lowest border border-outline-variant px-2 py-0.5 rounded text-on-surface-variant">
+                  ISO-20022
+                </span>
+</div>
+<h2 class="text-subtitle font-subtitle text-on-surface mt-2">NIBSS NIP Core Bridge v9.2</h2>
+<div class="flex flex-wrap items-center gap-x-4 gap-y-1 mt-1 text-caption font-caption text-on-surface-variant">
+<span>Node: <strong class="font-medium text-on-surface">#NODE-NIP-LAGOS</strong></span>
+<span>•</span>
+<span>Region: <strong class="font-medium text-on-surface">Lagos Core Datacenter (LAG-DC1)</strong></span>
+</div>
+</div>
+<!-- Real-Time Telemetry Counters (Grid of 4) -->
+<div class="p-space-lg grid grid-cols-2 gap-space-md border-b border-surface-variant">
+<div class="p-space-md rounded-xl bg-surface-container-low border border-outline-variant/40">
+<span class="text-[12px] font-caption text-on-surface-variant">Current Throughput</span>
+<div class="text-subtitle font-subtitle text-on-surface mt-0.5 tabular-nums">1,840 <span class="text-caption font-body font-normal text-on-surface-variant">txns/min</span></div>
+<span class="text-[11px] font-caption text-emerald-700">Peak cap: 15,000/min</span>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-low border border-outline-variant/40">
+<span class="text-[12px] font-caption text-on-surface-variant">Packet Error Rate</span>
+<div class="text-subtitle font-subtitle text-on-surface mt-0.5 tabular-nums">0.001%</div>
+<span class="text-[11px] font-caption text-emerald-700">Tolerance: &lt; 0.05%</span>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-low border border-outline-variant/40">
+<span class="text-[12px] font-caption text-on-surface-variant">Worker Threads</span>
+<div class="text-subtitle font-subtitle text-on-surface mt-0.5 tabular-nums">64 <span class="text-caption font-body font-normal text-on-surface-variant">/ 128</span></div>
+<span class="text-[11px] font-caption text-on-surface-variant">50% capacity armed</span>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-low border border-outline-variant/40">
+<span class="text-[12px] font-caption text-on-surface-variant">TLS Certificate</span>
+<div class="text-subtitle font-subtitle text-on-surface mt-0.5 text-[15px]">Valid (2028)</div>
+<span class="text-[11px] font-caption text-on-surface-variant">DigiCert EV SHA-256</span>
+</div>
+</div>
+<!-- Regional Cluster Topology -->
+<div class="p-space-lg space-y-space-md border-b border-surface-variant">
+<div class="flex items-center justify-between">
+<h3 class="text-caption font-label text-on-surface uppercase tracking-wider">Regional Cluster Topology</h3>
+<span class="text-caption font-caption text-on-surface-variant">3 Active Nodes</span>
+</div>
+<div class="space-y-2">
+<!-- Cluster Node 1 -->
+<div class="flex items-center justify-between p-2.5 rounded-xl border border-emerald-300 bg-emerald-50/50">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-emerald-600 text-[20px]">dns</span>
+<div>
+<div class="text-caption font-label text-on-surface">Lagos Mainland DC (LAG-DC1)</div>
+<div class="text-[11px] font-caption text-on-surface-variant">Primary Bare-Metal Node • IP: 10.240.12.8</div>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded text-[11px] font-label bg-emerald-600 text-white">ACTIVE MASTER</span>
+</div>
+<!-- Cluster Node 2 -->
+<div class="flex items-center justify-between p-2.5 rounded-xl border border-outline-variant bg-surface-container-low">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-[20px]">alt_route</span>
+<div>
+<div class="text-caption font-label text-on-surface">Abuja DR Node (ABU-DC2)</div>
+<div class="text-[11px] font-caption text-on-surface-variant">Secondary Hot-Standby • 0.02s sync lag</div>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded text-[11px] font-label bg-surface-container-highest text-on-surface">STANDBY READY</span>
+</div>
+<!-- Cluster Node 3 -->
+<div class="flex items-center justify-between p-2.5 rounded-xl border border-outline-variant bg-surface-container-low">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">cloud_queue</span>
+<div>
+<div class="text-caption font-label text-on-surface">Cloudflare Banking Gateway</div>
+<div class="text-[11px] font-caption text-on-surface-variant">Edge Perimeter • 0 DDoS Anomalies</div>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded text-[11px] font-label bg-emerald-100 text-emerald-800 border border-emerald-200">ONLINE</span>
+</div>
+</div>
+</div>
+<!-- Administrative Diagnostic Actions -->
+<div class="p-space-lg space-y-2.5 bg-surface-container-low/40">
+<button class="w-full h-[52px] rounded-xl bg-primary-container text-on-primary font-label text-label hover:bg-primary transition-colors flex items-center justify-center gap-2 shadow-sm">
+<span class="material-symbols-outlined text-[20px]">play_circle</span>
+<span>Execute End-to-End Diagnostic Trace (ISO-20022)</span>
+</button>
+<button class="w-full h-[52px] rounded-xl bg-surface-container-high text-primary font-label text-label hover:bg-surface-container-highest transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">swap_horizontal_circle</span>
+<span>Failover to Hot-Standby Node (ABU-DC2)</span>
+</button>
+<button class="w-full h-[52px] rounded-xl border border-outline-variant bg-transparent text-on-surface font-label text-label hover:bg-surface-container-high transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">terminal</span>
+<span>View Raw Telemetry Syslog</span>
+</button>
+</div>
+</div>
+<!-- Cryptographic Vault & Hardware Module Quick Summary -->
+<div class="bg-surface-container-lowest rounded-2xl border border-outline-variant/70 p-space-lg shadow-sm">
+<div class="flex items-center justify-between mb-3">
+<span class="text-caption font-label text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]">verified_user</span>
+<span>HSM Hardware Key Status</span>
+</span>
+<span class="text-[11px] font-label px-2 py-0.5 rounded bg-emerald-100 text-emerald-800">FIPS 140-2 Level 3</span>
+</div>
+<div class="space-y-2 text-caption font-body">
+<div class="flex items-center justify-between py-1 border-b border-surface-variant">
+<span class="text-on-surface-variant">Master Session Key (MSK)</span>
+<span class="font-medium text-on-surface font-mono">0x9F4A...B82C (Rotated 4d ago)</span>
+</div>
+<div class="flex items-center justify-between py-1 border-b border-surface-variant">
+<span class="text-on-surface-variant">PIN Encryption Key (PEK)</span>
+<span class="font-medium text-emerald-700 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check</span> Hardware Sealed
+                </span>
+</div>
+<div class="flex items-center justify-between py-1">
+<span class="text-on-surface-variant">Interbank MAC Authentication</span>
+<span class="font-medium text-on-surface font-mono">ISO 9797-1 Algorithm 3</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- ========================================================================= -->
+<!-- BOTTOM TELEMETRY BAR                                                      -->
+<!-- ========================================================================= -->
+<footer class="h-10 bg-surface-container-low border-t border-surface-variant px-space-xl flex items-center justify-between text-[12px] font-caption text-on-surface-variant shrink-0 z-20">
+<div class="flex items-center gap-space-lg">
+<span class="flex items-center gap-1.5 font-medium text-on-surface">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+          Enterprise Monitoring Stack v5.4
+        </span>
+<span>Cluster Hash: <code class="font-mono text-primary font-semibold">#sys-9901-prod</code></span>
+<span class="hidden md:inline">Gateway Node: Lagos Mainland DC 10.240.12.8</span>
+</div>
+<div class="flex items-center gap-space-md">
+<span>Dual Authorization Policy: Active</span>
+<span>•</span>
+<span>Last Sync: 2 seconds ago</span>
+</div>
+</footer>
+</div>
+</body></html>

@@ -1,0 +1,17 @@
+flowchart TD
+  a(["Field collector opens payer"])
+  b[/"Record amount and item; payer name confirmed"/]
+  c["Issue digital receipt (SMS/link)"]
+  d["Entry marked PAID_CASH (off-platform)"]
+  e{"Cash deposited to collector account?"}
+  f["Deposit credited; reconcile with entries"]
+  g["Flag outstanding cash to treasurer"]
+  h(["Reports updated"])
+  a --> b
+  b --> c
+  c --> d
+  d --> e
+  e -->|yes| f
+  e -->|no| g
+  f --> h
+  g --> h

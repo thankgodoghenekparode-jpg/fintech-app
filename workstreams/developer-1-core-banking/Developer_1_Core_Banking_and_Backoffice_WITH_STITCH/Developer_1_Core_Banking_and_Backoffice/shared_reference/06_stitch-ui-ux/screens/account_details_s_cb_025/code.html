@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Account Details - YourApp</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary-fixed-dim": "#ffb1c5",
+            "primary-container": "#8e1b4a",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "surface-container-low": "#fbf1f2",
+            "surface": "#fff8f8",
+            "on-primary": "#ffffff",
+            "secondary-fixed-dim": "#ffb4a8",
+            "secondary-fixed": "#ffdad4",
+            "on-secondary-container": "#690000",
+            "surface-variant": "#e9e0e1",
+            "inverse-on-surface": "#f8eeef",
+            "on-background": "#1f1b1c",
+            "on-primary-fixed": "#3f001b",
+            "primary-fixed": "#ffd9e1",
+            "on-primary-container": "#ffa0ba",
+            "outline": "#897176",
+            "surface-container-lowest": "#ffffff",
+            "secondary": "#ae3123",
+            "primary": "#6d0033",
+            "error": "#ba1a1a",
+            "outline-variant": "#dcbfc5",
+            "inverse-primary": "#ffb1c5",
+            "surface-container-highest": "#e9e0e1",
+            "tertiary-fixed": "#eedee4",
+            "surface-container": "#f5eced",
+            "on-tertiary-container": "#c6b7bd",
+            "tertiary-container": "#53484d",
+            "on-tertiary": "#ffffff",
+            "tertiary": "#3b3236",
+            "surface-container-high": "#efe6e7",
+            "on-error": "#ffffff",
+            "error-container": "#ffdad6",
+            "on-primary-fixed-variant": "#881646",
+            "on-tertiary-fixed": "#21191e",
+            "surface-bright": "#fff8f8",
+            "on-surface-variant": "#564146",
+            "surface-tint": "#a8315d",
+            "inverse-surface": "#342f30",
+            "on-error-container": "#93000a",
+            "on-secondary-fixed-variant": "#8c170e",
+            "background": "#fff8f8",
+            "surface-dim": "#e1d8d9",
+            "secondary-container": "#fc6955",
+            "on-surface": "#1f1b1c",
+            "on-secondary-fixed": "#410000",
+            "on-secondary": "#ffffff",
+            "tertiary-fixed-dim": "#d1c3c8"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "1rem",
+            "space-xl": "1.5rem",
+            "margin": "1rem",
+            "space-2xl": "2rem",
+            "space-3xl": "3rem",
+            "space-xs": "0.25rem",
+            "space-md": "0.75rem",
+            "space-sm": "0.5rem",
+            "space-lg": "1rem"
+          },
+          "fontFamily": {
+            "title": ["Inter"],
+            "body-medium": ["Inter"],
+            "display": ["Inter"],
+            "subtitle": ["Inter"],
+            "body": ["Inter"],
+            "amount-lg": ["Inter"],
+            "caption": ["Inter"],
+            "label": ["Inter"],
+            "amount-lg-mobile": ["Inter"]
+          },
+          "fontSize": {
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex justify-center selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Mobile Container Frame (390px x 844px target screen representation) -->
+<main class="w-full max-w-[420px] bg-background min-h-screen flex flex-col justify-between relative shadow-2xl">
+<!-- Top Bar Navigation (Back Button, Title, Share Action) -->
+<header class="sticky top-0 z-40 bg-surface/95 backdrop-blur-md px-margin py-space-sm flex items-center justify-between min-h-[56px]">
+<button aria-label="Go back" class="w-12 h-12 flex items-center justify-center rounded-full text-on-surface hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<h1 class="font-subtitle text-subtitle text-on-surface tracking-tight">Account details</h1>
+<button aria-label="Share details" class="w-12 h-12 flex items-center justify-center rounded-full text-primary hover:bg-surface-container active:scale-95 transition-all" id="shareHeaderBtn" type="button">
+<span class="material-symbols-outlined text-[24px]">share</span>
+</button>
+</header>
+<!-- Scrollable Content Canvas -->
+<div class="flex-1 px-margin pb-space-3xl space-y-space-xl overflow-y-auto">
+<!-- Account Summary Card with Berry Brand Accent Trim -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant/50 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] overflow-hidden relative">
+<!-- Top Berry Accent Trim -->
+<div class="h-1.5 w-full bg-primary-container"></div>
+<div class="p-space-lg space-y-space-lg">
+<!-- Tier Badge & Partner Bank Logo Meta -->
+<div class="flex items-center justify-between gap-space-sm">
+<!-- Status Badge: Verified Tier 2 Account -->
+<div class="inline-flex items-center gap-space-xs px-2 py-1 rounded-[8px] bg-surface-container-low text-primary-container border border-outline-variant/60">
+<span class="material-symbols-outlined text-[16px] text-primary-container" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-label text-[12px] leading-tight text-primary-container">Verified Tier 2 Account</span>
+</div>
+<!-- Partner Indicator -->
+<div class="flex items-center gap-1.5 text-on-surface-variant font-caption text-caption">
+<span class="material-symbols-outlined text-[16px] text-primary">account_balance</span>
+<span class="font-medium text-on-surface">Zenith Bank Partner</span>
+</div>
+</div>
+<!-- Account Name -->
+<div>
+<p class="font-caption text-caption text-on-surface-variant uppercase tracking-wider">Account Name</p>
+<h2 class="font-title text-title text-on-surface mt-0.5 font-bold">Tunde Olumide Adeleke</h2>
+</div>
+<!-- Account Number with Copy Trigger -->
+<div class="bg-surface-container rounded-xl p-space-md flex items-center justify-between border border-outline-variant/30">
+<div>
+<span class="block font-caption text-caption text-on-surface-variant">Account Number</span>
+<span class="font-subtitle text-subtitle font-bold text-on-surface tabular-nums tracking-wider" id="accountNumDisplay">0123456789</span>
+</div>
+<button class="h-10 px-space-md inline-flex items-center gap-space-xs rounded-lg bg-surface-container-lowest text-primary-container border border-outline-variant/60 font-label text-label hover:bg-surface-container-high active:scale-95 transition-all shadow-sm" id="copyBtn" type="button">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+<span id="copyBtnText">Copy</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Account Limits & Allowances Bento/Card -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant/50 p-space-lg shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] space-y-space-md">
+<div class="flex items-center justify-between border-b border-outline-variant/30 pb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[20px] text-primary-container">tune</span>
+<h3 class="font-label text-label text-on-surface font-semibold">Tier 2 Limits &amp; Allowances</h3>
+</div>
+<span class="inline-flex items-center gap-1 text-[11px] font-caption px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant">
+            Standard Tier
+          </span>
+</div>
+<!-- Daily Transfer Limit with Progress Meter -->
+<div class="space-y-space-xs pt-1">
+<div class="flex items-center justify-between font-caption text-caption">
+<span class="text-on-surface-variant">Daily transfer limit</span>
+<span class="font-semibold text-on-surface tabular-nums">₦500,000</span>
+</div>
+<!-- Progress Bar Representation (5% used) -->
+<div class="w-full bg-surface-container rounded-full h-2 overflow-hidden">
+<div aria-valuemax="100" aria-valuemin="0" aria-valuenow="5" class="bg-primary-container h-2 rounded-full w-[5%]" role="progressbar"></div>
+</div>
+<div class="flex items-center justify-between font-caption text-[11px] text-on-surface-variant">
+<span>₦25,000 used today</span>
+<span class="font-medium text-primary">₦475,000 remaining</span>
+</div>
+</div>
+<!-- Limits Matrix Grid -->
+<div class="grid grid-cols-2 gap-space-sm pt-space-xs">
+<!-- Maximum Account Balance -->
+<div class="bg-surface-container-low/70 border border-outline-variant/30 rounded-lg p-space-sm">
+<p class="font-caption text-caption text-on-surface-variant">Maximum Balance</p>
+<p class="font-body-medium text-body-medium font-bold text-on-surface tabular-nums mt-0.5">₦1,000,000</p>
+</div>
+<!-- Single Transaction Limit -->
+<div class="bg-surface-container-low/70 border border-outline-variant/30 rounded-lg p-space-sm">
+<p class="font-caption text-caption text-on-surface-variant">Single Transfer Max</p>
+<p class="font-body-medium text-body-medium font-bold text-on-surface tabular-nums mt-0.5">₦200,000</p>
+</div>
+</div>
+<!-- Upgrade Banner / Action Link -->
+<div class="pt-space-xs">
+<button class="w-full flex items-center justify-between px-space-md py- space-sm min-h-[48px] rounded-lg bg-surface-container-low hover:bg-surface-container border border-outline-variant/40 active:scale-[0.99] transition-all text-left" type="button">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">rocket_launch</span>
+</div>
+<div>
+<p class="font-label text-label text-primary font-bold">Upgrade to Tier 3 (Unlimited)</p>
+<p class="font-caption text-[11px] text-on-surface-variant">Unlock zero balance cap and ₦5M+ daily</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary text-[20px]">chevron_right</span>
+</button>
+</div>
+</section>
+<!-- Account Profile & Regulatory Verification List -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant/50 divide-y divide-outline-variant/30 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] overflow-hidden">
+<!-- Phone Number -->
+<div class="p-space-md flex items-center justify-between min-h-[56px]">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">smartphone</span>
+</div>
+<div>
+<p class="font-caption text-caption text-on-surface-variant">Phone number</p>
+<p class="font-body text-body text-on-surface tabular-nums">+234 801 234 5678</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-[18px] text-outline">lock</span>
+</div>
+<!-- Email -->
+<div class="p-space-md flex items-center justify-between min-h-[56px]">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">mail</span>
+</div>
+<div>
+<p class="font-caption text-caption text-on-surface-variant">Email</p>
+<p class="font-body text-body text-on-surface">tunde.adeleke@example.com</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-[18px] text-outline">lock</span>
+</div>
+<!-- BVN Item -->
+<div class="p-space-md flex items-center justify-between min-h-[56px]">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">fingerprint</span>
+</div>
+<div>
+<p class="font-caption text-caption text-on-surface-variant">Bank Verification Number (BVN)</p>
+<p class="font-body text-body text-on-surface tabular-nums">Linked (verified ending •••• 890)</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-[20px] text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<!-- NIN Item -->
+<div class="p-space-md flex items-center justify-between min-h-[56px]">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">badge</span>
+</div>
+<div>
+<p class="font-caption text-caption text-on-surface-variant">National Identity Number (NIN)</p>
+<p class="font-body text-body text-on-surface tabular-nums">Linked (verified ending •••• 890)</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-[20px] text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<!-- Account Opening Date -->
+<div class="p-space-md flex items-center justify-between min-h-[56px]">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+</div>
+<div>
+<p class="font-caption text-caption text-on-surface-variant">Account opening date</p>
+<p class="font-body text-body text-on-surface">24 Oct 2024</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Institutional Regulatory Safeguard Footer -->
+<footer class="pt-space-xs pb-space-lg text-center space-y-space-xs">
+<div class="flex items-center justify-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-primary">security</span>
+<span class="font-label text-[12px] uppercase tracking-wider text-on-surface-variant font-semibold">Institutional Custody</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant leading-relaxed max-w-[340px] mx-auto">
+          Funds held and safeguarded by licensed banking partner Zenith Bank. NDIC insured up to legal limits.
+        </p>
+</footer>
+</div>
+<!-- Sticky Bottom Primary Action Container -->
+<div class="sticky bottom-0 left-0 right-0 p-margin bg-surface/90 backdrop-blur-md border-t border-outline-variant/40 shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)]">
+<button class="w-full h-[52px] rounded-[12px] bg-primary-container text-on-primary font-label text-label flex items-center justify-center gap-space-sm active:bg-[#731540] active:scale-[0.98] transition-all shadow-md" id="primaryShareBtn" type="button">
+<span class="material-symbols-outlined text-[20px]">share</span>
+<span>Share account details</span>
+</button>
+</div>
+</main>
+<!-- Interactive JavaScript Logic -->
+<script>
+    // Copy Account Number Interaction
+    const copyBtn = document.getElementById('copyBtn');
+    const copyBtnText = document.getElementById('copyBtnText');
+    const accountNumDisplay = document.getElementById('accountNumDisplay');
+
+    if (copyBtn) {
+      copyBtn.addEventListener('click', () => {
+        const textToCopy = accountNumDisplay.innerText.trim();
+        navigator.clipboard.writeText(textToCopy).then(() => {
+          copyBtnText.innerText = 'Copied!';
+          copyBtn.classList.add('bg-primary-fixed', 'text-on-primary-fixed');
+          setTimeout(() => {
+            copyBtnText.innerText = 'Copy';
+            copyBtn.classList.remove('bg-primary-fixed', 'text-on-primary-fixed');
+          }, 2000);
+        }).catch(() => {
+          // Fallback if clipboard API is restricted
+          copyBtnText.innerText = 'Copied!';
+          setTimeout(() => { copyBtnText.innerText = 'Copy'; }, 2000);
+        });
+      });
+    }
+
+    // Share Details Trigger
+    const shareHeaderBtn = document.getElementById('shareHeaderBtn');
+    const primaryShareBtn = document.getElementById('primaryShareBtn');
+
+    const handleShare = () => {
+      const shareData = {
+        title: 'Tunde Olumide Adeleke - Account Details',
+        text: 'Account Name: Tunde Olumide Adeleke\nAccount Number: 0123456789\nBank: Zenith Bank Partner (YourApp)'
+      };
+
+      if (navigator.share) {
+        navigator.share(shareData).catch(() => {});
+      } else {
+        navigator.clipboard.writeText(shareData.text);
+        alert('Account details copied to clipboard ready to share!');
+      }
+    };
+
+    if (shareHeaderBtn) shareHeaderBtn.addEventListener('click', handleShare);
+    if (primaryShareBtn) primaryShareBtn.addEventListener('click', handleShare);
+  </script>
+</body></html>

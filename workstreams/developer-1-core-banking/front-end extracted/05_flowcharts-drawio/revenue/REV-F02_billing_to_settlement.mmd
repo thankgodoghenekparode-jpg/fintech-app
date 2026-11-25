@@ -1,0 +1,25 @@
+flowchart TD
+  a(["Treasurer creates revenue item"])
+  b["Add payers (import, invite) and categories"]
+  c["System generates bills per schedule; reminders"]
+  d{"Payer channel"}
+  e["App user pays in-app (or auto-pay)"]
+  f["Bank transfer to payer-specific virtual account"]
+  g["USSD, link or card"]
+  h["Field collector records cash (off-platform)"]
+  i["Reconcile and issue receipt"]
+  j["Settle to collector account less fee"]
+  k(["Reports updated"])
+  a --> b
+  b --> c
+  c --> d
+  d -->|app| e
+  d -->|transfer| f
+  d -->|other| g
+  d -->|cash| h
+  e --> i
+  f --> i
+  g --> i
+  h --> i
+  i --> j
+  j --> k

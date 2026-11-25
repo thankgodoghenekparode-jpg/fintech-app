@@ -1,0 +1,563 @@
+openapi: 3.0.3
+info:
+  title: Revenue API
+  version: 1.0.0
+  description: Product API. Uses the core conventions (Idempotency-Key, X-Pin-Token,
+    X-Tenant-Id, error format). Amounts in kobo.
+security:
+- bearerAuth: []
+paths:
+  /revenue/collectors:
+    post:
+      tags:
+      - Revenue
+      summary: Create collector
+      description: 'Roles: any authenticated customer'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                orgType:
+                  type: string
+                purpose:
+                  type: string
+                documents:
+                  type: array
+                  items:
+                    type: string
+              required:
+              - name
+              - orgType
+              - purpose
+      responses:
+        '201':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /revenue/items:
+    post:
+      tags:
+      - Revenue
+      summary: Create revenue item
+      description: 'Roles: Treasurer'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                frequency:
+                  type: string
+                  enum:
+                  - ONCE
+                  - DAILY
+                  - WEEKLY
+                  - MONTHLY
+                  - YEARLY
+                amountKobo:
+                  type: integer
+                  format: int64
+                  description: Amount in kobo
+                categoryAmounts:
+                  type: object
+                  additionalProperties: true
+                dueDay:
+                  type: integer
+                lateFee:
+                  type: object
+                  additionalProperties: true
+              required:
+              - name
+              - frequency
+      responses:
+        '201':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /revenue/payers/import:
+    post:
+      tags:
+      - Revenue
+      summary: Import payers
+      description: 'Roles: Treasurer'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                fileKey:
+                  type: string
+                mapping:
+                  type: object
+                  additionalProperties: true
+              required:
+              - fileKey
+              - mapping
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /revenue/payers:
+    get:
+      tags:
+      - Revenue
+      summary: List payers
+      description: 'Roles: Treasurer'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: q
+        in: query
+        schema:
+          type: string
+      - name: cursor
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /revenue/dashboard:
+    get:
+      tags:
+      - Revenue
+      summary: Collector figures
+      description: 'Roles: Treasurer'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /revenue/payments:
+    get:
+      tags:
+      - Revenue
+      summary: Payments and exceptions
+      description: 'Roles: Treasurer'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /revenue/fee-model:
+    put:
+      tags:
+      - Revenue
+      summary: Set fee model
+      description: 'Roles: Owner'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                model:
+                  type: string
+                  enum:
+                  - COLLECTOR_PAYS
+                  - PAYER_PAYS
+                  - SPLIT
+                splitPayerBps:
+                  type: integer
+              required:
+              - model
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /revenue/cash:
+    post:
+      tags:
+      - Revenue
+      summary: Record cash payment (field collector)
+      description: 'Roles: Field collector'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                payerId:
+                  type: string
+                  format: uuid
+                itemId:
+                  type: string
+                  format: uuid
+                amountKobo:
+                  type: integer
+                  format: int64
+                  description: Amount in kobo
+              required:
+              - payerId
+              - itemId
+              - amountKobo
+      responses:
+        '201':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /revenue/reports/{type}:
+    get:
+      tags:
+      - Revenue
+      summary: Reports
+      description: 'Roles: Auditor'
+      parameters:
+      - name: X-Tenant-Id
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: type
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: from
+        in: query
+        schema:
+          type: string
+          format: date
+      - name: to
+        in: query
+        schema:
+          type: string
+          format: date
+      - name: format
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /dues:
+    get:
+      tags:
+      - Dues
+      summary: My bills across collectors
+      description: 'Roles: any authenticated customer'
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /dues/{billId}:
+    get:
+      tags:
+      - Dues
+      summary: Bill detail and fee quote
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: billId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /dues/{billId}/payments:
+    post:
+      tags:
+      - Dues
+      summary: Pay a bill in app
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: billId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amountKobo:
+                  type: integer
+                  format: int64
+                  description: Amount in kobo
+              required:
+              - amountKobo
+      responses:
+        '201':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /dues/auto-pay:
+    put:
+      tags:
+      - Dues
+      summary: Set auto-pay (consent)
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                billIds:
+                  type: array
+                  items:
+                    type: string
+                    format: uuid
+                enabled:
+                  type: boolean
+              required:
+              - billIds
+              - enabled
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /dues/links/accept:
+    post:
+      tags:
+      - Dues
+      summary: Accept payer link
+      description: 'Roles: any authenticated customer'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                linkToken:
+                  type: string
+              required:
+              - linkToken
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /dues/{billId}/dispute:
+    post:
+      tags:
+      - Dues
+      summary: This isn't mine
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: billId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reason:
+                  type: string
+                message:
+                  type: string
+              required:
+              - reason
+      responses:
+        '201':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /dues/collectors/{collectorId}/report:
+    post:
+      tags:
+      - Dues
+      summary: Report abuse
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: collectorId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                category:
+                  type: string
+                description:
+                  type: string
+              required:
+              - category
+              - description
+      responses:
+        '201':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /dues/receipts:
+    get:
+      tags:
+      - Dues
+      summary: Receipts
+      description: 'Roles: any authenticated customer'
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  parameters:
+    IdempotencyKey:
+      name: Idempotency-Key
+      in: header
+      required: true
+      schema:
+        type: string
+        format: uuid
+    PinToken:
+      name: X-Pin-Token
+      in: header
+      required: true
+      schema:
+        type: string
+  responses:
+    Error:
+      description: Error (see core ERROR_CODES.md)
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+              details:
+                type: object
+              requestId:
+                type: string

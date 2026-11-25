@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Flags and templates (W-BO-019) - YourApp Credit Ops</title>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Theme Configuration verbatim -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary-fixed-dim": "#ffb1c5",
+            "outline-variant": "#dcbfc5",
+            "on-primary": "#ffffff",
+            "on-secondary-fixed": "#410000",
+            "secondary-container": "#fc6955",
+            "on-surface": "#1f1b1c",
+            "on-tertiary": "#ffffff",
+            "surface": "#fff8f8",
+            "on-tertiary-container": "#c6b7bd",
+            "surface-bright": "#fff8f8",
+            "surface-container": "#f5eced",
+            "inverse-on-surface": "#f8eeef",
+            "outline": "#897176",
+            "on-secondary-fixed-variant": "#8c170e",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "on-primary-fixed": "#3f001b",
+            "error-container": "#ffdad6",
+            "on-primary-container": "#ffa0ba",
+            "on-surface-variant": "#564146",
+            "surface-container-highest": "#e9e0e1",
+            "primary-fixed": "#ffd9e1",
+            "on-secondary": "#ffffff",
+            "surface-container-low": "#fbf1f2",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "surface-container-high": "#efe6e7",
+            "surface-variant": "#e9e0e1",
+            "surface-container-lowest": "#ffffff",
+            "on-error": "#ffffff",
+            "secondary-fixed": "#ffdad4",
+            "tertiary-fixed": "#eedee4",
+            "on-background": "#1f1b1c",
+            "surface-dim": "#e1d8d9",
+            "on-primary-fixed-variant": "#881646",
+            "secondary-fixed-dim": "#ffb4a8",
+            "inverse-primary": "#ffb1c5",
+            "on-tertiary-fixed": "#21191e",
+            "surface-tint": "#a8315d",
+            "primary-container": "#8e1b4a",
+            "tertiary-container": "#53484d",
+            "background": "#fff8f8",
+            "primary": "#6d0033",
+            "on-error-container": "#93000a",
+            "secondary": "#ae3123",
+            "inverse-surface": "#342f30",
+            "error": "#ba1a1a",
+            "tertiary": "#3b3236",
+            "on-secondary-container": "#690000"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xl": "1.5rem",
+            "space-md": "0.75rem",
+            "space-2xl": "2rem",
+            "space-sm": "0.5rem",
+            "gutter": "1rem",
+            "margin": "1rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1rem",
+            "space-3xl": "3rem"
+          },
+          "fontFamily": {
+            "amount-lg": ["Inter"],
+            "caption": ["Inter"],
+            "body-medium": ["Inter"],
+            "label": ["Inter"],
+            "display": ["Inter"],
+            "title": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "body": ["Inter"],
+            "subtitle": ["Inter"]
+          },
+          "fontSize": {
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      font-size: 20px;
+      line-height: 1;
+      display: inline-block;
+    }
+    .material-symbols-outlined.fill-icon {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased flex min-h-screen overflow-x-hidden font-body">
+<!-- LEFT SIDEBAR: Docked (w-72 / 288px) adhering to SideNavBar blueprint -->
+<aside class="fixed left-0 top-0 h-full w-72 flex flex-col justify-between py-space-xl px-space-lg overflow-y-auto bg-surface-container-lowest border-r border-surface-variant z-30">
+<div class="flex flex-col gap-space-xl">
+<!-- Header / Crest -->
+<div class="flex items-center gap-space-md px-space-sm">
+<div class="w-10 h-10 rounded-xl bg-primary-container text-on-primary flex items-center justify-center font-title text-title shadow-sm">
+<span class="material-symbols-outlined" style="font-size: 22px;">account_balance</span>
+</div>
+<div>
+<div class="text-subtitle font-subtitle text-primary tracking-tight">YourApp Credit Ops</div>
+<div class="text-caption font-caption text-on-surface-variant">Enterprise Portal</div>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="flex flex-col gap-space-xs">
+<!-- 1. Dashboard -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#dashboard">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<!-- 2. Applications Queue -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#applications">
+<span class="material-symbols-outlined">pending_actions</span>
+<span>Applications Queue</span>
+</a>
+<!-- 3. Credit Portfolio & Collections -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#credit-portfolio">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span>Credit Portfolio &amp; Collections</span>
+</a>
+<!-- 4. Product Configuration (ACTIVE) -->
+<div class="flex flex-col">
+<a class="flex items-center justify-between px-space-lg py-space-md rounded-lg bg-surface-container-low text-primary font-label text-label transition-colors duration-150" href="#product-config">
+<div class="flex items-center gap-space-md">
+<span class="material-symbols-outlined text-primary">tune</span>
+<span>Product Configuration</span>
+</div>
+<span class="material-symbols-outlined text-primary" style="font-size: 16px;">expand_more</span>
+</a>
+<!-- Sub-item: Flags & Templates -->
+<div class="ml-9 mt-1 flex flex-col pl-3 border-l-2 border-primary-container">
+<a class="py-1.5 px-2 rounded-lg text-primary font-label text-label font-bold bg-surface-container-lowest" href="#flags-templates">
+              Flags &amp; Templates
+            </a>
+<a class="py-1.5 px-2 rounded-lg text-on-surface-variant font-caption text-caption hover:text-primary transition-colors" href="#rate-matrices">
+              Interest Matrices &amp; Tiers
+            </a>
+</div>
+</div>
+<!-- 5. Partner Settlement -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#partner-settlement">
+<span class="material-symbols-outlined">handshake</span>
+<span>Partner Settlement</span>
+</a>
+<!-- 6. Audit Log -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#audit-log">
+<span class="material-symbols-outlined">history</span>
+<span>Audit Log</span>
+</a>
+</nav>
+</div>
+<!-- Footer Actions -->
+<div class="flex flex-col gap-space-xs border-t border-surface-variant pt-space-md">
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#security">
+<span class="material-symbols-outlined">admin_panel_settings</span>
+<span>Security &amp; Settings</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#signout">
+<span class="material-symbols-outlined">logout</span>
+<span>Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- MAIN CANVAS WRAPPER (Offset ml-72 for docked left nav) -->
+<div class="ml-72 flex-1 flex flex-col min-h-screen bg-background pb-12">
+<!-- TOP NAVIGATION BAR: Follows TopNavBar blueprint and layout -->
+<header class="sticky top-0 right-0 h-16 flex items-center justify-between px-space-xl bg-surface-container-lowest border-b border-surface-variant z-20">
+<!-- Search & Breadcrumb cluster -->
+<div class="flex items-center gap-space-lg w-1/2">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full h-10 pl-10 pr-4 text-caption font-caption bg-surface-container-low border border-surface-variant rounded-lg text-on-surface focus:outline-none focus:border-primary-container" placeholder="Search feature flags, notification templates, kill-switches..." type="text"/>
+</div>
+</div>
+<!-- Right Action Cluster: Status Pills + Notifications + Staff Profile -->
+<div class="flex items-center gap-space-md">
+<!-- Status Pills -->
+<div class="hidden xl:flex items-center gap-2">
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-surface-container text-on-surface-variant text-caption font-caption border border-surface-variant">
+<span class="w-2 h-2 rounded-full bg-secondary-container"></span>
+<span>Feature Gates: <strong>32 Active</strong></span>
+</div>
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-surface-container text-on-surface-variant text-caption font-caption border border-surface-variant">
+<span class="material-symbols-outlined text-primary" style="font-size: 14px;">gpp_good</span>
+<span>Kill-Switches: <strong>All Armed</strong></span>
+</div>
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-primary-fixed text-primary font-label text-caption border border-outline-variant">
+<span class="material-symbols-outlined text-primary" style="font-size: 14px;">verified_user</span>
+<span>Dual Authorization: Armed</span>
+</div>
+</div>
+<div class="h-6 w-px bg-surface-variant hidden xl:block"></div>
+<!-- Trailing Icon Actions -->
+<button class="w-9 h-9 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors" title="Notifications">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="w-9 h-9 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors" title="Help &amp; Docs">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+<!-- Lead Avatar / Identity -->
+<div class="flex items-center gap-space-md pl-2 border-l border-surface-variant">
+<div class="w-9 h-9 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-label text-label overflow-hidden">
+<span class="material-symbols-outlined" style="font-size: 20px;">person</span>
+</div>
+<div class="flex flex-col text-left">
+<span class="text-label font-label text-on-surface leading-tight">Mrs. Ifeoma Okonkwo</span>
+<span class="text-caption font-caption text-on-surface-variant leading-tight">Growth &amp; Operations Lead</span>
+</div>
+</div>
+</div>
+</header>
+<!-- WORKSPACE CANVAS CONTENT -->
+<main class="px-space-xl pt-space-lg flex flex-col gap-space-lg max-w-[1600px] w-full mx-auto">
+<!-- BREADCRUMB ROW -->
+<div class="flex items-center gap-2 text-caption font-caption text-on-surface-variant">
+<span>Enterprise Back-Office</span>
+<span class="material-symbols-outlined" style="font-size: 14px;">chevron_right</span>
+<span>System &amp; Templates</span>
+<span class="material-symbols-outlined" style="font-size: 14px;">chevron_right</span>
+<span class="text-primary font-semibold">Flags &amp; Operational Templates (W-BO-019)</span>
+</div>
+<!-- HEADER BLOCK -->
+<section class="flex flex-col md:flex-row md:items-center justify-between gap-space-lg">
+<div>
+<h1 class="text-title font-title text-primary tracking-tight">Enterprise System Flags, Templates &amp; Circuit Breakers</h1>
+<p class="text-caption font-caption text-on-surface-variant mt-0.5">Centralized governance of transactional notification templates, real-time feature gates, risk circuit breakers, and emergency interbank kill-switches.</p>
+</div>
+<div class="flex items-center gap-space-md shrink-0">
+<button class="h-[44px] px-space-lg rounded-xl border border-surface-variant bg-surface-container-lowest text-on-surface font-label text-label hover:bg-surface-container transition-colors flex items-center gap-2 shadow-sm">
+<span class="material-symbols-outlined" style="font-size: 18px;">file_download</span>
+<span>Export Template Repository (JSON)</span>
+</button>
+<button class="h-[44px] px-space-lg rounded-xl bg-primary-container text-on-primary font-label text-label hover:bg-primary transition-colors flex items-center gap-2 shadow-sm">
+<span class="material-symbols-outlined" style="font-size: 18px;">add</span>
+<span>+ Create New Template / Flag</span>
+</button>
+</div>
+</section>
+<!-- KPI METRIC TILES (4 COLUMNS BENTO) -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- Tile 1 -->
+<div class="p-space-lg bg-surface-container-lowest rounded-2xl border border-surface-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-on-surface-variant">Active Operational Flags</span>
+<span class="w-8 h-8 rounded-lg bg-surface-container-low text-primary flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-size: 18px;">toggle_on</span>
+</span>
+</div>
+<div class="mt-2">
+<div class="text-title font-title text-on-surface tabular-nums">28 Flags Live</div>
+<div class="text-caption font-caption text-on-surface-variant flex items-center gap-1 mt-1">
+<span class="inline-block w-2 h-2 rounded-full bg-secondary-container"></span>
+<span>6 In Staged Rollout • 0 Drift</span>
+</div>
+</div>
+</div>
+<!-- Tile 2 -->
+<div class="p-space-lg bg-surface-container-lowest rounded-2xl border border-surface-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-on-surface-variant">Emergency Kill-Switches</span>
+<span class="w-8 h-8 rounded-lg bg-surface-container-low text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-size: 18px;">bolt</span>
+</span>
+</div>
+<div class="mt-2">
+<div class="text-title font-title text-on-surface tabular-nums">4 Armed</div>
+<div class="text-caption font-caption text-on-surface-variant mt-1 truncate">
+              NIP Inbound, Outbound, POS Clearing, Auto-Debit
+            </div>
+</div>
+</div>
+<!-- Tile 3 -->
+<div class="p-space-lg bg-surface-container-lowest rounded-2xl border border-surface-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-on-surface-variant">Notification Templates</span>
+<span class="w-8 h-8 rounded-lg bg-surface-container-low text-primary flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-size: 18px;">mark_email_read</span>
+</span>
+</div>
+<div class="mt-2">
+<div class="text-title font-title text-on-surface tabular-nums">64 Master Templates</div>
+<div class="text-caption font-caption text-on-surface-variant mt-1">
+              SMS, Push, In-App, Email • 99.8% Delivery
+            </div>
+</div>
+</div>
+<!-- Tile 4 -->
+<div class="p-space-lg bg-surface-container-lowest rounded-2xl border border-surface-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-on-surface-variant">Last Critical Switch Triggered</span>
+<span class="w-8 h-8 rounded-lg bg-surface-container-low text-primary flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-size: 18px;">check_circle</span>
+</span>
+</div>
+<div class="mt-2">
+<div class="text-title font-title text-on-surface tabular-nums">None in 42 Days</div>
+<div class="text-caption font-caption text-on-surface-variant mt-1">
+              All core banking rails healthy
+            </div>
+</div>
+</div>
+</section>
+<!-- EMERGENCY CIRCUIT BREAKER WARNING BANNER (Amber/Warm Tint) -->
+<section class="p-space-md rounded-xl bg-surface-container-high border border-outline-variant flex items-start gap-space-md text-on-surface">
+<span class="material-symbols-outlined text-secondary shrink-0 mt-0.5">warning</span>
+<div class="text-caption font-caption">
+<span class="font-bold text-secondary tracking-wide">EMERGENCY OPERATIONAL CONTROLS:</span> 
+          Activating a financial rail kill-switch immediately suspends outward transaction posting across consumer and merchant endpoints. Disabling a core bridge requires immediate Level 3 dual-signoff and mandatory notification to CBN PSD.
+        </div>
+</section>
+<!-- MAIN TWO-COLUMN CONTENT GRID -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- LEFT COLUMN: Tabbed Repository Table (lg:col-span-7) -->
+<div class="lg:col-span-7 flex flex-col gap-space-md">
+<!-- Repository Container -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-2xl shadow-sm overflow-hidden">
+<!-- Tabs Bar -->
+<div class="flex items-center border-b border-surface-variant bg-surface-container-low px-space-md gap-space-xs overflow-x-auto">
+<button class="px-space-md py-3 text-label font-label text-primary border-b-2 border-primary-container whitespace-nowrap">
+                Customer Notification Templates (64)
+              </button>
+<button class="px-space-md py-3 text-label font-label text-on-surface-variant hover:text-on-surface border-b-2 border-transparent whitespace-nowrap">
+                Emergency Kill-Switches (4)
+              </button>
+<button class="px-space-md py-3 text-label font-label text-on-surface-variant hover:text-on-surface border-b-2 border-transparent whitespace-nowrap">
+                Operational Feature Flags (28)
+              </button>
+<button class="px-space-md py-3 text-label font-label text-on-surface-variant hover:text-on-surface border-b-2 border-transparent whitespace-nowrap">
+                Regulatory Notices (12)
+              </button>
+</div>
+<!-- SECTION A: Focus Notification Templates List -->
+<div class="p-space-md flex flex-col gap-space-sm border-b border-surface-variant">
+<div class="flex items-center justify-between px-2 pt-1 pb-2">
+<span class="text-label font-label text-on-surface">Active Notification Blueprints</span>
+<span class="text-caption font-caption text-on-surface-variant">Showing active transactional templates</span>
+</div>
+<!-- Template Item 1 -->
+<div class="p-space-md rounded-xl border border-surface-variant bg-surface-container-lowest hover:bg-surface-container-low transition-colors cursor-pointer flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface font-mono text-caption font-semibold">#TPL-TXN-01</span>
+<span class="text-body-medium font-body-medium text-on-surface">Inbound Transfer Credit Alert</span>
+</div>
+<div class="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant text-caption font-caption">
+<span class="material-symbols-outlined" style="font-size: 14px;">textsms</span>
+<span>SMS / Push</span>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-1.5 text-caption font-caption text-on-surface-variant">
+<span>Variables:</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-high text-primary font-mono text-xs">{{amount}}</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-high text-primary font-mono text-xs">{{sender_name}}</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-high text-primary font-mono text-xs">{{account_last4}}</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-high text-primary font-mono text-xs">{{balance}}</span>
+</div>
+</div>
+<!-- Template Item 2 (SELECTED ITEM) -->
+<div class="p-space-md rounded-xl border-2 border-primary-container bg-surface-container-low transition-colors cursor-pointer flex flex-col gap-2 shadow-sm relative">
+<div class="absolute -top-2.5 right-4 px-2 py-0.5 rounded-full bg-primary-container text-on-primary text-[11px] font-label font-semibold">
+                  Selected in Inspector
+                </div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded bg-primary-fixed text-primary font-mono text-caption font-bold">#TPL-DISP-04</span>
+<span class="text-body-medium font-body-medium text-primary font-bold">Duplicate Debit Reversal Notification</span>
+</div>
+<div class="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-primary-fixed text-primary text-caption font-caption font-semibold">
+<span class="material-symbols-outlined" style="font-size: 14px;">forward_to_inbox</span>
+<span>Email / SMS</span>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-1.5 text-caption font-caption text-on-surface-variant">
+<span>Variables:</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-highest text-primary font-mono text-xs font-semibold">{{amount}}</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-highest text-primary font-mono text-xs font-semibold">{{reference_id}}</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-highest text-primary font-mono text-xs font-semibold">{{resolution_time}}</span>
+</div>
+</div>
+<!-- Template Item 3 -->
+<div class="p-space-md rounded-xl border border-surface-variant bg-surface-container-lowest hover:bg-surface-container-low transition-colors cursor-pointer flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface font-mono text-caption font-semibold">#TPL-COOP-08</span>
+<span class="text-body-medium font-body-medium text-on-surface">Cooperative Loan Guarantor Request Notice</span>
+</div>
+<div class="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant text-caption font-caption">
+<span class="material-symbols-outlined" style="font-size: 14px;">notifications_active</span>
+<span>Push Only</span>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-1.5 text-caption font-caption text-on-surface-variant">
+<span>Variables:</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-high text-primary font-mono text-xs">{{borrower_name}}</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-high text-primary font-mono text-xs">{{amount}}</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-high text-primary font-mono text-xs">{{coop_name}}</span>
+</div>
+</div>
+</div>
+<!-- SECTION B: Emergency Kill-Switches & Circuit Breakers Panel -->
+<div class="p-space-md bg-surface-container-low flex flex-col gap-space-sm">
+<div class="flex items-center justify-between px-2 pt-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">security</span>
+<span class="text-label font-label text-on-surface">Emergency Kill-Switches &amp; Circuit Breakers</span>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant text-caption font-caption">Dual-Signoff Required</span>
+</div>
+<!-- Rail Switch #SW-01 -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest border border-surface-variant flex flex-col sm:flex-row sm:items-center justify-between gap-space-md">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="text-caption font-caption font-mono text-primary font-bold">#SW-01</span>
+<span class="text-label font-label text-on-surface">Outward NIP Transfer Rail</span>
+<span class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant text-caption font-caption font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-container"></span>
+                      ACTIVE (ONLINE)
+                    </span>
+</div>
+<div class="text-caption font-caption text-on-surface-variant flex items-center gap-3">
+<span>Latency: <strong class="text-on-surface tabular-nums">1.2s</strong></span>
+<span>•</span>
+<span>Tripwire: Instant Freeze if latency &gt;15s or error rate &gt;5%</span>
+</div>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<button class="h-9 px-3 rounded-lg border border-outline-variant bg-surface-container-low text-secondary text-caption font-label hover:bg-error-container transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined" style="font-size: 16px;">power_settings_new</span>
+<span>Kill Switch</span>
+</button>
+</div>
+</div>
+<!-- Rail Switch #SW-02 -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest border border-surface-variant flex flex-col sm:flex-row sm:items-center justify-between gap-space-md">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="text-caption font-caption font-mono text-primary font-bold">#SW-02</span>
+<span class="text-label font-label text-on-surface">Instant Loan Automated Disbursement</span>
+<span class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant text-caption font-caption font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-container"></span>
+                      ACTIVE (ONLINE)
+                    </span>
+</div>
+<div class="text-caption font-caption text-on-surface-variant flex items-center gap-3">
+<span>Disbursed MTD: <strong class="text-on-surface tabular-nums">₦64.8M</strong></span>
+<span>•</span>
+<span>Daily Ceiling: <strong class="text-on-surface tabular-nums">₦15,000,000</strong> cap</span>
+</div>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<button class="h-9 px-3 rounded-lg border border-outline-variant bg-surface-container-low text-secondary text-caption font-label hover:bg-error-container transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined" style="font-size: 16px;">power_settings_new</span>
+<span>Kill Switch</span>
+</button>
+</div>
+</div>
+<!-- Rail Switch #SW-03 -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest border border-surface-variant flex flex-col sm:flex-row sm:items-center justify-between gap-space-md">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="text-caption font-caption font-mono text-primary font-bold">#SW-03</span>
+<span class="text-label font-label text-on-surface">Agency Banking Cash Float Injection</span>
+<span class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant text-caption font-caption font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-container"></span>
+                      ACTIVE (ONLINE)
+                    </span>
+</div>
+<div class="text-caption font-caption text-on-surface-variant flex items-center gap-3">
+<span>Float Pool: <strong class="text-on-surface tabular-nums">₦184.5M</strong></span>
+<span>•</span>
+<span>Action: Remote POS wipe trigger</span>
+</div>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<button class="h-9 px-3 rounded-lg border border-outline-variant bg-surface-container-low text-secondary text-caption font-label hover:bg-error-container transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined" style="font-size: 16px;">power_settings_new</span>
+<span>Kill Switch</span>
+</button>
+</div>
+</div>
+<!-- Rail Switch #SW-04 -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest border border-surface-variant flex flex-col sm:flex-row sm:items-center justify-between gap-space-md">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="text-caption font-caption font-mono text-primary font-bold">#SW-04</span>
+<span class="text-label font-label text-on-surface">Payday Thrift Auto-Debit Recurring Sweep</span>
+<span class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant text-caption font-caption font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-container"></span>
+                      ACTIVE (ONLINE)
+                    </span>
+</div>
+<div class="text-caption font-caption text-on-surface-variant flex items-center gap-3">
+<span>Next Run: <strong class="text-on-surface">1 Nov 2026</strong></span>
+<span>•</span>
+<span>Safe Threshold: Pause on 3 timeouts</span>
+</div>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<button class="h-9 px-3 rounded-lg border border-outline-variant bg-surface-container-low text-secondary text-caption font-label hover:bg-error-container transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined" style="font-size: 16px;">power_settings_new</span>
+<span>Kill Switch</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT COLUMN: Template & Circuit Breaker Inspector Drawer (lg:col-span-5) -->
+<div class="lg:col-span-5 flex flex-col gap-space-md">
+<div class="bg-surface-container-lowest border border-surface-variant rounded-2xl shadow-sm p-space-lg flex flex-col gap-space-lg">
+<!-- Inspector Header -->
+<div class="flex items-start justify-between border-b border-surface-variant pb-space-md">
+<div>
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded bg-primary-fixed text-primary font-mono text-caption font-bold">#TPL-DISP-04</span>
+<span class="text-caption font-caption text-on-surface-variant">Version: v3.1 (Approved)</span>
+</div>
+<h2 class="text-subtitle font-subtitle text-on-surface mt-1">Duplicate Debit Restitution Alert</h2>
+<div class="text-caption font-caption text-on-surface-variant mt-0.5">
+                  Category: Transactional Dispute Resolution
+                </div>
+</div>
+<span class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-primary font-label text-caption">
+<span class="material-symbols-outlined text-primary" style="font-size: 16px;">verified</span>
+<span>Active</span>
+</span>
+</div>
+<!-- Multi-Channel Copy Preview (Phone Mockup Box) -->
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<label class="text-caption font-caption text-on-surface-variant font-semibold">Multi-Channel Copy Preview (SMS / Push)</label>
+<span class="text-[12px] font-caption text-on-surface-variant">Character count: 142/160</span>
+</div>
+<!-- Mockup Box -->
+<div class="p-space-md rounded-xl bg-surface-container-low border border-surface-variant flex flex-col gap-space-sm relative">
+<div class="flex items-center justify-between text-caption font-caption text-on-surface-variant pb-2 border-b border-surface-variant">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary" style="font-size: 16px;">sms</span>
+<span class="font-medium text-on-surface">Sender ID: YourApp-Alert</span>
+</div>
+<span>Instant Delivery</span>
+</div>
+<div class="text-body font-body text-on-surface leading-relaxed text-sm bg-surface-container-lowest p-3 rounded-lg border border-surface-variant">
+                  YourApp Alert: <strong class="text-primary font-mono font-bold">₦{{amount}}</strong> has been credited back to your account <strong class="text-primary font-mono font-bold">{{account_last4}}</strong> following dual-control restitution for transaction #<strong class="text-primary font-mono font-bold">{{reference_id}}</strong>. Available balance: <strong class="text-primary font-mono font-bold">₦{{balance}}</strong>. Ref: APV-8821.
+                </div>
+</div>
+</div>
+<!-- Variables Tag Selector -->
+<div class="flex flex-col gap-2">
+<label class="text-caption font-caption text-on-surface-variant font-semibold">Available Payload Variable Chips</label>
+<div class="flex flex-wrap gap-2">
+<button class="px-2.5 py-1 rounded-lg bg-surface-container-high hover:bg-surface-variant text-on-surface text-caption font-mono transition-colors border border-surface-variant flex items-center gap-1">
+<span>+</span><span>{{amount}}</span>
+</button>
+<button class="px-2.5 py-1 rounded-lg bg-surface-container-high hover:bg-surface-variant text-on-surface text-caption font-mono transition-colors border border-surface-variant flex items-center gap-1">
+<span>+</span><span>{{account_last4}}</span>
+</button>
+<button class="px-2.5 py-1 rounded-lg bg-surface-container-high hover:bg-surface-variant text-on-surface text-caption font-mono transition-colors border border-surface-variant flex items-center gap-1">
+<span>+</span><span>{{sender_bank}}</span>
+</button>
+<button class="px-2.5 py-1 rounded-lg bg-surface-container-high hover:bg-surface-variant text-on-surface text-caption font-mono transition-colors border border-surface-variant flex items-center gap-1">
+<span>+</span><span>{{reference_id}}</span>
+</button>
+<button class="px-2.5 py-1 rounded-lg bg-surface-container-high hover:bg-surface-variant text-on-surface text-caption font-mono transition-colors border border-surface-variant flex items-center gap-1">
+<span>+</span><span>{{timestamp}}</span>
+</button>
+</div>
+</div>
+<!-- Delivery Rules / Governance Engine -->
+<div class="p-space-md rounded-xl bg-surface-container border border-surface-variant flex flex-col gap-2 text-caption font-caption">
+<span class="text-label font-label text-on-surface">Execution &amp; Delivery Rules</span>
+<ul class="flex flex-col gap-1.5 text-on-surface-variant">
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" style="font-size: 16px;">task_alt</span>
+<span>Trigger: Instant release on Level 3 Cosign approval completion</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" style="font-size: 16px;">speed</span>
+<span>Priority: Highest (Statutory CBN 15-minute compliance benchmark)</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" style="font-size: 16px;">alt_route</span>
+<span>Fallback: Auto-route to SMS if Push receipt unconfirmed within 30s</span>
+</li>
+</ul>
+</div>
+<!-- Emergency Safety Toggle -->
+<div class="p-space-md rounded-xl border border-secondary-fixed bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary" style="font-size: 20px;">emergency</span>
+<div>
+<div class="text-label font-label text-on-surface">Arm Emergency Kill-Switch for this Channel</div>
+<div class="text-caption font-caption text-on-surface-variant">Suspends SMS/Push outbox immediately</div>
+</div>
+</div>
+<!-- Simulated Switch -->
+<div class="w-12 h-6 bg-surface-container-highest rounded-full p-0.5 cursor-pointer flex items-center">
+<div class="w-5 h-5 bg-on-surface-variant rounded-full shadow-sm"></div>
+</div>
+</div>
+<!-- Actions Cluster -->
+<div class="flex flex-col gap-space-sm pt-2">
+<button class="h-[52px] w-full rounded-xl bg-primary-container text-on-primary font-label text-label hover:bg-primary transition-colors flex items-center justify-center gap-2 shadow-sm">
+<span class="material-symbols-outlined">publish</span>
+<span>Save Template Changes &amp; Deploy v3.2</span>
+</button>
+<div class="grid grid-cols-2 gap-space-sm">
+<button class="h-[48px] rounded-xl bg-surface-container-low text-primary font-label text-label hover:bg-surface-container transition-colors flex items-center justify-center gap-1.5 border border-surface-variant">
+<span class="material-symbols-outlined" style="font-size: 18px;">send_to_mobile</span>
+<span>Send Test (Dev Phone)</span>
+</button>
+<button class="h-[48px] rounded-xl border border-surface-variant bg-transparent text-on-surface font-label text-label hover:bg-surface-container-low transition-colors flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined" style="font-size: 18px;">history</span>
+<span>View Change Audit</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- BOTTOM TELEMETRY BAR -->
+<footer class="mt-4 p-space-md rounded-xl bg-surface-container-lowest border border-surface-variant flex flex-col sm:flex-row items-center justify-between text-caption font-caption text-on-surface-variant gap-2 shadow-sm">
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary-container"></span>
+<span>Notification Gateway: <strong class="text-on-surface">v3.8</strong></span>
+</div>
+<span>•</span>
+<div class="flex items-center gap-1.5">
+<span>Core Switch Latency: <strong class="text-on-surface tabular-nums">18ms</strong></span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" style="font-size: 16px;">lock</span>
+<span>Security Standard: <strong>TLS 1.3 FIPS-140-3 Compliant</strong></span>
+<span>•</span>
+<span>Audited by CBN PSD Governance Engine</span>
+</div>
+</footer>
+</main>
+</div>
+</body></html>

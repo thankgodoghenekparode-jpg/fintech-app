@@ -1,0 +1,24 @@
+flowchart TD
+  a(["Round due date"])
+  b["Auto-debit each member"]
+  c{"All paid?"}
+  d["Retry, remind, grace period"]
+  e{"Paid by end of grace?"}
+  f["Mark member late; late fee if configured"]
+  g{"Shortfall rule / protection"}
+  h["Apply cover (PROTECTED) or delay/partial payout per rule"]
+  i["Pay pot to round recipient automatically"]
+  j["Update tracker, receipts, trust scores"]
+  k(["Round closed"])
+  a --> b
+  b --> c
+  c -->|yes| i
+  c -->|no| d
+  d --> e
+  e -->|yes| i
+  e -->|no| f
+  f --> g
+  g --> h
+  h --> i
+  i --> j
+  j --> k

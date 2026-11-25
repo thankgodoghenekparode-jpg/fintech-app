@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YourApp - Liveness check</title>
+<!-- Material Symbols Outlined font -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Font: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-primary": "#ffb1c5",
+            "surface-container-low": "#fbf1f2",
+            "background": "#fff8f8",
+            "inverse-on-surface": "#f8eeef",
+            "on-primary-fixed-variant": "#881646",
+            "primary-fixed-dim": "#ffb1c5",
+            "surface-container-lowest": "#ffffff",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "tertiary-fixed": "#eedee4",
+            "secondary-fixed-dim": "#ffb4a8",
+            "surface-bright": "#fff8f8",
+            "tertiary-container": "#53484d",
+            "on-tertiary-fixed": "#21191e",
+            "outline-variant": "#dcbfc5",
+            "primary": "#6d0033",
+            "error": "#ba1a1a",
+            "surface-container-highest": "#e9e0e1",
+            "on-primary": "#ffffff",
+            "inverse-surface": "#342f30",
+            "on-secondary-fixed-variant": "#8c170e",
+            "secondary": "#ae3123",
+            "on-surface": "#1f1b1c",
+            "outline": "#897176",
+            "on-background": "#1f1b1c",
+            "primary-container": "#8e1b4a",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "surface-tint": "#a8315d",
+            "on-primary-fixed": "#3f001b",
+            "tertiary": "#3b3236",
+            "surface-container": "#f5eced",
+            "error-container": "#ffdad6",
+            "on-tertiary": "#ffffff",
+            "on-surface-variant": "#564146",
+            "on-secondary-fixed": "#410000",
+            "surface-container-high": "#efe6e7",
+            "on-tertiary-container": "#c6b7bd",
+            "surface-dim": "#e1d8d9",
+            "secondary-container": "#fc6955",
+            "on-primary-container": "#ffa0ba",
+            "on-secondary-container": "#690000",
+            "secondary-fixed": "#ffdad4",
+            "on-error-container": "#93000a",
+            "surface-variant": "#e9e0e1",
+            "on-secondary": "#ffffff",
+            "primary-fixed": "#ffd9e1",
+            "surface": "#fff8f8",
+            "on-error": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "1rem",
+            "space-xl": "1.5rem",
+            "space-3xl": "3rem",
+            "space-md": "0.75rem",
+            "space-xs": "0.25rem",
+            "margin": "1rem",
+            "space-2xl": "2rem",
+            "space-lg": "1rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "body-medium": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "subtitle": ["Inter"],
+            "title": ["Inter"],
+            "caption": ["Inter"],
+            "amount-lg": ["Inter"],
+            "display": ["Inter"],
+            "body": ["Inter"],
+            "label": ["Inter"]
+          },
+          "fontSize": {
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    
+    @keyframes pulse-subtle {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.95;
+      }
+      50% {
+        transform: scale(1.025);
+        opacity: 0.65;
+      }
+    }
+    .animate-pulse-subtle {
+      animation: pulse-subtle 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased flex justify-center min-h-screen select-none">
+<!-- Mobile Screen Container: 390px fixed canvas for high-fidelity preview, max 560px for tablet viewport -->
+<main class="w-full max-w-[390px] min-h-screen bg-surface flex flex-col justify-between relative shadow-[0_16px_36px_-6px_rgba(30,26,27,0.08)]">
+<!-- Top App Navigation / Header Bar -->
+<header class="w-full px-margin pt-space-lg pb-space-sm flex items-center justify-between min-h-[56px] border-b border-outline-variant/30 bg-surface z-20">
+<!-- Back Action Button with 48px touch target -->
+<button aria-label="Go back" class="w-12 h-12 -ml-2 rounded-full flex items-center justify-center text-on-surface hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-on-surface text-[24px]" data-icon="arrow_back">arrow_back</span>
+</button>
+<!-- Center Title -->
+<div class="flex flex-col items-center">
+<h1 class="font-subtitle text-subtitle text-on-surface font-semibold tracking-tight">Liveness check</h1>
+</div>
+<!-- Step Counter / Flow Badge -->
+<div class="flex items-center">
+<span class="inline-flex items-center gap-space-xs px-2.5 py-1 rounded-full bg-primary-fixed text-primary font-label text-[12px] font-semibold border border-outline-variant/40">
+<span class="material-symbols-outlined text-[15px]" data-icon="face">face</span>
+          Face ID
+        </span>
+</div>
+</header>
+<!-- Main Scrollable Canvas Zone -->
+<div class="flex-1 flex flex-col px-margin pt-space-lg pb-4 overflow-y-auto">
+<!-- Text Guidance Cluster -->
+<section class="text-center mb-space-lg">
+<h2 class="font-title text-title font-bold text-on-surface tracking-tight mb-space-xs">
+          Take a quick video selfie
+        </h2>
+<p class="font-body text-body text-on-surface-variant max-w-[320px] mx-auto text-sm leading-relaxed">
+          We'll match your face with your government ID photo to secure your account.
+        </p>
+</section>
+<!-- Viewfinder Area: Oval Camera Frame -->
+<div class="relative flex flex-col items-center justify-center my-auto py-2">
+<!-- Outer Glowing Soft Halo -->
+<div class="relative w-[238px] h-[286px] flex items-center justify-center">
+<!-- Pulsing Dashed Berry Oval Frame -->
+<div class="absolute inset-0 rounded-[120px] border-2 border-dashed border-primary-container opacity-85 animate-pulse-subtle"></div>
+<!-- Subtle Gradient Outer Rim (Warm Berry & Surface Container) -->
+<div class="absolute -inset-1.5 rounded-[124px] bg-gradient-to-b from-primary-fixed-dim/30 via-transparent to-primary-fixed/20 pointer-events-none -z-0"></div>
+<!-- Oval Viewport Core (Simulated Front Camera feed) -->
+<div class="w-[226px] h-[274px] rounded-[114px] bg-surface-container-high/90 overflow-hidden relative flex flex-col items-center justify-center shadow-inner border border-outline-variant/40">
+<!-- Atmospheric Depth Mesh Inside Oval -->
+<div class="absolute inset-0 bg-gradient-to-b from-surface-container-low via-surface-container-high to-surface-dim opacity-60"></div>
+<!-- Facial Silhouette Guide Wireframe -->
+<div class="relative z-10 flex flex-col items-center justify-center text-outline/50">
+<span class="material-symbols-outlined text-[112px] opacity-40 select-none" data-icon="face_retouching_natural">face_retouching_natural</span>
+</div>
+<!-- Alignment Instruction Badge (Floats inside top-bottom of viewport) -->
+<div class="absolute bottom-4 z-10 px-3 py-1.5 rounded-full bg-inverse-surface/85 backdrop-blur-sm shadow-sm flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary-container animate-ping"></span>
+<span class="font-caption text-caption text-inverse-on-surface font-medium text-[11px] whitespace-nowrap">
+                Center your face in the oval
+              </span>
+</div>
+<!-- Corner alignment markers -->
+<div class="absolute top-7 left-6 w-3 h-3 border-t-2 border-l-2 border-primary-container/70 rounded-tl"></div>
+<div class="absolute top-7 right-6 w-3 h-3 border-t-2 border-r-2 border-primary-container/70 rounded-tr"></div>
+<div class="absolute bottom-12 left-6 w-3 h-3 border-b-2 border-l-2 border-primary-container/70 rounded-bl"></div>
+<div class="absolute bottom-12 right-6 w-3 h-3 border-b-2 border-r-2 border-primary-container/70 rounded-br"></div>
+</div>
+</div>
+<!-- Real-time Lighting Sensor Indicator Pill -->
+<div class="mt-space-md inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-lowest border border-outline-variant/60 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)]">
+<span class="material-symbols-outlined text-[18px] text-green-700" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-caption text-caption font-medium text-on-surface text-[12px]">
+            Good lighting detected
+          </span>
+</div>
+</div>
+<!-- Pre-capture Hygiene Guidance Badges / Pills -->
+<section aria-label="Verification checklist" class="mt-space-md mb-space-md">
+<div class="flex items-center justify-center gap-2 flex-wrap">
+<!-- Pill 1: Good Lighting -->
+<div class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-surface-container-lowest border border-outline-variant/50 shadow-sm text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-primary-container" data-icon="light_mode">light_mode</span>
+<span class="font-caption text-caption font-medium text-[11.5px]">Good lighting</span>
+</div>
+<!-- Pill 2: No Hats or Glasses -->
+<div class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-surface-container-lowest border border-outline-variant/50 shadow-sm text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-primary-container" data-icon="visibility_off">visibility_off</span>
+<span class="font-caption text-caption font-medium text-[11.5px]">No hats or glasses</span>
+</div>
+<!-- Pill 3: Neutral Expression -->
+<div class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-surface-container-lowest border border-outline-variant/50 shadow-sm text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-primary-container" data-icon="sentiment_neutral">sentiment_neutral</span>
+<span class="font-caption text-caption font-medium text-[11.5px]">Neutral expression</span>
+</div>
+</div>
+</section>
+<!-- Security & Privacy Assurance Notice -->
+<aside class="w-full bg-surface-container-low rounded-xl p-3 border border-outline-variant/40 flex items-start gap-2.5 mt-auto mb-2">
+<span class="material-symbols-outlined text-[20px] text-primary-container mt-0.5 flex-shrink-0" data-icon="lock" style="font-variation-settings: 'FILL' 1;">lock</span>
+<div class="flex-1">
+<p class="font-caption text-caption text-on-surface-variant text-[12px] leading-tight">
+            Your biometric selfie is encrypted and strictly verified with official BVN &amp; NIN records. It is never sold or shared.
+          </p>
+</div>
+</aside>
+</div>
+<!-- Sticky Bottom CTA Action Sheet Container (suppresses global nav bars per Task-Focused/Linear rules) -->
+<footer class="w-full px-margin pt-space-sm pb-space-lg bg-surface-container-lowest border-t border-outline-variant/30 shadow-[0_-4px_16px_rgba(30,26,27,0.03)] z-30 flex flex-col gap-2">
+<!-- Primary Standard Trigger: 52px Height -->
+<button class="w-full h-[52px] bg-primary-container hover:bg-primary active:scale-[0.98] transition-all rounded-xl text-on-primary font-label text-label font-semibold flex items-center justify-center gap-2 shadow-[0_4px_12px_rgba(142,27,74,0.22)]" type="button">
+<span>I'm ready, start scan</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<!-- Secondary Inquiry Link with 48px touch bounding standard -->
+<div class="flex justify-center items-center h-12">
+<button class="font-caption text-caption font-medium text-on-surface-variant hover:text-primary active:opacity-75 transition-colors underline decoration-outline-variant underline-offset-4 py-2 px-4" type="button">
+          Why do we need this?
+        </button>
+</div>
+</footer>
+</main>
+<script>
+    // Micro-interactions: feedback on capture trigger
+    document.addEventListener('DOMContentLoaded', () => {
+      const ctaButton = document.querySelector('button.bg-primary-container');
+      if (ctaButton) {
+        ctaButton.addEventListener('click', () => {
+          ctaButton.innerHTML = `
+            <span class="material-symbols-outlined text-[18px] animate-spin" data-icon="progress_activity">progress_activity</span>
+            <span>Initializing camera...</span>
+          `;
+          setTimeout(() => {
+            ctaButton.innerHTML = `
+              <span class="material-symbols-outlined text-[18px]" data-icon="videocam">videocam</span>
+              <span>Scanning face...</span>
+            `;
+          }, 1200);
+        });
+      }
+    });
+  </script>
+</body></html>

@@ -1,0 +1,95 @@
+# Master Flow Map
+
+Map of all flows by area.
+
+Requirements: all
+
+## Steps and branches
+
+- **[root] START:** App flow map -> [a0]; [a1]; [a2]; [a3]; [a4]; [a5]; [a6]; [a7]; [a8]; [a9]; [a10]; [a11]; [a12]
+- **[a0] STEP:** CORE -> [f0_0]; [f0_1]; [f0_2]; [f0_3]; [f0_4]; [f0_5]; [f0_6]; [f0_7]; [f0_8]; [f0_9]; [f0_10]
+- **[a1] STEP:** AGENT-NETWORK -> [f1_0]; [f1_1]; [f1_2]; [f1_3]
+- **[a2] STEP:** AJO-ESUSU -> [f2_0]; [f2_1]; [f2_2]; [f2_3]; [f2_4]
+- **[a3] STEP:** BACKOFFICE -> [f3_0]; [f3_1]; [f3_2]; [f3_3]; [f3_4]
+- **[a4] STEP:** COOPERATIVE -> [f4_0]; [f4_1]; [f4_2]; [f4_3]; [f4_4]; [f4_5]; [f4_6]; [f4_7]; [f4_8]
+- **[a5] STEP:** ESCROW -> [f5_0]; [f5_1]; [f5_2]; [f5_3]; [f5_4]
+- **[a6] STEP:** INSTANT-LOAN -> [f6_0]; [f6_1]; [f6_2]; [f6_3]
+- **[a7] STEP:** MERCHANT-TOOLS -> [f7_0]; [f7_1]; [f7_2]; [f7_3]
+- **[a8] STEP:** PAY-AM-SMALL -> [f8_0]; [f8_1]; [f8_2]; [f8_3]; [f8_4]
+- **[a9] STEP:** REVENUE -> [f9_0]; [f9_1]; [f9_2]; [f9_3]; [f9_4]
+- **[a10] STEP:** SPENDING-INSIGHTS-REWARDS -> [f10_0]; [f10_1]; [f10_2]; [f10_3]
+- **[a11] STEP:** TARGET-SAVINGS -> [f11_0]; [f11_1]; [f11_2]; [f11_3]
+- **[a12] STEP:** BACK-END ONLY -> [f12_0]; [f12_1]; [f12_2]; [f12_3]; [f12_4]; [f12_5]; [f12_6]; [f12_7]
+- **[f0_0] SUB-FLOW:** F-01 Onboarding and KYC
+- **[f0_1] SUB-FLOW:** F-02 Login and Device Binding
+- **[f0_2] SUB-FLOW:** F-03 Add Money
+- **[f0_3] SUB-FLOW:** F-04 Transfer to Bank
+- **[f0_4] SUB-FLOW:** F-05 Airtime and Bills
+- **[f0_5] SUB-FLOW:** F-06 Cards
+- **[f0_6] SUB-FLOW:** F-07 KYC Tier Upgrade
+- **[f0_7] SUB-FLOW:** F-08 Report a Problem and Support
+- **[f0_8] SUB-FLOW:** F-09 Lock Account
+- **[f0_9] SUB-FLOW:** F-10 Statements
+- **[f0_10] SUB-FLOW:** F-11 Master Navigation Map
+- **[f1_0] SUB-FLOW:** AGT-F01 Agent Onboarding
+- **[f1_1] SUB-FLOW:** AGT-F02 Cash-in
+- **[f1_2] SUB-FLOW:** AGT-F03 Cash-out with Code
+- **[f1_3] SUB-FLOW:** AGT-F04 Float Top-up and Reconciliation
+- **[f2_0] SUB-FLOW:** AJO-F01 Create and Launch a Circle
+- **[f2_1] SUB-FLOW:** AJO-F02 Join a Circle
+- **[f2_2] SUB-FLOW:** AJO-F03 Round: Collect and Pay Out
+- **[f2_3] SUB-FLOW:** AJO-F04 Missed Payment and Default
+- **[f2_4] SUB-FLOW:** AJO-F05 Cycle End and Renewal
+- **[f3_0] SUB-FLOW:** BO-F01 KYC Review
+- **[f3_1] SUB-FLOW:** BO-F02 Dual-control Approval
+- **[f3_2] SUB-FLOW:** BO-F03 Freeze and Unfreeze
+- **[f3_3] SUB-FLOW:** BO-F04 Alert to Case
+- **[f3_4] SUB-FLOW:** BO-F05 Tenant Verification
+- **[f4_0] SUB-FLOW:** COOP-F01 Create Cooperative
+- **[f4_1] SUB-FLOW:** COOP-F02 Join Cooperative
+- **[f4_2] SUB-FLOW:** COOP-F03 Contributions and Auto-deduction
+- **[f4_3] SUB-FLOW:** COOP-F04 Loan Request to Disbursement
+- **[f4_4] SUB-FLOW:** COOP-F05 Repayment, Arrears and Recovery
+- **[f4_5] SUB-FLOW:** COOP-F06 Shares and Dividends
+- **[f4_6] SUB-FLOW:** COOP-F07 Cooperative Withdrawal (Dual Control)
+- **[f4_7] SUB-FLOW:** COOP-F08 Admin Succession
+- **[f4_8] SUB-FLOW:** COOP-F09 Member Exit and Dissolution
+- **[f5_0] SUB-FLOW:** ESC-F01 Goods Deal: Create to Release
+- **[f5_1] SUB-FLOW:** ESC-F02 Service Deal with Milestones
+- **[f5_2] SUB-FLOW:** ESC-F03 Dispute Resolution
+- **[f5_3] SUB-FLOW:** ESC-F04 Cancellation and Fee Treatment
+- **[f5_4] SUB-FLOW:** ESC-F05 Property / Rent Deal with Agent
+- **[f6_0] SUB-FLOW:** LOAN-F01 Apply to Disbursement
+- **[f6_1] SUB-FLOW:** LOAN-F02 Repayment and Reminders
+- **[f6_2] SUB-FLOW:** LOAN-F03 Arrears, Hardship and Collections
+- **[f6_3] SUB-FLOW:** LOAN-F04 Partner Settlement
+- **[f7_0] SUB-FLOW:** MER-F01 Business Onboarding (KYB)
+- **[f7_1] SUB-FLOW:** MER-F02 Payment Link or QR
+- **[f7_2] SUB-FLOW:** MER-F03 Invoice Lifecycle
+- **[f7_3] SUB-FLOW:** MER-F04 Refund
+- **[f8_0] SUB-FLOW:** PAS-F01 Vendor Onboarding
+- **[f8_1] SUB-FLOW:** PAS-F02 Price-lock Purchase to Delivery
+- **[f8_2] SUB-FLOW:** PAS-F03 Missed Debits and Deadline
+- **[f8_3] SUB-FLOW:** PAS-F04 Early Withdrawal
+- **[f8_4] SUB-FLOW:** PAS-F05 Credit Order and Repayment
+- **[f9_0] SUB-FLOW:** REV-F01 Collector Onboarding and Verification
+- **[f9_1] SUB-FLOW:** REV-F02 Item Setup to Settlement
+- **[f9_2] SUB-FLOW:** REV-F03 Payer Links Account and Pays
+- **[f9_3] SUB-FLOW:** REV-F04 Field Cash Collection
+- **[f9_4] SUB-FLOW:** REV-F05 Payer Dispute and Abuse Report
+- **[f10_0] SUB-FLOW:** INS-F01 Categorisation and Monthly Summary
+- **[f10_1] SUB-FLOW:** INS-F02 Budget Alert
+- **[f10_2] SUB-FLOW:** INS-F03 Reward Earning and Credit
+- **[f10_3] SUB-FLOW:** INS-F04 Referral Reward
+- **[f11_0] SUB-FLOW:** TGT-F01 Create and Fund a Goal
+- **[f11_1] SUB-FLOW:** TGT-F02 Auto-save Run
+- **[f11_2] SUB-FLOW:** TGT-F03 Withdrawal (Flexible, Locked, Early)
+- **[f11_3] SUB-FLOW:** TGT-F04 Maturity
+- **[f12_0] SUB-FLOW:** B-01 Internal Transfer Posting (same platform)
+- **[f12_1] SUB-FLOW:** B-02 Interbank Transfer with Pending and Reversal
+- **[f12_2] SUB-FLOW:** B-03 Inbound Credit
+- **[f12_3] SUB-FLOW:** B-04 Reversal with Dual Control
+- **[f12_4] SUB-FLOW:** B-05 Daily Reconciliation with Zenith
+- **[f12_5] SUB-FLOW:** B-06 Account Creation via Zenith
+- **[f12_6] SUB-FLOW:** B-07 Bill Vend and Refund
+- **[f12_7] SUB-FLOW:** B-08 KYC Verification Pipeline

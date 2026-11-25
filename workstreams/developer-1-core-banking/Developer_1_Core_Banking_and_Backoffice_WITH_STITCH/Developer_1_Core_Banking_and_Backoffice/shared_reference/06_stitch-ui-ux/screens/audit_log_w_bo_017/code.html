@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YourApp Credit Ops - Cryptographic Audit Ledger (W-BO-017)</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary-fixed-dim": "#ffb1c5",
+            "outline-variant": "#dcbfc5",
+            "on-primary": "#ffffff",
+            "on-secondary-fixed": "#410000",
+            "secondary-container": "#fc6955",
+            "on-surface": "#1f1b1c",
+            "on-tertiary": "#ffffff",
+            "surface": "#fff8f8",
+            "on-tertiary-container": "#c6b7bd",
+            "surface-bright": "#fff8f8",
+            "surface-container": "#f5eced",
+            "inverse-on-surface": "#f8eeef",
+            "outline": "#897176",
+            "on-secondary-fixed-variant": "#8c170e",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "on-primary-fixed": "#3f001b",
+            "error-container": "#ffdad6",
+            "on-primary-container": "#ffa0ba",
+            "on-surface-variant": "#564146",
+            "surface-container-highest": "#e9e0e1",
+            "primary-fixed": "#ffd9e1",
+            "on-secondary": "#ffffff",
+            "surface-container-low": "#fbf1f2",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "surface-container-high": "#efe6e7",
+            "surface-variant": "#e9e0e1",
+            "surface-container-lowest": "#ffffff",
+            "on-error": "#ffffff",
+            "secondary-fixed": "#ffdad4",
+            "tertiary-fixed": "#eedee4",
+            "on-background": "#1f1b1c",
+            "surface-dim": "#e1d8d9",
+            "on-primary-fixed-variant": "#881646",
+            "secondary-fixed-dim": "#ffb4a8",
+            "inverse-primary": "#ffb1c5",
+            "on-tertiary-fixed": "#21191e",
+            "surface-tint": "#a8315d",
+            "primary-container": "#8e1b4a",
+            "tertiary-container": "#53484d",
+            "background": "#fff8f8",
+            "primary": "#6d0033",
+            "on-error-container": "#93000a",
+            "secondary": "#ae3123",
+            "inverse-surface": "#342f30",
+            "error": "#ba1a1a",
+            "tertiary": "#3b3236",
+            "on-secondary-container": "#690000"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xl": "1.5rem",
+            "space-md": "0.75rem",
+            "space-2xl": "2rem",
+            "space-sm": "0.5rem",
+            "gutter": "1rem",
+            "margin": "1rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1rem",
+            "space-3xl": "3rem"
+          },
+          "fontFamily": {
+            "amount-lg": ["Inter"],
+            "caption": ["Inter"],
+            "body-medium": ["Inter"],
+            "label": ["Inter"],
+            "display": ["Inter"],
+            "title": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "body": ["Inter"],
+            "subtitle": ["Inter"]
+          },
+          "fontSize": {
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-background text-on-surface antialiased flex h-screen overflow-hidden selection:bg-primary-fixed selection:text-primary">
+<!-- ========================================================================= -->
+<!-- SIDEBAR NAVIGATION (docked left-0 top-0 h-screen w-72 from JSON specs)      -->
+<!-- ========================================================================= -->
+<aside class="fixed left-0 top-0 h-screen w-72 flex flex-col justify-between py-space-xl px-space-lg bg-surface-container-lowest border-r border-surface-variant z-30 overflow-y-auto shadow-sm">
+<div class="flex flex-col gap-space-lg">
+<!-- Crest Brand Header -->
+<div class="flex items-center gap-space-md pb-space-md border-b border-surface-container-highest">
+<div class="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center text-on-primary font-title text-title shadow-sm">
+<span class="material-symbols-outlined" data-icon="shield">shield</span>
+</div>
+<div class="flex flex-col">
+<span class="text-subtitle font-subtitle text-primary tracking-tight">YourApp Credit Ops</span>
+<span class="text-caption font-caption text-on-surface-variant flex items-center gap-1">
+            Enterprise Portal
+            <span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[11px] font-medium bg-surface-container-low text-primary border border-outline-variant">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-container"></span> Active (Prod)
+            </span>
+</span>
+</div>
+</div>
+<!-- Navigation Links -->
+<div class="flex flex-col gap-1">
+<span class="text-caption font-caption text-outline px-space-md py-1 uppercase tracking-wider font-semibold text-[11px]">Core Operational Units</span>
+<!-- Tab 0: Dashboard (Inactive) -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<!-- Tab 1: Applications Queue (Inactive) -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="pending_actions">pending_actions</span>
+<span>Applications Queue</span>
+</a>
+<!-- Tab 2: Credit Portfolio & Collections (Inactive) -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span>Credit Portfolio &amp; Collections</span>
+</a>
+<!-- Tab 3: Product Configuration (Inactive) -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="tune">tune</span>
+<span>Product Configuration</span>
+</a>
+<!-- Tab 4: Partner Settlement (Inactive) -->
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="handshake">handshake</span>
+<span>Partner Settlement</span>
+</a>
+<!-- Governance Section Divider -->
+<span class="text-caption font-caption text-outline px-space-md pt-3 pb-1 uppercase tracking-wider font-semibold text-[11px]">Governance &amp; Ledger</span>
+<!-- Tab 5: Audit Log (Active by semantic mapping) -->
+<div class="flex flex-col">
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg bg-surface-container-low text-primary font-label text-label" href="#">
+<span class="material-symbols-outlined" data-icon="history" data-weight="fill" style="font-variation-settings: 'FILL' 1;">history</span>
+<span class="font-semibold">Audit Log</span>
+</a>
+<!-- Nested Sub-links for active Audit Log -->
+<div class="ml-9 mt-1 flex flex-col gap-0.5 border-l-2 border-outline-variant pl-3">
+<a class="py-1 px-2 text-caption font-caption text-primary font-medium hover:underline flex items-center justify-between" href="#">
+              Cryptographic Trail
+              <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+</a>
+<a class="py-1 px-2 text-caption font-caption text-on-surface-variant hover:text-on-surface hover:underline" href="#">
+              Session Replays
+            </a>
+<a class="py-1 px-2 text-caption font-caption text-on-surface-variant hover:text-on-surface hover:underline" href="#">
+              Regulatory Filings
+            </a>
+</div>
+</div>
+</div>
+</div>
+<!-- Sidebar Footer -->
+<div class="flex flex-col gap-1 pt-space-lg border-t border-surface-container-highest">
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="admin_panel_settings">admin_panel_settings</span>
+<span>Security &amp; Settings</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span>Sign Out</span>
+</a>
+<!-- Institutional Footprint Badge -->
+<div class="mt-2 px-space-md py-2 rounded-lg bg-surface-container text-[11px] font-caption text-on-surface-variant flex items-center justify-between">
+<span class="flex items-center gap-1 font-mono text-[10px]">
+<span class="material-symbols-outlined text-[12px] text-primary" data-icon="lock">lock</span>
+          FIPS 140-3 L4 HSM
+        </span>
+<span class="text-primary font-semibold">ONLINE</span>
+</div>
+</div>
+</aside>
+<!-- ========================================================================= -->
+<!-- MAIN WORKSPACE & TOP BAR                                                  -->
+<!-- ========================================================================= -->
+<div class="ml-72 flex-1 flex flex-col h-screen overflow-hidden">
+<!-- Top Bar Component -->
+<header class="sticky top-0 right-0 h-16 flex items-center justify-between px-space-xl bg-surface-container-lowest border-b border-surface-variant z-20">
+<!-- Left: Breadcrumb and Search Input -->
+<div class="flex items-center gap-space-lg flex-1 max-w-3xl">
+<div class="flex items-center text-caption font-caption text-on-surface-variant truncate">
+<span>Enterprise Back-Office</span>
+<span class="material-symbols-outlined text-[16px] mx-1" data-icon="chevron_right">chevron_right</span>
+<span>System &amp; Governance</span>
+<span class="material-symbols-outlined text-[16px] mx-1" data-icon="chevron_right">chevron_right</span>
+<span class="text-primary font-semibold">Cryptographic Audit Ledger (W-BO-017)</span>
+</div>
+<div class="relative w-80">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-outline text-[18px]" data-icon="search">search</span>
+<input class="w-full pl-9 pr-3 py-1.5 bg-surface-container-low border border-outline-variant rounded-lg text-caption font-caption text-on-surface placeholder:text-outline focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container" placeholder="Search audit trail by actor, IP, session ID, hash, or mandate..." type="text"/>
+</div>
+</div>
+<!-- Right: Telemetry Chips, Notification, Operator Identity -->
+<div class="flex items-center gap-space-md">
+<!-- Live System Telemetry Chips -->
+<div class="hidden xl:flex items-center gap-2">
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container text-caption font-caption text-on-surface-variant border border-outline-variant">
+<span class="material-symbols-outlined text-[14px] text-primary" data-icon="verified_user">verified_user</span>
+<span class="font-medium">HSM Enclave:</span> Armed (v4.2)
+          </div>
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-low text-caption font-caption text-primary border border-outline-variant">
+<span class="material-symbols-outlined text-[14px]" data-icon="lock_clock">lock_clock</span>
+<span class="font-semibold">Ledger:</span> 100% Immutable
+          </div>
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container text-caption font-caption text-on-surface-variant border border-outline-variant">
+<span class="material-symbols-outlined text-[14px] text-secondary" data-icon="how_to_reg">how_to_reg</span>
+<span class="font-medium">Dual-Auth:</span> Active
+          </div>
+</div>
+<!-- Trailing Icon Actions -->
+<button class="w-9 h-9 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors" title="Notifications">
+<span class="material-symbols-outlined text-[20px]" data-icon="notifications">notifications</span>
+</button>
+<button class="w-9 h-9 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors" title="Audit Regulatory Guidance">
+<span class="material-symbols-outlined text-[20px]" data-icon="help_outline">help_outline</span>
+</button>
+<!-- Vertical Divider -->
+<div class="h-6 w-px bg-outline-variant"></div>
+<!-- Operator Passport & Metadata -->
+<div class="flex items-center gap-space-sm pl-1">
+<div class="relative">
+<img alt="Dr. Ernest Okon" class="w-9 h-9 rounded-full object-cover border border-primary-container" data-alt="Dignified portrait passport photo of a senior Nigerian male financial controller wearing gold-rimmed glasses and a charcoal tailored corporate suit, bathed in neutral executive studio lighting against a subtle warm gray background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxYafYJiDcAePg2Be_WXuTrhbUcKcdoqxS7hhjgbQZEMIzzfAVMhYag7iiT-seJp_usfz95lRCwYGcU1OQkvHI2j0aCYb-IaSTR6GRNXyrJUh8d4w5TtFTia4D0Mg-O0lkDcK5Ma7ucf2mPliAkRLe2xnkp3bUAZYerRsGYOuSV8LKC_aokmWFv9dQarAoHmCUVcUO4cnWvAEV6argvZkfzT0JFMjG9H6HUi9JSazp"/>
+<span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-primary border-2 border-surface-container-lowest"></span>
+</div>
+<div class="flex flex-col text-left leading-tight">
+<span class="text-label font-label text-on-surface text-[13px]">Dr. Ernest Okon</span>
+<span class="text-caption font-caption text-outline text-[11px]">Chief Financial Controller</span>
+</div>
+</div>
+</div>
+</header>
+<!-- ======================================================================= -->
+<!-- SCROLLABLE CANVAS WORKSPACE                                             -->
+<!-- ======================================================================= -->
+<main class="flex-1 overflow-y-auto px-space-xl py-space-lg flex flex-col gap-space-lg bg-background">
+<!-- Screen Header Module -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<h1 class="text-title font-title text-primary tracking-tight">Enterprise Immutable Audit Trail &amp; Staff Session Surveillance Desk</h1>
+<span class="px-2 py-0.5 rounded text-[11px] font-label bg-surface-container-high text-primary border border-outline-variant font-mono">
+              W-BO-017
+            </span>
+</div>
+<p class="text-caption font-caption text-on-surface-variant mt-1 max-w-4xl">
+            Authoritative cryptographic ledger logging all staff queries, customer PII unmaskings, dual-authorization signoffs, fund restitution mandates, and automated Sentinel interventions under CBN Statutory Framework.
+          </p>
+</div>
+<div class="flex items-center gap-space-sm shrink-0">
+<button class="h-10 px-4 rounded-xl border border-outline-variant bg-surface-container-lowest text-on-surface hover:bg-surface-container font-label text-caption flex items-center gap-1.5 shadow-sm transition-colors">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="file_download">file_download</span>
+            Export Cryptographic Audit Package (ZIP/CSV)
+          </button>
+<button class="h-10 px-4 rounded-xl bg-primary-container text-on-primary font-label text-caption flex items-center gap-1.5 shadow-sm hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-[16px]" data-icon="sync_lock">sync_lock</span>
+            + Run Ledger Parity Verification
+          </button>
+</div>
+</div>
+<!-- KPI METRIC TILES (4 Columns) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- Tile 1 -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-outline-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-on-surface-variant font-medium">Total Logged Audit Events (24h)</span>
+<span class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]" data-icon="database">database</span>
+</span>
+</div>
+<div class="mt-2">
+<div class="text-title font-title text-on-surface font-amount-lg font-bold tabular-nums">48,920 <span class="text-label font-normal text-on-surface-variant">Events</span></div>
+<div class="text-caption font-caption text-outline mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary" data-icon="verified">verified</span>
+              100% SHA-256 stamped • +3,410 vs daily avg
+            </div>
+</div>
+</div>
+<!-- Tile 2 -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-outline-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-on-surface-variant font-medium">PII Access &amp; Unmask Logs</span>
+<span class="w-8 h-8 rounded-lg bg-error-container text-error flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]" data-icon="visibility">visibility</span>
+</span>
+</div>
+<div class="mt-2">
+<div class="text-title font-title text-on-surface font-amount-lg font-bold tabular-nums">34 <span class="text-label font-normal text-on-surface-variant">Accesses</span></div>
+<div class="text-caption font-caption text-on-surface-variant mt-1 flex items-center gap-1 font-medium">
+<span class="material-symbols-outlined text-[14px] text-primary" data-icon="policy">policy</span>
+              All with recorded statutory justification reason
+            </div>
+</div>
+</div>
+<!-- Tile 3 -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-outline-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-on-surface-variant font-medium">Dual-Control Cosigns</span>
+<span class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[18px]" data-icon="handshake">handshake</span>
+</span>
+</div>
+<div class="mt-2">
+<div class="text-title font-title text-on-surface font-amount-lg font-bold tabular-nums">24 <span class="text-label font-normal text-on-surface-variant">Mandates</span></div>
+<div class="text-caption font-caption text-outline mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary" data-icon="done_all">done_all</span>
+              100% quorum adherence • Level 2/3 signed
+            </div>
+</div>
+</div>
+<!-- Tile 4 -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-outline-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-on-surface-variant font-medium">Ledger Merkle Root Status</span>
+<span class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]" data-icon="hub">hub</span>
+</span>
+</div>
+<div class="mt-2">
+<div class="text-title font-title text-on-surface font-amount-lg font-bold font-mono">Block #892,104</div>
+<div class="text-caption font-caption text-outline mt-1 flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-secondary-container"></span>
+              Continuous 10s sync with CBN node • 0 drift
+            </div>
+</div>
+</div>
+</div>
+<!-- REGULATORY COMPLIANCE MANDATE BANNER -->
+<div class="rounded-xl border border-secondary-container/40 bg-surface-container-low p-space-md flex items-start gap-3">
+<div class="w-7 h-7 rounded-lg bg-secondary-container/20 text-secondary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]" data-icon="gavel">gavel</span>
+</div>
+<div class="flex-1 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div class="text-caption font-caption text-on-surface leading-relaxed">
+<strong class="font-semibold text-primary">NIGERIA DATA PROTECTION ACT (NDPA 2023) &amp; CBN STATUTORY AUDIT MANDATE:</strong>
+            All staff lookups into customer BVN, account balances, or transactional ledgers are cryptographically stamped with immutable IP, session ID, and FIDO2 operator identity. Unauthorized unmasking is subject to instant disciplinary lockout.
+          </div>
+<a class="text-caption font-caption font-semibold text-primary underline whitespace-nowrap shrink-0 hover:text-on-surface" href="#">
+            View Compliance Circular
+          </a>
+</div>
+</div>
+<!-- ===================================================================== -->
+<!-- MAIN TWO-COLUMN CONTENT GRID (Left: w-7/12, Right: w-5/12)            -->
+<!-- ===================================================================== -->
+<div class="grid grid-cols-12 gap-space-lg items-start">
+<!-- LEFT COLUMN: AUDIT EVENTS TABLE & FILTER DESK (7 Cols) -->
+<div class="col-span-12 lg:col-span-7 flex flex-col gap-space-md">
+<div class="rounded-xl bg-surface-container-lowest border border-outline-variant shadow-sm overflow-hidden flex flex-col">
+<!-- Category Tabs Header -->
+<div class="flex items-center overflow-x-auto border-b border-outline-variant px-space-md pt-2 bg-surface-container-low">
+<button class="px-3 py-2 text-caption font-caption font-semibold text-primary border-b-2 border-primary whitespace-nowrap flex items-center gap-1.5">
+                All Events <span class="px-1.5 py-0.2 rounded-full text-[11px] bg-primary text-on-primary">48,920</span>
+</button>
+<button class="px-3 py-2 text-caption font-caption text-on-surface-variant hover:text-on-surface border-b-2 border-transparent whitespace-nowrap flex items-center gap-1.5">
+                High-Privilege / Admin <span class="px-1.5 py-0.2 rounded-full text-[11px] bg-surface-container-high text-on-surface-variant">142</span>
+</button>
+<button class="px-3 py-2 text-caption font-caption text-on-surface-variant hover:text-on-surface border-b-2 border-transparent whitespace-nowrap flex items-center gap-1.5">
+                PII Unmasking <span class="px-1.5 py-0.2 rounded-full text-[11px] bg-error-container text-error font-medium">34</span>
+</button>
+<button class="px-3 py-2 text-caption font-caption text-on-surface-variant hover:text-on-surface border-b-2 border-transparent whitespace-nowrap flex items-center gap-1.5">
+                Dual-Signoff Approvals <span class="px-1.5 py-0.2 rounded-full text-[11px] bg-surface-container-high text-on-surface-variant">24</span>
+</button>
+<button class="px-3 py-2 text-caption font-caption text-on-surface-variant hover:text-on-surface border-b-2 border-transparent whitespace-nowrap flex items-center gap-1.5">
+                Security Alerts <span class="px-1.5 py-0.2 rounded-full text-[11px] bg-surface-container text-secondary">8</span>
+</button>
+</div>
+<!-- Table Filters Bar -->
+<div class="p-space-md border-b border-surface-container-highest flex flex-wrap items-center justify-between gap-2">
+<div class="flex items-center gap-2 flex-1 min-w-[240px]">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-2.5 top-2 text-[16px] text-outline" data-icon="filter_list">filter_list</span>
+<input class="w-full pl-8 pr-2 py-1.5 text-caption font-caption rounded-lg border border-outline-variant bg-surface text-on-surface placeholder:text-outline focus:outline-none focus:border-primary-container" placeholder="Filter by Actor, Action Type, or Hash..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<select class="text-caption font-caption py-1.5 px-2 rounded-lg border border-outline-variant bg-surface text-on-surface focus:outline-none">
+<option>All Actors (Staff &amp; Bot)</option>
+<option>Executive Cosigners</option>
+<option>Ops Level 2</option>
+<option>Sentinel Bots</option>
+</select>
+<select class="text-caption font-caption py-1.5 px-2 rounded-lg border border-outline-variant bg-surface text-on-surface focus:outline-none">
+<option>Today (WAT)</option>
+<option>Past 24 Hours</option>
+<option>Past 7 Days</option>
+<option>Custom Epoch</option>
+</select>
+<button class="p-1.5 rounded-lg border border-outline-variant hover:bg-surface-container text-on-surface-variant" title="Refresh Feed">
+<span class="material-symbols-outlined text-[18px]" data-icon="refresh">refresh</span>
+</button>
+</div>
+</div>
+<!-- Ledger Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container text-on-surface-variant text-[12px] font-caption border-b border-outline-variant">
+<th class="py-2.5 px-space-md font-semibold">Event ID &amp; Actor</th>
+<th class="py-2.5 px-space-md font-semibold">Action Description</th>
+<th class="py-2.5 px-space-md font-semibold">Origin &amp; IP</th>
+<th class="py-2.5 px-space-md font-semibold">SHA-256 Hash</th>
+<th class="py-2.5 px-space-md font-semibold text-right">Integrity Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-highest text-caption font-caption">
+<!-- Row 1: #LOG-99210 -->
+<tr class="hover:bg-surface-container-low transition-colors group cursor-pointer">
+<td class="py-3 px-space-md">
+<div class="flex flex-col">
+<span class="font-mono text-primary font-semibold text-[12px]">#LOG-99210</span>
+<span class="font-medium text-on-surface">Dr. Ernest Okon <span class="text-[11px] text-outline">(CFC)</span></span>
+<span class="text-[11px] text-on-surface-variant">14:18:44 WAT</span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">Statutory MBR 300 Report Export</span>
+<span class="text-[12px] text-on-surface-variant">Cryptographic export dispatched to CBN node</span>
+</div>
+</td>
+<td class="py-3 px-space-md font-mono text-[12px] text-on-surface-variant">
+                      197.210.64.12
+                      <div class="text-[10px] text-outline">Lagos Island HQ</div>
+</td>
+<td class="py-3 px-space-md font-mono text-[11px] text-outline">
+<span class="inline-flex items-center gap-1 bg-surface-container px-1 py-0.5 rounded">
+<span class="material-symbols-outlined text-[11px] text-primary" data-icon="tag">tag</span>
+                        9e83b...110f
+                      </span>
+</td>
+<td class="py-3 px-space-md text-right">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-surface-container text-primary border border-outline-variant">
+<span class="material-symbols-outlined text-[13px]" data-icon="check_circle">check_circle</span>
+                        Verified
+                      </span>
+</td>
+</tr>
+<!-- Row 2: #LOG-99209 -->
+<tr class="hover:bg-surface-container-low transition-colors group cursor-pointer">
+<td class="py-3 px-space-md">
+<div class="flex flex-col">
+<span class="font-mono text-primary font-semibold text-[12px]">#LOG-99209</span>
+<span class="font-medium text-on-surface">Dr. Oluwaseun Adeyemi <span class="text-[11px] text-outline">(CRO)</span></span>
+<span class="text-[11px] text-on-surface-variant">14:16:30 WAT</span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">Restitution Cosign #APV-8821</span>
+<span class="text-[12px] text-on-surface-variant">Dual-signoff release <span class="tabular-nums font-semibold">₦2,500,000</span></span>
+</div>
+</td>
+<td class="py-3 px-space-md font-mono text-[12px] text-on-surface-variant">
+                      197.210.64.12
+                      <div class="text-[10px] text-outline">Lagos Island HQ</div>
+</td>
+<td class="py-3 px-space-md font-mono text-[11px] text-outline">
+<span class="inline-flex items-center gap-1 bg-surface-container px-1 py-0.5 rounded">
+<span class="material-symbols-outlined text-[11px] text-primary" data-icon="tag">tag</span>
+                        b84f2...99a1
+                      </span>
+</td>
+<td class="py-3 px-space-md text-right">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-surface-container-low text-primary border border-outline-variant">
+<span class="material-symbols-outlined text-[13px]" data-icon="how_to_reg">how_to_reg</span>
+                        Level 3 Cosigned
+                      </span>
+</td>
+</tr>
+<!-- Row 3: #LOG-99208 (ACTIVE SELECTED ITEM) -->
+<tr class="bg-surface-container-low/70 border-l-4 border-l-primary-container group cursor-pointer">
+<td class="py-3 px-space-md">
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-mono text-primary font-bold text-[12px]">#LOG-99208</span>
+<span class="px-1 rounded bg-error-container text-error text-[10px] font-semibold">SELECTED</span>
+</div>
+<span class="font-medium text-on-surface">Babatunde Sanni <span class="text-[11px] text-outline">(Ops L2)</span></span>
+<span class="text-[11px] text-on-surface-variant">14:14:02 WAT</span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex flex-col">
+<span class="font-semibold text-primary">Customer PII Unmask (Chinedu Adeleke)</span>
+<span class="text-[12px] text-on-surface-variant">View BVN/Passport (Ticket #8901)</span>
+</div>
+</td>
+<td class="py-3 px-space-md font-mono text-[12px] text-on-surface-variant">
+                      197.210.64.18
+                      <div class="text-[10px] text-outline">Lagos Ops Floor B</div>
+</td>
+<td class="py-3 px-space-md font-mono text-[11px] text-outline">
+<span class="inline-flex items-center gap-1 bg-surface-container-lowest px-1 py-0.5 rounded border border-outline-variant">
+<span class="material-symbols-outlined text-[11px] text-primary" data-icon="tag">tag</span>
+                        77a1c...44e2
+                      </span>
+</td>
+<td class="py-3 px-space-md text-right">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-semibold bg-error-container text-error border border-error/20">
+<span class="material-symbols-outlined text-[13px]" data-icon="policy">policy</span>
+                        Audited Reason Logged
+                      </span>
+</td>
+</tr>
+<!-- Row 4: #LOG-99207 -->
+<tr class="hover:bg-surface-container-low transition-colors group cursor-pointer">
+<td class="py-3 px-space-md">
+<div class="flex flex-col">
+<span class="font-mono text-primary font-semibold text-[12px]">#LOG-99207</span>
+<span class="font-medium text-on-surface">Automated Sentinel Bot</span>
+<span class="text-[11px] text-on-surface-variant">14:11:59 WAT</span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">Force Match Ledger Break #BRK-088</span>
+<span class="text-[12px] text-on-surface-variant">Auto-triage isolation &amp; retry queue lock</span>
+</div>
+</td>
+<td class="py-3 px-space-md font-mono text-[12px] text-on-surface-variant">
+                      System Sub-Node
+                      <div class="text-[10px] text-outline">Internal VPC VPC-01</div>
+</td>
+<td class="py-3 px-space-md font-mono text-[11px] text-outline">
+<span class="inline-flex items-center gap-1 bg-surface-container px-1 py-0.5 rounded">
+<span class="material-symbols-outlined text-[11px] text-primary" data-icon="tag">tag</span>
+                        31c90...02db
+                      </span>
+</td>
+<td class="py-3 px-space-md text-right">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-surface-container-high text-on-surface-variant border border-outline-variant">
+<span class="material-symbols-outlined text-[13px]" data-icon="smart_toy">smart_toy</span>
+                        System Event
+                      </span>
+</td>
+</tr>
+<!-- Row 5: #LOG-99206 -->
+<tr class="hover:bg-surface-container-low transition-colors group cursor-pointer">
+<td class="py-3 px-space-md">
+<div class="flex flex-col">
+<span class="font-mono text-primary font-semibold text-[12px]">#LOG-99206</span>
+<span class="font-medium text-on-surface">Ifeoma Okonkwo <span class="text-[11px] text-outline">(Growth)</span></span>
+<span class="text-[11px] text-on-surface-variant">14:08:15 WAT</span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">Campaign Staging Limit Update #CFG-2027</span>
+<span class="text-[12px] text-on-surface-variant">KYC Tier 2 transaction cap revision</span>
+</div>
+</td>
+<td class="py-3 px-space-md font-mono text-[12px] text-on-surface-variant">
+                      197.210.64.25
+                      <div class="text-[10px] text-outline">Abuja Hub Annex</div>
+</td>
+<td class="py-3 px-space-md font-mono text-[11px] text-outline">
+<span class="inline-flex items-center gap-1 bg-surface-container px-1 py-0.5 rounded">
+<span class="material-symbols-outlined text-[11px] text-primary" data-icon="tag">tag</span>
+                        d912e...66f1
+                      </span>
+</td>
+<td class="py-3 px-space-md text-right">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-surface-container text-secondary border border-outline-variant">
+<span class="material-symbols-outlined text-[13px]" data-icon="pending">pending</span>
+                        Staged for Cosign
+                      </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Pagination & Footer -->
+<div class="p-space-md border-t border-surface-container-highest flex items-center justify-between text-caption font-caption text-on-surface-variant bg-surface-container-lowest">
+<span class="tabular-nums">Showing <strong>1 - 5</strong> of 48,920 records (Indexed continuously)</span>
+<div class="flex items-center gap-1">
+<button class="px-2.5 py-1 rounded border border-outline-variant bg-surface text-outline cursor-not-allowed">Previous</button>
+<button class="px-2.5 py-1 rounded border border-primary-container bg-primary-container text-on-primary font-semibold">1</button>
+<button class="px-2.5 py-1 rounded border border-outline-variant hover:bg-surface-container">2</button>
+<button class="px-2.5 py-1 rounded border border-outline-variant hover:bg-surface-container">3</button>
+<span class="px-1 text-outline">...</span>
+<button class="px-2.5 py-1 rounded border border-outline-variant hover:bg-surface-container">9,784</button>
+<button class="px-2.5 py-1 rounded border border-outline-variant hover:bg-surface-container">Next</button>
+</div>
+</div>
+</div>
+<!-- Forensic Ingestion Node Card -->
+<div class="p-space-md rounded-xl bg-surface-container border border-outline-variant flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-surface-container-lowest border border-outline-variant flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]" data-icon="lan">lan</span>
+</div>
+<div class="flex flex-col">
+<span class="text-label font-label text-on-surface">Live Ledger Sync Stream</span>
+<span class="text-caption font-caption text-on-surface-variant">Connected to CBN Regulatory Node NG-CBN-LEDGER-04 • WebSocket wss://audit.cbn.gov.ng</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary-container animate-pulse"></span>
+<span class="text-caption font-caption font-mono font-medium text-primary">ZERO LOSS (0 DROPPED)</span>
+</div>
+</div>
+</div>
+<!-- RIGHT COLUMN: AUDIT EVENT INSPECTOR & FORENSIC DOSSIER (5 Cols) -->
+<div class="col-span-12 lg:col-span-5 flex flex-col gap-space-md">
+<div class="rounded-xl bg-surface-container-lowest border border-outline-variant shadow-sm p-space-lg flex flex-col gap-space-lg">
+<!-- Inspector Header Block -->
+<div class="flex items-start justify-between border-b border-surface-container-highest pb-space-md">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="text-caption font-caption uppercase tracking-wider font-semibold text-outline text-[11px]">Forensic Event Dossier</span>
+<span class="px-2 py-0.5 rounded text-[11px] font-mono font-semibold bg-error-container text-error border border-error/20">
+                    SENSITIVE ACCESS
+                  </span>
+</div>
+<h2 class="text-subtitle font-subtitle text-primary mt-1">#LOG-99208</h2>
+<span class="text-caption font-caption text-on-surface-variant">Timestamp: Today, 14:14:02.882 WAT (Sync UTC+1)</span>
+</div>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-outline hover:bg-surface-container hover:text-on-surface" title="Close Panel">
+<span class="material-symbols-outlined text-[20px]" data-icon="close">close</span>
+</button>
+</div>
+<!-- Block 1: Actor Identity & Network Environment -->
+<div class="flex flex-col gap-2">
+<span class="text-caption font-caption font-semibold text-on-surface uppercase tracking-wider text-[11px] flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px] text-primary" data-icon="badge">badge</span>
+                1. Operator &amp; Workstation Signature
+              </span>
+<div class="p-space-md rounded-lg bg-surface-container-low border border-outline-variant flex flex-col gap-2 text-caption font-caption">
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant">Operator Identity:</span>
+<span class="font-semibold text-on-surface">Babatunde Sanni <span class="text-outline font-normal">(Staff ID #OPS-449)</span></span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant">Role &amp; Authorization Level:</span>
+<span class="font-medium text-on-surface">Senior Operations Specialist (Level 2)</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant">Workstation Source IP:</span>
+<span class="font-mono text-primary font-medium">197.210.64.18 (Head Office Floor B)</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant">VPN &amp; Enclave Session:</span>
+<span class="font-mono text-[12px] text-on-surface">WireGuard-v4 • Split-Tunnel Prohibited</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant">Operator MFA Protocol:</span>
+<span class="inline-flex items-center gap-1 text-[11px] font-medium text-primary">
+<span class="material-symbols-outlined text-[13px]" data-icon="fingerprint">fingerprint</span>
+                    FIDO2 WebAuthn Stamped (Key #TK-902)
+                  </span>
+</div>
+</div>
+</div>
+<!-- Block 2: Targeted Sensitive Resource -->
+<div class="flex flex-col gap-2">
+<span class="text-caption font-caption font-semibold text-on-surface uppercase tracking-wider text-[11px] flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px] text-secondary" data-icon="person_search">person_search</span>
+                2. Target Customer PII Payload
+              </span>
+<div class="p-space-md rounded-lg bg-surface-container border border-outline-variant flex flex-col gap-2 text-caption font-caption">
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant">Account Holder:</span>
+<span class="font-semibold text-on-surface">Chinedu Adeleke</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant">Customer CIF / Ref:</span>
+<span class="font-mono text-on-surface">#CUST-984210</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant">Unmasked Attributes:</span>
+<div class="flex items-center gap-1">
+<span class="px-1.5 py-0.5 rounded bg-error-container text-error text-[11px] font-semibold">Decrypted BVN</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-high text-on-surface-variant text-[11px]">Passport Scan</span>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant">Unmask Duration:</span>
+<span class="font-mono text-on-surface tabular-nums">42 seconds (Auto-remasked at 14:14:44)</span>
+</div>
+</div>
+</div>
+<!-- Block 3: Statutory Justification Note -->
+<div class="flex flex-col gap-2">
+<span class="text-caption font-caption font-semibold text-on-surface uppercase tracking-wider text-[11px] flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px] text-primary" data-icon="description">description</span>
+                3. Mandatory NDPA Justification Reason
+              </span>
+<div class="p-space-md rounded-lg bg-surface-container-lowest border border-outline-variant flex flex-col gap-1 text-caption font-caption">
+<div class="text-[11px] text-outline font-medium">Entered into CRM prompt prior to AES decryption:</div>
+<blockquote class="italic text-on-surface text-[13px] border-l-2 border-primary-container pl-2 my-1">
+                  "Investigating customer duplicate debit escalation under Support Ticket #TKT-8901 and fast-track restitution mandate #APV-8821 for ₦2,500,000 reversal reconciliation."
+                </blockquote>
+<div class="flex items-center justify-between text-[11px] text-on-surface-variant pt-1 border-t border-surface-container-highest">
+<span>Linked CRM Ticket: <a class="font-mono text-primary font-semibold underline" href="#">#TKT-8901</a></span>
+<span class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[12px]" data-icon="lock">lock</span> Signed by Supervisor
+                  </span>
+</div>
+</div>
+</div>
+<!-- Block 4: Cryptographic Proof & Ledger Merkle Chain -->
+<div class="flex flex-col gap-2">
+<span class="text-caption font-caption font-semibold text-on-surface uppercase tracking-wider text-[11px] flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px] text-primary" data-icon="enhanced_encryption">enhanced_encryption</span>
+                4. Cryptographic Attestation Block
+              </span>
+<div class="p-space-md rounded-lg bg-surface-container-high border border-outline-variant flex flex-col gap-1.5 font-mono text-[11px]">
+<div class="flex justify-between">
+<span class="text-on-surface-variant font-sans">Merkle Block:</span>
+<span class="font-bold text-on-surface">#892,103</span>
+</div>
+<div class="flex flex-col">
+<span class="text-on-surface-variant font-sans">Previous Block Hash:</span>
+<span class="text-outline truncate">000a9f82bc7190d8a8726e10293847ac...e102</span>
+</div>
+<div class="flex flex-col">
+<span class="text-on-surface-variant font-sans">Current Log Hash (SHA-256):</span>
+<span class="text-primary font-bold truncate">77a1c43b92d8f99ad0018bc72110c...44e2</span>
+</div>
+<div class="flex items-center justify-between pt-1 border-t border-outline-variant font-sans text-caption">
+<span class="text-on-surface-variant">Signature Enclave:</span>
+<span class="text-primary font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="hardware">hardware</span>
+                    Slot #3 Hardware Verified
+                  </span>
+</div>
+</div>
+</div>
+<!-- Dossier Actions Cluster -->
+<div class="flex flex-col gap-2 pt-2 border-t border-surface-container-highest">
+<button class="w-full h-11 rounded-xl bg-primary-container text-on-primary font-label text-caption flex items-center justify-center gap-2 hover:bg-primary transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="picture_as_pdf">picture_as_pdf</span>
+                Download Signed Forensic Evidence Package (PDF)
+              </button>
+<div class="grid grid-cols-2 gap-2">
+<button class="h-10 rounded-xl bg-surface-container-low text-primary font-label text-caption border border-outline-variant flex items-center justify-center gap-1.5 hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[16px]" data-icon="videocam">videocam</span>
+                  Inspect Screen Replay
+                </button>
+<button class="h-10 rounded-xl bg-surface-container-lowest text-secondary font-label text-caption border border-outline-variant flex items-center justify-center gap-1.5 hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[16px]" data-icon="flag">flag</span>
+                  Flag for Review
+                </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- ======================================================================= -->
+<!-- BOTTOM TELEMETRY BAR & AUDIT FOOTER                                     -->
+<!-- ======================================================================= -->
+<footer class="h-9 px-space-xl bg-surface-container-lowest border-t border-surface-variant flex items-center justify-between text-caption font-caption text-on-surface-variant text-[12px] z-10 shrink-0">
+<div class="flex items-center gap-space-lg">
+<span class="flex items-center gap-1.5 text-primary font-medium">
+<span class="w-2 h-2 rounded-full bg-secondary-container"></span>
+          Central Bank Supervisory Interconnect v4.8 (Active)
+        </span>
+<span class="hidden md:inline text-outline">•</span>
+<span class="hidden md:inline font-mono text-[11px] text-outline truncate max-w-sm">
+          Master Root Hash: 0x93FA...DE88102A_VALID
+        </span>
+</div>
+<div class="flex items-center gap-space-lg">
+<span class="text-outline">Nigeria Data Protection Commission (NDPC) Compliance ID: NG-DPC-2023-9912</span>
+<span class="text-on-surface font-mono font-medium">WAT (UTC+01:00)</span>
+</div>
+</footer>
+</div>
+</body></html>

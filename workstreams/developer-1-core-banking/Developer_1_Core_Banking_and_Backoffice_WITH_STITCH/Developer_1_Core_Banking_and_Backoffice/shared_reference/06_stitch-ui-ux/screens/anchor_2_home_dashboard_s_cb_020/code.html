@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YourApp - Home (S-CB-020)</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary": "#ffffff",
+            "secondary-container": "#fc6955",
+            "surface-bright": "#fff8f8",
+            "surface-container-lowest": "#ffffff",
+            "on-error": "#ffffff",
+            "surface-tint": "#a8315d",
+            "on-primary-container": "#ffa0ba",
+            "surface-dim": "#e1d8d9",
+            "on-primary-fixed": "#3f001b",
+            "inverse-primary": "#ffb1c5",
+            "outline": "#897176",
+            "secondary-fixed": "#ffdad4",
+            "on-secondary-fixed": "#410000",
+            "on-tertiary-fixed": "#21191e",
+            "on-primary": "#ffffff",
+            "on-tertiary-container": "#c6b7bd",
+            "secondary-fixed-dim": "#ffb4a8",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "surface-container-high": "#efe6e7",
+            "on-secondary-container": "#690000",
+            "primary-fixed": "#ffd9e1",
+            "background": "#fff8f8",
+            "on-surface-variant": "#564146",
+            "inverse-on-surface": "#f8eeef",
+            "on-tertiary": "#ffffff",
+            "surface-container": "#f5eced",
+            "surface-container-low": "#fbf1f2",
+            "inverse-surface": "#342f30",
+            "tertiary": "#3b3236",
+            "tertiary-container": "#53484d",
+            "on-surface": "#1f1b1c",
+            "on-secondary-fixed-variant": "#8c170e",
+            "primary-container": "#8e1b4a",
+            "primary": "#6d0033",
+            "error": "#ba1a1a",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "tertiary-fixed": "#eedee4",
+            "surface-container-highest": "#e9e0e1",
+            "on-primary-fixed-variant": "#881646",
+            "surface-variant": "#e9e0e1",
+            "outline-variant": "#dcbfc5",
+            "on-error-container": "#93000a",
+            "on-background": "#1f1b1c",
+            "secondary": "#ae3123",
+            "surface": "#fff8f8",
+            "error-container": "#ffdad6",
+            "primary-fixed-dim": "#ffb1c5"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "1rem",
+            "space-xl": "1.5rem",
+            "space-lg": "1rem",
+            "space-3xl": "3rem",
+            "space-2xl": "2rem",
+            "space-sm": "0.5rem",
+            "space-md": "0.75rem",
+            "gutter": "1rem",
+            "space-xs": "0.25rem"
+          },
+          "fontFamily": {
+            "body-medium": ["Inter"],
+            "label": ["Inter"],
+            "caption": ["Inter"],
+            "title": ["Inter"],
+            "subtitle": ["Inter"],
+            "body": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "display": ["Inter"],
+            "amount-lg": ["Inter"]
+          },
+          "fontSize": {
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased font-body selection:bg-primary-fixed selection:text-on-primary-fixed">
+<div class="min-h-screen max-w-[560px] mx-auto bg-surface-bright flex flex-col relative pb-28 shadow-xl shadow-surface-dim/40">
+<!-- Top App Bar -->
+<header class="flex justify-between items-center w-full px-margin py-space-sm max-w-[560px] mx-auto min-h-[56px] sticky top-0 z-40 bg-surface/90 backdrop-blur-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-subtitle text-body font-semibold shadow-sm">
+          TA
+        </div>
+<div>
+<span class="font-caption text-caption text-on-surface-variant block leading-tight">Good morning,</span>
+<span class="font-body-medium text-body-medium text-on-surface font-semibold block leading-tight">Tunde</span>
+</div>
+</div>
+<div class="font-title text-title font-bold text-primary dark:text-primary-fixed tracking-tight">
+        YourApp
+      </div>
+<div class="flex items-center gap-space-xs">
+<button aria-label="Notifications" class="relative w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container transition-colors duration-200 active:scale-95" type="button">
+<span class="material-symbols-outlined text-[24px]">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-secondary ring-2 ring-surface-bright"></span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="px-margin flex flex-col gap-space-xl pt-space-sm">
+<!-- Balance Card -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg border border-[#E4DEDC] shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] relative overflow-hidden">
+<div class="flex items-center justify-between mb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="font-caption text-caption text-on-surface-variant">Available balance</span>
+<button aria-label="Toggle balance visibility" class="text-on-surface-variant hover:text-primary transition-colors flex items-center" id="toggle-balance" type="button">
+<span class="material-symbols-outlined text-[18px]" id="eye-icon">visibility</span>
+</button>
+</div>
+<span class="font-caption text-caption font-medium px-space-xs py-[2px] bg-surface-container text-primary rounded-md flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Active Tier 2
+          </span>
+</div>
+<div class="my-space-xs flex items-baseline">
+<span class="font-amount-lg-mobile text-amount-lg-mobile font-bold text-on-surface tabular-nums tracking-tight" id="balance-display">₦142,850.00</span>
+</div>
+<div class="pt-space-xs flex items-center justify-between border-t border-[#E4DEDC]/60 mt-space-sm">
+<button class="inline-flex items-center gap-space-xs bg-surface-container-low px-space-sm py-1.5 rounded-lg border border-[#E4DEDC] hover:bg-surface-container transition-colors active:scale-95" type="button">
+<span class="font-caption text-caption text-on-surface-variant tabular-nums">Zenith Partner • 0123456789</span>
+<span class="material-symbols-outlined text-[16px] text-primary">content_copy</span>
+</button>
+<span class="font-caption text-caption text-on-surface-variant font-medium">Tier limit: ₦500k</span>
+</div>
+</section>
+<!-- Quick Actions (5 Round Buttons) -->
+<section aria-label="Quick Actions">
+<div class="grid grid-cols-5 gap-space-xs sm:gap-space-sm text-center">
+<!-- Send -->
+<button class="flex flex-col items-center gap-space-xs group active:scale-95 transition-transform duration-150" type="button">
+<div class="w-[52px] h-[52px] rounded-full bg-primary-container text-on-primary flex items-center justify-center shadow-sm group-hover:bg-[#731540] transition-colors">
+<span class="material-symbols-outlined text-[22px]">call_made</span>
+</div>
+<span class="font-caption text-caption font-medium text-on-surface group-hover:text-primary transition-colors">Send</span>
+</button>
+<!-- Airtime & Bills -->
+<button class="flex flex-col items-center gap-space-xs group active:scale-95 transition-transform duration-150" type="button">
+<div class="w-[52px] h-[52px] rounded-full bg-surface-container text-primary flex items-center justify-center border border-[#E4DEDC] group-hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[22px]">receipt_long</span>
+</div>
+<span class="font-caption text-caption font-medium text-on-surface group-hover:text-primary transition-colors text-center truncate max-w-full">Bills</span>
+</button>
+<!-- Add money -->
+<button class="flex flex-col items-center gap-space-xs group active:scale-95 transition-transform duration-150" type="button">
+<div class="w-[52px] h-[52px] rounded-full bg-surface-container text-primary flex items-center justify-center border border-[#E4DEDC] group-hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[22px]">add</span>
+</div>
+<span class="font-caption text-caption font-medium text-on-surface group-hover:text-primary transition-colors text-center truncate max-w-full">Add money</span>
+</button>
+<!-- Cards -->
+<button class="flex flex-col items-center gap-space-xs group active:scale-95 transition-transform duration-150" type="button">
+<div class="w-[52px] h-[52px] rounded-full bg-surface-container text-primary flex items-center justify-center border border-[#E4DEDC] group-hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[22px]">credit_card</span>
+</div>
+<span class="font-caption text-caption font-medium text-on-surface group-hover:text-primary transition-colors">Cards</span>
+</button>
+<!-- Savings -->
+<button class="flex flex-col items-center gap-space-xs group active:scale-95 transition-transform duration-150" type="button">
+<div class="w-[52px] h-[52px] rounded-full bg-surface-container text-primary flex items-center justify-center border border-[#E4DEDC] group-hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[22px]">savings</span>
+</div>
+<span class="font-caption text-caption font-medium text-on-surface group-hover:text-primary transition-colors">Savings</span>
+</button>
+</div>
+</section>
+<!-- Bank-Card Carousel Peek -->
+<section aria-label="My Cards">
+<div class="flex items-center justify-between mb-space-sm">
+<h2 class="font-subtitle text-body-medium font-semibold text-on-surface">My Cards</h2>
+<span class="font-caption text-caption text-primary font-medium">Manage (1/2)</span>
+</div>
+<div class="flex gap-space-md overflow-x-auto no-scrollbar pb-space-xs -mx-margin px-margin snap-x snap-mandatory">
+<!-- Berry Gradient Debit Card -->
+<div class="snap-start shrink-0 w-[270px] h-[165px] rounded-xl bg-gradient-to-br from-[#8E1B4A] via-[#731540] to-[#510B2B] text-on-primary p- space-md p-4 flex flex-col justify-between relative overflow-hidden shadow-[0_8px_20px_-4px_rgba(142,27,74,0.3)]">
+<!-- Subtle geometric watermark background -->
+<div class="absolute -right-6 -bottom-6 w-36 h-36 rounded-full border-[18px] border-white/10 pointer-events-none"></div>
+<div class="absolute right-12 -top-8 w-24 h-24 rounded-full bg-white/5 pointer-events-none"></div>
+<div class="flex justify-between items-start relative z-10">
+<div class="flex items-center gap-2">
+<span class="font-title text-body font-bold tracking-wider text-white">YourApp</span>
+<span class="text-[10px] uppercase font-semibold bg-white/20 px-1.5 py-0.5 rounded text-white tracking-widest">Virtual</span>
+</div>
+<span class="material-symbols-outlined text-white/80 text-[22px]">contactless</span>
+</div>
+<div class="relative z-10 my-auto">
+<div class="font-caption text-caption text-white/70 text-[11px] uppercase tracking-wider">Card Number</div>
+<div class="font-body-medium text-body tracking-[0.2em] font-medium text-white tabular-nums">•••• 4821</div>
+</div>
+<div class="flex justify-between items-end relative z-10">
+<div>
+<div class="font-caption text-caption text-white/70 text-[10px] uppercase">Cardholder</div>
+<div class="font-label text-label font-semibold text-white tracking-wide">Tunde Adeleke</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="text-right">
+<div class="font-caption text-caption text-white/70 text-[10px] uppercase">Expires</div>
+<div class="font-caption text-caption font-semibold text-white tabular-nums">08/27</div>
+</div>
+<!-- Network mark placeholder -->
+<div class="flex -space-x-2 items-center">
+<div class="w-5 h-5 rounded-full bg-red-400/90"></div>
+<div class="w-5 h-5 rounded-full bg-amber-400/90"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Create Card Tile -->
+<div class="snap-start shrink-0 w-[140px] h-[165px] rounded-xl bg-surface-container-lowest border-2 border-dashed border-[#E4DEDC] flex flex-col items-center justify-center gap-space-sm p-4 hover:border-primary/50 transition-colors cursor-pointer group active:scale-95">
+<div class="w-12 h-12 rounded-full bg-surface-container text-primary flex items-center justify-center group-hover:bg-primary-container group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-[24px]">add</span>
+</div>
+<div class="text-center">
+<span class="font-label text-caption font-semibold text-on-surface block leading-tight">Create card</span>
+<span class="font-caption text-[11px] text-on-surface-variant block mt-0.5">USD or NGN</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Recent Activity Section -->
+<section aria-label="Recent activity" class="flex flex-col gap-space-sm">
+<div class="flex justify-between items-center">
+<h2 class="font-subtitle text-subtitle text-on-surface">Recent activity</h2>
+<a class="font-label text-label text-primary font-semibold hover:underline flex items-center gap-0.5" href="#see-all">
+            See all
+            <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+<!-- Transaction Rows Card Container -->
+<div class="bg-surface-container-lowest rounded-xl border border-[#E4DEDC] divide-y divide-[#E4DEDC]/70 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)] overflow-hidden">
+<!-- Row 1: Transfer to Chioma -->
+<div class="flex items-center justify-between p-space-md hover:bg-surface-container-low transition-colors cursor-pointer min-h-[64px]">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-red-50 text-secondary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">arrow_outward</span>
+</div>
+<div>
+<span class="font-body-medium text-body-medium font-semibold text-on-surface block leading-tight">Chioma Okonjo</span>
+<span class="font-caption text-caption text-on-surface-variant block leading-tight mt-0.5">Lunch repayment • Today 11:20 AM</span>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="font-body-medium text-body-medium font-semibold text-on-surface block tabular-nums leading-tight">-₦4,500.00</span>
+<span class="inline-flex items-center gap-1 font-caption text-[11px] font-medium text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded-md mt-0.5">
+<span class="material-symbols-outlined text-[13px]">check_circle</span>
+                Successful
+              </span>
+</div>
+</div>
+<!-- Row 2: Inbound Zenith Babatunde -->
+<div class="flex items-center justify-between p-space-md hover:bg-surface-container-low transition-colors cursor-pointer min-h-[64px]">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">call_received</span>
+</div>
+<div>
+<span class="font-body-medium text-body-medium font-semibold text-on-surface block leading-tight">Babatunde A.</span>
+<span class="font-caption text-caption text-on-surface-variant block leading-tight mt-0.5">Zenith Bank transfer • Yesterday</span>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="font-body-medium text-body-medium font-semibold text-emerald-700 block tabular-nums leading-tight">+₦50,000.00</span>
+<span class="inline-flex items-center gap-1 font-caption text-[11px] font-medium text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded-md mt-0.5">
+<span class="material-symbols-outlined text-[13px]">check_circle</span>
+                Successful
+              </span>
+</div>
+</div>
+<!-- Row 3: MTN Airtime -->
+<div class="flex items-center justify-between p-space-md hover:bg-surface-container-low transition-colors cursor-pointer min-h-[64px]">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-amber-50 text-amber-700 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">smartphone</span>
+</div>
+<div>
+<span class="font-body-medium text-body-medium font-semibold text-on-surface block leading-tight">MTN Airtime &amp; Data</span>
+<span class="font-caption text-caption text-on-surface-variant block leading-tight mt-0.5">Mobile Top-up • 24 Oct</span>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="font-body-medium text-body-medium font-semibold text-on-surface block tabular-nums leading-tight">-₦2,000.00</span>
+<span class="inline-flex items-center gap-1 font-caption text-[11px] font-medium text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded-md mt-0.5">
+<span class="material-symbols-outlined text-[13px]">check_circle</span>
+                Successful
+              </span>
+</div>
+</div>
+<!-- Row 4: Ikeja Electric Dues -->
+<div class="flex items-center justify-between p-space-md hover:bg-surface-container-low transition-colors cursor-pointer min-h-[64px]">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-orange-50 text-secondary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">bolt</span>
+</div>
+<div>
+<span class="font-body-medium text-body-medium font-semibold text-on-surface block leading-tight">Ikeja Electric Dues</span>
+<span class="font-caption text-caption text-on-surface-variant block leading-tight mt-0.5">Utility Bills • 22 Oct</span>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="font-body-medium text-body-medium font-semibold text-on-surface block tabular-nums leading-tight">-₦12,500.00</span>
+<span class="inline-flex items-center gap-1 font-caption text-[11px] font-medium text-amber-800 bg-amber-100/70 px-1.5 py-0.5 rounded-md mt-0.5">
+<span class="material-symbols-outlined text-[13px]">schedule</span>
+                Pending
+              </span>
+</div>
+</div>
+<!-- Row 5: Target Savings Auto-save -->
+<div class="flex items-center justify-between p-space-md hover:bg-surface-container-low transition-colors cursor-pointer min-h-[64px]">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-purple-50 text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">savings</span>
+</div>
+<div>
+<span class="font-body-medium text-body-medium font-semibold text-on-surface block leading-tight">Target Savings Auto-save</span>
+<span class="font-caption text-caption text-on-surface-variant block leading-tight mt-0.5">'New Laptop' plan • 20 Oct</span>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="font-body-medium text-body-medium font-semibold text-on-surface block tabular-nums leading-tight">-₦10,000.00</span>
+<span class="inline-flex items-center gap-1 font-caption text-[11px] font-medium text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded-md mt-0.5">
+<span class="material-symbols-outlined text-[13px]">check_circle</span>
+                Successful
+              </span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Shared Component Execution) -->
+<nav class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-margin h-16 max-w-[560px] mx-auto pb-safe bg-surface-container-lowest dark:bg-surface-container border-t border-outline-variant/40 dark:border-outline-variant/20 shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)]">
+<!-- Tab 1: Home (ACTIVE) -->
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed font-semibold min-w-[48px] py-space-xs gap-space-xs active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-caption text-caption font-medium">Home</span>
+</a>
+<!-- Tab 2: Payments -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[24px]">send</span>
+<span class="font-caption text-caption font-medium">Payments</span>
+</a>
+<!-- Tab 3: Cards -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[24px]">credit_card</span>
+<span class="font-caption text-caption font-medium">Cards</span>
+</a>
+<!-- Tab 4: Save & Borrow -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[24px]">savings</span>
+<span class="font-caption text-caption font-medium">Save &amp; Borrow</span>
+</a>
+<!-- Tab 5: More -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[24px]">more_horiz</span>
+<span class="font-caption text-caption font-medium">More</span>
+</a>
+</nav>
+</div>
+<script>
+    // Micro-interaction: Hide/Show Balance
+    const toggleBtn = document.getElementById('toggle-balance');
+    const balanceDisplay = document.getElementById('balance-display');
+    const eyeIcon = document.getElementById('eye-icon');
+    let isHidden = false;
+    const realAmount = '₦142,850.00';
+    const maskedAmount = '₦••••••••';
+
+    toggleBtn.addEventListener('click', () => {
+      isHidden = !isHidden;
+      if (isHidden) {
+        balanceDisplay.textContent = maskedAmount;
+        eyeIcon.textContent = 'visibility_off';
+      } else {
+        balanceDisplay.textContent = realAmount;
+        eyeIcon.textContent = 'visibility';
+      }
+    });
+  </script>
+</body></html>

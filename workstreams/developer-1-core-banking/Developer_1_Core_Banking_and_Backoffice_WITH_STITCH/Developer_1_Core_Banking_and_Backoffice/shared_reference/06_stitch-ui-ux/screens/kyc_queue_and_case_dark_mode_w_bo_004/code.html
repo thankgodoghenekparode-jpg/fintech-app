@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YourApp Credit Ops - KYC Queue and Case (W-BO-004)</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary": "#ffb4a8",
+            "on-tertiary-container": "#002a69",
+            "on-surface": "#e7e1e2",
+            "on-background": "#e7e1e2",
+            "on-error": "#690005",
+            "on-secondary-fixed-variant": "#7f291e",
+            "primary-fixed-dim": "#ffb0ca",
+            "on-primary-container": "#5d0331",
+            "outline-variant": "#544247",
+            "surface-container-high": "#2c292a",
+            "on-tertiary-fixed-variant": "#06429a",
+            "on-tertiary": "#002d6f",
+            "outline": "#a28b91",
+            "surface-container": "#211f20",
+            "primary-container": "#e0709a",
+            "on-secondary-container": "#ff9f90",
+            "inverse-primary": "#9e3b63",
+            "on-error-container": "#ffdad6",
+            "inverse-on-surface": "#323031",
+            "surface-dim": "#151314",
+            "secondary-fixed": "#ffdad4",
+            "on-primary": "#620735",
+            "tertiary": "#b0c6ff",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "on-primary-fixed-variant": "#7f234b",
+            "secondary-fixed-dim": "#ffb4a8",
+            "error": "#ffb4ab",
+            "tertiary-container": "#6a92ee",
+            "surface-container-low": "#1d1b1c",
+            "error-container": "#93000a",
+            "on-surface-variant": "#dac0c6",
+            "surface-container-highest": "#373435",
+            "on-primary-fixed": "#3e001f",
+            "surface": "#151314",
+            "on-tertiary-fixed": "#001945",
+            "inverse-surface": "#e7e1e2",
+            "surface-bright": "#3b3839",
+            "surface-tint": "#ffb0ca",
+            "on-secondary-fixed": "#410000",
+            "primary-fixed": "#ffd9e3",
+            "primary": "#ffb0ca",
+            "surface-variant": "#373435",
+            "surface-container-lowest": "#100e0f",
+            "on-secondary": "#61130a",
+            "tertiary-fixed": "#d9e2ff",
+            "secondary-container": "#822c20",
+            "background": "#151314"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "1rem",
+            "gutter": "1rem",
+            "space-lg": "1.5rem",
+            "space-xs": "0.25rem",
+            "margin-mobile": "1rem",
+            "space-sm": "0.5rem",
+            "gutter-mobile": "0.75rem",
+            "space-xl": "2rem",
+            "space-md": "1rem"
+          },
+          "fontFamily": {
+            "title-currency": ["Inter"],
+            "label-lg": ["Inter"],
+            "headline-lg": ["Inter"],
+            "headline-sm": ["Inter"],
+            "label-md": ["Inter"],
+            "headline-md": ["Inter"],
+            "label-sm": ["Inter"],
+            "body-lg": ["Inter"],
+            "body-md": ["Inter"],
+            "display-currency": ["Inter"]
+          },
+          "fontSize": {
+            "title-currency": ["20px", {"lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "label-lg": ["15px", {"lineHeight": "20px", "fontWeight": "600"}],
+            "headline-lg": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+            "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+            "label-md": ["13px", {"lineHeight": "18px", "fontWeight": "500"}],
+            "headline-md": ["22px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+            "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+            "display-currency": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      font-size: 20px;
+      line-height: 1;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #151314;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #373435;
+      border-radius: 3px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #544247;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased font-body-md text-body-md min-h-screen flex selection:bg-primary selection:text-on-primary overflow-x-hidden">
+<!-- Side Navigation Bar -->
+<aside class="fixed left-0 top-0 h-full w-72 flex flex-col justify-between py-space-xl px-space-lg overflow-y-auto bg-surface-container-lowest border-r border-outline-variant z-30 shadow-none">
+<div class="flex flex-col gap-space-lg">
+<!-- Institutional Crest & Identity -->
+<div class="flex items-center gap-space-md px-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest border border-outline-variant flex items-center justify-center text-primary font-bold">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+</div>
+<div class="flex flex-col">
+<span class="text-headline-sm font-headline-sm text-inverse-primary tracking-tight">YourApp Credit Ops</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Enterprise Portal</span>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="flex flex-col gap-1.5 mt-space-sm">
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-container hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg bg-surface-container text-inverse-primary font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">pending_actions</span>
+<span>Applications Queue</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-container hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span>Credit Portfolio &amp; Collections</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-container hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined">tune</span>
+<span>Product Configuration</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-container hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined">handshake</span>
+<span>Partner Settlement</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-container hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined">history</span>
+<span>Audit Log</span>
+</a>
+</nav>
+</div>
+<!-- Footer Nav Items -->
+<div class="flex flex-col gap-1.5 pt-space-md border-t border-outline-variant">
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-container hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined">admin_panel_settings</span>
+<span>Security &amp; Settings</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-container hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span>Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Shell -->
+<div class="ml-72 flex-1 flex flex-col min-w-0 bg-background">
+<!-- Top App Bar -->
+<header class="sticky top-0 right-0 h-16 flex items-center justify-between px-space-xl bg-surface-container-lowest border-b border-outline-variant z-20">
+<!-- Breadcrumb & Search context -->
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-2 text-on-surface-variant font-label-md text-label-md">
+<span class="text-on-surface-variant">Operations</span>
+<span class="text-outline text-xs">/</span>
+<span class="text-on-surface-variant">Identity Verification</span>
+<span class="text-outline text-xs">/</span>
+<span class="text-primary font-semibold">Case #KYC-2026-9941</span>
+</div>
+<span class="h-4 w-px bg-outline-variant mx-1"></span>
+<div class="flex items-center gap-1.5 px-2 py-0.5 rounded bg-surface-container border border-outline-variant text-label-sm font-label-sm text-on-surface-variant">
+<span class="w-1.5 h-1.5 rounded-full bg-[#4CC38A]"></span>
+<span>Lagos Island Main Branch (012)</span>
+</div>
+</div>
+<!-- Actions & Officer Profile -->
+<div class="flex items-center gap-space-lg">
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-container border border-outline-variant">
+<span class="material-symbols-outlined text-[#4CC38A] text-sm">verified_user</span>
+<span class="text-label-sm font-label-sm text-on-surface">Dual Authorization: <span class="text-[#4CC38A] font-semibold">Quorum Met (2/2)</span></span>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-9 h-9 rounded-lg bg-surface-container border border-outline-variant flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="w-9 h-9 rounded-lg bg-surface-container border border-outline-variant flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+</div>
+<div class="flex items-center gap-space-sm pl-2 border-l border-outline-variant">
+<img class="w-9 h-9 rounded-full object-cover border border-outline-variant" data-alt="Close up high-resolution professional corporate headshot of Dr Adebayo Ogunlesi, a distinguished Nigerian male banking compliance officer wearing tailored charcoal suit and rimless glasses in a low-lit dark corporate boardroom aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2Tkb_H0hpXjaTAu9xBjIxPOMS0_upClw9DsUptYY9B1YAfxKuLthepyR6Fj0RAsVKHTmMDYJPzjF_AknGtSSqTKRWPEqGLTNNRODc9QCSb2RVfQsZu999MrsBVOi8B9gdK_QTJEdGgHU7r11eaRLsV6gx4o83C3ZQL_hg11nh7LZKWXolzH1Sd7FhkrBvbFbM0mSKdycEs9Vl6UYJRwLMa1tHNM2w3dyano6ImZNi"/>
+<div class="flex flex-col text-left">
+<span class="text-label-md font-label-md text-on-surface font-semibold leading-tight">Dr. Adebayo Ogunlesi</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant leading-tight">Senior Adjudicator</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Subheader Case Summary Banner -->
+<section class="bg-surface-container-low border-b border-outline-variant px-space-xl py-space-md flex items-center justify-between">
+<div class="flex items-center gap-space-lg">
+<div class="w-12 h-12 rounded-xl bg-surface-container-highest border border-outline-variant flex items-center justify-center text-primary-fixed-dim">
+<span class="material-symbols-outlined text-2xl">badge</span>
+</div>
+<div>
+<div class="flex items-center gap-space-sm">
+<h1 class="text-headline-sm font-headline-sm text-on-surface font-bold">Case #KYC-2026-9941</h1>
+<span class="px-2.5 py-0.5 rounded-full text-label-sm font-label-sm bg-primary/10 text-primary border border-primary/20">Tier 3 Upgrade Request</span>
+<span class="px-2.5 py-0.5 rounded-full text-label-sm font-label-sm bg-[#E3B341]/10 text-[#E3B341] border border-[#E3B341]/20">SLA: 4 hrs remaining</span>
+</div>
+<div class="flex items-center gap-4 mt-1 text-label-sm font-label-sm text-on-surface-variant">
+<span>Applicant: <strong class="text-on-surface font-semibold">Tunde Bakare</strong></span>
+<span>•</span>
+<span>Submitted: <span class="tabular-nums">24 Feb 2026, 09:15 WAT</span></span>
+<span>•</span>
+<span>Customer ID: <span class="font-mono text-xs">NG-BC-8891024</span></span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="px-3.5 py-2 rounded-lg bg-surface-container border border-outline-variant text-on-surface hover:bg-surface-container-high text-label-md font-label-md flex items-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-sm">history_edu</span>
+<span>Audit Trail</span>
+</button>
+<button class="px-3.5 py-2 rounded-lg bg-surface-container border border-outline-variant text-on-surface hover:bg-surface-container-high text-label-md font-label-md flex items-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-sm">assignment_return</span>
+<span>Reassign</span>
+</button>
+</div>
+</section>
+<!-- Main Working Area (2-Column Grid) -->
+<main class="flex-1 p-space-xl grid grid-cols-12 gap-space-xl overflow-y-auto custom-scrollbar">
+<!-- LEFT DOSSIER (8 Cols = ~2/3 Width) -->
+<section class="col-span-8 flex flex-col gap-space-xl">
+<!-- Verification Cards: NIMC / BVN vs Liveness Selfie vs Proof of Address -->
+<div class="grid grid-cols-3 gap-space-md">
+<!-- Card 1: Official NIMC / BVN Record -->
+<div class="bg-surface-container-low border border-outline-variant rounded-xl p-space-md flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-space-sm border-b border-outline-variant">
+<span class="text-label-md font-label-md text-on-surface font-semibold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-xs text-primary">account_box</span>
+                  NIMC / BVN Record
+                </span>
+<span class="px-2 py-0.5 rounded text-label-sm font-label-sm bg-[#4CC38A]/10 text-[#4CC38A] border border-[#4CC38A]/20">Verified</span>
+</div>
+<div class="mt-space-md flex flex-col items-center">
+<div class="w-20 h-24 rounded-lg bg-surface-container-highest border border-outline-variant overflow-hidden mb-3">
+<img class="w-full h-full object-cover grayscale contrast-125" data-alt="National Identity Management Commission database registry photo of adult Nigerian male applicant Tunde Bakare with neutral expression against crisp regulatory pale backdrop." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmOvoGagpAlSOLxJLQHZJrViW1oaSUDCO1uudkhdhR4SLhPjgqTsWHo3-XnFxLzwGwAdES4_1W_NgvHAavsXVRm9nlMqAMhURAvTDc8Oxq4SsNSAdkGPppaSS1d5J5-bJxkRVqT6uQqC_nl2FglUTL2ERar2fBy4YSdz25SqSpeuGN-fRNm4qmP0hkCnFxZ29l5Usy9wHvOsjkfbFRpixSTvn9L8e2GeyfAczEPKu0"/>
+</div>
+<span class="text-label-md font-label-md text-on-surface font-semibold">BAKARE, Tunde</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant font-mono">BVN: 22194820194</span>
+</div>
+<div class="mt-3 space-y-1.5 text-label-sm font-label-sm border-t border-outline-variant pt-2">
+<div class="flex justify-between"><span class="text-on-surface-variant">DOB:</span> <span class="text-on-surface font-mono">14 Nov 1988</span></div>
+<div class="flex justify-between"><span class="text-on-surface-variant">Phone:</span> <span class="text-on-surface font-mono">+234 803 219 9841</span></div>
+<div class="flex justify-between"><span class="text-on-surface-variant">NIN:</span> <span class="text-on-surface font-mono">5920-1928-8472</span></div>
+</div>
+</div>
+<div class="mt-3 pt-2 border-t border-outline-variant text-[11px] text-on-surface-variant flex items-center justify-between">
+<span>Source: NIBSS API v3</span>
+<span class="text-[#4CC38A] font-semibold">Active Match</span>
+</div>
+</div>
+<!-- Card 2: Liveness & Video Capture -->
+<div class="bg-surface-container-low border border-outline-variant rounded-xl p-space-md flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-space-sm border-b border-outline-variant">
+<span class="text-label-md font-label-md text-on-surface font-semibold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-xs text-primary">face</span>
+                  Biometric Liveness
+                </span>
+<span class="px-2 py-0.5 rounded text-label-sm font-label-sm bg-[#4CC38A]/10 text-[#4CC38A] border border-[#4CC38A]/20">98.4% Match</span>
+</div>
+<div class="mt-space-md flex flex-col items-center">
+<div class="relative w-20 h-24 rounded-lg bg-surface-container-highest border border-outline-variant overflow-hidden mb-3">
+<img class="w-full h-full object-cover" data-alt="High quality liveness selfie verification capture of Nigerian male applicant Tunde Bakare looking directly at smartphone front camera with warm natural ambient room lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJiTsEoxxjwfbdrtyIxJryiheYHyvlr2dYYKEUgSZOUt8HcCTObqXNfWpwDTaQAQc1zh3Hb4S0GTn8qqn8HSF5oDYmgqGaeCuZcI_rpHyL8rXQJlkV4XYl7V2K8xaPo3RUI7OUwNKquCQBapG4hrQDhFiYE4981L-bhESlDuz4tggrqC1u_bVEW0sX84E2NBaB0q1jNfyVqAop6JsdJ2O3PM33GFuH0qGJL8shd1G7"/>
+<div class="absolute bottom-1 right-1 px-1 rounded bg-[#4CC38A] text-[#121011] text-[9px] font-bold">PASS</div>
+</div>
+<span class="text-label-md font-label-md text-on-surface font-semibold">Facial Confidence</span>
+<span class="text-label-sm font-label-sm text-[#4CC38A] font-bold">98.4% Confidence Score</span>
+</div>
+<div class="mt-3 space-y-1.5 text-label-sm font-label-sm border-t border-outline-variant pt-2">
+<div class="flex justify-between"><span class="text-on-surface-variant">Liveness Check:</span> <span class="text-[#4CC38A] font-semibold">Passed (Active)</span></div>
+<div class="flex justify-between"><span class="text-on-surface-variant">Anti-Spoofing:</span> <span class="text-[#4CC38A] font-semibold">3D Depth OK</span></div>
+<div class="flex justify-between"><span class="text-on-surface-variant">Device Risk:</span> <span class="text-on-surface font-mono">Low (Score 0.03)</span></div>
+</div>
+</div>
+<div class="mt-3 pt-2 border-t border-outline-variant text-[11px] text-on-surface-variant flex items-center justify-between">
+<span>SDK: Persona v5.2</span>
+<span class="text-[#4CC38A] font-semibold">Certified</span>
+</div>
+</div>
+<!-- Card 3: Proof of Address Document Summary -->
+<div class="bg-surface-container-low border border-outline-variant rounded-xl p-space-md flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-space-sm border-b border-outline-variant">
+<span class="text-label-md font-label-md text-on-surface font-semibold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-xs text-primary">receipt_long</span>
+                  Proof of Address
+                </span>
+<span class="px-2 py-0.5 rounded text-label-sm font-label-sm bg-primary/10 text-primary border border-primary/20">OCR: 94%</span>
+</div>
+<div class="mt-space-md flex flex-col items-center">
+<div class="w-20 h-24 rounded-lg bg-surface-container-highest border border-outline-variant p-2 flex flex-col items-center justify-center mb-3 text-center">
+<span class="material-symbols-outlined text-2xl text-on-surface-variant">electric_bolt</span>
+<span class="text-[10px] text-on-surface-variant font-mono mt-1">EKEDC Utility</span>
+</div>
+<span class="text-label-md font-label-md text-on-surface font-semibold">Eko Electricity Bill</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Billing Date: Jan 2026</span>
+</div>
+<div class="mt-3 space-y-1.5 text-label-sm font-label-sm border-t border-outline-variant pt-2">
+<div class="flex justify-between"><span class="text-on-surface-variant">Statutory:</span> <span class="text-[#4CC38A] font-semibold">&lt; 3 Months (Valid)</span></div>
+<div class="flex justify-between"><span class="text-on-surface-variant">Meter Lookup:</span> <span class="text-[#4CC38A] font-mono">0419-882103</span></div>
+<div class="flex justify-between"><span class="text-on-surface-variant">Declared Match:</span> <span class="text-[#E3B341] font-semibold">Requires Review</span></div>
+</div>
+</div>
+<div class="mt-3 pt-2 border-t border-outline-variant text-[11px] text-on-surface-variant flex items-center justify-between">
+<span>File: bill_jan2026.pdf</span>
+<span class="text-primary font-semibold">1.4 MB</span>
+</div>
+</div>
+</div>
+<!-- Interactive Document Viewer & OCR Highlight Panel -->
+<div class="bg-surface-container-low border border-outline-variant rounded-xl p-space-md flex flex-col">
+<div class="flex items-center justify-between pb-space-md border-b border-outline-variant">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">search</span>
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Interactive Document Inspector &amp; OCR Extraction</h2>
+<span class="text-label-sm font-label-sm px-2 py-0.5 rounded bg-surface-container-highest text-on-surface-variant">200% Zoom</span>
+</div>
+<!-- Viewer Toolbar -->
+<div class="flex items-center gap-1.5 bg-surface-container p-1 rounded-lg border border-outline-variant">
+<button class="p-1.5 rounded hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface" title="Zoom Out">
+<span class="material-symbols-outlined text-sm">zoom_out</span>
+</button>
+<span class="text-label-sm font-label-sm px-2 tabular-nums text-on-surface">100%</span>
+<button class="p-1.5 rounded hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface" title="Zoom In">
+<span class="material-symbols-outlined text-sm">zoom_in</span>
+</button>
+<span class="w-px h-4 bg-outline-variant mx-1"></span>
+<button class="p-1.5 rounded hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface" title="Rotate">
+<span class="material-symbols-outlined text-sm">rotate_right</span>
+</button>
+<button class="p-1.5 rounded hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface" title="Full Screen">
+<span class="material-symbols-outlined text-sm">fullscreen</span>
+</button>
+</div>
+</div>
+<!-- Document Canvas + OCR Side-by-side -->
+<div class="mt-space-md grid grid-cols-12 gap-space-md">
+<!-- Document Display Canvas -->
+<div class="col-span-7 bg-surface-container-lowest border border-outline-variant rounded-lg p-4 relative overflow-hidden flex flex-col">
+<div class="flex items-center justify-between text-label-sm font-label-sm text-on-surface-variant mb-2">
+<span>Rendering: Original Upload</span>
+<span class="text-primary font-mono text-[11px]">OCR Layer Active</span>
+</div>
+<!-- Mock Document Visual -->
+<div class="w-full bg-[#1C1819] rounded border border-outline-variant p-4 space-y-3 font-mono text-xs text-on-surface-variant select-none">
+<div class="flex justify-between items-center border-b border-outline-variant pb-2">
+<div class="font-bold text-on-surface tracking-wider text-sm">EKO ELECTRICITY DISTRIBUTION PLC</div>
+<div class="text-[10px] text-right">BILL NO: EK-9912048<br/>DATE: 12-JAN-2026</div>
+</div>
+<div class="space-y-1 py-1">
+<div class="text-[10px] uppercase text-outline">Account Holder Name</div>
+<div class="p-1.5 rounded bg-primary/10 border border-primary/40 text-on-surface font-semibold flex items-center justify-between">
+<span>TUNDE ADEMOLA BAKARE</span>
+<span class="text-[10px] bg-primary text-[#121011] px-1 rounded font-bold">99% OCR MATCH</span>
+</div>
+</div>
+<div class="space-y-1 py-1">
+<div class="text-[10px] uppercase text-outline">Service Residential Address</div>
+<div class="p-1.5 rounded bg-[#E3B341]/10 border border-[#E3B341]/40 text-on-surface font-medium flex items-center justify-between">
+<span>12 ADMIRALTY WAY, LEKKI PHASE 1, LAGOS</span>
+<span class="text-[10px] bg-[#E3B341] text-[#121011] px-1 rounded font-bold">94% OCR MATCH</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-2 pt-2 border-t border-outline-variant text-[11px]">
+<div>Meter Number: <span class="text-on-surface font-bold">0419-882103</span></div>
+<div>Tariff Class: <span class="text-on-surface">R2-Single Phase</span></div>
+<div>Period: <span class="text-on-surface">01/01/2026 - 31/01/2026</span></div>
+<div>Net Amount: <span class="text-on-surface font-bold">₦44,520.00</span></div>
+</div>
+</div>
+<div class="mt-2 flex items-center gap-2 text-label-sm font-label-sm text-outline">
+<span class="material-symbols-outlined text-xs">info</span>
+<span>Coordinates validated via Google Vision API v1 (Bounding box: x:120, y:340, w:420, h:68)</span>
+</div>
+</div>
+<!-- OCR Extracted Fields Comparison -->
+<div class="col-span-5 bg-surface-container rounded-lg border border-outline-variant p-space-md flex flex-col justify-between">
+<div>
+<span class="text-label-md font-label-md text-on-surface font-semibold block mb-space-sm">Field-by-Field Parity Check</span>
+<div class="space-y-2.5 text-label-sm font-label-sm">
+<!-- Field 1 -->
+<div class="p-2 rounded bg-surface-container-low border border-outline-variant">
+<div class="flex justify-between text-outline text-[11px]">
+<span>Declared in App Profile</span>
+<span class="text-[#4CC38A]">Parity: High</span>
+</div>
+<div class="text-on-surface font-semibold mt-0.5">Tunde Bakare</div>
+<div class="text-[11px] text-on-surface-variant mt-1 border-t border-outline-variant/60 pt-1">
+                      OCR: <span class="font-mono text-on-surface">Tunde Ademola Bakare</span>
+</div>
+</div>
+<!-- Field 2 -->
+<div class="p-2 rounded bg-surface-container-low border border-outline-variant">
+<div class="flex justify-between text-outline text-[11px]">
+<span>Declared Residential Address</span>
+<span class="text-[#E3B341]">Parity: Minor Syntax</span>
+</div>
+<div class="text-on-surface font-semibold mt-0.5">Plot 12 Admiralty Way, Lekki, Lagos State</div>
+<div class="text-[11px] text-on-surface-variant mt-1 border-t border-outline-variant/60 pt-1">
+                      OCR: <span class="font-mono text-on-surface">12 Admiralty Way, Lekki Phase 1, Lagos</span>
+</div>
+</div>
+<!-- Field 3 -->
+<div class="p-2 rounded bg-surface-container-low border border-outline-variant">
+<div class="flex justify-between text-outline text-[11px]">
+<span>Bill Age (Regulatory Limit: 90 Days)</span>
+<span class="text-[#4CC38A]">Status: Compliant</span>
+</div>
+<div class="text-on-surface font-semibold mt-0.5">Bill Issued: 12 Jan 2026 (43 days ago)</div>
+</div>
+</div>
+</div>
+<div class="mt-space-md p-2 rounded bg-surface-container-lowest border border-outline-variant flex items-center justify-between text-label-sm font-label-sm">
+<span class="text-on-surface-variant">Address Normalization:</span>
+<span class="text-[#4CC38A] font-semibold">LASG GIS Validated</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Automated Sanctions, PEP & Watchlist Checks -->
+<div class="bg-surface-container-low border border-outline-variant rounded-xl p-space-md">
+<div class="flex items-center justify-between pb-space-sm border-b border-outline-variant mb-space-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">security</span>
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Automated Sanctions &amp; Watchlist Screenings</h2>
+</div>
+<span class="text-label-sm font-label-sm text-[#4CC38A] font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">done_all</span> All 3 Databases Negative
+            </span>
+</div>
+<div class="grid grid-cols-3 gap-space-md">
+<!-- Check 1 -->
+<div class="p-space-md rounded-lg bg-surface-container border border-outline-variant flex items-start gap-3">
+<div class="w-8 h-8 rounded-full bg-[#4CC38A]/10 text-[#4CC38A] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+</div>
+<div class="flex flex-col">
+<span class="text-label-md font-label-md text-on-surface font-semibold">CBN PEP Watchlist</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant mt-0.5">Central Bank of Nigeria Politically Exposed Persons Registry</span>
+<div class="mt-2 text-label-sm font-label-sm text-[#4CC38A] font-semibold">Negative (Pass)</div>
+</div>
+</div>
+<!-- Check 2 -->
+<div class="p-space-md rounded-lg bg-surface-container border border-outline-variant flex items-start gap-3">
+<div class="w-8 h-8 rounded-full bg-[#4CC38A]/10 text-[#4CC38A] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+</div>
+<div class="flex flex-col">
+<span class="text-label-md font-label-md text-on-surface font-semibold">EFCC Sanctions List</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant mt-0.5">Economic &amp; Financial Crimes Commission Specially Designated</span>
+<div class="mt-2 text-label-sm font-label-sm text-[#4CC38A] font-semibold">Negative (Pass)</div>
+</div>
+</div>
+<!-- Check 3 -->
+<div class="p-space-md rounded-lg bg-surface-container border border-outline-variant flex items-start gap-3">
+<div class="w-8 h-8 rounded-full bg-[#4CC38A]/10 text-[#4CC38A] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+</div>
+<div class="flex flex-col">
+<span class="text-label-md font-label-md text-on-surface font-semibold">Interpol Red Notice</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant mt-0.5">Global Cross-Border Fugitive &amp; Terrorism Database</span>
+<div class="mt-2 text-label-sm font-label-sm text-[#4CC38A] font-semibold">Clear (Pass)</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- RIGHT REVIEW & ADJUDICATION PANEL (4 Cols = ~1/3 Width) -->
+<section class="col-span-4 flex flex-col gap-space-xl">
+<div class="bg-surface-container-low border border-outline-variant rounded-xl p-space-md flex flex-col justify-between sticky top-20 shadow-none">
+<div class="space-y-space-md">
+<div class="border-b border-outline-variant pb-space-sm flex items-center justify-between">
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Officer Adjudication</h2>
+<span class="px-2 py-0.5 rounded text-label-sm font-label-sm bg-surface-container-highest text-primary font-semibold">Tier 3 Review</span>
+</div>
+<!-- Mandatory Compliance Checklist -->
+<div>
+<label class="text-label-md font-label-md text-on-surface font-semibold block mb-space-sm">Compliance Verification Checklist</label>
+<div class="space-y-2">
+<label class="flex items-start gap-space-sm p-2.5 rounded-lg bg-surface-container border border-outline-variant hover:bg-surface-container-high transition-colors cursor-pointer">
+<input checked="" class="mt-0.5 rounded text-primary focus:ring-0 bg-surface-container-highest border-outline-variant" type="checkbox"/>
+<span class="text-label-sm font-label-sm text-on-surface leading-tight">Full Name matches BVN &amp; NIMC record without variance</span>
+</label>
+<label class="flex items-start gap-space-sm p-2.5 rounded-lg bg-surface-container border border-outline-variant hover:bg-surface-container-high transition-colors cursor-pointer">
+<input checked="" class="mt-0.5 rounded text-primary focus:ring-0 bg-surface-container-highest border-outline-variant" type="checkbox"/>
+<span class="text-label-sm font-label-sm text-on-surface leading-tight">Liveness selfie passed anti-spoof threshold (&gt;95%)</span>
+</label>
+<label class="flex items-start gap-space-sm p-2.5 rounded-lg bg-surface-container border border-outline-variant hover:bg-surface-container-high transition-colors cursor-pointer">
+<input checked="" class="mt-0.5 rounded text-primary focus:ring-0 bg-surface-container-highest border-outline-variant" type="checkbox"/>
+<span class="text-label-sm font-label-sm text-on-surface leading-tight">Proof of address within 3-month statutory window</span>
+</label>
+<label class="flex items-start gap-space-sm p-2.5 rounded-lg bg-surface-container border border-outline-variant hover:bg-surface-container-high transition-colors cursor-pointer">
+<input class="mt-0.5 rounded text-primary focus:ring-0 bg-surface-container-highest border-outline-variant" type="checkbox"/>
+<span class="text-label-sm font-label-sm text-on-surface leading-tight">Utility bill address matches declared residential address</span>
+</label>
+</div>
+</div>
+<!-- Rejection Reason Dropdown -->
+<div>
+<label class="text-label-md font-label-md text-on-surface font-semibold block mb-1">Standard Rejection Reason (If Applicable)</label>
+<div class="relative">
+<select class="w-full h-[52px] px-3 bg-surface-container border border-outline-variant rounded-xl text-on-surface text-label-md font-label-md focus:border-primary-container focus:ring-0">
+<option selected="" value="">None (Application meets requirements)</option>
+<option value="blurry">Blurry utility bill / Illegible text</option>
+<option value="discrepancy">Address discrepancy between bill &amp; declaration</option>
+<option value="expired">Expired ID or Utility bill &gt; 90 days</option>
+<option value="mismatch">Name mismatch between account &amp; bill</option>
+</select>
+</div>
+</div>
+<!-- Compliance Notes Text Area -->
+<div>
+<div class="flex items-center justify-between mb-1">
+<label class="text-label-md font-label-md text-on-surface font-semibold">Adjudicator Compliance Notes</label>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Mandatory</span>
+</div>
+<textarea class="w-full bg-surface-container border border-outline-variant rounded-xl p-3 text-label-md font-label-md text-on-surface focus:border-primary-container focus:ring-0 resize-none font-body-md" placeholder="Enter findings, cross-reference rationale, and audit commentary..." rows="4">Address verified via EKEDC meter number lookup (0419-882103). Matches Lagos voter card registration address. Facial liveness passed at 98.4% without anomaly.</textarea>
+</div>
+<!-- Tier 3 Policy Limits Reminder -->
+<div class="p-3 rounded-lg bg-surface-container border border-outline-variant text-label-sm font-label-sm space-y-1">
+<div class="flex justify-between">
+<span class="text-on-surface-variant">Target Upgrade:</span>
+<span class="text-primary font-semibold">Tier 3 (Unlimited Daily Inflow)</span>
+</div>
+<div class="flex justify-between">
+<span class="text-on-surface-variant">Single Transfer Cap:</span>
+<span class="text-on-surface font-mono font-medium">₦5,000,000.00</span>
+</div>
+<div class="flex justify-between">
+<span class="text-on-surface-variant">CBN Circular Ref:</span>
+<span class="text-on-surface-variant font-mono">BPS/DIR/CIR/02/004</span>
+</div>
+</div>
+</div>
+<!-- Adjudication CTAs -->
+<div class="mt-space-lg flex flex-col gap-2.5 pt-space-md border-t border-outline-variant">
+<!-- Primary CTA: 52px height -->
+<button class="w-full h-[52px] rounded-xl bg-primary-container text-on-primary-container font-label-lg text-label-lg font-semibold hover:bg-primary transition-colors flex items-center justify-center gap-2">
+<span>Approve &amp; Upgrade to Tier 3</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+<div class="grid grid-cols-2 gap-2">
+<!-- Amber: Request Better Document -->
+<button class="h-[52px] rounded-xl bg-[#262122] border border-[#E3B341]/40 text-[#E3B341] font-label-md text-label-md hover:bg-[#E3B341]/10 transition-colors flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-sm">refresh</span>
+<span>Request Better Doc</span>
+</button>
+<!-- Destructive: Reject Application -->
+<button class="h-[52px] rounded-xl bg-[#262122] border border-[#F27070]/40 text-[#F27070] font-label-md text-label-md hover:bg-[#F27070]/10 transition-colors flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-sm">close</span>
+<span>Reject Case</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+</body></html>

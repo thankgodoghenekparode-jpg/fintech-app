@@ -1,0 +1,16 @@
+flowchart TD
+  a(["Case enters queue"])
+  b["Analyst opens documents, liveness, sanctions result"]
+  c{"Decision"}
+  d["Approve tier; notify customer"]
+  e["Reject with reason code; notify"]
+  f["Refer to compliance (sanctions hit or doubt)"]
+  g(["Audit logged"])
+  a --> b
+  b --> c
+  c -->|approve| d
+  c -->|reject| e
+  c -->|refer| f
+  d --> g
+  e --> g
+  f --> g

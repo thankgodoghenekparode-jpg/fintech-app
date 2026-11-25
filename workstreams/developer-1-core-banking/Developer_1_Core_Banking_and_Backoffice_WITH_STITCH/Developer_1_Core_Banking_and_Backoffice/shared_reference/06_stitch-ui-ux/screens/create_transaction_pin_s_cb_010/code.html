@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Create Transaction PIN - YourApp</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-primary": "#ffb1c5",
+            "surface-container-low": "#fbf1f2",
+            "background": "#fff8f8",
+            "inverse-on-surface": "#f8eeef",
+            "on-primary-fixed-variant": "#881646",
+            "primary-fixed-dim": "#ffb1c5",
+            "surface-container-lowest": "#ffffff",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "tertiary-fixed": "#eedee4",
+            "secondary-fixed-dim": "#ffb4a8",
+            "surface-bright": "#fff8f8",
+            "tertiary-container": "#53484d",
+            "on-tertiary-fixed": "#21191e",
+            "outline-variant": "#dcbfc5",
+            "primary": "#6d0033",
+            "error": "#ba1a1a",
+            "surface-container-highest": "#e9e0e1",
+            "on-primary": "#ffffff",
+            "inverse-surface": "#342f30",
+            "on-secondary-fixed-variant": "#8c170e",
+            "secondary": "#ae3123",
+            "on-surface": "#1f1b1c",
+            "outline": "#897176",
+            "on-background": "#1f1b1c",
+            "primary-container": "#8e1b4a",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "surface-tint": "#a8315d",
+            "on-primary-fixed": "#3f001b",
+            "tertiary": "#3b3236",
+            "surface-container": "#f5eced",
+            "error-container": "#ffdad6",
+            "on-tertiary": "#ffffff",
+            "on-surface-variant": "#564146",
+            "on-secondary-fixed": "#410000",
+            "surface-container-high": "#efe6e7",
+            "on-tertiary-container": "#c6b7bd",
+            "surface-dim": "#e1d8d9",
+            "secondary-container": "#fc6955",
+            "on-primary-container": "#ffa0ba",
+            "on-secondary-container": "#690000",
+            "secondary-fixed": "#ffdad4",
+            "on-error-container": "#93000a",
+            "surface-variant": "#e9e0e1",
+            "on-secondary": "#ffffff",
+            "primary-fixed": "#ffd9e1",
+            "surface": "#fff8f8",
+            "on-error": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "1rem",
+            "space-xl": "1.5rem",
+            "space-3xl": "3rem",
+            "space-md": "0.75rem",
+            "space-xs": "0.25rem",
+            "margin": "1rem",
+            "space-2xl": "2rem",
+            "space-lg": "1rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "body-medium": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "subtitle": ["Inter"],
+            "title": ["Inter"],
+            "caption": ["Inter"],
+            "amount-lg": ["Inter"],
+            "display": ["Inter"],
+            "body": ["Inter"],
+            "label": ["Inter"]
+          },
+          "fontSize": {
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex justify-center selection:bg-primary-fixed selection:text-primary">
+<!-- Main Canvas: Mobile constraint max 560px, ideal 390px viewport -->
+<main class="w-full max-w-[560px] min-h-screen flex flex-col justify-between bg-surface relative shadow-sm">
+<!-- Top Contextual App Bar (Linear / Transaction Flow: Top destination nav suppressed) -->
+<header class="w-full px-margin py-space-sm flex items-center justify-between min-h-[56px] border-b border-outline-variant/30">
+<button aria-label="Go back" class="w-12 h-12 flex items-center justify-center rounded-xl text-on-surface hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<div class="flex flex-col items-center">
+<span class="font-subtitle text-subtitle text-on-surface font-semibold tracking-tight">Transaction PIN</span>
+<span class="font-caption text-[11px] text-on-surface-variant tracking-wider uppercase">Step 1 of 2</span>
+</div>
+<button aria-label="Support &amp; Help" class="w-12 h-12 flex items-center justify-center rounded-xl text-on-surface hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[24px]">help_outline</span>
+</button>
+</header>
+<!-- Main Content Container (Padded standard safe-margin) -->
+<div class="flex-1 flex flex-col px-margin pt-space-lg pb-space-xs">
+<!-- Top Anchor / Category Badge -->
+<div class="flex items-center gap-space-xs">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-primary-fixed/60 text-primary border border-outline-variant/40 font-label text-[11px] tracking-wider font-bold">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+          PAYMENT AUTHORIZATION
+        </span>
+</div>
+<!-- Headline & Subtitle Group -->
+<div class="mt-space-md">
+<h1 class="font-title text-title text-on-surface font-bold">Create 4-digit transaction PIN</h1>
+<p class="mt-space-xs font-body text-body text-on-surface-variant leading-relaxed">
+          You'll enter this PIN to authorize transfers, bill payments, and card controls. Never share it with anyone.
+        </p>
+</div>
+<!-- PIN Display Section (4 prominent boxes: 2 filled, 2 empty) -->
+<div aria-label="4-digit PIN entered: 2 of 4 digits filled" class="mt-space-xl flex justify-center items-center gap-space-md" role="status">
+<!-- Digit 1 (Entered) -->
+<div class="w-14 h-14 rounded-xl bg-surface-container-lowest border-2 border-primary-container flex items-center justify-center shadow-sm transition-all duration-200">
+<span class="w-4 h-4 rounded-full bg-primary-container animate-pulse"></span>
+</div>
+<!-- Digit 2 (Entered) -->
+<div class="w-14 h-14 rounded-xl bg-surface-container-lowest border-2 border-primary-container flex items-center justify-center shadow-sm transition-all duration-200">
+<span class="w-4 h-4 rounded-full bg-primary-container"></span>
+</div>
+<!-- Digit 3 (Active Focus / Empty) -->
+<div class="w-14 h-14 rounded-xl bg-surface-container-lowest border-2 border-primary-container/40 ring-2 ring-primary-container/20 flex items-center justify-center shadow-sm transition-all duration-200">
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+</div>
+<!-- Digit 4 (Empty) -->
+<div class="w-14 h-14 rounded-xl bg-surface-container-lowest border border-outline-variant flex items-center justify-center shadow-sm transition-all duration-200">
+<span class="w-2 h-2 rounded-full bg-outline-variant/60"></span>
+</div>
+</div>
+<!-- Progress / Security Indicator Chip -->
+<div class="mt-space-md flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="font-caption text-caption text-on-surface-variant font-medium">Bank-grade end-to-end encryption</span>
+</div>
+<!-- Security Advisory Notice Card (surface-container-low, rounded-xl) -->
+<div class="mt-space-lg p-3.5 rounded-xl bg-surface-container-low border border-outline-variant/50 flex items-start gap-space-md shadow-sm">
+<div class="w-8 h-8 rounded-full bg-primary/10 flex-shrink-0 flex items-center justify-center text-primary mt-0.5">
+<span class="material-symbols-outlined text-[20px]">shield</span>
+</div>
+<div class="flex-1">
+<p class="font-caption text-caption text-on-surface-variant font-normal leading-snug">
+<strong class="font-semibold text-on-surface">YourApp</strong> staff will <span class="font-semibold text-primary">NEVER</span> ask for your PIN, passcode, or OTP under any circumstance.
+          </p>
+</div>
+</div>
+</div>
+<!-- Numeric Keypad Container (Fixed ergonomic touch grid: min 48px targets, 52px buttons) -->
+<section aria-label="Numeric Keypad" class="w-full px-margin pb-space-lg pt-space-xs bg-surface border-t border-outline-variant/20">
+<div class="grid grid-cols-3 gap-y-space-sm gap-x-space-md max-w-[340px] mx-auto">
+<!-- Key 1 -->
+<button class="h-[52px] rounded-xl bg-surface-container-lowest border border-outline-variant/40 hover:bg-surface-container flex flex-col items-center justify-center active:scale-95 transition-all shadow-[0_1px_3px_0_rgba(30,26,27,0.03)] focus:outline-none focus:ring-2 focus:ring-primary-container" type="button">
+<span class="font-title text-[22px] font-semibold text-on-surface leading-none">1</span>
+</button>
+<!-- Key 2 -->
+<button class="h-[52px] rounded-xl bg-surface-container-lowest border border-outline-variant/40 hover:bg-surface-container flex flex-col items-center justify-center active:scale-95 transition-all shadow-[0_1px_3px_0_rgba(30,26,27,0.03)] focus:outline-none focus:ring-2 focus:ring-primary-container" type="button">
+<span class="font-title text-[22px] font-semibold text-on-surface leading-none">2</span>
+<span class="font-caption text-[10px] text-outline font-medium tracking-wider">ABC</span>
+</button>
+<!-- Key 3 -->
+<button class="h-[52px] rounded-xl bg-surface-container-lowest border border-outline-variant/40 hover:bg-surface-container flex flex-col items-center justify-center active:scale-95 transition-all shadow-[0_1px_3px_0_rgba(30,26,27,0.03)] focus:outline-none focus:ring-2 focus:ring-primary-container" type="button">
+<span class="font-title text-[22px] font-semibold text-on-surface leading-none">3</span>
+<span class="font-caption text-[10px] text-outline font-medium tracking-wider">DEF</span>
+</button>
+<!-- Key 4 -->
+<button class="h-[52px] rounded-xl bg-surface-container-lowest border border-outline-variant/40 hover:bg-surface-container flex flex-col items-center justify-center active:scale-95 transition-all shadow-[0_1px_3px_0_rgba(30,26,27,0.03)] focus:outline-none focus:ring-2 focus:ring-primary-container" type="button">
+<span class="font-title text-[22px] font-semibold text-on-surface leading-none">4</span>
+<span class="font-caption text-[10px] text-outline font-medium tracking-wider">GHI</span>
+</button>
+<!-- Key 5 -->
+<button class="h-[52px] rounded-xl bg-surface-container-lowest border border-outline-variant/40 hover:bg-surface-container flex flex-col items-center justify-center active:scale-95 transition-all shadow-[0_1px_3px_0_rgba(30,26,27,0.03)] focus:outline-none focus:ring-2 focus:ring-primary-container" type="button">
+<span class="font-title text-[22px] font-semibold text-on-surface leading-none">5</span>
+<span class="font-caption text-[10px] text-outline font-medium tracking-wider">JKL</span>
+</button>
+<!-- Key 6 -->
+<button class="h-[52px] rounded-xl bg-surface-container-lowest border border-outline-variant/40 hover:bg-surface-container flex flex-col items-center justify-center active:scale-95 transition-all shadow-[0_1px_3px_0_rgba(30,26,27,0.03)] focus:outline-none focus:ring-2 focus:ring-primary-container" type="button">
+<span class="font-title text-[22px] font-semibold text-on-surface leading-none">6</span>
+<span class="font-caption text-[10px] text-outline font-medium tracking-wider">MNO</span>
+</button>
+<!-- Key 7 -->
+<button class="h-[52px] rounded-xl bg-surface-container-lowest border border-outline-variant/40 hover:bg-surface-container flex flex-col items-center justify-center active:scale-95 transition-all shadow-[0_1px_3px_0_rgba(30,26,27,0.03)] focus:outline-none focus:ring-2 focus:ring-primary-container" type="button">
+<span class="font-title text-[22px] font-semibold text-on-surface leading-none">7</span>
+<span class="font-caption text-[10px] text-outline font-medium tracking-wider">PQRS</span>
+</button>
+<!-- Key 8 -->
+<button class="h-[52px] rounded-xl bg-surface-container-lowest border border-outline-variant/40 hover:bg-surface-container flex flex-col items-center justify-center active:scale-95 transition-all shadow-[0_1px_3px_0_rgba(30,26,27,0.03)] focus:outline-none focus:ring-2 focus:ring-primary-container" type="button">
+<span class="font-title text-[22px] font-semibold text-on-surface leading-none">8</span>
+<span class="font-caption text-[10px] text-outline font-medium tracking-wider">TUV</span>
+</button>
+<!-- Key 9 -->
+<button class="h-[52px] rounded-xl bg-surface-container-lowest border border-outline-variant/40 hover:bg-surface-container flex flex-col items-center justify-center active:scale-95 transition-all shadow-[0_1px_3px_0_rgba(30,26,27,0.03)] focus:outline-none focus:ring-2 focus:ring-primary-container" type="button">
+<span class="font-title text-[22px] font-semibold text-on-surface leading-none">9</span>
+<span class="font-caption text-[10px] text-outline font-medium tracking-wider">WXYZ</span>
+</button>
+<!-- Key Bottom Left: Cancel / Clear -->
+<button class="h-[52px] rounded-xl hover:bg-surface-container flex items-center justify-center active:scale-95 transition-all focus:outline-none" type="button">
+<span class="font-label text-label text-on-surface-variant font-medium">Clear</span>
+</button>
+<!-- Key 0 -->
+<button class="h-[52px] rounded-xl bg-surface-container-lowest border border-outline-variant/40 hover:bg-surface-container flex flex-col items-center justify-center active:scale-95 transition-all shadow-[0_1px_3px_0_rgba(30,26,27,0.03)] focus:outline-none focus:ring-2 focus:ring-primary-container" type="button">
+<span class="font-title text-[22px] font-semibold text-on-surface leading-none">0</span>
+<span class="font-caption text-[10px] text-outline font-medium tracking-wider">+</span>
+</button>
+<!-- Key Bottom Right: Backspace -->
+<button aria-label="Delete last digit" class="h-[52px] rounded-xl hover:bg-surface-container flex items-center justify-center active:scale-95 transition-all text-on-surface focus:outline-none" type="button">
+<span class="material-symbols-outlined text-[24px]">backspace</span>
+</button>
+</div>
+<!-- Quick Tips Micro-Footer -->
+<div class="mt-space-md pt-space-xs text-center">
+<p class="font-caption text-[12px] text-outline leading-tight">
+          Avoid predictable series such as 1234 or your birth date.
+        </p>
+</div>
+</section>
+</main>
+</body></html>

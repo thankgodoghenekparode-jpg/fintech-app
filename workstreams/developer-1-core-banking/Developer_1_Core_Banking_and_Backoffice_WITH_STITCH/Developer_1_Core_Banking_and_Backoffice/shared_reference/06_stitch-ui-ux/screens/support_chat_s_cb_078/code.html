@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YourApp - Priority Support Chat</title>
+<!-- Material Symbols Outlined font -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Inter font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with Forms and Container Queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary-fixed-variant": "#881646",
+            "on-surface-variant": "#564146",
+            "on-secondary-fixed-variant": "#8c170e",
+            "error": "#ba1a1a",
+            "surface-container-highest": "#e9e0e1",
+            "tertiary-fixed": "#eedee4",
+            "on-tertiary-container": "#c6b7bd",
+            "outline-variant": "#dcbfc5",
+            "on-secondary-fixed": "#410000",
+            "surface-container": "#f5eced",
+            "on-primary": "#ffffff",
+            "error-container": "#ffdad6",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "on-secondary-container": "#690000",
+            "surface-variant": "#e9e0e1",
+            "primary-container": "#8e1b4a",
+            "surface": "#fff8f8",
+            "primary": "#6d0033",
+            "secondary-container": "#fc6955",
+            "primary-fixed-dim": "#ffb1c5",
+            "inverse-surface": "#342f30",
+            "secondary-fixed": "#ffdad4",
+            "surface-tint": "#a8315d",
+            "surface-container-lowest": "#ffffff",
+            "tertiary-container": "#53484d",
+            "on-tertiary": "#ffffff",
+            "tertiary": "#3b3236",
+            "on-error-container": "#93000a",
+            "secondary-fixed-dim": "#ffb4a8",
+            "surface-container-high": "#efe6e7",
+            "secondary": "#ae3123",
+            "primary-fixed": "#ffd9e1",
+            "inverse-primary": "#ffb1c5",
+            "on-error": "#ffffff",
+            "outline": "#897176",
+            "on-primary-fixed": "#3f001b",
+            "on-secondary": "#ffffff",
+            "surface-dim": "#e1d8d9",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "inverse-on-surface": "#f8eeef",
+            "surface-bright": "#fff8f8",
+            "on-surface": "#1f1b1c",
+            "on-background": "#1f1b1c",
+            "background": "#fff8f8",
+            "surface-container-low": "#fbf1f2",
+            "on-primary-container": "#ffa0ba",
+            "on-tertiary-fixed": "#21191e"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "space-md": "0.75rem",
+            "space-lg": "1rem",
+            "space-xl": "1.5rem",
+            "space-2xl": "2rem",
+            "space-3xl": "3rem",
+            "margin": "1rem",
+            "gutter": "1rem"
+          },
+          "fontFamily": {
+            "display": ["Inter"],
+            "title": ["Inter"],
+            "subtitle": ["Inter"],
+            "body": ["Inter"],
+            "body-medium": ["Inter"],
+            "label": ["Inter"],
+            "caption": ["Inter"],
+            "amount-lg": ["Inter"],
+            "amount-lg-mobile": ["Inter"]
+          },
+          "fontSize": {
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+    /* Hide scrollbars for clean modern mobile presentation */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased flex justify-center min-h-screen">
+<!-- Mobile Simulator Canvas Container (max-w-[560px], calibrated for 390x844 viewport feel) -->
+<div class="w-full max-w-[560px] min-h-screen flex flex-col bg-surface-bright shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08)] relative">
+<!-- Top App Bar / Chat Header (Destination suppressed: Task-focused flow with back action) -->
+<header class="sticky top-0 z-40 bg-surface-container-lowest/95 backdrop-blur-md px-margin py-space-sm flex items-center justify-between min-h-[64px] border-b border-outline-variant/30">
+<div class="flex items-center gap-space-sm flex-1 min-w-0">
+<!-- Back Navigation Button -->
+<button aria-label="Go back" class="w-10 h-10 -ml-1 rounded-full flex items-center justify-center text-on-surface hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<!-- Representative Avatar with Online Indicator -->
+<div class="relative shrink-0">
+<img class="w-10 h-10 rounded-full object-cover border border-outline-variant/50" data-alt="Close up professional portrait of a welcoming Nigerian female financial customer support representative wearing smart corporate blazer with soft studio lighting and subtle warm pink brand tints in background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0adtoUnYzQ3NqZMpCVOFMKDwTsqxDrc_cCa8st6M25OxzfAgmAbgA8zXF2wcZdLxxv5-JPPtYDPQu9ciwdI_oudI4Jq5FOTzzcM62NrqjsxmSL6YR6GfmyAP2DpozncGj5KTcXnOt43mXMEGOrnyQO5TUkvzYNq37VYMY0fYRVRNU2o5IuBU5sESqXRllfVy2A9YFrLp-Yg0x8aTxI7hqtS_muSiIMlFXJmioIiVixilL0Khz_00hMQ"/>
+<!-- Active Green Online Pulse -->
+<span class="absolute bottom-0 right-0 w-3 h-3 bg-[#10B981] border-2 border-surface-container-lowest rounded-full" title="Online now"></span>
+</div>
+<!-- Agent Details & Status -->
+<div class="flex flex-col min-w-0 ml-1">
+<div class="flex items-center gap-space-xs">
+<h1 class="font-subtitle text-[15px] leading-tight font-semibold text-on-surface truncate">
+              Chioma from YourApp Support
+            </h1>
+<span class="material-symbols-outlined text-[16px] text-primary-container shrink-0" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant flex items-center gap-1 truncate">
+<span>Official Bank Representative</span>
+<span class="inline-block w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="text-on-primary-fixed-variant font-medium">Replies in ~2m</span>
+</p>
+</div>
+</div>
+<!-- Call Action Icon -->
+<div class="flex items-center gap-space-xs shrink-0 pl-space-xs">
+<button aria-label="Audio call with bank support" class="w-10 h-10 rounded-full flex items-center justify-center text-primary-container hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[22px]">call</span>
+</button>
+</div>
+</header>
+<!-- Chat Messages Stream -->
+<main class="flex-1 overflow-y-auto px-margin pt-space-md pb-space-3xl flex flex-col gap-space-lg no-scrollbar">
+<!-- Security Reminder Chip / Notice Card -->
+<div class="w-full bg-surface-container-low border border-outline-variant/40 rounded-xl p-space-md flex items-start gap-space-sm shadow-sm">
+<div class="w-7 h-7 rounded-lg bg-primary-fixed/50 text-primary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-1">
+<span class="font-label text-caption font-semibold text-primary">YourApp Security Shield</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant leading-snug mt-0.5">
+            YourApp staff will <strong class="font-semibold text-on-surface">NEVER</strong> ask for your PIN, OTP, or full 16-digit card number. Keep your security details strictly private.
+          </p>
+</div>
+</div>
+<!-- Timestamp separator -->
+<div class="flex justify-center items-center my-space-xs">
+<span class="font-caption text-[11px] font-medium tracking-wide text-on-surface-variant/80 bg-surface-container px-space-md py-0.5 rounded-full uppercase">
+          Today • 10:42 AM
+        </span>
+</div>
+<!-- Automated Concierge Message -->
+<div class="flex flex-col items-start max-w-[85%] self-start gap-space-xs">
+<div class="flex items-center gap-space-xs mb-0.5">
+<span class="font-label text-caption font-semibold text-primary">YourApp Concierge</span>
+<span class="font-caption text-[11px] text-on-surface-variant">10:42 AM</span>
+</div>
+<div class="bg-surface-container-lowest text-on-surface border border-outline-variant/40 rounded-2xl rounded-tl-sm p-space-md shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)]">
+<p class="font-body text-[15px] leading-relaxed">
+            Hello Tunde! Welcome to YourApp Priority Support. How can we assist your banking today?
+          </p>
+</div>
+<!-- Quick Option Interaction Chips -->
+<div class="mt-space-sm flex flex-wrap gap-space-xs">
+<button class="group bg-surface-container-lowest hover:bg-surface-container text-primary-container border border-outline-variant/60 rounded-full px-space-md py-space-xs font-label text-[13px] flex items-center gap-1.5 transition-colors shadow-sm active:scale-95" type="button">
+<span class="material-symbols-outlined text-[15px]">sync_problem</span>
+<span>Failed Transfer Status</span>
+</button>
+<button class="group bg-surface-container-lowest hover:bg-surface-container text-on-surface border border-outline-variant/60 rounded-full px-space-md py-space-xs font-label text-[13px] flex items-center gap-1.5 transition-colors shadow-sm active:scale-95" type="button">
+<span class="material-symbols-outlined text-[15px]">credit_card_off</span>
+<span>Report Card Issue</span>
+</button>
+<button class="group bg-surface-container-lowest hover:bg-surface-container text-on-surface border border-outline-variant/60 rounded-full px-space-md py-space-xs font-label text-[13px] flex items-center gap-1.5 transition-colors shadow-sm active:scale-95" type="button">
+<span class="material-symbols-outlined text-[15px]">badge</span>
+<span>KYC Tier Upgrade</span>
+</button>
+<button class="group bg-surface-container-lowest hover:bg-surface-container text-on-surface border border-outline-variant/60 rounded-full px-space-md py-space-xs font-label text-[13px] flex items-center gap-1.5 transition-colors shadow-sm active:scale-95" type="button">
+<span class="material-symbols-outlined text-[15px]">help_outline</span>
+<span>Other Dispute</span>
+</button>
+</div>
+</div>
+<!-- User Message (Sent) -->
+<div class="flex flex-col items-end max-w-[85%] self-end gap-1">
+<div class="bg-primary text-on-primary rounded-2xl rounded-tr-sm p-space-md shadow-[0_2px_8px_-2px_rgba(109,0,51,0.2)]">
+<p class="font-body text-[15px] leading-relaxed">
+            I made a transfer of <span class="tabular-nums font-semibold">₦25,000</span> to Access Bank earlier today, the money left my balance but the recipient hasn't received it.
+          </p>
+</div>
+<div class="flex items-center gap-1 mr-1">
+<span class="font-caption text-[11px] text-on-surface-variant">10:44 AM</span>
+<span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">done_all</span>
+</div>
+</div>
+<!-- Agent Response Message & Profile Snippet -->
+<div class="flex flex-col items-start max-w-[88%] self-start gap-space-xs">
+<div class="flex items-center gap-space-xs mb-0.5">
+<span class="font-label text-caption font-semibold text-on-surface">Chioma (Specialist)</span>
+<span class="font-caption text-[11px] text-on-surface-variant">10:46 AM</span>
+</div>
+<div class="bg-surface-container-lowest text-on-surface border border-outline-variant/40 rounded-2xl rounded-tl-sm p-space-md shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05)]">
+<p class="font-body text-[15px] leading-relaxed">
+            I've checked session <span class="font-semibold text-primary-container">#TX-8921</span>. The NIP session is currently being processed by the recipient bank settlement switch. If not cleared within 2 hours, it will automatically reverse to your wallet.
+          </p>
+</div>
+<!-- Transaction Reference Attachment Card -->
+<div class="w-full bg-surface-container-lowest border border-outline-variant/60 rounded-xl p-space-md mt-space-xs shadow-sm hover:border-primary-container/40 transition-colors">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined text-[20px]">account_balance</span>
+</div>
+<div>
+<span class="font-caption text-[12px] font-medium text-on-surface-variant">Attached Transaction</span>
+<div class="font-subtitle text-[15px] font-semibold text-on-surface tabular-nums">
+                  ₦25,000.00
+                </div>
+</div>
+</div>
+<!-- Pending Badge with Icon + Label Mandate -->
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-[#FFFBEB] border border-[#FDE68A] text-[#92400E]">
+<span class="material-symbols-outlined text-[13px]">schedule</span>
+<span class="font-caption text-[11px] font-semibold uppercase tracking-wider">Pending</span>
+</div>
+</div>
+<!-- Card Details Grid -->
+<div class="mt-space-sm pt-space-sm border-t border-outline-variant/20 grid grid-cols-2 gap-space-xs text-[12px]">
+<div>
+<span class="font-caption text-[11px] text-on-surface-variant block">Reference:</span>
+<span class="font-medium text-on-surface tabular-nums">TX-8921-NIP</span>
+</div>
+<div class="text-right">
+<span class="font-caption text-[11px] text-on-surface-variant block">Destination:</span>
+<span class="font-medium text-on-surface">Access Bank PLC</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Input Bar (Sticky, rigidly 52px tall controls, Level 2 elevation) -->
+<div class="sticky bottom-0 z-40 bg-surface-container-lowest/98 backdrop-blur-md px-margin py-space-sm border-t border-outline-variant/30 shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)]">
+<form class="flex items-center gap-space-sm max-w-full" onsubmit="event.preventDefault();">
+<!-- Attachment Plus Trigger -->
+<button aria-label="Add attachment" class="w-[44px] h-[52px] rounded-xl flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-surface-container active:scale-95 transition-all shrink-0" type="button">
+<span class="material-symbols-outlined text-[24px]">add_circle</span>
+</button>
+<!-- Message Input Field -->
+<div class="flex-1 relative flex items-center">
+<input class="w-full h-[52px] bg-surface-container-low border border-outline-variant/50 rounded-xl pl-space-md pr-11 font-body text-[15px] text-on-surface placeholder:text-on-surface-variant/60 focus:bg-surface-container-lowest focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none transition-all" placeholder="Type your message..." type="text"/>
+<!-- Voice Memo Mic Trigger inside Input field -->
+<button aria-label="Record voice note" class="absolute right-2 w-8 h-8 rounded-lg flex items-center justify-center text-on-surface-variant hover:text-primary active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]">mic</span>
+</button>
+</div>
+<!-- Send Button in Master Primary Berry #8E1B4A -->
+<button aria-label="Send message" class="w-[52px] h-[52px] rounded-xl bg-primary-container text-on-primary flex items-center justify-center hover:bg-primary active:scale-95 transition-all shadow-sm shrink-0" type="submit">
+<span class="material-symbols-outlined text-[22px]">send</span>
+</button>
+</form>
+</div>
+</div>
+</body></html>

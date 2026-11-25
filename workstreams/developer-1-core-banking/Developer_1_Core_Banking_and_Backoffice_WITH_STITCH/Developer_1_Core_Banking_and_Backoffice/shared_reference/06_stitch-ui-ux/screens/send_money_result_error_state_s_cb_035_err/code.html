@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YourApp - Transaction Status</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary": "#ae3123",
+            "primary": "#6d0033",
+            "outline": "#897176",
+            "on-primary-fixed": "#3f001b",
+            "on-error": "#ffffff",
+            "secondary-container": "#fc6955",
+            "on-error-container": "#93000a",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "on-tertiary-container": "#c6b7bd",
+            "on-secondary": "#ffffff",
+            "error": "#ba1a1a",
+            "on-background": "#1f1b1c",
+            "on-primary-fixed-variant": "#881646",
+            "inverse-on-surface": "#f8eeef",
+            "surface-bright": "#fff8f8",
+            "inverse-surface": "#342f30",
+            "on-tertiary-fixed": "#21191e",
+            "on-secondary-fixed-variant": "#8c170e",
+            "on-surface": "#1f1b1c",
+            "surface-container-high": "#efe6e7",
+            "inverse-primary": "#ffb1c5",
+            "surface-variant": "#e9e0e1",
+            "surface-container-lowest": "#ffffff",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "surface-container": "#f5eced",
+            "on-surface-variant": "#564146",
+            "tertiary": "#3b3236",
+            "surface-dim": "#e1d8d9",
+            "primary-container": "#8e1b4a",
+            "surface": "#fff8f8",
+            "error-container": "#ffdad6",
+            "secondary-fixed-dim": "#ffb4a8",
+            "on-primary-container": "#ffa0ba",
+            "on-tertiary": "#ffffff",
+            "tertiary-container": "#53484d",
+            "outline-variant": "#dcbfc5",
+            "surface-tint": "#a8315d",
+            "primary-fixed": "#ffd9e1",
+            "tertiary-fixed": "#eedee4",
+            "primary-fixed-dim": "#ffb1c5",
+            "background": "#fff8f8",
+            "on-secondary-fixed": "#410000",
+            "on-secondary-container": "#690000",
+            "on-primary": "#ffffff",
+            "secondary-fixed": "#ffdad4",
+            "surface-container-highest": "#e9e0e1",
+            "surface-container-low": "#fbf1f2"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "1rem",
+            "gutter": "1rem",
+            "space-3xl": "3rem",
+            "space-md": "0.75rem",
+            "space-2xl": "2rem",
+            "space-lg": "1rem",
+            "space-xl": "1.5rem",
+            "space-sm": "0.5rem",
+            "space-xs": "0.25rem"
+          },
+          "fontFamily": {
+            "label": ["Inter"],
+            "subtitle": ["Inter"],
+            "display": ["Inter"],
+            "title": ["Inter"],
+            "amount-lg": ["Inter"],
+            "body-medium": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "body": ["Inter"],
+            "caption": ["Inter"]
+          },
+          "fontSize": {
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex justify-center selection:bg-primary-fixed selection:text-on-primary-fixed">
+<main class="w-full max-w-[560px] min-h-screen bg-background flex flex-col justify-between shadow-2xl relative">
+<header class="flex justify-between items-center w-full px-margin py-space-sm min-h-[56px] bg-background">
+<div class="flex items-center gap-space-sm">
+<span class="font-title text-title font-bold text-primary tracking-tight">YourApp</span>
+</div>
+<button aria-label="Close transfer result" class="w-12 h-12 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-container transition-colors duration-150 active:scale-95" type="button">
+<span class="material-symbols-outlined text-[24px]">close</span>
+</button>
+</header>
+<div class="px-margin flex-1 flex flex-col pt-space-xs pb-space-lg">
+<section class="flex flex-col items-center text-center mt-space-xs mb-space-lg">
+<div class="w-20 h-20 rounded-full bg-error-container flex items-center justify-center text-error mb-space-md shadow-sm">
+<span class="material-symbols-outlined text-[40px]" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<h1 class="font-subtitle text-subtitle text-on-surface tracking-tight mb-space-xs">
+          Transfer Could Not Be Completed
+        </h1>
+<p class="font-body text-body text-on-surface-variant max-w-[340px]">
+          The recipient bank switch did not acknowledge the transfer request.
+        </p>
+</section>
+<div class="bg-surface-container-low border border-outline-variant/60 rounded-xl p-space-md mb-space-lg flex items-start gap-space-md">
+<div class="text-primary-container shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+<div class="flex flex-col gap-space-xs text-left">
+<span class="font-label text-label text-on-surface">Your funds are safe.</span>
+<p class="font-caption text-caption text-on-surface-variant leading-relaxed">
+<span class="font-label text-on-surface tabular-nums">₦45,000.00</span> has <span class="font-medium text-on-surface">NOT</span> been deducted from your account, or will automatically reverse within 5 minutes under CBN NIP guidelines.
+          </p>
+</div>
+</div>
+<section class="bg-surface-container-lowest border border-outline-variant/50 rounded-xl p-space-lg mb-space-xl shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)]">
+<div class="flex items-center justify-between pb-space-md border-b border-outline-variant/40">
+<span class="font-caption text-caption text-on-surface-variant">Transfer Attempt Details</span>
+<span class="inline-flex items-center gap-1 rounded-lg px-2 py-0.5 bg-error-container text-error font-caption text-caption font-semibold">
+<span class="material-symbols-outlined text-[14px]">error_outline</span>
+            Failed
+          </span>
+</div>
+<div class="flex flex-col divide-y divide-outline-variant/20 pt-space-xs">
+<div class="py-space-sm flex justify-between items-center text-left">
+<span class="font-caption text-caption text-on-surface-variant">Intended Beneficiary</span>
+<span class="font-body-medium text-body-medium text-on-surface text-right font-semibold">Babajide Sanwo-Olu</span>
+</div>
+<div class="py-space-sm flex justify-between items-center text-left">
+<span class="font-caption text-caption text-on-surface-variant">Destination Bank</span>
+<span class="font-body text-body text-on-surface text-right">GTBank (Guaranty Trust Bank)</span>
+</div>
+<div class="py-space-sm flex justify-between items-center text-left">
+<span class="font-caption text-caption text-on-surface-variant">Account Number</span>
+<span class="font-body-medium text-body-medium text-on-surface text-right tracking-wider tabular-nums font-semibold">0148 992 019</span>
+</div>
+<div class="py-space-sm flex justify-between items-center text-left">
+<span class="font-caption text-caption text-on-surface-variant">Session Reference</span>
+<div class="flex items-center gap-1">
+<span class="font-caption text-caption text-on-surface tabular-nums font-mono">NIP-ERR-99201481</span>
+<button aria-label="Copy Reference" class="text-on-surface-variant hover:text-primary p-0.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+</div>
+</div>
+<div class="pt-space-sm flex flex-col gap-1 text-left">
+<span class="font-caption text-caption text-on-surface-variant">Error Reason</span>
+<p class="font-caption text-caption text-error font-medium leading-normal bg-error-container/40 p-2 rounded-lg border border-error/20">
+              Beneficiary bank switch timeout (NIP Switch Code 91)
+            </p>
+</div>
+</div>
+</section>
+<div class="flex flex-col gap-space-sm mt-auto">
+<button class="w-full h-[52px] rounded-xl bg-primary-container text-on-primary font-label text-label flex items-center justify-center gap-space-sm shadow-sm active:scale-[0.98] active:bg-primary transition-all duration-150" type="button">
+<span class="material-symbols-outlined text-[20px]">refresh</span>
+<span>Try Again</span>
+</button>
+<button class="w-full h-[52px] rounded-xl bg-surface-container-high text-primary-container font-label text-label flex items-center justify-center gap-space-sm active:scale-[0.98] transition-all duration-150" type="button">
+<span class="material-symbols-outlined text-[20px]">account_balance</span>
+<span>Change Payment Method / Bank</span>
+</button>
+<button class="w-full h-[48px] rounded-xl text-primary font-label text-label flex items-center justify-center gap-space-xs hover:bg-surface-container active:scale-[0.98] transition-all duration-150" type="button">
+<span class="material-symbols-outlined text-[18px]">support_agent</span>
+<span>Report to 24/7 Support Desk</span>
+</button>
+</div>
+<footer class="pt-space-lg pb-space-xs text-center border-t border-outline-variant/30 mt-space-md">
+<div class="flex items-center justify-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">shield</span>
+<p class="font-caption text-caption text-[11px] leading-tight">
+            Regulated by Central Bank of Nigeria (CBN). Deposits protected by NDIC.
+          </p>
+</div>
+</footer>
+</div>
+</main>
+</body></html>

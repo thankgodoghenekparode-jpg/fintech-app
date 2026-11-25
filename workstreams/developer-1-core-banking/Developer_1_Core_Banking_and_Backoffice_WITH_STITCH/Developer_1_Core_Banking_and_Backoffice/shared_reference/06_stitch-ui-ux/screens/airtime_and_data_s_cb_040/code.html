@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YourApp - Airtime &amp; Data</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary-fixed": "#ffd9e1",
+            "background": "#fff8f8",
+            "inverse-primary": "#ffb1c5",
+            "surface-dim": "#e1d8d9",
+            "secondary": "#ae3123",
+            "on-secondary-fixed": "#410000",
+            "on-secondary-container": "#690000",
+            "on-background": "#1f1b1c",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "on-primary-fixed": "#3f001b",
+            "on-tertiary": "#ffffff",
+            "tertiary": "#3b3236",
+            "outline-variant": "#dcbfc5",
+            "primary-container": "#8e1b4a",
+            "surface-container-highest": "#e9e0e1",
+            "on-surface": "#1f1b1c",
+            "on-surface-variant": "#564146",
+            "on-secondary": "#ffffff",
+            "secondary-fixed-dim": "#ffb4a8",
+            "surface-container-high": "#efe6e7",
+            "primary-fixed-dim": "#ffb1c5",
+            "on-error-container": "#93000a",
+            "secondary-container": "#fc6955",
+            "outline": "#897176",
+            "on-secondary-fixed-variant": "#8c170e",
+            "on-tertiary-fixed": "#21191e",
+            "primary": "#6d0033",
+            "surface": "#fff8f8",
+            "on-primary-fixed-variant": "#881646",
+            "surface-bright": "#fff8f8",
+            "error": "#ba1a1a",
+            "surface-container": "#f5eced",
+            "surface-container-lowest": "#ffffff",
+            "inverse-surface": "#342f30",
+            "error-container": "#ffdad6",
+            "secondary-fixed": "#ffdad4",
+            "surface-tint": "#a8315d",
+            "surface-container-low": "#fbf1f2",
+            "tertiary-container": "#53484d",
+            "tertiary-fixed": "#eedee4",
+            "inverse-on-surface": "#f8eeef",
+            "on-primary": "#ffffff",
+            "on-error": "#ffffff",
+            "on-tertiary-container": "#c6b7bd",
+            "on-primary-container": "#ffa0ba",
+            "surface-variant": "#e9e0e1",
+            "tertiary-fixed-dim": "#d1c3c8"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-3xl": "3rem",
+            "space-sm": "0.5rem",
+            "margin": "1rem",
+            "space-xl": "1.5rem",
+            "space-lg": "1rem",
+            "gutter": "1rem",
+            "space-2xl": "2rem",
+            "space-xs": "0.25rem",
+            "space-md": "0.75rem"
+          },
+          "fontFamily": {
+            "caption": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "body-medium": ["Inter"],
+            "body": ["Inter"],
+            "display": ["Inter"],
+            "title": ["Inter"],
+            "amount-lg": ["Inter"],
+            "label": ["Inter"],
+            "subtitle": ["Inter"]
+          },
+          "fontSize": {
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col items-center antialiased select-none font-body">
+<!-- Mobile Wrapper Device 390px Max / Responsive Centered Container -->
+<div class="w-full max-w-[560px] min-h-screen bg-background flex flex-col relative pb-space-3xl">
+<!-- Top App Bar Navigation Header -->
+<header class="sticky top-0 z-40 bg-surface/95 backdrop-blur-md px-margin py-space-sm flex justify-between items-center min-h-[56px] shadow-sm">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Go back" class="w-10 h-10 -ml-1.5 flex items-center justify-center rounded-full hover:bg-surface-container active:scale-95 transition-transform text-on-surface" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<h1 class="font-subtitle text-subtitle text-on-surface font-semibold tracking-tight">Airtime &amp; Data</h1>
+</div>
+<div class="flex items-center gap-space-xs">
+<button aria-label="Help &amp; FAQs" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container active:scale-95 transition-transform text-on-surface-variant" type="button">
+<span class="material-symbols-outlined text-[22px]">help_outline</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-margin py-space-md flex flex-col gap-space-lg">
+<!-- Category Segmented Switch: Airtime vs Mobile Data -->
+<nav aria-label="Purchase Type" class="w-full p-1 bg-surface-container-high rounded-xl flex items-center">
+<button class="flex-1 py-2.5 text-center rounded-[10px] bg-surface-container-lowest text-primary font-label text-label shadow-sm font-semibold transition-all" type="button">
+          Airtime
+        </button>
+<button class="flex-1 py-2.5 text-center rounded-[10px] text-on-surface-variant font-label text-label font-medium hover:text-on-surface transition-all" type="button">
+          Mobile Data
+        </button>
+</nav>
+<!-- Instant Cashback Promotion Incentive Banner -->
+<section aria-label="Promotion" class="bg-primary-fixed/40 border border-outline-variant/50 rounded-xl px-space-md py-space-sm flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-7 h-7 rounded-full bg-primary-container text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<p class="font-caption text-caption text-on-primary-fixed font-medium">
+            Earn 2% instant cashback on this purchase
+          </p>
+</div>
+<span class="font-caption text-caption text-primary font-semibold shrink-0 cursor-pointer hover:underline">Details</span>
+</section>
+<!-- Section: Phone Number & Contact Picker -->
+<section class="bg-surface-container-lowest rounded-xl p-space-md border border-outline-variant/40 shadow-sm flex flex-col gap-space-sm">
+<div class="flex justify-between items-center">
+<label class="font-caption text-caption text-on-surface-variant font-medium" for="phone-input">Recipient Mobile Number</label>
+<span class="font-caption text-caption text-primary font-medium">Nigeria (+234)</span>
+</div>
+<div class="relative flex items-center">
+<input class="w-full h-[52px] bg-surface-container-lowest rounded-xl border border-outline-variant/60 focus:border-primary-container focus:ring-1 focus:ring-primary-container text-on-surface font-body-medium text-body-medium pl-space-md pr-12 transition-all tabular-nums" id="phone-input" placeholder="e.g. 0802 000 0000" type="tel" value="0801 234 5678"/>
+<button aria-label="Select from contacts" class="absolute right-1 w-11 h-11 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-[22px]">contacts</span>
+</button>
+</div>
+<!-- Autofill Self Quick Chip -->
+<div class="flex items-center gap-space-xs pt-0.5">
+<button class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-surface-container-low border border-outline-variant/40 hover:bg-surface-container text-primary font-caption text-caption font-medium transition-colors" type="button">
+<span class="material-symbols-outlined text-[14px]">person</span>
+<span>My Number: 0801 234 5678</span>
+</button>
+</div>
+</section>
+<!-- Section: Mobile Network Operator Selector -->
+<section class="flex flex-col gap-space-xs">
+<div class="flex justify-between items-center px-0.5">
+<span class="font-caption text-caption text-on-surface-variant font-medium">Select Network Provider</span>
+<span class="font-caption text-caption text-on-surface-variant/80 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-green-700" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+            Auto-detected
+          </span>
+</div>
+<div class="grid grid-cols-4 gap-space-xs">
+<!-- MTN (Active Selected) -->
+<button class="relative bg-surface-container-lowest rounded-xl p-space-sm border-2 border-primary-container shadow-sm flex flex-col items-center gap-1.5 transition-all text-center" type="button">
+<!-- Verified Telco Badge Icon -->
+<div class="w-10 h-10 rounded-full bg-[#FFCC00]/20 flex items-center justify-center border border-[#FFCC00]/50 relative">
+<span class="font-label text-label font-bold text-[#8A6D00]">MTN</span>
+<span class="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-primary-container text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[10px]" style="font-variation-settings: 'FILL' 1;">check</span>
+</span>
+</div>
+<span class="font-caption text-caption font-semibold text-on-surface">MTN</span>
+</button>
+<!-- Airtel -->
+<button class="bg-surface-container-lowest rounded-xl p-space-sm border border-outline-variant/40 hover:border-outline-variant shadow-sm flex flex-col items-center gap-1.5 transition-all text-center group" type="button">
+<div class="w-10 h-10 rounded-full bg-[#E51B24]/10 flex items-center justify-center border border-[#E51B24]/30">
+<span class="font-label text-label font-bold text-[#E51B24]">airtel</span>
+</div>
+<span class="font-caption text-caption font-medium text-on-surface-variant group-hover:text-on-surface">Airtel</span>
+</button>
+<!-- Glo -->
+<button class="bg-surface-container-lowest rounded-xl p-space-sm border border-outline-variant/40 hover:border-outline-variant shadow-sm flex flex-col items-center gap-1.5 transition-all text-center group" type="button">
+<div class="w-10 h-10 rounded-full bg-[#2E9B34]/10 flex items-center justify-center border border-[#2E9B34]/30">
+<span class="font-label text-label font-bold text-[#2E9B34]">glo</span>
+</div>
+<span class="font-caption text-caption font-medium text-on-surface-variant group-hover:text-on-surface">Glo</span>
+</button>
+<!-- 9mobile -->
+<button class="bg-surface-container-lowest rounded-xl p-space-sm border border-outline-variant/40 hover:border-outline-variant shadow-sm flex flex-col items-center gap-1.5 transition-all text-center group" type="button">
+<div class="w-10 h-10 rounded-full bg-[#005B38]/10 flex items-center justify-center border border-[#005B38]/30">
+<span class="font-label text-label font-bold text-[#005B38]">9mob</span>
+</div>
+<span class="font-caption text-caption font-medium text-on-surface-variant group-hover:text-on-surface">9mobile</span>
+</button>
+</div>
+</section>
+<!-- Section: Purchase Amount -->
+<section class="bg-surface-container-lowest rounded-xl p-space-md border border-outline-variant/40 shadow-sm flex flex-col gap-space-md">
+<div class="flex justify-between items-baseline">
+<label class="font-caption text-caption text-on-surface-variant font-medium" for="custom-amount">Recharge Amount</label>
+<div class="flex items-center gap-1 font-caption text-caption text-on-surface-variant">
+<span>Balance:</span>
+<span class="font-semibold text-on-surface tabular-nums">₦142,850.00</span>
+</div>
+</div>
+<!-- Custom Numeric Input Box -->
+<div class="relative flex items-center">
+<div class="absolute left-3.5 flex items-center pointer-events-none text-primary-container font-subtitle text-subtitle font-bold">
+            ₦
+          </div>
+<input class="w-full h-[52px] bg-surface-container-lowest rounded-xl border border-outline-variant/60 focus:border-primary-container focus:ring-1 focus:ring-primary-container pl-9 pr-space-md text-on-surface font-title text-title font-bold tabular-nums tracking-tight transition-all" id="custom-amount" type="text" value="2,000"/>
+</div>
+<!-- Quick Amount Presets -->
+<div class="flex flex-col gap-space-xs">
+<span class="font-caption text-caption text-on-surface-variant/70 font-medium">Popular amounts</span>
+<div class="grid grid-cols-4 gap-space-xs">
+<button class="py-2.5 px-1 bg-surface-container-low hover:bg-surface-container rounded-lg border border-outline-variant/30 text-on-surface font-label text-label font-medium tabular-nums text-center transition-colors" type="button">
+              ₦500
+            </button>
+<button class="py-2.5 px-1 bg-surface-container-low hover:bg-surface-container rounded-lg border border-outline-variant/30 text-on-surface font-label text-label font-medium tabular-nums text-center transition-colors" type="button">
+              ₦1,000
+            </button>
+<button class="py-2.5 px-1 bg-primary-fixed/50 border border-primary-container/40 rounded-lg text-primary font-label text-label font-semibold tabular-nums text-center transition-colors" type="button">
+              ₦2,000
+            </button>
+<button class="py-2.5 px-1 bg-surface-container-low hover:bg-surface-container rounded-lg border border-outline-variant/30 text-on-surface font-label text-label font-medium tabular-nums text-center transition-colors" type="button">
+              ₦5,000
+            </button>
+</div>
+</div>
+</section>
+<!-- Section: Auto-Renew Recurring Switcher Card -->
+<section class="bg-surface-container-lowest rounded-xl p-space-md border border-outline-variant/40 shadow-sm flex items-center justify-between">
+<div class="flex items-start gap-space-sm pr-2">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">autorenew</span>
+</div>
+<div>
+<h2 class="font-label text-label font-semibold text-on-surface">Auto-renew purchase</h2>
+<p class="font-caption text-caption text-on-surface-variant">Repeat purchase automatically (weekly or monthly)</p>
+</div>
+</div>
+<!-- Toggle Switch UI -->
+<label class="relative inline-flex items-center cursor-pointer shrink-0">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</section>
+<!-- Section: Fee Transparency Indicator -->
+<div class="flex items-center justify-between px-space-xs">
+<span class="font-caption text-caption text-on-surface-variant">Network service charge</span>
+<div class="inline-flex items-center gap-1 font-caption text-caption font-medium text-emerald-800">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span>Zero fee (₦0.00)</span>
+</div>
+</div>
+<!-- Action Button Area -->
+<div class="mt-space-xs flex flex-col gap-space-xs">
+<button class="w-full h-[52px] rounded-xl bg-primary-container text-on-primary font-label text-label font-semibold flex items-center justify-center gap-2 shadow-[0_8px_24px_-4px_rgba(142,27,74,0.3)] active:scale-[0.99] hover:bg-primary transition-all tabular-nums" type="button">
+<span>Pay ₦2,000.00</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<div class="text-center">
+<span class="font-caption text-caption text-on-surface-variant/70 text-[11px]">Protected by NDIC insurance and bank-grade encryption</span>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Payments Tab Active) -->
+<nav aria-label="Main Navigation" class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-margin h-16 max-w-[560px] mx-auto bg-surface-container-lowest shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)]">
+<!-- Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#home">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="font-caption text-caption font-medium leading-none">Home</span>
+</a>
+<!-- Payments (Active State Executed from JSON Anchor) -->
+<a class="flex flex-col items-center justify-center text-primary font-semibold min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#payments">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">send</span>
+<span class="font-caption text-caption font-semibold leading-none">Payments</span>
+</a>
+<!-- Cards -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#cards">
+<span class="material-symbols-outlined text-[24px]">credit_card</span>
+<span class="font-caption text-caption font-medium leading-none">Cards</span>
+</a>
+<!-- Save & Borrow -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#savings">
+<span class="material-symbols-outlined text-[24px]">savings</span>
+<span class="font-caption text-caption font-medium leading-none">Save &amp; Borrow</span>
+</a>
+<!-- More -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#more">
+<span class="material-symbols-outlined text-[24px]">more_horiz</span>
+<span class="font-caption text-caption font-medium leading-none">More</span>
+</a>
+</nav>
+</div>
+</body></html>

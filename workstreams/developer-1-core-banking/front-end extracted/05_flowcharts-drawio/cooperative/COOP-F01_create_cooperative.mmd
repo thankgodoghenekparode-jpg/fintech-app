@@ -1,0 +1,31 @@
+flowchart TD
+  a(["Customer taps Create cooperative"])
+  b[/"Enter name, type, description, meeting schedule"/]
+  c{"Registered cooperative?"}
+  d[/"Upload certificate and bye-laws"/]
+  e[/"Add officer identity details (informal)"/]
+  f["Create tenant; provision dedicated account (RESTRICTED)"]
+  g["Invite 1-2 more principal admins"]
+  h{"Min admins accepted and KYC passed?"}
+  i["Waiting: reminders to admins"]
+  j["Staff verification of documents / trust level set"]
+  k{"Verified?"}
+  l["Rejected with reason; fix and resubmit"]
+  m["Activate: set rules and plans; account active"]
+  n(["Cooperative live; invite members"])
+  a --> b
+  b --> c
+  c -->|yes| d
+  c -->|no| e
+  d --> f
+  e --> f
+  f --> g
+  g --> h
+  h -->|no| i
+  i --> h
+  h -->|yes| j
+  j --> k
+  k -->|no| l
+  l -->|resubmit| j
+  k -->|yes| m
+  m --> n

@@ -1,0 +1,338 @@
+openapi: 3.0.3
+info:
+  title: Spending Insights and Rewards API
+  version: 1.0.0
+  description: Product API. Uses the core conventions (Idempotency-Key, X-Pin-Token,
+    X-Tenant-Id, error format). Amounts in kobo.
+security:
+- bearerAuth: []
+paths:
+  /insights/summary:
+    get:
+      tags:
+      - Insights
+      summary: Month summary and categories
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: month
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /insights/categories/{categoryId}:
+    get:
+      tags:
+      - Insights
+      summary: Category detail
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: categoryId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /insights/transactions/{transactionId}/category:
+    put:
+      tags:
+      - Insights
+      summary: Re-categorise
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: transactionId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                category:
+                  type: string
+              required:
+              - category
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /insights/budgets:
+    get:
+      tags:
+      - Insights
+      summary: List budgets
+      description: 'Roles: any authenticated customer'
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+    post:
+      tags:
+      - Insights
+      summary: Create budget
+      description: 'Roles: any authenticated customer'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                category:
+                  type: string
+                amountKobo:
+                  type: integer
+                  format: int64
+                  description: Amount in kobo
+                alerts:
+                  type: array
+                  items:
+                    type: integer
+              required:
+              - category
+              - amountKobo
+      responses:
+        '201':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /insights/preferences:
+    put:
+      tags:
+      - Insights
+      summary: Update preferences and consent
+      description: 'Roles: any authenticated customer'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                personalised:
+                  type: boolean
+                tips:
+                  type: boolean
+                alerts:
+                  type: boolean
+              required:
+              - personalised
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /rewards:
+    get:
+      tags:
+      - Rewards
+      summary: Reward balance, campaigns, history
+      description: 'Roles: any authenticated customer'
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /rewards/referral:
+    get:
+      tags:
+      - Rewards
+      summary: My referral code and list
+      description: 'Roles: any authenticated customer'
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /rewards/referral/apply:
+    post:
+      tags:
+      - Rewards
+      summary: Apply a referral code
+      description: 'Roles: any authenticated customer'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                code:
+                  type: string
+              required:
+              - code
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /backoffice/rewards/campaigns:
+    get:
+      tags:
+      - Backoffice
+      summary: Campaigns
+      description: 'Roles: Marketing admin'
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+    post:
+      tags:
+      - Backoffice
+      summary: Create campaign (dual control)
+      description: 'Roles: Marketing admin'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                rules:
+                  type: object
+                  additionalProperties: true
+                budgetKobo:
+                  type: integer
+                  format: int64
+                  description: Amount in kobo
+                startsAt:
+                  type: string
+                  format: date-time
+                endsAt:
+                  type: string
+                  format: date-time
+              required:
+              - rules
+              - budgetKobo
+              - startsAt
+              - endsAt
+      responses:
+        '201':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /backoffice/rewards/budget:
+    get:
+      tags:
+      - Backoffice
+      summary: Budget and spend
+      description: 'Roles: Finance'
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /backoffice/rewards/referrals/{id}/decision:
+    post:
+      tags:
+      - Backoffice
+      summary: Review referral
+      description: 'Roles: Risk analyst'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                decision:
+                  type: string
+                  enum:
+                  - APPROVE
+                  - REJECT
+                reason:
+                  type: string
+              required:
+              - decision
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  parameters:
+    IdempotencyKey:
+      name: Idempotency-Key
+      in: header
+      required: true
+      schema:
+        type: string
+        format: uuid
+    PinToken:
+      name: X-Pin-Token
+      in: header
+      required: true
+      schema:
+        type: string
+  responses:
+    Error:
+      description: Error (see core ERROR_CODES.md)
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+              details:
+                type: object
+              requestId:
+                type: string

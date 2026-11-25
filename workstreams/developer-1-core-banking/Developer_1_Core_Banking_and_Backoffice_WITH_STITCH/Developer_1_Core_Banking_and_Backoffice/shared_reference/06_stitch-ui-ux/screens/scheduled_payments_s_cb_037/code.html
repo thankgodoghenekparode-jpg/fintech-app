@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Scheduled Payments - YourApp</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with Forms and Container Queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary-container": "#ffa0ba",
+            "tertiary-fixed": "#eedee4",
+            "on-primary-fixed-variant": "#881646",
+            "surface-bright": "#fff8f8",
+            "inverse-primary": "#ffb1c5",
+            "surface-tint": "#a8315d",
+            "on-surface-variant": "#564146",
+            "on-error": "#ffffff",
+            "inverse-on-surface": "#f8eeef",
+            "surface-container": "#f5eced",
+            "tertiary": "#3b3236",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "on-secondary": "#ffffff",
+            "surface-container-highest": "#e9e0e1",
+            "outline-variant": "#dcbfc5",
+            "on-tertiary": "#ffffff",
+            "primary-fixed": "#ffd9e1",
+            "outline": "#897176",
+            "on-secondary-fixed-variant": "#8c170e",
+            "error-container": "#ffdad6",
+            "on-tertiary-container": "#c6b7bd",
+            "secondary": "#ae3123",
+            "background": "#fff8f8",
+            "surface-variant": "#e9e0e1",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "surface-container-low": "#fbf1f2",
+            "surface-container-lowest": "#ffffff",
+            "on-background": "#1f1b1c",
+            "primary-fixed-dim": "#ffb1c5",
+            "error": "#ba1a1a",
+            "surface-dim": "#e1d8d9",
+            "inverse-surface": "#342f30",
+            "on-surface": "#1f1b1c",
+            "primary": "#6d0033",
+            "on-error-container": "#93000a",
+            "secondary-container": "#fc6955",
+            "surface": "#fff8f8",
+            "secondary-fixed-dim": "#ffb4a8",
+            "secondary-fixed": "#ffdad4",
+            "on-secondary-container": "#690000",
+            "on-primary-fixed": "#3f001b",
+            "primary-container": "#8e1b4a",
+            "tertiary-container": "#53484d",
+            "on-tertiary-fixed": "#21191e",
+            "on-primary": "#ffffff",
+            "surface-container-high": "#efe6e7",
+            "on-secondary-fixed": "#410000"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "space-2xl": "2rem",
+            "margin": "1rem",
+            "space-md": "0.75rem",
+            "gutter": "1rem",
+            "space-3xl": "3rem",
+            "space-xl": "1.5rem",
+            "space-lg": "1rem"
+          },
+          "fontFamily": {
+            "display": ["Inter"],
+            "amount-lg": ["Inter"],
+            "body": ["Inter"],
+            "body-medium": ["Inter"],
+            "subtitle": ["Inter"],
+            "caption": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "label": ["Inter"],
+            "title": ["Inter"]
+          },
+          "fontSize": {
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+    /* Smooth toggle animation */
+    .toggle-checkbox:checked {
+      right: 0;
+      border-color: #8E1B4A;
+      background-color: #8E1B4A;
+    }
+    .toggle-checkbox:checked + .toggle-label {
+      background-color: #ffd9e1;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-body text-on-surface antialiased min-h-screen flex justify-center selection:bg-primary-fixed selection:text-primary">
+<!-- Mobile Screen Shell: 390px to max 560px for tablet preview -->
+<div class="w-full max-w-[560px] min-h-screen flex flex-col bg-surface relative pb-28">
+<!-- Top App Bar (Custom header for screen S-CB-037 with back navigation & add action) -->
+<header class="sticky top-0 z-40 bg-surface/90 backdrop-blur-md px-margin py-space-sm flex justify-between items-center min-h-[56px]">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Go back" class="w-12 h-12 -ml-2 rounded-full flex items-center justify-center text-on-surface hover:bg-surface-container active:scale-95 transition-all duration-150">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<h1 class="font-subtitle text-subtitle text-on-surface font-bold">Scheduled payments</h1>
+</div>
+<button aria-label="New mandate" class="w-12 h-12 -mr-2 rounded-full flex items-center justify-center text-primary-container hover:bg-surface-container active:scale-95 transition-all duration-150">
+<span class="material-symbols-outlined text-[24px]">add</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-margin flex flex-col gap-space-lg pt-space-xs">
+<!-- Summary Card: Upcoming this month -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] relative overflow-hidden">
+<div class="absolute -right-6 -bottom-6 w-32 h-32 rounded-full bg-primary-fixed/30 pointer-events-none blur-2xl"></div>
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-caption text-caption text-on-surface-variant font-medium flex items-center gap-1">
+            Upcoming this month
+          </span>
+<span class="inline-flex items-center gap-1 bg-surface-container-low px-2 py-0.5 rounded-full text-caption font-label text-primary">
+<span class="material-symbols-outlined text-[14px]">event_repeat</span>
+            3 Active
+          </span>
+</div>
+<div class="my-space-xs">
+<p class="font-amount-lg-mobile text-amount-lg-mobile tabular-nums text-on-surface font-bold tracking-tight">
+            ₦65,000<span class="text-caption text-on-surface-variant">.00</span>
+</p>
+</div>
+<div class="mt-space-sm pt-space-sm border-t border-outline-variant/20 flex items-center justify-between text-caption font-caption">
+<span class="text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary">schedule</span>
+            Next run: <strong class="text-on-surface font-medium">Friday, 28 Oct</strong>
+</span>
+<span class="text-primary font-label hover:underline cursor-pointer">Calendar</span>
+</div>
+</section>
+<!-- Segmented Filter Tabs -->
+<nav aria-label="Mandate status filter" class="flex p-1 bg-surface-container rounded-xl gap-1 text-label font-label">
+<button class="flex-1 py-space-sm px-space-xs rounded-lg text-center font-semibold bg-surface-container-lowest text-primary shadow-[0_1px_3px_0_rgba(30,26,27,0.04)] transition-all">
+          Active (3)
+        </button>
+<button class="flex-1 py-space-sm px-space-xs rounded-lg text-center font-medium text-on-surface-variant hover:text-on-surface transition-all">
+          Paused (1)
+        </button>
+<button class="flex-1 py-space-sm px-space-xs rounded-lg text-center font-medium text-on-surface-variant hover:text-on-surface transition-all">
+          Completed
+        </button>
+</nav>
+<!-- List of Scheduled Payment Cards -->
+<section aria-label="Active scheduled mandates" class="flex flex-col gap-space-md">
+<!-- Card 1: Ikeja Electric Mandate -->
+<article class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] flex flex-col gap-space-md">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]">bolt</span>
+</div>
+<div>
+<h2 class="font-body-medium text-body-medium text-on-surface">Ikeja Electric Mandate</h2>
+<p class="font-caption text-caption text-on-surface-variant">Monthly on the 28th</p>
+</div>
+</div>
+<!-- Pause Toggle Switch -->
+<label class="relative inline-flex items-center cursor-pointer min-h-[48px] min-w-[48px] justify-center">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[14px] after:left-[4px] after:bg-white after:border-outline-variant after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<div class="flex items-end justify-between pt-space-xs border-t border-outline-variant/20">
+<div>
+<p class="font-caption text-caption text-on-surface-variant">Amount</p>
+<p class="font-title text-title tabular-nums font-bold text-on-surface">₦45,000<span class="text-caption text-on-surface-variant font-normal">.00</span></p>
+</div>
+<!-- Status Badge: Active with icon + text -->
+<span class="inline-flex items-center gap-1 bg-[#E7F6EC] text-[#0C7338] px-2 py-1 rounded-[8px] font-caption text-caption font-medium">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+              Active
+            </span>
+</div>
+<!-- Timeline & Action Row -->
+<div class="bg-surface-container-low rounded-lg p-space-sm flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-caption font-caption text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-outline">calendar_today</span>
+<span>Next: <strong class="text-on-surface font-medium">Friday, 28 Oct</strong></span>
+</div>
+<div class="flex items-center gap-1">
+<button class="px-2 py-1 rounded text-caption font-label text-primary hover:bg-surface-container transition-colors">Edit</button>
+<span class="text-outline-variant/60">|</span>
+<button class="px-2 py-1 rounded text-caption font-label text-secondary hover:bg-surface-container transition-colors">Cancel</button>
+</div>
+</div>
+</article>
+<!-- Card 2: Amina Yusuf - Rent Support -->
+<article class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] flex flex-col gap-space-md">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]">person</span>
+</div>
+<div>
+<h2 class="font-body-medium text-body-medium text-on-surface">Amina Yusuf - Rent Support</h2>
+<p class="font-caption text-caption text-on-surface-variant">Weekly on Mondays</p>
+</div>
+</div>
+<!-- Pause Toggle Switch -->
+<label class="relative inline-flex items-center cursor-pointer min-h-[48px] min-w-[48px] justify-center">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[14px] after:left-[4px] after:bg-white after:border-outline-variant after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<div class="flex items-end justify-between pt-space-xs border-t border-outline-variant/20">
+<div>
+<p class="font-caption text-caption text-on-surface-variant">Amount</p>
+<p class="font-title text-title tabular-nums font-bold text-on-surface">₦15,000<span class="text-caption text-on-surface-variant font-normal">.00</span></p>
+</div>
+<!-- Status Badge: Active -->
+<span class="inline-flex items-center gap-1 bg-[#E7F6EC] text-[#0C7338] px-2 py-1 rounded-[8px] font-caption text-caption font-medium">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+              Active
+            </span>
+</div>
+<!-- Timeline & Action Row -->
+<div class="bg-surface-container-low rounded-lg p-space-sm flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-caption font-caption text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-outline">calendar_today</span>
+<span>Next: <strong class="text-on-surface font-medium">Monday, 31 Oct</strong></span>
+</div>
+<div class="flex items-center gap-1">
+<button class="px-2 py-1 rounded text-caption font-label text-primary hover:bg-surface-container transition-colors">Edit</button>
+<span class="text-outline-variant/60">|</span>
+<button class="px-2 py-1 rounded text-caption font-label text-secondary hover:bg-surface-container transition-colors">Cancel</button>
+</div>
+</div>
+</article>
+<!-- Card 3: Internet Subscription -->
+<article class="bg-surface-container-lowest rounded-xl p-space-lg border border-outline-variant/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] flex flex-col gap-space-md">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]">wifi</span>
+</div>
+<div>
+<h2 class="font-body-medium text-body-medium text-on-surface">Internet Subscription</h2>
+<p class="font-caption text-caption text-on-surface-variant">Monthly on the 1st</p>
+</div>
+</div>
+<!-- Pause Toggle Switch -->
+<label class="relative inline-flex items-center cursor-pointer min-h-[48px] min-w-[48px] justify-center">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[14px] after:left-[4px] after:bg-white after:border-outline-variant after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<div class="flex items-end justify-between pt-space-xs border-t border-outline-variant/20">
+<div>
+<p class="font-caption text-caption text-on-surface-variant">Amount</p>
+<p class="font-title text-title tabular-nums font-bold text-on-surface">₦5,000<span class="text-caption text-on-surface-variant font-normal">.00</span></p>
+</div>
+<!-- Status Badge: Active -->
+<span class="inline-flex items-center gap-1 bg-[#E7F6EC] text-[#0C7338] px-2 py-1 rounded-[8px] font-caption text-caption font-medium">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+              Active
+            </span>
+</div>
+<!-- Timeline & Action Row -->
+<div class="bg-surface-container-low rounded-lg p-space-sm flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-caption font-caption text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-outline">calendar_today</span>
+<span>Next: <strong class="text-on-surface font-medium">1 Nov</strong></span>
+</div>
+<div class="flex items-center gap-1">
+<button class="px-2 py-1 rounded text-caption font-label text-primary hover:bg-surface-container transition-colors">Edit</button>
+<span class="text-outline-variant/60">|</span>
+<button class="px-2 py-1 rounded text-caption font-label text-secondary hover:bg-surface-container transition-colors">Cancel</button>
+</div>
+</div>
+</article>
+</section>
+<!-- Notice card with info icon -->
+<section class="bg-surface-container-low rounded-xl p-space-md border border-outline-variant/30 flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-primary-container text-[20px] mt-0.5 flex-shrink-0">info</span>
+<p class="font-caption text-caption text-on-surface-variant leading-relaxed">
+          Scheduled debits run automatically at <span class="font-semibold text-on-surface">06:00 AM WAT</span>. Ensure sufficient balance to avoid failed mandate fees.
+        </p>
+</section>
+<!-- Primary Action Button: 52px height -->
+<div class="pt-space-xs pb-space-lg">
+<button class="w-full h-[52px] bg-primary-container hover:bg-primary text-on-primary font-label text-label rounded-xl flex items-center justify-center gap-space-sm shadow-sm active:scale-[0.98] transition-transform duration-150">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+          Create new scheduled payment
+        </button>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Semantic Shell from Shared Components JSON) -->
+<!-- Destination count: 5. Active destination determined: 'Payments' -->
+<nav aria-label="Main Navigation" class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-margin h-16 max-w-[560px] mx-auto bg-surface-container-lowest shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)]">
+<!-- Tab 1: Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="font-caption text-caption font-medium">Home</span>
+</a>
+<!-- Tab 2: Payments (ACTIVE) -->
+<a aria-current="page" class="flex flex-col items-center justify-center text-primary font-semibold min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">send</span>
+<span class="font-caption text-caption font-medium">Payments</span>
+</a>
+<!-- Tab 3: Cards -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[24px]">credit_card</span>
+<span class="font-caption text-caption font-medium">Cards</span>
+</a>
+<!-- Tab 4: Save & Borrow -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[24px]">savings</span>
+<span class="font-caption text-caption font-medium">Save &amp; Borrow</span>
+</a>
+<!-- Tab 5: More -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[24px]">more_horiz</span>
+<span class="font-caption text-caption font-medium">More</span>
+</a>
+</nav>
+</div>
+</body></html>

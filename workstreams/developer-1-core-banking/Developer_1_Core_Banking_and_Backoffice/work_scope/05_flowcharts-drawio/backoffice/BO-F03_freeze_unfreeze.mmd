@@ -1,0 +1,17 @@
+flowchart TD
+  a(["Alert or order requires restriction"])
+  b["Request freeze with reason"]
+  c["Apply restriction immediately; neutral customer message"]
+  d["Investigate; set review date"]
+  e{"Clear to unfreeze?"}
+  f["Unfreeze needs approval; notify customer"]
+  g["Keep restriction; escalate or report"]
+  h(["Closed with rationale"])
+  a --> b
+  b --> c
+  c --> d
+  d --> e
+  e -->|yes| f
+  e -->|no| g
+  f --> h
+  g --> h

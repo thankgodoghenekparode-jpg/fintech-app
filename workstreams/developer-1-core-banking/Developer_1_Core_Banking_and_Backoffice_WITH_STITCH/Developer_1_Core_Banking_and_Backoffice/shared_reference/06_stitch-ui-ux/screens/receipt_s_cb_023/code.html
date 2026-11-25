@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Transaction Receipt - YourApp</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary-fixed-dim": "#ffb1c5",
+            "primary-container": "#8e1b4a",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "surface-container-low": "#fbf1f2",
+            "surface": "#fff8f8",
+            "on-primary": "#ffffff",
+            "secondary-fixed-dim": "#ffb4a8",
+            "secondary-fixed": "#ffdad4",
+            "on-secondary-container": "#690000",
+            "surface-variant": "#e9e0e1",
+            "inverse-on-surface": "#f8eeef",
+            "on-background": "#1f1b1c",
+            "on-primary-fixed": "#3f001b",
+            "primary-fixed": "#ffd9e1",
+            "on-primary-container": "#ffa0ba",
+            "outline": "#897176",
+            "surface-container-lowest": "#ffffff",
+            "secondary": "#ae3123",
+            "primary": "#6d0033",
+            "error": "#ba1a1a",
+            "outline-variant": "#dcbfc5",
+            "inverse-primary": "#ffb1c5",
+            "surface-container-highest": "#e9e0e1",
+            "tertiary-fixed": "#eedee4",
+            "surface-container": "#f5eced",
+            "on-tertiary-container": "#c6b7bd",
+            "tertiary-container": "#53484d",
+            "on-tertiary": "#ffffff",
+            "tertiary": "#3b3236",
+            "surface-container-high": "#efe6e7",
+            "on-error": "#ffffff",
+            "error-container": "#ffdad6",
+            "on-primary-fixed-variant": "#881646",
+            "on-tertiary-fixed": "#21191e",
+            "surface-bright": "#fff8f8",
+            "on-surface-variant": "#564146",
+            "surface-tint": "#a8315d",
+            "inverse-surface": "#342f30",
+            "on-error-container": "#93000a",
+            "on-secondary-fixed-variant": "#8c170e",
+            "background": "#fff8f8",
+            "surface-dim": "#e1d8d9",
+            "secondary-container": "#fc6955",
+            "on-surface": "#1f1b1c",
+            "on-secondary-fixed": "#410000",
+            "on-secondary": "#ffffff",
+            "tertiary-fixed-dim": "#d1c3c8"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "1rem",
+            "space-xl": "1.5rem",
+            "margin": "1rem",
+            "space-2xl": "2rem",
+            "space-3xl": "3rem",
+            "space-xs": "0.25rem",
+            "space-md": "0.75rem",
+            "space-sm": "0.5rem",
+            "space-lg": "1rem"
+          },
+          "fontFamily": {
+            "title": ["Inter"],
+            "body-medium": ["Inter"],
+            "display": ["Inter"],
+            "subtitle": ["Inter"],
+            "body": ["Inter"],
+            "amount-lg": ["Inter"],
+            "caption": ["Inter"],
+            "label": ["Inter"],
+            "amount-lg-mobile": ["Inter"]
+          },
+          "fontSize": {
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      line-height: 1;
+    }
+    .tnum {
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex flex-col justify-between selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Top App Bar (Task-Focused: Sub-page with back navigation) -->
+<header class="w-full bg-surface max-w-[560px] mx-auto sticky top-0 z-40">
+<div class="flex items-center justify-between px-margin min-h-[56px] py-space-sm">
+<button aria-label="Close receipt" class="flex items-center justify-center w-12 h-12 rounded-xl text-on-surface hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<h1 class="font-subtitle text-subtitle text-on-surface">Transaction receipt</h1>
+<button aria-label="Share" class="flex items-center justify-center w-12 h-12 rounded-xl text-on-surface-variant hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[24px]">share</span>
+</button>
+</div>
+</header>
+<!-- Main Canvas Container -->
+<main class="w-full max-w-[560px] mx-auto px-margin pt-space-xs pb-space-3xl flex-1 flex flex-col items-center">
+<!-- Printable Voucher/Receipt Card -->
+<div class="w-full bg-surface-container-lowest rounded-xl shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)] border border-outline-variant/40 overflow-hidden relative">
+<!-- Top Decorative Accent Strip -->
+<div class="h-2 w-full bg-primary-container"></div>
+<!-- Receipt Content Wrapper -->
+<div class="p-space-lg flex flex-col items-center">
+<!-- Header Branding & Subtitle -->
+<div class="flex flex-col items-center gap-space-xs mt-space-xs text-center">
+<div class="flex items-center gap-space-xs text-primary-container">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+<span class="font-title text-title font-bold tracking-tight text-primary">YourApp</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant tracking-wider font-medium text-[11px]">OFFICIAL TRANSACTION RECEIPT</p>
+</div>
+<!-- Success Status Chip -->
+<div class="mt-space-md inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-[#EBF7EE] text-[#19692C] border border-[#C6E7CE]">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-label text-label text-[12px] font-semibold tracking-wide">SUCCESSFUL TRANSFER</span>
+</div>
+<!-- Transfer Amount Display -->
+<div class="mt-space-lg flex flex-col items-center text-center">
+<span class="font-caption text-caption text-on-surface-variant">Amount Sent</span>
+<div class="font-amount-lg-mobile text-amount-lg-mobile text-on-surface font-bold tnum tracking-tight mt-space-xs">
+            ₦25,000.00
+          </div>
+<div class="mt-space-xs inline-flex items-center gap-1 font-caption text-caption text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+<span>24 Oct 2024 • 11:20:45 AM WAT</span>
+</div>
+</div>
+</div>
+<!-- Dashed Perforation Separation with Left & Right Cutout Notches -->
+<div class="relative w-full my-space-xs flex items-center">
+<!-- Left Notch -->
+<div class="w-4 h-8 bg-background rounded-r-full -ml-[1px] border-y border-r border-outline-variant/40"></div>
+<!-- Dashed Line -->
+<div class="flex-1 border-b border-dashed border-outline-variant mx-space-sm"></div>
+<!-- Right Notch -->
+<div class="w-4 h-8 bg-background rounded-l-full -mr-[1px] border-y border-l border-outline-variant/40"></div>
+</div>
+<!-- Detailed Meta Table Rows -->
+<div class="px-space-lg py-space-md flex flex-col gap-space-md">
+<!-- Recipient Information -->
+<div class="flex justify-between items-start gap-space-md">
+<span class="font-caption text-caption text-on-surface-variant shrink-0">Transfer To</span>
+<span class="font-body-medium text-body-medium text-on-surface font-semibold text-right">Amina Yusuf</span>
+</div>
+<div class="flex justify-between items-start gap-space-md">
+<span class="font-caption text-caption text-on-surface-variant shrink-0">Receiving Bank</span>
+<span class="font-body-medium text-body-medium text-on-surface text-right">Access Bank Plc</span>
+</div>
+<div class="flex justify-between items-start gap-space-md">
+<span class="font-caption text-caption text-on-surface-variant shrink-0">Recipient Account</span>
+<span class="font-body-medium text-body-medium text-on-surface tnum text-right">0234891102</span>
+</div>
+<div class="w-full border-b border-outline-variant/30 my-space-xs"></div>
+<!-- Sender Information -->
+<div class="flex justify-between items-start gap-space-md">
+<span class="font-caption text-caption text-on-surface-variant shrink-0">Sender Name</span>
+<span class="font-body-medium text-body-medium text-on-surface text-right">Tunde Adeleke</span>
+</div>
+<div class="flex justify-between items-start gap-space-md">
+<span class="font-caption text-caption text-on-surface-variant shrink-0">Sender Account</span>
+<span class="font-body text-body text-on-surface tnum text-right">0123456789 <span class="text-on-surface-variant text-[13px]">(YourApp / Zenith Partner)</span></span>
+</div>
+<div class="w-full border-b border-outline-variant/30 my-space-xs"></div>
+<!-- Transaction Details -->
+<div class="flex justify-between items-start gap-space-md">
+<span class="font-caption text-caption text-on-surface-variant shrink-0">Narration</span>
+<span class="font-body text-body text-on-surface text-right italic font-normal">Catering deposit for Saturday</span>
+</div>
+<div class="flex justify-between items-start gap-space-md">
+<span class="font-caption text-caption text-on-surface-variant shrink-0">Transfer Fee</span>
+<span class="font-body-medium text-body-medium text-on-surface tnum text-right">₦0.00</span>
+</div>
+<div class="flex justify-between items-start gap-space-md pt-space-xs">
+<span class="font-label text-label text-on-surface font-semibold shrink-0">Total Amount</span>
+<span class="font-body-medium text-body-medium text-primary font-bold tnum text-right">₦25,000.00</span>
+</div>
+<div class="w-full border-b border-outline-variant/30 my-space-xs"></div>
+<div class="flex justify-between items-start gap-space-md">
+<span class="font-caption text-caption text-on-surface-variant shrink-0">Reference</span>
+<div class="flex items-center gap-space-xs text-right">
+<span class="font-caption text-caption text-on-surface font-mono font-medium tnum">TXN-20241024-998241</span>
+<button aria-label="Copy reference" class="text-primary hover:text-on-primary-fixed-variant transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+</div>
+</div>
+<div class="flex justify-between items-start gap-space-md pb-space-xs">
+<span class="font-caption text-caption text-on-surface-variant shrink-0">Payment Type</span>
+<span class="font-caption text-caption text-on-surface font-medium text-right">NIP Instant Transfer</span>
+</div>
+</div>
+<!-- Scalloped Footer Pattern / Receipt Cut Border -->
+<div class="bg-surface-container-low px-space-lg py-space-md flex flex-col items-center text-center gap-space-xs border-t border-outline-variant/40">
+<div class="flex items-center gap-space-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-primary-container" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<p class="font-caption text-caption text-[11px] text-on-surface-variant">
+            Licensed by the Central Bank of Nigeria &amp; Insured by NDIC
+          </p>
+</div>
+</div>
+</div>
+<!-- Security Assurance Note -->
+<p class="mt-space-md text-center font-caption text-caption text-on-surface-variant max-w-[340px]">
+      This computer-generated receipt serves as authentic proof of payment from YourApp.
+    </p>
+</main>
+<!-- Sticky Bottom Actions Container -->
+<section class="w-full bg-surface-container-lowest/90 backdrop-blur-md border-t border-outline-variant/30 sticky bottom-0 z-40 max-w-[560px] mx-auto">
+<div class="px-margin py-space-md flex flex-col gap-space-sm pb-[max(1rem,env(safe-area-inset-bottom))]">
+<!-- Primary 52px Action Button -->
+<button class="w-full h-[52px] rounded-xl bg-primary-container text-on-primary font-label text-label flex items-center justify-center gap-space-sm shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)] active:scale-[0.98] transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]">share</span>
+<span>Share receipt</span>
+</button>
+<!-- Secondary 52px Action Button -->
+<button class="w-full h-[52px] rounded-xl bg-[#F8E8EE] text-primary font-label text-label flex items-center justify-center gap-space-sm active:scale-[0.98] transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]">download</span>
+<span>Download PDF</span>
+</button>
+</div>
+</section>
+</body></html>

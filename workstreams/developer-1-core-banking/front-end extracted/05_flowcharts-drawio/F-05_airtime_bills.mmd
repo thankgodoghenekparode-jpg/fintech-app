@@ -1,0 +1,32 @@
+flowchart TD
+  a(["Choose Airtime/Data or Bills"])
+  b[/"Select network or biller and package"/]
+  c[/"Enter number (phone, meter, decoder)"/]
+  d["Validate customer"]
+  e{"Valid?"}
+  e1["Show error; re-enter"]
+  f[/"Confirm amount and fee"/]
+  g["PIN"]
+  h["Submit purchase with idempotency key"]
+  i{"Vend result"}
+  j["Success: token or receipt"]
+  k["Pending: auto-check status"]
+  l["Failed: automatic refund and notify"]
+  m(["Done"])
+  a --> b
+  b --> c
+  c --> d
+  d --> e
+  e -->|no| e1
+  e1 --> c
+  e -->|yes| f
+  f --> g
+  g --> h
+  h --> i
+  i -->|ok| j
+  i -->|pending| k
+  i -->|failed| l
+  k -->|ok| j
+  k -->|failed| l
+  j --> m
+  l --> m

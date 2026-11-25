@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Enable Biometrics - YourApp</title>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface": "#fff8f8",
+            "tertiary": "#3b3236",
+            "tertiary-container": "#53484d",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "on-surface": "#1f1b1c",
+            "error-container": "#ffdad6",
+            "surface-container-lowest": "#ffffff",
+            "on-primary-fixed-variant": "#881646",
+            "inverse-on-surface": "#f8eeef",
+            "primary-fixed": "#ffd9e1",
+            "on-secondary-fixed-variant": "#8c170e",
+            "on-secondary": "#ffffff",
+            "secondary-fixed": "#ffdad4",
+            "error": "#ba1a1a",
+            "on-primary": "#ffffff",
+            "background": "#fff8f8",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "surface-container": "#f5eced",
+            "surface-variant": "#e9e0e1",
+            "on-primary-container": "#ffa0ba",
+            "surface-container-highest": "#e9e0e1",
+            "on-error": "#ffffff",
+            "on-tertiary-container": "#c6b7bd",
+            "secondary-fixed-dim": "#ffb4a8",
+            "surface-tint": "#a8315d",
+            "surface-container-high": "#efe6e7",
+            "on-tertiary-fixed": "#21191e",
+            "primary": "#6d0033",
+            "inverse-primary": "#ffb1c5",
+            "surface-dim": "#e1d8d9",
+            "on-secondary-container": "#690000",
+            "on-primary-fixed": "#3f001b",
+            "tertiary-fixed": "#eedee4",
+            "on-secondary-fixed": "#410000",
+            "surface-bright": "#fff8f8",
+            "outline": "#897176",
+            "primary-container": "#8e1b4a",
+            "on-surface-variant": "#564146",
+            "on-background": "#1f1b1c",
+            "on-tertiary": "#ffffff",
+            "secondary": "#ae3123",
+            "outline-variant": "#dcbfc5",
+            "secondary-container": "#fc6955",
+            "primary-fixed-dim": "#ffb1c5",
+            "inverse-surface": "#342f30",
+            "surface-container-low": "#fbf1f2",
+            "on-error-container": "#93000a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "1rem",
+            "space-md": "0.75rem",
+            "space-xl": "1.5rem",
+            "space-3xl": "3rem",
+            "space-lg": "1rem",
+            "space-sm": "0.5rem",
+            "margin": "1rem",
+            "space-2xl": "2rem",
+            "space-xs": "0.25rem"
+          },
+          "fontFamily": {
+            "body-medium": ["Inter"],
+            "body": ["Inter"],
+            "label": ["Inter"],
+            "display": ["Inter"],
+            "caption": ["Inter"],
+            "subtitle": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "title": ["Inter"],
+            "amount-lg": ["Inter"]
+          },
+          "fontSize": {
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex justify-center selection:bg-primary-fixed selection:text-primary">
+<!-- Mobile Container Context (390 x 844 targeted viewport) -->
+<div class="w-full max-w-[390px] min-h-screen flex flex-col justify-between bg-surface relative overflow-x-hidden">
+<!-- Top Navigation Header -->
+<header class="w-full flex items-center justify-between px-margin py-space-sm min-h-[56px] z-10">
+<!-- Back Action Button -->
+<button aria-label="Go back" class="w-12 h-12 -ml-2 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<!-- Centered Minimal Brand Context -->
+<span class="font-title text-[18px] leading-[24px] font-bold tracking-tight text-primary">YourApp</span>
+<!-- Trailing Skip Action -->
+<button class="w-12 h-12 -mr-2 rounded-full flex items-center justify-center font-label text-label text-on-surface-variant hover:text-primary active:scale-95 transition-all" type="button">
+        Skip
+      </button>
+</header>
+<!-- Scrollable Content Canvas -->
+<main class="flex-1 flex flex-col px-margin pt-space-xs pb-space-lg">
+<!-- Biometric Hero Badge & Ambient Glow -->
+<div class="relative flex items-center justify-center my-space-md">
+<!-- Diffuse ambient aura -->
+<div class="absolute w-36 h-36 rounded-full bg-primary-fixed blur-2xl opacity-60"></div>
+<!-- Outer soft ring container -->
+<div class="relative w-28 h-28 rounded-full bg-[#F8E8EE] flex items-center justify-center shadow-[0_8px_24px_-4px_rgba(30,26,27,0.06)] border border-outline-variant/30">
+<!-- Concentric inner tier -->
+<div class="w-20 h-20 rounded-full bg-surface-container-lowest flex items-center justify-center shadow-sm">
+<!-- Biometric hybrid visual: Face ID + Fingerprint pairing -->
+<div class="relative flex items-center justify-center w-12 h-12">
+<span class="material-symbols-outlined text-primary text-[38px]" data-icon="fingerprint">fingerprint</span>
+<div class="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-primary-container text-on-primary flex items-center justify-center shadow-sm border-2 border-surface-container-lowest">
+<span class="material-symbols-outlined text-[14px]" data-icon="face">face</span>
+</div>
+</div>
+</div>
+<!-- Micro Pulse Dot (Security Status active) -->
+<span class="absolute top-2 right-3 w-3 h-3 bg-[#1e824c] rounded-full border-2 border-[#F8E8EE]"></span>
+</div>
+</div>
+<!-- Headline & Subtitle Grouping -->
+<div class="text-center mb-space-lg">
+<h1 class="font-title text-title text-primary tracking-tight mb-space-xs">
+          Enable biometrics
+        </h1>
+<p class="font-body text-body text-on-surface-variant max-w-[320px] mx-auto text-[15px] leading-[22px]">
+          Sign in faster and authorize daily transfers with Face ID or your fingerprint.
+        </p>
+</div>
+<!-- Bento-style Security & Utility Benefits -->
+<div class="w-full bg-surface-container-lowest rounded-xl border border-outline-variant/40 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] p-space-lg mb-space-md space-y-space-md">
+<!-- Benefit Item 1 -->
+<div class="flex items-start gap-space-md">
+<div class="w-7 h-7 rounded-full bg-[#eef7ee] flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[#1e824c] text-[18px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="flex-1">
+<h2 class="font-label text-label text-on-surface font-semibold">Fast 1-tap sign-in</h2>
+<p class="font-caption text-caption text-on-surface-variant">Access your bank balance and account instantly without retyping passcodes.</p>
+</div>
+</div>
+<div class="h-px w-full bg-surface-container"></div>
+<!-- Benefit Item 2 -->
+<div class="flex items-start gap-space-md">
+<div class="w-7 h-7 rounded-full bg-[#eef7ee] flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[#1e824c] text-[18px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="flex-1">
+<h2 class="font-label text-label text-on-surface font-semibold">Bank-grade device encryption</h2>
+<p class="font-caption text-caption text-on-surface-variant">Protected by physical hardware keys verified under CBN digital safety protocols.</p>
+</div>
+</div>
+<div class="h-px w-full bg-surface-container"></div>
+<!-- Benefit Item 3 -->
+<div class="flex items-start gap-space-md">
+<div class="w-7 h-7 rounded-full bg-[#eef7ee] flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[#1e824c] text-[18px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="flex-1">
+<h2 class="font-label text-label text-on-surface font-semibold">No passcode needed for routine transfers</h2>
+<p class="font-caption text-caption text-on-surface-variant">Authorize transfers up to ₦100,000 quickly with seamless touch or facial scan.</p>
+</div>
+</div>
+</div>
+<!-- Privacy & Hardware Assurance Callout -->
+<div class="w-full bg-surface-container-low rounded-xl border border-outline-variant/30 p-space-md flex items-start gap-space-md mb-space-sm">
+<div class="w-8 h-8 rounded-lg bg-surface-container-highest flex items-center justify-center shrink-0 text-primary">
+<span class="material-symbols-outlined text-[20px]" data-icon="lock">lock</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant text-[12px] leading-[18px]">
+<span class="font-semibold text-on-surface">Secure enclave protection:</span> Your biometric data is stored only on your secure device enclave and is never transmitted to YourApp servers.
+        </p>
+</div>
+</main>
+<!-- Bottom Pinned Action Stack -->
+<footer class="w-full px-margin pb-space-xl pt-space-xs bg-surface flex flex-col gap-space-xs z-10">
+<!-- Primary 52px Button -->
+<button class="w-full h-[52px] rounded-xl bg-primary-container text-on-primary font-label text-label flex items-center justify-center gap-space-sm shadow-[0_8px_24px_-4px_rgba(142,27,74,0.24)] hover:bg-primary active:scale-[0.98] transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]">fingerprint</span>
+<span>Enable biometrics</span>
+</button>
+<!-- Secondary 52px Text Button -->
+<button class="w-full h-[52px] rounded-xl text-on-surface-variant font-label text-label flex items-center justify-center hover:bg-surface-container hover:text-on-surface active:scale-[0.98] transition-all" type="button">
+        Maybe later
+      </button>
+<!-- Home Indicator Safe Area Bar -->
+<div class="w-32 h-1 bg-on-surface/15 rounded-full mx-auto mt-space-xs"></div>
+</footer>
+</div>
+</body></html>

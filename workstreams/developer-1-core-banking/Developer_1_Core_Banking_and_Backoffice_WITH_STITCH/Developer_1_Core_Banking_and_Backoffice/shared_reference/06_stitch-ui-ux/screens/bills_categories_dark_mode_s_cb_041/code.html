@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pay Bills &amp; Utilities</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-surface-variant": "#dac0c6",
+            "primary-fixed": "#ffd9e3",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "on-tertiary-container": "#002a69",
+            "outline-variant": "#544247",
+            "tertiary-container": "#6a92ee",
+            "primary": "#ffb0ca",
+            "on-primary-container": "#5d0331",
+            "secondary": "#ffb4a8",
+            "primary-container": "#e0709a",
+            "on-background": "#e7e1e2",
+            "on-surface": "#e7e1e2",
+            "inverse-surface": "#e7e1e2",
+            "on-tertiary-fixed": "#001945",
+            "surface-container-low": "#1d1b1c",
+            "on-error-container": "#ffdad6",
+            "surface-dim": "#151314",
+            "on-primary-fixed-variant": "#7f234b",
+            "primary-fixed-dim": "#ffb0ca",
+            "error-container": "#93000a",
+            "surface-container-highest": "#373435",
+            "outline": "#a28b91",
+            "secondary-fixed-dim": "#ffb4a8",
+            "surface-container": "#211f20",
+            "error": "#ffb4ab",
+            "surface": "#151314",
+            "on-error": "#690005",
+            "on-tertiary-fixed-variant": "#06429a",
+            "surface-variant": "#373435",
+            "surface-tint": "#ffb0ca",
+            "on-secondary-fixed": "#410000",
+            "on-primary": "#620735",
+            "secondary-container": "#822c20",
+            "surface-container-high": "#2c292a",
+            "inverse-on-surface": "#323031",
+            "inverse-primary": "#9e3b63",
+            "background": "#151314",
+            "on-secondary-fixed-variant": "#7f291e",
+            "secondary-fixed": "#ffdad4",
+            "tertiary": "#b0c6ff",
+            "on-primary-fixed": "#3e001f",
+            "tertiary-fixed": "#d9e2ff",
+            "surface-container-lowest": "#100e0f",
+            "surface-bright": "#3b3839",
+            "on-secondary-container": "#ff9f90",
+            "on-tertiary": "#002d6f",
+            "on-secondary": "#61130a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-md": "1rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "margin": "1rem",
+            "margin-mobile": "1rem",
+            "gutter": "1rem",
+            "gutter-mobile": "0.75rem",
+            "space-lg": "1.5rem",
+            "space-xl": "2rem"
+          },
+          "fontFamily": {
+            "label-sm": ["Inter"],
+            "display-currency": ["Inter"],
+            "body-lg": ["Inter"],
+            "body-md": ["Inter"],
+            "title-currency": ["Inter"],
+            "headline-lg": ["Inter"],
+            "headline-sm": ["Inter"],
+            "label-md": ["Inter"],
+            "headline-md": ["Inter"],
+            "label-lg": ["Inter"]
+          },
+          "fontSize": {
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "title-currency": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-lg": ["15px", { "lineHeight": "20px", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-lowest text-on-surface antialiased flex justify-center min-h-screen select-none">
+<!-- Mobile Container: 390px base width -->
+<div class="w-full max-w-[390px] min-h-screen bg-surface-container-lowest flex flex-col relative pb-[96px] shadow-2xl">
+<!-- Top App Bar Header -->
+<header class="sticky top-0 z-40 bg-surface-container-lowest/90 backdrop-blur-md px-margin py-space-sm flex items-center justify-between min-h-[56px] shadow-sm">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Go back" class="w-[44px] h-[44px] flex items-center justify-center rounded-xl bg-surface-container-low text-on-surface hover:bg-surface-container active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined text-[22px]">arrow_back</span>
+</button>
+<div>
+<h1 class="font-headline-sm text-headline-sm text-on-surface leading-tight">Pay Bills &amp; Utilities</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant tracking-wider uppercase">S-CB-041</p>
+</div>
+</div>
+<button aria-label="Notifications and Help" class="w-[44px] h-[44px] flex items-center justify-center rounded-xl bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:bg-surface-container active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined text-[20px]">help_outline</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-margin pt-space-xs flex flex-col gap-space-md">
+<!-- Search Input Shortcut -->
+<section aria-label="Search Utility Categories">
+<div class="relative w-full">
+<div class="absolute inset-y-0 left-0 pl-space-md flex items-center pointer-events-none text-outline">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="w-full h-[52px] pl-11 pr-space-md rounded-xl bg-surface-container-low text-on-surface placeholder:text-outline font-body-md text-body-md border-0 focus:ring-1.5 focus:ring-primary-container outline-none transition-all" placeholder="Search electricity, cable TV, internet, toll..." type="search"/>
+</div>
+</section>
+<!-- Zero Extra Surcharge Assurance Banner -->
+<section aria-label="Promotion Banner">
+<div class="rounded-xl bg-surface-container-low p-space-sm px-space-md flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-semibold">Zero processing surcharge</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Instant utility tokens &amp; immediate clearing</p>
+</div>
+</div>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full font-label-sm text-label-sm font-semibold bg-surface-container text-primary-fixed">
+            ₦0 FEE
+          </span>
+</div>
+</section>
+<!-- Frequent Billers Quick Strip -->
+<section aria-label="Frequent Billers">
+<div class="flex items-center justify-between mb-space-xs">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Frequent Billers</h2>
+<button class="font-label-md text-label-md text-primary font-medium hover:underline" type="button">Manage</button>
+</div>
+<div class="flex items-start gap-3 overflow-x-auto pb-1 no-scrollbar -mx-margin px-margin">
+<!-- Biller 1: IKEDC -->
+<button class="flex flex-col items-center gap-1.5 min-w-[72px] group text-left active:scale-95 transition-transform duration-150" type="button">
+<div class="w-[52px] h-[52px] rounded-xl bg-surface-container-low flex items-center justify-center text-primary group-hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[24px]">bolt</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface text-center line-clamp-1 w-full font-medium">IKEDC</span>
+<span class="font-label-sm text-[10px] text-on-surface-variant -mt-1">Prepaid</span>
+</button>
+<!-- Biller 2: DSTV -->
+<button class="flex flex-col items-center gap-1.5 min-w-[72px] group text-left active:scale-95 transition-transform duration-150" type="button">
+<div class="w-[52px] h-[52px] rounded-xl bg-surface-container-low flex items-center justify-center text-secondary group-hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[24px]">tv</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface text-center line-clamp-1 w-full font-medium">DSTV</span>
+<span class="font-label-sm text-[10px] text-on-surface-variant -mt-1">Compact</span>
+</button>
+<!-- Biller 3: MTN Fiber -->
+<button class="flex flex-col items-center gap-1.5 min-w-[72px] group text-left active:scale-95 transition-transform duration-150" type="button">
+<div class="w-[52px] h-[52px] rounded-xl bg-surface-container-low flex items-center justify-center text-tertiary group-hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[24px]">router</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface text-center line-clamp-1 w-full font-medium">MTN Fiber</span>
+<span class="font-label-sm text-[10px] text-on-surface-variant -mt-1">Home Net</span>
+</button>
+<!-- Biller 4: Lekki Toll (LCC) -->
+<button class="flex flex-col items-center gap-1.5 min-w-[72px] group text-left active:scale-95 transition-transform duration-150" type="button">
+<div class="w-[52px] h-[52px] rounded-xl bg-surface-container-low flex items-center justify-center text-primary-fixed group-hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[24px]">toll</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface text-center line-clamp-1 w-full font-medium">Lekki Toll</span>
+<span class="font-label-sm text-[10px] text-on-surface-variant -mt-1">eTag Topup</span>
+</button>
+</div>
+</section>
+<!-- Bill Categories Bento / Structured List -->
+<section aria-label="All Bill Categories" class="flex flex-col gap-space-xs mt-1">
+<div class="flex items-center justify-between mb-space-xs">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Bill Categories</h2>
+<span class="font-label-sm text-label-sm text-on-surface-variant">7 Categories</span>
+</div>
+<div class="flex flex-col gap-2.5">
+<!-- 1. Electricity & Power -->
+<div class="group flex items-center justify-between p-3.5 rounded-xl bg-surface-container-low hover:bg-surface-container active:scale-[0.99] transition-all cursor-pointer" role="button" tabindex="0">
+<div class="flex items-center gap-3.5 min-w-0">
+<div class="w-11 h-11 rounded-xl bg-surface-container flex items-center justify-center text-primary shrink-0 group-hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[22px]">bolt</span>
+</div>
+<div class="min-w-0 pr-2">
+<div class="flex items-center gap-2">
+<h3 class="font-label-lg text-label-lg text-on-surface font-semibold truncate">Electricity &amp; Power</h3>
+<span class="inline-flex px-1.5 py-0.5 rounded font-label-sm text-[10px] bg-surface-container text-on-surface-variant font-medium">Instant</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant truncate text-xs mt-0.5">IKEDC, EKEDC, Abuja Disco, IBEDC, EEDC</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px] shrink-0 group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+<!-- 2. Cable TV & Entertainment -->
+<div class="group flex items-center justify-between p-3.5 rounded-xl bg-surface-container-low hover:bg-surface-container active:scale-[0.99] transition-all cursor-pointer" role="button" tabindex="0">
+<div class="flex items-center gap-3.5 min-w-0">
+<div class="w-11 h-11 rounded-xl bg-surface-container flex items-center justify-center text-secondary shrink-0 group-hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[22px]">live_tv</span>
+</div>
+<div class="min-w-0 pr-2">
+<h3 class="font-label-lg text-label-lg text-on-surface font-semibold truncate">Cable TV &amp; Entertainment</h3>
+<p class="font-body-md text-body-md text-on-surface-variant truncate text-xs mt-0.5">DSTV, GOtv, StarTimes, Showmax</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px] shrink-0 group-hover:text-secondary transition-colors">chevron_right</span>
+</div>
+<!-- 3. Internet & Broadband -->
+<div class="group flex items-center justify-between p-3.5 rounded-xl bg-surface-container-low hover:bg-surface-container active:scale-[0.99] transition-all cursor-pointer" role="button" tabindex="0">
+<div class="flex items-center gap-3.5 min-w-0">
+<div class="w-11 h-11 rounded-xl bg-surface-container flex items-center justify-center text-tertiary shrink-0 group-hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[22px]">wifi</span>
+</div>
+<div class="min-w-0 pr-2">
+<h3 class="font-label-lg text-label-lg text-on-surface font-semibold truncate">Internet &amp; Broadband</h3>
+<p class="font-body-md text-body-md text-on-surface-variant truncate text-xs mt-0.5">Spectranet, Swift, Smile, FiberOne, MTN Hynet</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px] shrink-0 group-hover:text-tertiary transition-colors">chevron_right</span>
+</div>
+<!-- 4. Government Dues & Taxes -->
+<div class="group flex items-center justify-between p-3.5 rounded-xl bg-surface-container-low hover:bg-surface-container active:scale-[0.99] transition-all cursor-pointer" role="button" tabindex="0">
+<div class="flex items-center gap-3.5 min-w-0">
+<div class="w-11 h-11 rounded-xl bg-surface-container flex items-center justify-center text-primary-fixed shrink-0 group-hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[22px]">account_balance</span>
+</div>
+<div class="min-w-0 pr-2">
+<div class="flex items-center gap-2">
+<h3 class="font-label-lg text-label-lg text-on-surface font-semibold truncate">Government Dues &amp; Taxes</h3>
+<span class="inline-flex px-1.5 py-0.5 rounded font-label-sm text-[10px] bg-surface-container text-primary-container font-medium">RRR</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant truncate text-xs mt-0.5">Remita RRR, LIRS, FIRS, FRSC Driver's License</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px] shrink-0 group-hover:text-primary-fixed transition-colors">chevron_right</span>
+</div>
+<!-- 5. Transport & Tolls -->
+<div class="group flex items-center justify-between p-3.5 rounded-xl bg-surface-container-low hover:bg-surface-container active:scale-[0.99] transition-all cursor-pointer" role="button" tabindex="0">
+<div class="flex items-center gap-3.5 min-w-0">
+<div class="w-11 h-11 rounded-xl bg-surface-container flex items-center justify-center text-primary shrink-0 group-hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[22px]">directions_car</span>
+</div>
+<div class="min-w-0 pr-2">
+<h3 class="font-label-lg text-label-lg text-on-surface font-semibold truncate">Transport &amp; Tolls</h3>
+<p class="font-body-md text-body-md text-on-surface-variant truncate text-xs mt-0.5">LCC Lekki Toll Gate, Cowry Card Transit, NRC Rail</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px] shrink-0 group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+<!-- 6. Betting & Gaming -->
+<div class="group flex items-center justify-between p-3.5 rounded-xl bg-surface-container-low hover:bg-surface-container active:scale-[0.99] transition-all cursor-pointer" role="button" tabindex="0">
+<div class="flex items-center gap-3.5 min-w-0">
+<div class="w-11 h-11 rounded-xl bg-surface-container flex items-center justify-center text-secondary shrink-0 group-hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[22px]">sports_soccer</span>
+</div>
+<div class="min-w-0 pr-2">
+<h3 class="font-label-lg text-label-lg text-on-surface font-semibold truncate">Betting &amp; Gaming</h3>
+<p class="font-body-md text-body-md text-on-surface-variant truncate text-xs mt-0.5">SportyBet, Bet9ja, 1xBet</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px] shrink-0 group-hover:text-secondary transition-colors">chevron_right</span>
+</div>
+<!-- 7. Schools & Education -->
+<div class="group flex items-center justify-between p-3.5 rounded-xl bg-surface-container-low hover:bg-surface-container active:scale-[0.99] transition-all cursor-pointer" role="button" tabindex="0">
+<div class="flex items-center gap-3.5 min-w-0">
+<div class="w-11 h-11 rounded-xl bg-surface-container flex items-center justify-center text-tertiary shrink-0 group-hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[22px]">school</span>
+</div>
+<div class="min-w-0 pr-2">
+<h3 class="font-label-lg text-label-lg text-on-surface font-semibold truncate">Schools &amp; Education</h3>
+<p class="font-body-md text-body-md text-on-surface-variant truncate text-xs mt-0.5">JAMB, WAEC, University Portals</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px] shrink-0 group-hover:text-tertiary transition-colors">chevron_right</span>
+</div>
+</div>
+</section>
+<!-- Security / Regulatory Footer Note -->
+<section class="mt-2 text-center pb-2">
+<p class="font-label-sm text-label-sm text-outline flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+          Licensed by CBN • Insured by NDIC
+        </p>
+</section>
+</main>
+<!-- Docked BottomNavBar (Shared Component) -->
+<!-- Active Tab: 'Payments' (Exact semantic intent match) -->
+<nav class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-margin h-16 max-w-[560px] mx-auto pb-safe bg-surface-container-lowest dark:bg-surface-container shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)]">
+<!-- Tab 1: Home (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" type="button">
+<span class="material-symbols-outlined text-[22px]">home</span>
+<span class="font-caption text-caption font-medium">Home</span>
+</button>
+<!-- Tab 2: Payments (ACTIVE per layout specification) -->
+<button class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed font-semibold min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" type="button">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">send</span>
+<span class="font-caption text-caption font-medium">Payments</span>
+</button>
+<!-- Tab 3: Cards (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" type="button">
+<span class="material-symbols-outlined text-[22px]">credit_card</span>
+<span class="font-caption text-caption font-medium">Cards</span>
+</button>
+<!-- Tab 4: Save & Borrow (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" type="button">
+<span class="material-symbols-outlined text-[22px]">savings</span>
+<span class="font-caption text-caption font-medium">Save &amp; Borrow</span>
+</button>
+<!-- Tab 5: More (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" type="button">
+<span class="material-symbols-outlined text-[22px]">more_horiz</span>
+<span class="font-caption text-caption font-medium">More</span>
+</button>
+</nav>
+</div>
+</body></html>

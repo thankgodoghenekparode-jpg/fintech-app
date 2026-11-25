@@ -1,0 +1,19 @@
+flowchart TD
+  a(["Deal with milestones agreed and funded"])
+  b["Seller submits milestone with evidence"]
+  c{"Buyer approves within window?"}
+  d["Release milestone amount"]
+  e["Revision request"]
+  f{"More milestones?"}
+  g["Auto-release after window if proof submitted and no response"]
+  h(["Deal complete"])
+  a --> b
+  b --> c
+  c -->|approve| d
+  c -->|revise| e
+  c -->|no response| g
+  e --> b
+  g --> d
+  d --> f
+  f -->|yes| b
+  f -->|no| h

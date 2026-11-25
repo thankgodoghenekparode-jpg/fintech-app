@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Account Details - YourApp</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary": "#61130a",
+            "surface-tint": "#ffb0ca",
+            "error": "#ffb4ab",
+            "tertiary": "#b0c6ff",
+            "on-tertiary": "#002d6f",
+            "inverse-primary": "#9e3b63",
+            "on-surface-variant": "#dac0c6",
+            "on-secondary-container": "#ff9f90",
+            "on-secondary-fixed": "#410000",
+            "inverse-on-surface": "#323031",
+            "surface-container": "#211f20",
+            "primary": "#ffb0ca",
+            "secondary-container": "#822c20",
+            "tertiary-fixed": "#d9e2ff",
+            "on-primary-fixed-variant": "#7f234b",
+            "on-primary-fixed": "#3e001f",
+            "surface-container-highest": "#373435",
+            "on-primary": "#620735",
+            "secondary-fixed-dim": "#ffb4a8",
+            "surface-dim": "#151314",
+            "outline": "#a28b91",
+            "surface-bright": "#3b3839",
+            "on-primary-container": "#5d0331",
+            "primary-fixed": "#ffd9e3",
+            "primary-container": "#e0709a",
+            "surface-container-high": "#2c292a",
+            "secondary": "#ffb4a8",
+            "background": "#151314",
+            "on-background": "#e7e1e2",
+            "on-tertiary-fixed-variant": "#06429a",
+            "tertiary-container": "#6a92ee",
+            "primary-fixed-dim": "#ffb0ca",
+            "outline-variant": "#544247",
+            "on-tertiary-container": "#002a69",
+            "surface-container-low": "#1d1b1c",
+            "on-secondary-fixed-variant": "#7f291e",
+            "on-error-container": "#ffdad6",
+            "surface": "#151314",
+            "surface-container-lowest": "#100e0f",
+            "surface-variant": "#373435",
+            "on-tertiary-fixed": "#001945",
+            "secondary-fixed": "#ffdad4",
+            "inverse-surface": "#e7e1e2",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "error-container": "#93000a",
+            "on-surface": "#e7e1e2",
+            "on-error": "#690005"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xl": "2rem",
+            "margin-mobile": "1rem",
+            "space-lg": "1.5rem",
+            "margin": "1rem",
+            "gutter-mobile": "0.75rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "space-xs": "0.25rem",
+            "gutter": "1rem"
+          },
+          "fontFamily": {
+            "label-md": ["Inter"],
+            "label-sm": ["Inter"],
+            "body-md": ["Inter"],
+            "body-lg": ["Inter"],
+            "title-currency": ["Inter"],
+            "label-lg": ["Inter"],
+            "headline-md": ["Inter"],
+            "headline-lg": ["Inter"],
+            "display-currency": ["Inter"],
+            "headline-sm": ["Inter"]
+          },
+          "fontSize": {
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "title-currency": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-lg": ["15px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased font-body-md text-body-md min-h-screen flex flex-col justify-between selection:bg-primary-container selection:text-on-primary-container">
+<!-- Main Responsive Container bounded to mobile spec 390px - 560px max -->
+<div class="w-full max-w-[560px] mx-auto min-h-screen flex flex-col bg-surface relative pb-[96px]">
+<!-- Top Navigation Header -->
+<header class="sticky top-0 z-40 bg-surface/95 backdrop-blur-md px-margin py-space-sm flex items-center justify-between min-h-[56px] border-b border-outline-variant/30">
+<button aria-label="Go back" class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-on-surface hover:bg-surface-container-high transition-colors active:scale-95 duration-150" type="button">
+<span class="material-symbols-outlined text-[22px]" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="flex flex-col items-center">
+<span class="font-headline-sm text-headline-sm text-on-surface tracking-tight">Account Details</span>
+<span class="font-label-sm text-label-sm text-outline">YourApp Microfinance Bank</span>
+</div>
+<button aria-label="Share account details" class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-primary hover:bg-surface-container-high transition-colors active:scale-95 duration-150" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="share">share</span>
+</button>
+</header>
+<!-- Scrollable Content Canvas -->
+<main class="flex-1 px-margin py-space-md space-y-space-md">
+<!-- Digital Account Credentials Card (Bento Card Elevation 1) -->
+<section class="bg-surface-container-low rounded-xl p-space-md border border-outline-variant/40 space-y-space-md shadow-sm">
+<!-- Header: Account Name & Status Pill -->
+<div class="flex items-start justify-between gap-space-xs">
+<div>
+<span class="font-label-sm text-label-sm text-outline tracking-wider block">ACCOUNT BENEFICIARY</span>
+<h1 class="font-headline-sm text-headline-sm text-on-surface font-semibold mt-0.5 tracking-tight">
+              Chioma Blessing Adeleke
+            </h1>
+</div>
+<div class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-950/40 border border-emerald-500/30 text-emerald-400">
+<span class="material-symbols-outlined text-[14px]" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-label-sm text-label-sm font-medium">Tier 2 Verified</span>
+</div>
+</div>
+<!-- NUBAN Account Number Focus Block -->
+<div class="bg-surface-container rounded-lg p-space-md border border-outline-variant/30 flex items-center justify-between">
+<div>
+<div class="flex items-center gap-1.5 text-outline">
+<span class="material-symbols-outlined text-[15px]" data-icon="tag">tag</span>
+<span class="font-label-sm text-label-sm">NUBAN ACCOUNT NUMBER</span>
+</div>
+<div class="font-display-currency text-headline-lg font-bold text-on-surface tracking-wider font-mono mt-1">
+              0124 892 019
+            </div>
+</div>
+<div class="flex items-center gap-2">
+<button class="h-10 px-3 rounded-lg bg-surface-container-high border border-outline-variant/50 text-primary flex items-center gap-1.5 font-label-md text-label-md active:scale-95 transition-transform hover:bg-surface-container-highest" title="Copy Account Number" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="content_copy">content_copy</span>
+<span>Copy</span>
+</button>
+<button class="w-10 h-10 rounded-lg bg-surface-container-high border border-outline-variant/50 text-on-surface flex items-center justify-center active:scale-95 transition-transform hover:bg-surface-container-highest" title="Show QR Code" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="qr_code_2">qr_code_2</span>
+</button>
+</div>
+</div>
+<!-- Partner Clearing & Routing Specs (Bento Sub-grid) -->
+<div class="grid grid-cols-2 gap-space-sm pt-space-xs">
+<div class="p-3 bg-surface-container rounded-lg border border-outline-variant/20">
+<div class="flex items-center gap-1.5 text-outline mb-1">
+<span class="material-symbols-outlined text-[15px]" data-icon="account_balance">account_balance</span>
+<span class="font-label-sm text-label-sm">BANKING ENTITY</span>
+</div>
+<div class="font-label-lg text-label-lg text-on-surface font-semibold">YourApp MFB</div>
+<div class="font-label-sm text-label-sm text-outline mt-0.5">Licensed by CBN</div>
+</div>
+<div class="p-3 bg-surface-container rounded-lg border border-outline-variant/20">
+<div class="flex items-center gap-1.5 text-outline mb-1">
+<span class="material-symbols-outlined text-[15px]" data-icon="sync_alt">sync_alt</span>
+<span class="font-label-sm text-label-sm">CLEARING ROUTE</span>
+</div>
+<div class="font-label-lg text-label-lg text-on-surface font-semibold">Zenith Bank Plc</div>
+<div class="font-label-sm text-label-sm text-outline mt-0.5">NIP Direct Gateway</div>
+</div>
+</div>
+<div class="flex items-center gap-2 pt-1 px-1 text-outline">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="shield">shield</span>
+<span class="font-label-sm text-label-sm">Deposits fully insured up to statutory ceiling by NDIC</span>
+</div>
+</section>
+<!-- Tier Limits & Permissions Card -->
+<section class="bg-surface-container-low rounded-xl p-space-md border border-outline-variant/40 space-y-space-md shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]" data-icon="tune">tune</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-label-lg text-on-surface font-semibold">Tier 2 Savings Limits</h2>
+<p class="font-label-sm text-label-sm text-outline">Regulated daily &amp; maximum account caps</p>
+</div>
+</div>
+<span class="font-label-sm text-label-sm font-semibold px-2 py-0.5 rounded bg-surface-container-highest text-primary-fixed">Active Tier</span>
+</div>
+<!-- Limits Breakdown -->
+<div class="space-y-3 pt-1">
+<!-- Daily Cumulative Transfer Limit + Progress bar -->
+<div class="p-3 bg-surface-container rounded-lg border border-outline-variant/20 space-y-2">
+<div class="flex justify-between items-center text-body-md">
+<span class="text-outline font-label-md text-label-md">Daily Cumulative Transfer</span>
+<span class="font-title-currency text-label-lg font-semibold text-on-surface font-mono">₦1,000,000</span>
+</div>
+<!-- Progress Bar -->
+<div class="w-full bg-surface-container-highest rounded-full h-2 overflow-hidden">
+<div class="bg-primary-container h-2 rounded-full" style="width: 34%;"></div>
+</div>
+<div class="flex justify-between items-center text-label-sm text-label-sm text-outline">
+<span>₦340,000 used today</span>
+<span>₦660,000 remaining</span>
+</div>
+</div>
+<!-- Single Credit Limit & Max Balance Limit -->
+<div class="grid grid-cols-2 gap-space-sm">
+<div class="p-3 bg-surface-container rounded-lg border border-outline-variant/20">
+<span class="font-label-sm text-label-sm text-outline block mb-1">SINGLE INFLOW CAP</span>
+<span class="font-title-currency text-label-lg text-on-surface font-semibold font-mono block">₦500,000</span>
+<span class="font-label-sm text-label-sm text-outline mt-1 block">Per incoming credit</span>
+</div>
+<div class="p-3 bg-surface-container rounded-lg border border-outline-variant/20">
+<span class="font-label-sm text-label-sm text-outline block mb-1">MAX BALANCE LIMIT</span>
+<span class="font-title-currency text-label-lg text-on-surface font-semibold font-mono block">₦2,000,000</span>
+<span class="font-label-sm text-label-sm text-outline mt-1 block">Combined vault holding</span>
+</div>
+</div>
+</div>
+<!-- Upgrade Link Component -->
+<a class="flex items-center justify-between p-3 rounded-lg bg-primary-container/10 border border-primary-container/30 hover:bg-primary-container/15 transition-colors group" href="#upgrade-tier-3">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[20px] text-primary" data-icon="lock_open">lock_open</span>
+<div>
+<div class="font-label-lg text-label-md font-semibold text-primary">Upgrade to Tier 3 (NIN &amp; Utility Bill)</div>
+<div class="font-label-sm text-label-sm text-outline">Remove transfer limits &amp; hold unlimited balances</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-[18px] text-primary group-hover:translate-x-0.5 transition-transform" data-icon="chevron_right">chevron_right</span>
+</a>
+</section>
+<!-- Official Documents & Actions Bento -->
+<section class="bg-surface-container-low rounded-xl p-space-md border border-outline-variant/40 space-y-space-sm shadow-sm">
+<h3 class="font-label-md text-label-md font-semibold text-outline uppercase tracking-wider">Official Bank Documents</h3>
+<div class="space-y-2">
+<!-- Generate Account Statement Action Row -->
+<button class="w-full flex items-center justify-between p-3 bg-surface-container hover:bg-surface-container-high rounded-lg border border-outline-variant/20 transition-colors text-left active:scale-[0.99]" type="button">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-surface-container-highest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]" data-icon="receipt_long">receipt_long</span>
+</div>
+<div>
+<div class="font-label-lg text-label-lg font-medium text-on-surface">Generate Account Statement</div>
+<div class="font-label-sm text-label-sm text-outline">PDF &amp; Excel exports with official bank seal</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px]" data-icon="chevron_right">chevron_right</span>
+</button>
+<!-- Download Account Proof Letter Action Row -->
+<button class="w-full flex items-center justify-between p-3 bg-surface-container hover:bg-surface-container-high rounded-lg border border-outline-variant/20 transition-colors text-left active:scale-[0.99]" type="button">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-surface-container-highest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]" data-icon="verified_user">verified_user</span>
+</div>
+<div>
+<div class="font-label-lg text-label-lg font-medium text-on-surface">Download Account Proof Letter</div>
+<div class="font-label-sm text-label-sm text-outline">Signed reference document for embassies &amp; employers</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px]" data-icon="download">download</span>
+</button>
+</div>
+<!-- Primary Call to Action Button (52px strict touch target) -->
+<div class="pt-2">
+<button class="w-full h-[52px] bg-primary-container text-on-primary-container hover:bg-[#c4557f] active:scale-[0.98] rounded-xl font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 shadow-sm transition-all duration-150" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="ios_share">ios_share</span>
+<span>Share Account Details</span>
+</button>
+</div>
+</section>
+<!-- Legal & Regulatory Notice -->
+<footer class="p-space-sm text-center">
+<p class="font-label-sm text-label-sm text-outline/80 leading-relaxed max-w-sm mx-auto">
+          Licensed by the Central Bank of Nigeria (CBN). All deposits insured by NDIC up to statutory maximum. YourApp Technologies MFB Ltd.
+        </p>
+</footer>
+</main>
+<!-- BottomNavBar Component (Docked full-width bottom, 5 items, 'More' active) -->
+<nav aria-label="Bottom Navigation" class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-margin h-16 max-w-[560px] mx-auto pb-safe bg-surface-container border-t border-outline-variant/30 shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)]">
+<!-- Home (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary active:scale-95 transition-transform duration-150" href="#home">
+<span class="material-symbols-outlined text-[22px]" data-icon="home">home</span>
+<span class="font-caption text-label-sm font-medium">Home</span>
+</a>
+<!-- Payments (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary active:scale-95 transition-transform duration-150" href="#payments">
+<span class="material-symbols-outlined text-[22px]" data-icon="send">send</span>
+<span class="font-caption text-label-sm font-medium">Payments</span>
+</a>
+<!-- Cards (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary active:scale-95 transition-transform duration-150" href="#cards">
+<span class="material-symbols-outlined text-[22px]" data-icon="credit_card">credit_card</span>
+<span class="font-caption text-label-sm font-medium">Cards</span>
+</a>
+<!-- Save & Borrow (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal min-w-[48px] py-space-xs gap-space-xs hover:text-primary active:scale-95 transition-transform duration-150" href="#save-borrow">
+<span class="material-symbols-outlined text-[22px]" data-icon="savings">savings</span>
+<span class="font-caption text-label-sm font-medium">Save &amp; Borrow</span>
+</a>
+<!-- More (Active for Account Details sub-destination under Settings/Profile/More hierarchy) -->
+<a aria-current="page" class="flex flex-col items-center justify-center text-primary-fixed font-semibold min-w-[48px] py-space-xs gap-space-xs hover:text-primary active:scale-95 transition-transform duration-150" href="#more">
+<span class="material-symbols-outlined text-[22px]" data-icon="more_horiz" style="font-variation-settings: 'FILL' 1;">more_horiz</span>
+<span class="font-caption text-label-sm font-medium text-primary">More</span>
+</a>
+</nav>
+</div>
+</body></html>

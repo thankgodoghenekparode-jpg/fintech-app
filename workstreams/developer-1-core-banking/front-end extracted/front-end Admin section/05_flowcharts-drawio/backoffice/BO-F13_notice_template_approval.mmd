@@ -1,0 +1,17 @@
+flowchart TD
+  a(["Staff drafts notice or template version"])
+  b["Preview and test send to staff only"]
+  c["Submit for approval"]
+  d{"Approver decision"}
+  e["Approved: schedule or activate version"]
+  f["Rejected: return with comments"]
+  g["Send; record counts and delivery results"]
+  h(["Audit logged"])
+  a --> b
+  b --> c
+  c --> d
+  d -->|approve| e
+  d -->|reject| f
+  f --> a
+  e --> g
+  g --> h

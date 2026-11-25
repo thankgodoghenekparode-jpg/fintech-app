@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YourApp - Linked Devices &amp; Sessions</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary-container": "#5d0331",
+            "secondary": "#ffb4a8",
+            "on-secondary-fixed": "#410000",
+            "on-tertiary-fixed-variant": "#06429a",
+            "surface-variant": "#373435",
+            "error": "#ffb4ab",
+            "on-tertiary-fixed": "#001945",
+            "on-background": "#e7e1e2",
+            "secondary-fixed-dim": "#ffb4a8",
+            "error-container": "#93000a",
+            "surface-container-highest": "#373435",
+            "surface-container-lowest": "#100e0f",
+            "secondary-container": "#822c20",
+            "on-primary-fixed": "#3e001f",
+            "on-secondary": "#61130a",
+            "inverse-surface": "#e7e1e2",
+            "on-error-container": "#ffdad6",
+            "on-secondary-fixed-variant": "#7f291e",
+            "tertiary": "#b0c6ff",
+            "primary-fixed": "#ffd9e3",
+            "on-error": "#690005",
+            "on-surface": "#e7e1e2",
+            "primary": "#ffb0ca",
+            "surface-container-low": "#1d1b1c",
+            "surface-tint": "#ffb0ca",
+            "primary-container": "#e0709a",
+            "on-primary": "#620735",
+            "surface-bright": "#3b3839",
+            "outline-variant": "#544247",
+            "tertiary-container": "#6a92ee",
+            "on-tertiary-container": "#002a69",
+            "on-secondary-container": "#ff9f90",
+            "on-tertiary": "#002d6f",
+            "on-primary-fixed-variant": "#7f234b",
+            "surface-container-high": "#2c292a",
+            "on-surface-variant": "#dac0c6",
+            "surface-container": "#211f20",
+            "outline": "#a28b91",
+            "inverse-on-surface": "#323031",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "inverse-primary": "#9e3b63",
+            "tertiary-fixed": "#d9e2ff",
+            "secondary-fixed": "#ffdad4",
+            "background": "#151314",
+            "surface-dim": "#151314",
+            "surface": "#151314",
+            "primary-fixed-dim": "#ffb0ca"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "1rem",
+            "space-xs": "0.25rem",
+            "gutter": "1rem",
+            "margin-mobile": "1rem",
+            "space-lg": "1.5rem",
+            "space-md": "1rem",
+            "gutter-mobile": "0.75rem",
+            "space-xl": "2rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "body-lg": ["Inter"],
+            "headline-lg": ["Inter"],
+            "display-currency": ["Inter"],
+            "headline-md": ["Inter"],
+            "label-sm": ["Inter"],
+            "headline-sm": ["Inter"],
+            "label-md": ["Inter"],
+            "label-lg": ["Inter"],
+            "title-currency": ["Inter"],
+            "body-md": ["Inter"]
+          },
+          "fontSize": {
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "label-lg": ["15px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "title-currency": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 20px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      -webkit-font-smoothing: antialiased;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-[#121011] text-[#F5F1F0] min-h-screen antialiased flex flex-col items-center selection:bg-primary-container selection:text-on-primary">
+<!-- Mobile Viewport Container (390 x 844 target canvas) -->
+<div class="w-full max-w-[420px] min-h-screen bg-[#121011] flex flex-col relative border-x border-[#3A3335]/30">
+<!-- Top App Bar Component -->
+<header class="sticky top-0 z-40 bg-[#151314]/95 backdrop-blur-md px-margin py-space-sm w-full flex items-center justify-between min-h-[56px] border-b border-[#3A3335]/40">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Go back" class="w-10 h-10 rounded-xl bg-[#262122] flex items-center justify-center text-[#F5F1F0] hover:bg-[#373435] active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-label-sm text-[#E0709A] tracking-wider uppercase font-semibold">YourApp</span>
+<span class="w-1 h-1 rounded-full bg-[#3A3335]"></span>
+<span class="font-label-sm text-label-sm text-[#C4BBBD]">S-CB-074</span>
+</div>
+<h1 class="font-headline-sm text-headline-sm text-[#F5F1F0] tracking-tight">Linked Devices &amp; Sessions</h1>
+</div>
+</div>
+<button aria-label="Security logs" class="w-10 h-10 rounded-xl bg-[#1C1819] border border-[#3A3335] flex items-center justify-center text-[#C4BBBD] hover:text-[#E0709A] active:scale-95 transition-colors" type="button">
+<span class="material-symbols-outlined" data-icon="shield">shield</span>
+</button>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 px-margin pt-space-md pb-28 flex flex-col gap-space-md">
+<!-- Device Binding Explanation Card (Bento Style) -->
+<section class="bg-[#1C1819] border border-[#3A3335] rounded-xl p-space-md relative overflow-hidden">
+<div class="absolute -right-6 -bottom-6 w-24 h-24 rounded-full bg-[#E0709A]/5 blur-xl pointer-events-none"></div>
+<div class="flex items-start gap-space-sm">
+<div class="w-9 h-9 rounded-lg bg-[#262122] border border-[#3A3335] flex items-center justify-center text-[#E0709A] flex-shrink-0">
+<span class="material-symbols-outlined" data-icon="verified_user" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<h2 class="font-label-lg text-label-lg text-[#F5F1F0]">Device Security Protocol</h2>
+<span class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-[#E0709A]/15 text-[#E0709A] border border-[#E0709A]/30">ENCLAVE</span>
+</div>
+<p class="font-body-md text-body-md text-[#C4BBBD] text-xs leading-relaxed">
+              YourApp only permits active banking on trusted hardware. Authorizations from unrecognized devices require face liveness verification.
+            </p>
+</div>
+</div>
+</section>
+<!-- Current Device Card (Highlighted with active primary border) -->
+<section class="relative">
+<div class="flex items-center justify-between mb-2 px-1">
+<span class="font-label-sm text-label-sm text-[#C4BBBD] uppercase tracking-wider font-semibold">Active Authorized Device</span>
+<span class="flex items-center gap-1.5 font-label-sm text-label-sm text-[#4CC38A]">
+<span class="w-2 h-2 rounded-full bg-[#4CC38A] animate-pulse"></span>
+            Live Connection
+          </span>
+</div>
+<div class="bg-[#1C1819] rounded-xl p-4 border-2 border-[#E0709A]/40 relative shadow-[0_4px_20px_-4px_rgba(224,112,154,0.12)]">
+<div class="flex items-start justify-between gap-3 mb-3">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-xl bg-[#262122] border border-[#3A3335] flex items-center justify-center text-[#E0709A] flex-shrink-0 shadow-inner">
+<span class="material-symbols-outlined" data-icon="smartphone" style="font-size: 26px;">smartphone</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="font-headline-sm text-headline-sm text-[#F5F1F0]">Samsung Galaxy A54 5G</h3>
+</div>
+<div class="mt-0.5">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full font-label-sm text-label-sm text-[#E0709A] bg-[#E0709A]/15 border border-[#E0709A]/30 font-medium">
+                    This Device (Primary)
+                  </span>
+</div>
+</div>
+</div>
+</div>
+<!-- Metadata Grid -->
+<div class="bg-[#121011]/80 rounded-lg p-3 border border-[#3A3335]/60 flex flex-col gap-2 font-mono text-xs">
+<div class="flex items-center justify-between text-[#C4BBBD]">
+<span class="flex items-center gap-1.5 font-body-md text-body-md text-xs text-[#C4BBBD]">
+<span class="material-symbols-outlined text-[15px]" data-icon="location_on">location_on</span>
+                Location
+              </span>
+<span class="font-medium text-[#F5F1F0]">Lagos, Nigeria</span>
+</div>
+<div class="flex items-center justify-between text-[#C4BBBD]">
+<span class="flex items-center gap-1.5 font-body-md text-body-md text-xs text-[#C4BBBD]">
+<span class="material-symbols-outlined text-[15px]" data-icon="router">router</span>
+                IP Address
+              </span>
+<span class="text-[#F5F1F0] font-mono tracking-tight">102.89.44.***</span>
+</div>
+</div>
+<!-- Trust Badges -->
+<div class="mt-3 pt-3 border-t border-[#3A3335]/40 flex flex-wrap items-center gap-2">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-[#4CC38A]/10 text-[#4CC38A]">
+<span class="material-symbols-outlined text-sm" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+              Active now
+            </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-[#262122] text-[#F5F1F0] border border-[#3A3335]">
+<span class="material-symbols-outlined text-sm text-[#E0709A]" data-icon="fingerprint">fingerprint</span>
+              Biometrics bound
+            </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-[#262122] text-[#F5F1F0] border border-[#3A3335]">
+<span class="material-symbols-outlined text-sm text-[#E0709A]" data-icon="lock">lock</span>
+              Hardware enclave secure
+            </span>
+</div>
+</div>
+</section>
+<!-- Other Linked Devices & Browsers list -->
+<section class="flex flex-col gap-2">
+<div class="flex items-center justify-between px-1 mb-1">
+<span class="font-label-sm text-label-sm text-[#C4BBBD] uppercase tracking-wider font-semibold">Other Linked Devices &amp; Browsers</span>
+<span class="font-label-sm text-label-sm text-[#C4BBBD] tabular-nums">3 total</span>
+</div>
+<div class="bg-[#1C1819] border border-[#3A3335] rounded-xl divide-y divide-[#3A3335]/60 overflow-hidden">
+<!-- Device Item 1: Apple iPhone 13 -->
+<div class="p-3.5 flex items-center justify-between gap-3 hover:bg-[#262122]/50 transition-colors">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-10 h-10 rounded-lg bg-[#262122] border border-[#3A3335] flex items-center justify-center text-[#C4BBBD] flex-shrink-0">
+<span class="material-symbols-outlined" data-icon="phone_iphone">phone_iphone</span>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-1.5">
+<h4 class="font-label-lg text-label-lg text-[#F5F1F0] truncate">Apple iPhone 13</h4>
+<span class="w-1.5 h-1.5 rounded-full bg-[#E3B341]" title="Standby Session"></span>
+</div>
+<p class="font-body-md text-body-md text-xs text-[#C4BBBD] truncate mt-0.5">
+                  Last active <span class="tabular-nums">3</span> days ago • Victoria Island, Lagos
+                </p>
+</div>
+</div>
+<button aria-label="Revoke Apple iPhone 13" class="w-9 h-9 rounded-lg bg-[#262122] border border-[#3A3335] hover:border-[#F27070]/60 flex items-center justify-center text-[#C4BBBD] hover:text-[#F27070] active:scale-95 transition-all flex-shrink-0" type="button">
+<span class="material-symbols-outlined" data-icon="delete">delete</span>
+</button>
+</div>
+<!-- Device Item 2: Chrome Web on macOS -->
+<div class="p-3.5 flex items-center justify-between gap-3 hover:bg-[#262122]/50 transition-colors">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-10 h-10 rounded-lg bg-[#262122] border border-[#3A3335] flex items-center justify-center text-[#C4BBBD] flex-shrink-0">
+<span class="material-symbols-outlined" data-icon="laptop_mac">laptop_mac</span>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-2">
+<h4 class="font-label-lg text-label-lg text-[#F5F1F0] truncate">Chrome Web on macOS</h4>
+<span class="px-1.5 py-0.2 rounded text-[10px] bg-[#262122] text-[#C4BBBD] border border-[#3A3335]">Web</span>
+</div>
+<p class="font-body-md text-body-md text-xs text-[#C4BBBD] truncate mt-0.5">
+                  Back-office / web session • Last active <span class="tabular-nums">12 Feb 2027</span> in Ikeja, Lagos
+                </p>
+</div>
+</div>
+<button aria-label="Revoke Chrome Web on macOS" class="w-9 h-9 rounded-lg bg-[#262122] border border-[#3A3335] hover:border-[#F27070]/60 flex items-center justify-center text-[#C4BBBD] hover:text-[#F27070] active:scale-95 transition-all flex-shrink-0" type="button">
+<span class="material-symbols-outlined" data-icon="cancel">cancel</span>
+</button>
+</div>
+<!-- Device Item 3: Samsung Galaxy Tab S7 -->
+<div class="p-3.5 flex items-center justify-between gap-3 hover:bg-[#262122]/50 transition-colors">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-10 h-10 rounded-lg bg-[#262122] border border-[#3A3335] flex items-center justify-center text-[#C4BBBD] flex-shrink-0">
+<span class="material-symbols-outlined" data-icon="tablet_android">tablet_android</span>
+</div>
+<div class="min-w-0">
+<h4 class="font-label-lg text-label-lg text-[#F5F1F0] truncate">Samsung Galaxy Tab S7</h4>
+<p class="font-body-md text-body-md text-xs text-[#C4BBBD] truncate mt-0.5">
+                  Last active <span class="tabular-nums">18 Jan 2027</span>
+</p>
+</div>
+</div>
+<button aria-label="Revoke Samsung Galaxy Tab S7" class="w-9 h-9 rounded-lg bg-[#262122] border border-[#3A3335] hover:border-[#F27070]/60 flex items-center justify-center text-[#C4BBBD] hover:text-[#F27070] active:scale-95 transition-all flex-shrink-0" type="button">
+<span class="material-symbols-outlined" data-icon="cancel">cancel</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Action Area -->
+<section class="mt-2 flex flex-col gap-3">
+<!-- Destructive outline button -->
+<button class="w-full h-[52px] rounded-xl bg-[rgba(242,112,112,0.08)] border border-[rgba(242,112,112,0.35)] text-[#F27070] font-label-lg text-label-lg flex items-center justify-center gap-2 hover:bg-[rgba(242,112,112,0.15)] active:scale-[0.98] transition-all" type="button">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span>Log Out of All Other Devices</span>
+</button>
+<!-- Informative Security Notice -->
+<div class="p-3 bg-[#1C1819]/50 border border-[#3A3335]/50 rounded-xl flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[#C4BBBD] text-base mt-0.5 flex-shrink-0" data-icon="info">info</span>
+<p class="font-body-md text-body-md text-xs text-[#C4BBBD] leading-relaxed">
+            Logging out of a device invalidates its local session token instantly. It will require SMS OTP and selfie to re-bind.
+          </p>
+</div>
+</section>
+</main>
+<!-- BottomNavBar Component (JSON Anchor: 5-tab docked bottom navigation with 'More' active) -->
+<nav class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-margin h-16 max-w-[420px] mx-auto pb-safe bg-[#1C1819] border-t border-[#3A3335] shadow-[0_8px_24px_-4px_rgba(30,26,27,0.08),0_4px_12px_-2px_rgba(30,26,27,0.04)] backdrop-blur-md">
+<!-- Home Tab (Inactive) -->
+<a class="flex flex-col items-center justify-center text-[#8A8184] hover:text-[#E0709A] font-normal min-w-[48px] py-space-xs gap-space-xs transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm font-medium">Home</span>
+</a>
+<!-- Payments Tab (Inactive) -->
+<a class="flex flex-col items-center justify-center text-[#8A8184] hover:text-[#E0709A] font-normal min-w-[48px] py-space-xs gap-space-xs transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="send">send</span>
+<span class="font-label-sm text-label-sm font-medium">Payments</span>
+</a>
+<!-- Cards Tab (Inactive) -->
+<a class="flex flex-col items-center justify-center text-[#8A8184] hover:text-[#E0709A] font-normal min-w-[48px] py-space-xs gap-space-xs transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="credit_card">credit_card</span>
+<span class="font-label-sm text-label-sm font-medium">Cards</span>
+</a>
+<!-- Save & Borrow Tab (Inactive) -->
+<a class="flex flex-col items-center justify-center text-[#8A8184] hover:text-[#E0709A] font-normal min-w-[48px] py-space-xs gap-space-xs transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="savings">savings</span>
+<span class="font-label-sm text-label-sm font-medium">Save &amp; Borrow</span>
+</a>
+<!-- More Tab (ACTIVE according to instructions: 'More' active) -->
+<a class="flex flex-col items-center justify-center text-[#E0709A] font-semibold min-w-[48px] py-space-xs gap-space-xs active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="more_horiz" style="font-variation-settings: 'FILL' 1;">more_horiz</span>
+<span class="font-label-sm text-label-sm font-medium text-[#E0709A]">More</span>
+</a>
+</nav>
+</div>
+</body></html>

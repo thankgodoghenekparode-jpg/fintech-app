@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YourApp - Account Restricted</title>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-highest": "#e9e0e1",
+            "secondary-fixed": "#ffdad4",
+            "on-surface": "#1f1b1c",
+            "surface-container-high": "#efe6e7",
+            "error-container": "#ffdad6",
+            "surface-container": "#f5eced",
+            "on-primary-fixed-variant": "#881646",
+            "on-tertiary": "#ffffff",
+            "on-tertiary-fixed": "#21191e",
+            "on-primary-fixed": "#3f001b",
+            "error": "#ba1a1a",
+            "on-secondary-fixed": "#410000",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "tertiary": "#3b3236",
+            "primary-fixed-dim": "#ffb1c5",
+            "outline": "#897176",
+            "secondary-container": "#fc6955",
+            "secondary-fixed-dim": "#ffb4a8",
+            "tertiary-fixed": "#eedee4",
+            "on-background": "#1f1b1c",
+            "primary-container": "#8e1b4a",
+            "surface-tint": "#a8315d",
+            "on-secondary-container": "#690000",
+            "on-surface-variant": "#564146",
+            "surface": "#fff8f8",
+            "secondary": "#ae3123",
+            "surface-dim": "#e1d8d9",
+            "on-error": "#ffffff",
+            "inverse-surface": "#342f30",
+            "on-primary": "#ffffff",
+            "on-tertiary-container": "#c6b7bd",
+            "background": "#fff8f8",
+            "tertiary-container": "#53484d",
+            "on-secondary": "#ffffff",
+            "outline-variant": "#dcbfc5",
+            "surface-variant": "#e9e0e1",
+            "on-primary-container": "#ffa0ba",
+            "primary": "#6d0033",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "surface-container-low": "#fbf1f2",
+            "on-error-container": "#93000a",
+            "surface-bright": "#fff8f8",
+            "inverse-primary": "#ffb1c5",
+            "primary-fixed": "#ffd9e1",
+            "on-secondary-fixed-variant": "#8c170e",
+            "surface-container-lowest": "#ffffff",
+            "inverse-on-surface": "#f8eeef"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "space-lg": "1rem",
+            "space-md": "0.75rem",
+            "gutter": "1rem",
+            "space-2xl": "2rem",
+            "space-sm": "0.5rem",
+            "margin": "1rem",
+            "space-xl": "1.5rem",
+            "space-3xl": "3rem"
+          },
+          "fontFamily": {
+            "caption": ["Inter"],
+            "subtitle": ["Inter"],
+            "body-medium": ["Inter"],
+            "label": ["Inter"],
+            "title": ["Inter"],
+            "amount-lg": ["Inter"],
+            "display": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "body": ["Inter"]
+          },
+          "fontSize": {
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex justify-center selection:bg-primary selection:text-on-primary">
+<!-- Mobile Container (390px x 844px context on mobile, up to 560px on larger viewports) -->
+<div class="w-full max-w-[560px] min-h-screen bg-surface flex flex-col justify-between shadow-2xl relative pb-safe">
+<!-- Top Bar with Back Button and Account Status Header -->
+<header class="flex justify-between items-center w-full px-margin py-space-sm min-h-[56px] border-b border-outline-variant/40 bg-surface sticky top-0 z-30">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Go back" class="w-12 h-12 flex items-center justify-center rounded-full hover:bg-surface-container active:scale-95 transition-all text-on-surface" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<div class="flex items-center gap-space-xs">
+<h1 class="font-subtitle text-subtitle text-on-surface font-semibold tracking-tight">Account Status</h1>
+</div>
+</div>
+<!-- Amber/Red Warning Shield Status Indicator -->
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#FFF4E5] border border-[#F6C38E]">
+<span class="material-symbols-outlined text-[#B7791F] text-[18px]">security_update_warning</span>
+<span class="font-caption text-caption font-semibold text-[#8C5209]">Restricted</span>
+</div>
+</header>
+<!-- Main Content Canvas (Scrollable) -->
+<main class="flex-1 px-margin py-space-lg flex flex-col gap-space-xl">
+<!-- Hero Warning Card (Calm, Supportive, Kind, Non-accusing) -->
+<section class="rounded-xl bg-surface-container-lowest p-space-lg border border-outline-variant/50 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] flex flex-col items-center text-center relative overflow-hidden">
+<!-- Ambient Warm Glow behind icon -->
+<div class="absolute -top-10 w-32 h-32 bg-[#FFF1E0] rounded-full blur-2xl pointer-events-none"></div>
+<!-- Secure lock with gentle alert badge -->
+<div class="relative mb-space-md mt-space-xs">
+<div class="w-16 h-16 rounded-full bg-[#FFF8EB] border-2 border-[#F6C38E] flex items-center justify-center text-[#B7791F]">
+<span class="material-symbols-outlined text-[32px]">lock</span>
+</div>
+<div class="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-[#FFF0ED] border-2 border-[#FFAEA5] flex items-center justify-center text-[#C62828] shadow-sm">
+<span class="material-symbols-outlined text-[15px] font-bold">priority_high</span>
+</div>
+</div>
+<h2 class="font-title text-title text-on-surface font-bold tracking-tight mb-space-xs">
+          Account Temporarily Restricted
+        </h2>
+<p class="font-body text-body text-on-surface-variant max-w-[340px]">
+          Outward transfers and new card debits have been paused to protect your funds and comply with banking safety rules.
+        </p>
+<!-- S-CB-094 Flow Badge -->
+<div class="mt-space-md inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-surface-container text-on-surface-variant text-[11px] font-caption tracking-wider uppercase">
+<span class="material-symbols-outlined text-[14px]">shield</span>
+<span>Security Protocol S-CB-094</span>
+</div>
+</section>
+<!-- Restriction Details Card -->
+<section class="rounded-xl bg-surface-container-lowest p-space-lg border border-outline-variant/50 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-xs border-b border-outline-variant/30">
+<span class="font-label text-label text-on-surface font-semibold">Restriction Summary</span>
+<span class="font-caption text-caption text-on-surface-variant">Reference #REST-90812</span>
+</div>
+<dl class="flex flex-col gap-space-sm text-left">
+<!-- Reason -->
+<div class="flex flex-col gap-0.5">
+<dt class="font-caption text-caption text-on-surface-variant font-medium">Trigger Reason</dt>
+<dd class="font-body-medium text-body-medium text-on-surface flex items-start gap-1.5 pt-0.5">
+<span class="material-symbols-outlined text-outline text-[18px] mt-0.5 shrink-0">info</span>
+<span>Compliance Verification Review (BVN/NIN mismatch check or anomalous login detection)</span>
+</dd>
+</div>
+<!-- Divider -->
+<div class="h-px bg-outline-variant/30 w-full my-0.5"></div>
+<!-- Enforced Date & Time -->
+<div class="flex justify-between items-center py-0.5">
+<dt class="font-caption text-caption text-on-surface-variant font-medium">Date Enforced</dt>
+<dd class="font-body-medium text-body-medium text-on-surface tabular-nums">24 Oct 2024, 11:15 AM WAT</dd>
+</div>
+<!-- Divider -->
+<div class="h-px bg-outline-variant/30 w-full my-0.5"></div>
+<!-- Status Indicator -->
+<div class="flex justify-between items-center py-0.5">
+<dt class="font-caption text-caption text-on-surface-variant font-medium">Current Status</dt>
+<dd class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#FFF7E8] text-[#8C5209] border border-[#FBE0B2]">
+<span class="material-symbols-outlined text-[#B7791F] text-[16px]">hourglass_top</span>
+<span class="font-label text-label font-semibold">Awaiting Identity Clarification</span>
+</dd>
+</div>
+</dl>
+</section>
+<!-- What this means for your money -->
+<section class="rounded-xl bg-surface-container-lowest p-space-lg border border-outline-variant/50 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] flex flex-col gap-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">account_balance_wallet</span>
+<h3 class="font-subtitle text-subtitle text-on-surface font-semibold text-[18px]">What this means for your money</h3>
+</div>
+<ul class="flex flex-col gap-space-md">
+<!-- Item 1 (Green Check) -->
+<li class="flex items-start gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-[#EDF7EE] border border-[#BDE5BF] flex items-center justify-center shrink-0 text-[#1B6F28] mt-0.5">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+</div>
+<div class="flex-1">
+<p class="font-body text-body text-on-surface leading-snug">
+                Inbound transfers are still received and safely credited to your balance.
+              </p>
+</div>
+</li>
+<!-- Item 2 (Green Check) -->
+<li class="flex items-start gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-[#EDF7EE] border border-[#BDE5BF] flex items-center justify-center shrink-0 text-[#1B6F28] mt-0.5">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+</div>
+<div class="flex-1">
+<p class="font-body text-body text-on-surface leading-snug">
+                Your existing balance (<span class="font-body-medium text-body-medium font-semibold text-on-surface tabular-nums">₦142,850.00</span>) is completely safe, held in trust, and intact.
+              </p>
+</div>
+</li>
+<!-- Item 3 (Red Block - Warning Color Rule Compliant) -->
+<li class="flex items-start gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-[#FDF0EE] border border-[#F6C2BE] flex items-center justify-center shrink-0 text-[#C62828] mt-0.5">
+<span class="material-symbols-outlined text-[18px]">block</span>
+</div>
+<div class="flex-1">
+<p class="font-body text-body text-on-surface leading-snug">
+                Outward payments and card transactions are paused until unlocked.
+              </p>
+</div>
+</li>
+</ul>
+</section>
+<!-- Resolution Steps & Actions Card -->
+<section class="rounded-xl bg-surface-container-lowest p-space-lg border border-outline-variant/50 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">assignment_turned_in</span>
+<h3 class="font-subtitle text-subtitle text-on-surface font-semibold text-[18px]">Resolution Steps</h3>
+</div>
+<span class="font-caption text-caption text-on-surface-variant font-medium bg-surface-container px-2 py-0.5 rounded-full">Takes ~2 mins</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant -mt-1">
+          Complete the guided two-step verification process to immediately restore full privileges:
+        </p>
+<div class="flex flex-col gap-space-sm">
+<!-- Step 1 -->
+<div class="flex items-center gap-space-md p-space-md rounded-xl bg-surface-container-low border border-outline-variant/30 hover:bg-surface-container transition-colors">
+<div class="w-9 h-9 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface font-label text-label font-bold shrink-0">
+              1
+            </div>
+<div class="flex-1">
+<h4 class="font-body-medium text-body-medium text-on-surface font-semibold">Address or Transaction Confirmation</h4>
+<p class="font-caption text-caption text-on-surface-variant">Verify residential address or confirm recent transaction</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">chevron_right</span>
+</div>
+<!-- Step 2 -->
+<div class="flex items-center gap-space-md p-space-md rounded-xl bg-surface-container-low border border-outline-variant/30 hover:bg-surface-container transition-colors">
+<div class="w-9 h-9 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface font-label text-label font-bold shrink-0">
+              2
+            </div>
+<div class="flex-1">
+<h4 class="font-body-medium text-body-medium text-on-surface font-semibold">Biometric Check</h4>
+<p class="font-caption text-caption text-on-surface-variant">Submit a quick selfie liveness re-check</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">face</span>
+</div>
+</div>
+</section>
+<!-- Action Buttons Area -->
+<section class="flex flex-col gap-space-md pt-space-xs">
+<!-- Primary 52px Button: Start Verification to Unlock -->
+<button class="w-full h-[52px] rounded-xl bg-[#8E1B4A] active:bg-[#731540] text-white font-label text-label flex items-center justify-center gap-space-sm transition-all duration-150 shadow-[0_2px_8px_-2px_rgba(30,26,27,0.05),0_1px_3px_0_rgba(30,26,27,0.03)] active:scale-[0.99] cursor-pointer" type="button">
+<span class="material-symbols-outlined text-[20px]">lock_open</span>
+<span>Start Verification to Unlock</span>
+</button>
+<!-- Secondary 52px Button: Speak with Priority Support -->
+<button class="w-full h-[52px] rounded-xl bg-[#F8E8EE] active:bg-surface-container text-[#8E1B4A] font-label text-label flex items-center justify-center gap-space-sm transition-all duration-150 active:scale-[0.99] cursor-pointer" type="button">
+<span class="material-symbols-outlined text-[20px]">support_agent</span>
+<span>Speak with Priority Support</span>
+</button>
+</section>
+<!-- Footer Regulatory Attribution (NDIC & CBN Directives) -->
+<footer class="pt-space-xs pb-space-lg text-center flex flex-col items-center gap-space-xs">
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-[#B7791F]">verified</span>
+<span class="font-caption text-caption text-on-surface-variant font-medium">Regulated Consumer Protection</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant text-[12px] leading-relaxed max-w-[340px]">
+          Central Bank of Nigeria Consumer Protection Directives. Your deposits remain protected under NDIC insurance.
+        </p>
+</footer>
+</main>
+</div>
+</body></html>

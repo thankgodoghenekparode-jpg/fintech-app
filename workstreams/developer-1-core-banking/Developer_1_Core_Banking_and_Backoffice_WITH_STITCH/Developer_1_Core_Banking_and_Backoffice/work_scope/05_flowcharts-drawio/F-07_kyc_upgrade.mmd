@@ -1,0 +1,19 @@
+flowchart TD
+  a(["More > KYC"])
+  b["Show current tier and next-tier checklist"]
+  c[/"Upload address proof and extra ID"/]
+  d["Submit for review"]
+  e["Back office KYC queue review"]
+  f{"Approved?"}
+  g["Tier upgraded; limits increase; notify"]
+  h["Rejected with reason; retry allowed"]
+  i(["Done"])
+  a --> b
+  b --> c
+  c --> d
+  d --> e
+  e --> f
+  f -->|yes| g
+  f -->|no| h
+  h -->|retry| c
+  g --> i

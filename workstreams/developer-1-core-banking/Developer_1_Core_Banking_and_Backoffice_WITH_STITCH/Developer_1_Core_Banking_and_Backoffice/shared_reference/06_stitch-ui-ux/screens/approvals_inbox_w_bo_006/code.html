@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YourApp Credit Ops - Dual-Control &amp; Quorum Approvals Inbox (W-BO-006)</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with Forms and Container Queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-high": "#efe6e7",
+            "secondary-container": "#fc6955",
+            "surface-container-lowest": "#ffffff",
+            "primary-container": "#8e1b4a",
+            "on-error": "#ffffff",
+            "tertiary-container": "#53484d",
+            "error": "#ba1a1a",
+            "on-primary-fixed": "#3f001b",
+            "surface-container-low": "#fbf1f2",
+            "tertiary": "#3b3236",
+            "surface-tint": "#a8315d",
+            "on-tertiary-container": "#c6b7bd",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "surface-dim": "#e1d8d9",
+            "inverse-primary": "#ffb1c5",
+            "on-surface": "#1f1b1c",
+            "surface-variant": "#e9e0e1",
+            "on-tertiary-fixed": "#21191e",
+            "tertiary-fixed": "#eedee4",
+            "primary": "#6d0033",
+            "surface-container-highest": "#e9e0e1",
+            "on-secondary": "#ffffff",
+            "on-secondary-fixed": "#410000",
+            "on-tertiary-fixed-variant": "#4e4449",
+            "secondary": "#ae3123",
+            "primary-fixed-dim": "#ffb1c5",
+            "on-secondary-container": "#690000",
+            "on-secondary-fixed-variant": "#8c170e",
+            "primary-fixed": "#ffd9e1",
+            "secondary-fixed-dim": "#ffb4a8",
+            "on-primary-fixed-variant": "#881646",
+            "on-primary": "#ffffff",
+            "on-background": "#1f1b1c",
+            "on-tertiary": "#ffffff",
+            "inverse-surface": "#342f30",
+            "surface-bright": "#fff8f8",
+            "surface": "#fff8f8",
+            "surface-container": "#f5eced",
+            "on-error-container": "#93000a",
+            "outline-variant": "#dcbfc5",
+            "on-primary-container": "#ffa0ba",
+            "background": "#fff8f8",
+            "outline": "#897176",
+            "error-container": "#ffdad6",
+            "on-surface-variant": "#564146",
+            "inverse-on-surface": "#f8eeef",
+            "secondary-fixed": "#ffdad4"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "1rem",
+            "space-xl": "1.5rem",
+            "space-3xl": "3rem",
+            "space-lg": "1rem",
+            "space-md": "0.75rem",
+            "space-sm": "0.5rem",
+            "space-2xl": "2rem",
+            "space-xs": "0.25rem",
+            "gutter": "1rem"
+          },
+          "fontFamily": {
+            "body-medium": ["Inter"],
+            "display": ["Inter"],
+            "amount-lg": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "label": ["Inter"],
+            "title": ["Inter"],
+            "caption": ["Inter"],
+            "subtitle": ["Inter"],
+            "body": ["Inter"]
+          },
+          "fontSize": {
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-shadow-card {
+      box-shadow: 0 2px 8px -2px rgba(30, 26, 27, 0.05), 0 1px 3px 0 rgba(30, 26, 27, 0.03);
+    }
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex selection:bg-primary-fixed selection:text-primary">
+<!-- LEFT DOCKED SIDEBAR (w-72) following Shared Components JSON & Specifications -->
+<aside class="fixed left-0 top-0 h-full w-72 flex flex-col justify-between py-space-xl px-space-lg overflow-y-auto bg-surface-container-lowest border-r border-surface-variant z-30 shadow-sm">
+<div class="flex flex-col gap-space-lg">
+<!-- Institutional Branding Header -->
+<div class="flex items-center gap-space-md pb-space-sm border-b border-surface-variant">
+<div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-on-primary shadow-sm shrink-0">
+<span class="material-symbols-outlined text-title" data-icon="account_balance">account_balance</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-subtitle text-subtitle text-primary tracking-tight truncate leading-tight">YourApp Credit Ops</span>
+<span class="font-caption text-caption text-on-surface-variant leading-tight">Enterprise Portal</span>
+</div>
+</div>
+<!-- Staff Officer Tier & Verification Badge -->
+<div class="bg-surface-container-low rounded-xl p-space-md border border-outline-variant flex items-center gap-space-md">
+<div class="w-9 h-9 rounded-full bg-primary-container text-on-primary flex items-center justify-center text-label shrink-0 font-label">
+          L3
+        </div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-space-xs">
+<span class="font-label text-label text-on-surface font-semibold truncate">Tier 3 Officer</span>
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse shrink-0" title="Cryptographically Verified"></span>
+</div>
+<span class="font-caption text-caption text-on-surface-variant truncate">Compliance &amp; Risk Core</span>
+</div>
+</div>
+<!-- Navigation Hierarchy -->
+<div class="flex flex-col gap-space-lg pt-space-xs">
+<!-- Operations Group -->
+<div class="flex flex-col gap-space-xs">
+<span class="font-caption text-caption text-outline font-semibold tracking-wider px-space-md uppercase">Operations</span>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-title text-on-surface-variant" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-title text-on-surface-variant" data-icon="person_search">person_search</span>
+<span>Customer Search (360)</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-title text-on-surface-variant" data-icon="badge">badge</span>
+<span>KYC Queue</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-title text-on-surface-variant" data-icon="sync_alt">sync_alt</span>
+<span>Transactions &amp; Inflows</span>
+</a>
+</div>
+<!-- Governance & Approvals Group (Target Active) -->
+<div class="flex flex-col gap-space-xs">
+<span class="font-caption text-caption text-outline font-semibold tracking-wider px-space-md uppercase">Governance &amp; Approvals</span>
+<!-- Active Dual-Control Approvals -->
+<a class="flex items-center justify-between px-space-lg py-space-md rounded-lg bg-surface-container-low text-primary font-label text-label transition-all duration-150 ease-in-out border-l-4 border-primary" href="#">
+<div class="flex items-center gap-space-md">
+<span class="material-symbols-outlined text-title text-primary" data-icon="pending_actions" data-weight="fill" style="font-variation-settings: 'FILL' 1;">pending_actions</span>
+<span>Dual-Control Approvals</span>
+</div>
+<span class="px-space-xs py-0.5 rounded-full bg-primary-container text-on-primary text-caption font-semibold">6</span>
+</a>
+<a class="flex items-center justify-between px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<div class="flex items-center gap-space-md">
+<span class="material-symbols-outlined text-title text-on-surface-variant" data-icon="shield_alert">flip_camera_ios</span>
+<span>Risk &amp; AML Alerts</span>
+</div>
+<span class="px-space-xs py-0.5 rounded-full bg-surface-container-high text-on-surface text-caption font-semibold">12</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-title text-on-surface-variant" data-icon="balance">balance</span>
+<span>Dispute Cases</span>
+</a>
+</div>
+<!-- System Configuration Group -->
+<div class="flex flex-col gap-space-xs">
+<span class="font-caption text-caption text-outline font-semibold tracking-wider px-space-md uppercase">System</span>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-title text-on-surface-variant" data-icon="tune">tune</span>
+<span>Product Configuration</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-title text-on-surface-variant" data-icon="history">history</span>
+<span>Audit Log</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Sidebar Bottom Footer -->
+<div class="pt-space-md border-t border-surface-variant flex flex-col gap-space-xs">
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-title text-on-surface-variant" data-icon="admin_panel_settings">admin_panel_settings</span>
+<span>Security &amp; Settings</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-secondary font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-title text-secondary" data-icon="logout">logout</span>
+<span>Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- MAIN CANVAS AREA WITH TOP NAVBAR (Docked to right of sidebar) -->
+<div class="ml-72 flex-1 flex flex-col min-w-0 bg-surface">
+<!-- TOP NAVBAR following Shared Components JSON -->
+<header class="sticky top-0 right-0 h-16 flex items-center justify-between px-space-xl bg-surface-container-lowest border-b border-surface-variant z-20">
+<!-- Omni Search & Branch Context -->
+<div class="flex items-center gap-space-lg w-1/2 max-w-xl">
+<div class="flex items-center gap-space-xs text-on-surface-variant font-caption text-caption border-r border-surface-variant pr-space-md">
+<span class="material-symbols-outlined text-primary" data-icon="storefront">storefront</span>
+<span class="font-label text-label text-on-surface font-semibold truncate">Lagos Island Main Branch (012)</span>
+</div>
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-title" data-icon="search">search</span>
+<input class="w-full h-10 pl-10 pr-4 rounded-xl bg-surface border border-surface-variant text-on-surface font-body text-caption placeholder:text-outline focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all" placeholder="Search approvals by Case #, Officer, or Counterparty..." type="text"/>
+</div>
+</div>
+<!-- Security Hardware Cluster, Quorum Telemetry & Officer Profile -->
+<div class="flex items-center gap-space-lg">
+<!-- Quorum Active Badge -->
+<div class="flex items-center gap-space-xs px-space-md py-1.5 rounded-lg bg-surface-container-low border border-outline-variant">
+<span class="material-symbols-outlined text-label text-primary" data-icon="groups">groups</span>
+<span class="font-caption text-caption text-on-surface font-semibold">Dual-Control Quorum:</span>
+<span class="font-label text-label text-primary font-bold">3/4 Active</span>
+</div>
+<!-- HSM Hardware Enclave Status -->
+<div class="flex items-center gap-space-xs px-space-md py-1.5 rounded-lg bg-surface-container border border-surface-variant">
+<span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+<span class="font-caption text-caption text-on-surface-variant">HSM Enclave:</span>
+<span class="font-label text-caption text-on-surface font-semibold uppercase tracking-wider">Armed</span>
+</div>
+<!-- Trailing Icon Actions -->
+<div class="flex items-center gap-space-xs border-l border-surface-variant pl-space-md">
+<button class="w-10 h-10 rounded-xl flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors relative" title="Notifications">
+<span class="material-symbols-outlined text-title" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-secondary"></span>
+</button>
+<button class="w-10 h-10 rounded-xl flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors" title="Support &amp; Help">
+<span class="material-symbols-outlined text-title" data-icon="help_outline">help_outline</span>
+</button>
+</div>
+<!-- Head Officer Passport Profile -->
+<div class="flex items-center gap-space-md pl-space-sm border-l border-surface-variant">
+<img class="w-10 h-10 rounded-full object-cover border-2 border-primary-container" data-alt="Close-up professional portrait of Dr. Oluwaseun Adeyemi, a distinguished Nigerian female banking compliance executive in dignified formal corporate attire with high-key balanced office lighting and subtle warm burgundy architectural accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuDVoEp6sABWzHxiSpIWwK8TCKbVeT9xCwSptbdi3n0wM5XnIpfOC2yeZGpOfzXti18PyYux-c12QaQYLlptPnl_iWai2L2MoVWrTxuie3ONzxYK5lOtbtBEGiJ9cR6ZNRvLZHvtHfWb7dm7yipY6pUKrhe2dudx2aXUkewafzwknWiQLlxcvzkkf7X9mbQKpukRd5vVKFrLumd6jmHp9w6W1yyV13jD6fjd5PkRq5"/>
+<div class="flex flex-col text-left">
+<span class="font-label text-label text-on-surface font-semibold truncate leading-tight">Oluwaseun Adeyemi</span>
+<span class="font-caption text-caption text-on-surface-variant truncate leading-tight">Compliance Head (Signatory B)</span>
+</div>
+</div>
+</div>
+</header>
+<!-- CONTENT CANVAS -->
+<main class="p-space-xl flex flex-col gap-space-xl max-w-[1400px]">
+<!-- SCREEN TITLE & HEADER ACTIONS -->
+<section class="flex flex-wrap items-start justify-between gap-space-lg">
+<div class="flex flex-col gap-space-xs max-w-3xl">
+<div class="flex items-center gap-space-md">
+<h1 class="font-title text-title text-on-surface tracking-tight">Dual-Control &amp; Quorum Approvals Inbox</h1>
+<span class="px-2.5 py-1 rounded-lg bg-surface-container-highest text-on-surface-variant font-label text-caption font-semibold tracking-wide border border-surface-variant">
+              W-BO-006
+            </span>
+<span class="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-surface-container-low text-primary border border-outline-variant font-caption text-caption font-semibold">
+<span class="material-symbols-outlined text-caption" data-icon="security">security</span>
+              FIDO2 Certified
+            </span>
+</div>
+<p class="font-body text-caption text-on-surface-variant leading-relaxed">
+            Centralized statutory four-eyes signoff pipeline for high-value reversals (&gt;₦1M), treasury escrow drawdowns, float injections, and risk parameter overrides.
+          </p>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center gap-space-md shrink-0">
+<button class="h-[52px] px-space-lg rounded-xl border-[1.5px] border-surface-variant bg-surface-container-lowest text-on-surface font-label text-label hover:bg-surface-container transition-colors flex items-center gap-space-sm shadow-sm">
+<span class="material-symbols-outlined text-title text-outline" data-icon="download">download</span>
+<span>Download Audit Roster (PDF)</span>
+</button>
+<button class="h-[52px] px-space-lg rounded-xl bg-primary text-on-primary font-label text-label hover:bg-primary-container transition-colors flex items-center gap-space-sm shadow-sm">
+<span class="material-symbols-outlined text-title" data-icon="add_moderator">add_moderator</span>
+<span>+ Propose Emergency Override</span>
+</button>
+</div>
+</section>
+<!-- KPI METRIC ROW (4 Bento Cards) -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-lg">
+<!-- KPI 1 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl border border-surface-variant custom-shadow-card flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label text-caption text-on-surface-variant font-medium">Items Requiring Signoff</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-low text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-title" data-icon="rule">rule</span>
+</div>
+</div>
+<div class="pt-space-md">
+<div class="flex items-baseline gap-space-xs">
+<span class="font-display text-display text-on-surface tabular-nums">6</span>
+<span class="font-body text-caption text-on-surface-variant">Awaiting You</span>
+</div>
+<div class="flex items-center gap-1.5 mt-2 text-secondary font-label text-caption">
+<span class="material-symbols-outlined text-caption" data-icon="alarm">alarm</span>
+<span class="font-semibold">3 Critical SLA (&lt;20 mins)</span>
+</div>
+</div>
+</div>
+<!-- KPI 2 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl border border-surface-variant custom-shadow-card flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label text-caption text-on-surface-variant font-medium">Dual-Control Clearance Time</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-low text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-title" data-icon="timer">timer</span>
+</div>
+</div>
+<div class="pt-space-md">
+<div class="flex items-baseline gap-space-xs">
+<span class="font-display text-display text-on-surface tabular-nums">8.4</span>
+<span class="font-body text-caption text-on-surface-variant">mins avg</span>
+</div>
+<div class="flex items-center gap-1.5 mt-2 text-emerald-700 font-label text-caption">
+<span class="material-symbols-outlined text-caption" data-icon="check_circle">check_circle</span>
+<span>Well within statutory 30m SLA</span>
+</div>
+</div>
+</div>
+<!-- KPI 3 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl border border-surface-variant custom-shadow-card flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label text-caption text-on-surface-variant font-medium">Approved Today</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-low text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-title" data-icon="task_alt">task_alt</span>
+</div>
+</div>
+<div class="pt-space-md">
+<div class="flex items-baseline gap-space-xs">
+<span class="font-display text-display text-on-surface tabular-nums">24</span>
+<span class="font-body text-caption text-on-surface-variant">Mandates</span>
+</div>
+<div class="flex items-center gap-1 mt-2 text-on-surface-variant font-caption text-caption tabular-nums truncate">
+<span>Cleared volume:</span>
+<span class="font-semibold text-on-surface">₦48,250,000.00</span>
+</div>
+</div>
+</div>
+<!-- KPI 4 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl border border-surface-variant custom-shadow-card flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label text-caption text-on-surface-variant font-medium">Quorum Health</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-low text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-title" data-icon="verified_user">verified_user</span>
+</div>
+</div>
+<div class="pt-space-md">
+<div class="flex items-baseline gap-space-xs">
+<span class="font-display text-display text-on-surface tabular-nums">100%</span>
+<span class="font-body text-caption text-on-surface-variant">Compliant</span>
+</div>
+<div class="flex items-center gap-1.5 mt-2 text-emerald-700 font-label text-caption">
+<span class="material-symbols-outlined text-caption" data-icon="verified">verified</span>
+<span>Zero single-signoff breaches</span>
+</div>
+</div>
+</div>
+</section>
+<!-- STATUTORY QUORUM MANDATE NOTIFICATION BANNER -->
+<section class="bg-surface-container-low border border-outline-variant rounded-2xl p-space-md flex items-center gap-space-md custom-shadow-card">
+<div class="w-10 h-10 rounded-xl bg-primary text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-title" data-icon="gavel">gavel</span>
+</div>
+<div class="flex-1 text-on-surface">
+<span class="font-label text-label font-bold text-primary">Statutory 4-Eyes Principle Enforced: </span>
+<span class="font-body text-caption text-on-surface-variant">
+            All transactions &gt;₦1,000,000.00, interest adjustments, and tier limit overrides mandate cryptographic dual-signoff from a Level 2 Initiator and Level 3 Approver.
+          </span>
+</div>
+<div class="flex items-center gap-space-sm shrink-0">
+<span class="font-caption text-caption text-outline">CBN Act Sec 19.4</span>
+</div>
+</section>
+<!-- MAIN CONTENT SPLIT GRID (8 Cols Queue Table, 4 Cols Active Approval Dossier) -->
+<section class="grid grid-cols-12 gap-space-xl items-start">
+<!-- LEFT 8 COLS: QUEUE TABLE -->
+<div class="col-span-12 xl:col-span-8 flex flex-col gap-space-md">
+<div class="bg-surface-container-lowest rounded-2xl border border-surface-variant custom-shadow-card overflow-hidden">
+<!-- Tabbed Filter Navigation -->
+<div class="flex items-center justify-between px-space-lg pt-space-md border-b border-surface-variant">
+<div class="flex items-center gap-space-md overflow-x-auto pb-[-1px]">
+<button class="pb-3 border-b-2 border-primary text-primary font-label text-label flex items-center gap-2">
+<span>All Pending</span>
+<span class="px-2 py-0.5 rounded-full bg-primary-container text-on-primary text-caption font-semibold">6</span>
+</button>
+<button class="pb-3 border-b-2 border-transparent text-on-surface-variant hover:text-on-surface font-label text-label flex items-center gap-2">
+<span>High-Value Reversals</span>
+<span class="px-1.5 py-0.5 rounded-full bg-surface-container-high text-on-surface text-caption font-medium">3</span>
+</button>
+<button class="pb-3 border-b-2 border-transparent text-on-surface-variant hover:text-on-surface font-label text-label flex items-center gap-2">
+<span>Float &amp; Treasury</span>
+<span class="px-1.5 py-0.5 rounded-full bg-surface-container-high text-on-surface text-caption font-medium">2</span>
+</button>
+<button class="pb-3 border-b-2 border-transparent text-on-surface-variant hover:text-on-surface font-label text-label flex items-center gap-2">
+<span>Tenant Overrides</span>
+<span class="px-1.5 py-0.5 rounded-full bg-surface-container-high text-on-surface text-caption font-medium">1</span>
+</button>
+<button class="pb-3 border-b-2 border-transparent text-on-surface-variant hover:text-on-surface font-label text-label flex items-center gap-2">
+<span>Resolved Today</span>
+<span class="px-1.5 py-0.5 rounded-full bg-surface-container-high text-on-surface text-caption font-medium">24</span>
+</button>
+</div>
+<!-- Quick Table Actions -->
+<div class="flex items-center gap-2 pb-2">
+<button class="p-1.5 rounded-lg text-outline hover:text-on-surface hover:bg-surface-container transition-colors" title="Filter columns">
+<span class="material-symbols-outlined text-label" data-icon="filter_list">filter_list</span>
+</button>
+<button class="p-1.5 rounded-lg text-outline hover:text-on-surface hover:bg-surface-container transition-colors" title="Refresh queue">
+<span class="material-symbols-outlined text-label" data-icon="refresh">refresh</span>
+</button>
+</div>
+</div>
+<!-- Table Structure -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface text-on-surface-variant font-label text-caption border-b border-surface-variant">
+<th class="py-3 px-4 font-semibold">Mandate ID</th>
+<th class="py-3 px-4 font-semibold">Type &amp; Severity</th>
+<th class="py-3 px-4 font-semibold">Initiating Officer</th>
+<th class="py-3 px-4 font-semibold">Beneficiary / Counterparty</th>
+<th class="py-3 px-4 font-semibold text-right">Value (₦)</th>
+<th class="py-3 px-4 font-semibold">SLA Left</th>
+<th class="py-3 px-4 font-semibold">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-variant font-body text-caption">
+<!-- ROW 1: ACTIVE / HIGHLIGHTED ITEM #APV-8821 -->
+<tr class="bg-surface-container-low/60 hover:bg-surface-container-low transition-colors cursor-pointer border-l-4 border-l-primary">
+<td class="py-3.5 px-4 font-label text-label font-semibold text-primary">
+                      #APV-8821
+                    </td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded-md bg-error-container text-on-error-container font-semibold text-caption flex items-center gap-1">
+<span class="material-symbols-outlined text-caption" data-icon="error">error</span>
+                          CRITICAL
+                        </span>
+<span class="text-on-surface font-medium truncate">Reversal</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-col">
+<span class="text-on-surface font-medium">Babatunde Sanni</span>
+<span class="text-outline text-caption">Ops Lagos (L2)</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-col max-w-[180px]">
+<span class="text-on-surface font-medium truncate">Alh. Danladi Textiles</span>
+<span class="text-outline text-caption truncate">Zenith #0124892019</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right tabular-nums font-semibold text-on-surface text-label">
+                      ₦2,500,000.00
+                    </td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1 text-secondary font-semibold tabular-nums">
+<span class="material-symbols-outlined text-caption" data-icon="timer">timer</span>
+<span>12m left</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="px-2 py-0.5 rounded-md bg-surface-container-high text-primary font-semibold text-caption whitespace-nowrap">
+                        Signatory B Awaiting
+                      </span>
+</td>
+</tr>
+<!-- ROW 2: #APV-8820 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors cursor-pointer">
+<td class="py-3.5 px-4 font-label text-label text-on-surface font-medium">
+                      #APV-8820
+                    </td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded-md bg-secondary-fixed text-on-secondary-fixed-variant font-semibold text-caption flex items-center gap-1">
+<span class="material-symbols-outlined text-caption" data-icon="warning">warning</span>
+                          HIGH
+                        </span>
+<span class="text-on-surface font-medium truncate">Float Injection</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-col">
+<span class="text-on-surface font-medium">Automated Sentinel</span>
+<span class="text-outline text-caption">Algorithm Engine</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-col max-w-[180px]">
+<span class="text-on-surface font-medium truncate">Balogun Super-Kiosk</span>
+<span class="text-outline text-caption truncate">Agency #AGT-2041</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right tabular-nums font-semibold text-on-surface text-label">
+                      ₦10,000,000.00
+                    </td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1 text-secondary font-semibold tabular-nums">
+<span class="material-symbols-outlined text-caption" data-icon="timer">timer</span>
+<span>28m left</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="px-2 py-0.5 rounded-md bg-surface-container-high text-on-surface-variant font-medium text-caption whitespace-nowrap">
+                        Signatory B Awaiting
+                      </span>
+</td>
+</tr>
+<!-- ROW 3: #APV-8819 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors cursor-pointer">
+<td class="py-3.5 px-4 font-label text-label text-on-surface font-medium">
+                      #APV-8819
+                    </td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded-md bg-surface-container-high text-on-surface-variant font-semibold text-caption">
+                          MEDIUM
+                        </span>
+<span class="text-on-surface font-medium truncate">Co-op Liquidity</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-col">
+<span class="text-on-surface font-medium">Funke Akindele</span>
+<span class="text-outline text-caption">Treasury Desk</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-col max-w-[180px]">
+<span class="text-on-surface font-medium truncate">Lekki Phase 1 Co-op</span>
+<span class="text-outline text-caption truncate">Master Escrow</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right tabular-nums font-semibold text-on-surface text-label">
+                      ₦3,500,000.00
+                    </td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1 text-on-surface-variant tabular-nums">
+<span class="material-symbols-outlined text-caption" data-icon="schedule">schedule</span>
+<span>45m left</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="px-2 py-0.5 rounded-md bg-surface-container-high text-on-surface-variant font-medium text-caption whitespace-nowrap">
+                        Signatory B Awaiting
+                      </span>
+</td>
+</tr>
+<!-- ROW 4: #APV-8818 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors cursor-pointer">
+<td class="py-3.5 px-4 font-label text-label text-on-surface font-medium">
+                      #APV-8818
+                    </td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded-md bg-surface-container-high text-on-surface-variant font-semibold text-caption">
+                          POLICY
+                        </span>
+<span class="text-on-surface font-medium truncate">KYC Override</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-col">
+<span class="text-on-surface font-medium">Kemi Olawale</span>
+<span class="text-outline text-caption">Risk Underwriter</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-col max-w-[180px]">
+<span class="text-on-surface font-medium truncate">Chief Mukhtar Bello</span>
+<span class="text-outline text-caption truncate">HNW Account</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right tabular-nums font-semibold text-on-surface text-label">
+                      ₦25,000,000.00 Cap
+                    </td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1 text-on-surface-variant tabular-nums">
+<span class="material-symbols-outlined text-caption" data-icon="schedule">schedule</span>
+<span>1.2h left</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="px-2 py-0.5 rounded-md bg-surface-container-high text-on-surface-variant font-medium text-caption whitespace-nowrap">
+                        Signatory B Awaiting
+                      </span>
+</td>
+</tr>
+<!-- ROW 5: #APV-8817 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors cursor-pointer">
+<td class="py-3.5 px-4 font-label text-label text-on-surface font-medium">
+                      #APV-8817
+                    </td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded-md bg-surface-container-high text-on-surface-variant font-semibold text-caption">
+                          CAMPAIGN
+                        </span>
+<span class="text-on-surface font-medium truncate">Fee Waiver</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-col">
+<span class="text-on-surface font-medium">Ifeoma Okonkwo</span>
+<span class="text-outline text-caption">Growth Ops</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-col max-w-[180px]">
+<span class="text-on-surface font-medium truncate">Fuel Cashback Campaign</span>
+<span class="text-outline text-caption truncate">Bulk Protocol</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right tabular-nums font-semibold text-on-surface text-label">
+                      ₦1,200,000.00
+                    </td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1 text-on-surface-variant tabular-nums">
+<span class="material-symbols-outlined text-caption" data-icon="schedule">schedule</span>
+<span>2.5h left</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="px-2 py-0.5 rounded-md bg-surface-container-high text-on-surface-variant font-medium text-caption whitespace-nowrap">
+                        Signatory B Awaiting
+                      </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Pagination & Count -->
+<div class="p-space-md border-t border-surface-variant flex items-center justify-between text-on-surface-variant font-caption text-caption">
+<span>Showing 5 of 6 awaiting mandates (1 on high-priority hold)</span>
+<div class="flex items-center gap-1">
+<button class="px-3 py-1.5 rounded-lg border border-surface-variant hover:bg-surface-container text-on-surface font-medium disabled:opacity-50" disabled="">Previous</button>
+<button class="px-3 py-1.5 rounded-lg border border-surface-variant hover:bg-surface-container text-on-surface font-medium">Next</button>
+</div>
+</div>
+</div>
+<!-- Audit Ledger Micro-Panel -->
+<div class="bg-surface-container-lowest p-space-md rounded-2xl border border-surface-variant custom-shadow-card flex items-center justify-between">
+<div class="flex items-center gap-space-md">
+<span class="material-symbols-outlined text-primary" data-icon="fingerprint">fingerprint</span>
+<div class="flex flex-col">
+<span class="font-label text-label text-on-surface font-semibold">Active HSM Partition: K8S-PROD-ENC-02</span>
+<span class="font-caption text-caption text-on-surface-variant">Elliptic Curve Keypair: secp256k1-DualGov-Nigeria-Ops</span>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-md bg-emerald-100 text-emerald-800 text-caption font-semibold">Hardware Validated</span>
+</div>
+</div>
+<!-- RIGHT 4 COLS: ACTIVE APPROVAL DOSSIER (Deep dive on #APV-8821) -->
+<div class="col-span-12 xl:col-span-4 flex flex-col gap-space-md">
+<div class="bg-surface-container-lowest rounded-2xl border border-surface-variant custom-shadow-card p-space-lg flex flex-col gap-space-lg relative overflow-hidden">
+<!-- Dossier Header & SLA Countdown -->
+<div class="flex items-start justify-between pb-space-md border-b border-surface-variant">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-subtitle text-subtitle text-on-surface font-bold">Mandate #APV-8821</span>
+<span class="w-2.5 h-2.5 rounded-full bg-secondary animate-ping"></span>
+</div>
+<span class="font-caption text-caption text-on-surface-variant">Interbank Settlement Reversal</span>
+</div>
+<!-- SLA Countdown Pill -->
+<div class="px-2.5 py-1 rounded-lg bg-error-container text-on-error-container flex items-center gap-1 font-semibold text-caption">
+<span class="material-symbols-outlined text-caption" data-icon="alarm">alarm</span>
+<span>12m before NIBSS cutoff</span>
+</div>
+</div>
+<!-- Amount Callout -->
+<div class="bg-surface-container-low p-space-md rounded-xl border border-outline-variant flex flex-col">
+<span class="font-caption text-caption text-outline font-semibold uppercase tracking-wider">Total Signoff Exposure</span>
+<span class="font-amount-lg text-amount-lg text-primary tabular-nums tracking-tight font-bold">
+                ₦2,500,000.00
+              </span>
+<span class="font-caption text-caption text-on-surface-variant mt-1">
+                Debited Account: 0124892019 (Alh. Danladi Textiles)
+              </span>
+</div>
+<!-- WORKFLOW STEPPER -->
+<div class="flex flex-col gap-space-sm">
+<span class="font-label text-caption text-outline font-semibold uppercase tracking-wider">Statutory Verification Trail</span>
+<!-- Stepper Item 1: Complete -->
+<div class="flex items-start gap-space-md relative">
+<div class="flex flex-col items-center">
+<div class="w-7 h-7 rounded-full bg-emerald-600 text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-caption" data-icon="check">check</span>
+</div>
+<div class="w-0.5 h-12 bg-emerald-600 my-1"></div>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-label text-caption font-bold text-on-surface">Step 1: Level 2 Initiator Signoff</span>
+<span class="text-caption text-emerald-700 font-semibold">✓ Completed</span>
+</div>
+<span class="font-body text-caption text-on-surface-variant">Babatunde Sanni (Senior Ops Specialist)</span>
+<span class="font-caption text-caption text-outline">14:15:22 WAT • Cryptographically signed with YubiKey-994</span>
+</div>
+</div>
+<!-- Stepper Item 2: Pending (You) -->
+<div class="flex items-start gap-space-md">
+<div class="w-7 h-7 rounded-full bg-primary text-on-primary flex items-center justify-center shrink-0 shadow-sm ring-4 ring-primary-fixed">
+<span class="material-symbols-outlined text-caption" data-icon="edit_note">edit_note</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-label text-caption font-bold text-primary">Step 2: Level 3 Approver Signoff</span>
+<span class="px-1.5 py-0.2 rounded bg-primary-fixed text-primary text-caption font-bold">AWAITING YOU</span>
+</div>
+<span class="font-body text-caption text-on-surface">Dr. Oluwaseun Adeyemi (Signatory B)</span>
+<span class="font-caption text-caption text-outline">Requires Executive PIN + Hardware Sensor challenge</span>
+</div>
+</div>
+</div>
+<!-- JUSTIFICATION & AUDIT TRAIL ACCORDION / BOX -->
+<div class="p-space-md rounded-xl bg-surface border border-surface-variant flex flex-col gap-space-xs">
+<div class="flex items-center justify-between text-on-surface">
+<span class="font-label text-caption font-semibold flex items-center gap-1 text-on-surface">
+<span class="material-symbols-outlined text-label text-outline" data-icon="description">description</span>
+                  Operations Justification Note
+                </span>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-caption font-mono text-on-surface-variant">REF: NIBSS-902-LAG</span>
+</div>
+<p class="font-body text-caption text-on-surface-variant leading-relaxed">
+                NIBSS session timeout caused duplicate debit on customer account 0124892019. Zenith interbank audit ledger confirms uncredited destination tranche. Approved by Zonal Lead via incident ticket #INC-8921.
+              </p>
+</div>
+<!-- SECURITY CHALLENGE & TOKEN -->
+<div class="p-space-md rounded-xl bg-surface-container-low border border-outline-variant flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label text-caption font-bold text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-label text-primary" data-icon="vpn_key">vpn_key</span>
+                  Dual-Control Cryptographic Challenge
+                </span>
+<span class="text-caption text-outline">HSM Slot #3</span>
+</div>
+<!-- 4-Digit Executive Master PIN Dots -->
+<div class="flex flex-col gap-1.5">
+<label class="font-caption text-caption text-on-surface-variant font-medium">Enter 4-Digit Executive Master PIN</label>
+<div class="flex items-center gap-3">
+<!-- Entered Dot 1 -->
+<div class="w-10 h-10 rounded-lg bg-surface-container-lowest border-2 border-primary flex items-center justify-center text-primary font-bold text-subtitle">
+                    ●
+                  </div>
+<!-- Entered Dot 2 -->
+<div class="w-10 h-10 rounded-lg bg-surface-container-lowest border-2 border-primary flex items-center justify-center text-primary font-bold text-subtitle">
+                    ●
+                  </div>
+<!-- Entered Dot 3 -->
+<div class="w-10 h-10 rounded-lg bg-surface-container-lowest border-2 border-primary flex items-center justify-center text-primary font-bold text-subtitle">
+                    ●
+                  </div>
+<!-- Awaiting Dot 4 -->
+<div class="w-10 h-10 rounded-lg bg-surface-container-lowest border border-dashed border-outline flex items-center justify-center text-outline">
+                    ○
+                  </div>
+<span class="text-caption text-outline pl-2 italic">Sensor standby</span>
+</div>
+</div>
+<!-- Hardware FIDO2 Prompt Indicator -->
+<div class="flex items-center gap-space-md p-space-sm rounded-lg bg-surface-container-lowest border border-surface-variant text-caption">
+<span class="material-symbols-outlined text-primary text-title animate-pulse" data-icon="touch_app">touch_app</span>
+<span class="text-on-surface-variant font-body">Tap physical security key or present biometric sensor when prompted by OS.</span>
+</div>
+</div>
+<!-- ACTION BUTTONS -->
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<!-- Full-width 52px Berry CTA -->
+<button class="w-full h-[52px] rounded-xl bg-primary text-on-primary font-label text-label hover:bg-primary-container transition-colors flex items-center justify-center gap-2 shadow-sm font-semibold">
+<span class="material-symbols-outlined text-title" data-icon="lock_open">lock_open</span>
+<span>Cosign &amp; Release Funds (₦2,500,000.00)</span>
+</button>
+<!-- Secondary Button -->
+<button class="w-full h-[52px] rounded-xl bg-surface-container-low text-primary font-label text-label hover:bg-surface-container-high transition-colors flex items-center justify-center gap-2 border border-outline-variant font-semibold">
+<span class="material-symbols-outlined text-title" data-icon="block">block</span>
+<span>Reject Mandate with Reason</span>
+</button>
+</div>
+</div>
+<!-- Fast Mandate Metadata Card -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest border border-surface-variant flex items-center justify-between text-caption text-on-surface-variant">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-label text-outline" data-icon="cloud_sync">cloud_sync</span>
+              NIBSS Instant Payment (NIP) Channel
+            </span>
+<span class="font-mono text-outline">Routing #000014</span>
+</div>
+</div>
+</section>
+</main>
+<!-- BACK-OFFICE STATUTORY COMPLIANCE FOOTER BAR -->
+<footer class="mt-auto px-space-xl py-space-md bg-surface-container-lowest border-t border-surface-variant flex flex-wrap items-center justify-between gap-space-md text-caption text-on-surface-variant">
+<div class="flex items-center gap-space-md">
+<span class="flex items-center gap-1 font-medium text-on-surface">
+<span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+          Cryptographic Consensus Engine v4.8 (Cluster Lagos-DC1)
+        </span>
+<span class="text-outline">|</span>
+<span class="font-mono text-outline truncate max-w-sm">SHA-256 Stamp: 9e83b...110f0d2c (Verified)</span>
+</div>
+<div class="flex items-center gap-space-md">
+<span>Statutory Authority: Central Bank Dual-Control Act 2024</span>
+<span class="text-outline">|</span>
+<span class="font-label text-caption text-primary font-semibold">Authorized Session: Dr. O. Adeyemi</span>
+</div>
+</footer>
+</div>
+</body></html>

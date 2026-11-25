@@ -1,0 +1,25 @@
+flowchart TD
+  a(["Member misses contribution"])
+  b["Reminder and grace period"]
+  c{"Paid?"}
+  d["Late fee; flag"]
+  e{"Misses reach limit N?"}
+  f["Mark DEFAULTED; notify group"]
+  g{"Protection mode"}
+  h["Invoke deposit or guarantor cover"]
+  i["Record shortfall per terms; continue collection"]
+  j["Update trust score; restrict future circles"]
+  k(["Done"])
+  a --> b
+  b --> c
+  c -->|yes| k
+  c -->|no| d
+  d --> e
+  e -->|no| b
+  e -->|yes| f
+  f --> g
+  g -->|protected| h
+  g -->|safeguards only| i
+  h --> j
+  i --> j
+  j --> k

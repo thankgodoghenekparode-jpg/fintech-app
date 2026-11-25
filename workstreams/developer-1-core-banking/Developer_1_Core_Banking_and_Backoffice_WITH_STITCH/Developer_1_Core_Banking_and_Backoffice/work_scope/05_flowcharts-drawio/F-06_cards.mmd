@@ -1,0 +1,41 @@
+flowchart TD
+  a(["Cards tab"])
+  b{"Any cards?"}
+  c["Show carousel"]
+  d["Empty state: Create card"]
+  e[/"Name card, choose theme, optional limit"/]
+  f["PIN"]
+  g["Create card via card service"]
+  h{"Created?"}
+  h1["Friendly error; retry"]
+  i["Card detail"]
+  j{"Action"}
+  k["Freeze or unfreeze (instant)"]
+  l["Reveal details: PIN, 30s auto-hide"]
+  m["Set limits (within tier)"]
+  n["Alerts and settings"]
+  o["Delete card (confirm)"]
+  p(["Done"])
+  a --> b
+  b -->|yes| c
+  b -->|no| d
+  d --> e
+  c -->|create| e
+  c -->|open| i
+  e --> f
+  f --> g
+  g --> h
+  h -->|no| h1
+  h1 -->|retry| e
+  h -->|yes| i
+  i --> j
+  j -->|freeze| k
+  j -->|reveal| l
+  j -->|limits| m
+  j -->|alerts| n
+  j -->|delete| o
+  k --> p
+  l --> p
+  m --> p
+  n --> p
+  o --> p

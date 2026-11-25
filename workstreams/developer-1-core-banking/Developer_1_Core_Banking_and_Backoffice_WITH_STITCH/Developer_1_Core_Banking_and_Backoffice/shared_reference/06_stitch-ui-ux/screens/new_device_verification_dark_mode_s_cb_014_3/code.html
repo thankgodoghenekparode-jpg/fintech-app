@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>New Device Verification - YourApp</title>
+<!-- Material Symbols Outlined font -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Inter font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-low": "#1d1b1c",
+            "on-secondary-container": "#ff9f90",
+            "secondary-fixed-dim": "#ffb4a8",
+            "on-tertiary-fixed": "#001945",
+            "surface-container-high": "#2c292a",
+            "on-tertiary-container": "#002a69",
+            "primary": "#ffb0ca",
+            "on-error": "#690005",
+            "on-secondary-fixed-variant": "#7f291e",
+            "on-secondary": "#61130a",
+            "on-primary-fixed": "#3e001f",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "on-tertiary-fixed-variant": "#06429a",
+            "tertiary-fixed": "#d9e2ff",
+            "primary-fixed-dim": "#ffb0ca",
+            "secondary": "#ffb4a8",
+            "on-secondary-fixed": "#410000",
+            "on-surface": "#e7e1e2",
+            "secondary-fixed": "#ffdad4",
+            "tertiary": "#b0c6ff",
+            "on-primary": "#620735",
+            "surface-variant": "#373435",
+            "on-primary-fixed-variant": "#7f234b",
+            "surface-dim": "#151314",
+            "on-tertiary": "#002d6f",
+            "inverse-on-surface": "#323031",
+            "on-error-container": "#ffdad6",
+            "surface-bright": "#3b3839",
+            "surface-container": "#211f20",
+            "surface-container-lowest": "#100e0f",
+            "primary-fixed": "#ffd9e3",
+            "background": "#151314",
+            "tertiary-container": "#6a92ee",
+            "on-primary-container": "#5d0331",
+            "error": "#ffb4ab",
+            "surface": "#151314",
+            "primary-container": "#e0709a",
+            "secondary-container": "#822c20",
+            "surface-container-highest": "#373435",
+            "inverse-surface": "#e7e1e2",
+            "inverse-primary": "#9e3b63",
+            "outline-variant": "#544247",
+            "surface-tint": "#ffb0ca",
+            "error-container": "#93000a",
+            "outline": "#a28b91",
+            "on-background": "#e7e1e2",
+            "on-surface-variant": "#dac0c6"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xl": "2rem",
+            "space-lg": "1.5rem",
+            "space-xs": "0.25rem",
+            "space-md": "1rem",
+            "margin": "1rem",
+            "gutter": "1rem",
+            "gutter-mobile": "0.75rem",
+            "space-sm": "0.5rem",
+            "margin-mobile": "1rem"
+          },
+          "fontFamily": {
+            "label-sm": ["Inter"],
+            "label-md": ["Inter"],
+            "headline-sm": ["Inter"],
+            "headline-lg": ["Inter"],
+            "display-currency": ["Inter"],
+            "headline-md": ["Inter"],
+            "title-currency": ["Inter"],
+            "label-lg": ["Inter"],
+            "body-md": ["Inter"],
+            "body-lg": ["Inter"]
+          },
+          "fontSize": {
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "title-currency": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-lg": ["15px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .material-symbols-outlined[data-weight="fill"] {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-[#121011] text-[#F5F1F0] antialiased selection:bg-primary-container selection:text-surface min-h-screen flex justify-center">
+<!-- Mobile Frame Container (390 x 844 reference, responsive fluid) -->
+<main class="w-full max-w-[420px] min-h-screen bg-[#121011] flex flex-col justify-between relative shadow-2xl overflow-x-hidden border-x border-[#3A3335]/30">
+<!-- Top Navigation / Header (Linear security challenge screen: Back action + Challenge Badge, Nav Shell Suppressed per mandate) -->
+<header class="w-full pt-4 px-margin pb-2 flex items-center justify-between z-10 sticky top-0 bg-[#121011]/90 backdrop-blur-md">
+<button aria-label="Go back" class="w-10 h-10 rounded-xl bg-[#1C1819] border border-[#3A3335] flex items-center justify-center text-[#F5F1F0] active:scale-95 transition-transform duration-150 hover:border-outline" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="arrow_back">arrow_back</span>
+</button>
+<!-- Security Challenge Indicator Badge -->
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#262122] border border-[#3A3335]">
+<span class="material-symbols-outlined text-[15px] text-[#E0709A]" data-icon="lock" data-weight="fill">lock</span>
+<span class="font-label-sm text-label-sm font-semibold tracking-wide text-[#F5F1F0] uppercase">Security Challenge</span>
+</div>
+<div class="w-10 flex justify-end">
+<span class="font-headline-sm text-headline-sm font-bold tracking-tight text-primary-fixed select-none opacity-80">YourApp</span>
+</div>
+</header>
+<!-- Scrollable Content Canvas -->
+<div class="flex-1 px-margin pt-2 pb-6 space-y-4 overflow-y-auto">
+<!-- Headline & Subtext -->
+<div class="space-y-1.5 pt-1">
+<div class="flex items-center gap-2">
+<h1 class="font-headline-md text-headline-md font-bold text-[#F5F1F0] tracking-tight">New device detected</h1>
+<span class="w-2 h-2 rounded-full bg-[#E0709A] animate-ping"></span>
+</div>
+<p class="font-body-md text-body-md text-[#8A8184] leading-relaxed">
+          For your security, we need to verify your identity before granting access on this device.
+        </p>
+</div>
+<!-- Detected Device Card (Level 1 Surface: #1C1819, border #3A3335) -->
+<section class="bg-[#1C1819] border border-[#3A3335] rounded-xl p-4 shadow-sm relative overflow-hidden">
+<!-- Subtle ambient radial highlight -->
+<div class="absolute -right-8 -top-8 w-28 h-28 bg-[#E0709A]/10 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-start justify-between gap-3">
+<div class="flex items-start gap-3">
+<div class="w-11 h-11 rounded-xl bg-[#262122] border border-[#3A3335] flex items-center justify-center text-[#E0709A] flex-shrink-0">
+<span class="material-symbols-outlined text-[24px]" data-icon="smartphone">smartphone</span>
+</div>
+<div class="space-y-0.5">
+<h2 class="font-label-lg text-label-lg font-semibold text-[#F5F1F0]">Samsung Galaxy S24 Ultra</h2>
+<div class="flex items-center gap-1.5 text-[#8A8184]">
+<span class="material-symbols-outlined text-[14px] text-[#8A8184]" data-icon="location_on">location_on</span>
+<span class="font-label-sm text-label-sm">Lagos, Nigeria • Current session</span>
+</div>
+</div>
+</div>
+<!-- Security Status Chip -->
+<div class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[rgba(227,179,65,0.12)] border border-[rgba(227,179,65,0.25)] flex-shrink-0">
+<span class="material-symbols-outlined text-[13px] text-[#E3B341]" data-icon="gpp_maybe" data-weight="fill">gpp_maybe</span>
+<span class="font-label-sm text-label-sm font-semibold text-[#E3B341] tracking-tight">Untrusted</span>
+</div>
+</div>
+<div class="mt-3 pt-3 border-t border-[#3A3335]/70 grid grid-cols-2 gap-2 text-left">
+<div class="space-y-0.5">
+<span class="font-label-sm text-label-sm text-[#8A8184] uppercase tracking-wider block">IP Address</span>
+<span class="font-label-md text-label-md font-mono text-[#F5F1F0]">102.89.•••.••</span>
+</div>
+<div class="space-y-0.5">
+<span class="font-label-sm text-label-sm text-[#8A8184] uppercase tracking-wider block">Timestamp</span>
+<span class="font-label-md text-label-md font-medium text-[#F5F1F0] tabular-nums">Today, 09:41 WAT</span>
+</div>
+</div>
+</section>
+<!-- Verification Method Selector Section -->
+<section class="space-y-3">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md font-semibold text-[#8A8184] tracking-wide uppercase">Select Verification Method</span>
+<span class="font-label-sm text-label-sm text-[#E0709A]">Step 1 of 1</span>
+</div>
+<!-- Option 1 (Selected): 6-Digit SMS / WhatsApp Code -->
+<article class="bg-[#1C1819] border-2 border-[#E0709A] rounded-xl p-4 relative transition-all duration-200 shadow-[0_0_24px_rgba(224,112,154,0.12)]">
+<div class="flex items-start justify-between mb-3">
+<div class="flex items-start gap-3">
+<div class="w-10 h-10 rounded-lg bg-[rgba(224,112,154,0.15)] flex items-center justify-center text-[#E0709A]">
+<span class="material-symbols-outlined text-[20px]" data-icon="sms" data-weight="fill">sms</span>
+</div>
+<div>
+<h3 class="font-label-lg text-label-lg font-semibold text-[#F5F1F0]">6-Digit SMS / WhatsApp Code</h3>
+<p class="font-body-md text-body-md text-[#8A8184]">Sent to registered phone ending in <strong class="text-[#F5F1F0] font-semibold tabular-nums">5678</strong></p>
+</div>
+</div>
+<!-- Selection Radio Indicator -->
+<div class="w-5 h-5 rounded-full border-2 border-[#E0709A] flex items-center justify-center mt-0.5 bg-[#E0709A]">
+<div class="w-2 h-2 rounded-full bg-[#121011]"></div>
+</div>
+</div>
+<!-- 6-Box OTP Input -->
+<div class="mt-4 space-y-3">
+<label class="block font-label-sm text-label-sm text-[#8A8184] uppercase tracking-wider">Enter 6-digit verification code</label>
+<div class="grid grid-cols-6 gap-2" id="otp-group">
+<input class="w-full h-12 text-center text-xl font-bold font-mono bg-[#262122] border border-[#3A3335] rounded-xl text-[#F5F1F0] focus:outline-none focus:border-[#E0709A] focus:ring-1 focus:ring-[#E0709A] transition-all" inputmode="numeric" maxlength="1" pattern="[0-9]*" type="text" value="7"/>
+<input class="w-full h-12 text-center text-xl font-bold font-mono bg-[#262122] border border-[#3A3335] rounded-xl text-[#F5F1F0] focus:outline-none focus:border-[#E0709A] focus:ring-1 focus:ring-[#E0709A] transition-all" inputmode="numeric" maxlength="1" pattern="[0-9]*" type="text" value="3"/>
+<input class="w-full h-12 text-center text-xl font-bold font-mono bg-[#262122] border border-[#3A3335] rounded-xl text-[#F5F1F0] focus:outline-none focus:border-[#E0709A] focus:ring-1 focus:ring-[#E0709A] transition-all" inputmode="numeric" maxlength="1" pattern="[0-9]*" type="text" value="9"/>
+<input autofocus="" class="w-full h-12 text-center text-xl font-bold font-mono bg-[#262122] border-2 border-[#E0709A] rounded-xl text-[#F5F1F0] focus:outline-none shadow-[0_0_12px_rgba(224,112,154,0.35)] transition-all placeholder-[#8A8184]" inputmode="numeric" maxlength="1" pattern="[0-9]*" placeholder="•" type="text"/>
+<input class="w-full h-12 text-center text-xl font-bold font-mono bg-[#1C1819] border border-[#3A3335] rounded-xl text-[#F5F1F0] focus:outline-none focus:border-[#E0709A] transition-all placeholder-[#8A8184]/50" inputmode="numeric" maxlength="1" pattern="[0-9]*" placeholder="•" type="text"/>
+<input class="w-full h-12 text-center text-xl font-bold font-mono bg-[#1C1819] border border-[#3A3335] rounded-xl text-[#F5F1F0] focus:outline-none focus:border-[#E0709A] transition-all placeholder-[#8A8184]/50" inputmode="numeric" maxlength="1" pattern="[0-9]*" placeholder="•" type="text"/>
+</div>
+<!-- Timer & Alternate Channel Trigger -->
+<div class="pt-1 flex items-center justify-between text-xs">
+<div class="flex items-center gap-1.5 text-[#8A8184]">
+<span class="material-symbols-outlined text-[16px] text-[#8A8184]" data-icon="schedule">schedule</span>
+<span class="font-label-sm text-label-sm">Resend code in <span class="text-[#F5F1F0] font-mono tabular-nums font-semibold" id="countdown-timer">0:48</span></span>
+</div>
+<button class="inline-flex items-center gap-1 text-[#E0709A] hover:text-primary transition-colors font-label-sm text-label-sm font-semibold" type="button">
+<span class="material-symbols-outlined text-[15px]" data-icon="chat">chat</span>
+                Send via WhatsApp
+              </button>
+</div>
+</div>
+</article>
+<!-- Option 2: Selfie Liveness Check (Alternative Option) -->
+<article class="bg-[#1C1819] border border-[#3A3335] rounded-xl p-3.5 hover:border-[#8A8184] transition-all duration-150 cursor-pointer flex items-center justify-between group">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-[#262122] border border-[#3A3335] flex items-center justify-center text-[#8A8184] group-hover:text-[#F5F1F0] transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="face">face</span>
+</div>
+<div>
+<h3 class="font-label-lg text-label-lg font-semibold text-[#F5F1F0] group-hover:text-white transition-colors">Selfie liveness check</h3>
+<p class="font-body-md text-body-md text-[#8A8184]">Verify in 10 seconds via biometric scan</p>
+</div>
+</div>
+<!-- Unselected Radio Circle -->
+<div class="w-5 h-5 rounded-full border-2 border-[#3A3335] flex items-center justify-center group-hover:border-[#8A8184] transition-colors"></div>
+</article>
+</section>
+<!-- Security Notice Card: Unauthorized Device Protection -->
+<section class="bg-[#262122]/70 border border-[#3A3335] rounded-xl p-3.5 flex items-start gap-3">
+<div class="w-8 h-8 rounded-full bg-[rgba(242,112,112,0.12)] border border-[rgba(242,112,112,0.25)] flex items-center justify-center text-[#F27070] flex-shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]" data-icon="shield">shield</span>
+</div>
+<div class="space-y-1">
+<p class="font-body-md text-body-md text-[#8A8184] leading-snug">
+            Didn't initiate this login? Lock your account immediately to prevent unauthorized access.
+          </p>
+<button class="inline-flex items-center gap-1 text-[#F27070] font-label-md text-label-md font-semibold hover:underline active:opacity-80 transition-opacity" type="button">
+<span class="material-symbols-outlined text-[16px]" data-icon="lock_clock">lock_clock</span>
+            Lock Account Immediately
+          </button>
+</div>
+</section>
+</div>
+<!-- Sticky Bottom CTA Area (Strict 52px Primary Height standard) -->
+<div class="p-margin bg-[#121011] border-t border-[#3A3335]/50 sticky bottom-0 z-20 space-y-2">
+<button class="w-full h-[52px] bg-primary-container text-on-primary-fixed rounded-xl font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 active:bg-[#C4557F] active:scale-[0.98] transition-all shadow-[0_4px_16px_rgba(224,112,154,0.25)]" type="button">
+<span>Authorize &amp; Continue</span>
+<span class="material-symbols-outlined text-[20px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<div class="flex items-center justify-center gap-1.5 pt-1 text-[#8A8184]">
+<span class="material-symbols-outlined text-[14px] text-[#4CC38A]" data-icon="verified_user">verified_user</span>
+<span class="font-label-sm text-label-sm">256-bit Encrypted Banking Verification</span>
+</div>
+</div>
+</main>
+<!-- Interactive Micro-Interactions Script for OTP Inputs -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const inputs = document.querySelectorAll('#otp-group input');
+      inputs.forEach((input, idx) => {
+        input.addEventListener('keyup', (e) => {
+          if (e.key >= '0' && e.key <= '9') {
+            if (idx < inputs.length - 1) {
+              inputs[idx + 1].focus();
+            }
+          } else if (e.key === 'Backspace') {
+            if (idx > 0 && !input.value) {
+              inputs[idx - 1].focus();
+            }
+          }
+        });
+      });
+
+      // Simple visual countdown ticker
+      let seconds = 48;
+      const timerElement = document.getElementById('countdown-timer');
+      if (timerElement) {
+        setInterval(() => {
+          if (seconds > 0) {
+            seconds--;
+            timerElement.textContent = `0:${seconds < 10 ? '0' : ''}${seconds}`;
+          }
+        }, 1000);
+      }
+    });
+  </script>
+</body></html>

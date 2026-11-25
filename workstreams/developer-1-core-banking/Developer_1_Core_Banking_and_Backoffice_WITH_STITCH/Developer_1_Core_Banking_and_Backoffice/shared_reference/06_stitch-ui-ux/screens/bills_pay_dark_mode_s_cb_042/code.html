@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pay Electricity Bill - YourApp</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-surface-variant": "#dac0c6",
+            "primary-fixed": "#ffd9e3",
+            "tertiary-fixed-dim": "#b0c6ff",
+            "on-tertiary-container": "#002a69",
+            "outline-variant": "#544247",
+            "tertiary-container": "#6a92ee",
+            "primary": "#ffb0ca",
+            "on-primary-container": "#5d0331",
+            "secondary": "#ffb4a8",
+            "primary-container": "#e0709a",
+            "on-background": "#e7e1e2",
+            "on-surface": "#e7e1e2",
+            "inverse-surface": "#e7e1e2",
+            "on-tertiary-fixed": "#001945",
+            "surface-container-low": "#1d1b1c",
+            "on-error-container": "#ffdad6",
+            "surface-dim": "#151314",
+            "on-primary-fixed-variant": "#7f234b",
+            "primary-fixed-dim": "#ffb0ca",
+            "error-container": "#93000a",
+            "surface-container-highest": "#373435",
+            "outline": "#a28b91",
+            "secondary-fixed-dim": "#ffb4a8",
+            "surface-container": "#211f20",
+            "error": "#ffb4ab",
+            "surface": "#151314",
+            "on-error": "#690005",
+            "on-tertiary-fixed-variant": "#06429a",
+            "surface-variant": "#373435",
+            "surface-tint": "#ffb0ca",
+            "on-secondary-fixed": "#410000",
+            "on-primary": "#620735",
+            "secondary-container": "#822c20",
+            "surface-container-high": "#2c292a",
+            "inverse-on-surface": "#323031",
+            "inverse-primary": "#9e3b63",
+            "background": "#151314",
+            "on-secondary-fixed-variant": "#7f291e",
+            "secondary-fixed": "#ffdad4",
+            "tertiary": "#b0c6ff",
+            "on-primary-fixed": "#3e001f",
+            "tertiary-fixed": "#d9e2ff",
+            "surface-container-lowest": "#100e0f",
+            "surface-bright": "#3b3839",
+            "on-secondary-container": "#ff9f90",
+            "on-tertiary": "#002d6f",
+            "on-secondary": "#61130a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-md": "1rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "margin": "1rem",
+            "margin-mobile": "1rem",
+            "gutter": "1rem",
+            "gutter-mobile": "0.75rem",
+            "space-lg": "1.5rem",
+            "space-xl": "2rem"
+          },
+          "fontFamily": {
+            "label-sm": ["Inter"],
+            "display-currency": ["Inter"],
+            "body-lg": ["Inter"],
+            "body-md": ["Inter"],
+            "title-currency": ["Inter"],
+            "headline-lg": ["Inter"],
+            "headline-sm": ["Inter"],
+            "label-md": ["Inter"],
+            "headline-md": ["Inter"],
+            "label-lg": ["Inter"]
+          },
+          "fontSize": {
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "title-currency": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-lg": ["15px", { "lineHeight": "20px", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-lowest text-on-surface antialiased min-h-screen flex justify-center selection:bg-primary-container selection:text-on-primary">
+<!-- Mobile Viewport Shell (390 x 844 max width container) -->
+<main class="w-full max-w-[390px] min-h-screen bg-surface flex flex-col relative pb-10">
+<!-- Top App Bar (Task-Focused: Sub-page with back action suppresses global Nav Shell) -->
+<header class="sticky top-0 z-40 bg-surface/95 backdrop-blur-md px-margin py-3 border-b border-outline-variant/30 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<button aria-label="Go back" class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container hover:bg-surface-container-high active:scale-95 transition-all text-on-surface" type="button">
+<span class="material-symbols-outlined text-[20px]">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<h1 class="font-headline-sm text-headline-sm text-on-surface leading-tight">Pay Electricity Bill</h1>
+<span class="font-label-sm text-label-sm text-outline tracking-wider">S-CB-042</span>
+</div>
+</div>
+<button aria-label="Support &amp; Help" class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container hover:bg-surface-container-high active:scale-95 transition-all text-on-surface-variant" type="button">
+<span class="material-symbols-outlined text-[20px]">help</span>
+</button>
+</header>
+<!-- Scrollable Transaction Configuration Canvas -->
+<div class="px-margin pt-4 pb-8 flex flex-col gap-space-md">
+<!-- Selected Provider Header Bento Card -->
+<section class="bg-surface-container-low border border-outline-variant/40 rounded-xl p-3.5 flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-xl bg-surface-container-high border border-outline-variant/30 flex items-center justify-center relative text-primary">
+<span class="material-symbols-outlined text-[26px]">bolt</span>
+<span class="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-surface-container flex items-center justify-center">
+<span class="w-2.5 h-2.5 rounded-full bg-[#4CC38A]"></span>
+</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-label-lg text-label-lg text-on-surface font-semibold tracking-tight">Ikeja Electric (IKEDC)</span>
+<span class="inline-flex items-center text-[#4CC38A]" title="Verified Utility Provider">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+</span>
+</div>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant border border-outline-variant/30">Prepaid Meter</span>
+<span class="font-label-sm text-label-sm text-outline">Lagos Feeder Zone 03</span>
+</div>
+</div>
+</div>
+<button aria-label="Change electricity provider" class="p-2 text-primary hover:text-primary-fixed active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[20px]">swap_horiz</span>
+</button>
+</section>
+<!-- Account & Meter Details Resolution Card -->
+<section class="bg-surface-container-low border border-outline-variant/40 rounded-xl p-4 flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<label class="font-label-md text-label-md text-on-surface-variant" for="meter-number">Meter / Account Number</label>
+<span class="font-label-sm text-label-sm text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">history</span>
+            Recent (3)
+          </span>
+</div>
+<div class="relative flex items-center">
+<input class="w-full h-[52px] bg-surface-container rounded-xl border border-outline-variant/60 px-3.5 pr-11 font-title-currency text-title-currency text-on-surface tracking-wider focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container font-mono transition-colors" id="meter-number" placeholder="Enter 11-digit Meter Number" type="text" value="04218903412"/>
+<button aria-label="Scan barcode or QR" class="absolute right-3 text-outline hover:text-on-surface active:scale-90 transition-transform" type="button">
+<span class="material-symbols-outlined text-[22px]">qr_code_scanner</span>
+</button>
+</div>
+<!-- Verified Meter Customer Resolution Badge -->
+<div class="bg-surface-container-high/80 rounded-lg p-3 border border-[#4CC38A]/30 flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[#4CC38A] text-[20px] mt-0.5 shrink-0" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Chioma Adeleke</span>
+<span class="inline-flex items-center px-1.5 py-0.5 rounded-full text-[10px] font-semibold bg-[#4CC38A]/15 text-[#4CC38A]">Active</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">
+              Meter Status: Active • Ikeja GRA Feeder Line
+            </p>
+</div>
+</div>
+</section>
+<!-- Tariff & Package Plan Selection -->
+<section class="bg-surface-container-low border border-outline-variant/40 rounded-xl p-4 flex flex-col gap-2">
+<label class="font-label-md text-label-md text-on-surface-variant" for="tariff-plan">Package / Tariff Class</label>
+<div class="relative">
+<button class="w-full h-[52px] bg-surface-container border border-outline-variant/60 rounded-xl px-3.5 flex items-center justify-between text-left hover:border-outline focus:outline-none focus:border-primary-container transition-colors" id="tariff-plan" type="button">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary text-[20px]">electric_meter</span>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface font-medium leading-none">Residential R2 (Single Phase)</span>
+<span class="font-label-sm text-label-sm text-outline mt-1">Band A: ₦68.00 / kWh</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px]">expand_more</span>
+</button>
+</div>
+</section>
+<!-- Amount Entry & Quick Chips Bento -->
+<section class="bg-surface-container-low border border-outline-variant/40 rounded-xl p-4 flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<label class="font-label-md text-label-md text-on-surface-variant" for="recharge-amount">Recharge Amount</label>
+<span class="font-label-sm text-label-sm text-outline">Bal: ₦142,850.40</span>
+</div>
+<!-- Currency Input Display -->
+<div class="relative bg-surface-container rounded-xl border border-primary-container/80 p-3 flex flex-col items-center justify-center">
+<div class="flex items-baseline justify-center gap-1.5 text-on-surface">
+<span class="text-primary font-bold text-[28px] font-title-currency leading-none">₦</span>
+<input class="w-full max-w-[210px] bg-transparent text-center font-display-currency text-display-currency text-on-surface font-bold tracking-tight border-0 p-0 focus:ring-0 focus:outline-none" id="recharge-amount" type="text" value="15,000.00"/>
+</div>
+<span class="font-label-sm text-label-sm text-outline mt-1 font-mono">Min: ₦1,000.00 • Max: ₦100,000.00</span>
+</div>
+<!-- Quick Selection Chips (Strict 52px ergonomics / touch targets) -->
+<div class="grid grid-cols-4 gap-2 pt-1">
+<button class="h-10 rounded-lg bg-surface-container border border-outline-variant/40 text-on-surface font-label-md text-label-md hover:bg-surface-container-high hover:border-outline active:scale-95 transition-all" type="button">
+            ₦5,000
+          </button>
+<button class="h-10 rounded-lg bg-surface-container border border-outline-variant/40 text-on-surface font-label-md text-label-md hover:bg-surface-container-high hover:border-outline active:scale-95 transition-all" type="button">
+            ₦10,000
+          </button>
+<button class="h-10 rounded-lg bg-primary-container text-on-primary font-semibold font-label-md text-label-md shadow-sm active:scale-95 transition-all" type="button">
+            ₦15,000
+          </button>
+<button class="h-10 rounded-lg bg-surface-container border border-outline-variant/40 text-on-surface font-label-md text-label-md hover:bg-surface-container-high hover:border-outline active:scale-95 transition-all" type="button">
+            ₦20,000
+          </button>
+</div>
+<!-- Estimated Units & Zero Surcharge Breakdown -->
+<div class="mt-1 pt-3 border-t border-outline-variant/30 flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-tertiary">power</span>
+              Estimated Electricity Units
+            </span>
+<span class="font-label-md text-label-md font-semibold text-tertiary tracking-tight font-mono">~214.28 kWh units</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-[#4CC38A]">local_police</span>
+              Service Surcharge
+            </span>
+<span class="font-label-sm text-label-sm font-semibold text-[#4CC38A] px-2 py-0.5 rounded-full bg-[#4CC38A]/10">
+              ₦0.00 (Free in-app)
+            </span>
+</div>
+</div>
+</section>
+<!-- Save Biller Interactive Toggle -->
+<section class="bg-surface-container-low border border-outline-variant/40 rounded-xl p-3.5 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">bookmark</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface font-medium leading-none">Save Biller for Next Time</span>
+<span class="font-label-sm text-label-sm text-outline mt-1">Add to frequent billers list</span>
+</div>
+</div>
+<!-- Active Switch State -->
+<button aria-checked="true" class="w-12 h-7 bg-primary-container rounded-full p-1 transition-colors relative flex items-center" role="switch" type="button">
+<div class="w-5 h-5 bg-on-primary rounded-full shadow-md transform translate-x-5 transition-transform"></div>
+</button>
+</section>
+<!-- Primary Confirmation Action (Exact 52px height spec) -->
+<div class="pt-2">
+<button class="w-full h-[52px] rounded-xl bg-primary-container text-on-primary font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 hover:bg-[#c4557f] active:scale-[0.98] transition-all shadow-lg shadow-primary-container/20" type="button">
+<span>Continue to Confirmation (₦15,000.00)</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+<!-- Regulatory Compliance & Security Footer -->
+<footer class="mt-2 text-center flex flex-col items-center gap-1.5">
+<div class="flex items-center justify-center gap-2 text-outline">
+<span class="material-symbols-outlined text-[16px]">lock</span>
+<span class="font-label-sm text-label-sm tracking-wide">256-bit Encrypted DISCO Settlement</span>
+</div>
+<p class="font-label-sm text-label-sm text-outline/80 max-w-[320px] leading-relaxed">
+          Licensed by the Central Bank of Nigeria (CBN). Regulated under NERC Electricity Industry Metering Code.
+        </p>
+</footer>
+</div>
+</main>
+</body></html>

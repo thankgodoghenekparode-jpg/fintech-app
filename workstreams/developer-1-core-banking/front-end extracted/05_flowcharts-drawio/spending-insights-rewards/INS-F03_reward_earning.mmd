@@ -1,0 +1,18 @@
+flowchart TD
+  a(["Qualifying event (for example bill payment)"])
+  b["Evaluate campaign rules"]
+  c{"Eligible and under caps?"}
+  d["Skip"]
+  e{"Reward budget available?"}
+  f["Pause campaign; alert admins"]
+  g["Create reward entry (pending)"]
+  h["Credit reward after confirmation window"]
+  i(["Notify customer"])
+  a --> b
+  b --> c
+  c -->|no| d
+  c -->|yes| e
+  e -->|no| f
+  e -->|yes| g
+  g --> h
+  h --> i

@@ -1,0 +1,19 @@
+flowchart TD
+  a(["Business owner taps Open a store"])
+  b[/"Business details, owner ID, settlement account"/]
+  c["Create vendor tenant; dedicated account RESTRICTED"]
+  d["Verification review"]
+  e{"Verified?"}
+  f["Rejected with reason; resubmit"]
+  g["Activate store; Verified Vendor badge"]
+  h[/"Add products, prices, plan options"/]
+  i(["Store live"])
+  a --> b
+  b --> c
+  c --> d
+  d --> e
+  e -->|no| f
+  f --> b
+  e -->|yes| g
+  g --> h
+  h --> i

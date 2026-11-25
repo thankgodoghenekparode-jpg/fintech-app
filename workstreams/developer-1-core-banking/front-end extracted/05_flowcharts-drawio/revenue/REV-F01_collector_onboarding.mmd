@@ -1,0 +1,17 @@
+flowchart TD
+  a(["Owner creates collector"])
+  b[/"Organisation type, purpose, documents or authority letter"/]
+  c["Create tenant; dedicated account RESTRICTED"]
+  d["Staff verification"]
+  e{"Verified?"}
+  f["Rejected with reason; resubmit"]
+  g["Activate; add team roles"]
+  h(["Ready to bill"])
+  a --> b
+  b --> c
+  c --> d
+  d --> e
+  e -->|no| f
+  f --> b
+  e -->|yes| g
+  g --> h

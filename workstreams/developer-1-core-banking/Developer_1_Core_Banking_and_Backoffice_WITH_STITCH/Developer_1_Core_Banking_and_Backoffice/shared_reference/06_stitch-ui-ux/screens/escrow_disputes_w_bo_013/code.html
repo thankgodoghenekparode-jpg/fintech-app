@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Escrow disputes (W-BO-013) - YourApp Enterprise Portal</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-tertiary-fixed-variant": "#4e4449",
+            "surface-container": "#f5eced",
+            "on-primary-fixed": "#3f001b",
+            "surface-container-highest": "#e9e0e1",
+            "surface-container-high": "#efe6e7",
+            "inverse-primary": "#ffb1c5",
+            "secondary-container": "#fc6955",
+            "surface-container-lowest": "#ffffff",
+            "on-error-container": "#93000a",
+            "surface-variant": "#e9e0e1",
+            "primary-fixed-dim": "#ffb1c5",
+            "on-surface": "#1f1b1c",
+            "tertiary-fixed": "#eedee4",
+            "surface-dim": "#e1d8d9",
+            "surface-container-low": "#fbf1f2",
+            "on-secondary-fixed-variant": "#8c170e",
+            "on-tertiary-container": "#c6b7bd",
+            "inverse-on-surface": "#f8eeef",
+            "primary": "#6d0033",
+            "on-surface-variant": "#564146",
+            "on-background": "#1f1b1c",
+            "tertiary-container": "#53484d",
+            "on-primary": "#ffffff",
+            "error": "#ba1a1a",
+            "surface-tint": "#a8315d",
+            "on-primary-container": "#ffa0ba",
+            "surface-bright": "#fff8f8",
+            "tertiary-fixed-dim": "#d1c3c8",
+            "surface": "#fff8f8",
+            "inverse-surface": "#342f30",
+            "on-secondary-container": "#690000",
+            "secondary-fixed-dim": "#ffb4a8",
+            "primary-fixed": "#ffd9e1",
+            "on-primary-fixed-variant": "#881646",
+            "primary-container": "#8e1b4a",
+            "on-tertiary": "#ffffff",
+            "outline-variant": "#dcbfc5",
+            "background": "#fff8f8",
+            "on-secondary": "#ffffff",
+            "on-error": "#ffffff",
+            "secondary-fixed": "#ffdad4",
+            "outline": "#897176",
+            "on-tertiary-fixed": "#21191e",
+            "error-container": "#ffdad6",
+            "secondary": "#ae3123",
+            "on-secondary-fixed": "#410000",
+            "tertiary": "#3b3236"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "space-2xl": "2rem",
+            "space-sm": "0.5rem",
+            "margin": "1rem",
+            "gutter": "1rem",
+            "space-3xl": "3rem",
+            "space-xl": "1.5rem",
+            "space-md": "0.75rem",
+            "space-lg": "1rem"
+          },
+          "fontFamily": {
+            "label": ["Inter"],
+            "caption": ["Inter"],
+            "body": ["Inter"],
+            "amount-lg": ["Inter"],
+            "display": ["Inter"],
+            "body-medium": ["Inter"],
+            "amount-lg-mobile": ["Inter"],
+            "subtitle": ["Inter"],
+            "title": ["Inter"]
+          },
+          "fontSize": {
+            "label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "caption": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "body": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "amount-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-medium": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "amount-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "subtitle": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: #fbf1f2;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #dcbfc5;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="bg-[#FAF8F7] text-on-surface antialiased overflow-x-hidden min-h-screen flex flex-col">
+<!-- Docked Left Side Navigation Bar -->
+<aside class="fixed left-0 top-0 h-screen w-72 flex flex-col justify-between py-space-xl px-space-lg bg-surface-container-lowest border-r border-surface-variant z-30 shadow-sm overflow-y-auto custom-scroll">
+<div class="flex flex-col gap-space-lg">
+<!-- Crest & Brand Anchor -->
+<div class="flex items-center gap-3 px-2">
+<div class="w-10 h-10 rounded-xl bg-primary-container text-on-primary flex items-center justify-center font-bold text-lg shadow-sm">
+<span class="material-symbols-outlined text-white" style="font-size: 22px;">shield</span>
+</div>
+<div class="flex flex-col">
+<span class="text-subtitle font-subtitle text-primary tracking-tight">YourApp Credit Ops</span>
+<span class="text-caption font-caption text-on-surface-variant">Enterprise Portal</span>
+</div>
+</div>
+<!-- Navigation Hierarchy -->
+<nav class="flex flex-col gap-space-md mt-2">
+<!-- Operations Group -->
+<div class="flex flex-col gap-1">
+<span class="px-space-md text-[11px] font-semibold text-outline uppercase tracking-wider">Operations</span>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">person_search</span>
+<span>Customer Search</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">pending_actions</span>
+<span>KYC Queue</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">receipt_long</span>
+<span>Transactions</span>
+</a>
+</div>
+<!-- Governance & Approvals Group -->
+<div class="flex flex-col gap-1 mt-2">
+<span class="px-space-md text-[11px] font-semibold text-outline uppercase tracking-wider">Governance &amp; Approvals</span>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">verified_user</span>
+<span>Dual-Control Approvals</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">warning</span>
+<span>Risk &amp; AML Alerts</span>
+</a>
+<!-- ACTIVE TAB: Dispute Cases (with badge 8) -->
+<a class="flex items-center justify-between px-space-lg py-space-md rounded-lg bg-surface-container-low text-primary font-label text-label shadow-sm" href="#">
+<div class="flex items-center gap-space-md">
+<span class="material-symbols-outlined text-[20px] text-primary" style="font-variation-settings: 'FILL' 1;">gavel</span>
+<span class="font-semibold">Dispute Cases</span>
+</div>
+<span class="px-2 py-0.5 text-xs font-bold rounded-full bg-primary-container text-white">8</span>
+</a>
+</div>
+<!-- System Group -->
+<div class="flex flex-col gap-1 mt-2">
+<span class="px-space-md text-[11px] font-semibold text-outline uppercase tracking-wider">System</span>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+<span>Product Configuration</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">history</span>
+<span>Audit Log</span>
+</a>
+</div>
+</nav>
+</div>
+<!-- SideNav Footer -->
+<div class="flex flex-col gap-1 pt-4 border-t border-surface-variant">
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-on-surface-variant font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">admin_panel_settings</span>
+<span>Security &amp; Settings</span>
+</a>
+<a class="flex items-center gap-space-md px-space-lg py-space-md rounded-lg text-secondary font-label text-label hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">logout</span>
+<span>Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- Sticky TopNavBar -->
+<header class="sticky top-0 right-0 h-16 w-[calc(100%-18rem)] ml-72 flex items-center justify-between px-space-xl bg-surface-container-lowest border-b border-surface-variant z-20">
+<div class="flex items-center gap-space-lg w-1/2">
+<div class="flex items-center gap-2 text-primary font-semibold text-label">
+<span class="material-symbols-outlined text-[20px]">location_city</span>
+<span>Lagos Island Main Branch (012)</span>
+</div>
+<div class="relative w-80">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-outline text-[18px]">search</span>
+<input class="w-full h-10 pl-9 pr-4 rounded-lg bg-surface-container-low border border-outline-variant text-caption font-caption focus:outline-none focus:border-primary transition-all text-on-surface" placeholder="Dispute Case ID, NUBAN, RRN..." type="text"/>
+</div>
+</div>
+<!-- Chips, Dual Auth, and Profile -->
+<div class="flex items-center gap-space-lg">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium bg-[#FAF8F7] border border-outline-variant text-tertiary">
+<span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+          Arbitration Engine: Active v4.2
+        </span>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium bg-surface-container-low border border-outline-variant text-primary">
+<span class="material-symbols-outlined text-[16px] text-primary">lock_clock</span>
+          Dual Authorization Armed (4 Required)
+        </span>
+</div>
+<div class="flex items-center gap-2 border-l border-surface-variant pl-4">
+<button class="p-2 text-on-surface-variant hover:text-primary hover:bg-surface-container-low rounded-lg transition-colors">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary hover:bg-surface-container-low rounded-lg transition-colors">
+<span class="material-symbols-outlined text-[20px]">help_outline</span>
+</button>
+<div class="flex items-center gap-3 ml-2">
+<img class="w-9 h-9 rounded-full object-cover border border-outline-variant" data-alt="A dignified corporate portrait of a seasoned Nigerian banking executive with glasses and dark business attire, set against a softly lit minimalist warm architectural background that complements the deep berry and soft neutral design language." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuV3Eefmw1WuMIlJVC2SEk5SbCcxuf9Qh_7rSWdBfQkLF-OkclzL63JrNg_i_fWFfTuwqkZEXVrC0UARhIbmA5DLB6PUkhgP4bh4-7QE8kqTCC13qE4_Mr8eTTnI4De--KU1PEFXaG-OIYNzUInjPXPaGEQ6QGbz-VACsA3sa_qcvhkUU3lCxcYQAa1LGsYmftUoXprXfV1P4z17DrC9g_2gInoBTDfKR3XiIWVdmX"/>
+<div class="flex flex-col text-left">
+<span class="text-xs font-bold text-on-surface leading-tight">Dr. Oluwaseun Adeyemi</span>
+<span class="text-[11px] text-on-surface-variant leading-tight">Chief Dispute &amp; Compliance Officer</span>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Scrollable Canvas -->
+<main class="ml-72 flex-1 p-space-xl space-y-space-xl">
+<!-- Header & Page Actions -->
+<div class="flex items-start justify-between">
+<div class="space-y-1">
+<!-- Breadcrumbs -->
+<nav class="flex items-center gap-1 text-xs text-outline font-label">
+<span>Back-Office</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span>Governance &amp; Approvals</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-primary font-semibold">Escrow Dispute Adjudication (W-BO-013)</span>
+</nav>
+<h1 class="text-title font-title text-on-surface tracking-tight">Central Escrow Dispute &amp; Arbitration Docket</h1>
+<p class="text-caption font-caption text-on-surface-variant">Judicial evidentiary review, multi-party hearing logs, inspection milestones, and statutory dual-signoff fund releases.</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="h-[46px] px-4 rounded-xl border border-outline-variant bg-white text-on-surface font-label text-label hover:bg-surface-container-low flex items-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>Export Dispute Registry (CSV)</span>
+</button>
+<button class="h-[46px] px-5 rounded-xl bg-primary text-white font-label text-label hover:bg-primary-container flex items-center gap-2 shadow-sm transition-colors">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+<span>+ Open Emergency Restitution Case</span>
+</button>
+</div>
+</div>
+<!-- 4 High-Fidelity KPI Summary Cards -->
+<section class="grid grid-cols-4 gap-space-lg">
+<div class="bg-white rounded-xl p-space-lg border border-outline-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-on-surface-variant">Active In-Review Disputes</span>
+<span class="w-8 h-8 rounded-lg bg-surface-container-low text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">pending_actions</span>
+</span>
+</div>
+<div class="mt-2">
+<div class="text-[26px] font-bold text-on-surface tracking-tight">8 Cases</div>
+<div class="flex items-center gap-1.5 mt-1 text-xs text-secondary font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span>3 Critical SLA &lt;2h, 5 Standard Arbitration</span>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-xl p-space-lg border border-outline-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-on-surface-variant">Disputed Escrow Pool</span>
+<span class="w-8 h-8 rounded-lg bg-surface-container-low text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">lock</span>
+</span>
+</div>
+<div class="mt-2">
+<div class="text-[26px] font-bold text-on-surface tracking-tight font-body-medium">₦24,850,000.00</div>
+<div class="flex items-center gap-1.5 mt-1 text-xs text-outline font-caption">
+<span class="material-symbols-outlined text-[14px] text-emerald-700">shield_lock</span>
+<span>100% quarantined in Zenith Protective Escrow</span>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-xl p-space-lg border border-outline-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-on-surface-variant">Mean Resolution SLA</span>
+<span class="w-8 h-8 rounded-lg bg-surface-container-low text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">avg_pace</span>
+</span>
+</div>
+<div class="mt-2">
+<div class="text-[26px] font-bold text-on-surface tracking-tight">1.8 Days</div>
+<div class="flex items-center gap-1.5 mt-1 text-xs text-emerald-700 font-medium">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span>CBN benchmark: &lt;3.0 days</span>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-xl p-space-lg border border-outline-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-on-surface-variant">Ruling Settlement Ratio</span>
+<span class="w-8 h-8 rounded-lg bg-surface-container-low text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">handshake</span>
+</span>
+</div>
+<div class="mt-2">
+<div class="text-[26px] font-bold text-on-surface tracking-tight">92.4% Mutual Accord</div>
+<div class="flex items-center gap-1.5 mt-1 text-xs text-outline font-caption">
+<span class="material-symbols-outlined text-[14px]">balance</span>
+<span>7.6% Full Buyer Restitution</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Statutory Policy Banner -->
+<div class="flex items-center justify-between px-space-lg py-3 rounded-xl bg-surface-container-low border border-outline-variant text-on-surface">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-[20px]" style="font-variation-settings: 'FILL' 1;">policy</span>
+<span class="text-xs font-medium text-tertiary">
+<strong class="font-bold text-primary">CBN ESCROW REGULATIONS &amp; FAIR COMMERCE MANDATE 2026:</strong> Evidence submission window is strictly 72 hours. All unilateral releases exceeding ₦1,000,000.00 require Level 3 dual-signoff.
+        </span>
+</div>
+<a class="text-xs text-primary font-semibold hover:underline flex items-center gap-1" href="#">
+<span>Circular Reg-88-B</span>
+<span class="material-symbols-outlined text-[14px]">open_in_new</span>
+</a>
+</div>
+<!-- Two-Column Asymmetric Adjudication Canvas -->
+<div class="grid grid-cols-12 gap-space-lg items-start">
+<!-- LEFT COLUMN: Table & Filters (60% ~ 7 cols) -->
+<section class="col-span-7 bg-white rounded-xl border border-outline-variant shadow-sm overflow-hidden flex flex-col">
+<!-- Tabbed Bar -->
+<div class="flex items-center border-b border-surface-variant px-space-md bg-[#FAF8F7] gap-2 overflow-x-auto">
+<button class="px-4 py-3 text-xs font-bold text-primary border-b-2 border-primary-container flex items-center gap-1.5 bg-white rounded-t-lg">
+<span>All Cases</span>
+<span class="px-1.5 py-0.2 bg-primary text-white rounded-full text-[10px]">8</span>
+</button>
+<button class="px-4 py-3 text-xs font-semibold text-secondary hover:text-primary flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span>SLA Risk / Urgent (3)</span>
+</button>
+<button class="px-4 py-3 text-xs font-medium text-outline hover:text-on-surface">Milestone Delivery (3)</button>
+<button class="px-4 py-3 text-xs font-medium text-outline hover:text-on-surface">Vehicle &amp; Property (2)</button>
+<button class="px-4 py-3 text-xs font-medium text-outline hover:text-on-surface">Resolved This Week (19)</button>
+</div>
+<!-- Filter Row -->
+<div class="p-space-md border-b border-surface-variant flex items-center justify-between gap-3">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-outline text-[16px]">filter_alt</span>
+<input class="w-full h-9 pl-9 pr-3 rounded-lg border border-outline-variant text-xs bg-white focus:outline-none focus:border-primary" placeholder="Search docket by ID, Deal, Buyer..." type="text"/>
+</div>
+<select class="h-9 px-3 rounded-lg border border-outline-variant text-xs bg-white text-on-surface font-medium focus:outline-none focus:border-primary">
+<option>All Deal Types</option>
+<option>Equipment &amp; Solar</option>
+<option>Textiles &amp; Wholesale</option>
+<option>Machinery &amp; Agro</option>
+</select>
+<select class="h-9 px-3 rounded-lg border border-outline-variant text-xs bg-white text-on-surface font-medium focus:outline-none focus:border-primary">
+<option>Amount: Any</option>
+<option>&gt; ₦1,000,000</option>
+<option>&gt; ₦5,000,000</option>
+</select>
+<select class="h-9 px-3 rounded-lg border border-outline-variant text-xs bg-white text-on-surface font-medium focus:outline-none focus:border-primary">
+<option>Status: All Active</option>
+<option>Under Adjudication</option>
+<option>Evidence Pending</option>
+</select>
+</div>
+<!-- Data Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left text-xs border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-tertiary border-b border-surface-variant">
+<th class="py-3 px-4 font-semibold">Case ID</th>
+<th class="py-3 px-4 font-semibold">Deal &amp; Parties</th>
+<th class="py-3 px-4 font-semibold text-right">Escrow Sum</th>
+<th class="py-3 px-4 font-semibold">Milestone / SLA</th>
+<th class="py-3 px-4 font-semibold text-center">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-variant">
+<!-- ROW 1 (SELECTED) -->
+<tr class="bg-surface-container-low/60 border-l-4 border-l-primary-container cursor-pointer">
+<td class="py-3.5 px-4 font-bold text-primary">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 1;">radio_button_checked</span>
+<span>#ESC-DISP-402</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-bold text-on-surface">Solar Inverter 5kVA &amp; Lithium Battery</div>
+<div class="text-[11px] text-outline mt-0.5">
+                    Buyer: <span class="font-medium text-tertiary">Chinedu Adeleke</span> (#CUST-984210)<br/>
+                    Seller: <span class="font-medium text-tertiary">Lekki Solar Energy Tech</span> (#VEN-8819)
+                  </div>
+</td>
+<td class="py-3.5 px-4 text-right font-bold text-on-surface whitespace-nowrap">
+                  ₦3,850,000.00
+                </td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-on-surface">Delivery &amp; Commissioning</div>
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-bold bg-secondary-fixed text-on-secondary-fixed mt-1">
+<span class="material-symbols-outlined text-[12px]">schedule</span> 1h 14m left
+                  </span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-surface-container-high text-primary border border-outline-variant">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span> Under Adjudication
+                  </span>
+</td>
+</tr>
+<!-- ROW 2 -->
+<tr class="hover:bg-[#FAF8F7] cursor-pointer">
+<td class="py-3.5 px-4 font-semibold text-on-surface">#ESC-DISP-401</td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-on-surface">Haute Couture Bridal Silk Wholesale</div>
+<div class="text-[11px] text-outline mt-0.5">
+                    Buyer: Fatima Garba | Seller: Kemi Adebayo Boutique
+                  </div>
+</td>
+<td class="py-3.5 px-4 text-right font-medium text-on-surface whitespace-nowrap">
+                  ₦850,000.00
+                </td>
+<td class="py-3.5 px-4">
+<div>Sample Inspection</div>
+<span class="text-[11px] text-secondary font-medium">6h left</span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] font-medium bg-amber-50 text-amber-800 border border-amber-200">
+<span class="material-symbols-outlined text-[12px]">hourglass_top</span> Seller Evidence Pending
+                  </span>
+</td>
+</tr>
+<!-- ROW 3 -->
+<tr class="hover:bg-[#FAF8F7] cursor-pointer">
+<td class="py-3.5 px-4 font-semibold text-on-surface">#ESC-DISP-400</td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-on-surface">Grain Silo Feeder Machinery</div>
+<div class="text-[11px] text-outline mt-0.5">
+                    Buyer: Alh. Mukhtar Bello | Seller: Northern Agro Equipment Ltd
+                  </div>
+</td>
+<td class="py-3.5 px-4 text-right font-medium text-on-surface whitespace-nowrap">
+                  ₦7,200,000.00
+                </td>
+<td class="py-3.5 px-4">
+<div>Bill of Lading</div>
+<span class="text-[11px] text-outline">18h left</span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] font-medium bg-blue-50 text-blue-800 border border-blue-200">
+<span class="material-symbols-outlined text-[12px]">engineering</span> Expert Inspection
+                  </span>
+</td>
+</tr>
+<!-- ROW 4 -->
+<tr class="hover:bg-[#FAF8F7] cursor-pointer">
+<td class="py-3.5 px-4 font-semibold text-on-surface">#ESC-DISP-399</td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-on-surface">Short-Let Lease Deposit Lekki</div>
+<div class="text-[11px] text-outline mt-0.5">
+                    Buyer: Tunde Bakare | Seller: Eko Prime Realty
+                  </div>
+</td>
+<td class="py-3.5 px-4 text-right font-medium text-on-surface whitespace-nowrap">
+                  ₦450,000.00
+                </td>
+<td class="py-3.5 px-4">
+<div>Key Handover</div>
+<span class="text-[11px] text-outline">24h left</span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] font-medium bg-purple-50 text-purple-800 border border-purple-200">
+<span class="material-symbols-outlined text-[12px]">assignment</span> Buyer Claim Submitted
+                  </span>
+</td>
+</tr>
+<!-- ROW 5 -->
+<tr class="hover:bg-[#FAF8F7] cursor-pointer">
+<td class="py-3.5 px-4 font-semibold text-on-surface">#ESC-DISP-398</td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-on-surface">Used Toyota Hilux 2022</div>
+<div class="text-[11px] text-outline mt-0.5">
+                    Buyer: Emeka Eze | Seller: Victoria Motors Hub
+                  </div>
+</td>
+<td class="py-3.5 px-4 text-right font-medium text-on-surface whitespace-nowrap">
+                  ₦12,500,000.00
+                </td>
+<td class="py-3.5 px-4">
+<div>Mechanical Report</div>
+<span class="text-[11px] text-outline">32h left</span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] font-medium bg-emerald-50 text-emerald-800 border border-emerald-200">
+<span class="material-symbols-outlined text-[12px]">phone_in_talk</span> Mediation Call Booked
+                  </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-3 bg-[#FAF8F7] border-t border-surface-variant flex items-center justify-between text-xs text-outline">
+<span>Showing 5 of 8 active dockets</span>
+<div class="flex items-center gap-1">
+<button class="px-2 py-1 rounded border border-outline-variant bg-white disabled:opacity-50" disabled="">Prev</button>
+<button class="px-2 py-1 rounded bg-primary text-white font-bold">1</button>
+<button class="px-2 py-1 rounded border border-outline-variant bg-white hover:bg-surface-container-low">2</button>
+<button class="px-2 py-1 rounded border border-outline-variant bg-white hover:bg-surface-container-low">Next</button>
+</div>
+</div>
+</section>
+<!-- RIGHT COLUMN: Inspection Dossier & Adjudication Console (40% ~ 5 cols) -->
+<section class="col-span-5 bg-white rounded-xl border border-outline-variant shadow-sm overflow-hidden flex flex-col">
+<!-- Dossier Header -->
+<div class="p-space-lg bg-surface-container-low border-b border-surface-variant flex items-start justify-between">
+<div>
+<div class="flex items-center gap-2">
+<span class="text-label font-bold text-primary">Case Dossier #ESC-DISP-402</span>
+<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-secondary text-white uppercase tracking-wider">Critical SLA</span>
+</div>
+<div class="text-subtitle font-subtitle text-on-surface mt-1 font-bold">₦3,850,000.00 Held in Escrow</div>
+</div>
+<button class="p-1 text-outline hover:text-on-surface">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+<!-- Case Metadata & Dispute Summary -->
+<div class="p-space-lg space-y-4 border-b border-surface-variant">
+<div class="flex items-center justify-between text-xs text-on-surface-variant">
+<span>Linked Contract: <strong class="text-on-surface">#DEAL-2027-991</strong></span>
+<span>Escrow Locked: <strong>12 Feb 2027</strong></span>
+</div>
+<div class="p-3 rounded-lg bg-[#FAF8F7] border border-outline-variant text-xs space-y-1">
+<div class="font-bold text-tertiary flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-secondary">report_problem</span>
+              Dispute Ground: Incomplete Fulfillment &amp; Specification Deficit
+            </div>
+<p class="text-on-surface-variant leading-relaxed">
+              Buyer reports missing 2x 5kWh lithium batteries upon receiving inverter hardware. Seller maintains that courier delivered complete package as manifested in waybill #WYB-9921.
+            </p>
+</div>
+</div>
+<!-- Evidentiary Verification Panels -->
+<div class="p-space-lg border-b border-surface-variant space-y-3">
+<h2 class="text-xs font-bold text-outline uppercase tracking-wider flex items-center justify-between">
+<span>Evidentiary Chain (3 Submissions)</span>
+<span class="text-emerald-700 font-semibold lowercase">all verified ✓</span>
+</h2>
+<div class="space-y-2">
+<!-- Buyer Evidence Card -->
+<div class="p-3 rounded-lg border border-outline-variant bg-white flex items-start gap-3">
+<div class="w-8 h-8 rounded-lg bg-red-50 text-secondary flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">photo_camera</span>
+</div>
+<div class="flex-1 text-xs">
+<div class="flex items-center justify-between">
+<span class="font-bold text-on-surface">Buyer Submission: Photographic Proof</span>
+<span class="text-[11px] text-outline">13 Feb, 09:30</span>
+</div>
+<p class="text-on-surface-variant mt-0.5">Bare inverter housing without modular battery trays. Verified by Certified PV Tech Inspection Report #PV-4091.</p>
+<a class="text-[11px] text-primary font-semibold hover:underline mt-1 inline-block" href="#">View 4 High-Res Attachments (PDF, 8MB)</a>
+</div>
+</div>
+<!-- Seller Evidence Card -->
+<div class="p-3 rounded-lg border border-outline-variant bg-white flex items-start gap-3">
+<div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">local_shipping</span>
+</div>
+<div class="flex-1 text-xs">
+<div class="flex items-center justify-between">
+<span class="font-bold text-on-surface">Seller Submission: Waybill #WYB-9921</span>
+<span class="text-[11px] text-outline">13 Feb, 14:15</span>
+</div>
+<p class="text-on-surface-variant mt-0.5">Courier bill shows total scale weight of 42kg. Expected full bundle weight is 118kg (76kg battery deficit detected).</p>
+<span class="inline-flex items-center gap-1 text-[11px] font-bold text-secondary mt-1">
+<span class="material-symbols-outlined text-[14px]">warning</span> Waybill Weight Discrepancy Flagged
+                </span>
+</div>
+</div>
+<!-- Telemetry Match -->
+<div class="p-3 rounded-lg border border-outline-variant bg-white flex items-start gap-3">
+<div class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">share_location</span>
+</div>
+<div class="flex-1 text-xs">
+<div class="flex items-center justify-between">
+<span class="font-bold text-on-surface">Telemetry Match: GPS Handover Log</span>
+<span class="text-[11px] text-outline">13 Feb, 11:02</span>
+</div>
+<p class="text-on-surface-variant mt-0.5">Automated courier geotag confirmed drop-off at Lekki Phase 1 delivery coordinates.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Adjudication Rulings & Split Form -->
+<div class="p-space-lg border-b border-surface-variant space-y-3">
+<h2 class="text-xs font-bold text-outline uppercase tracking-wider">Statutory Adjudication Ruling</h2>
+<div class="space-y-2">
+<!-- Option 1: Selected -->
+<label class="flex items-start gap-3 p-3 rounded-xl border-2 border-primary-container bg-surface-container-low cursor-pointer">
+<input checked="" class="mt-0.5 text-primary focus:ring-primary border-outline-variant" name="ruling" type="radio"/>
+<div class="flex-1 text-xs">
+<div class="flex items-center justify-between">
+<span class="font-bold text-primary">Full Refund to Buyer (₦3,850,000.00)</span>
+<span class="px-2 py-0.5 bg-primary-container text-white text-[10px] font-bold rounded">Recommended</span>
+</div>
+<p class="text-on-surface-variant mt-1 leading-relaxed">
+                  Waybill weight confirms omission of primary contracted batteries. Unconditional restitution to buyer account.
+                </p>
+</div>
+</label>
+<!-- Option 2 -->
+<label class="flex items-start gap-3 p-3 rounded-xl border border-outline-variant hover:bg-[#FAF8F7] cursor-pointer">
+<input class="mt-0.5 text-primary focus:ring-primary border-outline-variant" name="ruling" type="radio"/>
+<div class="flex-1 text-xs">
+<span class="font-semibold text-on-surface">Partial Settlement: ₦1,200,000 Seller / ₦2,650,000 Buyer</span>
+<p class="text-on-surface-variant mt-0.5">Pay seller for inverter unit delivered, remit balance for missing components.</p>
+</div>
+</label>
+<!-- Option 3 -->
+<label class="flex items-start gap-3 p-3 rounded-xl border border-outline-variant hover:bg-[#FAF8F7] cursor-pointer">
+<input class="mt-0.5 text-primary focus:ring-primary border-outline-variant" name="ruling" type="radio"/>
+<div class="flex-1 text-xs">
+<span class="font-semibold text-on-surface">72-Hour Return &amp; Inspection Grace Period</span>
+<p class="text-on-surface-variant mt-0.5">Instruct buyer to return inverter casing before total escrow drawdown.</p>
+</div>
+</label>
+</div>
+</div>
+<!-- Mandate Cosign Signoff Audit Track -->
+<div class="p-space-lg bg-[#FAF8F7] border-b border-surface-variant space-y-3">
+<div class="text-xs font-bold text-outline uppercase tracking-wider flex items-center justify-between">
+<span>Dual-Control Signoff Status</span>
+<span class="text-secondary font-semibold">1 of 2 Signed</span>
+</div>
+<div class="space-y-2 text-xs">
+<div class="flex items-center justify-between p-2 rounded bg-white border border-outline-variant">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-emerald-700">check_circle</span>
+<span class="text-on-surface font-medium">Level 2 Initiator: <strong>Babatunde Sanni (Officer ID #449)</strong></span>
+</div>
+<span class="text-outline text-[11px]">Signed 14 Feb, 10:44</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded bg-white border border-primary-container">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-primary animate-pulse">pending</span>
+<span class="text-primary font-bold">Level 3 Approver: Awaiting Dr. Oluwaseun Adeyemi</span>
+</div>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-surface-container-low text-primary">YubiKey / FIDO2 Required</span>
+</div>
+</div>
+</div>
+<!-- Action CTAs -->
+<div class="p-space-lg space-y-3">
+<!-- Standardized 52px Primary Action -->
+<button class="w-full h-[52px] rounded-xl bg-primary-container text-white font-label text-label hover:bg-primary flex items-center justify-center gap-2 shadow-sm transition-all duration-150">
+<span class="material-symbols-outlined text-[20px]">verified</span>
+<span>Authorize Dispute Ruling &amp; Restitution (₦3,850,000.00)</span>
+</button>
+<!-- Standardized 52px Outline Secondary Action -->
+<button class="w-full h-[52px] rounded-xl border border-outline-variant text-on-surface font-label text-label hover:bg-surface-container-low flex items-center justify-center gap-2 transition-all duration-150">
+<span class="material-symbols-outlined text-[18px]">assignment_ind</span>
+<span>Request Independent Field Assessor</span>
+</button>
+<!-- Text Action -->
+<div class="text-center pt-1">
+<button class="text-xs text-primary font-semibold hover:underline inline-flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">picture_as_pdf</span>
+<span>Export Certified Dispute Audit Pack (PDF)</span>
+</button>
+</div>
+</div>
+</section>
+</div>
+</main>
+</body></html>

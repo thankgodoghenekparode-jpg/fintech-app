@@ -1,0 +1,587 @@
+openapi: 3.0.3
+info:
+  title: Escrow API
+  version: 1.0.0
+  description: Product API. Uses the core conventions (Idempotency-Key, X-Pin-Token,
+    X-Tenant-Id, error format). Amounts in kobo.
+security:
+- bearerAuth: []
+paths:
+  /escrow/deals:
+    post:
+      tags:
+      - Escrow
+      summary: Create deal
+      description: 'Roles: any authenticated customer'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  enum:
+                  - GOODS
+                  - SERVICE
+                  - PROPERTY
+                  - VEHICLE
+                  - OTHER
+                role:
+                  type: string
+                  enum:
+                  - BUYER
+                  - SELLER
+                title:
+                  type: string
+                description:
+                  type: string
+                amountKobo:
+                  type: integer
+                  format: int64
+                  description: Amount in kobo
+                timeline:
+                  type: object
+                  additionalProperties: true
+                milestones:
+                  type: array
+                  items:
+                    type: object
+                    additionalProperties: true
+                agentPhone:
+                  type: string
+              required:
+              - type
+              - role
+              - title
+              - amountKobo
+      responses:
+        '201':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+    get:
+      tags:
+      - Escrow
+      summary: List my deals
+      description: 'Roles: any authenticated customer'
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /escrow/deals/{dealId}:
+    get:
+      tags:
+      - Escrow
+      summary: Deal detail and next action
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: dealId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /escrow/deals/{dealId}/terms:
+    put:
+      tags:
+      - Escrow
+      summary: Propose fee and cancellation terms
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: dealId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                feePayer:
+                  type: string
+                  enum:
+                  - BUYER
+                  - SELLER
+                  - SPLIT
+                splitBuyerBps:
+                  type: integer
+                scenarioOptions:
+                  type: object
+                  additionalProperties: true
+              required:
+              - feePayer
+              - scenarioOptions
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /escrow/deals/{dealId}/invite:
+    post:
+      tags:
+      - Escrow
+      summary: Invite counterparty
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: dealId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                phone:
+                  type: string
+                channel:
+                  type: string
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /escrow/deals/{dealId}/accept:
+    post:
+      tags:
+      - Escrow
+      summary: Accept locked terms
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: dealId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                termsHash:
+                  type: string
+              required:
+              - termsHash
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /escrow/deals/{dealId}/fund:
+    post:
+      tags:
+      - Escrow
+      summary: Fund deal
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: dealId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /escrow/deals/{dealId}/deliver:
+    post:
+      tags:
+      - Escrow
+      summary: Submit delivery or milestone
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: dealId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                milestoneSeq:
+                  type: integer
+                evidence:
+                  type: array
+                  items:
+                    type: string
+                note:
+                  type: string
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /escrow/deals/{dealId}/confirm:
+    post:
+      tags:
+      - Escrow
+      summary: Buyer confirms or approves
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: dealId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - RELEASE
+                  - REVISION
+                deliveryCode:
+                  type: string
+                milestoneSeq:
+                  type: integer
+              required:
+              - action
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /escrow/deals/{dealId}/cancel:
+    post:
+      tags:
+      - Escrow
+      summary: Cancel deal
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: dealId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reason:
+                  type: string
+              required:
+              - reason
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /escrow/deals/{dealId}/disputes:
+    post:
+      tags:
+      - Disputes
+      summary: Open dispute
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: dealId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reason:
+                  type: string
+                description:
+                  type: string
+                evidence:
+                  type: array
+                  items:
+                    type: string
+              required:
+              - reason
+              - description
+      responses:
+        '201':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /escrow/deals/{dealId}/disputes/current:
+    get:
+      tags:
+      - Disputes
+      summary: Dispute status
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: dealId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /escrow/deals/{dealId}/disputes/appeal:
+    post:
+      tags:
+      - Disputes
+      summary: Request appeal
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: dealId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reason:
+                  type: string
+              required:
+              - reason
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /escrow/deals/{dealId}/messages:
+    post:
+      tags:
+      - Escrow
+      summary: Send deal chat message
+      description: 'Roles: any authenticated customer'
+      parameters:
+      - name: dealId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                body:
+                  type: string
+                attachments:
+                  type: array
+                  items:
+                    type: string
+              required:
+              - body
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /backoffice/escrow/disputes:
+    get:
+      tags:
+      - Backoffice
+      summary: Dispute queue
+      description: 'Roles: Dispute officer'
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /backoffice/escrow/disputes/{id}/decision:
+    post:
+      tags:
+      - Backoffice
+      summary: Decide dispute
+      description: 'Roles: Dispute officer'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - $ref: '#/components/parameters/PinToken'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                outcome:
+                  type: string
+                  enum:
+                  - RELEASE
+                  - REFUND
+                  - SPLIT
+                splitSellerKobo:
+                  type: integer
+                  format: int64
+                  description: Amount in kobo
+                rationale:
+                  type: string
+              required:
+              - outcome
+              - rationale
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+  /backoffice/escrow/templates/{type}:
+    put:
+      tags:
+      - Backoffice
+      summary: Propose template change (dual control)
+      description: 'Roles: Product admin'
+      parameters:
+      - name: type
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                config:
+                  type: object
+                  additionalProperties: true
+              required:
+              - config
+      responses:
+        '200':
+          description: OK
+        '422':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  parameters:
+    IdempotencyKey:
+      name: Idempotency-Key
+      in: header
+      required: true
+      schema:
+        type: string
+        format: uuid
+    PinToken:
+      name: X-Pin-Token
+      in: header
+      required: true
+      schema:
+        type: string
+  responses:
+    Error:
+      description: Error (see core ERROR_CODES.md)
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+              details:
+                type: object
+              requestId:
+                type: string

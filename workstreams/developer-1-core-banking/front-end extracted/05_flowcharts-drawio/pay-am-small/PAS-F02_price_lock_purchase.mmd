@@ -1,0 +1,21 @@
+flowchart TD
+  a(["Customer picks item and Price-lock"])
+  b["Plan summary: price, deadline, penalty, fees; accept with PIN"]
+  c["Create or reuse vault; reserve stock and lock price"]
+  d["Customer funds vault (auto or manual)"]
+  e{"Vault full?"}
+  f["Pay vendor less commission; hold back share"]
+  g["Order released; vendor fulfils; delivery code issued"]
+  h["Delivery code confirmed"]
+  i["Release holdback to vendor"]
+  j(["Order complete"])
+  a --> b
+  b --> c
+  c --> d
+  d --> e
+  e -->|no| d
+  e -->|yes| f
+  f --> g
+  g --> h
+  h --> i
+  i --> j

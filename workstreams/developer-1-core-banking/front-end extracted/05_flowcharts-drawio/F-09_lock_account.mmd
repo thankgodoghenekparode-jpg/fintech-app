@@ -1,0 +1,23 @@
+flowchart TD
+  a(["More > Security > Lock my account"])
+  b["Explain what lock does"]
+  c["Confirm with PIN"]
+  d["Restrict debits and cards; keep credits"]
+  e["Notify user"]
+  f["Later: user starts unlock"]
+  g["Verify identity (OTP and selfie)"]
+  h{"Verified?"}
+  i["Unlock and notify"]
+  j["Stay locked; contact support"]
+  k(["Done"])
+  a --> b
+  b --> c
+  c --> d
+  d --> e
+  e --> f
+  f --> g
+  g --> h
+  h -->|yes| i
+  h -->|no| j
+  i --> k
+  j --> k
