@@ -1,28 +1,22 @@
-﻿# Developer 1 — Core Banking & Back-office
+# Frontend Developer Handoff — Three Workstreams
 
-Isolated workstream containing Developer 1's Flutter customer app, Next.js back-office shell, handoff documents, Stitch references, and implementation notes. Existing repository paths are preserved; this directory is additive so the other developers' projects remain untouched.
+This package divides the source frontend documentation into three parallel implementation workstreams. Each developer folder contains a dedicated AI build prompt, a copy of shared project guidance, and only that developer’s assigned product specifications and references.
 
-## Contents
+## Workstream allocation
 
-- `mobile/` — Flutter/Dart customer banking frontend.
-- `web/` — Next.js/React back-office frontend.
-- `Developer_1_Core_Banking_and_Backoffice/` — canonical Developer 1 handoff.
-- `Developer_1_Core_Banking_and_Backoffice_WITH_STITCH/` — handoff with Stitch screenshots and HTML exports.
-- `front-end extracted/` — consolidated frontend specifications and supporting references.
-- `docs/` — current implementation status, gaps, and API proposals.
+1. **Developer 1 — Core Banking & Staff Back-office:** `Developer_1_Core_Banking_and_Backoffice/`
+2. **Developer 2 — Group Banking & Community:** `Developer_2_Group_Banking_and_Community/`
+3. **Developer 3 — Commerce, Credit & Financial Services:** `Developer_3_Commerce_Credit_and_Financial_Services/`
 
-## Demo preview
+## How to start
+Each developer should open the actual target application repository in their AI coding environment, read their folder’s `README.md`, then provide the complete `AI_BUILD_PROMPT.md` to the AI. The handoff folders contain specifications, not a replacement application repository.
 
-From `mobile/`, build the browser demo:
+## Integration rules
+- Preserve original screen IDs, platform assignments and routes from the master inventory.
+- Treat shared architecture, design tokens, global navigation, API conventions and security as controlled shared contracts.
+- Do not let multiple developers independently rewrite root configuration or shared components.
+- Each developer must supply `IMPLEMENTATION_STATUS.md`, `SPEC_GAPS.md` and `INTEGRATION_NOTES.md` with their implementation.
+- Integrate feature modules only after reviewing dependency and shared-file changes.
 
-```powershell
-flutter pub get
-flutter build web --dart-define=ENABLE_DEMO_LOGIN=true --dart-define=ENABLE_CARD_UI_PREVIEW=true --dart-define=ENABLE_DRAFT_LEGAL_PREVIEW=true
-node tool/preview_server.js
-```
-
-Open `http://127.0.0.1:7357`, choose **Demo login**, then **Browse implemented screens**. Demo data is labeled and does not contact a live banking API. Screens requiring backend data are marked in the catalog.
-
-## Verification and blockers
-
-The current Flutter suite has 64 passing tests. Local API proposals require backend parity and product/compliance/legal approval before production integration. See `docs/IMPLEMENTATION_STATUS.md` and `docs/SPEC_GAPS.md`.
+## Scope boundary
+The split follows product ownership, not a promise that the work is exactly equal in effort. Developer 1 owns core banking and staff back-office; Developer 2 owns cooperative/group/community and collection products; Developer 3 owns commerce, escrow, credit, merchant and insights/rewards products. The authoritative screen counts and platform assignments remain in the copied `MASTER_SCREEN_INVENTORY.md` and each assigned product’s `02_screen_inventory.md`.

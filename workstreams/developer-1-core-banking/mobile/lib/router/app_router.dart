@@ -21,6 +21,9 @@ import '../features/locator/presentation/locator_screen.dart';
 import '../features/account_closure/presentation/account_closure_screen.dart';
 import '../features/account_closure/data/account_closure_repository.dart';
 import '../features/system/presentation/offline_screen.dart';
+import '../features/system/presentation/maintenance_screen.dart';
+import '../features/system/presentation/force_update_screen.dart';
+import '../features/system/presentation/session_locked_screen.dart';
 import '../features/support/presentation/support_screens.dart';
 import '../features/home/presentation/transaction_detail_screen.dart';
 import '../features/home/presentation/transaction_history_screen.dart';
@@ -49,6 +52,9 @@ final appRouter = GoRouter(
     if (path == '/demo/help' && demoLoginEnabled) return null;
     if (path == '/demo/close-account' && demoLoginEnabled) return null;
     if (path == '/demo/offline' && demoLoginEnabled) return null;
+    if (path == '/demo/maintenance' && demoLoginEnabled) return null;
+    if (path == '/demo/update' && demoLoginEnabled) return null;
+    if (path == '/demo/lock' && demoLoginEnabled) return null;
     if (path == '/demo/account-details' && demoLoginEnabled) return null;
     if (path == '/demo/add-money' && demoLoginEnabled) return null;
     if (path == '/demo/report-problem' && demoLoginEnabled) return null;
@@ -81,6 +87,8 @@ final appRouter = GoRouter(
       '/login',
       '/login/reset',
       '/login/new-device',
+      '/maintenance',
+      '/update',
     };
     if (publicPaths.contains(path)) return null;
     final token = await const FlutterSecureStorage().read(
@@ -160,6 +168,33 @@ final appRouter = GoRouter(
     GoRoute(
       path: '/demo/offline',
       builder: (context, state) => const OfflineScreen(previewOnly: true),
+    ),
+    GoRoute(
+      path: '/demo/maintenance',
+      builder: (context, state) => const MaintenanceScreen(previewOnly: true),
+    ),
+    GoRoute(
+      path: '/maintenance',
+      builder: (context, state) => const MaintenanceScreen(),
+    ),
+    GoRoute(
+      path: '/demo/update',
+      builder: (context, state) => const ForceUpdateScreen(previewOnly: true),
+    ),
+    GoRoute(
+      path: '/demo/lock',
+      builder: (context, state) => const SessionLockedScreen(previewOnly: true),
+    ),
+    GoRoute(
+      path: '/lock',
+      builder: (context, state) => const SessionLockedScreen(),
+    ),
+    GoRoute(
+      path: '/update',
+      builder: (context, state) => ForceUpdateScreen(
+        policy:
+            state.extra is UpdatePolicy ? state.extra as UpdatePolicy : null,
+      ),
     ),
     GoRoute(
       path: '/demo/account-details',

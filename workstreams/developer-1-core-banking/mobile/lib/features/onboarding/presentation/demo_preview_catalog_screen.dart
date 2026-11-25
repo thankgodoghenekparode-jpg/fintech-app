@@ -43,6 +43,21 @@ class DemoPreviewCatalogScreen extends StatelessWidget {
         'Preview of the read-only connection guard',
         Icons.wifi_off_outlined,
         '/demo/offline'),
+    _DemoPreviewItem(
+        'Maintenance state',
+        'Preview only; no live outage is reported',
+        Icons.build_outlined,
+        '/demo/maintenance'),
+    _DemoPreviewItem(
+        'Force update',
+        'Preview only; policy and store links are not configured',
+        Icons.system_update_alt,
+        '/demo/update'),
+    _DemoPreviewItem(
+        'Session locked',
+        'Screen preview; authentication needs the existing login API',
+        Icons.lock_clock_outlined,
+        '/demo/lock'),
   ];
 
   static const _backendRequired = <String>[

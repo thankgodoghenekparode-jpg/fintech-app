@@ -34,6 +34,18 @@ S-CB-083 is available from More at `/more/close-account`. It checks server-side 
 
 S-CB-090 watches the device network-interface state. When the device reports no interface, the app-wide guard hides account data and actions and provides a retry screen. A network interface does not prove internet or banking-service availability; API errors while connected remain normal service errors. The UI does not claim cached balances/receipts because there is no safe persistent offline archive. The preview catalog includes a non-live offline screen preview.
 
+## Maintenance state
+
+S-CB-091 is available at `/maintenance`; the demo catalog has a separate preview route. No maintenance schedule, status endpoint, status-page URL or approved emergency contact was supplied. The screen does not copy illustrative Stitch times, service guarantees, regulatory claims, or phone numbers. Its retry action checks device connectivity only and cannot confirm that banking services have resumed. Backend-triggered maintenance navigation requires an approved maintenance signal and status contract.
+
+## Force update
+
+S-CB-092 is available at `/update`; a preview is linked from the demo catalog. The installed version is read from platform package metadata. The handoff says the backend should provide the minimum version but defines no policy endpoint, production app IDs or store links. The frontend accepts a typed update policy, validates HTTPS Google Play/App Store links, and opens the store only when an update is explicitly required. Without policy the screen remains an unconfigured state and the action is disabled. See `../FORCE_UPDATE_API_UNBLOCKING_ADDENDUM.md`.
+
+## Session lock
+
+S-CB-093 is available at `/lock`; the demo catalog links a preview at `/demo/lock`. Authenticated screens lock after two minutes without pointer or keyboard activity, and when the app returns from background by default. Configure these app defaults with `--dart-define=SESSION_INACTIVITY_SECONDS=120` and `--dart-define=LOCK_SESSION_ON_BACKGROUND=true`. Passcode unlock uses the existing `POST /auth/login` contract; enrolled biometrics run local authentication before the existing `POST /auth/refresh`. Log out clears access and refresh tokens. The preview never submits credentials. Confirm timeout policy with security and complete native screen-capture/app-switcher protection and lifecycle verification before production.
+
 To inspect card visuals without a backend, build with `--dart-define=ENABLE_CARD_UI_PREVIEW=true`. The Welcome screen then shows **Preview cards UI**, which opens two clearly labelled sample cards in read-only mode. This flag should be omitted from normal production builds.
 
 To show a wider, signed-in-style sample experience without credentials or a backend, run:
