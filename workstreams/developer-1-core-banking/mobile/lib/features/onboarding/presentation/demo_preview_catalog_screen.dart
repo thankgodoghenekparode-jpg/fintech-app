@@ -58,6 +58,11 @@ class DemoPreviewCatalogScreen extends StatelessWidget {
         'Screen preview; authentication needs the existing login API',
         Icons.lock_clock_outlined,
         '/demo/lock'),
+    _DemoPreviewItem(
+        'Account locked or restricted',
+        'Screen preview; unlock and signed-out support paths need backend details',
+        Icons.no_accounts_outlined,
+        '/demo/account-locked'),
   ];
 
   static const _backendRequired = <String>[

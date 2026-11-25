@@ -46,6 +46,10 @@ S-CB-092 is available at `/update`; a preview is linked from the demo catalog. T
 
 S-CB-093 is available at `/lock`; the demo catalog links a preview at `/demo/lock`. Authenticated screens lock after two minutes without pointer or keyboard activity, and when the app returns from background by default. Configure these app defaults with `--dart-define=SESSION_INACTIVITY_SECONDS=120` and `--dart-define=LOCK_SESSION_ON_BACKGROUND=true`. Passcode unlock uses the existing `POST /auth/login` contract; enrolled biometrics run local authentication before the existing `POST /auth/refresh`. Log out clears access and refresh tokens. The preview never submits credentials. Confirm timeout policy with security and complete native screen-capture/app-switcher protection and lifecycle verification before production.
 
+## Account locked or restricted
+
+S-CB-094 is reached when login receives the documented `AUTH_LOCKED`/423 response. `/account-locked` shows generic lockout guidance and a validated request reference when available. Authenticated users can open the Help Centre. Signed-out users are told that a public support route is not configured. The separate `/demo/account-locked` preview shows the self-lock recovery steps from F-09, but does not call an unlock operation. The API has no typed restriction details, OTP/selfie unlock flow, or public support channel; see `../ACCOUNT_RESTRICTION_API_UNBLOCKING_ADDENDUM.md`.
+
 To inspect card visuals without a backend, build with `--dart-define=ENABLE_CARD_UI_PREVIEW=true`. The Welcome screen then shows **Preview cards UI**, which opens two clearly labelled sample cards in read-only mode. This flag should be omitted from normal production builds.
 
 To show a wider, signed-in-style sample experience without credentials or a backend, run:

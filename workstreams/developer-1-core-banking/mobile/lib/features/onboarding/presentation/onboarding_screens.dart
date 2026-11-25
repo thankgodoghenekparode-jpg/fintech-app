@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/security/biometric_service.dart';
+import '../../system/presentation/account_locked_screen.dart';
 import '../../../l10n/app_localizations.dart';
 import '../data/onboarding_repository.dart';
 
@@ -1306,6 +1307,15 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
           .login(identifier: identifier, passcode: _passcode);
       if (mounted) context.go('/home');
     } catch (error) {
+      if (AccountRestrictionContext.isLockoutError(error)) {
+        if (mounted) {
+          context.go(
+            '/account-locked',
+            extra: AccountRestrictionContext.fromApiError(error),
+          );
+        }
+        return;
+      }
       if (mounted) {
         setState(() {
           _errorKey = loginErrorKey(error);

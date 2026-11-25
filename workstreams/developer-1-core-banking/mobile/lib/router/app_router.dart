@@ -24,6 +24,7 @@ import '../features/system/presentation/offline_screen.dart';
 import '../features/system/presentation/maintenance_screen.dart';
 import '../features/system/presentation/force_update_screen.dart';
 import '../features/system/presentation/session_locked_screen.dart';
+import '../features/system/presentation/account_locked_screen.dart';
 import '../features/support/presentation/support_screens.dart';
 import '../features/home/presentation/transaction_detail_screen.dart';
 import '../features/home/presentation/transaction_history_screen.dart';
@@ -55,6 +56,7 @@ final appRouter = GoRouter(
     if (path == '/demo/maintenance' && demoLoginEnabled) return null;
     if (path == '/demo/update' && demoLoginEnabled) return null;
     if (path == '/demo/lock' && demoLoginEnabled) return null;
+    if (path == '/demo/account-locked' && demoLoginEnabled) return null;
     if (path == '/demo/account-details' && demoLoginEnabled) return null;
     if (path == '/demo/add-money' && demoLoginEnabled) return null;
     if (path == '/demo/report-problem' && demoLoginEnabled) return null;
@@ -87,6 +89,7 @@ final appRouter = GoRouter(
       '/login',
       '/login/reset',
       '/login/new-device',
+      '/account-locked',
       '/maintenance',
       '/update',
     };
@@ -188,6 +191,23 @@ final appRouter = GoRouter(
     GoRoute(
       path: '/lock',
       builder: (context, state) => const SessionLockedScreen(),
+    ),
+    GoRoute(
+      path: '/demo/account-locked',
+      builder: (context, state) => AccountLockedScreen(
+        previewOnly: true,
+        restriction: const AccountRestrictionContext(
+          reason: AccountRestrictionReason.selfLock,
+        ),
+      ),
+    ),
+    GoRoute(
+      path: '/account-locked',
+      builder: (context, state) => AccountLockedScreen(
+        restriction: state.extra is AccountRestrictionContext
+            ? state.extra as AccountRestrictionContext
+            : const AccountRestrictionContext(),
+      ),
     ),
     GoRoute(
       path: '/update',
