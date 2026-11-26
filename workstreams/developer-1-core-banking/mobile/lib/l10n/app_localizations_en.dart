@@ -1063,6 +1063,71 @@ class AppLocalizationsEn extends AppLocalizations {
   String get transactionReceipt => 'Receipt';
 
   @override
+  String get receiptTitle => 'Transaction receipt';
+
+  @override
+  String get receiptAmountLabel => 'Transaction amount';
+
+  @override
+  String get receiptStatusUnavailable => 'Status unavailable';
+
+  @override
+  String get receiptAmountUnavailable => 'Amount unavailable';
+
+  @override
+  String get receiptCounterparty => 'Counterparty';
+
+  @override
+  String get receiptCounterpartyBank => 'Counterparty bank';
+
+  @override
+  String get receiptAccountName => 'Account name';
+
+  @override
+  String get receiptAccountNumber => 'Account number';
+
+  @override
+  String get receiptNarration => 'Narration';
+
+  @override
+  String get receiptFee => 'Fee';
+
+  @override
+  String get receiptReference => 'Reference';
+
+  @override
+  String get receiptDate => 'Date and time';
+
+  @override
+  String get receiptType => 'Transaction type';
+
+  @override
+  String get receiptBalanceAfter => 'Balance after';
+
+  @override
+  String get receiptGeneratedFromTransaction =>
+      'Generated from transaction details supplied by your account. This receipt does not change the transaction status.';
+
+  @override
+  String get receiptShareImage => 'Share receipt image';
+
+  @override
+  String get receiptSharePdf => 'Share receipt PDF';
+
+  @override
+  String get receiptSavePdf => 'Save as PDF';
+
+  @override
+  String get receiptReportProblem => 'Report a problem';
+
+  @override
+  String get receiptDone => 'Done';
+
+  @override
+  String get receiptActionFailed =>
+      'We could not prepare this receipt. Please try again.';
+
+  @override
   String get transactionReportProblem => 'Report a problem';
 
   @override

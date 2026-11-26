@@ -32,6 +32,7 @@ import '../features/system/presentation/session_locked_screen.dart';
 import '../features/system/presentation/account_locked_screen.dart';
 import '../features/support/presentation/support_screens.dart';
 import '../features/home/presentation/transaction_detail_screen.dart';
+import '../features/home/presentation/transaction_receipt_screen.dart';
 import '../features/home/presentation/transaction_history_screen.dart';
 import '../features/home/presentation/cards_home_screen.dart';
 import '../features/home/data/home_repository.dart';
@@ -598,8 +599,8 @@ final appRouter = GoRouter(
     ),
     GoRoute(
       path: '/transactions/:id/receipt',
-      builder: (context, state) => _FeatureNotReadyScreen(
-        title: AppLocalizations.of(context)!.transactionReceipt,
+      builder: (context, state) => TransactionReceiptScreen(
+        transactionId: state.pathParameters['id']!,
       ),
     ),
     GoRoute(

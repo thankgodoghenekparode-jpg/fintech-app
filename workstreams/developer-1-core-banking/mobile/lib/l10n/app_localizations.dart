@@ -2026,6 +2026,132 @@ abstract class AppLocalizations {
   /// **'Receipt'**
   String get transactionReceipt;
 
+  /// No description provided for @receiptTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Transaction receipt'**
+  String get receiptTitle;
+
+  /// No description provided for @receiptAmountLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Transaction amount'**
+  String get receiptAmountLabel;
+
+  /// No description provided for @receiptStatusUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Status unavailable'**
+  String get receiptStatusUnavailable;
+
+  /// No description provided for @receiptAmountUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Amount unavailable'**
+  String get receiptAmountUnavailable;
+
+  /// No description provided for @receiptCounterparty.
+  ///
+  /// In en, this message translates to:
+  /// **'Counterparty'**
+  String get receiptCounterparty;
+
+  /// No description provided for @receiptCounterpartyBank.
+  ///
+  /// In en, this message translates to:
+  /// **'Counterparty bank'**
+  String get receiptCounterpartyBank;
+
+  /// No description provided for @receiptAccountName.
+  ///
+  /// In en, this message translates to:
+  /// **'Account name'**
+  String get receiptAccountName;
+
+  /// No description provided for @receiptAccountNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Account number'**
+  String get receiptAccountNumber;
+
+  /// No description provided for @receiptNarration.
+  ///
+  /// In en, this message translates to:
+  /// **'Narration'**
+  String get receiptNarration;
+
+  /// No description provided for @receiptFee.
+  ///
+  /// In en, this message translates to:
+  /// **'Fee'**
+  String get receiptFee;
+
+  /// No description provided for @receiptReference.
+  ///
+  /// In en, this message translates to:
+  /// **'Reference'**
+  String get receiptReference;
+
+  /// No description provided for @receiptDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Date and time'**
+  String get receiptDate;
+
+  /// No description provided for @receiptType.
+  ///
+  /// In en, this message translates to:
+  /// **'Transaction type'**
+  String get receiptType;
+
+  /// No description provided for @receiptBalanceAfter.
+  ///
+  /// In en, this message translates to:
+  /// **'Balance after'**
+  String get receiptBalanceAfter;
+
+  /// No description provided for @receiptGeneratedFromTransaction.
+  ///
+  /// In en, this message translates to:
+  /// **'Generated from transaction details supplied by your account. This receipt does not change the transaction status.'**
+  String get receiptGeneratedFromTransaction;
+
+  /// No description provided for @receiptShareImage.
+  ///
+  /// In en, this message translates to:
+  /// **'Share receipt image'**
+  String get receiptShareImage;
+
+  /// No description provided for @receiptSharePdf.
+  ///
+  /// In en, this message translates to:
+  /// **'Share receipt PDF'**
+  String get receiptSharePdf;
+
+  /// No description provided for @receiptSavePdf.
+  ///
+  /// In en, this message translates to:
+  /// **'Save as PDF'**
+  String get receiptSavePdf;
+
+  /// No description provided for @receiptReportProblem.
+  ///
+  /// In en, this message translates to:
+  /// **'Report a problem'**
+  String get receiptReportProblem;
+
+  /// No description provided for @receiptDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get receiptDone;
+
+  /// No description provided for @receiptActionFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'We could not prepare this receipt. Please try again.'**
+  String get receiptActionFailed;
+
   /// No description provided for @transactionReportProblem.
   ///
   /// In en, this message translates to:

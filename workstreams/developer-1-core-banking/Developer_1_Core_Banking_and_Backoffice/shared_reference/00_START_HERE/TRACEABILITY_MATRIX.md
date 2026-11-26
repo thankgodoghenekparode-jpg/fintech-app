@@ -45,7 +45,7 @@ Requirement -> screens -> API -> tables -> tests -> status. Generated in Stage 1
 | CB-TRF-005 | S-CB-022, S-CB-035 | /name-enquiry, /transfers/quote, /transfers, /beneficiaries | payments.transactions, payments.beneficiaries, payments.scheduled_payments, ledger.* | TC-FE-TRF-006 | TC-BE-TRF-003 | NOT STARTED |
 | CB-TRF-006 | S-CB-035 | /name-enquiry, /transfers/quote, /transfers, /beneficiaries | payments.transactions, payments.beneficiaries, payments.scheduled_payments, ledger.* | TC-FE-TRF-004 | TC-BE-IDM-001, TC-BE-IDM-002 | NOT STARTED |
 | CB-TRF-007 | S-CB-035 | /name-enquiry, /transfers/quote, /transfers, /beneficiaries | payments.transactions, payments.beneficiaries, payments.scheduled_payments, ledger.* | TC-FE-TRF-005 | TC-BE-TRF-002 | NOT STARTED |
-| CB-TRF-008 | S-CB-023 | /name-enquiry, /transfers/quote, /transfers, /beneficiaries | payments.transactions, payments.beneficiaries, payments.scheduled_payments, ledger.* | TC-FE-TRF-007 | - | NOT STARTED |
+| CB-TRF-008 | S-CB-023 | /transactions/{id}, /accounts/me | payments.transactions, accounts.accounts | transaction_receipt_test.dart | TRANSACTION_RECEIPT_API_GAP.md | PARTIAL |
 | CB-TRF-009 | S-CB-037 | /name-enquiry, /transfers/quote, /transfers, /beneficiaries | payments.transactions, payments.beneficiaries, payments.scheduled_payments, ledger.* | - | - | NOT STARTED |
 | CB-TRF-010 | S-CB-038 | /name-enquiry, /transfers/quote, /transfers, /beneficiaries | payments.transactions, payments.beneficiaries, payments.scheduled_payments, ledger.* | - | - | NOT STARTED |
 | CB-TRF-011 | S-CB-039 | /name-enquiry, /transfers/quote, /transfers, /beneficiaries | payments.transactions, payments.beneficiaries, payments.scheduled_payments, ledger.* | - | - | NOT STARTED |
