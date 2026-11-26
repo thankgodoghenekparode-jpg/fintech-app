@@ -2584,6 +2584,66 @@ abstract class AppLocalizations {
   /// **'Verify this device'**
   String get newDeviceTitle;
 
+  /// No description provided for @newDeviceHeading.
+  ///
+  /// In en, this message translates to:
+  /// **'Protect your account on this device'**
+  String get newDeviceHeading;
+
+  /// No description provided for @newDeviceExplanation.
+  ///
+  /// In en, this message translates to:
+  /// **'We verify a new device to help prevent someone else from accessing your account. Enter the phone number registered to your account to request a one-time code.'**
+  String get newDeviceExplanation;
+
+  /// No description provided for @newDeviceOtpStep.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm your registered phone'**
+  String get newDeviceOtpStep;
+
+  /// No description provided for @newDevicePhoneLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Registered phone number'**
+  String get newDevicePhoneLabel;
+
+  /// No description provided for @newDeviceCodeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'6-digit verification code'**
+  String get newDeviceCodeLabel;
+
+  /// No description provided for @newDeviceSendAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Send verification code'**
+  String get newDeviceSendAction;
+
+  /// No description provided for @newDeviceVerifyAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Verify code'**
+  String get newDeviceVerifyAction;
+
+  /// No description provided for @newDeviceResendAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Send a new code'**
+  String get newDeviceResendAction;
+
+  /// No description provided for @newDeviceLivenessStep.
+  ///
+  /// In en, this message translates to:
+  /// **'Complete selfie liveness check'**
+  String get newDeviceLivenessStep;
+
+  /// No description provided for @newDeviceLivenessGap.
+  ///
+  /// In en, this message translates to:
+  /// **'The OTP was accepted. Device approval cannot continue yet: the API does not define how this restricted verification session starts liveness, uploads a capture, or returns a trusted-device result. No device has been approved and you are not signed in. Contact your bank through its official support channel.'**
+  String get newDeviceLivenessGap;
+
   /// No description provided for @flowNotReady.
   ///
   /// In en, this message translates to:

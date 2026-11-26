@@ -114,6 +114,34 @@ class OnboardingRepository {
     );
   }
 
+  Future<void> requestNewDeviceOtp(String phone) async {
+    await _api.dio.post<void>(
+      'auth/otp/request',
+      data: {'phone': phone, 'purpose': 'LOGIN_NEW_DEVICE'},
+    );
+  }
+
+  /// Verify the OTP without persisting the restricted verification token as a
+  /// normal onboarding or authenticated customer session.
+  Future<String> verifyNewDeviceOtp({
+    required String phone,
+    required String code,
+  }) async {
+    final response = await _api.dio.post<Map<String, dynamic>>(
+      'auth/otp/verify',
+      data: {
+        'phone': phone,
+        'code': code,
+        'purpose': 'LOGIN_NEW_DEVICE',
+      },
+    );
+    final token = response.data?['sessionToken'];
+    if (token is! String || token.isEmpty) {
+      throw const MissingOnboardingSessionException();
+    }
+    return token;
+  }
+
   // CB-ONB-003: send the validated BVN only to its documented verification API.
   Future<void> verifyBvn(String bvn) async {
     await _api.dio.post<void>('onboarding/bvn', data: {'bvn': bvn});

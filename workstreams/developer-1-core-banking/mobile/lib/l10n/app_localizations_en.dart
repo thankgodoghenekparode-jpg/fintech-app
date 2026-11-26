@@ -1366,6 +1366,38 @@ class AppLocalizationsEn extends AppLocalizations {
   String get newDeviceTitle => 'Verify this device';
 
   @override
+  String get newDeviceHeading => 'Protect your account on this device';
+
+  @override
+  String get newDeviceExplanation =>
+      'We verify a new device to help prevent someone else from accessing your account. Enter the phone number registered to your account to request a one-time code.';
+
+  @override
+  String get newDeviceOtpStep => 'Confirm your registered phone';
+
+  @override
+  String get newDevicePhoneLabel => 'Registered phone number';
+
+  @override
+  String get newDeviceCodeLabel => '6-digit verification code';
+
+  @override
+  String get newDeviceSendAction => 'Send verification code';
+
+  @override
+  String get newDeviceVerifyAction => 'Verify code';
+
+  @override
+  String get newDeviceResendAction => 'Send a new code';
+
+  @override
+  String get newDeviceLivenessStep => 'Complete selfie liveness check';
+
+  @override
+  String get newDeviceLivenessGap =>
+      'The OTP was accepted. Device approval cannot continue yet: the API does not define how this restricted verification session starts liveness, uploads a capture, or returns a trusted-device result. No device has been approved and you are not signed in. Contact your bank through its official support channel.';
+
+  @override
   String get flowNotReady =>
       'This secure verification step is not implemented yet. Sign-in cannot continue until it is available.';
 

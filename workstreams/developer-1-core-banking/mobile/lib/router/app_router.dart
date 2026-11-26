@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 
 import '../l10n/app_localizations.dart';
 import '../features/onboarding/presentation/onboarding_screens.dart';
+import '../features/onboarding/presentation/new_device_verification_screen.dart';
 import '../features/onboarding/presentation/liveness_capture_screen.dart';
 import '../features/onboarding/presentation/biometrics_setup_screen.dart';
 import '../features/onboarding/presentation/demo_experience_screen.dart';
@@ -643,8 +644,7 @@ final appRouter = GoRouter(
     ),
     GoRoute(
       path: '/login/new-device',
-      builder: (context, state) =>
-          const FlowPendingScreen(isPasscodeReset: false),
+      builder: (context, state) => const NewDeviceVerificationScreen(),
     ),
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) =>
