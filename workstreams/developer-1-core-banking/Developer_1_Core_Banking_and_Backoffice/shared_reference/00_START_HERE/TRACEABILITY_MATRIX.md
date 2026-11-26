@@ -76,7 +76,7 @@ Requirement -> screens -> API -> tables -> tests -> status. Generated in Stage 1
 | CB-SUP-003 | S-CB-079 | /tickets | support.tickets, support.ticket_messages | TC-FE-SUP-001 | - | NOT STARTED |
 | CB-SUP-004 | S-CB-080 | /tickets | support.tickets, support.ticket_messages | - | - | NOT STARTED |
 | CB-SUP-005 | S-CB-077 | /tickets | support.tickets, support.ticket_messages | - | - | NOT STARTED |
-| CB-SET-001 | S-CB-070, S-CB-071 | /kyc/status, /security/* | identity.*, accounts.tier_limits | - | - | NOT STARTED |
+| CB-SET-001 | S-CB-070, S-CB-071 | /more/profile, /accounts/me | accounts.accountName, accounts.tier | profile_screen_test.dart | PROFILE_API_GAP.md | PARTIAL |
 | CB-SET-002 | S-CB-073 | /kyc/status, /security/* | identity.*, accounts.tier_limits | - | - | NOT STARTED |
 | CB-SET-003 | S-CB-075 | /kyc/status, /security/* | identity.*, accounts.tier_limits | - | - | NOT STARTED |
 | CB-SET-004 | S-CB-076 | /kyc/status, /security/* | identity.*, accounts.tier_limits | - | - | NOT STARTED |

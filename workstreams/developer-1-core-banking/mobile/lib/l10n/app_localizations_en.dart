@@ -47,7 +47,57 @@ class AppLocalizationsEn extends AppLocalizations {
   String get moreProfileKyc => 'Profile & account details';
 
   @override
-  String get moreProfileSubtitle => 'View your account name, number and tier';
+  String get moreProfileSubtitle =>
+      'View available profile and account information';
+
+  @override
+  String get profileTitle => 'Personal profile';
+
+  @override
+  String get profileEditUnavailableTitle => 'Profile editing unavailable';
+
+  @override
+  String get profileEditUnavailableBody =>
+      'The current API contract does not provide a profile read or update operation, contact verification by OTP, or profile photo upload. Your verified account name and tier are shown below; profile changes are not submitted.';
+
+  @override
+  String get profileNameUnavailable => 'Name not available';
+
+  @override
+  String profileTier(int tier) {
+    return 'Tier $tier';
+  }
+
+  @override
+  String get profileTierUnavailable => 'Tier information unavailable';
+
+  @override
+  String get profilePersonalInfo => 'Personal information';
+
+  @override
+  String get profileFullName => 'Full name';
+
+  @override
+  String get profilePhone => 'Phone number';
+
+  @override
+  String get profileEmail => 'Email address';
+
+  @override
+  String get profileAddress => 'Residential address';
+
+  @override
+  String get profileNotProvided => 'Not provided by account service';
+
+  @override
+  String get profileUnavailable => 'Not available from account service';
+
+  @override
+  String get profileContractNote =>
+      'Your account service currently provides your account name and tier only. Phone, email, address, verification status, and edit-by-OTP operations need an approved API contract before they can be shown or changed here.';
+
+  @override
+  String get profileAccountDetails => 'View account details';
 
   @override
   String get moreLimits => 'Account limits & allowances';

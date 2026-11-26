@@ -11,6 +11,7 @@ import '../features/onboarding/presentation/demo_experience_screen.dart';
 import '../features/onboarding/presentation/demo_preview_catalog_screen.dart';
 import '../features/home/presentation/home_dashboard_screen.dart';
 import '../features/home/presentation/account_details_screen.dart';
+import '../features/home/presentation/profile_screen.dart';
 import '../features/home/presentation/account_limits_screen.dart';
 import '../features/home/presentation/statements_screen.dart';
 import '../features/home/presentation/add_money_screen.dart';
@@ -447,6 +448,10 @@ final appRouter = GoRouter(
     GoRoute(
       path: '/account-details',
       builder: (context, state) => const AccountDetailsScreen(),
+    ),
+    GoRoute(
+      path: '/more/profile',
+      builder: (context, state) => const ProfileScreen(),
     ),
     GoRoute(
       path: '/more/limits',

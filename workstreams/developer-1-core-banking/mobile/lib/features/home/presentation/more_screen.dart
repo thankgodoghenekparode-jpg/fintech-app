@@ -166,7 +166,7 @@ class _MoreContentState extends ConsumerState<_MoreContent> {
               icon: Icons.badge_outlined,
               title: text.moreProfileKyc,
               subtitle: text.moreProfileSubtitle,
-              onTap: () => context.push('/account-details'),
+              onTap: () => context.push('/more/profile'),
             ),
             _MoreRow(
               icon: Icons.tune,

@@ -169,8 +169,98 @@ abstract class AppLocalizations {
   /// No description provided for @moreProfileSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'View your account name, number and tier'**
+  /// **'View available profile and account information'**
   String get moreProfileSubtitle;
+
+  /// No description provided for @profileTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Personal profile'**
+  String get profileTitle;
+
+  /// No description provided for @profileEditUnavailableTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile editing unavailable'**
+  String get profileEditUnavailableTitle;
+
+  /// No description provided for @profileEditUnavailableBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The current API contract does not provide a profile read or update operation, contact verification by OTP, or profile photo upload. Your verified account name and tier are shown below; profile changes are not submitted.'**
+  String get profileEditUnavailableBody;
+
+  /// No description provided for @profileNameUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Name not available'**
+  String get profileNameUnavailable;
+
+  /// No description provided for @profileTier.
+  ///
+  /// In en, this message translates to:
+  /// **'Tier {tier}'**
+  String profileTier(int tier);
+
+  /// No description provided for @profileTierUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Tier information unavailable'**
+  String get profileTierUnavailable;
+
+  /// No description provided for @profilePersonalInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'Personal information'**
+  String get profilePersonalInfo;
+
+  /// No description provided for @profileFullName.
+  ///
+  /// In en, this message translates to:
+  /// **'Full name'**
+  String get profileFullName;
+
+  /// No description provided for @profilePhone.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone number'**
+  String get profilePhone;
+
+  /// No description provided for @profileEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Email address'**
+  String get profileEmail;
+
+  /// No description provided for @profileAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Residential address'**
+  String get profileAddress;
+
+  /// No description provided for @profileNotProvided.
+  ///
+  /// In en, this message translates to:
+  /// **'Not provided by account service'**
+  String get profileNotProvided;
+
+  /// No description provided for @profileUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Not available from account service'**
+  String get profileUnavailable;
+
+  /// No description provided for @profileContractNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Your account service currently provides your account name and tier only. Phone, email, address, verification status, and edit-by-OTP operations need an approved API contract before they can be shown or changed here.'**
+  String get profileContractNote;
+
+  /// No description provided for @profileAccountDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'View account details'**
+  String get profileAccountDetails;
 
   /// No description provided for @moreLimits.
   ///
