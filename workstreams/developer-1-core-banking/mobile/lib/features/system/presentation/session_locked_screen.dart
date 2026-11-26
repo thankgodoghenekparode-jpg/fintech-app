@@ -1,9 +1,9 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/security/biometric_service.dart';
+import '../../../core/security/local_session_cleanup.dart';
 import '../../onboarding/data/onboarding_repository.dart';
 
 class SessionLockedScreen extends ConsumerStatefulWidget {
@@ -105,15 +105,12 @@ class _SessionLockedScreenState extends ConsumerState<SessionLockedScreen> {
 
   Future<void> _logout() async {
     if (!widget.previewOnly) {
-      const storage = FlutterSecureStorage();
       try {
-        await Future.wait([
-          storage.delete(key: 'session.access_token'),
-          storage.delete(key: 'session.refresh_token'),
-        ]);
+        await ref.read(localSessionCleanupProvider).clearCurrentDeviceSession();
       } catch (_) {
         if (mounted) {
-          setState(() => _error = 'Could not clear the saved session. Try again.');
+          setState(
+              () => _error = 'Could not clear the saved session. Try again.');
         }
         return;
       }

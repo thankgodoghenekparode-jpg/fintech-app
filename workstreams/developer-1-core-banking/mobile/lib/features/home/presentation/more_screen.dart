@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../core/security/local_session_cleanup.dart';
 import '../../../l10n/app_localizations.dart';
 import '../data/home_repository.dart';
 
@@ -31,13 +32,60 @@ class MoreScreen extends ConsumerWidget {
   }
 }
 
-class _MoreContent extends StatelessWidget {
+class _MoreContent extends ConsumerStatefulWidget {
   const _MoreContent({required this.account});
 
   final AccountSummary account;
 
   @override
+  ConsumerState<_MoreContent> createState() => _MoreContentState();
+}
+
+class _MoreContentState extends ConsumerState<_MoreContent> {
+  bool _signingOut = false;
+
+  Future<void> _signOut() async {
+    if (_signingOut) return;
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        title: const Text('Sign out of this device?'),
+        content: const Text(
+          'You will need to sign in again here. Other device sessions are not changed.',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(dialogContext, false),
+            child: Text(AppLocalizations.of(context)!.commonCancel),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.pop(dialogContext, true),
+            child: const Text('Sign out'),
+          ),
+        ],
+      ),
+    );
+    if (confirmed != true || !mounted) return;
+    setState(() => _signingOut = true);
+    try {
+      await ref.read(localSessionCleanupProvider).clearCurrentDeviceSession();
+      if (mounted) context.go('/welcome');
+    } catch (_) {
+      if (!mounted) return;
+      setState(() => _signingOut = false);
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text(
+            'We could not clear all saved sign-in details. Try again before leaving this device.',
+          ),
+        ),
+      );
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final account = widget.account;
     final text = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
     return ListView(
@@ -206,6 +254,31 @@ class _MoreContent extends StatelessWidget {
             ),
           ],
         ),
+        const SizedBox(height: 20),
+        SizedBox(
+          height: 52,
+          child: FilledButton.icon(
+            style: FilledButton.styleFrom(
+              backgroundColor: theme.colorScheme.errorContainer,
+              foregroundColor: theme.colorScheme.onErrorContainer,
+            ),
+            onPressed: _signingOut ? null : _signOut,
+            icon: _signingOut
+                ? const SizedBox.square(
+                    dimension: 20,
+                    child: CircularProgressIndicator(strokeWidth: 2),
+                  )
+                : const Icon(Icons.logout_outlined),
+            label: Text(_signingOut ? 'Signing out…' : 'Sign out'),
+          ),
+        ),
+        const SizedBox(height: 8),
+        Text(
+          'This removes the saved session from this device. It does not sign out other devices.',
+          textAlign: TextAlign.center,
+          style: theme.textTheme.bodySmall,
+        ),
+        const SizedBox(height: 12),
       ],
     );
   }

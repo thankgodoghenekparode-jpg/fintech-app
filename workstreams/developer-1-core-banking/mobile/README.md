@@ -56,6 +56,8 @@ S-CB-073 is available from More at `/more/security`. The **Lock my account** act
 
 S-CB-074 is available at `/more/devices`; it loads `GET /security/devices`, marks the current device, and asks for confirmation and PIN before `DELETE /security/devices/{id}`. The endpoint paths exist in the supplied OpenAPI, but its list response is untyped and DELETE does not specify PIN authorization. The client uses the proposed typed fields and `X-Pin-Token` requirement documented in `../DEVICE_SESSIONS_API_UNBLOCKING_ADDENDUM.md`; backend approval/parity and session-revocation behavior are pending. `/demo/devices` is sample-only, and bulk sign-out is not implemented because no endpoint is defined.
 
+The More screen's **Sign out** action confirms, clears this device's access/refresh/onboarding credentials and biometric-unlock opt-in from secure storage, preserves the stable device ID, then returns to Welcome. This is local sign-out; the API defines no server-side logout/revocation operation, so other sessions and server-held refresh-token revocation are not claimed. See `../SESSION_SIGN_OUT_API_GAP.md`.
+
 To inspect card visuals without a backend, build with `--dart-define=ENABLE_CARD_UI_PREVIEW=true`. The Welcome screen then shows **Preview cards UI**, which opens two clearly labelled sample cards in read-only mode. This flag should be omitted from normal production builds.
 
 To show a wider, signed-in-style sample experience without credentials or a backend, run:
