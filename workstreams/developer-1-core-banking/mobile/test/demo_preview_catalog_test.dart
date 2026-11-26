@@ -13,5 +13,6 @@ void main() {
     expect(find.text('Implemented screen previews'), findsOneWidget);
     expect(find.text('Home and cards'), findsOneWidget);
     expect(find.text('Payments hub'), findsOneWidget);
+    expect(find.text('Personal profile'), findsOneWidget);
   });
 }

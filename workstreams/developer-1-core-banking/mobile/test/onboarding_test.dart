@@ -1552,6 +1552,30 @@ void main() {
     expect(find.text('Share as text'), findsOneWidget);
   });
 
+  testWidgets('demo login can open the labelled profile preview', (
+    tester,
+  ) async {
+    if (!demoLoginEnabled) return;
+    tester.view.physicalSize = const Size(390, 844);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
+    await tester.pumpWidget(const ProviderScope(child: YourApp()));
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text('Demo login'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Profile preview'));
+    await tester.pumpAndSettle();
+
+    expect(find.textContaining('DEMO DATA ONLY'), findsOneWidget);
+    expect(find.text('Ada Nwosu'), findsNWidgets(2));
+    expect(find.text('Tier 2'), findsOneWidget);
+    expect(find.text('Not available from account service'), findsNWidgets(3));
+    expect(find.textContaining('example.com'), findsNothing);
+    expect(tester.takeException(), isNull);
+  });
+
   testWidgets('demo login opens the labelled Add money preview', (
     tester,
   ) async {

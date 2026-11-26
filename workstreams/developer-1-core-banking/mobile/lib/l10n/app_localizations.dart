@@ -262,6 +262,12 @@ abstract class AppLocalizations {
   /// **'View account details'**
   String get profileAccountDetails;
 
+  /// No description provided for @profileDemoNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'DEMO DATA ONLY · Ada Nwosu is fictional. No profile or contact data is loaded from a bank.'**
+  String get profileDemoNotice;
+
   /// No description provided for @moreLimits.
   ///
   /// In en, this message translates to:

@@ -100,6 +100,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profileAccountDetails => 'View account details';
 
   @override
+  String get profileDemoNotice =>
+      'DEMO DATA ONLY · Ada Nwosu is fictional. No profile or contact data is loaded from a bank.';
+
+  @override
   String get moreLimits => 'Account limits & allowances';
 
   @override

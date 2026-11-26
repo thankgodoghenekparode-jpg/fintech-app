@@ -63,6 +63,7 @@ final appRouter = GoRouter(
     if (path == '/demo/security' && demoLoginEnabled) return null;
     if (path == '/demo/devices' && demoLoginEnabled) return null;
     if (path == '/demo/account-details' && demoLoginEnabled) return null;
+    if (path == '/demo/profile' && demoLoginEnabled) return null;
     if (path == '/demo/add-money' && demoLoginEnabled) return null;
     if (path == '/demo/report-problem' && demoLoginEnabled) return null;
     if (path == '/demo/payments' && demoLoginEnabled) return null;
@@ -113,6 +114,32 @@ final appRouter = GoRouter(
     GoRoute(
       path: '/demo/screens',
       builder: (context, state) => const DemoPreviewCatalogScreen(),
+    ),
+    GoRoute(
+      path: '/demo/profile',
+      builder: (context, state) => ProviderScope(
+        overrides: [
+          homeAccountProvider.overrideWith(
+            (ref) async => HomeResource(
+              data: const AccountSummary(
+                accountNumber: '0123456789',
+                accountName: 'Ada Nwosu',
+                status: 'SAMPLE',
+                currency: 'NGN',
+                tier: 2,
+                perTxnLimitKobo: null,
+                dailyOutLimitKobo: null,
+                dailyUsedKobo: null,
+                ledgerBalanceKobo: null,
+                availableBalanceKobo: null,
+                balanceCapKobo: null,
+              ),
+              updatedAt: DateTime.now(),
+            ),
+          ),
+        ],
+        child: const ProfileScreen(demo: true),
+      ),
     ),
     GoRoute(
       path: '/demo/legal',

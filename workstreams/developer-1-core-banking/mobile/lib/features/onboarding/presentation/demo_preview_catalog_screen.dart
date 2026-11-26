@@ -13,6 +13,11 @@ class DemoPreviewCatalogScreen extends StatelessWidget {
         Icons.receipt_long_outlined, '/demo/bills'),
     _DemoPreviewItem('Account details', 'Clearly labeled sample data',
         Icons.account_balance_outlined, '/demo/account-details'),
+    _DemoPreviewItem(
+        'Personal profile',
+        'Fictional identity; contact fields unavailable',
+        Icons.person_outline,
+        '/demo/profile'),
     _DemoPreviewItem('Add money', 'Account details preview',
         Icons.add_card_outlined, '/demo/add-money'),
     _DemoPreviewItem('Transaction report', 'Preview only; no ticket submitted',

@@ -66,6 +66,14 @@ class _DemoExperienceScreenState extends State<DemoExperienceScreen> {
             Align(
               alignment: Alignment.centerRight,
               child: TextButton.icon(
+                onPressed: () => context.push('/demo/profile'),
+                icon: const Icon(Icons.person_outline),
+                label: const Text('Profile preview'),
+              ),
+            ),
+            Align(
+              alignment: Alignment.centerRight,
+              child: TextButton.icon(
                 onPressed: () => context.push('/demo/payments'),
                 icon: const Icon(Icons.payments_outlined),
                 label: const Text('Payments hub'),

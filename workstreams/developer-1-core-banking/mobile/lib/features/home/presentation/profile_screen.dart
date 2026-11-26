@@ -9,7 +9,9 @@ import '../data/home_repository.dart';
 /// Contact details and profile editing stay unavailable until an approved API
 /// contract supplies the fields and verification flow.
 class ProfileScreen extends ConsumerWidget {
-  const ProfileScreen({super.key});
+  const ProfileScreen({this.demo = false, super.key});
+
+  final bool demo;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -41,7 +43,10 @@ class ProfileScreen extends ConsumerWidget {
             label: Text(text.commonRetry),
           ),
         ),
-        data: (resource) => _ProfileContent(account: resource.data),
+        data: (resource) => _ProfileContent(
+          account: resource.data,
+          demo: demo,
+        ),
       ),
     );
   }
@@ -64,9 +69,10 @@ class ProfileScreen extends ConsumerWidget {
 }
 
 class _ProfileContent extends StatelessWidget {
-  const _ProfileContent({required this.account});
+  const _ProfileContent({required this.account, this.demo = false});
 
   final AccountSummary account;
+  final bool demo;
 
   @override
   Widget build(BuildContext context) {
@@ -85,6 +91,20 @@ class _ProfileContent extends StatelessWidget {
     return ListView(
       padding: const EdgeInsets.fromLTRB(16, 16, 16, 24),
       children: [
+        if (demo)
+          Card(
+            color: Theme.of(context).colorScheme.tertiaryContainer,
+            child: Padding(
+              padding: const EdgeInsets.all(12),
+              child: Row(
+                children: [
+                  const Icon(Icons.info_outline),
+                  const SizedBox(width: 8),
+                  Expanded(child: Text(text.profileDemoNotice)),
+                ],
+              ),
+            ),
+          ),
         Card(
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 20),

@@ -2,7 +2,7 @@
 
 ## Implemented against the current contract
 
-The mobile Profile route reads the account through the existing `GET /accounts/me` operation. It displays `accountName` and `tier` when present, with loading and retry states. The layout follows the Developer 1 S-CB-071 Stitch composition (identity header, personal information, contact details), while omitting sample-only profile values.
+The authenticated mobile Profile route reads the account through the existing `GET /accounts/me` operation. An opt-in `/demo/profile` route uses an explicitly fictional account fixture so the Stitch-aligned screen can be previewed without backend access. It displays `accountName` and `tier` when present, with loading and retry states. The layout follows the Developer 1 S-CB-071 Stitch composition (identity header, personal information, contact details), while omitting sample-only profile values.
 
 ## Required API decisions before enabling profile edits
 
