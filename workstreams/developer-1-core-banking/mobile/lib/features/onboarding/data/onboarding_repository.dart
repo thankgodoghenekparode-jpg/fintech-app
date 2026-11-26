@@ -142,6 +142,30 @@ class OnboardingRepository {
     return token;
   }
 
+  Future<void> requestPasscodeResetOtp(String phone) async {
+    await _api.dio.post<void>(
+      'auth/otp/request',
+      data: {'phone': phone, 'purpose': 'PASSCODE_RESET'},
+    );
+  }
+
+  /// Verify recovery OTP without persisting its restricted token as a login
+  /// or onboarding session.
+  Future<String> verifyPasscodeResetOtp({
+    required String phone,
+    required String code,
+  }) async {
+    final response = await _api.dio.post<Map<String, dynamic>>(
+      'auth/otp/verify',
+      data: {'phone': phone, 'code': code, 'purpose': 'PASSCODE_RESET'},
+    );
+    final token = response.data?['sessionToken'];
+    if (token is! String || token.isEmpty) {
+      throw const MissingOnboardingSessionException();
+    }
+    return token;
+  }
+
   // CB-ONB-003: send the validated BVN only to its documented verification API.
   Future<void> verifyBvn(String bvn) async {
     await _api.dio.post<void>('onboarding/bvn', data: {'bvn': bvn});

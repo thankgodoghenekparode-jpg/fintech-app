@@ -2632,6 +2632,78 @@ abstract class AppLocalizations {
   /// **'Send a new code'**
   String get newDeviceResendAction;
 
+  /// No description provided for @resetPasscodeHeading.
+  ///
+  /// In en, this message translates to:
+  /// **'Recover access securely'**
+  String get resetPasscodeHeading;
+
+  /// No description provided for @resetPasscodeExplanation.
+  ///
+  /// In en, this message translates to:
+  /// **'Verify the phone number registered to your account. We will not change your passcode until your identity is confirmed.'**
+  String get resetPasscodeExplanation;
+
+  /// No description provided for @resetOtpStep.
+  ///
+  /// In en, this message translates to:
+  /// **'Verify registered phone'**
+  String get resetOtpStep;
+
+  /// No description provided for @resetPhoneLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Registered phone number'**
+  String get resetPhoneLabel;
+
+  /// No description provided for @resetOtpLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'6-digit verification code'**
+  String get resetOtpLabel;
+
+  /// No description provided for @resetSendOtp.
+  ///
+  /// In en, this message translates to:
+  /// **'Send verification code'**
+  String get resetSendOtp;
+
+  /// No description provided for @resetVerifyOtp.
+  ///
+  /// In en, this message translates to:
+  /// **'Verify code'**
+  String get resetVerifyOtp;
+
+  /// No description provided for @resetResendCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Send a new code'**
+  String get resetResendCode;
+
+  /// No description provided for @resetIdentityStep.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm your identity'**
+  String get resetIdentityStep;
+
+  /// No description provided for @resetNewPasscodeStep.
+  ///
+  /// In en, this message translates to:
+  /// **'Create and confirm a new passcode'**
+  String get resetNewPasscodeStep;
+
+  /// No description provided for @resetIdentityContractGap.
+  ///
+  /// In en, this message translates to:
+  /// **'Your phone code was verified, but we cannot continue safely yet. The API does not specify the BVN check, selfie/liveness session or identity-verification result required for passcode recovery. The recovery session remains temporary and has not changed your passcode.'**
+  String get resetIdentityContractGap;
+
+  /// No description provided for @resetHoldPolicyGap.
+  ///
+  /// In en, this message translates to:
+  /// **'The handoff mentions a configurable restriction on money actions after a reset, but the API provides no approved duration or enforcement status. No 24-hour hold is claimed here; the server must return the effective restriction before it can be displayed.'**
+  String get resetHoldPolicyGap;
+
   /// No description provided for @newDeviceLivenessStep.
   ///
   /// In en, this message translates to:

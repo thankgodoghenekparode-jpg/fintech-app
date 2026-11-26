@@ -1391,6 +1391,45 @@ class AppLocalizationsEn extends AppLocalizations {
   String get newDeviceResendAction => 'Send a new code';
 
   @override
+  String get resetPasscodeHeading => 'Recover access securely';
+
+  @override
+  String get resetPasscodeExplanation =>
+      'Verify the phone number registered to your account. We will not change your passcode until your identity is confirmed.';
+
+  @override
+  String get resetOtpStep => 'Verify registered phone';
+
+  @override
+  String get resetPhoneLabel => 'Registered phone number';
+
+  @override
+  String get resetOtpLabel => '6-digit verification code';
+
+  @override
+  String get resetSendOtp => 'Send verification code';
+
+  @override
+  String get resetVerifyOtp => 'Verify code';
+
+  @override
+  String get resetResendCode => 'Send a new code';
+
+  @override
+  String get resetIdentityStep => 'Confirm your identity';
+
+  @override
+  String get resetNewPasscodeStep => 'Create and confirm a new passcode';
+
+  @override
+  String get resetIdentityContractGap =>
+      'Your phone code was verified, but we cannot continue safely yet. The API does not specify the BVN check, selfie/liveness session or identity-verification result required for passcode recovery. The recovery session remains temporary and has not changed your passcode.';
+
+  @override
+  String get resetHoldPolicyGap =>
+      'The handoff mentions a configurable restriction on money actions after a reset, but the API provides no approved duration or enforcement status. No 24-hour hold is claimed here; the server must return the effective restriction before it can be displayed.';
+
+  @override
   String get newDeviceLivenessStep => 'Complete selfie liveness check';
 
   @override

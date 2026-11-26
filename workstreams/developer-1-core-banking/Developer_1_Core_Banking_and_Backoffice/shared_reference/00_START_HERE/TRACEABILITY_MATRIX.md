@@ -16,7 +16,7 @@ Requirement -> screens -> API -> tables -> tests -> status. Generated in Stage 1
 | CB-ONB-010 | - | /auth/otp/*, /onboarding/*, /kyc/status | identity.customers, identity.kyc_records, identity.consents | - | TC-BE-KYC-001 | NOT STARTED |
 | CB-ONB-011 | - | /auth/otp/*, /onboarding/*, /kyc/status | identity.customers, identity.kyc_records, identity.consents | TC-FE-ONB-005 | - | NOT STARTED |
 | CB-ONB-012 | S-CB-004 | /auth/otp/*, /onboarding/*, /kyc/status | identity.customers, identity.kyc_records, identity.consents | - | - | NOT STARTED |
-| CB-SEC-001 | S-CB-009, S-CB-011, S-CB-013, S-CB-015 | /auth/*, /security/* | auth.credentials, auth.refresh_tokens, identity.devices, platform.audit_log | - | TC-BE-AUT-001 | NOT STARTED |
+| CB-SEC-001 | S-CB-009, S-CB-011, S-CB-013, S-CB-015 | /auth/otp/request, /auth/otp/verify, /auth/*, /security/* | auth.credentials, auth.refresh_tokens, identity.devices, platform.audit_log | passcode_reset_test.dart | PASSCODE_RESET_API_GAP.md | PARTIAL |
 | CB-SEC-002 | S-CB-014, S-CB-074 | /auth/otp/request, /auth/otp/verify, /security/* | auth.credentials, auth.refresh_tokens, identity.devices, platform.audit_log | new_device_verification_test.dart | NEW_DEVICE_VERIFICATION_API_GAP.md | PARTIAL |
 | CB-SEC-003 | S-CB-010, S-CB-034 | /auth/*, /security/* | auth.credentials, auth.refresh_tokens, identity.devices, platform.audit_log | - | TC-BE-AUT-003 | NOT STARTED |
 | CB-SEC-004 | - | /auth/*, /security/* | auth.credentials, auth.refresh_tokens, identity.devices, platform.audit_log | - | - | NOT STARTED |
