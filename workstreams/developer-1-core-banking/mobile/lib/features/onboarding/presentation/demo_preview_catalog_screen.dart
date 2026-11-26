@@ -68,6 +68,11 @@ class DemoPreviewCatalogScreen extends StatelessWidget {
         'Preview only; account lock does not call the API',
         Icons.security_outlined,
         '/demo/security'),
+    _DemoPreviewItem(
+        'Linked devices',
+        'Sample devices; revoke action does not call the API',
+        Icons.devices_outlined,
+        '/demo/devices'),
   ];
 
   static const _backendRequired = <String>[

@@ -21,6 +21,7 @@ import '../features/locator/presentation/locator_screen.dart';
 import '../features/account_closure/presentation/account_closure_screen.dart';
 import '../features/account_closure/data/account_closure_repository.dart';
 import '../features/security/presentation/security_hub_screen.dart';
+import '../features/security/presentation/security_devices_screen.dart';
 import '../features/system/presentation/offline_screen.dart';
 import '../features/system/presentation/maintenance_screen.dart';
 import '../features/system/presentation/force_update_screen.dart';
@@ -59,6 +60,7 @@ final appRouter = GoRouter(
     if (path == '/demo/lock' && demoLoginEnabled) return null;
     if (path == '/demo/account-locked' && demoLoginEnabled) return null;
     if (path == '/demo/security' && demoLoginEnabled) return null;
+    if (path == '/demo/devices' && demoLoginEnabled) return null;
     if (path == '/demo/account-details' && demoLoginEnabled) return null;
     if (path == '/demo/add-money' && demoLoginEnabled) return null;
     if (path == '/demo/report-problem' && demoLoginEnabled) return null;
@@ -206,6 +208,11 @@ final appRouter = GoRouter(
     GoRoute(
       path: '/demo/security',
       builder: (context, state) => const SecurityHubScreen(previewOnly: true),
+    ),
+    GoRoute(
+      path: '/demo/devices',
+      builder: (context, state) =>
+          const SecurityDevicesScreen(previewOnly: true),
     ),
     GoRoute(
       path: '/account-locked',
@@ -448,6 +455,10 @@ final appRouter = GoRouter(
     GoRoute(
       path: '/more/security',
       builder: (context, state) => const SecurityHubScreen(),
+    ),
+    GoRoute(
+      path: '/more/devices',
+      builder: (context, state) => const SecurityDevicesScreen(),
     ),
     GoRoute(
       path: '/more/legal',

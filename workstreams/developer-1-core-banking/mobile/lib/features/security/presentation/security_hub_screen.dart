@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../features/home/data/home_repository.dart';
 import '../../../features/system/presentation/account_locked_screen.dart';
+import '../../../core/security/transaction_pin_pad.dart';
 import '../data/account_security_repository.dart';
 
 class SecurityHubScreen extends ConsumerStatefulWidget {
@@ -43,9 +44,9 @@ class _SecurityHubScreenState extends ConsumerState<SecurityHubScreen> {
     );
     if (confirmed != true || !mounted) return;
 
-    final pin = await showDialog<String>(
-      context: context,
-      builder: (dialogContext) => const _SecurityPinDialog(),
+    final pin = await showTransactionPinPadDialog(
+      context,
+      explanation: 'Confirm it is you before locking your account.',
     );
     if (pin == null || !mounted) return;
     setState(() => _submitting = true);
@@ -157,126 +158,30 @@ class _SecurityHubScreenState extends ConsumerState<SecurityHubScreen> {
             ),
           ),
           const SizedBox(height: 14),
-          const Card(
-            child: ListTile(
-              leading: Icon(Icons.info_outline),
-              title: Text('Other security settings'),
-              subtitle: Text(
-                'Passcode and PIN changes, biometrics, and linked-device '
-                'management need their approved change and device flows.',
-              ),
+          Card(
+            clipBehavior: Clip.antiAlias,
+            child: Column(
+              children: [
+                ListTile(
+                  leading: const Icon(Icons.devices_outlined),
+                  title: const Text('Manage devices'),
+                  subtitle: const Text('Review and remove trusted devices'),
+                  trailing: const Icon(Icons.chevron_right),
+                  onTap: () => context.push('/more/devices'),
+                ),
+                const Divider(height: 1),
+                const ListTile(
+                  leading: Icon(Icons.info_outline),
+                  title: Text('Other security settings'),
+                  subtitle: Text(
+                    'Passcode and PIN changes and biometrics need their approved change flows.',
+                  ),
+                ),
+              ],
             ),
           ),
         ],
       ),
     );
   }
-}
-
-class _SecurityPinDialog extends StatefulWidget {
-  const _SecurityPinDialog();
-
-  @override
-  State<_SecurityPinDialog> createState() => _SecurityPinDialogState();
-}
-
-class _SecurityPinDialogState extends State<_SecurityPinDialog> {
-  String _pin = '';
-
-  void _addDigit(String digit) {
-    if (_pin.length >= 4) return;
-    setState(() => _pin += digit);
-  }
-
-  @override
-  Widget build(BuildContext context) => AlertDialog(
-        title: const Text('Enter transaction PIN'),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Text('Confirm it is you before locking your account.'),
-            const SizedBox(height: 16),
-            Semantics(
-              label: '${_pin.length} of 4 PIN digits entered',
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: List.generate(
-                  4,
-                  (index) => Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8),
-                    child: Icon(
-                      index < _pin.length
-                          ? Icons.circle
-                          : Icons.circle_outlined,
-                      size: 16,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(height: 16),
-            for (final row in const [
-              ['1', '2', '3'],
-              ['4', '5', '6'],
-              ['7', '8', '9'],
-            ])
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  for (final digit in row)
-                    _PinDigitButton(
-                        digit: digit, onPressed: () => _addDigit(digit)),
-                ],
-              ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                IconButton(
-                  tooltip: 'Clear PIN',
-                  onPressed:
-                      _pin.isEmpty ? null : () => setState(() => _pin = ''),
-                  icon: const Icon(Icons.clear),
-                ),
-                _PinDigitButton(digit: '0', onPressed: () => _addDigit('0')),
-                IconButton(
-                  tooltip: 'Delete last digit',
-                  onPressed: _pin.isEmpty
-                      ? null
-                      : () => setState(
-                          () => _pin = _pin.substring(0, _pin.length - 1)),
-                  icon: const Icon(Icons.backspace_outlined),
-                ),
-              ],
-            ),
-          ],
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Cancel'),
-          ),
-          FilledButton(
-            onPressed:
-                _pin.length == 4 ? () => Navigator.pop(context, _pin) : null,
-            child: const Text('Verify PIN'),
-          ),
-        ],
-      );
-}
-
-class _PinDigitButton extends StatelessWidget {
-  const _PinDigitButton({required this.digit, required this.onPressed});
-
-  final String digit;
-  final VoidCallback onPressed;
-
-  @override
-  Widget build(BuildContext context) => SizedBox(
-        width: 64,
-        height: 52,
-        child: TextButton(
-          onPressed: onPressed,
-          child: Text(digit, style: Theme.of(context).textTheme.titleLarge),
-        ),
-      );
 }

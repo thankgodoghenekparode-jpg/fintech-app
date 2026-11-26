@@ -18,5 +18,6 @@
 ## Cross-workstream coordination
 
 - The original Developer 1 design tokens and API contract matched `front-end extracted/`. The API contract is now locally revised to v1.5.0 for card, bill, notification, support and statement flows; the top-level Developer 1 copy and its `_WITH_STITCH` mirror are synchronized, while the extracted copy remains an unchanged reference. Review [STATEMENTS_API_UNBLOCKING_ADDENDUM.md](STATEMENTS_API_UNBLOCKING_ADDENDUM.md) and confirm backend parity before statement release.
+- S-CB-074 uses the existing `/security/devices` paths with an isolated response-shape proposal and a PIN-token requirement for device removal. Neither source OpenAPI copy was changed. Backend approval, implementation, and session-revocation semantics are required; see [DEVICE_SESSIONS_API_UNBLOCKING_ADDENDUM.md](DEVICE_SESSIONS_API_UNBLOCKING_ADDENDUM.md).
 - Shared navigation, token generation, app configuration, API clients and design primitives require coordination before edits that affect all three workstreams.
 - Product modules should depend on shared primitives and API clients, never another workstream's presentation code.

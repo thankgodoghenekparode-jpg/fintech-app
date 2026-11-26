@@ -160,7 +160,7 @@ class _MoreContent extends StatelessWidget {
               icon: Icons.devices_outlined,
               title: text.moreDevices,
               subtitle: text.moreDevicesSubtitle,
-              onTap: () => _explain(context, text.moreDevicesBlocked),
+              onTap: () => context.push('/more/devices'),
             ),
           ],
         ),
@@ -229,21 +229,6 @@ class _MoreContent extends StatelessWidget {
       if (daily != null) text.moreDailyLimit(format(daily)),
       if (per != null) text.moreSingleLimit(format(per)),
     ].join(' • ');
-  }
-
-  static void _explain(BuildContext context, String message) {
-    showDialog<void>(
-      context: context,
-      builder: (context) => AlertDialog(
-        content: Text(message),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.of(context).pop(),
-            child: Text(AppLocalizations.of(context)!.commonDone),
-          ),
-        ],
-      ),
-    );
   }
 }
 
