@@ -6,11 +6,11 @@
   "type": "module",
   "types": "./src/index.ts",
   "scripts": {
-    "dev": "vite --config preview/vite.config.ts --host 127.0.0.1",
+    "dev": "vite --config preview/vite.config.ts --configLoader runner --host 127.0.0.1",
     "dev:pas-vendor": "vite --config preview/pay_am_small_vendor/vite.config.ts --configLoader runner",
     "build:pas-vendor": "vite build --config preview/pay_am_small_vendor/vite.config.ts --configLoader runner",
     "preview:pas-vendor": "vite preview --config preview/pay_am_small_vendor/vite.config.ts --configLoader runner",
-    "build": "npm run typecheck && tsc -p tsconfig.build.json && node scripts/copy-styles.mjs && vite build --config preview/vite.config.ts",
+    "build": "npm run typecheck && tsc -p tsconfig.build.json && node scripts/copy-styles.mjs && vite build --config preview/vite.config.ts --configLoader runner",
     "format": "prettier --write src preview *.json *.ts *.cjs scripts",
     "format:check": "prettier --check src preview *.json *.ts *.cjs scripts",
     "lint": "eslint src preview --ext .ts,.tsx",

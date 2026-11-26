@@ -1,4 +1,16 @@
 export 'src/escrow_adapters.dart';
+export 'src/escrow_batch2_adapters.dart';
+export 'src/escrow_batch2_models.dart';
+export 'src/escrow_batch2_pages.dart';
+export 'src/escrow_batch3_adapters.dart';
+export 'src/escrow_batch3_models.dart';
+export 'src/escrow_batch3_pages.dart';
+export 'src/escrow_batch4_adapters.dart';
+export 'src/escrow_batch4_models.dart';
+export 'src/escrow_batch4_pages.dart';
+export 'src/escrow_batch5_adapters.dart';
+export 'src/escrow_batch5_models.dart';
+export 'src/escrow_batch5_pages.dart';
 export 'src/escrow_copy.dart';
 export 'src/escrow_models.dart';
 export 'src/escrow_pages.dart';

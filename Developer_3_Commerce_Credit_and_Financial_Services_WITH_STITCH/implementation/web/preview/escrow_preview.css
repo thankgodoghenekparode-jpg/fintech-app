@@ -1,0 +1,63 @@
+@font-face {
+  font-family: "EscrowPreviewInter";
+  src: url("../src/pay_am_small_vendor/assets/Inter-Variable.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+.escrow-preview-shell {
+  --font-primary: "EscrowPreviewInter", Inter, system-ui, sans-serif;
+}
+
+.escrow-preview-shell .nav-item {
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.escrow-preview-notice {
+  min-height: 48px;
+  margin-bottom: var(--space-xl);
+}
+
+.escrow-preview-notice p {
+  margin: 0;
+}
+
+.escrow-preview-notice strong {
+  letter-spacing: 0.035em;
+}
+
+@media (max-width: 680px) {
+  .escrow-preview-shell .workspace-main,
+  .escrow-preview-shell .workspace-sidebar,
+  .escrow-preview-shell .workspace-nav,
+  .escrow-preview-shell .workspace-content {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .escrow-preview-shell .workspace-content {
+    margin: 0;
+  }
+
+  .escrow-preview-notice {
+    align-items: flex-start;
+  }
+
+  .escrow-preview-shell .workspace-nav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    overflow: visible;
+  }
+
+  .escrow-preview-shell .workspace-nav .nav-item {
+    width: 100%;
+    max-width: 100%;
+    flex: initial;
+    min-width: 0;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+}

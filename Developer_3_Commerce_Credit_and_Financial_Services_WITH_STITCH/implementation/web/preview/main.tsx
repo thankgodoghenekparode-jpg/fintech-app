@@ -1,5 +1,8 @@
 ﻿import { useMemo, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
+import { renderEscrowPreview } from "./escrow_preview";
+import { renderEscrowDisputePreview } from "./escrow_dispute_preview";
+import { renderEscrowTemplatesPreview } from "./escrow_templates_preview";
 import "./preview.css";
 import {
   BusinessDashboardPage,
@@ -504,4 +507,17 @@ function PreviewApp() {
   );
 }
 
-createRoot(document.getElementById("root")!).render(<PreviewApp />);
+const root = document.getElementById("root")!;
+const previewPath = window.location.pathname.replace(/\/$/, "");
+if (previewPath === "/escrow/web/deals") {
+  renderEscrowPreview(root);
+} else if (
+  previewPath === "/backoffice/escrow/disputes" ||
+  /^\/backoffice\/escrow\/disputes\/[^/]+$/.test(previewPath)
+) {
+  renderEscrowDisputePreview(root);
+} else if (previewPath === "/backoffice/escrow/config") {
+  renderEscrowTemplatesPreview(root);
+} else {
+  createRoot(root).render(<PreviewApp />);
+}

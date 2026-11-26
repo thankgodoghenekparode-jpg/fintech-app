@@ -18,6 +18,16 @@ class _EscrowPreviewAppState extends State<EscrowPreviewApp> {
   final _messengerKey = GlobalKey<ScaffoldMessengerState>();
   final _homeAdapter = const _SyntheticEscrowHomeAdapter();
   final _termsAdapter = const _UnavailableEscrowTermsAdapter();
+  final _inviteAdapter = const _SyntheticEscrowInviteAdapter();
+  final _acceptAdapter = const _UnavailableEscrowAcceptAdapter();
+  final _fundingAdapter = const _UnavailableEscrowFundingAdapter();
+  final _dealDetailAdapter = const _UnavailableEscrowDealDetailAdapter();
+  final _deliveryAdapter = const _UnavailableEscrowDeliveryAdapter();
+  final _confirmationAdapter = const _UnavailableEscrowConfirmationAdapter();
+  final _openDisputeAdapter = const _UnavailableEscrowOpenDisputeAdapter();
+  final _disputeStatusAdapter = const _UnavailableEscrowDisputeStatusAdapter();
+  final _cancellationAdapter = const _PreviewEscrowCancellationAdapter();
+  final _receiptAdapter = const _PreviewEscrowReceiptAdapter();
 
   ThemeData _theme() {
     const scheme = ColorScheme.light(
@@ -107,7 +117,99 @@ class _EscrowPreviewAppState extends State<EscrowPreviewApp> {
   Route<void> _route(RouteSettings settings) {
     final name = settings.name ?? '/escrow';
     late final Widget page;
-    if (name == '/escrow/new') {
+    final inviteMatch = RegExp(r'^/escrow/([^/]+)/invite$').firstMatch(name);
+    final acceptMatch = RegExp(r'^/escrow/([^/]+)/accept$').firstMatch(name);
+    final fundMatch = RegExp(r'^/escrow/([^/]+)/fund$').firstMatch(name);
+    final deliveryMatch = RegExp(r'^/escrow/([^/]+)/deliver$').firstMatch(name);
+    final confirmMatch = RegExp(r'^/escrow/([^/]+)/confirm$').firstMatch(name);
+    final disputeStatusMatch =
+        RegExp(r'^/escrow/([^/]+)/dispute/status$').firstMatch(name);
+    final disputeMatch = RegExp(r'^/escrow/([^/]+)/dispute$').firstMatch(name);
+    final cancelMatch = RegExp(r'^/escrow/([^/]+)/cancel$').firstMatch(name);
+    final receiptMatch = RegExp(r'^/escrow/([^/]+)/receipt$').firstMatch(name);
+    final detailMatch = RegExp(r'^/escrow/([^/]+)$').firstMatch(name);
+    if (name == '/escrow/preview-directory') {
+      page = _EscrowPreviewDirectoryPage(
+        onOpen: (route) => _navigatorKey.currentState?.pushNamed<void>(route),
+      );
+    } else if (inviteMatch != null) {
+      final dealId = inviteMatch.group(1)!;
+      page = EscrowInviteNegotiatePage(
+        dealId: dealId,
+        adapter: _inviteAdapter,
+        onReviewTerms: () => _navigatorKey.currentState?.pushNamed<void>(
+          '/escrow/$dealId/accept',
+        ),
+      );
+    } else if (acceptMatch != null) {
+      final dealId = acceptMatch.group(1)!;
+      page = EscrowAcceptTermsPage(
+        dealId: dealId,
+        adapter: _acceptAdapter,
+        onProceedToFunding: () => _navigatorKey.currentState?.pushNamed<void>(
+          '/escrow/$dealId/fund',
+        ),
+      );
+    } else if (fundMatch != null) {
+      page = EscrowFundDealPage(
+        dealId: fundMatch.group(1)!,
+        adapter: _fundingAdapter,
+      );
+    } else if (deliveryMatch != null) {
+      page = EscrowSubmitDeliveryPage(
+        dealId: deliveryMatch.group(1)!,
+        adapter: _deliveryAdapter,
+      );
+    } else if (confirmMatch != null) {
+      page = EscrowConfirmDeliveryPage(
+        dealId: confirmMatch.group(1)!,
+        adapter: _confirmationAdapter,
+      );
+    } else if (disputeStatusMatch != null) {
+      page = EscrowDisputeStatusPage(
+        dealId: disputeStatusMatch.group(1)!,
+        adapter: _disputeStatusAdapter,
+      );
+    } else if (disputeMatch != null) {
+      final dealId = disputeMatch.group(1)!;
+      page = EscrowOpenDisputePage(
+        dealId: dealId,
+        adapter: _openDisputeAdapter,
+        onSubmitted: () => _navigatorKey.currentState?.pushNamed<void>(
+          '/escrow/$dealId/dispute/status',
+        ),
+      );
+    } else if (cancelMatch != null) {
+      page = EscrowCancelDealPage(
+        dealId: cancelMatch.group(1)!,
+        adapter: _cancellationAdapter,
+      );
+    } else if (receiptMatch != null) {
+      page = EscrowReceiptRatingPage(
+        dealId: receiptMatch.group(1)!,
+        adapter: _receiptAdapter,
+      );
+    } else if (detailMatch != null && name != '/escrow/new') {
+      final dealId = detailMatch.group(1)!;
+      page = EscrowDealDetailPage(
+        dealId: dealId,
+        adapter: _dealDetailAdapter,
+        onAction: (action) {
+          final route = switch (action) {
+            EscrowDealAction.invite => '/escrow/$dealId/invite',
+            EscrowDealAction.accept => '/escrow/$dealId/accept',
+            EscrowDealAction.fund => '/escrow/$dealId/fund',
+            EscrowDealAction.submitDelivery => '/escrow/$dealId/deliver',
+            EscrowDealAction.confirmDelivery => '/escrow/$dealId/confirm',
+            EscrowDealAction.openDispute => '/escrow/$dealId/dispute',
+            EscrowDealAction.cancelDeal => '/escrow/$dealId/cancel',
+            EscrowDealAction.viewReceipt => '/escrow/$dealId/receipt',
+            EscrowDealAction.other => null,
+          };
+          if (route != null) _navigatorKey.currentState?.pushNamed<void>(route);
+        },
+      );
+    } else if (name == '/escrow/new') {
       page = EscrowCreateDealPage(
         onContinue: (draft) async {
           unawaited(_navigatorKey.currentState!.pushNamed<void>(
@@ -126,21 +228,21 @@ class _EscrowPreviewAppState extends State<EscrowPreviewApp> {
         dealId: null,
         onContinue: (_) async {
           _messengerKey.currentState?.showSnackBar(
-            const SnackBar(content: Text('Invite flow is outside Batch 1.')),
+            const SnackBar(
+              content: Text(
+                'A host-created deal ID is required before inviting a counterparty.',
+              ),
+            ),
           );
         },
       );
-    } else if (name.startsWith('/escrow/deals/')) {
-      page = const _UnavailableDealDetailPage();
     } else {
       page = EscrowHomePage(
         adapter: _homeAdapter,
         onNewDeal: () =>
             _navigatorKey.currentState?.pushNamed<void>('/escrow/new'),
-        onOpenDeal: (deal) => _messengerKey.currentState?.showSnackBar(
-          SnackBar(
-              content:
-                  Text('S-ESC-007 is not included in Batch 1: ${deal.title}')),
+        onOpenDeal: (deal) => _navigatorKey.currentState?.pushNamed<void>(
+          '/escrow/${deal.id}',
         ),
       );
     }
@@ -148,6 +250,9 @@ class _EscrowPreviewAppState extends State<EscrowPreviewApp> {
       settings: settings,
       builder: (_) => _PreviewShell(
         child: page,
+        onOpenDirectory: () => _navigatorKey.currentState?.pushNamed<void>(
+          '/escrow/preview-directory',
+        ),
         onOutsidePreview: () => _messengerKey.currentState?.showSnackBar(
           SnackBar(content: Text(const EscrowCopy().navOutsidePreview)),
         ),
@@ -168,10 +273,15 @@ class _EscrowPreviewAppState extends State<EscrowPreviewApp> {
 }
 
 class _PreviewShell extends StatelessWidget {
-  const _PreviewShell({required this.child, required this.onOutsidePreview});
+  const _PreviewShell({
+    required this.child,
+    required this.onOutsidePreview,
+    required this.onOpenDirectory,
+  });
 
   final Widget child;
   final VoidCallback onOutsidePreview;
+  final VoidCallback onOpenDirectory;
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -183,7 +293,13 @@ class _PreviewShell extends StatelessWidget {
         ),
         bottomNavigationBar: NavigationBar(
           selectedIndex: 4,
-          onDestinationSelected: (_) => onOutsidePreview(),
+          onDestinationSelected: (index) {
+            if (index == 4) {
+              onOpenDirectory();
+            } else {
+              onOutsidePreview();
+            }
+          },
           destinations: const [
             NavigationDestination(
                 icon: Icon(Icons.home_outlined), label: 'Home'),
@@ -194,6 +310,53 @@ class _PreviewShell extends StatelessWidget {
             NavigationDestination(
                 icon: Icon(Icons.savings_outlined), label: 'Save & Borrow'),
             NavigationDestination(icon: Icon(Icons.more_horiz), label: 'More'),
+          ],
+        ),
+      );
+}
+
+class _EscrowPreviewDirectoryPage extends StatelessWidget {
+  const _EscrowPreviewDirectoryPage({required this.onOpen});
+
+  final ValueChanged<String> onOpen;
+
+  static const _screens = <(String, String)>[
+    ('S-ESC-001 · Escrow Home', '/escrow'),
+    ('S-ESC-002 · Create Deal', '/escrow/new'),
+    ('S-ESC-003 · Fees and Cancellation Terms', '/escrow/new/terms'),
+    ('S-ESC-004 · Invite Counterparty', '/escrow/synthetic-active/invite'),
+    ('S-ESC-005 · Accept Deal', '/escrow/synthetic-active/accept'),
+    ('S-ESC-006 · Fund Escrow', '/escrow/synthetic-active/fund'),
+    ('S-ESC-007 · Deal Details', '/escrow/synthetic-active'),
+    ('S-ESC-008 · Submit Delivery', '/escrow/synthetic-active/deliver'),
+    ('S-ESC-009 · Confirm Delivery', '/escrow/synthetic-active/confirm'),
+    ('S-ESC-010 · Open Dispute', '/escrow/synthetic-active/dispute'),
+    (
+      'S-ESC-011 · Dispute Status and Tracking',
+      '/escrow/synthetic-active/dispute/status'
+    ),
+    ('S-ESC-012 · Cancel Deal', '/escrow/synthetic-active/cancel'),
+    ('S-ESC-013 · Receipt and Rating', '/escrow/synthetic-active/receipt'),
+  ];
+
+  @override
+  Widget build(BuildContext context) => Scaffold(
+        appBar: AppBar(title: const Text('Escrow preview screens')),
+        body: ListView(
+          padding: const EdgeInsets.all(16),
+          children: [
+            const Text(
+              'All thirteen implemented Escrow screens. Preview-only examples; host data and real operations remain unavailable.',
+            ),
+            const SizedBox(height: 12),
+            for (final (label, route) in _screens)
+              Card(
+                child: ListTile(
+                  title: Text(label),
+                  trailing: const Icon(Icons.chevron_right),
+                  onTap: () => onOpen(route),
+                ),
+              ),
           ],
         ),
       );
@@ -250,6 +413,114 @@ class _SyntheticEscrowHomeAdapter implements EscrowHomeAdapter {
       ];
 }
 
+class _SyntheticEscrowInviteAdapter implements EscrowInviteAdapter {
+  const _SyntheticEscrowInviteAdapter();
+
+  @override
+  Future<EscrowInvitePresentation?> loadInvite(String dealId) async =>
+      const EscrowInvitePresentation(
+        dealTitle: 'Synthetic example — no real deal',
+        inviteeRoleLabel: 'other party',
+        channels: [
+          EscrowInviteChannel(
+            value: 'preview-only',
+            label: 'Preview only — no invitation will be sent',
+          ),
+        ],
+        counterpartyStatus:
+            'Preview only — no counterparty has been invited or verified.',
+      );
+
+  @override
+  Future<void> sendInvite({
+    required String dealId,
+    required String phone,
+    required String channel,
+  }) async {
+    throw UnsupportedError('This preview does not send invitations.');
+  }
+
+  @override
+  Future<void> proposeTerms({
+    required String dealId,
+    required EscrowFeeTermsSelection selection,
+  }) async {
+    throw UnsupportedError('This preview does not submit terms.');
+  }
+}
+
+class _UnavailableEscrowAcceptAdapter implements EscrowAcceptAdapter {
+  const _UnavailableEscrowAcceptAdapter();
+
+  @override
+  Future<void> openTermsDocument({
+    required String dealId,
+    required String termsHash,
+  }) async {
+    throw UnsupportedError('No terms document service is connected.');
+  }
+
+  @override
+  Future<EscrowLockedTermsPresentation?> loadLockedTerms(String dealId) async =>
+      const EscrowLockedTermsPresentation(
+        dealTitle: 'Synthetic example — no real deal',
+        termsHash: '',
+        lines: [
+          EscrowLockedTermLine(
+            label: 'Deal amount',
+            value: 'Not supplied',
+          ),
+          EscrowLockedTermLine(
+            label: 'Fees and cancellation terms',
+            value: 'Not supplied',
+          ),
+        ],
+        otherPartyAcceptance: 'Not supplied',
+        acceptanceAllowed: false,
+      );
+
+  @override
+  Future<String?> authorizeWithPin(String dealId) async => null;
+
+  @override
+  Future<EscrowAcceptOutcome> acceptLockedTerms({
+    required String dealId,
+    required String termsHash,
+    required String idempotencyKey,
+    required String pinToken,
+  }) async =>
+      throw UnsupportedError('No acceptance or PIN service is connected.');
+}
+
+class _UnavailableEscrowFundingAdapter implements EscrowFundingAdapter {
+  const _UnavailableEscrowFundingAdapter();
+
+  @override
+  Future<EscrowFundingPresentation?> loadFunding(String dealId) async =>
+      const EscrowFundingPresentation(
+        dealTitle: 'Synthetic example — no real deal',
+        amountLabel: 'Not supplied',
+        feeLines: [],
+        totalLabel: 'Not supplied',
+        methods: [],
+        fundingAllowed: false,
+        statusMessage:
+            'No payment, bank transfer, or funding status is connected to this preview.',
+      );
+
+  @override
+  Future<String?> authorizeWithPin(String dealId) async => null;
+
+  @override
+  Future<EscrowFundingOutcome> fund({
+    required String dealId,
+    required String methodId,
+    required String idempotencyKey,
+    required String pinToken,
+  }) async =>
+      throw UnsupportedError('No payment service is connected.');
+}
+
 class _UnavailableEscrowTermsAdapter implements EscrowFeeTermsAdapter {
   const _UnavailableEscrowTermsAdapter();
 
@@ -291,12 +562,217 @@ class _NonProductionNotice extends StatelessWidget {
       );
 }
 
-class _UnavailableDealDetailPage extends StatelessWidget {
-  const _UnavailableDealDetailPage();
+class _UnavailableEscrowDealDetailAdapter implements EscrowDealDetailAdapter {
+  const _UnavailableEscrowDealDetailAdapter();
+  @override
+  Future<EscrowDealDetail?> loadDeal(String dealId) async => null;
+  @override
+  Future<void> sendMessage({required String dealId, required String body}) =>
+      Future.error(UnsupportedError('Messaging is not connected.'));
+  @override
+  Future<void> openDocument(
+          {required String dealId, required String documentId}) =>
+      Future.error(UnsupportedError('Documents are not connected.'));
+}
+
+class _UnavailableEscrowDeliveryAdapter implements EscrowDeliveryAdapter {
+  const _UnavailableEscrowDeliveryAdapter();
+  @override
+  Future<EscrowDeliveryContext?> loadDelivery(String dealId) async =>
+      const EscrowDeliveryContext(
+        title: 'Synthetic preview example — no real deal',
+        instruction:
+            'Delivery instructions and permissions require host deal data.',
+        submissionAllowed: false,
+        evidenceUploadAvailable: false,
+      );
+  @override
+  Future<EscrowEvidenceItem?> attachEvidence(String dealId) async => null;
+  @override
+  Future<String?> authorizeWithPin(String dealId) async => null;
+  @override
+  Future<EscrowBatch3Outcome> submitDelivery(
+          {required String dealId,
+          required int? milestoneSequence,
+          required List<String> evidenceReferences,
+          required String note,
+          required String idempotencyKey,
+          required String pinToken}) =>
+      Future.error(
+          UnsupportedError('No delivery or PIN service is connected.'));
+}
+
+class _UnavailableEscrowConfirmationAdapter
+    implements EscrowConfirmationAdapter {
+  const _UnavailableEscrowConfirmationAdapter();
+  @override
+  Future<EscrowConfirmationContext?> loadConfirmation(String dealId) async =>
+      const EscrowConfirmationContext(
+        title: 'Synthetic preview example — no real deal',
+        instruction:
+            'Delivery evidence and confirmation permissions require host deal data.',
+      );
+  @override
+  Future<void> openEvidence(
+          {required String dealId, required String evidenceReference}) =>
+      Future.error(UnsupportedError('Evidence is not connected.'));
+  @override
+  Future<String?> authorizeWithPin(String dealId) async => null;
+  @override
+  Future<EscrowBatch3Outcome> submitDecision(
+          {required String dealId,
+          required EscrowConfirmAction action,
+          required String? deliveryCode,
+          required int? milestoneSequence,
+          required String idempotencyKey,
+          required String pinToken}) =>
+      Future.error(
+          UnsupportedError('No confirmation or PIN service is connected.'));
+}
+
+class _UnavailableEscrowOpenDisputeAdapter implements EscrowOpenDisputeAdapter {
+  const _UnavailableEscrowOpenDisputeAdapter();
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-        appBar: AppBar(title: const Text('Deal detail')),
-        body: Center(child: Text(const EscrowCopy().detailUnavailable)),
+  Future<EscrowOpenDisputeContext?> loadOpenDispute(String dealId) async =>
+      const EscrowOpenDisputeContext(
+        dealTitle: 'Open dispute preview',
+        dealSummary:
+            'NON-PRODUCTION · Preview form only. No real deal or customer dispute is connected.',
+        whatHappensNext:
+            'Host eligibility, supported reasons and applicable deadlines are not connected in preview.',
+        restrictionMessage:
+            'Preview only: dispute submission is disabled. Eligibility and dispute-window status require host data.',
+        canOpenDispute: false,
       );
+
+  @override
+  Future<EscrowDisputeEvidence?> attachEvidence(String dealId) async => null;
+
+  @override
+  Future<String?> authorizeWithPin(String dealId) async => null;
+
+  @override
+  Future<EscrowDisputeSubmissionOutcome> openDispute({
+    required String dealId,
+    required String reason,
+    required String description,
+    required List<String> evidenceReferences,
+    required String idempotencyKey,
+    required String pinToken,
+  }) =>
+      Future.error(
+          UnsupportedError('Dispute submission is unavailable in preview.'));
+}
+
+class _UnavailableEscrowDisputeStatusAdapter
+    implements EscrowDisputeStatusAdapter {
+  const _UnavailableEscrowDisputeStatusAdapter();
+
+  @override
+  Future<EscrowDisputeStatusContext?> loadDisputeStatus(String dealId) async =>
+      const EscrowDisputeStatusContext(
+        caseLabel: 'PREVIEW SAMPLE · not a customer case',
+        statusLabel: 'Preview only',
+        dealTitle: 'Dispute tracking preview',
+        summary:
+            'Illustrative layout only. No dispute record or decision exists.',
+        events: [
+          EscrowDisputeEvent(
+            label: 'Opened',
+            detail: 'Host case information is not connected.',
+          ),
+          EscrowDisputeEvent(
+            label: 'Evidence due',
+            detail: 'No deadline supplied.',
+          ),
+          EscrowDisputeEvent(
+            label: 'Review',
+            detail: 'No review status supplied.',
+          ),
+          EscrowDisputeEvent(
+            label: 'Decision',
+            detail: 'No decision supplied.',
+          ),
+          EscrowDisputeEvent(
+            label: 'Appeal window',
+            detail: 'No appeal eligibility or deadline supplied.',
+          ),
+        ],
+        appealAllowed: false,
+        appealRestrictionMessage:
+            'Appeal availability is not provided in preview; host eligibility and API details are required.',
+      );
+
+  @override
+  Future<String?> authorizeWithPin(String dealId) async => null;
+
+  @override
+  Future<EscrowDisputeSubmissionOutcome> requestAppeal({
+    required String dealId,
+    required String reason,
+    required String idempotencyKey,
+    required String pinToken,
+  }) =>
+      Future.error(UnsupportedError('Appeals are unavailable in preview.'));
+}
+
+class _PreviewEscrowCancellationAdapter implements EscrowCancellationAdapter {
+  const _PreviewEscrowCancellationAdapter();
+
+  @override
+  Future<EscrowCancellationContext?> loadCancellation(String dealId) async =>
+      const EscrowCancellationContext(
+        dealTitle: 'Cancel deal preview',
+        summary:
+            'NON-PRODUCTION · Preview example only. No real deal or cancellation is connected.',
+        scenarioLabel: 'Not supplied by host',
+        agreedFeeOutcome: 'Not supplied by host',
+        netRefundLabel: 'Not supplied by host',
+        requiresCounterpartyAgreement: true,
+        counterpartyAgreementSatisfied: false,
+        canRequestCancellation: false,
+        restrictionMessage:
+            'Preview only: cancellation is disabled. Eligibility, reason options and agreed financial terms require host data.',
+      );
+
+  @override
+  Future<String?> authorizeWithPin(String dealId) async => null;
+
+  @override
+  Future<EscrowBatch5Outcome> requestCancellation({
+    required String dealId,
+    required String reason,
+    required String idempotencyKey,
+    required String pinToken,
+  }) =>
+      Future.error(UnsupportedError('Cancellation is unavailable in preview.'));
+}
+
+class _PreviewEscrowReceiptAdapter implements EscrowReceiptAdapter {
+  const _PreviewEscrowReceiptAdapter();
+
+  @override
+  Future<EscrowReceiptContext?> loadReceipt(String dealId) async =>
+      const EscrowReceiptContext(
+        dealTitle: 'Receipt preview',
+        statusLabel: 'Not supplied by host',
+        unavailableMessage:
+            'NON-PRODUCTION · No transaction or customer receipt exists. Values below are intentionally unavailable.',
+        canShare: false,
+        canRate: false,
+        ratingSubmitted: false,
+      );
+
+  @override
+  Future<void> shareReceipt({required String dealId}) => Future.error(
+      UnsupportedError('Receipt sharing is unavailable in preview.'));
+
+  @override
+  Future<EscrowBatch5Outcome> submitRating({
+    required String dealId,
+    required String ratingValue,
+  }) =>
+      Future.error(
+          UnsupportedError('Rating submission is unavailable in preview.'));
 }
